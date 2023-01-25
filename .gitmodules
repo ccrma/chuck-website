@@ -1,0 +1,3 @@
+[submodule "webchuck"]
+	path = webchuck
+	url = https://github.com/ccrma/webchuck.git
