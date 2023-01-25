@@ -1,0 +1,275 @@
+<html>
+<head>
+<title>ChucK - [Programming Guide : Standard Libraries]</title>
+</head>
+<body bgcolor=#ffffff text=#000000>
+<font face=verdana size=2>
+
+<br>
+<center> 
+<table border=0 width=640>
+<tr><td>
+<font face=verdana size=2>
+<center>
+<font size=3>
+<b>ChucK</b> : Programming Guide
+</font>
+<br>
+<br>
+<font color=#aa3333 size=3>Standard Libraries</font>
+<br><br>
+
+  <table bgcolor="#d9d9d9" border=0 cellpadding=1 cellspacing=0><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border=0 cellpadding=1 cellspacing=2>
+  <tr>
+  <td align=right><font face=verdana size=2>
+  version:</td><td><font face=verdana size=2>
+  1.1.x (frankenstein)
+  <br>
+  
+  </font></td>
+  </tr>
+  </table></td></tr>
+  </table>
+
+<br>
+<!--img src="../images/on-the-fly_50dpi.jpg"-->
+
+<table width=640 border=0 cellpadding=2 cellspacing=2>
+<tr><td align=justify><font face=verdana size=2>
+
+<hr width=10%>
+<font size=3><b>ChucK Standard Libraries API</b></font>
+<br>
+these libraries are provide by default with ChucK - new ones can also 
+be imported with ChucK dynamic linking (soon to be documented...).  The 
+existing libraries are organized by namespaces in ChucK.  They are as 
+follows.
+<br><br>
+<hr width=10%>
+<font color=#33aa33 size=3>namespace: <b>std</b></font>
+<br><br>
+the standard library in ChucK.
+<br><br>
+usage example:
+<br><br>
+<center>
+  <table width=400 bgcolor="#d9d9d9" border=0 cellpadding=1 cellspacing=0><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border=0 cellpadding=1 cellspacing=2>
+  <tr>
+  <td align=left><pre>
+  std.rand2f( 100.0, 1000.0 ) => stdout;
+</pre>
+  </td></tr></table></td></tr></table>
+</center>
+<br>
+----------<br>
+[function]: float <b>abs</b>( float value );<br>
+- floating point absolute value<br>
+<br>
+----------<br>
+[function]: int <b>rand</b>( );<br>
+- return between 0 and RAND_MAX<br>
+<br>
+----------<br>
+[function]: int <b>rand2</b>( int min, int max );<br>
+- return integer between [min,max]<br>
+<br>
+----------<br>
+[function]: float <b>randf</b>( );<br>
+- return float between -1.0 and 1.0<br>
+<br>
+----------<br>
+[function]: float <b>rand2f</b>( float min, float max );<br>
+- return float between min and max<br>
+<br>
+----------<br>
+[function]: float <b>sgn</b>( float value );<br>
+- return sign of value (-1, 0, or 1)<br>
+<br>
+----------<br>
+[function]: int <b>system</b>( string cmd );<br>
+- issue system command to the shell (like in C)<br>
+<br>
+example:
+<br><br>
+<center>
+  <table width=400 bgcolor="#d9d9d9" border=0 cellpadding=1 cellspacing=0><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border=0 cellpadding=1 cellspacing=2>
+  <tr>
+  <td align=left><pre>
+  std.system( "ls -l | grep moe" );
+</pre>
+  </td></tr></table></td></tr></table>
+</center>
+<br><br>
+[function]: int <b>atoi</b>( string value );<br>
+- convert string to integer<br>
+<br>
+----------<br>
+[function]: float <b>atof</b>( string value );<br>
+- convert string to float<br>
+<br>
+----------<br>
+[function]: string <b>getenv</b>( string key );<br>
+- get environment variable<br>
+<br>
+----------<br>
+[function]: int <b>setenv</b>( string key, string value );<br>
+- set environment variable<br>
+<br>
+----------<br>
+[function]: float <b>mtof</b>( float value );<br>
+- MIDI note to frequency(Hz)<br>
+<br>
+----------<br>
+[function]: float <b>ftom</b>( float value );<br>
+- frequency to MIDI note<br>
+<br>
+----------<br>
+[function]: float <b>dbtorms</b>( float value );<br>
+- decibel to RMS amplitude (100dB &lt;=&gt; 1.0)<br>
+<br>
+----------<br>
+[function]: float <b>rmstodb</b>( float value );<br>
+- RMS amplitude to decibels (100dB &lt;=&gt; 1.0)<br>
+<br>
+----------<br>
+[function]: float <b>dbtopow</b>( float value );<br>
+- decibels to linear amplitude (100db &lt;=&gt; 1.0)<br>
+<br>
+----------<br>
+[function]: float <b>powtodb</b>( float value );<br>
+- linear amplitude to decibels (100db &lt;=&gt; 1.0)<br>
+<br>
+
+<br>
+
+<hr width=10%>
+
+<font size=3 color=#33aa33>namespace: <b>machine</b></font>
+</center>
+<br><br>
+ChucK runtime interface to the virtual machine.  this interface can be 
+used to manage shreds.  They are similar to the <a 
+href="otfp.html">On-the-fly Programming Commands</a>, except these are 
+invoked from within a ChucK program, and are accessible to the timing 
+mechanism.
+<br><br> ----------<br>
+[function]: int <b>add</b>( string path );<br>
+- compile and spork a new shred from file at 'path' in to the VM right now<br>
+- returns the shred ID<br>
+<br>
+example:
+<br><br>
+<center>
+  <table width=400 bgcolor="#d9d9d9" border=0 cellpadding=1 cellspacing=0><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border=0 cellpadding=1 cellspacing=2>
+  <tr>
+  <td align=left><pre>
+  machine.add( "osc.ck" );
+</pre>
+  </td></tr></table></td></tr></table>
+</center>
+
+<br>(see example/machine.ck)
+<br><br>
+----------<br>
+[function]: int <b>spork</b>( string path );<br>
+- same as add<br>
+<br>
+----------<br>
+[function]: int <b>remove</b>( int id );<br>
+- remove shred from the VM by shred ID (returned by add/spork)<br>
+<br>
+----------<br>
+[function]: int <b>replace</b>( int id, string path );<br>
+- replace shred with new shred from file<br>
+- returns shred ID or 0 (if something failed)<br>
+<br>
+----------<br>
+[function]: int <b>status</b>( );<br>
+- display current status of VM<br>
+<br>
+
+example/status.ck below is useful for monitoring:
+<br><br>
+<center>
+  <table width=400 bgcolor="#d9d9d9" border=0 cellpadding=1 cellspacing=0><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border=0 cellpadding=1 cellspacing=2>
+  <tr>
+  <td align=left><pre>
+  while( true )
+  {
+      machine.status();
+      2::second => now;
+  }
+</pre>
+  </td></tr></table></td></tr></table>
+</center>
+<br><br>
+<hr width=10%>
+<font size=3 color=#33aa33>namespace: <b>math</b></font>
+<br><br>
+standard math functions
+<br><br>
+example:
+<br><br>
+<center>
+  <table width=400 bgcolor="#d9d9d9" border=0 cellpadding=1 cellspacing=0><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border=0 cellpadding=1 cellspacing=2>
+  <tr>
+  <td align=left><pre>
+  math.sin( math.pi/2.0 ) => stdout;
+</pre>
+  </td></tr></table></td></tr></table>
+</center>
+
+<br><br>
+[function]: float <b>sin</b>( float x );<br>
+[function]: float <b>cos</b>( float x );<br>
+[function]: float <b>tan</b>( float x );<br>
+[function]: float <b>asin</b>( float x );<br>
+[function]: float <b>acos</b>( float x );<br>
+[function]: float <b>atan</b>( float x );<br>
+[function]: float <b>atan2</b>( float x );<br>
+[function]: float <b>sinh</b>( float x );<br>
+[function]: float <b>cosh</b>( float x );<br>
+[function]: float <b>tanh</b>( float x );<br>
+[function]: float <b>hypot</b>( float x, float y );<br>
+[function]: float <b>pow</b>( float x, float y );<br>
+[function]: float <b>sqrt</b>( float x );<br>
+[function]: float <b>exp</b>( float x );<br>
+[function]: float <b>log</b>( float x );<br>
+[function]: float <b>log2</b>( float x );<br>
+[function]: float <b>log10</b>( float x );<br>
+[function]: float <b>floor</b>( float x );<br>
+[function]: float <b>ceil</b>( float x );<br>
+[function]: float <b>round</b>( float x );<br>
+[function]: float <b>trunc</b>( float x );<br>
+[function]: float <b>fmod</b>( float x, float y );<br>
+[function]: float <b>remainder</b>( float x, float y );<br>
+[function]: float <b>min</b>( float x, float y );<br>
+[function]: float <b>max</b>( float x, float y );<br>
+<br>
+
+<center>
+<hr width=10%>
+Next: <a href="ugen.html">Chuck Standard Unit Generators</a>
+<br><br>
+Return to <a href="index.html">Programming Guide</a>
+<br><br>
+
+</td></tr></table>
+
+<font size=1>
+<hr width=15%>
+<a href="http://chuck.cs.princeton.edu/">chuck</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://www.cs.princeton.edu/">cs</a> |
+<a href="http://www.music.princeton.edu/">music</a>
+<br>
+<br>
+</font>
+</body>
+</html>

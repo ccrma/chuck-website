@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>ChucK - [Programming Guide : Extensions:gluck]</title>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+</head>
+<body>
+
+<div class="container">
+
+<div class="centered">
+
+<h1 class="sectiontitle">
+<b>ChucK</b> : Programming Guide
+</h1>
+
+<h2 class="pagetitle">
+Extensions : GlucK
+</h2>
+
+<h3 class="version"> 
+	version: 1.1.x (frankenstein)
+</h3>
+
+<img src="../images/gluck_pong.jpg" />
+
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="intro">
+
+<p>
+GlucK is Chuck's interface to 
+<a href="http://www.opengl.org/about/overview.html">OpenGL</a> and <a href="http://www.opengl.org/resources/libraries/glut.html">glut</a>.  
+We provide a general 'wrapper' for these libraries, while adding a few 
+convenience calls for the sake of code brevity ( so far, not enough ).
+
+We've provided only a subset of GL/GLUT for the moment - once we have array and object
+support, we will include the rest of the functions, as well as provide convenience
+objects within GlucK for drawing and interaction</p>
+
+<div class="example">
+[importing the gl/glu/gluck namespaces]
+<div class="code">
+"gl.ckx" => (:gl:);
+"glu.ckx" => (:glu:);
+"gluck.ckx" => (:gluck:);
+</div></div>
+
+
+<p>
+The general form of the calls is quite similar to the standard functions, 
+when using the import code given above, is shown in the example below.
+</p>
+<p>If not otherwise noted, a function's behavior will be identical to that described 
+in standard OpenGL documentation. </p>
+<p>
+<i>Note:</i> Since chuck's 'float' type corresponds to 'double', we
+use the 'f' notation in GlucK, but the call uses the 'd' option, if available.
+</p>
+
+<div class="example">
+[GlucK =&gt; GL translation]
+<div class="code" style="width:35em;">
+<b>standard                   |   gl.ckx</b>           
+
+<i>glFunctionName(args...);       gl.FunctionName(args...);
+glFunction(GL_CONSTANT);       gl.Function(gl.CONSTANT);</i>
+
+glBegin(GL_LINES)              gl.Begin(gl.LINES);
+glVertex2f ( 0.0, 0.0 )        gl.Vertex2d(0.0, 0.0);
+glVertex2f ( 1.0, 1.0 )        gl.Vertex2d(1.0, 1.0);
+glEnd();                       gl.End();</pre>
+
+</div></div>
+
+</div>
+
+<hr width="10%" />
+
+<div class="library">
+<font color="#33aa33" size="3">extension: <b>gluck.ckx</b></font>
+
+<div class="exportlist">
+<!--- begin ulib_gluck.html --->
+
+
+<div class="export"><h3>
+<a class="heading" name="Init">[function]</a>: 
+float <b class="name">Init</b> ( float <b class="arg">value</b> );</h3>
+</div>
+
+<div class="export"><h3>
+<a class="heading" name="Init">[function]</a>: 
+float <b class="name">Init</b> ( float <b class="arg">value</b> );</h3>
+</div>
+
+<div class="export"><h3>
+<a class="heading" name="Init">[function]</a>: 
+float <b class="name">Init</b> ( float <b class="arg">value</b> );</h3>
+</div>
+
+<div class="export"><h3>
+<a class="heading" name="Init">[function]</a>: 
+float <b class="name">Init</b> ( float <b class="arg">value</b> );</h3>
+</div>
+
+<!--- end ulib_gluck.html --->
+</div>
+
+</div>
+
+<hr width="10%" />
+
+<font size="3" color="#33aa33">namespace: <b>Machine</b></font>
+<br /><br />
+ChucK runtime interface to the virtual machine.  this interface can be 
+used to manage shreds.  They are similar to the <a 
+href="otfp.html">On-the-fly Programming Commands</a>, except these are 
+invoked from within a ChucK program, and are accessible to the timing 
+mechanism.
+<br /><br /> ----------<br />
+<!--- begin ulib_machine.html --->
+<div class="export"><h3>
+<a class="heading" name="add">[function]</a>: 
+int <b class="name">add</b> ( string <b class="arg">path</b> );</h3>
+<div class="comments"><ul><li> compile and spork a new shred from file at 'path' into the VM now</li>
+<li> returns the shred ID</li>
+<li> (see example/machine.ck)</li>
+</ul></div></div><div class="export"><h3>
+<a class="heading" name="spork">[function]</a>: 
+int <b class="name">spork</b> ( string <b class="arg">path</b> );</h3>
+<div class="comments"><ul><li> same as add</li>
+</ul></div></div><div class="export"><h3>
+<a class="heading" name="remove">[function]</a>: 
+int <b class="name">remove</b> ( int <b class="arg">id</b> );</h3>
+<div class="comments"><ul><li> remove shred from VM by shred ID (returned by add/spork)</li>
+</ul></div></div><div class="export"><h3>
+<a class="heading" name="replace">[function]</a>: 
+int <b class="name">replace</b> ( int <b class="arg">id</b>, string <b class="arg">path</b> );</h3>
+<div class="comments"><ul><li> replace shred with new shred from file</li>
+<li> returns shred ID , or 0 on error </li>
+</ul></div></div><div class="export"><h3>
+<a class="heading" name="status">[function]</a>: 
+int <b class="name">status</b> (  );</h3>
+<div class="comments"><ul><li> display current status of VM</li>
+<li> (see example/status.ck)</li>
+</ul></div></div>
+
+<!--- end ulib_machine.html --->
+<br /><br />
+<hr width="10%" />
+<font size="3" color="#33aa33">namespace: <b>Math</b></font>
+<br /><br />
+standard math functions
+<br /><br />
+<!--- begin ulib_math.html --->
+<div class="example">[example]<br />
+<div class="code">Math.sin( Math.pi /2.0 ) => stdout;
+</div></div><div class="export"><h3>
+<a class="heading" name="sin">[function]</a>: 
+float <b class="name">sin</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="cos">[function]</a>: 
+float <b class="name">cos</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="tan">[function]</a>: 
+float <b class="name">tan</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="asin">[function]</a>: 
+float <b class="name">asin</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="acos">[function]</a>: 
+float <b class="name">acos</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="atan">[function]</a>: 
+float <b class="name">atan</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="atan2">[function]</a>: 
+float <b class="name">atan2</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="sinh">[function]</a>: 
+float <b class="name">sinh</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="cosh">[function]</a>: 
+float <b class="name">cosh</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="tanh">[function]</a>: 
+float <b class="name">tanh</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="hypot">[function]</a>: 
+float <b class="name">hypot</b> ( float <b class="arg">x</b>, float <b class="arg">y</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="pow">[function]</a>: 
+float <b class="name">pow</b> ( float <b class="arg">x</b>, float <b class="arg">y</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="sqrt">[function]</a>: 
+float <b class="name">sqrt</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="exp">[function]</a>: 
+float <b class="name">exp</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="log">[function]</a>: 
+float <b class="name">log</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="log2">[function]</a>: 
+float <b class="name">log2</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="log10">[function]</a>: 
+float <b class="name">log10</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="floor">[function]</a>: 
+float <b class="name">floor</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="ceil">[function]</a>: 
+float <b class="name">ceil</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="round">[function]</a>: 
+float <b class="name">round</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="trunc">[function]</a>: 
+float <b class="name">trunc</b> ( float <b class="arg">x</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="fmod">[function]</a>: 
+float <b class="name">fmod</b> ( float <b class="arg">x</b>, float <b class="arg">y</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="remainder">[function]</a>: 
+float <b class="name">remainder</b> ( float <b class="arg">x</b>, float <b class="arg">y</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="min">[function]</a>: 
+float <b class="name">min</b> ( float <b class="arg">x</b>, float <b class="arg">y</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="max">[function]</a>: 
+float <b class="name">max</b> ( float <b class="arg">x</b>, float <b class="arg">y</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="nextpow2">[function]</a>: 
+int <b class="name">nextpow2</b> ( int <b class="arg">n</b> );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="pi">[function]</a>: 
+float <b class="name">pi</b> (  );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="twopi">[function]</a>: 
+float <b class="name">twopi</b> (  );</h3>
+</div><div class="export"><h3>
+<a class="heading" name="e">[function]</a>: 
+float <b class="name">e</b> (  );</h3>
+</div>
+<!--- end ulib_math.html --->
+
+<center>
+<hr width="10%" />
+Next: <a href="ugen.html">Chuck Standard Unit Generators</a>
+<br /><br />
+Return to <a href="index.html">Programming Guide</a>
+<br /><br />
+
+</td></tr></table>
+
+<font size="1">
+<hr width="15%" />
+<a href="http://chuck.cs.princeton.edu/">chuck</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://www.cs.princeton.edu/">cs</a> |
+<a href="http://www.music.princeton.edu/">music</a>
+<br />
+<br />
+</font>
+</body>
+</html>

@@ -1,0 +1,561 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<title> Notes on ChucK for Music</title>
+ 
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<style type="text/css">
+body {
+  margin-top:0 !important;
+  padding-top:0 !important;
+  /*min-width:800px !important;*/
+}
+</style>
+<br>
+<h1 align="center"><b>Notes on ChucK for Music</b><br>
+by Graham Coleman<br>
+</h1>
+<center>(created circa 2006; re-published with permission 2021)</center><br>
+<link rel="stylesheet" type="text/css" href="../../../style.css"/>
+
+<center><table border="0" width="640"><tr><td>
+
+<div class="p"><!----></div>
+ <h1><a name="tth_chAp1">
+Chapter 1</a><br>
+Music Basics</h1>
+
+<div class="p"><!----></div>
+ <h2><a name="tth_sEc1.1">
+1.1</a>&nbsp;&nbsp;Introduction</h2>
+
+<div class="p"><!----></div>
+You should probably start with the ChucK Tutorial.
+ <a href="http://chuck.stanford.edu/doc/learn/">ChucK Tutorial</a> 
+
+<div class="p"><!----></div>
+This tutorial explains how to make a certain type of music in a certain way. Since ChucK is almost a general purpose language, there are many such ways to make beautiful music using it. As a work in progress, this document encodes groups of techniques, and invites other approaches and perspectives.
+
+<div class="p"><!----></div>
+Please send comments to gcoleman at iua.upf.edu.
+
+
+ <h2><a name="tth_sEc1.2">
+1.2</a>&nbsp;&nbsp;Melodies and Scales</h2>
+
+<div class="p"><!----></div>
+ChucK rocks. So you want to lay down some chords, melodies, etc? Play all night in your {country, reggae, synthpop, hiphop, laptop, forr&#243;} band? Let's do some of that. 
+
+<div class="p"><!----></div>
+By giving you sample-level control within the language, ChucK allows you to be original with your synthesis algorithms. Since we're out for chords, we'll be unoriginal for the moment. Fortunately ChucK has baked-in STK, a collection of realtime synthesis algorithms.
+ <a href="http://chuck.stanford.edu/doc/program/ugen.html">Programming Guide: Unit Generators</a>
+
+<div class="p"><!----></div>
+
+<pre>
+//connect&nbsp;a&nbsp;plucked&nbsp;string&nbsp;to&nbsp;the&nbsp;soundcard&nbsp;out
+StifKarp&nbsp;inst&nbsp;=&#62;&nbsp;dac;
+</pre>
+
+<div class="p"><!----></div>
+Instruments usually input raw frequencies, but since we're using western scales, we need a basic way to convert those into frequencies. std.mtof (Midi-to-Frequency) converts the midi key numbers (read: 88 keyboard keys) into frequencies acceptable for use.
+
+<div class="p"><!----></div>
+
+<pre>
+std.mtof(&nbsp;60&nbsp;)&nbsp;=&#62;&nbsp;inst.freq;&nbsp;//set&nbsp;the&nbsp;note&nbsp;to&nbsp;middle-C
+inst.noteOn(&nbsp;0.5&nbsp;);&nbsp;//play&nbsp;a&nbsp;note&nbsp;at&nbsp;half&nbsp;volume
+1::second&nbsp;=&#62;&nbsp;now;&nbsp;//compute&nbsp;audio&nbsp;for&nbsp;1&nbsp;second
+</pre>
+
+<div class="p"><!----></div>
+Go ahead and execute the code to see if it works. 
+
+<div class="p"><!----></div>
+If you are using command-line chuck:
+
+<div class="p"><!----></div>
+Type the code into a source file, save in, and run <i>chuck tut01.ck</i> (implied file name) at the prompt. 
+
+<div class="p"><!----></div>
+If you are using the audicle:
+
+<div class="p"><!----></div>
+Start the Audicle. The shrEditor face (the code editor) should come up by default. Start a new buffer with Ctrl-N, and type in your source code. Execute the code by clicking the (S) bubble (for spork) or typing Ctrl-L. You can kill the new shred by clicking on the numbered bubble.
+
+<div class="p"><!----></div>
+ChucK will play a middle C. Next, we'll play a sequence.
+
+<div class="p"><!----></div>
+
+<pre>
+[0,2,3,1,4,2,6,3,4,4]&nbsp;@=&#62;&nbsp;int&nbsp;mel[];&nbsp;//sequence&nbsp;data
+
+for&nbsp;(0=&#62;int&nbsp;i;&nbsp;;&nbsp;i++)&nbsp;{&nbsp;//infinite&nbsp;loop
+&nbsp;&nbsp;std.mtof(&nbsp;48&nbsp;+&nbsp;mel[i%mel.cap()]&nbsp;)&nbsp;=&#62;&nbsp;inst.freq;&nbsp;//set&nbsp;the&nbsp;note
+&nbsp;&nbsp;inst.noteOn(&nbsp;0.5&nbsp;);&nbsp;//play&nbsp;a&nbsp;note&nbsp;at&nbsp;half&nbsp;volume
+&nbsp;&nbsp;300::ms&nbsp;=&#62;&nbsp;now;&nbsp;//compute&nbsp;audio&nbsp;for&nbsp;0.3&nbsp;sec
+}
+</pre>
+
+<div class="p"><!----></div>
+Combine this code with the instrument declaration code and run it. The 'for' loop will loop through the sequence data. The index 'i' grows indefinitely, but we wrap it to the size of mel[] with the mod operator.
+
+<div class="p"><!----></div>
+This melody is 'chromatic'. It selects black or white keys from the keyboard indiscriminantly, which is why it doesn't sound like any particular scale. To play something more conventional, we can encode a major scale.
+
+<div class="p"><!----></div>
+
+<pre>
+[0,2,3,1,4,2,6,3,4,4]&nbsp;@=&#62;&nbsp;int&nbsp;mel[];&nbsp;//sequence&nbsp;data
+[0,2,4,5,7,9,11,12]&nbsp;@=&#62;&nbsp;int&nbsp;major[];&nbsp;//major&nbsp;scale
+
+for&nbsp;(0=&#62;int&nbsp;i;&nbsp;;&nbsp;i++)&nbsp;{&nbsp;//infinite&nbsp;loop
+&nbsp;&nbsp;std.mtof(&nbsp;48&nbsp;+&nbsp;major[mel[i%mel.cap()]]&nbsp;)&nbsp;=&#62;&nbsp;inst.freq;&nbsp;//set&nbsp;the&nbsp;note
+&nbsp;&nbsp;inst.noteOn(&nbsp;0.5&nbsp;);&nbsp;//play&nbsp;a&nbsp;note&nbsp;at&nbsp;half&nbsp;volume
+&nbsp;&nbsp;300::ms&nbsp;=&#62;&nbsp;now;&nbsp;//compute&nbsp;audio&nbsp;for&nbsp;0.3&nbsp;sec
+}
+</pre>
+
+<div class="p"><!----></div>
+major encodes the semitones within the scale. From the 1st note of the scale, we have a whole step to the next note (2 half steps), when another whole step, then a half step, etc. To play the scale, we simply select a scale degree (1st, 2nd, 3rd...) and use it to index the scale. We add this to an offset (48). Since 48 is a C, this will play notes from the C scale.
+
+<div class="p"><!----></div>
+ <h2><a name="tth_sEc1.3">
+1.3</a>&nbsp;&nbsp;Flexible Scales</h2>
+
+<div class="p"><!----></div>
+This works, but we can only select degrees within one octave of the scale. We'd prefer for the scale matrix to wrap indefinitely upwards. For example, if you generated a melody that asks for the 8th scale degree, you'd like it to pick a note from the next octave of the scale. This scale would look like this:
+
+<div class="p"><!----></div>
+[0,2,4,5,7,9,11, 12,14,16,17,19,21,23, 24,26,28,29,...]
+
+<div class="p"><!----></div>
+We can simulate this behavior with a function:
+
+<div class="p"><!----></div>
+
+<pre>
+fun&nbsp;int&nbsp;scale(int&nbsp;a,&nbsp;int&nbsp;sc[])&nbsp;{
+&nbsp;&nbsp;sc.cap()&nbsp;=&#62;&nbsp;int&nbsp;n;&nbsp;//number&nbsp;of&nbsp;degrees&nbsp;in&nbsp;scale
+&nbsp;&nbsp;a/n&nbsp;=&#62;&nbsp;int&nbsp;o;&nbsp;//octave&nbsp;being&nbsp;requested,&nbsp;number&nbsp;of&nbsp;wraps
+&nbsp;&nbsp;a%n&nbsp;=&#62;&nbsp;a;&nbsp;//wrap&nbsp;the&nbsp;note&nbsp;within&nbsp;first&nbsp;octave
+
+&nbsp;&nbsp;if&nbsp;(&nbsp;a&lt;0&nbsp;)&nbsp;{&nbsp;//cover&nbsp;the&nbsp;negative&nbsp;border&nbsp;case
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;+&nbsp;12&nbsp;=&#62;&nbsp;a;
+&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;-&nbsp;1&nbsp;=&#62;&nbsp;o;
+&nbsp;&nbsp;}
+
+&nbsp;&nbsp;//each&nbsp;octave&nbsp;contributes&nbsp;12&nbsp;semitones,&nbsp;plus&nbsp;the&nbsp;scale
+&nbsp;&nbsp;return&nbsp;o*12&nbsp;+&nbsp;sc[a];
+}
+</pre>
+
+<div class="p"><!----></div>
+Now use this function to simulate indexing into the scale.
+
+<div class="p"><!----></div>
+
+<pre>
+[0,2,3,1,4,2,6,3,4,4]&nbsp;@=&#62;&nbsp;int&nbsp;mel[];&nbsp;//sequence&nbsp;data
+[0,2,4,5,7,9,11,12]&nbsp;@=&#62;&nbsp;int&nbsp;major[];&nbsp;//major&nbsp;scale
+
+for&nbsp;(0=&#62;int&nbsp;i;&nbsp;;&nbsp;i++)&nbsp;{&nbsp;//infinite&nbsp;loop
+&nbsp;&nbsp;std.mtof(&nbsp;48&nbsp;+&nbsp;scale(&nbsp;mel[i%mel.cap()],&nbsp;major&nbsp;))&nbsp;=&#62;&nbsp;inst.freq;&nbsp;//set&nbsp;the&nbsp;note
+&nbsp;&nbsp;inst.noteOn(&nbsp;0.5&nbsp;);&nbsp;//play&nbsp;a&nbsp;note&nbsp;at&nbsp;half&nbsp;volume
+&nbsp;&nbsp;300::ms&nbsp;=&#62;&nbsp;now;&nbsp;//compute&nbsp;audio&nbsp;for&nbsp;0.3&nbsp;sec
+}
+</pre>
+
+<div class="p"><!----></div>
+To play from a different scale (G major) we can just change the offset:
+
+<div class="p"><!----></div>
+
+<pre>
+std.mtof(&nbsp;3*12&nbsp;+&nbsp;7&nbsp;//3rd&nbsp;octave,&nbsp;7&nbsp;semitones&nbsp;from&nbsp;C
+&nbsp;&nbsp;+&nbsp;scale(&nbsp;mel[i%mel.cap()],&nbsp;major&nbsp;))&nbsp;=&#62;&nbsp;inst.freq;&nbsp;//set&nbsp;the&nbsp;note
+</pre>
+
+<div class="p"><!----></div>
+To play a harmony, simply add a constant to the melodic contour:
+
+<div class="p"><!----></div>
+
+<pre>
+std.mtof(&nbsp;3*12&nbsp;+&nbsp;7&nbsp;//3rd&nbsp;octave,&nbsp;7&nbsp;semitones&nbsp;from&nbsp;C
+&nbsp;&nbsp;+&nbsp;scale(&nbsp;mel[i%mel.cap()]&nbsp;+5,&nbsp;major&nbsp;))&nbsp;=&#62;&nbsp;inst.freq;&nbsp;//set&nbsp;the&nbsp;note
+</pre>
+
+<div class="p"><!----></div>
+If you are using Audicle, try spawning off several copies of this with different melodic offsets. There we go, almost musical!
+
+<div class="p"><!----></div>
+To speed improvisation, I abstracted the functionality into a class Scale. Also, there are common scales such as Major (sc.maj), Minor (sc.min), and a few more exotic ones:
+  <a href="scale.ck">scale.ck</a> 
+
+<div class="p"><!----></div>
+To use classes from outside a source file, you'll have to bring them into the VM as well. Currently, there isn't an automatic way of doing this (like the Java classpath) but hopefully it will be easier in the future.
+
+<div class="p"><!----></div>
+If you are using the command-line chuck:
+
+<div class="p"><!----></div>
+Send both the Scale class and your source to the vm: <i>chuck scale.ck tut05.ck</i>.
+
+<div class="p"><!----></div>
+If you are using the audicle:
+
+<div class="p"><!----></div>
+Open the audicle and the shrEditor comes up by default. Press Ctrl-F to open file and select the scale.ck file. Ctrl-L or hit the (S) bubble to execute the class (this compiles the class into the VM for this session). Next, start a new buffer with Ctrl-N, type in your code, and spork it off.
+
+<div class="p"><!----></div>
+
+<pre>
+Scale&nbsp;sc;&nbsp;//include&nbsp;this&nbsp;at&nbsp;the&nbsp;top
+
+std.mtof(&nbsp;3*12&nbsp;+&nbsp;7&nbsp;//3rd&nbsp;octave,&nbsp;7&nbsp;semitones&nbsp;from&nbsp;C
+&nbsp;&nbsp;+&nbsp;sc.scale(&nbsp;mel[i%mel.cap()]&nbsp;+5,&nbsp;sc.hijazkar&nbsp;))&nbsp;=&#62;&nbsp;inst.freq;&nbsp;//set&nbsp;the&nbsp;note
+</pre>
+
+<div class="p"><!----></div>
+This ends our lesson on scales.
+
+
+ <h2><a name="tth_sEc1.4">
+1.4</a>&nbsp;&nbsp;Timing</h2>
+
+<div class="p"><!----></div>
+The Timing section from the language spec explains the basics really well.
+  <a href="http://chuck.stanford.edu/doc/language/time.html">Language Specification: Time</a> 
+
+<div class="p"><!----></div>
+One strategy for synchronizing a bunch of shreds to a musical structure (like a chord progression) involves using the following two operations, from the spec:
+
+<div class="p"><!----></div>
+A. (synchronize to period):
+
+<pre>
+//&nbsp;synchronize&nbsp;to&nbsp;period&nbsp;of&nbsp;.5&nbsp;second
+.5::second&nbsp;=&#62;&nbsp;dur&nbsp;T;
+T&nbsp;-&nbsp;(now&nbsp;%&nbsp;T)&nbsp;=&#62;&nbsp;now;
+</pre>
+
+<div class="p"><!----></div>
+Synchronize to period computes the offset from even multiples of a beat, and advances time by that amount. 'now' time is a global phenomenon, so if several shreds do this independently, they will end up in lockstep, at least temporarily.
+
+<div class="p"><!----></div>
+This example demonstrates beat synchronization with a simple ascending line. Supply an instrument declaration, instantiate Scale, and send a few copies of this to the VM, using either 'chuck + &lt;file&#62;' or Audicle:
+
+<div class="p"><!----></div>
+
+<pre>
+1::minute/140/2&nbsp;=&#62;&nbsp;dur&nbsp;T;&nbsp;//140&nbsp;bpm&nbsp;eighth&nbsp;notes
+T&nbsp;-&nbsp;(now&nbsp;%&nbsp;T)&nbsp;=&#62;&nbsp;now;&nbsp;//sync&nbsp;to&nbsp;beat
+
+for&nbsp;(0=&#62;int&nbsp;i;&nbsp;;&nbsp;i++)&nbsp;{&nbsp;//infinite&nbsp;loop
+&nbsp;&nbsp;sc.scale(&nbsp;(i%10)*2,&nbsp;sc.min&nbsp;)&nbsp;=&#62;&nbsp;int&nbsp;note;&nbsp;//even&nbsp;notes&nbsp;of&nbsp;the&nbsp;scale
+&nbsp;&nbsp;std.mtof(&nbsp;3*12&nbsp;+&nbsp;10&nbsp;+&nbsp;note&nbsp;)&nbsp;=&#62;&nbsp;inst.freq;&nbsp;//set&nbsp;note
+&nbsp;&nbsp;inst.noteOn(&nbsp;0.5&nbsp;);&nbsp;//play&nbsp;a&nbsp;note
+
+&nbsp;&nbsp;T&nbsp;=&#62;&nbsp;now;&nbsp;//compute&nbsp;one&nbsp;beat&nbsp;of&nbsp;audio
+}
+</pre>
+
+<div class="p"><!----></div>
+Using this strategy, we can get shreds sporked at different times to line up on (or against) the beat. Since this is a relatively cheap operation, we can even do this quite frequently, for example if we perform random or irregular operations on time.
+
+<div class="p"><!----></div>
+B. (division of <b>now</b>):
+
+<pre>
+//&nbsp;time&nbsp;/&nbsp;dur&nbsp;yields&nbsp;number
+(now&nbsp;/&nbsp;T)&nbsp;$&nbsp;int&nbsp;=&#62;&nbsp;int&nbsp;n;&nbsp;//get&nbsp;the&nbsp;integer&nbsp;part
+math.fmod(&nbsp;(now&nbsp;/&nbsp;T),&nbsp;1.0&nbsp;)&nbsp;=&#62;&nbsp;float&nbsp;f;&nbsp;//fraction&nbsp;part
+</pre>
+
+<div class="p"><!----></div>
+We can use A to get the orchestra members to act precisely in concert. We'll use B to help them keep count, and to provide a wider shared context between them. Insert this above the loop in the previous example.
+
+<div class="p"><!----></div>
+
+<pre>
+(now&nbsp;/&nbsp;T)&nbsp;$&nbsp;int&nbsp;=&#62;&nbsp;int&nbsp;n;&nbsp;//guess&nbsp;the&nbsp;beat
+
+for&nbsp;(n=&#62;int&nbsp;i;&nbsp;;&nbsp;i++)&nbsp;{&nbsp;//loop&nbsp;knows&nbsp;the&nbsp;beat
+</pre>
+
+<div class="p"><!----></div>
+Now each shred has access to a globally aware beat. We can also divide this uniformly into beats, measures, and sections:
+
+<div class="p"><!----></div>
+
+<pre>
+i%nbeats&nbsp;=&#62;&nbsp;int&nbsp;b;&nbsp;//which&nbsp;beat&nbsp;of&nbsp;nbeats
+i/nbeats%nmeas&nbsp;=&#62;&nbsp;int&nbsp;m;&nbsp;//which&nbsp;measure
+i/nbeats/nmeas&nbsp;=&#62;&nbsp;int&nbsp;s;&nbsp;//which&nbsp;section&nbsp;or&nbsp;rep
+</pre>
+
+<div class="p"><!----></div>
+This will provide the groundwork for that foundation of pop music, the chord progression.
+
+<div class="p"><!----></div>
+ <h2><a name="tth_sEc1.5">
+1.5</a>&nbsp;&nbsp;Timing Shortcuts</h2>
+
+<div class="p"><!----></div>
+We can add these basic timing operations to a class for brevity's sake:
+
+  <a href="tg.ck">tg.ck</a>
+
+<div class="p"><!----></div>
+
+<pre>
+fun&nbsp;void&nbsp;sync()&nbsp;{&nbsp;//sync&nbsp;to&nbsp;beat
+&nbsp;&nbsp;beat&nbsp;-&nbsp;(now&nbsp;%&nbsp;beat)&nbsp;=&#62;&nbsp;now;
+}
+
+fun&nbsp;void&nbsp;sync(dur&nbsp;T)&nbsp;{&nbsp;//sync&nbsp;to&nbsp;arbitrary
+&nbsp;&nbsp;T&nbsp;-&nbsp;(now&nbsp;%&nbsp;T)&nbsp;=&#62;&nbsp;now;
+}
+
+//get&nbsp;global&nbsp;beat
+fun&nbsp;int&nbsp;guess()&nbsp;{
+&nbsp;&nbsp;return&nbsp;(now&nbsp;/&nbsp;beat)&nbsp;$&nbsp;int;
+}
+</pre>
+
+<div class="p"><!----></div>
+Some instance data for the particular grid and a setter:
+
+<div class="p"><!----></div>
+
+<pre>
+dur&nbsp;beat;
+dur&nbsp;meas;
+dur&nbsp;sect;
+
+int&nbsp;nbeat;
+int&nbsp;nmeas;
+
+fun&nbsp;void&nbsp;set(dur&nbsp;mybeat,&nbsp;int&nbsp;nb,&nbsp;int&nbsp;nm)&nbsp;{
+&nbsp;&nbsp;mybeat&nbsp;=&#62;&nbsp;beat;
+&nbsp;&nbsp;nb&nbsp;=&#62;&nbsp;nbeat;
+&nbsp;&nbsp;beat*nbeat&nbsp;=&#62;&nbsp;meas;
+&nbsp;&nbsp;nm&nbsp;=&#62;&nbsp;nmeas;
+&nbsp;&nbsp;meas*nmeas&nbsp;=&#62;&nbsp;sect;
+}
+</pre>
+
+<div class="p"><!----></div>
+And some shortcuts for the mod rhythms:
+
+<div class="p"><!----></div>
+
+<pre>
+fun&nbsp;int&nbsp;b(int&nbsp;r)&nbsp;{
+&nbsp;&nbsp;return&nbsp;(r%nbeat);
+}
+
+fun&nbsp;int&nbsp;m(int&nbsp;r)&nbsp;{
+&nbsp;&nbsp;return&nbsp;(r/nbeat%nmeas);
+}
+
+fun&nbsp;int&nbsp;s(int&nbsp;r)&nbsp;{
+&nbsp;&nbsp;return&nbsp;(r/nbeat/nmeas);
+}
+</pre>
+
+<div class="p"><!----></div>
+That allows us to systematize our timing operations: 
+
+<div class="p"><!----></div>
+
+<pre>
+TimeGrid&nbsp;tg;
+
+//140&nbsp;bpm&nbsp;8th&nbsp;notes,&nbsp;8&nbsp;per&nbsp;measure,&nbsp;10&nbsp;meas&nbsp;/&nbsp;section
+tg.set(1::minute/140/2,&nbsp;8,&nbsp;10);&nbsp;
+
+tg.sync();&nbsp;//sync&nbsp;to&nbsp;beat
+
+while(&nbsp;true&nbsp;)&nbsp;{
+&nbsp;&nbsp;tg.guess()&nbsp;=&#62;&nbsp;int&nbsp;i;&nbsp;//get&nbsp;the&nbsp;global&nbsp;beat
+
+&nbsp;&nbsp;//other&nbsp;stuff
+
+&nbsp;&nbsp;tg.beat&nbsp;=&#62;&nbsp;now;&nbsp;//advance&nbsp;time&nbsp;one&nbsp;beat
+}
+</pre>
+
+<div class="p"><!----></div>
+ <h2><a name="tth_sEc1.6">
+1.6</a>&nbsp;&nbsp;Other Timing Approaches</h2>
+
+<div class="p"><!----></div>
+Our approach uses no truly global data-it merely derives context from the already global <b>now</b>. Another approach uses Events in Global data to synchronize separate shreds. 
+
+<div class="p"><!----></div>
+We first define a new class with a static reference to an Event object (or an array of them). Next, we spork a shred that initializes the events, along with an infinite loop that fires the events at intervals of your choosing. Finally, each musical shred chucks the event(s) to now in order to lock with the beat.
+
+
+ <h2><a name="tth_sEc1.7">
+1.7</a>&nbsp;&nbsp;Chords and Arpeggios</h2>
+
+<div class="p"><!----></div>
+We've introduced most of the techniques we'll need. Let's start with a bass line. Begin a file with some declarations:
+
+<div class="p"><!----></div>
+
+<pre>
+Scale&nbsp;sc;&nbsp;TimeGrid&nbsp;tg;
+
+StifKarp&nbsp;inst&nbsp;=&#62;&nbsp;dac;&nbsp;//plucked&nbsp;string
+
+tg.set(&nbsp;1::minute/140/2,&nbsp;8,&nbsp;8&nbsp;);&nbsp;//140::bpm,&nbsp;8&nbsp;beats,&nbsp;8&nbsp;measures
+</pre>
+
+<div class="p"><!----></div>
+The simplest bass lines play just the bassnote of the current chord. This chord progression will be diatonic, meaning that we'll choose the bass notes (and all other chord tones) strictly from notes in a single scale. Add a data sequence for the progression:
+
+<div class="p"><!----></div>
+
+<pre>
+[0,&nbsp;3,&nbsp;4,&nbsp;1,&nbsp;5,&nbsp;4,&nbsp;3,&nbsp;3]&nbsp;@=&#62;&nbsp;int&nbsp;bass[];
+</pre>
+
+<div class="p"><!----></div>
+Go ahead and sync() so all shreds will start on the nearest beat:
+
+<div class="p"><!----></div>
+
+<pre>
+tg.sync();
+</pre>
+
+<div class="p"><!----></div>
+Now we can use the global beat indicator to derive the current measure. We can do this once if we perform only very-time-regular operations, but we can also just do it whenever:
+
+<div class="p"><!----></div>
+
+<pre>
+while(&nbsp;true&nbsp;)&nbsp;{&nbsp;//infinite&nbsp;loop
+&nbsp;&nbsp;tg.guess()&nbsp;=&#62;&nbsp;int&nbsp;i;&nbsp;//global&nbsp;beat&nbsp;indicator
+&nbsp;&nbsp;tg.m(i)&nbsp;=&#62;&nbsp;int&nbsp;m;&nbsp;//measure&nbsp;indicator
+
+&nbsp;&nbsp;sc.scale(&nbsp;bass[m],&nbsp;sc.maj&nbsp;)&nbsp;=&#62;&nbsp;int&nbsp;note;&nbsp;//select&nbsp;the&nbsp;bassnote
+&nbsp;&nbsp;std.mtof(&nbsp;3*12&nbsp;+&nbsp;7&nbsp;+&nbsp;note&nbsp;)&nbsp;=&#62;&nbsp;inst.freq;&nbsp;//7&nbsp;semitones&nbsp;from&nbsp;C&nbsp;is&nbsp;G
+
+&nbsp;&nbsp;inst.noteOn(&nbsp;0.7&nbsp;);&nbsp;//play&nbsp;a&nbsp;note
+
+&nbsp;&nbsp;tg.beat&nbsp;=&#62;&nbsp;now;&nbsp;//advance&nbsp;by&nbsp;one&nbsp;beat
+}
+</pre>
+
+<div class="p"><!----></div>
+Play this code. As you hear, it repeats the bass note for each beat and then changes with the measures.
+
+<div class="p"><!----></div>
+Here's the trick. Western harmony is really simple-most chords are based on triads. To play a triad, just play the bass note (the 1st), two scale tones up (the 3rd), and two more scale tones up (the 5th). Since we're using zero based indices, these become 0, 2, and 4. If we wish to go to higher octaves, we should choose:
+
+<div class="p"><!----></div>
+[0,2,4, 7,9,11, 14,16,18, ...]
+
+<div class="p"><!----></div>
+This should look familiar. In fact, it's the same kind of sequence we generated to filter scale tones. Keep in mind we might want to extend arbitrary sets of scale tones, either for certain chords (like 7th chords: [0,2,4,6]), or for generating melodies. Typically a melody that is 'in a key' includes mostly chord tones (1st, 3rd, and 5th) and other non-chord or passing tones. This function will look almost exactly like scale: <a href="#tthFtNtAAB" name="tthFrefAAB"><sup>1</sup></a>
+
+<div class="p"><!----></div>
+
+<pre>
+//oct&nbsp;is&nbsp;the&nbsp;size&nbsp;of&nbsp;an&nbsp;octave&nbsp;in&nbsp;scale&nbsp;degrees,&nbsp;usually&nbsp;7
+fun&nbsp;int&nbsp;arp(int&nbsp;a,&nbsp;int&nbsp;oct,&nbsp;int&nbsp;deg[])&nbsp;{
+&nbsp;&nbsp;deg.cap()&nbsp;=&#62;&nbsp;int&nbsp;n;&nbsp;//number&nbsp;of&nbsp;arp&nbsp;degrees
+&nbsp;&nbsp;a/n&nbsp;=&#62;&nbsp;int&nbsp;o;&nbsp;//number&nbsp;of&nbsp;octaves&nbsp;up/down
+&nbsp;&nbsp;a%n&nbsp;=&#62;&nbsp;a;&nbsp;//after&nbsp;subtracting&nbsp;the&nbsp;octaves
+
+&nbsp;&nbsp;if&nbsp;(&nbsp;a&lt;0&nbsp;)&nbsp;{&nbsp;//the&nbsp;border&nbsp;case
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;+&nbsp;n&nbsp;=&#62;&nbsp;a;
+&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;-&nbsp;1&nbsp;=&#62;&nbsp;o;&nbsp;
+&nbsp;&nbsp;}
+
+&nbsp;&nbsp;return&nbsp;o*oct&nbsp;+&nbsp;deg[a];
+}
+</pre>
+
+<div class="p"><!----></div>
+Let's apply this to our bassline code to produce a variation.
+
+<div class="p"><!----></div>
+
+<pre>
+arp(&nbsp;b/2,&nbsp;7,&nbsp;[0,2,4]&nbsp;)&nbsp;=&#62;&nbsp;int&nbsp;a;&nbsp;//the&nbsp;arp/melodic&nbsp;contour
+sc.scale(&nbsp;a+bass[m],&nbsp;sc.maj&nbsp;)&nbsp;=&#62;&nbsp;int&nbsp;note;&nbsp;//select&nbsp;the&nbsp;bassnote
+std.mtof(&nbsp;3*12&nbsp;+&nbsp;7&nbsp;+&nbsp;note&nbsp;)&nbsp;=&#62;&nbsp;inst.freq;&nbsp;//7&nbsp;semitones&nbsp;from&nbsp;C&nbsp;is&nbsp;G
+</pre>
+
+<div class="p"><!----></div>
+The first line generates a simple contour (b/2: [0,0,1,1,2,2,3,3]) and converts it into (diatonic) scale tones with arp(). The second adds the measure-dependent bass and selects scale tones from the chromatic scale (in C). The last adds a 3-octave offset and 7 semitones to transpose the key (to G).
+
+<div class="p"><!----></div>
+Arp functionality is also provided in the Scale class.
+
+  <a href="scale.ck">scale.ck</a>
+
+<div class="p"><!----></div>
+ <h2><a name="tth_sEc1.8">
+1.8</a>&nbsp;&nbsp;Arp Variations</h2>
+
+<div class="p"><!----></div>
+When the bass moves, there is a jump in the melody corresponding to the number of scale tones difference. If you don't want jumps in it (which are find for vamps, but maybe jarring for a melody) you have to find a way to subtract out the jumps. Scale.iarp is an attempt at doing that. The implementation right now is a little hackish, but it should improve.
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+
+
+ <h2><a name="tth_sEc1.9">
+1.9</a>&nbsp;&nbsp;Extras</h2>
+
+<div class="p"><!----></div>
+
+  <a href="fade.ck">fade.ck</a>
+
+<div class="p"><!----></div>
+ <h2><a name="tth_sEc1.10">
+1.10</a>&nbsp;&nbsp;More</h2>
+
+<div class="p"><!----></div>
+... standard variation techniques ...
+
+
+<div class="p"><!----></div>
+
+<h1>Next Chapter</h1>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+</td></tr></table></center>
+
+<div class="p"><!----></div>
+<hr/><h3>Footnotes:</h3>
+
+<div class="p"><!----></div>
+<a name="tthFtNtAAB"></a><a href="#tthFrefAAB"><sup>1</sup></a>This function is called arp for Arpeggiation-a term denoting playing the tones of a chord separately. If we add some passing tones into the sequence, we can model melodies as well.
+<br/><br/><hr/><small>File translated from
+T<sub><font size="-1">E</font></sub>X
+by <a href="http://hutchinson.belmont.ma.us/tth/">
+T<sub><font size="-1">T</font></sub>H</a>,
+version 3.78.<br/>On 26 Oct 2007, 18:41.</small>
+
+</html>
+
+<!--
+     FILE ARCHIVED ON 00:00:33 Dec 06, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 23:21:28 Apr 15, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

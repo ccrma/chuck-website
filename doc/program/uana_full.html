@@ -1,0 +1,362 @@
+<html>
+<head>
+<title>ChucK : Unit Analyzers References (All)</title>
+<link rel="stylesheet" type="text/css" href="../ckdoc.css">
+<style type="text/css">
+// redundant CSS from chuck.css
+// IE caches CSS really aggressively, so we are putting important
+// CSS that recently changed right here
+.code
+{
+    margin: 20px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="library">
+<div class="exportlist">
+
+
+<!-- ugen_xxx.html -->
+
+<div class="section">basic UAna objects</div>
+
+<div class="ugen">
+<h3><a name="UAna" class="heading">[uana]</a>: <span class="name">UAna</span></h3>
+<div class="comments">
+<ul><li> Unit Analyzer base class</li></ul>
+</div>
+<pre class="data">
+    Base class from which all unit analyzers (UAnae) inherit;
+    UAnae (note plural form) can be interconnected via =&gt;
+    (standard chuck operator) or via =^ (upchuck operator),
+    specify the the types of and when data is passed between
+    UAnae and UGens.  When .upchuck() is invoked on a given
+    UAna, the UAna-chain (UAnae connected via =^) is traversed
+    backwards from the upchucked UAna, and analysis is performed
+    at each UAna along the chain; the updated analysis results
+    are stored in UAnaBlobs.  Please see <a href="../language/uana.html">UAna documentation</a>
+    in the <a href="../language/">language specification</a>.
+
+</pre><h4>extends <a href="ugen.html">UGen</a></h4>
+<div class="members">
+<i>(control parameters)</i>
+<ul>
+<li>UAnaBlob <b>.upchuck()</b> - <span class="comment">initiate analysis at the UAna; returns result.</span></li></li>
+</ul>
+</div></div>
+
+<div class="ugen">
+<h3><a name="UAnaBlob" class="heading">[object]</a>: <span class="name">UAnaBlob</span></h3>
+<div class="comments">
+<ul><li>Unit Analyzer blob for contain of data</li></ul>
+</div>
+<pre class="data">
+    This object contains results associated with UAna analysis.
+    There is a UAnaBlob associated with every UAna.  As a UAna
+    is upchucked, the result is stored in the UAnaBlob's floating
+    point vector and/or complex vector.  The intended interpretation
+    of the results depends on the specific UAna.
+
+</pre>
+<div class="members">
+<i>(control parameters)</i>
+<ul>
+<li>float <b>.fval( </b>int index<b> )</b> - <span class="comment">get blob's float value at index </span></li>
+<li>complex <b>.cval( </b>int index<b> )</b> - <span class="comment">get blob's complex value at index </span></li>
+<li>float[] <b>.fvals()</b> - <span class="comment">get blob's float array</span></li>
+<li>complex[] <b>.cvals()</b> - <span class="comment">get blob's complex array</span></li>
+<li>time <b>.when()</b> - <span class="comment">get the time when blob was last upchucked</span></li>
+</ul>
+</div></div>
+
+<div class="ugen">
+<h3><a name="Windowing" class="heading">[object]</a>: <span class="name">Windowing</span></h3>
+<div class="comments">
+<ul><li>Helper class for generating transform windows</li>
+</ul>
+</div>
+<pre class="data">
+    This class contains static methods for generating common 
+    transform windows for use with FFT/IFFT.  The windows are
+    returned in a static array associated with the Windowing
+    class (note: do not use the returned array for anything
+    other than reading/setting windows in FFT/IFFT).
+
+</pre>
+<div class="members">
+<i>(control parameters)</i>
+<ul>
+<li>float[] <b>.rectangle( </b>int lenght<b> )</b> - <span class="comment">generate a rectangular window</span></li>
+<li>float[] <b>.triangle( </b>int lenght<b> )</b> - <span class="comment">generate a triangular (or Barlett) window</span></li>
+<li>float[] <b>.hann( </b>int lenght<b> )</b> - <span class="comment">generate a Hann window</span></li>
+<li>float[] <b>.hamming( </b>int lenght<b> )</b> - <span class="comment">generate a Hamming window</span></li>
+<li>float[] <b>.blackmanHarris( </b>int lenght<b> )</b> - <span class="comment">generate a blackmanHarris window</span></li>
+</ul>
+<li>examples: <a href="../examples/analysis/win.ck">win.ck</a></li>
+</div></div>
+
+</div>
+
+<!------------------ transformations ------------------->
+
+<div class="section">domain transformations</div>
+
+<div class="ugen">
+<h3><a name="FFT" class="heading">[uana]</a>: <span class="name">FFT</span></h3>
+<div class="comments">
+<ul><li> Fast Fourier Transform</li></ul>
+</div>
+<pre class="data">
+    This UAna computes the Fast Fourier Transform on incoming 
+    audio samples, and outputs the result via its UAnaBlob as 
+    both the complex spectrum and the magnitude spectrum.  A 
+    buffering mechanism maintains the previous FFTsize # of 
+    samples, allowing FFT's to be taken at any point in time, 
+    on demand (via .upchuck() or by upchucking a downstream UAna;
+    see <a href="../language/uana.html">UAna documentation</a>).  The window size
+    (along with an arbitry window shape) is controlled via the 
+    .window method. The hop size is complete dynamic, and is 
+    throttled by how time is advanced.
+
+</pre><h4>extends <a href="#UAna">UAna</a></h4>
+<div class="members">
+<i>(control parameters)</i>
+<ul>
+<li><b>.size</b> - ( float, READ/WRITE ) - <span class="comment">get/set the FFT size</span></li>
+<li><b>.window</b>() - ( float[], READ/WRITE ) - <span class="comment">get/set the transform window/size (also see AAA Windowing)</span></li>
+<li><b>.windowSize</b> - ( int, READ only ) - <span class="comment">get the current window size</span></li>
+<li><b>.transform</b> - ( float[], WRITE only ) - <span class="comment"><b>manually</b> take FFT (as opposed to using .upchuck() 
+/ upchuck operator)</span></li>
+<li><b>.spectrum</b> - ( complex[], READ only ) - <span class="coment"><b>manually</b> retrieve the results of a transform</span></li>
+</ul>
+<i>(UAna input/output)</i>
+<ul>
+<li><b>input</b>: audio samples from an incoming UGen</li>
+<li><b>output</b>: spectrum in complex array; magnitude spectrum in float array</li>
+</ul>
+<li>examples: 
+<a href="../examples/analysis/fft.ck">fft.ck</a>, <a href="../examples/analysis/fft2.ck">fft2.ck</a>,
+<a href="../examples/analysis/fft3.ck">fft3.ck</a>, <a href="../examples/analysis/win.ck">win.ck</a>
+</div></div>
+
+<div class="ugen">
+<h3><a name="IFFT" class="heading">[uana]</a>: <span class="name">IFFT</span></h3>
+<div class="comments">
+<ul><li>Inverse Fast Fourier Transform</li></ul>
+</div>
+<pre class="data">
+    This UAna computes the inverse Fast Fourier Transform on 
+    incoming spectral frames (on demand), and overlap-adds the 
+    results into its internal buffer, ready to be sent to
+    other UGen's connected via =&gt;.  The window size
+    (along with an arbitry window shape) is controlled via the 
+    .window method.
+
+</pre><h4>extends <a href="#UAna">UAna</a></h4>
+<div class="members">
+<i>(control parameters)</i>
+<ul>
+<li><b>.size</b> - ( float, READ/WRITE ) - <span class="comment">get/set the IFFT size</span></li>
+<li><b>.window</b>() - ( float[], READ/WRITE ) - <span class="comment">get/set the transform window/size (also see AAA Windowing)</span></li>
+<li><b>.windowSize</b> - ( int, READ only ) - <span class="comment">get the current window size</span></li>
+<li><b>.transform</b> - ( complex[], WRITE only ) - <span class="comment"><b>manually</b> take IFFT (as opposed to using .upchuck() / upchuck operator)</span></li>
+<li><b>.samples</b> - ( float[], READ only ) - <span class="comment"><b>manually</b> retrieve the result of the previous IFFT</span></li>
+</ul>
+<i>(UAna input/output)</i>
+<ul>
+<li><b>input</b>: complex spectral frames (either via UAnae connected via =^, or manullay via .transform())</li>
+<li><b>output</b>: audio samples (overlap-added and streamed out to UGens connected via =&gt;)</li>
+</ul>
+<li>examples: 
+<a href="../examples/analysis/ifft.ck">ifft.ck</a>, <a href="../examples/analysis/ifft2.ck">fft2.ck</a>,
+<a href="../examples/analysis/fft3.ck">ifft3.ck</a>
+</div></div>
+
+<div class="ugen">
+<h3><a name="DCT" class="heading">[uana]</a>: <span class="name">DCT</span></h3>
+<div class="comments">
+<ul><li>Discrete Cosine Transform</li></ul>
+</div>
+<pre class="data">
+    This UAna computes the Discrete Cosine Transform on incoming 
+    audio samples, and outputs the result via its UAnaBlob as 
+    real values in the D.C. spectrum.  A 
+    buffering mechanism maintains the previous DCT size # of 
+    samples, allowing DCT to be taken at any point in time, 
+    on demand (via .upchuck() or by upchucking a downstream UAna;
+    see <a href="../language/uana.html">UAna documentation</a>).  The window size
+    (along with an arbitry window shape) is controlled via the 
+    .window method. The hop size is complete dynamic, and is 
+    throttled by how time is advanced.
+
+</pre><h4>extends <a href="#UAna">UAna</a></h4>
+<div class="members">
+<i>(control parameters)</i>
+<ul>
+<li><b>.size</b> - ( float, READ/WRITE ) - <span class="comment">get/set the DCT size</span></li>
+<li><b>.window</b>() - ( float[], READ/WRITE ) - <span class="comment">get/set the transform window/size (also see AAA Windowing)</span></li>
+<li><b>.windowSize</b> - ( int, READ only ) - <span class="comment">get the current window size</span></li>
+<li><b>.transform</b> - ( float[], WRITE ) - <span class="comment"><b>manually</b> take DCT (as opposed to using .upchuck() / upchuck operator)</span></li>
+<li><b>.spectrum</b> - ( float[], READ only ) - <span class="coment"><b>manually</b> retrieve the results of a transform</span></li>
+</ul>
+<i>(UAna input/output)</i>
+<ul>
+<li><b>input</b>: audio samples (either via UAnae connected via =^, or manullay via .transform())</li>
+<li><b>output</b>: discrete cosine spectrum</li>
+</ul>
+<li>examples: 
+<a href="../examples/analysis/dct.ck">dct.ck</a>
+</div></div>
+
+<div class="ugen">
+<h3><a name="IDCT" class="heading">[uana]</a>: <span class="name">IDCT</span></h3>
+<div class="comments">
+<ul><li>Inverse Discrete Cosine Transform</li></ul>
+</div>
+<pre class="data">
+    This UAna computes the inverse Discrete Cosine Transform on 
+    incoming spectral frames (on demand), and overlap-adds the 
+    results into its internal buffer, ready to be sent to
+    other UGen's connected via =&gt;.  The window size
+    (along with an arbitry window shape) is controlled via the 
+    .window method.
+
+</pre><h4>extends <a href="#UAna">UAna</a></h4>
+<div class="members">
+<i>(control parameters)</i>
+<ul>
+<li><b>.size</b> - ( float, READ/WRITE ) - <span class="comment">get/set the IDCT size</span></li>
+<li><b>.window</b>() - ( float[], READ/WRITE ) - <span class="comment">get/set the transform window/size (also see AAA Windowing)</span></li>
+<li><b>.windowSize</b> - ( int, READ only ) - <span class="comment">get the current window size</span></li>
+<li><b>.transform</b> - ( float[], WRITE ) - <span class="comment"><b>manually</b> take IDCT (as opposed to using .upchuck() / upchuck operator)</span></li>
+<li><b>.samples</b> - ( float[], WRITE ) - <span class="comment"><b>manually</b> get result of previous IDCT</span></li>
+</ul>
+<i>(UAna input/output)</i>
+<ul>
+<li><b>input</b>: real-valued spectral frames (either via UAnae connected via =^, or manullay via .transform())</li>
+<li><b>output</b>: audio samples (overlap-added and streamed out to UGens connected via =&gt;)</li>
+</ul>
+<li>examples: 
+<a href="../examples/analysis/fft.ck">idct.ck</a>
+</div></div>
+
+</div>
+
+<!------------------ feature extractors ------------------->
+
+<div class="section">feature extractors</div>
+
+<div class="ugen">
+<h3><a name="Centroid" class="heading">[uana]</a>: <span class="name">Centroid</span></h3>
+<div class="comments">
+<ul><li>Spectral Centroid</li></ul>
+</div>
+<pre class="data">
+    This UAna computes the spectral centroid from a magnitude
+    spectrum (either from incoming UAna or manually given),
+    and outputs one value in its blob.
+
+</pre><h4>extends <a href="#UAna">UAna</a></h4>
+<div class="members">
+<i>(control parameters)</i>
+<ul>
+<li>float <b>.compute( </b>float[]<b> )</b> - <span class="comment"><b>manually</b> computes the centroid from a float array</span></li>
+</ul>
+<i>(UAna input/output)</i>
+<ul>
+<li><b>input</b>: complex spectral frames (e.g., via UAnae connected via =^)</li>
+<li><b>output</b>: the computed Centroid value is stored in the blob's floating point vector, accessible via .fval(0).  This is a normalized value in the 
+range [0,1), mapped to the frequency range 0Hz to Nyquist</li>
+</ul>
+<li>examples: 
+<a href="../examples/analysis/features/centroid.ck">centroid.ck</a>
+</div></div>
+
+<div class="ugen">
+<h3><a name="Flux" class="heading">[uana]</a>: <span class="name">Flux</span></h3>
+<div class="comments">
+<ul><li>Spectral Flux</li></ul>
+</div>
+<pre class="data">
+    This UAna computes the spectral flux between successive
+    magnitude spectra (via incoming UAna, or given manually),
+    and outputs one value in its blob.
+
+</pre><h4>extends <a href="#UAna">UAna</a></h4>
+<div class="members">
+<i>(control parameters)</i>
+<ul>
+<li>void <b>.reset( )</b> - <span class="comment">reset the extractor</span></li>
+<li>float <b>.compute( </b>float[] f1, float[] f2<b> )</b> - <span class="comment"><b>manually</b> computes the flux between two frames</span></li>
+<li>float <b>.compute( </b>float[] f1, float[] f2, float[] diff<b> )</b> - <span class="comment"><b>manually</b> computes the flux between two 
+frames, and stores the difference in a third array</span></li>
+</ul>
+<i>(UAna input/output)</i>
+<ul>
+<li><b>input</b>: complex spectral frames (e.g., via UAnae connected via =^)</li>
+<li><b>output</b>: the computed Flux value is stored in the blob's floating point vector, accessible via .fval(0)</li>
+</ul>
+<li>examples: 
+<a href="../examples/analysis/features/flux.ck">flux.ck</a>, <a href="../examples/analysis/features/flux0.ck">flux0.ck</a>
+</div></div>
+
+<div class="ugen">
+<h3><a name="RMS" class="heading">[uana]</a>: <span class="name">RMS</span></h3>
+<div class="comments">
+<ul><li>Spectral RMS</li></ul>
+</div>
+<pre class="data">
+    This UAna computes the RMS power mean from a magnitude
+    spectrum (either from an incoming UAna, or given manually),
+    and outputs one value in its blob.
+
+</pre><h4>extends <a href="#UAna">UAna</a></h4>
+<div class="members">
+<i>(control parameters)</i>
+<ul>
+<li>float <b>.compute( </b>float[]<b> )</b> - <span class="comment"><b>manually</b> computes the RMS from a float array</span></li>
+</ul>
+<i>(UAna input/output)</i>
+<ul>
+<li><b>input</b>: complex spectral frames (e.g., via UAnae connected via =^)</li>
+<li><b>output</b>: the computed RMS value is stored in the blob's floating point vector, accessible via .fval(0)</li>
+</ul>
+<li>examples: 
+<a href="../examples/analysis/features/rms.ck">rms.ck</a>
+</div></div>
+
+<div class="ugen">
+<h3><a name="RollOff" class="heading">[uana]</a>: <span class="name">RollOff</span></h3>
+<div class="comments">
+<ul><li>Spectral RollOff</li></ul>
+</div>
+<pre class="data">
+    This UAna computes the spectral rolloff from a magnitude
+    spectrum (either from incoming UAna, or given manually),
+    and outputs one value in its blob.
+
+</pre><h4>extends <a href="#UAna">UAna</a></h4>
+<div class="members">
+<i>(control parameters)</i>
+<ul>
+<li>float <b>.percent( </b>float val<b>)</b> - <span class="comment">set the percentage for computing rolloff</span></li>
+<li>float <b>.percent( )</b> - <span class="comment">get the percentage specified for the rolloff</span></li>
+<li>float <b>.compute( </b>float[]<b> )</b> - <span class="comment"><b>manually</b> computes the rolloff from a float array</span></li>
+</ul>
+<i>(UAna input/output)</i>
+<ul>
+<li><b>input</b>: complex spectral frames (e.g., via UAnae connected via =^)</li>
+<li><b>output</b>: the computed rolloff value is stored in the blob's floating point vector, accessible via .fval(0). This is a normalized
+value in the range [0,1), mapped to the frequency range 0 to nyquist frequency.</li>
+</ul>
+<li>examples: 
+<a href="../examples/analysis/features/rolloff.ck">rolloff.ck</a>
+</div></div>
+
+</div>
+
+</div></div></div>
+</body>
+</html>

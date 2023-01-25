@@ -1,0 +1,1312 @@
+<!DOCTYPE html PUBLIC
+"-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+
+<!-- character set -->
+<meta charset="utf-8">
+<!-- meta properties -->
+<meta name="keywords" content="ChucK, strongly-timed,audio, programming language, computer music, Artful Design, 
+Stanford University, CCRMA, Princeton University, SoundLab, Ge Wang, Perry Cook, design, art, computer, music,
+technology, engineering, education" />
+<meta property="og:url" content="http://chuck.stanford.edu/doc/examples/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="ChucK | Examples" />
+<meta property="og:description" content="Example code, sorted by categories, for ChucK, a programming language for real-time sound synthesis and music creation." />
+<meta name="author" content="Ge Wang">
+<meta property="og:image" content="https://ccrma.stanford.edu/software/chuck/doc/images/chuck_logo_web2.jpg" />
+<meta property="fb:app_id" content="966242223397117" /> <!--default app id-->
+<link rel="canonical" href="http://chuck.stanford.edu/doc/examples/" />
+
+<title>ChucK | Examples</title>
+<link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<center>
+
+<!-- all in a big fat table-->
+
+<table id="page_layout" border="0" width="640">
+
+<!-- heading row-->
+
+<tr><td>
+<div id="chuck_header">
+<center>
+<h1>
+<b>ChucK</b> | Examples
+
+<table border="0">
+<tr><td>
+  	<div id="chuck_revision">
+	version: 1.4.x.x (numchucks)
+  	</div>
+  	
+</td></tr>
+</table>
+
+<hr width="25%" />
+</center>
+</div>
+</td></tr>
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">(up): <a href="../">documentation</a> 
+	<!-- | (next): <a href="topic_index.html">index by language spec area</a> &gt; -->
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+
+<!-- lang specification section -->
+<tr><td>
+<div id="chuck_body">
+
+<div id="topic_body">
+
+<h1><strong>Chuck Examples
+</strong></h1>
+<p align=justify>
+The following are example programs that demonstrate basic language features, tools, and techniques.  All of these 
+examples files can be found in the distribution (<a target="_blank" href="../../release">download page</a>)
+under the folder <i>examples</i>. Additionally, they can be accessed from within miniAudicle, under "File > Open Example..."  Good luck and have fun!</p>
+
+<center>
+<table border="0">
+<tr><td>
+<center><b>Jump to Section</b></center>
+<hr width="100%">
+<ul>
+<li><a href="#start">various basic examples</a></li>
+<ul>
+<li><a href="#basic">basic demonstrations</a></li>
+<li><a href="#deep">"deep" stuff</a></li>
+<li><a href="#more">more fun examples</a></li>
+</ul>
+<li><a href="#language">language features</a></li>
+<ul>
+<li><a href="#type">types</a></li>
+<li><a href="#array">arrays</a></li>
+<li><a href="#oper">operators</a></li>
+<li><a href="#time">time and duration</a></li>
+<li><a href="#ctrl">control structures</a></li>
+<li><a href="#func">functions</a></li>
+<li><a href="#shred">shreds &amp; concurrency</a></li>
+</ul>
+<li><a href="#tools">tools &amp; techniques</a></li>
+<ul>
+<li><a href="#class">classes &amp; objects</a></li>
+<li><a href="#extend">extending unit generators</a></li>
+<li><a href="#event">events</a></li>
+<li><a href="#io">input/output (including file I/O)</a></li>
+<li><a href="#hid">HID (keyboard, mouse, joystick)</a></li>
+<li><a href="#midi">MIDI input/output</a></li>
+<li><a href="#osc">Open Sound Control</a></li>
+<li><a href="#serial">serial I/O</a></li>
+<li><a href="#channels">stereo &amp; multi-channel</a></li>
+<li><a href="#lisa">live sampling &amp; granular synthesis</a></li>
+<li><a href="#string">string utilities</a></li>
+</ul>
+<li><a href="#ugen">(more) unit generator examples</a></li>
+<ul>
+<li><a href="#filter">filters</a></li>
+<li><a href="#stk">Synthesis Toolkit (STK)</a></li>
+<li><a href="#uana">unit analyzer examples</a></li>
+</ul><br>
+<hr width="100%">
+</td></tr>
+</table>
+</center>
+<!--
+<p align=justify>Examples listed together are variations on a theme, or are intended to 
+be run in parallel, like this (if using command line chuck):</p>
+
+<pre>% chuck moe.ck larry.ck curly.ck</pre>
+or perhaps:
+<pre>% chuck otf*.ck</pre>
+-->
+
+<table>
+
+</table>
+<br><br>
+<a name="start"></a><h1><strong>Various Basic Examples
+</strong></h1>
+<p>A selection of examples that demonstrate basic sound generation, timing, and control in ChucK.  As with all examples here, feel free to try and experiment!</p>
+<table>
+
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="basic"></a>Basic Demonstrations</div>
+</td></tr>
+
+<tr>
+<td width="60%" ><div class="topic_sub">time and duration</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/demo0.ck">demo0</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">variable assignment and use</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/demo1.ck">demo1</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">chucking &amp; unchucking ugens</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/demo2.ck">demo2</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">modulating ugen parameters</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/demo3.ck">demo3</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">using command line arguments</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/args.ck">args</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">mic input</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/adc.ck">adc</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">ADSR method</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/adsr.ck">adsr</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">a chuckian alarm clock (no warranties!)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/alarm.ck">alarm</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">digital delay</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/delay.ck">delay</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">simple comb filter using Delay</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/comb.ck">comb</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">echo effect</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/echo.ck">echo</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">using Envelope</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/envelope.ck">envelope</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">knuckleheads (time shifted phase locking) </div></td>
+<td><div class="topic_file_list">
+<a target="_blank" href="basic/larry.ck">larry</a> |
+<a target="_blank" href="basic/curly.ck">curly</a> |
+<a target="_blank" href="basic/moe.ck">moe</a>
+
+<tr>
+<td ><div class="topic_sub">knuckleheads++ (with glottal voicing)</div></td>
+<td><div class="topic_file_list">
+<a target="_blank" href="basic/larry++.ck">larry++</a> |
+<a target="_blank" href="basic/curly++.ck">curly++</a> |
+<a target="_blank" href="basic/moe++.ck">moe++</a>
+</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">function demo</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/func.ck">func</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">po-tweet!</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/cn.ck">chirp</a>
+| <a target="_blank" href="basic/chirp2.ck">chirp2</a>
+</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">the uh, whole tone scale</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/whole.ck">whole</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">sinosc + blit (bandlimited oscillators)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/foo.ck">foo</a>
+| <a target="_blank" href="basic/foo2.ck">foo2</a>
+| <a target="_blank" href="basic/blit.ck">blit</a>
+| <a target="_blank" href="basic/blit2.ck">blit2</a>
+</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">FM synthesis "by hand"</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/fm.ck">fm</a>
+</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">FM synthesis with two sinosc</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/fm2.ck">fm2</a>
+</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">FM (actual frequency modulation)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/fm3.ck">fm3</a>
+</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">oscillators</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/oscillatronx.ck">oscillatronx</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">mic input and simple comb filter</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/i-robot.ck">i-robot</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">impulse generator</div></td>
+<td><div class="topic_file_list"> <a target="_blank" href="basic/imp.ck">imp</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">low-frequency oscillator</div></td>
+<td><div class="topic_file_list"> <a target="_blank" href="basic/lfo.ck">lfo</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">recording (via WvOut)</div></td>
+<td><div class="topic_file_list"> <a target="_blank" href="basic/rec.ck">rec</a>
+| <a target="_blank" href="basic/rec-auto.ck">rec-auto</a>
+| <a target="_blank" href="basic/rec-auto-stereo.ck">rec-auto-stereo</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">clocks (useful when recording and other)</div></td>
+<td><div class="topic_file_list"> <a target="_blank" href="basic/tick.ck">tick</a>
+| <a target="_blank" href="basic/tick2.ck">tick2</a>
+</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">basic ring-mod (demonstrate ugen input)</div></td>
+<td><div class="topic_file_list"> <a target="_blank" href="basic/ring.ck">ring</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">sndbuf (file read/write/playback)</div></td>
+<td><div class="topic_file_list"> <a target="_blank" href="basic/sndbuf.ck">sndbuf</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">sndbuf.valueat() - random access samples</div></td>
+<td><div class="topic_file_list"> <a target="_blank" href="basic/valueat.ck">valueat</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">step ugen</div></td>
+<td><div class="topic_file_list"> <a target="_blank" href="basic/step.ck">step</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">unchuck</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/unchuck.ck">unchuck</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">whirl</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/whirl.ck">whirl</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">noise &amp; filters</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/wind.ck">wind</a> | <a target="_blank" href="basic/wind2.ck">wind2</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">function test</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/zerox.ck">zerox</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">math.isinf() also math.isnan()</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="basic/infnan.ck">infnan</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">input/output (including FileIO) examples</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="io/">[directory: io]</a></div></td>
+</tr>
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="deep"> </a>"Deep" Stuff
+</div>
+</td></tr>
+
+<tr>
+<td ><div class="topic_sub">formant-based singing synthesis</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="deep/chant.ck">chant</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">audio dithering "by hand"</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="deep/dither.ck">dither</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">how phones dial</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="deep/dtmf.ck">dtmf</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">one pole envelope follower</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="deep/follower.ck">follower</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">karplus strong plucked string</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="deep/plu.ck">plu.ck</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">plucked string with mandolin body excitation</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="deep/plu2.ck">plu2.ck</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">tuned plucked string (a la jaffe/smith)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="deep/plu3.ck">plu3.ck</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">say "ChucK" through synthesis</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="deep/say-chu.ck">say-chu.ck</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">Shepard Tone generator</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="deep/shepard.ck">shepard</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">THX Deep Note emulator (<a target="_blank" href="https://artful.design/thx/">info</a>)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="deep/thx.ck">thx</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">Reich's Clapping Music using glottal pulses</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="deep/unclap.ck">unclap</a> </div></td>
+</tr>
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="more"> </a>More Fun Experiments
+</div>
+</td></tr>
+
+<tr>
+<td ><div class="topic_sub">variations on towers of hanoi sonification</div></td>
+<td>
+<div class="topic_file_list">
+<a target="_blank" href="hanoi.ck">hanoi</a> (no sound) |
+<a target="_blank" href="hanoi2.ck">hanoi2</a> |
+<a target="_blank" href="hanoi3.ck">hanoi3</a>
+</div></td>
+</tr>
+
+<tr>
+<td><div class="topic_sub">on-the-fly synchronization (concurrent) </div></td>
+<td><div class="topic_file_list">
+<a target="_blank" href="otf_01.ck">otf_01</a> |
+<a target="_blank" href="otf_02.ck">otf_02</a> |
+<a target="_blank" href="otf_03.ck">otf_03</a> |
+<a target="_blank" href="otf_04.ck">otf_04</a> |
+<a target="_blank" href="otf_05.ck">otf_05</a> |
+<a target="_blank" href="otf_06.ck">otf_06</a> |
+<a target="_blank" href="otf_07.ck">otf_07</a> |
+<a target="_blank" href="data/">data/</a>
+</div></td>
+</tr>
+
+</table>
+<br><br>
+<a name="language"> </a><h1><strong>Language Features</strong></h1>
+<p>These examples demonstrate features described in the <a target="_blank" href="../language/">ChucK Language Specification</a>.</p>
+<table>
+
+<tr ><td colspan="2">
+<div class="topic_main">
+<a name="type"> </a>Types</div>
+</td></tr>
+
+<tr>
+<td width="60%"><div class="topic_sub">Survey of chuck's primitive types</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="type/type_primitives.ck">type_primitives</a> </div></td>
+</tr>
+
+<tr>
+<td width="60%"><div class="topic_sub">Object type (more later)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="type/type_object.ck">type_object</a> </div></td>
+</tr>
+
+<tr>
+<td width="60%"><div class="topic_sub">Analysis-related type</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="type/type_analysis.ck">type_analysis</a> </div></td>
+</tr>
+
+<tr>
+<td width="60%"><div class="topic_sub">Vectors 3D + 4D</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="vector/vec3.ck">vec3</a> |
+	<a target="_blank" href="vector/vec4.ck">vec4</a>
+</div></td></tr>
+
+<tr>
+<td width="60%"><div class="topic_sub">Using vec3 as a slewing interpolator</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="vector/interpolate.ck">interpolate</a>
+</div></td></tr>
+
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="array"> </a>Arrays</div>
+</td></tr>
+
+<tr>
+<td ><div class="topic_sub">store and retrieve values</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="array/array_storage.ck">array_storage</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">array @=&gt; assignment</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="array/array_assign.ck">array_assign</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">instantiating multidimensional arrays</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="array/array_mdim.ck">array_mdim</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">reassigning sub-arrays</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="array/array_sub_assign.ck">array_sub_assign</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">array as function argument</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="array/array_argument.ck">array_argument</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">multi-dimensional array instantiation</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="array/array_mdim.ck">array_mdim</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">mixed associative and linear array</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="array/array_mmixed.ck">array_mmixed</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">resizing arrays</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="array/array_resize.ck">array_resized</a> </div></td>
+</tr>
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="oper"> </a>Operators</div>
+</td></tr>
+
+<tr>
+<td ><div class="topic_sub">operators for assignment</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="oper/oper_assign.ck">oper_assign</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">logical operators</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="oper/oper_logic.ck">oper_logic</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">pre/post increment</div></td>
+<td><div class="topic_file_list">
+<a target="_blank" href="oper/oper_pre_inc.ck">oper_pre_inc</a> |
+<a target="_blank" href="oper/oper_post_inc.ck">oper_post_inc</a>
+</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">arithmetic operators</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="oper/oper_arith_chuck.ck">oper_arith_chuck</a> </div></td>
+</tr>
+
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="time"></a>Time &amp; Timing</div>
+</td></tr>
+
+<tr>
+<td ><div class="topic_sub">time and duration</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="time/time_types.ck">time_types</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">reasoning about time</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="time/time_operations.ck">time_operations</a> </div></td>
+</tr>
+
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="ctrl"> </a>Control Structures</div>
+</td></tr>
+
+<tr>
+<td ><div class="topic_sub">for loop</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ctrl/ctrl_for_loop.ck">ctrl_for_loop</a></div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">until</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ctrl/ctrl_until.ck">ctrl_until</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">do-until</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ctrl/ctrl_do_until.ck">ctrl_do_until</a></div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">break</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ctrl/ctrl_break.ck">ctrl_break</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">break w/ nesting</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ctrl/ctrl_break_nested.ck">ctrl_break_nested</a></div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">continue w/ nested blocks</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ctrl/ctrl_continue.ck">ctrl_continue</a></div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">Philip's sequencer</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ctrl/ctrl_sequencer.ck">ctrl_sequencer</a></div></td>
+</tr>
+
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="func"> </a>Functions</div>
+</td></tr>
+
+<tr>
+<td ><div class="topic_sub">function overloading</div></td>
+<td><div class="topic_file_list">
+ <a target="_blank" href="func/func_overload.ck">func_overload</a> |
+ <a target="_blank" href="func/func_overload_member.ck">func_overload_member</a> |
+ <a target="_blank" href="func/func_overload_multi.ck">func_overload_multi</a>
+</div></td>
+</tr>
+
+
+<tr>
+<td ><div class="topic_sub">recursive function calls</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="func/func_recursion.ck">func_recursion</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">objects as function arguments</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="func/func_obj_arg.ck">func_obj_arg</a> </div></td>
+</tr>
+
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="spork"> </a>Shreds &amp; Concurrency</div>
+</td></tr>
+
+
+<tr>
+<td ><div class="topic_sub">sporking shreds</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="shred/spork.ck">spork</a> |
+	<a target="_blank" href="shred/spork2.ck">spork2</a>
+</div></td></tr>
+
+<tr>
+<td ><div class="topic_sub">sporking many shreds</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="shred/powerup.ck">powerup</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">machine.add() .remove() .replace()</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="shred/machine.ck">machine</a></div>
+</td></tr>
+
+</table>
+<br><br>
+<a name="tools"></a><h1><strong>Tools and Techniques
+</strong></h1>
+<p>These examples demonstrate pratical tools ranging from unit generators, events, mouse / keyboard / joystick input, file I/O, MIDI, Open Sound Control, how to extend ChucK unit generators, and more.</p>
+<table>
+
+<tr><td colspan="2">
+<div class="topic_main"><a name="class"> </a>Classes &amp; Objects</div>
+</td></tr>
+
+<tr>
+<td width="60%" ><div class="topic_sub">learning about objects with .help()<br>(requires chuck-1.4.1.0 or later)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="help.ck">help</a> </div></td>
+</tr>
+
+<tr>
+<td width="60%"><div class="topic_sub"><b>Dinky</b> instrument implemented as class</div></td>
+<td width="60%"><div class="topic_file_list"><a target="_blank" href="class/dinky.ck">dinky</a></div></td>
+</tr>
+
+<tr>
+<td><div class="topic_sub">a file that used the class <b>Dinky</b></div></td>
+<td><div class="topic_file_list"><a target="_blank" href="class/try.ck">try</a></div></td>
+</tr>
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="extend"> </a>Extending ChucK Unit Generators</div>
+</td></tr>
+
+<tr><td ><div class="topic_sub">chugraph (rhymes with "subgraph")</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="extend/chugraph.ck">chugraph</a></div></td></tr>
+
+<tr><td ><div class="topic_sub">chugen (rhymes with "ugen")</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="extend/chugen.ck">chugen</a></div></td></tr>
+
+<tr><td ><div class="topic_sub">chugin (rhymes with "plugin")</div></td>
+<td><div class="topic_file_list">see <a target="_blank" href="http://chuck.stanford.edu/extend/">"3 ways to extend ChucK"</a></div></td></tr>
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="event"> </a>Events</div>
+</td></tr>
+
+
+<tr>
+<td ><div class="topic_sub">event broadcast method</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="event/broadcast.ck">broadcast</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">event signal method</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="event/signal.ck">signal</a> |
+	<a target="_blank" href="event/signal4.ck">signal4</a>
+	</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">extending events (creating custom events)</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="event/event_extend.ck">event_extend</a>
+	</div></td>
+</tr>
+
+
+<tr><td colspan="2">
+<div class="topic_main">
+<a name="io"> </a>Input/Ouput</div>
+</td></tr>
+
+<tr><td><div class="topic_sub">chout ("shout") and cherr ("Cher")</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="io/chout.ck">chout</a>
+</div></td></tr>
+
+<tr>
+<td ><div class="topic_sub">file directory access</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="shred/dir.ck">dir</a></div>
+</td></tr>
+
+
+<tr><td><div class="topic_sub">file input: reading ints</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="io/read-int.ck">read-int</a> |
+	<a target="_blank" href="io/int.txt">int.txt</a>
+</div></td></tr>
+
+<tr><td><div class="topic_sub">file input: reading lines</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="io/read-line.ck">read-line</a> |
+	<a target="_blank" href="io/line.txt">line.txt</a>
+</div></td></tr>
+
+<tr><td><div class="topic_sub">file input: reading strings</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="io/read-str.ck">read-str</a> |
+	<a target="_blank" href="io/str.txt">str.txt</a>
+</div></td></tr>
+
+
+<tr><td><div class="topic_sub">file output</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="io/write.ck">write</a> |
+	<a target="_blank" href="io/write2.ck">write2</a>
+</div></td></tr>
+
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="hid"> </a>HID Input (Joystick, Mouse, Keyboard)</div>
+</td></tr>
+
+<tr>
+<td ><div class="topic_sub">Joystick demo</div></td>
+<td><div class="topic_file_list">
+        <a target="_blank" href="hid/joy.ck">joy</a> |
+        <a target="_blank" href="hid/joy-fm.ck">joy-fm</a> |
+        <a target="_blank" href="hid/joy-noise.ck">joy-noise</a> |
+        <a target="_blank" href="hid/joy-shake.ck">joy-shake</a>
+	</div></td>
+</tr>
+<tr>
+<td ><div class="topic_sub">Mouse demo</div></td>
+<td><div class="topic_file_list">
+        <a target="_blank" href="hid/mouse.ck">mouse</a> | 
+        <a target="_blank" href="hid/mouse-abs.ck">mouse-abs</a> |
+        <a target="_blank" href="hid/mouse-fm.ck">mouse-fm</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">Keyboard demo</div></td>
+<td><div class="topic_file_list">
+        <a target="_blank" href="hid/kb.ck">kb</a> |
+        <a target="_blank" href="hid/keyboard-organ.ck">keyboard-organ</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">Gametrak demo</div></td>
+<td><div class="topic_file_list">
+        <a target="_blank" href="hid/gametra.ck">gametra.ck</a>
+        </div></td></tr>
+
+<td ><div class="topic_sub">"SMELT: Small Musically Expressive Laptop Toolkit"</div></td>
+<td><div class="topic_file_list">
+        <a target="_blank" href="http://smelt.cs.princeton.edu/">S.M.E.L.T.</a>
+</div></td></tr>
+
+<!--<tr><td ><div class="topic_sub">KBHit (Terminal only; see HID usage above)</div></td>
+<td><div class="topic_file_list">
+        <a target="_blank" href="hid/kbhit.ck">kbhit</a> 
+</div></td></tr>-->
+
+<tr>
+<td ><div class="topic_sub">Keyboard (terminal only; see HID usage above)</div></td>
+<td><div class="topic_file_list">
+        <a target="_blank" href="event/kb.ck">kb</a> |
+        <a target="_blank" href="event/kb2.ck">kb2</a>
+	</div></td>
+</tr>
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="midi"> </a>MIDI</div>
+</td></tr>
+
+<tr>
+<td ><div class="topic_sub">MIDI input</div></td>
+<td><div class="topic_file_list">
+        <a target="_blank" href="midi/gomidi.ck">gomidi</a> |
+        <a target="_blank" href="midi/gomidi2.ck">gomidi2</a>
+	</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">MIDI input with polophony</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="midi/polyfony.ck">polyfony</a> |
+	<a target="_blank" href="midi/polyfony2.ck">polyfony2</a>
+	</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">MIDI file reader / player!</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="midi/midifile-play.ck">midifile-play</a> |
+	<a target="_blank" href="midi/bwv772.mid">bwv772.mid</a>
+	</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">MIDI output</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="midi/midiout.ck">midiout</a>
+	</div></td>
+</tr>
+
+
+<tr><td colspan="2">
+<div class="topic_main">
+<a name="osc"> </a>Open Sound Control (OSC)</div>
+</td></tr>
+
+<tr><td>
+<div class="topic_sub">OSC message sender and receiver</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="osc/s.ck">s (sender)</a> |
+	<a target="_blank" href="osc/r.ck">r (receiver)</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">OSC multiple message at different rate</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="osc/multi-msg/s-multi-msg.ck">s-multi-msg.ck</a> |
+	<a target="_blank" href="osc/multi-msg/r-multi-msg.ck">r-multi-msg.ck</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">OSC one sender to many receivers</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="osc/one2many/s-sender.ck">s-sender.ck</a> |
+	<a target="_blank" href="osc/one2many/r.ck">r.ck</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">OSC multicast (broadcast to local area hosts)
+</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="osc/multicast/s-multicast.ck">s-multicast.ck</a> |
+	<a target="_blank" href="osc/multicast/r.ck">r.ck</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">OSC message dumper</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="osc/osc-dump.ck">osc-dump</a>
+</div></td></tr>
+
+
+<tr><td colspan="2">
+<div class="topic_main">
+<a name="serial"> </a>Serial I/O</div>
+</td></tr>
+
+<tr><td>
+<div class="topic_sub">reading byte(s)</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="serial/byte.ck">byte</a> |
+	<a target="_blank" href="serial/bytes.ck">bytes</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">reading ascii/binary</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="serial/ints-ascii.ck">ints-ascii</a> |
+	<a target="_blank" href="serial/ints-binary.ck">ints-binary</a> |	
+	<a target="_blank" href="serial/lines.ck">lines</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">writing</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="serial/write-bytes.ck">write-bytes</a> |
+	<a target="_blank" href="serial/write.ck">write</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">listing serial devices</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="serial/list.ck">list</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">Arduino INO file</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="serial/arduino/ckserial.ino">ckserial.ino</a>
+</div></td></tr>
+
+<tr><td colspan="2">
+<div class="topic_main">
+<a name="channels"> </a>Stereo / Multi-channel</div>
+</td></tr>
+
+<tr><td>
+<div class="topic_sub">Stereo noise (using Pan2)</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="stereo/stereo-noise.ck">stereo-noise</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">Stereo powerup</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="stereo/powerup2.ck">powerup2</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">Stereo => arrays of mono UGens</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="stereo/ugen-array.ck">ugen-array</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">Stereo Stooges</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="stereo/moe2.ck">moe2</a> |
+	<a target="_blank" href="stereo/larry2.ck">larry2</a> |
+	<a target="_blank" href="stereo/curly2.ck">curly2</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">Multi-channel demos</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="multi/i.ck">n-chan (i)</a> |
+	<a target="_blank" href="multi/n.ck">n-chan (n) </a> |
+	<a target="_blank" href="multi/we-robot.ck">we-robot</a>
+</div></td></tr>
+
+<tr><td colspan="2">
+<div class="topic_main">
+<a name="lisa"> </a>Live Sampling and Granular Synthesis Using LiSa</div>
+</td></tr>
+
+<tr><td>
+<div class="topic_sub">Basics of live sampling using LiSa</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="special/readme-LiSa1.ck">readme-LiSa1</a> |
+	<a target="_blank" href="special/readme-LiSa2.ck">readme-LiSa2</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">Live sampling simple looping</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="special/LiSa-simplelooping.ck">LiSa-simplelooping</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">Granular sampling examples</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="special/LiSa-munger1.ck">LiSa-munger1</a> |<br>
+	<a target="_blank" href="special/LiSa-munger2.ck">LiSa-munger2</a> |<br>
+	<a target="_blank" href="special/LiSa-munger3.ck">LiSa-munger3</a>
+</div></td></tr>	
+
+<tr><td>
+<a name="twilight"> </a>
+<div class="topic_sub">Granular synthesis examples from <a target="_blank" href="http://slork.stanford.edu/works/twilight/">Twilight (2013)</a></div></td>
+<td><div class="topic_file_list">
+    <a target="_blank" href="special/twilight/twilight-granular-kb.ck">twilight-granular-kb</a> |<br>
+    <a target="_blank" href="special/twilight/twilight-granular-kb-interp.ck">twilight-granular-kb-interp</a> |<br>
+    <a target="_blank" href="special/twilight/twilight-granular.aiff">twilight-granular.aiff</a> |
+    <a target="_blank" href="special/twilight/">folder</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">Loading an audio file into a LiSa</a></div></td>
+<td><div class="topic_file_list">
+    <a target="_blank" href="special/LiSa-load.ck">LiSa-load</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">LiSa tracking mode examples</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="special/LiSa-track1.ck">LiSa-track1</a> |
+	<a target="_blank" href="special/LiSa-track2.ck">LiSa-track2</a> |<br>
+	<a target="_blank" href="special/LiSa-track3.ck">LiSa-track3</a> |
+	<a target="_blank" href="special/LiSa-track4.ck">LiSa-track4</a> |<br>
+	<a target="_blank" href="special/LiSa-track5.ck">LiSa-track5</a> |
+	<a target="_blank" href="special/geetar.wav">geetar.wav</a>
+</div></td></tr>	
+
+<tr><td>
+<div class="topic_sub">Input-driven LiSA trigger</a></div></td>
+<td><div class="topic_file_list">
+    <a target="_blank" href="special/LiSa-trigger.ck">LiSa-trigger</a>
+</div></td></tr>
+
+
+
+<tr><td colspan="2">
+<div class="topic_main">
+<a name="string"> </a>String Utilities</div>
+</td></tr>
+
+<tr><td>
+<div class="topic_sub">String operations</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="string/strops.ck">strops</a> |
+	<a target="_blank" href="string/strops2.ck">strops2</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">String escape sequences</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="string/escape.ck">escape</a>
+</div></td></tr>
+
+<tr><td>
+<div class="topic_sub">String input + tokenize (hacked; temporary)</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="string/readline.ck">readline</a> |
+	<a target="_blank" href="string/token.ck">token</a>
+</div></td></tr>
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="ugen"> </a>(More) Unit Generators Examples</div>
+</td></tr>
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="filter"> </a>&nbsp; &nbsp; &gt; Filters</div>
+</td></tr>
+
+<tr><td ><div class="topic_sub">low pass filter</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="filter/lpf.ck">lpf</a></div>
+</td></tr>
+
+<tr><td ><div class="topic_sub">resonance low pass filter</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="filter/rlpf.ck">rlpf</a></div>
+</td></tr>
+
+<tr><td ><div class="topic_sub">high pass filter</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="filter/hpf.ck">hpf</a></div>
+</td></tr>
+
+<tr><td ><div class="topic_sub">resonance high pass filter</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="filter/rhpf.ck">rlpf</a></div>
+</td></tr>
+
+<tr><td ><div class="topic_sub">resonance filter with equal-gain zeros</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="filter/resonz.ck">resonz</a></div>
+</td></tr>
+
+<tr><td ><div class="topic_sub">band pass filter</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="filter/bpf.ck">bpf</a></div>
+</td></tr>
+
+<tr><td ><div class="topic_sub">band reject filter</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="filter/brf.ck">brf</a></div>
+</td></tr>
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="stk"> </a>&nbsp; &nbsp; &gt; <a target="_blank" href="http://ccrma.stanford.edu/software/stk/index.html">STK</a> ( <strong>S</strong>ynthesis <strong>T</strong>ool<strong>K</strong>it ) demos</div>
+</td></tr>
+
+<tr><td ><div class="topic_sub">BandedWG (Banded Waveguide)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/bandedwg.ck">bandedwg</a> | <a target="_blank" href="stk/band-o-matic.ck">band-o-matic</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">BlowBotl</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/blowbotl.ck">blowbotl</a> | <a target="_blank" href="stk/blowbotl2.ck">blowbotl2</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">BlowHole</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/blowhole.ck">blowhole</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">Bowed</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/bowed.ck">bowed</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">Brass</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/brass.ck">brass</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">Clarinet</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/clarinet.ck">clarinet</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">Flute</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/flute.ck">flute</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">FrncHrn (requires chuck-1.4.1.0 or later)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/frenchrn-algo2.ck">frenchrn-aglo2</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">HevyMetl => acoustic guitar (1.4.1.0 or later)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/hevymetl-acoustic-algo3.ck">hevymetl-acoustic-algo3</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">HevyMetl => power chords (1.4.1.0 or later)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/hevymetl-dance-now.ck">hevymetl-dance-now</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">HevyMetl => trumpet (1.4.1.0 or later)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/hevymetl-trumpet-algo3.ck">hevymetl-trumpet-algo3</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">HnkyTonk (1.4.1.0 or later)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/honkeytonk-algo1.ck">honkeytonk-algo1</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">KrstlChr (1.4.1.0 or later)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/krstlchr-algo7.ck">krstlchr-algo7</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">Mandolin</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/mandolin.ck">mandolin</a> | <a target="_blank" href="stk/mand-o-matic.ck">mand-o-matic</a>  </div></td></tr>
+
+<tr><td ><div class="topic_sub">ModalBar</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/modalbar.ck">modalbar</a> |
+<a target="_blank" href="stk/mode-o-test.ck">mode-o-test</a> | <a target="_blank" href="stk/mode-o-matic.ck">mode-o-matic</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">Moog (r.i.p. bob)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/moog.ck">moog</a> | <a target="_blank" href="stk/moogie.ck">moogie</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">Rhodey (Rhodes synth)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/rhodey.ck">rhodey</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">A lovely littel number made with Rhodey...</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/rhodey-song.ck">rhodey-song</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">Saxofony</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/saxofony.ck">saxofony</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">Shakers</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/shake-o-matic.ck">shake-o-matic</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">Sitar</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/sitar.ck">sitar</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">StifKarp</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/stifkarp.ck">stifkarp</a> | <a target="_blank" href="stk/stif-o-karp.ck">stif-o-karp</a></div></td></tr>
+
+<tr><td ><div class="topic_sub">VoicForm</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/voic-o-form.ck">voic-o-form</a> </div></td></tr>
+
+<tr><td ><div class="topic_sub">Wurley (Wurlitzer model)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="stk/wurley.ck">wurley</a>
+| <a target="_blank" href="stk/wurley2.ck">wurley2</a> | <a target="_blank" href="stk/wurley3.ck">wurley3</a>
+ </div></td></tr>
+
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="uana"> </a>Unit Analyzers</div>
+</td></tr>
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="transformations"> </a>&nbsp; &nbsp; &gt; Transformations</div>
+</td></tr>
+
+<tr><td ><div class="topic_sub">FFT</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="analysis/fft.ck">fft</a>
+| <a target="_blank" href="analysis/fft2.ck">fft2</a> | <a target="_blank" href="analysis/fft3.ck">fft3</a>
+ </div></td></tr>
+
+<tr><td ><div class="topic_sub">IFFT</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="analysis/ifft.ck">ifft</a>
+| <a target="_blank" href="analysis/ifft2.ck">ifft2</a> | <a target="_blank" href="analysis/ifft3.ck">ifft3</a>
+ </div></td></tr>
+
+<tr><td ><div class="topic_sub">DCT</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="analysis/dct.ck">dct</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">Windowing</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="analysis/win.ck">win</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">Flip</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="analysis/flip.ck">flip</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">auto-correlation-based pitch detection</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="analysis/autocorr.ck">autocorr</a>
+</div></td></tr> 
+
+<tr><td ><div class="topic_sub">cross-correlation delay detection</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="analysis/xcorr.ck">xcorr</a>
+</div></td></tr> 
+
+<tr><td ><div class="topic_sub">(really bad) spectral cross-synthesis</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="analysis/xsynth.ck">xsynth</a>
+</div></td></tr>
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="fextract"> </a>&nbsp; &nbsp; &gt; Feature Extractors</div>
+</td></tr>
+
+<tr><td ><div class="topic_sub">Centroid</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="analysis/features/centroid.ck">centroid</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">Flux</div></td>
+<td><div class="topic_file_list"> <a target="_blank" href="analysis/features/flux.ck">flux</a>
+| <a target="_blank" href="analysis/features/flux0.ck">flux0</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">RMS</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="analysis/features/rms.ck">rms</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">RollOff</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="analysis/features/rolloff.ck">rolloff</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">Feature Collector</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="analysis/concat.ck">concat</a>
+</div></td></tr>
+
+</table>
+
+</div>
+
+<!-- additional sub topic sections go here... -->
+
+<!-- end subtopics ? -->
+
+</div>
+</div>
+</td></tr>
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<br><br>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  (up): <a href="../">documentation</a> 
+<!-- | (next): <a href="topic_index.html">index by language spec area</a> &gt; -->
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+
+<!-- chuck-footer -->
+
+<tr><td>
+<div id ="chuck_footer">
+<center>
+<hr width="15%" / >
+<a href="../../">chuck</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://www.cs.princeton.edu/">cs</a> |
+<a href="http://www.music.princeton.edu/">music</a> |
+<a href="http://ccrma.stanford.edu/">ccrma</a>
+
+</center>
+</div>
+</td></tr>
+</table>
+
+</center>
+</body>
+</html>

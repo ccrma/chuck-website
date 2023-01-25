@@ -1,0 +1,922 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0053)http://chuck.cs.princeton.edu/doc/program/stdlib.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ChucK - [Programming Guide : Standard Libraries]</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/ckdoc.css">
+<link rel="stylesheet" type="text/css" href="../css/prism.css">
+ 
+</head>
+<body>
+
+
+<center> 
+<table border="0" width="640">
+<tbody><tr><td>
+
+<center>
+<h1>
+<strong>Chunity</strong> : Documentation
+</h1>
+    
+
+<table border="0">
+<tbody><tr><td>
+  	<div id="chuck_revision">
+	version: 1.4.x.x (numchucks)
+  	</div>
+  	
+</td></tr>
+</tbody></table>
+
+<hr width="20%">
+</center>
+</div>
+</td></tr>
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tbody><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  (up): <a href="..">chunity</a> <!-- | (next): <a href="">next link</a> &gt;  -->
+	</div>
+	</center>  
+	</td></tr></tbody></table>
+
+</div>
+</center>
+</td></tr>
+<tr><td>
+<div id="chuck_body">
+
+<div id="lang_topic_body">
+
+<p>
+Welcome to the documentation for Chunity! Below are lists of all the available
+functions you might want to use in Chunity, as well as a few functions.
+You can also check out the <a href="../tutorials">tutorials</a>.
+<ul>
+<li><a href="#chuckmainsubinstance">ChuckMainInstance / ChuckSubInstance</a></li>
+<ul>
+    <li><a href="#runningcode">Running Code</a></li>
+    <li><a href="#globalints">Global Ints</a></li>
+    <li><a href="#globalfloats">Global Floats</a></li>
+    <li><a href="#globalstrings">Global Strings</a></li>
+    <li><a href="#globalevents">Global Events</a></li>
+    <li><a href="#globalintarrays">Global Int Arrays</a></li>
+    <li><a href="#globalfloatarrays">Global Float Arrays</a></li>
+    <li><a href="#uniquevariablename">Unique Variables</a></li>
+    <li><a href="#specifictomain">Things Specific to ChuckMainInstance</a></li>
+    <li><a href="#specifictosub">Things Specific to ChuckSubInstance</a></li>
+</ul>
+<li><a href="#thechuck">TheChuck</a></li>
+<li><a href="#helpercomponents">Helper Components</a></li>
+<ul>
+    <li><a href="#chuckeventlistener">ChuckEventListener</a></li>
+    <li><a href="#chuckintsyncer">ChuckIntSyncer</a></li>
+    <li><a href="#chuckfloatsyncer">ChuckFloatSyncer</a></li>
+    <li><a href="#chuckstringsyncer">ChuckStringSyncer</a></li>
+</ul>
+</ul>
+</p>
+
+<!-- TODO intro / table of contents to leap to the various sections below -->
+
+<h1 id="chuckmainsubinstance"><strong>ChuckMainInstance / ChuckSubInstance</strong></h1>
+<p>
+These components have identical APIs. In most cases, you will be sending commands
+to a ChuckSubInstance, which will send on those commands to whichever ChuckMainInstance
+it refers to, but you can also send commands directly to a ChuckMainInstance.</p>
+
+
+<div>
+<!-- Running code -->
+<br /><h2 id="runningcode" class="greentext">Running Code</h2>
+<p>Here's an example of how to use a ChuckMainInstance / ChuckSubInstance, 
+taken from the <a href="../tutorials#unityvariables1">tutorials</a>.</p>
+
+<pre data-line="9-16" class="line-numbers"><code class="language-csharp">void OnTriggerEnter( Collider other )
+{
+	if( other.gameObject.CompareTag( "Pick Up" ) )
+	{
+		other.gameObject.SetActive( false );
+		count = count + 1;
+		SetCountText();
+
+		<span class="bold">GetComponent&lt;ChuckSubInstance&gt;().RunCode(@"
+			SinOsc foo => dac;
+			repeat( 5 )
+			{
+				Math.random2f( 300, 1000 ) => foo.freq;
+				100::ms => now;
+			}
+		");</span>
+	}
+}</code></pre>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">RunCode</b> ( string <span class="bold arg">code</span> );</h3>
+<div class="comments"><ul>
+<li>add a new ChucK program to this VM</li>
+<li><span class="bold arg">code</span>: the literal text of the program to run</li>
+</ul></div></div>
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">RunFile</b> ( string <span class="bold arg">filename</span>, bool <span class="bold arg">fromStreamingAssets</span> = true  );</h3>
+<div class="comments"><ul>
+<li>add a new ChucK program to this VM, from filename</li>
+<li><span class="bold arg">filename</span>: the location of the file to run</li>
+<li><span class="bold arg">fromStreamingAssets</span>: if true, <span class="bold arg">filename</span> is relative to the path of the StreamingAssets folder</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">RunFile</b> ( string <span class="bold arg">filename</span>, string <span class="bold arg">colonSeparatedArgs</span>, bool <span class="bold arg">fromStreamingAssets</span> = true );</h3>
+<div class="comments"><ul>
+<li>add a new ChucK program to this VM, from filename</li>
+<li><span class="bold arg">filename</span>: the location of the file to run</li>
+<li><span class="bold arg">colonSeparatedArgs</span>: the arguments to pass to the ChucK file, joined together by colons</li>
+<li><span class="bold arg">fromStreamingAssets</span>: if true, <span class="bold arg">filename</span> is relative to the path of the StreamingAssets folder</li>
+</ul></div></div>
+
+
+
+<!-- Global ints -->
+<br /><h2 id="globalints" class="greentext">Global Ints</h2>
+<p>Here's how it would look to set and get a global int. See also <a href="#chuckintsyncer">ChuckIntSyncer</a> 
+below for a simpler pattern that doesn't involve writing your own callback.</p>
+<pre data-line="13,16,22" class="line-numbers"><code class="language-csharp">ChuckSubInstance myChuck;
+Chuck.IntCallback myIntCallback;
+long latestGottenInt;
+
+void Start()
+{
+    myChuck = GetComponent&lt;ChuckSubInstance&gt;();
+    myChuck.RunCode(@"
+        global int myGlobalInt;
+        // ...
+    ");
+    // create a callback to use with GetInt in Update()
+    myIntCallback = myChuck.<span class="bold">CreateGetIntCallback</span>( MyGetIntCallbackFunction );
+    
+    // call SetInt
+    myChuck.<span class="bold">SetInt</span>( "myGlobalInt", 5 );
+}
+
+void Update()
+{
+    // call the callback
+    myChuck.<span class="bold">GetInt</span>( "myGlobalInt", myIntCallback );
+    
+    // do something with the gotten value
+    Debug.Log( latestGottenInt );
+}
+
+void MyGetIntCallbackFunction( long newValue )
+{
+    latestGottenInt = newValue;
+}</code></pre>
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">SetInt</b> ( string <span class="bold arg">variableName</span>, long <span class="bold arg">value</span> );</h3>
+<div class="comments"><ul>
+<li>set the value of global int variableName</li>
+<li><span class="bold arg">variableName</span>: the name of the global int to set</li>
+<li><span class="bold arg">value</span>: the value to set it to. this is a long because ChucK ints are 64 bit integers</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">GetInt</b> ( string <span class="bold arg">variableName</span>, Chuck.IntCallback <span class="bold arg">callback</span> );</h3>
+<div class="comments"><ul>
+<li>eventually call the callback with the value of global int variableName</li>
+<li><span class="bold arg">variableName</span>: the name of the global int to get</li>
+<li><span class="bold arg">callback</span>: the function to call when we know the value</li>
+</ul></div></div>
+
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+Chuck.IntCallback <b class="name">CreateGetIntCallback</b> ( Action< long > <span class="bold arg">callbackFunction</span> );</h3>
+<div class="comments"><ul>
+<li>constructs the callback necessary for GetInt. you should store this callback yourself to avoid it being garbage collected</li>
+<li><span class="bold arg">callbackFunction</span>: the function to call when ChucK has the value of your GetInt operation. this is a function that has one argument, a long</li>
+</ul></div></div>
+
+
+<!-- Global floats -->
+<br /><h2 id="globalfloats" class="greentext">Global Floats</h2>
+<p>See <a href="#globalints">Global Ints</a> above for an example of how to get and 
+set global variables. See also <a href="#chuckfloatsyncer">ChuckFloatSyncer</a> 
+below for a simpler pattern that doesn't involve writing your own callback.</p>
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">SetFloat</b> ( string <span class="bold arg">variableName</span>, double <span class="bold arg">value</span> );</h3>
+<div class="comments"><ul>
+<li>set the value of global float variableName</li>
+<li><span class="bold arg">variableName</span>: the name of the global float to set</li>
+<li><span class="bold arg">value</span>: the value to set it to. this is a double because ChucK floats are 64-bit (i.e. a "double" in C++ and C#)</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">GetFloat</b> ( string <span class="bold arg">variableName</span>, Chuck.FloatCallback <span class="bold arg">callback</span> );</h3>
+<div class="comments"><ul>
+<li>eventually call the callback with the value of global float variableName</li>
+<li><span class="bold arg">variableName</span>: the name of the global float to get</li>
+<li><span class="bold arg">callback</span>: the function to call when we know the value</li>
+</ul></div></div>
+
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+Chuck.FloatCallback <b class="name">CreateGetFloatCallback</b> ( Action< double > <span class="bold arg">callbackFunction</span> );</h3>
+<div class="comments"><ul>
+<li>constructs the callback necessary for GetFloat. you should store this callback yourself to avoid it being garbage collected</li>
+<li><span class="bold arg">callbackFunction</span>: the function to call when ChucK has the value of your GetFloat operation. this is a function that has one argument, a double</li>
+</ul></div></div>
+
+
+
+<!-- Global strings -->
+<br /><h2 id="globalstrings" class="greentext">Global Strings</h2>
+<p>See <a href="#globalints">Global Ints</a> above for an example of how to get and 
+set global variables. See also <a href="#chuckstringsyncer">ChuckStringSyncer</a> 
+below for a simpler pattern that doesn't involve writing your own callback.</p>
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">SetString</b> ( string <span class="bold arg">variableName</span>, string <span class="bold arg">value</span> );</h3>
+<div class="comments"><ul>
+<li>set the value of global string variableName</li>
+<li><span class="bold arg">variableName</span>: the name of the global string to set</li>
+<li><span class="bold arg">value</span>: the value to set it to</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">GetString</b> ( string <span class="bold arg">variableName</span>, Chuck.StringCallback <span class="bold arg">callback</span> );</h3>
+<div class="comments"><ul>
+<li>eventually call the callback with the value of global string variableName</li>
+<li><span class="bold arg">variableName</span>: the name of the global string to get</li>
+<li><span class="bold arg">callback</span>: the function to call when we know the value</li>
+</ul></div></div>
+
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+Chuck.StringCallback <b class="name">CreateGetStringCallback</b> ( Action< string > <span class="bold arg">callbackFunction</span> );</h3>
+<div class="comments"><ul>
+<li>constructs the callback necessary for GetString. you should store this callback yourself to avoid it being garbage collected</li>
+<li><span class="bold arg">callbackFunction</span>: the function to call when ChucK has the value of your GetString operation. this is a function that has one argument, a string</li>
+</ul></div></div>
+
+
+
+<!-- Global Events -->
+<br /><h2 id="globalevents" class="greentext">Global Events</h2>
+<p>Here's an example of how to trigger and listen to global Events. 
+See also <a href="#chuckeventlistener">ChuckEventListener</a> 
+below for a simpler pattern that doesn't involve communicating back
+from the audio thread to the Update() thread.</p>
+
+
+<pre data-line="21,24,27" class="line-numbers"><code class="language-csharp">ChuckSubInstance myChuck;
+Chuck.VoidCallback myEventCallback;
+
+void Start()
+{
+    myChuck = GetComponent&lt;ChuckSubInstance&gt;();
+    myChuck.RunCode( @"
+        global Event startNotifying;
+        global Event notifier;
+
+        startNotifying => now;
+        while( true )
+        {
+            notifier.broadcast();
+            250::ms => now;
+        }
+    " );
+    
+
+    // call BroadcastEvent to trigger startNotifying
+    myChuck.<span class="bold">BroadcastEvent</span>( "startNotifying" );
+
+    // create a callback to use with StartListeningForChuckEvent
+    myEventCallback = myChuck.<span class="bold">CreateVoidCallback</span>( MyEventReaction );
+
+    // call my callback every time notifier broadcasts
+    myChuck.<span class="bold">StartListeningForChuckEvent</span>( "notifier", myEventCallback );
+}
+
+// keep track of how many times the Event has
+// broadcast on the audio thread
+int numTimesEventHappenedOnAudioThread = 0;
+void MyEventReaction()
+{
+    numTimesEventHappenedOnAudioThread++;
+}
+
+// use that information on the Update() thread
+void Update()
+{
+    while( numTimesEventHappenedOnAudioThread > 0 )
+    {
+        numTimesEventHappenedOnAudioThread--;
+        // Do something in Unity, e.g....
+        transform.Rotate( ... );
+    }
+}</code></pre>
+
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">SignalEvent</b> ( string <span class="bold arg">variableName</span> );</h3>
+<div class="comments"><ul>
+<li>calls .signal() on global Event variableName (i.e. awake the next listener)</li>
+<li><span class="bold arg">variableName</span>: the name of the global Event to signal</li>
+</ul></div></div>
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">BroadcastEvent</b> ( string <span class="bold arg">variableName</span> );</h3>
+<div class="comments"><ul>
+<li>calls .broadcast() on global Event variableName (i.e. awake all listeners)</li>
+<li><span class="bold arg">variableName</span>: the name of the global Event to broadcast</li>
+</ul></div></div>
+
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">ListenForChuckEventOnce</b> ( string <span class="bold arg">variableName</span>, Chuck.VoidCallback <span class="bold arg">callback</span> );</h3>
+<div class="comments"><ul>
+<li>calls the callback the next time that global Event variableName signals it</li>
+<li><span class="bold arg">variableName</span>: the name of the global Event to listen to</li>
+<li><span class="bold arg">callback</span>: the function to call when the global Event signals</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">StartListeningForChuckEvent</b> ( string <span class="bold arg">variableName</span>, Chuck.VoidCallback <span class="bold arg">callback</span> );</h3>
+<div class="comments"><ul>
+<li>calls the callback every time that global Event variableName signals it (until cancelled)</li>
+<li><span class="bold arg">variableName</span>: the name of the global Event to listen to</li>
+<li><span class="bold arg">callback</span>: the function to call when the global Event signals</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">StopListeningForChuckEvent</b> ( string <span class="bold arg">variableName</span>, Chuck.VoidCallback <span class="bold arg">callback</span> );</h3>
+<div class="comments"><ul>
+<li>stop calling the callback registered to global Event variableName</li>
+<li><span class="bold arg">variableName</span>: the name of the global Event to listen to</li>
+<li><span class="bold arg">callback</span>: the function to stop calling when the global Event signals</li>
+</ul></div></div>
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+Chuck.VoidCallback <b class="name">CreateVoidCallback</b> ( Action <span class="bold arg">callbackFunction</span> );</h3>
+<div class="comments"><ul>
+<li>constructs the callback necessary for global Events. you should store this callback yourself to avoid it being garbage collected</li>
+<li><span class="bold arg">callbackFunction</span>: the function to call when the ChucK Event signals. this is a function that has no arguments</li>
+</ul></div></div>
+
+
+
+
+
+<!-- Global int arrays -->
+<br /><h2 id="globalintarrays" class="greentext">Global Int Arrays</h2>
+<p>See <a href="#globalints">Global Ints</a> above for an example of how to get and 
+set global variables. Note that "associative array" is ChucK's version of a 
+dictionary with string keys mapping to values (see 
+<a href="http://chuck.cs.princeton.edu/doc/language/array.html" target="_blank">ChucK documentation</a>).</p>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">SetIntArray</b> ( string <span class="bold arg">variableName</span>, long[] <span class="bold arg">values</span> );</h3>
+<div class="comments"><ul>
+<li>set all values at once of global int variableName[]</li>
+<li><span class="bold arg">variableName</span>: the name of the global int array to set</li>
+<li><span class="bold arg">value</span>: the values to assign to this array. these are longs because ChucK ints are 64 bit integers</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">GetIntArray</b> ( string <span class="bold arg">variableName</span>, Chuck.IntArrayCallback <span class="bold arg">callback</span> );</h3>
+<div class="comments"><ul>
+<li>eventually call the callback with the value of global int variableName[]</li>
+<li><span class="bold arg">variableName</span>: the name of the global int array to get</li>
+<li><span class="bold arg">callback</span>: the function to call when we know the value</li>
+</ul></div></div>
+
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+Chuck.IntArrayCallback <b class="name">CreateGetIntArrayCallback</b> ( Action< long[], ulong > <span class="bold arg">callbackFunction</span> );</h3>
+<div class="comments"><ul>
+<li>constructs the callback necessary for GetIntArray. you should store this callback yourself to avoid it being garbage collected</li>
+<li><span class="bold arg">callbackFunction</span>: the function to call when ChucK has the value of your GetIntArray operation. this is a function that has two arguments, a long array (the values) and an unsigned long (the number of values)</li>
+</ul></div></div>
+
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">SetIntArrayValue</b> ( string <span class="bold arg">variableName</span>, uint <span class="bold arg">index</span>, long <span class="bold arg">value</span> );</h3>
+<div class="comments"><ul>
+<li>set the value of global int variableName[index]</li>
+<li><span class="bold arg">variableName</span>: the name of the global int array to set a value in</li>
+<li><span class="bold arg">index</span>: the index of the array at which to set the value</li>
+<li><span class="bold arg">value</span>: the value to assign to this index on this array. this is a long because ChucK ints are 64 bit integers</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">GetIntArrayValue</b> ( string <span class="bold arg">variableName</span>, uint <span class="bold arg">index</span>, Chuck.IntCallback <span class="bold arg">callback</span> );</h3>
+<div class="comments"><ul>
+<li>eventually call the callback with the value of global int variableName[index]</li>
+<li><span class="bold arg">variableName</span>: the name of the global int array to get a value from</li>
+<li><span class="bold arg">index</span>: the index of the array at which to get the value</li>
+<li><span class="bold arg">callback</span>: the function to call when we know the value</li>
+</ul></div></div>
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">SetAssociativeIntArrayValue</b> ( string <span class="bold arg">variableName</span>, string <span class="bold arg">key</span>, long <span class="bold arg">value</span> );</h3>
+<div class="comments"><ul>
+<li>set the value of global int variableName[key]</li>
+<li><span class="bold arg">variableName</span>: the name of the global int array to set a value in</li>
+<li><span class="bold arg">key</span>: the key of the associative array for which to set the value</li>
+<li><span class="bold arg">value</span>: the value to assign to this key on this array. this is a long because ChucK ints are 64 bit integers</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">GetAssociativeIntArrayValue</b> ( string <span class="bold arg">variableName</span>, string <span class="bold arg">key</span>, Chuck.IntCallback <span class="bold arg">callback</span> );</h3>
+<div class="comments"><ul>
+<li>eventually call the callback with the value of global int variableName[key]</li>
+<li><span class="bold arg">variableName</span>: the name of the global int array to get a value from</li>
+<li><span class="bold arg">key</span>: the key of the associative array for which to get the value</li>
+<li><span class="bold arg">callback</span>: the function to call when we know the value</li>
+</ul></div></div>
+
+
+
+
+
+
+<!-- Global float arrays -->
+<br /><h2 id="globalfloatarrays" class="greentext">Global Float Arrays</h2>
+<p>See <a href="#globalints">Global Ints</a> above for an example of how to get and 
+set global variables. Note that "associative array" is ChucK's version of a 
+dictionary with string keys mapping to values (see 
+<a href="http://chuck.cs.princeton.edu/doc/language/array.html" target="_blank">ChucK documentation</a>).</p>
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">SetFloatArray</b> ( string <span class="bold arg">variableName</span>, double[] <span class="bold arg">values</span> );</h3>
+<div class="comments"><ul>
+<li>set all values at once of global float variableName[]</li>
+<li><span class="bold arg">variableName</span>: the name of the global float array to set</li>
+<li><span class="bold arg">value</span>: the values to assign to this array. these are doubles because ChucK floats are 64-bit</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">GetFloatArray</b> ( string <span class="bold arg">variableName</span>, Chuck.FloatArrayCallback <span class="bold arg">callback</span> );</h3>
+<div class="comments"><ul>
+<li>eventually call the callback with the value of global float variableName[]</li>
+<li><span class="bold arg">variableName</span>: the name of the global float array to get</li>
+<li><span class="bold arg">callback</span>: the function to call when we know the value</li>
+</ul></div></div>
+
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+Chuck.FloatArrayCallback <b class="name">CreateGetFloatArrayCallback</b> ( Action< double[], ulong > <span class="bold arg">callbackFunction</span> );</h3>
+<div class="comments"><ul>
+<li>constructs the callback necessary for GetFloatArray. you should store this callback yourself to avoid it being garbage collected</li>
+<li><span class="bold arg">callbackFunction</span>: the function to call when ChucK has the value of your GetFloatArray operation. this is a function that has two arguments, a double array (the values) and an unsigned long (the number of values)</li>
+</ul></div></div>
+
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">SetFloatArrayValue</b> ( string <span class="bold arg">variableName</span>, uint <span class="bold arg">index</span>, double <span class="bold arg">value</span> );</h3>
+<div class="comments"><ul>
+<li>set the value of global float variableName[index]</li>
+<li><span class="bold arg">variableName</span>: the name of the global float array to set a value in</li>
+<li><span class="bold arg">index</span>: the index of the array at which to set the value</li>
+<li><span class="bold arg">value</span>: the value to assign to this index on this array. this is a double because ChucK floats are 64-bit</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">GetFloatArrayValue</b> ( string <span class="bold arg">variableName</span>, uint <span class="bold arg">index</span>, Chuck.FloatCallback <span class="bold arg">callback</span> );</h3>
+<div class="comments"><ul>
+<li>eventually call the callback with the value of global float variableName[index]</li>
+<li><span class="bold arg">variableName</span>: the name of the global float array to get a value from</li>
+<li><span class="bold arg">index</span>: the index of the array at which to get the value</li>
+<li><span class="bold arg">callback</span>: the function to call when we know the value</li>
+</ul></div></div>
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">SetAssociativeFloatArrayValue</b> ( string <span class="bold arg">variableName</span>, string <span class="bold arg">key</span>, double <span class="bold arg">value</span> );</h3>
+<div class="comments"><ul>
+<li>set the value of global float variableName[key]</li>
+<li><span class="bold arg">variableName</span>: the name of the global float array to set a value in</li>
+<li><span class="bold arg">key</span>: the key of the associative array for which to set the value</li>
+<li><span class="bold arg">value</span>: the value to assign to this key on this array. this is a double because ChucK floats are 64-bit</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">GetAssociativeFloatArrayValue</b> ( string <span class="bold arg">variableName</span>, string <span class="bold arg">key</span>, Chuck.FloatCallback <span class="bold arg">callback</span> );</h3>
+<div class="comments"><ul>
+<li>eventually call the callback with the value of global float variableName[key]</li>
+<li><span class="bold arg">variableName</span>: the name of the global float array to get a value from</li>
+<li><span class="bold arg">key</span>: the key of the associative array for which to get the value</li>
+<li><span class="bold arg">callback</span>: the function to call when we know the value</li>
+</ul></div></div>
+
+
+
+
+<br /><h2 id="uniquevariablename" class="greentext">Unique Variables</h2>
+<p>You might want many copies running of a script that needs a global variable
+for communication between ChucK and Unity, but they all should not be referring
+to the same global variable. In this case, you should determine the name of
+each script's global variable at runtime.</p>
+
+<pre data-line="2,7,9-12" class="line-numbers"><code class="language-csharp">ChuckSubInstance myChuck;
+string myGlobalVariableName;
+
+void Start()
+{
+    myChuck = GetComponent&lt;ChuckSubInstance&gt;();
+    myGlobalVariableName = myChuck.<span class="bold">GetUniqueVariableName</span>();
+
+    myChuck.RunCode( <span class="bold">string.Format</span>( @"
+        global int <span class="bold">{0}</span>;
+        // ...
+    ", <span class="bold">myGlobalVariableName</span> ) );
+}</code></pre>
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+bool <b class="name">GetUniqueVariableName</b> ( string <span class="bold arg">prefix</span> = "v" );</h3>
+<div class="comments"><ul>
+<li>returns a string which is guaranteed not to be the name of a variable already returned by this function.
+use this function to generate names for global variables for scripts that are run many times, since
+global variables are shared by all scripts running on a VM</li>
+<li><span class="bold arg">prefix</span>: the variable name will start with this string, and end in a number. 
+if you don't specify a prefix, then "v" is used. choosing a prefix is mostly useful for debugging purposes</li>
+</ul></div></div>
+
+
+
+<br /><h2 id="specifictomain" class="greentext">Specific to ChuckMainInstance</h2>
+<p>A ChuckMainInstance has one setting: the microphone used as input to its ChucK VM.</p>
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[value]</a>:
+string <b class="name">microphoneIdentifier</b></h3>
+<div class="comments"><ul>
+<li>this ChuckMainInstance will use the first microphone whose name contains this string. if this is not specified,
+your system's default microphone is used</li>
+</ul></div></div>
+
+
+<br /><h2 id="specifictosub" class="greentext">Specific to ChuckSubInstance</h2>
+<p>A ChuckSubInstance has two parameters for setting itself up. See the <a href="../tutorials#setup">initial setup
+tutorial</a> and the <a href="../tutorials#spatialization">spatialization tutorial</a>.</p>
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[value]</a>:
+ChuckMainInstance <b class="name">chuckMainInstance</b></h3>
+<div class="comments"><ul>
+<li>all ChuckSubInstances must have a reference to a ChuckMainInstance, with which they share a VM and
+a set of global variables. if this is not specified, then Chunity will look for a ChuckMainInstance with a TheChuck
+component attached. if that also fails, then your ChuckSubInstance will not work</li>
+</ul></div></div>
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[value]</a>:
+bool <b class="name">spatialize</b></h3>
+<div class="comments"><ul>
+<li>if this bool is true, then the ChuckSubInstance will be spatialized to the location of its GameObject. if this
+bool is false, then the ChuckSubInstance will not be spatialized and will be delivered directly to your audio output</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+void <b class="name">SetRunning</b> ( bool <span class="bold arg">r</span> );</h3>
+<div class="comments"><ul>
+<li>set whether the ChuckSubInstance is currently outputting sound</li>
+</ul></div></div>
+
+</div>
+
+
+
+<!--- end ChuckMain/SubInstance --->
+<br />
+<hr width="40%">
+<br />
+
+
+<h1 id="thechuck"><strong>TheChuck</strong></h1>
+<p>If you add a <span class="bold">TheChuck</span> component to a game object
+with a <span class="bold">ChuckMainInstance</span> component, then you will
+not need to set the <span class="bold">chuckMainInstance</span> field of any new 
+<span class="bold">ChuckSubInstances</span> you spawn; they will instead refer
+to the game object that has a <span class="bold">TheChuck</span> attached.</p>
+
+<img class="tutorialimg" src="../images/docs/thechuck.png" width=500 />
+
+
+<br />
+<hr width="40%">
+<br />
+
+
+<h1 id="helpercomponents"><strong>Helper Components</strong></h1>
+<p>
+These components can be used by adding them to a GameObject at runtime.
+They are useful for dealing with global ChucK variables without having
+to write callbacks that are called from the audio thread.</p>
+
+<!-- TODO add an example -->
+
+<br /><h2 id="chuckeventlistener" class="greentext">ChuckEventListener</h2>
+<p>ChuckEventListener is a helper component that makes it easier to write programs
+like the example in <a href="#globalevents">Global Events</a>.</p>
+
+<pre data-line="2,22-26" class="line-numbers"><code class="language-csharp">ChuckSubInstance myChuck;
+ChuckEventListener myEventListener;
+
+void Start()
+{
+    myChuck = GetComponent&lt;ChuckSubInstance&gt;();
+    myChuck.RunCode( @"
+        global Event startNotifying;
+        global Event notifier;
+
+        startNotifying => now;
+        while( true )
+        {
+            notifier.broadcast();
+            250::ms => now;
+        }
+    " );
+    
+    // call BroadcastEvent to trigger startNotifying
+    myChuck.BroadcastEvent( "startNotifying" );
+
+    // create an EventListener to call my callback
+    myEventListener = gameObject.AddComponent&lt;ChuckEventListener&gt;();
+
+    // call my callback every time notifier broadcasts
+    myEventListener.<span class="bold">ListenForEvent</span>( myChuck, "notifier", MyEventReaction );
+}
+
+// this function will be called from the Update() thread
+void MyEventReaction()
+{
+    // Do something in Unity
+    transform.Rotate( ... );
+}</code></pre>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+void <b class="name">ListenForEvent</b> ( ChuckSubInstance <span class="bold arg">chuck</span>, string <span class="bold arg">eventToListenFor</span>, Action <span class="bold arg">callback</span> );</h3>
+<div class="comments"><ul>
+<li>start checking <span class="bold arg">chuck</span> for global Event <span class="bold arg">eventToListenFor</span> 
+so that <span class="bold arg">callback</span> will be called during Update() whenever 
+<span class="bold arg">eventToListenFor</span> broadcasts</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+void <b class="name">StopListening</b> ();</h3>
+<div class="comments"><ul>
+<li>stops calling the callback that was previously set up with <span class="bold arg">ListenForEvent</span> on this component</li>
+</ul></div></div>
+
+
+
+<br /><h2 id="chuckintsyncer" class="greentext">ChuckIntSyncer</h2>
+
+<p>ChuckIntSyncer is a helper component that makes it easier to write programs
+like the example in <a href="#globalints">Global Ints</a>.</p>
+
+<pre data-line="2,11-15,21" class="line-numbers"><code class="language-csharp">ChuckSubInstance myChuck;
+ChuckIntSyncer myIntSyncer;
+
+void Start()
+{
+    myChuck = GetComponent&lt;ChuckSubInstance&gt;();
+    myChuck.RunCode( @"
+        global int myGlobalInt;
+        // ...
+    " );
+    // create a callback to use with GetInt in Update()
+    myIntSyncer = gameObject.AddComponent&lt;ChuckIntSyncer&gt;();
+
+    // start syncing
+    myIntSyncer.<span class="bold">SyncInt</span>( myChuck, "myGlobalInt" );
+}
+
+void Update()
+{
+    // get the most recently synced value
+    Debug.Log( myIntSyncer.<span class="bold">GetCurrentValue</span>() );
+}</code></pre>
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+void <b class="name">SyncInt</b> ( ChuckSubInstance <span class="bold arg">chuck</span>, string <span class="bold arg">intToSync</span> );</h3>
+<div class="comments"><ul>
+<li>start checking <span class="bold arg">chuck</span> for global int <span class="bold arg">intToSync</span> 
+so that later, you can get its value whenever you want</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+void <b class="name">StopSyncing</b> ();</h3>
+<div class="comments"><ul>
+<li>stops syncing the int that was previously set up with <span class="bold arg">SyncInt</span> on this component</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+int <b class="name">GetCurrentValue</b> ();</h3>
+<div class="comments"><ul>
+<li>returns the most recently fetched value for your synced int</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+void <b class="name">SetNewValue</b> ( int <span class="bold arg">newValue</span> );</h3>
+<div class="comments"><ul>
+<li>sets the value of the currently syncing int to <span class="bold arg">newValue</span></li>
+</ul></div></div>
+
+
+
+<br /><h2 id="chuckfloatsyncer" class="greentext">ChuckFloatSyncer</h2>
+<p>See <a href="#chuckintsyncer">ChuckIntSyncer</a> above for an example of how to use this component.</p>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+void <b class="name">SyncFloat</b> ( ChuckSubInstance <span class="bold arg">chuck</span>, string <span class="bold arg">floatToSync</span> );</h3>
+<div class="comments"><ul>
+<li>start checking <span class="bold arg">chuck</span> for global float <span class="bold arg">floatToSync</span> 
+so that later, you can get its value whenever you want</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+void <b class="name">StopSyncing</b> ();</h3>
+<div class="comments"><ul>
+<li>stops syncing the float that was previously set up with <span class="bold arg">SyncFloat</span> on this component</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+float <b class="name">GetCurrentValue</b> ();</h3>
+<div class="comments"><ul>
+<li>returns the most recently fetched value for your synced float</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+void <b class="name">SetNewValue</b> ( float <span class="bold arg">newValue</span> );</h3>
+<div class="comments"><ul>
+<li>sets the value of the currently syncing float to <span class="bold arg">newValue</span></li>
+</ul></div></div>
+
+
+
+<br /><h2 id="chuckstringsyncer" class="greentext">ChuckStringSyncer</h2>
+<p>See <a href="#chuckintsyncer">ChuckIntSyncer</a> above for an example of how to use this component.</p>
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+void <b class="name">SyncString</b> ( ChuckSubInstance <span class="bold arg">chuck</span>, string <span class="bold arg">stringToSync</span> );</h3>
+<div class="comments"><ul>
+<li>start checking <span class="bold arg">chuck</span> for global string <span class="bold arg">stringToSync</span> 
+so that later, you can get its value whenever you want</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+void <b class="name">StopSyncing</b> ();</h3>
+<div class="comments"><ul>
+<li>stops syncing the string that was previously set up with <span class="bold arg">SyncString</span> on this component</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+string <b class="name">GetCurrentValue</b> ();</h3>
+<div class="comments"><ul>
+<li>returns the most recently fetched value for your synced string</li>
+</ul></div></div>
+
+
+<div class="export">
+<h3 class="function-name"><a class="heading" name="fabs">[function]</a>:
+void <b class="name">SetNewValue</b> ( string <span class="bold arg">newValue</span> );</h3>
+<div class="comments"><ul>
+<li>sets the value of the currently syncing string to <span class="bold arg">newValue</span></li>
+</ul></div></div>
+
+
+
+
+
+
+<!-- chuck-nav -->
+<center>
+<br /><hr width="40%"><br /><br />
+<table><tbody>
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tbody><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  (up): <a href="..">chunity</a> <!-- | (next): <a href="">next link</a> &gt;  -->
+	</div>
+	</center>  
+	</td></tr></tbody></table>
+
+</div>
+</center>
+</td></tr>
+</center>
+
+<!-- chuck-footer -->
+
+<tr><td>
+<div id="chuck_footer">
+<center>
+<hr width="15%">
+<a href="http://chuck.stanford.edu/">chuck</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://ccrma.stanford.edu/">ccrma</a>
+
+</center>
+</div>
+</td></tr>
+</tbody></table>
+
+</center>
+</td></tr></tbody></table>
+
+
+</center></td></tr></tbody></table></center>
+<script src="../js/prism.js"></script>
+</body></html>

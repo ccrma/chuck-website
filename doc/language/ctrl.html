@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC 
+"-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>ChucK - [Language Specification : Control Structures]</title>
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<center>
+
+<!-- all in a big fat table-->
+
+<table id="page_layout" border="0" width="640">
+
+<!-- heading row-->
+
+<tr><td>
+<div id="chuck_header">
+<center>
+<h1>
+<strong>ChucK</strong> : Language Specification &gt; Control Structures
+</h1>
+
+<table border="0">
+<tr><td>
+  	<div id="chuck_revision">
+	version: 1.4.x.x (numchucks)
+  	</div>
+  	
+</td></tr>
+</table>
+
+<hr width="20%" />
+</center>
+</div>
+</td></tr>
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  &lt; (prev): <a href="oper.html">operators</a> | (up): <a href="./">language specification</a> | (next): <a href="time.html">manipulating time</a> &gt; 
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+
+
+<!-- lang specification section -->
+<tr><td>
+<div id="chuck_body">
+
+<div id="lang_topic_body">
+
+<h1><strong>Control Structures</strong></h1>
+<p>
+ChucK includes standard control structures similar to those in most programming languages. 
+A condition (of type 'int') is evaluated and then a proceeding block is potentially executed.
+Blocks are separated either by semicolons or by curly brackets {}. 
+</p>
+
+<!-- index of code exmaples -->
+<div class="lang_code_ref">
+<a href="../examples/index.html#ctrl">View sample code</a> for control structures
+</div>
+
+<!-- body of each sub topic -->
+
+<a name="if"> </a>
+<div class="lang_subtopic_body">
+<h2><strong>if / else</strong></h2>
+
+<p>The if statement executes a block if the condition is evaluated as non-zero.</p>
+<pre>
+if( condition )
+{
+    // insert code here
+}
+</pre>
+
+In the above code, <font face="courier">condition</font> is any expression that evaluates to an
+<font face="couirer">int</font>.
+
+<p>The else statement can be put after the if block to handle the case where the condition evaluates to 0.</p>
+
+<pre>
+if( condition )
+{
+    // your code here
+}
+else
+{
+    // your other code here
+}
+</pre>
+
+<p>If statements can be nested.</p>
+
+</div>
+
+<!-- additional sub topic sections go here... -->
+
+
+<a name="while"> </a>
+<div class="lang_subtopic_body">
+<h2><strong>while</strong></h2>
+
+<p>The while statement is a loop that repeatedly executes the body as 
+long as the condition evaluates as non-zero.</p>
+
+<pre>
+// here is an infinite loop
+while( true )
+{
+    // your code loops forever!
+
+    // (sometimes this is desirable because we can create
+    // infinite time loops this way, and because we have
+    // concurrency)
+} 
+</pre>
+
+<p>The while loop will first check the condition, and executes the body 
+as long as the condition evaluates as non-zero. To execute the body of the 
+loop before checking the condition, you can use a <strong>do/while</strong>
+loop.  This guarantees that the body gets executed as least once.</p>
+
+<pre>
+do {
+    // your code executes here at least once
+} while( condition );
+</pre>
+
+A few more points:
+<ul>
+<li> while statements can be nested.
+<li> see <a href="#break">break/continue</a> for additional control over your loops
+</ul>
+
+</div>
+
+<a name="until"> </a>
+<div class="lang_subtopic_body">
+<h2><strong>until</strong></h2>
+
+<p>The until statement is the opposite of while, semantically. A until loop repeatedly executes the body <strong>until</strong> the condition evaluates as non-zero.</p>
+
+<pre>
+// an infinite loop
+until( false )
+{
+    // your great code loops forever!
+}
+</pre>
+
+<p>The while loop will first check the condition, and executes the body as long as the condition evaluates as zero.
+To execute the body of the loop before checking the condition, you can use a <strong>do/until</strong> loop.  This guarantees that
+the body gets executed as least once.</p>
+
+<pre>
+do {
+    // your code executes here at least once
+} until( condition );
+</pre>
+
+A few more points:
+<ul>
+<li> until statements can be nested.
+<li> see <a href="#break">break/continue</a> for additional control over your loops
+</ul>
+
+</div>
+
+
+<a name="for"> </a>
+<div class="lang_subtopic_body">
+<h2><strong>for</strong></h2>
+
+<p>A loop that iterates a given number of times. A temporary variable is declared that keeps track of the current index and is evaluated and incremented at each iteration.</p>
+<pre>
+// for loop
+for( 0 => int foo; foo < 4 ; foo++ )
+{
+    // debug-print value of 'foo'
+    &lt;&lt;&lt;foo&gt;&gt;&gt;;
+}
+</pre>
+</div>
+
+<!-- body of each sub topic -->
+
+<a name="break"> </a>
+<div class="lang_subtopic_body">
+<h2><strong>break / continue</strong></h2>
+
+<p>Break allows the program flow to jump out of a loop.</p>
+<pre>
+// infinite loop
+while( 1 )
+{
+    if( condition ) 
+        break;
+}
+</pre>
+<p> Continue allows a loop to continue looping but not to execute the rest of the block for the iteration where continue was executed. </p>
+<pre>
+// another infinite loop
+while( 1 )
+{
+    // check condition
+    if( condition )
+        continue;
+
+    // some great code that may get skipped (if continue is taken)
+}
+</pre>
+
+</div>
+
+
+<!-- end subtopics ? -->
+
+</div>
+</div>
+</td></tr>
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  &lt; (prev): <a href="oper.html">operators</a> | (up): <a href="./">language specification</a> | (next): <a href="time.html">manipulating time</a> &gt; 
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+
+<!-- chuck-footer -->
+
+<tr><td>
+<div id ="chuck_footer">
+<center>
+<hr width="15%" / >
+<a href="../../">chuck</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://www.cs.princeton.edu/">cs</a> |
+<a href="http://www.music.princeton.edu/">music</a> |
+<a href="http://ccrma.stanford.edu/">ccrma</a>
+
+</center>
+</div>
+</td></tr>
+</table>
+
+</center>
+</body>
+</html>

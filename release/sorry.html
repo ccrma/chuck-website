@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>ChucK : [Sorry!]</title>
+</head>
+<body bgcolor=#ffffff text=#000000>
+<center>
+<font face=verdana size=2>
+<br />
+<font size=3><b>ChucK</b> : Sorry! </font>
+<br /><br />
+<font size=1><a href="http://chuck.cs.princeton.edu/">http://chuck.cs.princeton.edu/</a></font>
+<br /><br />
+<table width=580 border=0 cellpadding=4 cellspacing=4>
+<tr><td align=justify><font face=verdana size=2>
+
+apologies for chuck-1.2.0.0: (also see <a href="new.html">what's new!</a>)
+<br />
+<ul>
+
+
+ <li> features broken by the upgrade </li>
+ <ul>
+  <li> stdout, chout replaced by <font face="courier">&lt;&lt;&lt; &gt;&gt;&gt;</font> ( stdout shall return! )</li> 
+  <li> cast <font face="courier">(int) f</font> replaced with:  <font face="courier">f $ int</font>. <br /> Note: it is no longer necessary to cast from int to float (this is implicitly handled by the compiler) </li>
+  <li> reading the value of a UGen parameter requires a function call - <font face="courier"><br />ugen.freq() => ... </font>. </li>
+  <li> type <font face="courier">ugen</font> is now <font face="courier">UGen</font> </li>
+ </ul>
+
+
+ <li> features yet unfinished </li>
+ <ul>
+  <li>garbage collection</li> 
+  <li>static variables within classes</li> 
+  <li>access modifiers ( public | private | protected ) in class definitions </li>
+  <li>command line arguments to shreds</li>
+  <li>and much, much more!</li>
+ </ul>
+
+ <li> outright lies </li>
+ <ul>
+  <li>planned 2004 release date</li> 
+  <li>optimization</li>
+  <li>security</li>
+ </ul>
+
+</ul>
+
+
+<center>
+
+<br />
+
+</td></tr></table>
+<br />
+<font size=1>
+<hr width=15% />
+<a href="../">chuck</a>
+| <a href="http://soundlab.cs.princeton.edu/">soundlab</a>
+| <a href="http://www.cs.princeton.edu/">cs</a>
+| <a href="http://www.music.princeton.edu/">music</a>
+| <a href="http://ccrma.stanford.edu/">ccrma</a>
+<br /><br />
+</body>
+</html>

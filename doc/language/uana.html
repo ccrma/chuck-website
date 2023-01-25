@@ -1,0 +1,611 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <title>ChucK - [Language Specification : UAna]</title>
+
+
+  <link rel="stylesheet" type="text/css" href="../../style_uana.css" />
+
+</head>
+
+
+<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">
+
+<center><!-- all in a big fat table-->
+<table id="page_layout" border="0" width="640">
+
+<!-- heading row--><tbody>
+
+    <tr>
+
+      <td>
+      <div id="chuck_header">
+      <center>
+      <h1><strong>ChucK</strong>
+: Language Specification &gt;
+Unit Analyzers </h1>
+
+      <table border="0">
+
+        <tbody>
+
+          <tr>
+
+            <td>
+            <div id="chuck_revision">version: 1.4.x.x (numchucks)</div>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+      <hr width="20%" /></center>
+
+      </div>
+
+      </td>
+
+    </tr>
+
+<!-- navigation bar --><tr>
+
+      <td>
+      <center>
+      <div class="chuck_nav">
+      <table border="0">
+
+        <tbody>
+
+          <tr>
+
+            <td>
+            <center>
+            <div class="chuck_nav_bar"> &lt; (prev): <a href="ugen.html">unit generators </a> | (up): <a href="./">language specification</a> | (next): <a href="event.html">events</a> &gt; </div>
+
+            </center>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+      </div>
+
+      </center>
+
+      </td>
+
+    </tr>
+
+<!-- lang specification section --><tr>
+
+      <td>
+      <div id="chuck_body">
+      <div id="lang_topic_body">
+      <h1><strong>Unit
+Analyzers</strong></h1>
+
+      <p>Unit Analyzers (UAnae) are analyis building blocks,
+similar in
+concept to unit generators. They perform analysis functions on audio
+signals and/or metadata input, and produce metadata analysis results as
+output. Unit analyzers can be linked together and with unit generators
+to form analysis/synthesis networks. Like unit generators, several unit
+analyzers may run concurrently, each dynamically controlled at
+different rates. Because data passed between UAnae is
+not&nbsp;necessarily audio samples, and the relationship of UAna
+computation to time is fundamentally different than that of UGens
+(e.g., UAnae might compute on blocks of samples, or
+on&nbsp;metadata), the connections between UAnae have
+a&nbsp;different meaning from the connections between UGens formed
+with the ChucK operator, =&gt;. This difference is reflected in
+the&nbsp;choice of a new connection operator, the
+upChucK&nbsp;operator: =^. Another key difference between UGens and
+UAnae is that UAnae perform analysis (only) on demand, via the&nbsp;<font face="courier"><b>upchuck()</b></font>
+function (see <a href="controlling">below</a>).</p>
+
+      <p>Some more quick facts about
+ChucK unit analyzers:</p>
+
+      <ul>
+
+        <li> All ChucK unit
+analyzers are objects (not
+primitive types). (see <a href="http://chuck.cs.princeton.edu/doc/language/class.html">objects</a>)
+        </li>
+
+        <li> All ChucK unit analyzers inherit from the <font face="courier"><b>UAna</b></font> <a href="http://chuck.cs.princeton.edu/doc/program/uana_full.html#Uana">class</a>.
+        </li>
+
+        <li> The operation <font face="courier"><b>foo
+=^ yah</b></font>, where <font face="courier"><b>foo</b></font>
+and <font face="courier"><b>yah</b></font>
+are UAnae, connects <font face="courier"><b>foo</b></font>
+to&nbsp;<font face="courier"><b>yah.</b></font>
+        </li>
+
+        <li> Unit analyzer parameters and behaviors are
+controlled by
+calling / chucking to member functions over time, just like unit
+generators.</li>
+
+        <li>Analysis results are always stored in
+an object called a&nbsp;<font face="courier"><b>UAnaBlob</b></font>.
+The <font face="courier"><b>UAnaBlob</b></font>
+contains a time-stamp indicating when it was computed, and it may store
+an array of floats and/or complex values. Each UAna specifies what
+information is present in the&nbsp;<font face="courier"><b>UAnaBlob</b></font>
+it produces.</li>
+
+        <li> All unit analyzers have the function <font face="courier"><b>upchuck()</b></font>,
+which when called issues a cascade of analysis computations for the
+unit analyzer and any "upstream" unit analyzers on which its analysis
+depends. &nbsp;In the example of <font face="courier"><b>foo
+=^ yah</b></font>, &nbsp;<font face="courier"><b>yah.upchuck()</b></font>
+will result in&nbsp;<font face="courier"><b>foo</b></font>
+first performing its analysis (possibly requesting analysis results
+from unit analyzers further upstream), then&nbsp;<font face="courier"><b>yah</b></font>,
+using&nbsp;<font face="courier"><b>foo</b></font>'s
+analysis results in its computation.&nbsp;<font face="courier"><b>upchuck()</b></font>&nbsp;returns
+the
+analysis results in the form of a&nbsp;<font face="courier"><b>UAnaBlob</b></font>.</li>
+
+        <li>Unit analyzers are specially integrated into the
+virtual machine such that each unit analyzer performs its analysis on
+its input&nbsp;whenever it or a downstream UAna is&nbsp;<font face="courier"><b>upchuck()</b></font>-ed.
+Therefore, we have the
+ability to assert control over the analysis process at any point
+in time and at any desired control rate.</li>
+
+      </ul>
+
+<!-- link to built-in ugen documentation -->
+      <div class="lang_code_ref"><a href="http://chuck.cs.princeton.edu/doc/program/uana.html">View
+a list</a> of ChucK's built-in unit analyzer classes </div>
+
+<!-- index of code exmaples -->
+      <div class="lang_code_ref"><a href="http://chuck.cs.princeton.edu/doc/examples/index.html#uana">View
+sample code</a> for unit analyzers </div>
+
+<!-- body of each sub topic -->
+      <div class="lang_subtopic_body"><a name="declaring"></a>
+      <h2><strong>declaring</strong></h2>
+
+      <p>Unit analyzers (UAnae) are objects, and they need to be
+instantiated before they can be used.
+We declare unit analyzers the same way we declare UGens and other <a href="http://chuck.cs.princeton.edu/doc/language/class.html#new">objects</a>.</p>
+
+      <pre> // instantiate an FFT, assign reference to variable f<br /> FFT f;<br /></pre>
+
+      </div>
+
+<!-- additional sub topic sections go here... -->
+      <div class="lang_subtopic_body"><a name="connecting"></a>
+      <h2><strong>connecting</strong></h2>
+
+      <p>The upChucK operator (=^) is only meaningful for unit
+analyzers. Similar to the behavior of the ChucK operator between UGens,
+using =^ to connect one UAna to another connects the analysis results
+of the first to the analysis input of the second.&nbsp; </p>
+
+      <pre> // instantiate FFT and flux objects, <br /> // connect to allow computation of spectrum and spectral flux on adc input<br /> adc =&gt; FFT fft =^ Flux flux =&gt; blackhole;<br /></pre>
+
+      <p>Note that the last UAna in any chain must be chucked to
+the <font face="courier"><b>blackhole</b></font>
+or&nbsp;<font face="courier"><b>dac</b></font>
+to "pull" audio samples from the&nbsp;<font face="courier"><b>adc</b></font>
+or other unit generators upstream.</p>
+
+      <p>It
+is also possible to linearly chain many UAnae together in a single
+statement. In the example below, the&nbsp;<br />
+
+analysis of&nbsp;<font face="courier"><b>flux_capacitor</b></font>
+depends on the
+results of&nbsp;<font face="courier"><b>flux</b></font>,
+so the <font face="courier"><b>flux</b></font>
+object will always perform its analysis computation before the
+computation of&nbsp;<font face="courier"><b>flux_capacitor</b></font>.</p>
+
+      <pre> // Set up analysis on adc, via an FFT object, a spectral flux object, and a<br /> // made-up object called a FluxCapacitor that operates on the flux value.<br /> adc =&gt; FFT f =^ Flux flux =^ FluxCapacitor flux_capacitor =&gt; blackhole;<br /></pre>
+
+      <p>Very
+importantly, it is possible to create connection networks containing
+both UAane and
+UGens. In the example below, an FFT transforms two (added) sinusoidal
+inputs, one of which has reverb added. An IFFT transforms the spectrum
+back into the time domain, and the result is processed with a third
+sinusoid by a gain object before being played through the&nbsp;<font face="courier"><b>dac</b></font>.
+(No, this example is not supposed to do anything musically interesting,
+only help you get a feel for the syntax. Notice that any connection
+through which audio samples are passed is denoted with the&nbsp;<font face="courier"><b>=&gt;</b></font>
+operator, and the connection through which spectral data is passed
+(from the FFT to the IFFT) is denoted with the&nbsp;<font face="courier"><b>=^</b></font> operator.</p>
+
+      <pre> //Chain a sine into a reverb, then perform FFT, then IFFT, then apply gain, then output<br /> SinOsc s =&gt; JCRev r =&gt; FFT f =^ IFFT i =&gt; Gain g =&gt; dac;<br /> // Chuck a second sine into the FFT<br /> SinOsc s2 =&gt; f;<br /> // Chuck a third sine into the final gain<br /> SinOsc s3 =&gt; g;<br /></pre>
+
+      <p><font face="courier"><b>FFT</b></font>,
+      <font face="courier"><b>IFFT</b></font>,
+and other UAnae that perform transforms between the audio domain
+and another domain play a special role, as illustrated above.&nbsp;<font face="courier"><b>FFT</b></font> takes
+audio samples as input, so unit generators connect to it with the ChucK
+operator&nbsp;<font face="courier"><b>=&gt;</b></font>.
+However, it outputs analysis results in the
+spectral domain, so it connects to other UAnae with the upChucK
+operator&nbsp;<font face="courier"><b>=^</b></font>.
+Conversely, UAnae producing spectral domain output connect
+to the <font face="courier"><b>IFFT</b></font>
+using&nbsp;<font face="courier"><b>=^</b></font>,
+and <font face="courier"><b>IFFT</b></font>
+can connect to the <font face="courier"><b>dac</b></font>
+or other UGens
+using&nbsp;<font face="courier"><b>=&gt;</b></font>.
+This syntax allows the programmer to clearly reason
+about the expected behavior of an analysis/synthesis network, while it
+hides the internal mechanics of ChucK timing and sample buffering from
+the programmer.</p>
+
+      <p>Finally, just
+as with unit generators, it
+is&nbsp;possible to dynamically disconnect unit analyzers, using
+the
+UnChucK operator (<font face="courier"><b>=&lt;</b></font>
+or <font face="courier"><b>!=&gt;</b></font>).</p>
+
+      </div>
+
+      <div class="lang_subtopic_body"><a name="controlling"></a>
+      <h2><strong>controlling
+(over time)</strong></h2>
+
+      <p>In any
+ChucK program, it is necessary to advance time in order to pull audio
+samples through the UGen network and create sound. Additionally, it is
+necessary to trigger analysis computations explicitly in order for any
+analysis to be performed, and for sound synthesis that depends on
+analysis results (e.g., IFFT) to be performed. To explicitly trigger
+computation at a point in time, the UAna's <font face="courier"><b>upchuck()</b></font>
+member function is called. In
+the example below, an FFT computation is triggered every 1024 samples. <br />
+
+      </p>
+
+      <pre> adc =&gt; FFT fft =&gt; dac;<br /> // set the FFT to be of of size 2048 samples<br /> 2048 =&gt; fft.size;<br /><br /> while (true) {<br />	// let 1024 samples pass<br /> 1024::samp =&gt; now;<br />	// trigger the FFT computation on the last 2048 samples (the FFT size)<br /> fft.upchuck();<br /> }</pre>
+
+      <p>In the example above, because the
+FFT size is 2048 samples, the while-loop causes a standard
+"sliding-window" FFT to be computed, where the hop size is equal to
+half
+a
+window. However, ChucK allows you to perform analysis using
+nonstandard,
+dynamically set, or even multiple hop sizes with the same object. For
+example, in the code below, the&nbsp;<font face="courier"><b>FFT</b></font>
+object&nbsp;<font face="courier"><b>fft</b></font>
+performs
+computation every 5 seconds as triggered by <font face="courier"><b>shred1</b></font>,
+and it additionally performs computation at a variable rate as
+triggered by&nbsp;<font face="courier"><b>shred2</b></font>.<br />
+
+      </p>
+
+      <pre> adc =&gt; FFT fft =&gt; dac;<br /> 2048 =&gt; fft.size;<br /><br /> // spork two shreds: shred1 and shred2<br /> spork ~shred1();<br /> spork ~shred2(); <br /> <br /> // shred1 computes FFT every 5 seconds<br /> fun void shred1() {<br />	while (true) {<br />	5::second =&gt; now;<br />	fft.upchuck();<br />	}<br /> }<br /><br /> // shred2 computes FFT every n seconds, where n is a random number between 1 and 10<br /> fun void shred2() {<br />	while (true) {<br />	Std.rand2f(1, 10)::second =&gt; now;<br />	fft.upchuck();<br />	}<br /> }</pre>
+
+      <p>Parameters of unit analyzers may be controlled and
+altered at any point in time and at any control rate. We only have to
+assert control at the appropriate points as we move through time,
+by setting various parameters of the unit analyzer. To set the a value
+for a parameter of a UAna, a value of the proper type should
+be ChucKed to the corresponding control function.</p>
+
+      <pre> // connect the input to an FFT<br /> adc =&gt; FFT fft =&gt; blackhole;<br /><br /> //start with a size of 1024 and a Blackman-Harris window<br /> 1024 =&gt; fft.size;<br /> Windowing.blackmanHarris(512) =&gt; fft.window;<br /><br /> //advance time and compute FFT<br /> 1::minute =&gt; now;<br /> fft.upchuck();<br /><br /> // change window to Hamming<br /> Windowing.hamming(512) =&gt; fft.window;<br /><br /> // let time pass... and carry on.</pre>
+
+      <p>Since
+the control functions are member functions of the unit analyzer, the
+above syntax is equilavent to calling functions. For example, the line
+below could alternatively be used to change the FFT window to a Hamming
+window, as above.</p>
+
+      <pre> fft.window(Windowing.hamming(512));<br /></pre>
+
+      <p>For
+a list of unit analyzers and their control methods, consult <a href="http://chuck.cs.princeton.edu/doc/program/uana.html">UAna
+reference</a>.</p>
+
+      <p>Just like unit generators, to read the current value of
+certain parameters of a Uana, we may call an overloaded function of the
+same
+name. Additionally, assignments can be chained together when assigning
+one value to multiple targets.</p>
+
+      <pre> // connect adc to FFT<br /> adc =&gt; FFT fft =&gt; blackhole;<br /><br /> // store the current value of the FFT size<br /> fft.size() =&gt; int fft_size;</pre>
+
+      <p>What if a UAna that performs analysis on a group of
+audio
+samples is&nbsp;<font face="courier"><b>upchuck()</b></font>-ed
+before its internal buffer is filled? This is
+possible if an FFT of size 1024 is instantiated, then&nbsp;<font face="courier"><b>upchuck()</b></font>-ed
+after
+only 1000 samples, for example. In this case, the empty buffer slots
+are treated as 0's (that is, zero-padding is applied). This same
+behavior will occur if the FFT object's size is increased from 1024 to
+2048, and then only 1023 samples pass after this change is applied; the
+last sample in the new (larger) buffer will be 0. Keep in mind, then,
+that certain analysis computations near the beginning of time and
+analysis computations after certain parameters have changed will
+logically involve a short "transient" period.</p>
+
+      <pre> // connect adc to FFT to blackhole<br /> adc =&gt; FFT fft =&gt; blackhole;<br /> // set the FFT size to 1024 samples<br /> 1024 =&gt; fft.size;<br /><br /> // allow 1000 samples to pass<br /> 1000::samp =&gt; now;<br /><br /> // compute the FFT: the last 24 spots in the FFT buffer haven't been filled, so they are zero-ed out<br /> // the computation is nevertheless valid and proceeds.<br /> fft.upchuck(); <br /> <br /> 1::minute =&gt; now; // let time pass for a while<br /><br /> // increase the size of the FFT, and therefore the size of the sample buffer it uses<br /> 2048 =&gt; fft.size;<br /><br /> // let 1023 samples pass <br /> 1023::samp =&gt; now;<br /><br /> // at this point, only 2047 of the 2048 buffer spots have been filled<br /> // the following computation therefore zeros out the last audio buffer spot<br /> fft.upchuck();<br /><br /> 1::minute =&gt; now; //let time pass for a while<br /><br /> // now the buffer is happy and full<br /> fft.upchuck(); // proceeds normally on a full buffer</pre>
+
+      </div>
+
+      <div class="lang_subtopic_body"><a name="representing_metadata"></a>
+      <h2><strong>representing metadata: the <span style="font-family: Courier New,Courier,monospace;">UAnaBlob</span></strong></h2>
+
+It is great to be able to trigger analysis computations like we've been
+doing above, but what if you want to actually <span style="font-style: italic;">use</span>
+the analysis results? Luckily, calling the <font face="courier"><b>upchuck()</b></font>
+function on a UAna
+returns a reference to an object
+that stores the results of any UAna analysis, called a&nbsp;<font face="courier"><b>UanaBlob</b></font>.&nbsp;<font face="courier"><b>UanaBlob</b></font>s can
+contain an array of floats, and/or an array of complex
+numbers (see the next section). The meaning and formatting of
+the&nbsp;<font face="courier"><b>UanaBlob</b></font>
+fields is different for each UAna subtype.&nbsp;<font face="courier"><b>FFT</b></font>, for
+example
+(see <a href="http://chuck.cs.princeton.edu/doc/program/uana_full.html#FFT">specification</a>),
+fills in the complex array with the spectrum and
+the floating point array with the magnitude spectrum. Additionally,
+all&nbsp;<font face="courier"><b>UanaBlob</b></font>s
+store the time when the blob was last computed.<br />
+
+      <br />
+
+The example below demonstrates how one might access the results of an
+FFT:<br />
+
+      <pre> adc =&gt; FFT fft =&gt; blackhole;<br /> // ... set FFT parameters here ...<br /><br /> UAnaBlob blob;<br /><br /> while (true) {<br /> 500::ms =&gt; now; // use hop size of 50 ms<br />	fft.upchuck() @=&gt; blob; // store the result in blob.<br />	blob.fvals() @=&gt; float mag_spec[]; // get the magnitude spectrum as float array<br />	blob.cvals() @=&gt; complex spec[]; // get the whole spectrum as complex array<br />	mag_spec[0] =&gt; float first_mag; // get the first bin of the magnitude spectrum<br />	blob.fval(0) =&gt; float first_mag2; // equivalent way to get first bin of mag spectrum<br />	fft.upchuck().fval(0) =&gt; float first_mag3; // yet another equivalent way<br />	<br />	fft.upchuck().cval(0) =&gt; complex first_spec; // similarly, get 1st spectrum bin<br /><br /> blob.when() =&gt; time when_computed; // get the time it was computed<br /> } <br /></pre>
+
+      <p>Beware: whenever a UAna is&nbsp;<font face="courier"><b>upchuck()</b></font>-ed,
+the contents of its previous&nbsp;<font face="courier"><b>UAnaBlob</b></font>
+are overwritten. In the following code, <font face="courier"><b>blob1</b></font>
+and <font face="courier"><b>blob2</b></font>
+refer to the same <font face="courier"><b>UAnaBlob</b></font>.
+When <font face="courier"><b>fft.upchuck()</b></font>
+is called the second time, the contents of the <font face="courier"><b>UAnaBlob</b></font>
+referred to by <font face="courier"><b>blob1</b></font>
+are overwritten.<br />
+
+      </p>
+
+      <pre> adc =&gt; FFT fft =&gt; blackhole;<br /><br /> UAnaBlob blob1, blob2;<br /> 1::minute =&gt; now; //let time pass for a while<br /> fft.upchuck() @=&gt; blob1; // blob1 points to the analysis results<br /> 1::minute =&gt; now; // let time pass again<br /> fft.upchuck() @=&gt; blob2; // now both blob1 and blob2 refer to the same object: the new results!</pre>
+
+Also beware: if time is not advanced between subsequent&nbsp;<font face="courier"><b>upchuck()</b></font>s
+of a UAna, any <font face="courier"><b>upchuck()</b></font>
+after the first will not re-compute the analysis, even if UAna
+parameters have been changed. After the code below,&nbsp;<font face="courier"><b>blob</b></font> refers
+to a&nbsp;<font face="courier"><b>UAnaBlob</b></font>
+that is the result of computing the first (size 1024) FFT.<br />
+
+      <pre> adc =&gt; FFT fft =&gt; blackhole;<br /> 1024 =&gt; fft.size;<br /><br /> UAnaBlob blob;<br /> 1::minute =&gt; now; //let time pass for a while<br /> fft.upchuck() @=&gt; blob; // blob holds the result of the FFT<br /> <br /> 512 =&gt; fft.size;<br /> fft.upchuck() @=&gt; blob; // time hasn't advanced since the last computation, so no re-computation is done</pre>
+
+      </div>
+
+      <div class="lang_subtopic_body"><a name="representing_complex"></a>
+      <h2><strong>representing complex data: the <span style="font-family: Courier New,Courier,monospace;">complex</span>
+and <span style="font-family: Courier New,Courier,monospace;">polar</span>
+types</strong></h2>
+
+In order to represent complex data,
+such as the output of an FFT, two
+new datatypes have been added to ChucK:&nbsp;<font face="courier"><b>complex
+      </b></font>and&nbsp;<font face="courier"><b>polar</b></font>.
+These types are described with examples <a href="http://chuck.cs.princeton.edu/doc/language/type.html#complex">here</a>.</div>
+
+      <div class="performing"><a name="performing"></a>
+      <h2><strong>performing
+analysis in UAna networks</strong></h2>
+
+Often, the computation of one UAna
+will depend on the computation
+results of "upstream" UAnae. For example, in the UAna network below,
+the spectral flux is computed using the results of an FFT.<br />
+
+      <pre> adc =&gt; FFT fft =^ Flux flux =&gt; blackhole;<br /></pre>
+
+The flow of computation in UAna
+networks is set up so that every time a
+UAna&nbsp;<font face="courier"><b>a</b></font>
+is&nbsp;<font face="courier"><b>upchuck()</b></font>-ed,
+each UAna whose output is connected to&nbsp;<font face="courier"><b>a</b></font>'s
+input via =^ is&nbsp;<font face="courier"><b>upchuck()</b></font>-ed
+first, passing the results to&nbsp;<font face="courier"><b>a</b></font>
+for it to use. For example, a call to <font face="courier"><b>flux.upchuck()</b></font>
+will first force&nbsp;<font face="courier"><b>fft</b></font>
+to compute an FFT on the audio samples in its
+buffer, then&nbsp;<font face="courier"><b>flux</b></font>
+will use the <span style="font-family: courier;"><span style="font-weight: bold;">UanaBlob</span></span>
+from&nbsp;<font face="courier"><b>fft</b></font>
+to compute the spectral flux. This
+flow of computation is handled internally by ChucK; you should
+understand the flow of control, but you don't need to do <font face="courier"><b>fft.upchuck()</b></font>
+explicitly. Just writing code like that below will do the trick:<br />
+
+      <pre> adc =&gt; FFT fft =^ Flux flux =&gt; blackhole;<br /> UAnaBlob blob;<br /> while (true) {<br />	100::ms =&gt; now;<br />	flux.upchuck() @=&gt; blob; // causes fft to compute, then computes flux and stores result in blob<br /> }</pre>
+
+Additionally, each time a
+UAna&nbsp;<font face="courier"><b>upchuck()</b></font>s,
+its results are cached until time passes. This means that a UAna will
+only perform its computation once for a particular point in time.<br />
+
+      <pre> adc =&gt; FFT fft =^ Flux flux =&gt; blackhole;<br /> fft =^ Centroid c =&gt; blackhole;<br /><br /> UAnaBlob blob, blob2;<br /> while (true) {<br />	100::ms =&gt; now;<br />	flux.upchuck() @=&gt; blob; // causes fft to compute, then computes flux and stores result in blob<br /> c.upchuck() @=&gt; blob2; // uses cached fft results from previous line to compute centroid<br /> }<br /></pre>
+
+When no&nbsp;<font face="courier"><b>upchuck()</b></font>
+is performed on a UAna, or on UAnae that depend on it, it will not do
+computation. For example, in the network below, the flux is never
+computed.<br />
+
+      <pre> adc =&gt; FFT fft =^ Flux flux =&gt; blackhole;<br /> UAnaBlob blob;<br /> while (true) {<br />	100::ms =&gt; now;<br />	fft.upchuck() @=&gt; blob; // compute fft only<br /> }</pre>
+
+The combination of&nbsp; this
+"compute-on-demand" behavior and UAna
+caching means that different UAnae in a network can be&nbsp;<font face="courier"><b>upchuck()</b></font>-ed
+at various/varying control rates, with maximum efficiency. In the
+example below, the FFT, centroid, and flux are all computed at
+different rates. When the analysis times for&nbsp;<font face="courier"><b>flux</b></font>
+and&nbsp;<font face="courier"><b>fft</b></font>
+or&nbsp;<font face="courier"><b>centroid</b></font>
+and&nbsp;<font face="courier"><b>fft</b></font>
+overlap,&nbsp;<font face="courier"><b>fft</b></font>
+is computed just once due to its internal caching.
+When it is an analysis time point for&nbsp;<font face="courier"><b>fft</b></font>
+but not for&nbsp;<font face="courier"><b>flux</b></font>,&nbsp;<font face="courier"><b>flux</b></font> will
+not be computed.<br />
+
+      <pre> adc =&gt; FFT fft =^ Flux flux =&gt; blackhole;<br /> fft =^ Centroid c =&gt; blackhole;<br /> UAnaBlob blob1, blob2, blob3;<br /><br /> spork ~do_fft();<br /> spork ~do_flux();<br /> spork ~do_centroid();<br /><br /> while (true) {<br /> //Keep parent shred going<br /> 1::minute =&gt; now;<br /> }<br /><br /> fun void do_fft() {<br /> while (true) {<br /> 50::ms =&gt; now;<br /> fft.upchuck() @=&gt; blob1;<br /> }<br /> }<br /><br /> fun void do_flux() {<br /> while (true) {<br /> 110::ms =&gt; now;<br /> flux.upchuck() @=&gt; blob2;<br /> }<br /> }<br /> <br /> fun void do_centroid() {<br /> while (true) {<br /> 250::ms =&gt; now;<br /> c.upchuck() @=&gt; blob3;<br /> }<br /> }<br /><br /></pre>
+
+An easy way to synchronize analysis
+of many UAnae is to&nbsp;<font face="courier"><b>upchuck()</b></font>
+an
+"agglomerator" UAna. In the example below,&nbsp;<font face="courier"><b>agglom.upchuck()</b></font>
+triggers analysis of all upstream UAnae in the network.
+Because&nbsp;<font face="courier"><b>agglom</b></font>
+is only a member of the&nbsp;<font face="courier"><b>UAna</b></font>
+base class, it does no computation of its own. However, after&nbsp;<font face="courier"><b>agglom.upchuck()</b></font>,
+all other UAnae will have up-to-date results that are synchronized,
+computed, and cached so that they are available to be accessed
+via&nbsp;<font face="courier"><b>upchuck()</b></font>
+on each UAna (possibly by a different shred waiting for an event-- see <a href="#using_events">below</a>).<br />
+
+      <pre> adc =&gt; FFT fft =^ Flux flux =^ UAna agglom =&gt; blackhole;<br /> fft =^ Centroid centroid =^ agglom;<br /> // could add abitrarily many more UAnae that connect to agglom via =^<br /><br /> while (true) {<br /> 100::ms =&gt; now;<br />	agglom.upchuck(); // forces computation of both centroid and flux (and therefore fft, too)<br /> }</pre>
+
+Because of the dependency and caching
+behavior of&nbsp;<font face="courier"><b>upchuck()</b></font>-ing
+in UAna networks, UAna feedback loops should be used with caution. In
+the network below, each time&nbsp;<font face="courier"><b>c</b></font>
+is&nbsp;<font face="courier"><b>upchuck()</b></font>-ed,
+it forces&nbsp;<font face="courier"><b>b</b></font>
+to compute, which forces <font face="courier"><b>a</b></font>
+to compute, which then recognizes that&nbsp;<font face="courier"><b>b</b></font>
+has been traversed in this upChucK path but has not been able to
+complete its computation-- thereby recognizing a loop in the
+network.&nbsp;<font face="courier"><b>a</b></font>
+then uses&nbsp;<font face="courier"><b>b</b></font>'s
+      <span style="font-style: italic;">last computed</span>
+UAnaBlob to perform its computation. This may or may not be desirable,
+so be careful.<br />
+
+      <pre> adc =&gt; UAna a =^ UAna b =^ Uana c =&gt; blackhole;<br /> b =^ a; // creates a feedback loop<br /><br /> while (true) {<br />	100::ms =&gt; now;<br />	c.upchuck(); // involves a using b's analysis results from 100 ms ago<br /> }<br /><br /></pre>
+
+      </div>
+
+      <div class="lang_subtopic_body">Another handy UAna
+for synchronizing feature extraction is the <font face="courier"><b>FeatureCollector</b></font>. Calling
+      <font face="courier"><b>upchuck()</b></font> on a <font face="courier"><b>FeatureCollector</b></font> triggers computation of all upstream
+UAnae, and it concatenates their output blob data into a feature vector
+that can be used as input to a classifier, for example using <a href="http://smirk.cs.princeton.edu/">smirk</a>. <br />
+
+      <pre> adc =&gt; FFT fft =^ Flux flux =^ FeatureCollector fc =&gt; blackhole;<br /> fft =^ Centroid centroid =^ fc;<br /> // could add abitrarily many more UAnae that connect to fc via =^<br /><br /> while (true) {<br /> 100::ms =&gt; now;<br />	// forces computation of both centroid and flux (and therefore fft, too)<br />	// an vectorBlob's fvals and cvals will be a concatenation of the feature values<br />	fc.upchuck() @=&gt; UAnaBlob vectorBlob; <br /> }</pre>
+
+      </div>
+
+      <a name="using_events"></a><br />
+
+      <a name="using_events"></a>
+<!-- <div class="lang_subtopic_body>
+<h2><strong>using events</strong></h2>
+When a UAna is&nbsp;<font face="courier"><b>upchuck()</b></font>-ed,
+it triggers an event. In the example below, a separate shred prints the
+results of FFT whenever it is computed.<br />
+<pre> adc =&gt; FFT fft =&gt; blackhole;<br /> spork ~printer(); // spork a printing shred<br /> while (true) {<br /> 50::ms =&gt; now; // perform FFT every 50 ms<br /> fft.upchuck();<br /> }<br /><br /> printer() {<br /> UAnaBlob blob;<br /> while (true) {<br /> // wait until fft has been computed<br /> fft =&gt; now;<br /> fft.upchuck() @=&gt; blob; // get (cached) fft result<br /> for (int i = 0; i &lt; blob.fvals().cap(); i++)<br /> &lt;&lt;&lt; blob.fvals(i) &gt;&gt;&gt;;<br /> } <br /> }<br /></pre>
+</div> -->
+      <div class="lang_subtopic_body"><a name="built-in"></a>
+      <h2><strong>built-in
+unit analyzers</strong></h2>
+
+      <p>ChucK has a number of
+built-in UAna classes. These
+classes
+perform many basic transform functions (FFT, IFFT) and feature
+extraction
+methods (both spectral and time-domain features).&nbsp;A list of
+built-in ChucK unit analyzers can
+be found <a href="http://chuck.cs.princeton.edu/doc/program/uana.html">here</a>.</p>
+
+      </div>
+
+      <div class="lang_subtopic_body"><a name="creating"></a>
+      <h2><strong>creating</strong></h2>
+
+      <p>( someday soon you will be
+able to implement your own
+unit analyzers! )</p>
+
+      </div>
+
+<!-- end subtopics ? --></div>
+
+      </div>
+
+      </td>
+
+    </tr>
+
+<!-- navigation bar --><tr>
+
+      <td>
+      <center>
+      <div class="chuck_nav">
+      <table border="0">
+
+        <tbody>
+
+          <tr>
+
+            <td>
+            <center>
+            <div class="chuck_nav_bar"> &lt; (prev): <a href="ugen.html">unit generators </a> | (up): <a href="./">language specification</a> | (next): <a href="event.html">events</a> &gt; </div>
+
+            </center>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+      </div>
+
+      </center>
+
+      </td>
+
+    </tr>
+
+<!-- chuck-footer --><tr>
+
+      <td>
+      <div id="chuck_footer">
+      <center>
+      <hr width="15%" /><a href="../../">chuck</a>
+| <a href="http://soundlab.cs.princeton.edu/">soundlab</a>
+| <a href="http://www.cs.princeton.edu/">cs</a> | <a href="http://www.music.princeton.edu/">music</a> | <a href="http://ccrma.stanford.edu/">ccrma</a></center>
+
+      </div>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+</body>
+</html>

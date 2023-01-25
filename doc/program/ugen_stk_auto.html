@@ -1,0 +1,1304 @@
+
+<br />
+<a name="BiQuad"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>BiQuad</b><br />
+- STK biquad (two-pole, two-zero) filter class.<br />
+<pre>
+    This protected Filter subclass implements a
+    two-pole, two-zero digital filter.  A method
+    is provided for creating a resonance in the
+    frequency response while maintaining a constant
+    filter gain.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.b2</b> - ( float , READ/WRITE ) -  b2 coefficient<br/>
+<b>.b1</b> - ( float , READ/WRITE ) -  b1 coefficient<br/>
+<b>.b0</b> - ( float , READ/WRITE ) -  b0 coefficient<br/>
+<b>.a2</b> - ( float , READ/WRITE ) -  a2 coefficient<br/>
+<b>.a1</b> - ( float , READ/WRITE ) -  a1 coefficient<br/>
+<b>.a0</b> - ( float , READ only ) -  a0 coefficient<br/>
+<b>.pfreq</b> - ( float , WRITE only ) -  set resonance frequency (poles)<br/>
+<b>.prad</b> - ( float , WRITE only ) -  pole radius (less than 1 to be stable)<br/>
+<b>.zfreq</b> - ( float , WRITE only ) -  notch frequency<br/>
+<b>.zrad</b> - ( float , WRITE only ) -  zero radius<br/>
+<b>.norm</b> - ( float , WRITE only ) -  normalization<br/>
+<b>.eqzs</b> - ( float , WRITE only ) -  equal gain zeroes<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="BlowBotl"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>BlowBotl</b><br />
+- STK blown bottle instrument class.<br />
+-  STK blown bottle class<br />
+<pre>
+    This class implements a helmholtz resonator
+    (biquad filter) with a polynomial jet
+    excitation (a la Cook).
+
+    Control Change Numbers: 
+       - Noise Gain = 4
+       - Vibrato Frequency = 11
+       - Vibrato Gain = 1
+       - Volume = 128
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.freq</b> - ( float , READ/WRITE ) -  frequency<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="Chorus"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>Chorus</b><br />
+- STK chorus effect class.<br />
+<pre>
+    This class implements a chorus effect.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.modFreq</b> - ( float , READ/WRITE ) -  modulation frequency<br/>
+<b>.modDepth</b> - ( float , READ/WRITE ) -  modulation depth<br/>
+<b>.mix</b> - ( float , READ/WRITE ) -  effect mix<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="Delay"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>Delay</b><br />
+- STK non-interpolating delay line class.<br />
+<pre>
+    This protected Filter subclass implements
+    a non-interpolating digital delay-line.
+    A fixed maximum length of 4095 and a delay
+    of zero is set using the default constructor.
+    Alternatively, the delay and maximum length
+    can be set during instantiation with an
+    overloaded constructor.
+    
+    A non-interpolating delay line is typically
+    used in fixed delay-length applications, such
+    as for reverberation.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.delay</b> - ( dur , READ/WRITE ) -  length of delay<br/>
+<b>.max</b> - ( dur , READ/WRITE ) -  max delay (buffer size) <br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="DelayA"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>DelayA</b><br />
+- STK allpass interpolating delay line class.<br />
+<pre>
+    This Delay subclass implements a fractional-
+    length digital delay-line using a first-order
+    allpass filter.  A fixed maximum length
+    of 4095 and a delay of 0.5 is set using the
+    default constructor.  Alternatively, the
+    delay and maximum length can be set during
+    instantiation with an overloaded constructor.
+
+    An allpass filter has unity magnitude gain but
+    variable phase delay properties, making it useful
+    in achieving fractional delays without affecting
+    a signal's frequency magnitude response.  In
+    order to achieve a maximally flat phase delay
+    response, the minimum delay possible in this
+    implementation is limited to a value of 0.5.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.delay</b> - ( dur , READ/WRITE ) -  length of delay<br/>
+<b>.max</b> - ( dur , READ/WRITE ) -  max delay ( buffer size ) <br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="DelayL"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>DelayL</b><br />
+- STK linear interpolating delay line class.<br />
+<pre>
+    This Delay subclass implements a fractional-
+    length digital delay-line using first-order
+    linear interpolation.  A fixed maximum length
+    of 4095 and a delay of zero is set using the
+    default constructor.  Alternatively, the
+    delay and maximum length can be set during
+    instantiation with an overloaded constructor.
+
+    Linear interpolation is an efficient technique
+    for achieving fractional delay lengths, though
+    it does introduce high-frequency signal
+    attenuation to varying degrees depending on the
+    fractional delay setting.  The use of higher
+    order Lagrange interpolators can typically
+    improve (minimize) this attenuation characteristic.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.delay</b> - ( dur , READ/WRITE ) -  length of delay<br/>
+<b>.max</b> - ( dur , READ/WRITE ) -  max delay ( buffer size ) <br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="Echo"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>Echo</b><br />
+- STK echo effect class.<br />
+<pre>
+    This class implements a echo effect.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.delay</b> - ( dur , READ/WRITE ) -  length of echo<br/>
+<b>.max</b> - ( dur , READ/WRITE ) -  max delay<br/>
+<b>.mix</b> - ( float , READ/WRITE ) -  mix level ( wet/dry ) <br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="Envelope"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>Envelope</b><br />
+- STK envelope base class.<br />
+<pre>
+    This class implements a simple envelope
+    generator which is capable of ramping to
+    a target value by a specified \e rate.
+    It also responds to simple \e keyOn and
+    \e keyOff messages, ramping to 1.0 on
+    keyOn and to 0.0 on keyOff.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.keyOn</b> - ( int , WRITE only ) -  start envelope<br/>
+<b>.keyOff</b> - ( int , WRITE only ) - <br/>
+<b>.time</b> - ( float , WRITE only ) -  time to reach target<br/>
+<b>.rate</b> - ( float , WRITE only ) -  rate of change <br/>
+<b>.target</b> - ( float , READ/WRITE ) -  set envelope target<br/>
+<b>.value</b> - ( float , READ/WRITE ) -  set immediate value<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="ADSR"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>ADSR</b><br />
+- STK ADSR envelope class.<br />
+<pre>
+    This Envelope subclass implements a
+    traditional ADSR (Attack, Decay,
+    Sustain, Release) envelope.  It
+    responds to simple keyOn and keyOff
+    messages, keeping track of its state.
+    The \e state = ADSR::DONE after the
+    envelope value reaches 0.0 in the
+    ADSR::RELEASE state.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre>extends <b><a href="#Envelope">Envelope</a></b><br /><br />
+[ctrl param]: 
+<ul>
+
+<b>.keyOn</b> - ( int , WRITE only ) -  start the attack for non-zero values<br/>
+<b>.keyOff</b> - ( int , WRITE only ) -  start release for non-zero values<br/>
+<b>.attackTime</b> - ( float , WRITE only ) -  attack time<br/>
+<b>.attackRate</b> - ( float , READ/WRITE ) -  attack rate<br/>
+<b>.decayTime</b> - ( float , WRITE only ) -  decay time <br/>
+<b>.decayRate</b> - ( float , READ/WRITE ) -  decay rate<br/>
+<b>.sustainLevel</b> - ( float , READ/WRITE ) -  sustain level<br/>
+<b>.releaseTime</b> - ( float , WRITE only ) -  release time <br/>
+<b>.releaseRate</b> - ( float , READ/WRITE ) -  release rate<br/>
+<b>.state</b> - ( int , READ only ) -  attack=0, decay=1 , sustain=2, release=3, done=4<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="Filter"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>Filter</b><br />
+- STK filter class.<br />
+<pre>
+    This class implements a generic structure which
+    can be used to create a wide range of filters.
+    It can function independently or be subclassed
+    to provide more specific controls based on a
+    particular filter type.
+
+    In particular, this class implements the standard
+    difference equation:
+
+    a[0]*y[n] = b[0]*x[n] + ... + b[nb]*x[n-nb] -
+                a[1]*y[n-1] - ... - a[na]*y[n-na]
+
+    If a[0] is not equal to 1, the filter coeffcients
+    are normalized by a[0].
+
+    The \e gain parameter is applied at the filter
+    input and does not affect the coefficient values.
+    The default gain value is 1.0.  This structure
+    results in one extra multiply per computed sample,
+    but allows easy control of the overall filter gain.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.coefs</b> - ( string , WRITE only ) - <br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="OnePole"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>OnePole</b><br />
+- STK one-pole filter class.<br />
+<pre>
+    This protected Filter subclass implements
+    a one-pole digital filter.  A method is
+    provided for setting the pole position along
+    the real axis of the z-plane while maintaining
+    a constant peak filter gain.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.a1</b> - ( float , READ/WRITE ) -  filter coefficient<br/>
+<b>.b0</b> - ( float , READ/WRITE ) -  filter coefficient <br/>
+<b>.pole</b> - ( float , READ/WRITE ) -  set pole position along real axis of z-plane<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="TwoPole"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>TwoPole</b><br />
+- STK two-pole filter class.<br />
+<pre>
+    This protected Filter subclass implements
+    a two-pole digital filter.  A method is
+    provided for creating a resonance in the
+    frequency response while maintaining a nearly
+    constant filter gain.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.a1</b> - ( float , READ/WRITE ) -  filter coefficient<br/>
+<b>.a2</b> - ( float , READ/WRITE ) -  filter coefficient<br/>
+<b>.b0</b> - ( float , READ/WRITE ) -  filter coefficient<br/>
+<b>.freq</b> - ( float , READ/WRITE ) -  filter resonance frequency<br/>
+<b>.radius</b> - ( float , READ/WRITE ) -  filter resonance radius<br/>
+<b>.norm</b> - ( int , READ/WRITE ) -  toggle filter normalization <br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="OneZero"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>OneZero</b><br />
+- STK one-zero filter class.<br />
+<pre>
+    This protected Filter subclass implements
+    a one-zero digital filter.  A method is
+    provided for setting the zero position
+    along the real axis of the z-plane while
+    maintaining a constant filter gain.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.zero</b> - ( float , READ/WRITE ) -  set zero position<br/>
+<b>.b0</b> - ( float , READ/WRITE ) -  filter coefficient<br/>
+<b>.b1</b> - ( float , READ/WRITE ) -  filter coefficient <br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="TwoZero"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>TwoZero</b><br />
+- STK two-zero filter class.<br />
+<pre>
+    This protected Filter subclass implements
+    a two-zero digital filter.  A method is
+    provided for creating a "notch" in the
+    frequency response while maintaining a
+    constant filter gain.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.b0</b> - ( float , READ/WRITE ) -  filter coefficient <br/>
+<b>.b1</b> - ( float , READ/WRITE ) -  filter coefficient <br/>
+<b>.b2</b> - ( float , READ/WRITE ) -  filter coefficient <br/>
+<b>.freq</b> - ( float , READ/WRITE ) -  filter notch frequency<br/>
+<b>.radius</b> - ( float , READ/WRITE ) -  filter notch radius<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="PoleZero"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>PoleZero</b><br />
+- STK one-pole, one-zero filter class.<br />
+<pre>
+    This protected Filter subclass implements
+    a one-pole, one-zero digital filter.  A
+    method is provided for creating an allpass
+    filter with a given coefficient.  Another
+    method is provided to create a DC blocking filter.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.a1</b> - ( float , READ/WRITE ) -  filter coefficient <br/>
+<b>.b0</b> - ( float , READ/WRITE ) -  filter coefficient <br/>
+<b>.b1</b> - ( float , READ/WRITE ) -  filter coefficient <br/>
+<b>.blockZero</b> - ( float , READ/WRITE ) -  DC blocking filter with given pole position<br/>
+<b>.allpass</b> - ( float , READ/WRITE ) - allpass filter with given coefficient<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="FM"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>FM</b><br />
+- STK abstract FM synthesis base class.<br />
+<pre>
+    This class controls an arbitrary number of
+    waves and envelopes, determined via a
+    constructor argument.
+
+    Control Change Numbers: 
+       - Control One = 2
+       - Control Two = 4
+       - LFO Speed = 11
+       - LFO Depth = 1
+       - ADSR 2 & 4 Target = 128
+
+    The basic Chowning/Stanford FM patent expired
+    in 1995, but there exist follow-on patents,
+    mostly assigned to Yamaha.  If you are of the
+    type who should worry about this (making
+    money) worry away.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.freq</b> - ( float , READ/WRITE ) - set frequency<br/>
+<b>.noteOn</b> - ( float , WRITE only ) -  trigger note<br/>
+<b>.noteOff</b> - ( float , WRITE only ) -  end note<br/>
+<b>.modDepth</b> - ( float , WRITE only ) - modulation Depth<br/>
+<b>.modSpeed</b> - ( float , WRITE only ) - modulation Speed<br/>
+<b>.afterTouch</b> - ( float , WRITE only ) - aftertouch<br/>
+<b>.control1</b> - ( float , WRITE only ) -  FM control 1<br/>
+<b>.control2</b> - ( float , WRITE only ) -  FM control 2<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="BeeThree"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>BeeThree</b><br />
+- STK Hammond-oid organ FM synthesis instrument.<br />
+<pre>
+    This class implements a simple 4 operator
+    topology, also referred to as algorithm 8 of
+    the TX81Z.
+
+    \code
+    Algorithm 8 is :
+                     1 --.
+                     2 -\|
+                         +-> Out
+                     3 -/|
+                     4 --
+    \endcode
+
+    Control Change Numbers: 
+       - Operator 4 (feedback) Gain = 2
+       - Operator 3 Gain = 4
+       - LFO Speed = 11
+       - LFO Depth = 1
+       - ADSR 2 & 4 Target = 128
+
+    The basic Chowning/Stanford FM patent expired
+    in 1995, but there exist follow-on patents,
+    mostly assigned to Yamaha.  If you are of the
+    type who should worry about this (making
+    money) worry away.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre>extends <b><a href="#FM">FM</a></b><br /><br />
+[ctrl param]: 
+<ul>
+
+<b>.noteOn</b> - ( float , WRITE only ) - trigger note<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="FMVoices"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>FMVoices</b><br />
+- STK singing FM synthesis instrument.<br />
+<pre>
+    This class implements 3 carriers and a common
+    modulator, also referred to as algorithm 6 of
+    the TX81Z.
+
+    \code
+    Algorithm 6 is :
+                        /->1 -\
+                     4-|-->2 - +-> Out
+                        \->3 -/
+    \endcode
+
+    Control Change Numbers: 
+       - Vowel = 2
+       - Spectral Tilt = 4
+       - LFO Speed = 11
+       - LFO Depth = 1
+       - ADSR 2 & 4 Target = 128
+
+    The basic Chowning/Stanford FM patent expired
+    in 1995, but there exist follow-on patents,
+    mostly assigned to Yamaha.  If you are of the
+    type who should worry about this (making
+    money) worry away.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre>extends <b><a href="#FM">FM</a></b><br /><br />
+[ctrl param]: 
+<ul>
+
+<b>.noteOn</b> - ( float , WRITE only ) - <br/>
+<b>.freq</b> - ( float , READ/WRITE ) - voice frequency<br/>
+<b>.vowel</b> - ( float , WRITE only ) - select vowel<br/>
+<b>.spectralTilt</b> - ( float , WRITE only ) -  spectral tilt<br/>
+<b>.lfoSpeed</b> - ( float , WRITE only ) - speed of LFO<br/>
+<b>.lfoDepth</b> - ( float , WRITE only ) - depth of LFO<br/>
+<b>.adsrTarget</b> - ( float , WRITE only ) - adsr targets<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="HevyMetl"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>HevyMetl</b><br />
+- STK heavy metal FM synthesis instrument.<br />
+<pre>
+    This class implements 3 cascade operators with
+    feedback modulation, also referred to as
+    algorithm 3 of the TX81Z.
+
+    Algorithm 3 is :     4--\
+                    3-->2-- + -->1-->Out
+
+    Control Change Numbers: 
+       - Total Modulator Index = 2
+       - Modulator Crossfade = 4
+       - LFO Speed = 11
+       - LFO Depth = 1
+       - ADSR 2 & 4 Target = 128
+
+    The basic Chowning/Stanford FM patent expired
+    in 1995, but there exist follow-on patents,
+    mostly assigned to Yamaha.  If you are of the
+    type who should worry about this (making
+    money) worry away.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre>extends <b><a href="#FM">FM</a></b><br /><br />
+[ctrl param]: 
+<ul>
+
+<b>.noteOn</b> - ( float , WRITE only ) -  trigger note<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="PercFlut"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>PercFlut</b><br />
+- STK percussive flute FM synthesis instrument.<br />
+<pre>
+    This class implements algorithm 4 of the TX81Z.
+
+    \code
+    Algorithm 4 is :   4->3--\
+                          2-- + -->1-->Out
+    \endcode
+
+    Control Change Numbers: 
+       - Total Modulator Index = 2
+       - Modulator Crossfade = 4
+       - LFO Speed = 11
+       - LFO Depth = 1
+       - ADSR 2 & 4 Target = 128
+
+    The basic Chowning/Stanford FM patent expired
+    in 1995, but there exist follow-on patents,
+    mostly assigned to Yamaha.  If you are of the
+    type who should worry about this (making
+    money) worry away.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre>extends <b><a href="#FM">FM</a></b><br /><br />
+[ctrl param]: 
+<ul>
+
+<b>.freq</b> - ( float , READ/WRITE ) -  set frequency<br/>
+<b>.noteOn</b> - ( float , WRITE only ) - trigger note<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="Rhodey"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>Rhodey</b><br />
+- STK Fender Rhodes-like electric piano FM<br />
+<pre>           synthesis instrument.
+
+    This class implements two simple FM Pairs
+    summed together, also referred to as algorithm
+    5 of the TX81Z.
+
+    \code
+    Algorithm 5 is :  4->3--\
+                             + --> Out
+                      2->1--/
+    \endcode
+
+    Control Change Numbers: 
+       - Modulator Index One = 2
+       - Crossfade of Outputs = 4
+       - LFO Speed = 11
+       - LFO Depth = 1
+       - ADSR 2 & 4 Target = 128
+
+    The basic Chowning/Stanford FM patent expired
+    in 1995, but there exist follow-on patents,
+    mostly assigned to Yamaha.  If you are of the
+    type who should worry about this (making
+    money) worry away.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre>extends <b><a href="#FM">FM</a></b><br /><br />
+[ctrl param]: 
+<ul>
+
+<b>.freq</b> - ( float , READ/WRITE ) -  set frequency<br/>
+<b>.noteOn</b> - ( float , WRITE only ) -  trigger note<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="TubeBell"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>TubeBell</b><br />
+- STK tubular bell (orchestral chime) FM<br />
+<pre>           synthesis instrument.
+
+    This class implements two simple FM Pairs
+    summed together, also referred to as algorithm
+    5 of the TX81Z.
+
+    \code
+    Algorithm 5 is :  4->3--\
+                             + --> Out
+                      2->1--/
+    \endcode
+
+    Control Change Numbers: 
+       - Modulator Index One = 2
+       - Crossfade of Outputs = 4
+       - LFO Speed = 11
+       - LFO Depth = 1
+       - ADSR 2 & 4 Target = 128
+
+    The basic Chowning/Stanford FM patent expired
+    in 1995, but there exist follow-on patents,
+    mostly assigned to Yamaha.  If you are of the
+    type who should worry about this (making
+    money) worry away.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre>extends <b><a href="#FM">FM</a></b><br /><br />
+[ctrl param]: 
+<ul>
+
+<b>.freq</b> - ( float , READ/WRITE ) -  set frequency<br/>
+<b>.noteOn</b> - ( float , WRITE only ) -   trigger note<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="Wurley"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>Wurley</b><br />
+- STK Wurlitzer electric piano FM<br />
+<pre>           synthesis instrument.
+
+    This class implements two simple FM Pairs
+    summed together, also referred to as algorithm
+    5 of the TX81Z.
+
+    \code
+    Algorithm 5 is :  4->3--\
+                             + --> Out
+                      2->1--/
+    \endcode
+
+    Control Change Numbers: 
+       - Modulator Index One = 2
+       - Crossfade of Outputs = 4
+       - LFO Speed = 11
+       - LFO Depth = 1
+       - ADSR 2 & 4 Target = 128
+
+    The basic Chowning/Stanford FM patent expired
+    in 1995, but there exist follow-on patents,
+    mostly assigned to Yamaha.  If you are of the
+    type who should worry about this (making
+    money) worry away.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre>extends <b><a href="#FM">FM</a></b><br /><br />
+[ctrl param]: 
+<ul>
+
+<b>.freq</b> - ( float , READ/WRITE ) -  set frequency<br/>
+<b>.noteOn</b> - ( float , WRITE only ) -  trigger note<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="Modulate"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>Modulate</b><br />
+- STK periodic/random modulator.<br />
+<pre>
+    This class combines random and periodic
+    modulations to give a nice, natural human
+    modulation function.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.vibratoRate</b> - ( float , READ/WRITE ) -  set rate of vibrato<br/>
+<b>.vibratoGain</b> - ( float , READ/WRITE ) -  gain for vibrato<br/>
+<b>.randomGain</b> - ( float , READ/WRITE ) -   gain for random contribution<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="JCRev"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>JCRev</b><br />
+- John Chowning's reverberator class.<br />
+<pre>
+    This class is derived from the CLM JCRev
+    function, which is based on the use of
+    networks of simple allpass and comb delay
+    filters.  This class implements three series
+    allpass units, followed by four parallel comb
+    filters, and two decorrelation delay lines in
+    parallel at the output.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.mix</b> - ( float , READ/WRITE ) -  mix level<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="Mandolin"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>Mandolin</b><br />
+- STK mandolin instrument model class.<br />
+<pre>
+    This class inherits from PluckTwo and uses
+    "commuted synthesis" techniques to model a
+    mandolin instrument.
+
+    This is a digital waveguide model, making its
+    use possibly subject to patents held by
+    Stanford University, Yamaha, and others.
+    Commuted Synthesis, in particular, is covered
+    by patents, granted, pending, and/or
+    applied-for.  All are assigned to the Board of
+    Trustees, Stanford University.  For
+    information, contact the Office of Technology
+    Licensing, Stanford University.
+
+    Control Change Numbers: 
+       - Body Size = 2
+       - Pluck Position = 4
+       - String Sustain = 11
+       - String Detuning = 1
+       - Microphone Position = 128
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.pluck</b> - ( float , WRITE only ) -  pluck string with given amplitude <br/>
+<b>.freq</b> - ( float , READ/WRITE ) -  string frequency <br/>
+<b>.pluckPos</b> - ( float , READ/WRITE ) -  set pluck position ( 0-1) along string<br/>
+<b>.bodySize</b> - ( float , READ/WRITE ) -  modify instrument size<br/>
+<b>.stringDamping</b> - ( float , READ/WRITE ) -  control string damping<br/>
+<b>.stringDetune</b> - ( float , READ/WRITE ) -  control detuning of string pair<br/>
+<b>.afterTouch</b> - ( float , WRITE only ) - aftertouch<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="Moog"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>Moog</b><br />
+- STK moog-like swept filter sampling synthesis class.<br />
+<pre>
+    This instrument uses one attack wave, one
+    looped wave, and an ADSR envelope (inherited
+    from the Sampler class) and adds two sweepable
+    formant (FormSwep) filters.
+
+    Control Change Numbers: 
+       - Filter Q = 2
+       - Filter Sweep Rate = 4
+       - Vibrato Frequency = 11
+       - Vibrato Gain = 1
+       - Gain = 128
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.noteOn</b> - ( float , WRITE only ) -  start note<br/>
+<b>.freq</b> - ( float , READ/WRITE ) -  set frequency<br/>
+<b>.modSpeed</b> - ( float , READ/WRITE ) -  modulation speed<br/>
+<b>.modDepth</b> - ( float , READ/WRITE ) -  modulation depth<br/>
+<b>.filterQ</b> - ( float , READ/WRITE ) -  filter Q value<br/>
+<b>.filterSweepRate</b> - ( float , READ/WRITE ) -  filter sweep rate<br/>
+<b>.afterTouch</b> - ( float , WRITE only ) - <br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="NRev"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>NRev</b><br />
+- CCRMA's NRev reverberator class.<br />
+<pre>
+    This class is derived from the CLM NRev
+    function, which is based on the use of
+    networks of simple allpass and comb delay
+    filters.  This particular arrangement consists
+    of 6 comb filters in parallel, followed by 3
+    allpass filters, a lowpass filter, and another
+    allpass in series, followed by two allpass
+    filters in parallel with corresponding right
+    and left outputs.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.mix</b> - ( float , READ/WRITE ) - <br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="PitShift"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>PitShift</b><br />
+- STK simple pitch shifter effect class.<br />
+<pre>
+    This class implements a simple pitch shifter
+    using delay lines.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.shift</b> - ( float , READ/WRITE ) -  degree of pitch shifting<br/>
+<b>.effectMix</b> - ( float , READ/WRITE ) -  mix level<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="PRCRev"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>PRCRev</b><br />
+- Perry's simple reverberator class.<br />
+<pre>
+    This class is based on some of the famous
+    Stanford/CCRMA reverbs (NRev, KipRev), which
+    were based on the Chowning/Moorer/Schroeder
+    reverberators using networks of simple allpass
+    and comb delay filters.  This class implements
+    two series allpass units and two parallel comb
+    filters.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.mix</b> - ( float , READ/WRITE ) -  mix level<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="Shakers"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>Shakers</b><br />
+- PhISEM and PhOLIES class.<br />
+<pre>
+    PhISEM (Physically Informed Stochastic Event
+    Modeling) is an algorithmic approach for
+    simulating collisions of multiple independent
+    sound producing objects.  This class is a
+    meta-model that can simulate a Maraca, Sekere,
+    Cabasa, Bamboo Wind Chimes, Water Drops,
+    Tambourine, Sleighbells, and a Guiro.
+
+    PhOLIES (Physically-Oriented Library of
+    Imitated Environmental Sounds) is a similar
+    approach for the synthesis of environmental
+    sounds.  This class implements simulations of
+    breaking sticks, crunchy snow (or not), a
+    wrench, sandpaper, and more.
+
+    Control Change Numbers: 
+       - Shake Energy = 2
+       - System Decay = 4
+       - Number Of Objects = 11
+       - Resonance Frequency = 1
+       - Shake Energy = 128
+       - Instrument Selection = 1071
+        - Maraca = 0
+        - Cabasa = 1
+        - Sekere = 2
+        - Guiro = 3
+        - Water Drops = 4
+        - Bamboo Chimes = 5
+        - Tambourine = 6
+        - Sleigh Bells = 7
+        - Sticks = 8
+        - Crunch = 9
+        - Wrench = 10
+        - Sand Paper = 11
+        - Coke Can = 12
+        - Next Mug = 13
+        - Penny + Mug = 14
+        - Nickle + Mug = 15
+        - Dime + Mug = 16
+        - Quarter + Mug = 17
+        - Franc + Mug = 18
+        - Peso + Mug = 19
+        - Big Rocks = 20
+        - Little Rocks = 21
+        - Tuned Bamboo Chimes = 22
+
+    by Perry R. Cook, 1996 - 1999.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.freq</b> - ( float , READ/WRITE ) -  set frequency<br/>
+<b>.noteOn</b> - ( float , WRITE only ) -  start shake with given amplitude<br/>
+<b>.noteOff</b> - ( float , WRITE only ) -  stop shake<br/>
+<b>.which</b> - ( int , READ/WRITE ) -  select instrument<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="SubNoise"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>SubNoise</b><br />
+- STK sub-sampled noise generator.<br />
+<pre>
+    Generates a new random number every "rate" ticks
+    using the C rand() function.  The quality of the
+    rand() function varies from one OS to another.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.rate</b> - ( int , READ/WRITE ) -  subsampling rate<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="VoicForm"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>VoicForm</b><br />
+- Four formant synthesis instrument.<br />
+<pre>
+    This instrument contains an excitation singing
+    wavetable (looping wave with random and
+    periodic vibrato, smoothing on frequency,
+    etc.), excitation noise, and four sweepable
+    complex resonances.
+
+    Measured formant data is included, and enough
+    data is there to support either parallel or
+    cascade synthesis.  In the floating point case
+    cascade synthesis is the most natural so
+    that's what you'll find here.
+
+    Control Change Numbers: 
+       - Voiced/Unvoiced Mix = 2
+       - Vowel/Phoneme Selection = 4
+       - Vibrato Frequency = 11
+       - Vibrato Gain = 1
+       - Loudness (Spectral Tilt) = 128
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.freq</b> - ( float , READ/WRITE ) -  frequency <br/>
+<b>.phoneme</b> - ( string , READ/WRITE ) -  select phoneme  ( above ) <br/>
+<b>.noteOn</b> - ( float , WRITE only ) -  start note<br/>
+<b>.noteOff</b> - ( float , WRITE only ) -  stop note<br/>
+<b>.speak</b> - ( float , WRITE only ) -  start singing<br/>
+<b>.quiet</b> - ( float , WRITE only ) -  stop singing<br/>
+<b>.voiced</b> - ( float , READ/WRITE ) -  set mix for voiced component<br/>
+<b>.unVoiced</b> - ( float , READ/WRITE ) -  set mix for unvoiced component<br/>
+<b>.pitchSweepRate</b> - ( float , READ/WRITE ) -  pitch sweep<br/>
+<b>.voiceMix</b> - ( float , READ/WRITE ) -  voiced/unvoiced mix<br/>
+<b>.setPhoneme</b> - ( int , READ/WRITE ) -  select phoneme by number<br/>
+<b>.vibratoFreq</b> - ( float , READ/WRITE ) -  vibrato<br/>
+<b>.vibratoGain</b> - ( float , READ/WRITE ) -  vibrato depth<br/>
+<b>.loudness</b> - ( float , READ/WRITE ) -  'loudness' of voicee<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="WvIn"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>WvIn</b><br />
+- STK audio data input base class.<br />
+<pre>
+    This class provides input support for various
+    audio file formats.  It also serves as a base
+    class for "realtime" streaming subclasses.
+
+    WvIn loads the contents of an audio file for
+    subsequent output.  Linear interpolation is
+    used for fractional "read rates".
+
+    WvIn supports multi-channel data in interleaved
+    format.  It is important to distinguish the
+    tick() methods, which return samples produced
+    by averaging across sample frames, from the 
+    tickFrame() methods, which return pointers to
+    multi-channel sample frames.  For single-channel
+    data, these methods return equivalent values.
+
+    Small files are completely read into local memory
+    during instantiation.  Large files are read
+    incrementally from disk.  The file size threshold
+    and the increment size values are defined in
+    WvIn.h.
+
+    WvIn currently supports WAV, AIFF, SND (AU),
+    MAT-file (Matlab), and STK RAW file formats.
+    Signed integer (8-, 16-, and 32-bit) and floating-
+    point (32- and 64-bit) data types are supported.
+    Uncompressed data types are not supported.  If
+    using MAT-files, data should be saved in an array
+    with each data channel filling a matrix row.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.rate</b> - ( float , READ/WRITE ) -  playback rate<br/>
+<b>.path</b> - ( string , READ/WRITE ) -  specifies file to be played<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="WaveLoop"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>WaveLoop</b><br />
+- STK waveform oscillator class.<br />
+<pre>
+    This class inherits from WvIn and provides
+    audio file looping functionality.
+
+    WaveLoop supports multi-channel data in
+    interleaved format.  It is important to
+    distinguish the tick() methods, which return
+    samples produced by averaging across sample
+    frames, from the tickFrame() methods, which
+    return pointers to multi-channel sample frames.
+    For single-channel data, these methods return
+    equivalent values.
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre>extends <b><a href="#WvIn">WvIn</a></b><br /><br />
+[ctrl param]: 
+<ul>
+
+<b>.freq</b> - ( float , READ/WRITE ) -  set frequency of playback ( loops / second )<br/>
+<b>.addPhase</b> - ( float , READ/WRITE ) -  offset by phase<br/>
+<b>.addPhaseOffset</b> - ( float , READ/WRITE ) -  set phase offset<br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br />
+<a name="WvOut"> </a>
+<table width="100%" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td><table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left"><font face="verdana" size="2">
+<font color="#339933">[ugen]</font>: <b>WvOut</b><br />
+- STK audio data output base class.<br />
+<pre>
+    This class provides output support for various
+    audio file formats.  It also serves as a base
+    class for "realtime" streaming subclasses.
+
+    WvOut writes samples to an audio file.  It
+    supports multi-channel data in interleaved
+    format.  It is important to distinguish the
+    tick() methods, which output single samples
+    to all channels in a sample frame, from the
+    tickFrame() method, which takes a pointer
+    to multi-channel sample frame data.
+
+    WvOut currently supports WAV, AIFF, AIFC, SND
+    (AU), MAT-file (Matlab), and STK RAW file
+    formats.  Signed integer (8-, 16-, and 32-bit)
+    and floating- point (32- and 64-bit) data types
+    are supported.  STK RAW files use 16-bit
+    integers by definition.  MAT-files will always
+    be written as 64-bit floats.  If a data type
+    specification does not match the specified file
+    type, the data type will automatically be
+    modified.  Uncompressed data types are not
+    supported.
+
+    Currently, WvOut is non-interpolating and the
+    output rate is always Stk::sampleRate().
+
+    by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+</pre><br />
+[ctrl param]: 
+<ul>
+
+<b>.matFilename</b> - ( string , WRITE only ) - open matlab file for writing<br/>
+<b>.sndFilename</b> - ( string , WRITE only ) - open snd file for writing<br/>
+<b>.wavFilename</b> - ( string , WRITE only ) - open WAVE file for writing<br/>
+<b>.rawFilename</b> - ( string , WRITE only ) - open raw file for writing<br/>
+<b>.aifFilename</b> - ( string , WRITE only ) - open AIFF file for writing<br/>
+<b>.closeFile</b> - ( string , WRITE only ) -  close file properly <br/>
+
+</ul>
+</td></tr></table></td></tr></table>
+

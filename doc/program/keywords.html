@@ -1,0 +1,464 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" 
+dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="KEYWORDS" content="ChucK Keywords,ChucK" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+<head>
+<title>ChucK - [Programming Guide : Reserved Keywords]</title>
+    <style type="text/css" media="screen,projection">
+/*<![CDATA[*/@import "wiki.css"; /*]]>*/</style>
+    <link rel="stylesheet" type="text/css" media="print" href="common.css">
+    <!--[if IE]--><style type="text/css" media="all">@import "iefixes.css";
+</style>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<font face="verdana" size="2">
+
+<!--img src="../images/on-the-fly_50dpi.jpg"-->
+
+<table width="100%" border="0" cellpadding="2" cellspacing="2">
+<tr><td width="25%"></td><td>
+<table width="720" border="0" cellpadding="16" cellspacing="16">
+<tr><td align="justify"><font face="verdana" size="2">
+
+<center>
+<font size="3">
+<b>ChucK</b> : Programming Guide
+</font>
+<br /><br />
+<font color="#33aa33" size="3">Reserved Keywords</font>
+<br />
+<br />
+
+  <table bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="right"><font face="verdana" size="2">
+  version:</td><td><font face="verdana" size="2">
+  1.4.x.x (numchucks)
+  <br />
+
+  </font></td>
+  </tr>
+  </table></td></tr>
+  </table>
+
+</center>
+<h1>control</h1>
+<h2>for</h2>
+<p><em>for loop</em> - example:
+</p>
+<pre>   // print out now for the next 100 seconds, once a second
+   for( 0 => int i; i &lt; 100; i++ )
+       1::second =&gt; now =&gt; stdout;
+</pre>
+<p><br />
+</p>
+<a name="while"></a><h2>while</h2>
+<p><em>while loop</em> - example:
+</p>
+<pre>   // make time variable 'later', set to 5 seconds after now
+   now + 5::second =&gt; time later;
+   
+   // while we are not there yet...
+   while( now &lt; later )
+   {
+       // print out the current ChucK time
+       now =&gt; stdout;
+       // advance time by 1 second
+       1::second =&gt; now;
+   }
+</pre>
+<p><br />
+</p>
+<a name="until"></a><h2>until</h2>
+<p><em>until loop</em> - kind of the opposite of the while loop - 
+example:
+</p>
+<pre>   // infinite time-loop
+   until( false )
+   {
+       // print out now
+       now =&gt; stdout;
+       // advance time by 100 ms
+       100::ms =&gt; now;
+   }
+</pre>
+<p><br />
+</p>
+<a name="if"></a><h2>if</h2>
+<p><em>if</em> - example:
+</p>
+<pre>   if( 1.0 &gt; 0.0 ) "wow" =&gt; stdout;
+</pre>
+<p><br />
+</p>
+<a name="else"></a><h2>else</h2>
+<p><em>else</em> - example:
+</p>
+<pre>   if( Std.rand2f( 0.0, 1.0 ) &gt; .5 )
+       "yes" =&gt; stdout;
+   else
+       "no" =&gt; stdout;
+</pre>
+<p><br />
+</p>
+<a name="spork"></a><h2>spork</h2>
+<ul><li> <em>dynamically spork a shred, from a function or an 
+expression</em>
+</li><li> <em>this operation is sample-synchronous, the new shred is 
+shredule to execute immediate</em>
+</li><li> <em>in the current implementation, when a parent shred exits, 
+all child shreds exit (this behavior will be enhanced in the 
+future)</em>
+</li></ul>
+<ul><li> example (also see <a 
+href='http://chuck.cs.princeton.edu/doc/examples/' class='external' 
+title="http://chuck.cs.princeton.edu/doc/examples/">examples/</a><span 
+class='urlexpansion'> 
+(<i>http://chuck.cs.princeton.edu/doc/examples/</i>)</span>&nbsp;: <a 
+href='http://chuck.cs.princeton.edu/doc/examples/wind2.ck' 
+class='external' 
+title="http://chuck.cs.princeton.edu/doc/examples/wind2.ck">wind2.ck</a><span 
+class='urlexpansion'> 
+(<i>http://chuck.cs.princeton.edu/doc/examples/wind2.ck</i>)</span>, <a 
+href='http://chuck.cs.princeton.edu/doc/examples/pwm.ck' 
+class='external' 
+title="http://chuck.cs.princeton.edu/doc/examples/pwm.ck">pwm.ck</a><span 
+class='urlexpansion'> 
+(<i>http://chuck.cs.princeton.edu/doc/examples/pwm.ck</i>)</span>, <a 
+href='http://chuck.cs.princeton.edu/doc/examples/fmsynth.ck' 
+class='external' 
+title="http://chuck.cs.princeton.edu/doc/examples/fmsynth.ck">fmsynth.ck</a><span 
+class='urlexpansion'> 
+(<i>http://chuck.cs.princeton.edu/doc/examples/fmsynth.ck</i>)</span> 
+and others (&gt; grep spork *.ck) in examples/:
+</li></ul>
+<pre>  // define function
+  fun void foo( string s )
+  {
+       while( true )
+       {
+           s =&gt; stdout;
+           500::ms =&gt; now;
+       }
+   }
+   
+   // spork shred, passing in "you" as argument to foo
+   spork ~ foo( "you" );
+   // advance time by 250 ms
+   250::ms =&gt; now;
+   // spork another shred
+   spork ~ foo( "me" );
+   
+   // infinite time loop - to keep child shreds around
+   while( true )
+        1::second =&gt; now;
+</pre>
+<p><br />
+</p>
+<a name="return"></a><h2>return</h2>
+<p><em>return from function</em> - example:
+</p>
+<pre>   // define function
+   fun int bar( int a, int b )
+   {
+       return a &lt; b;
+   }
+</pre>
+<p><br />
+</p>
+<a name=".28coming_soon.29"></a><h2>(coming soon)</h2>
+<ul><li> switch
+</li><li> break
+</li><li> continue
+</li></ul>
+<p><br />
+</p>
+<a 
+name="special_values"></a><h1>special values</h1>
+<a name="now"></a><h2>now</h2>
+<ul><li> special (global) value of type <strong>time</strong>
+</li><li> when read as a value, <strong>now</strong> holds current time 
+in ChucK
+</li><li> when modified (by chucking a duration or time value to it), 
+<strong>now</strong> advances time for the current shred
+</li><li> <strong>now</strong> never advances <strong>except</strong> 
+when time is explicitly advanced in the program
+</li><li> because the above properties, <strong>now</strong> is 
+guaranteed to always hold the correct ChucK time
+</li></ul>
+<p>example 1 (read):
+</p>
+<pre>   // assign now to a time value (note that foo will not advance with now)
+   now =&gt; time foo;
+</pre>
+<p>example 2 (read):
+</p>
+<pre>   // print the current time
+   now =&gt; stdout;
+</pre>
+<p>example 3 (write):
+</p>
+<pre>   // advance time by 500 ms
+   500::ms =&gt; now;
+</pre>
+<p>example 4 (both in one line):
+</p>
+<pre>   // first advance time, then print out now
+   500::ms =&gt;now =&gt; stdout;
+</pre>
+<p>example 5 (addition/subtraction - also see 'arithmetic on time and 
+duration')
+</p>
+<pre>   // later
+   now + 10::second =&gt; time later;
+
+   // subtract now from later (at this point, duration should equal exactly 10::second)
+   later - now =&gt; dur duration;
+</pre>
+<p>example 6 (comparison)
+</p>
+<pre>   // with later from example 5 defined
+   while( now &lt; later )
+   {
+       now =&gt; stdout;
+       1::second =&gt; now;
+   }
+</pre>
+<p><br />
+</p>
+<a name="start"></a><h2>start</h2>
+<p><em>start time of the current shred</em>
+</p><p><br />
+</p>
+<a name="NULL_.28or_null.29"></a><h2>NULL (or null)</h2>
+<p><em>for objects</em>
+</p><p><br />
+</p>
+<a name="true"></a><h2>true</h2>
+<p><em>integer 1</em> - example:
+</p>
+<pre>   // infinite time-loop
+   while( true )
+       1::second =&gt; now;
+</pre>
+<p><br />
+</p>
+<a name="false"></a><h2>false</h2>
+<p><em>integer 0</em> - example:
+</p>
+<pre>   // infinite time-loop
+   until( false )
+       1::second =&gt; now;
+</pre>
+<p><br />
+</p>
+<a name="maybe"></a><h2>maybe</h2>
+<p><em>evaluates to 0 or 1, each with maybe (0.0-1.0) probability, 
+maybe defaults to .5</em> - example:
+</p>
+<pre>   // for the non-decisive programmer
+   if( maybe )
+   {
+       // do something
+   }
+</pre>
+<p><br />
+</p>
+<a name="function_.28or_fun.29"></a><h2>function (or fun)</h2>
+<p><em>used to define function</em> - example:
+</p>
+<pre>   // define function
+   fun int foo( int a )
+   { return a+1; }
+</pre>
+<a name="pi"></a><h2>pi</h2>
+<p><em>3.1415926... (and so on) (see also Math.pi and Math.e)</em>
+</p><p><br />
+</p>
+<a name=".28coming_soon.29_2"></a><h2>(coming soon)</h2>
+<ul><li> class
+</li><li> extends
+</li><li> implements
+</li><li> public
+</li><li> protected
+</li><li> private
+</li><li> static
+</li><li> const
+</li><li> new
+</li></ul>
+<p><br />
+</p>
+<a name="default_types"></a><h1>default types</h1>
+<ul><li> int&nbsp;: integer
+</li><li> float&nbsp;: floating point number
+</li><li> dur&nbsp;: duration
+</li><li> time&nbsp;: time
+</li><li> void&nbsp;: no type!
+</li><li> string&nbsp;: string
+</li><li> ugen&nbsp;: unit generator
+</li><li> stdout&nbsp;: output hack
+</li></ul>
+<a name=".28coming_soon.29_3"></a><h2>(coming soon)</h2>
+<ul><li> object&nbsp;: like java.lang.Object, this is the class all 
+non-primitives extend (directly or indirectly)
+</li></ul>
+<p><br />
+</p>
+<a name="default_durations_.28dur.29"></a><h1>default durations (dur)</h1>
+<ul><li> samp&nbsp;: duration of 1 sample in ChucK time
+</li><li> ms&nbsp;: duration of 1 millisecond
+</li><li> second&nbsp;: duration of 1 second
+</li><li> minute&nbsp;: 1 minute
+</li><li> hour&nbsp;: 1 hour
+</li><li> day&nbsp;: 1 day
+</li><li> week&nbsp;: 1 week
+</li><li> (use these to inductively construct you own) - example:
+</li></ul>
+<pre>   // construct duration
+   .5::second =&gt; dur foo;
+   // use foo as part of another duration
+   4::foo =&gt; dur bar;
+</pre>
+<p><br />
+</p>
+<a name="arithmetic_on_time_and_duration"></a><h1>arithmetic on time and 
+duration</h1>
+<p><em>in ChucK, there are well-defined arithmetic operations on values 
+of type 'time' and 'dur'"</em>
+</p><p>example 1 (time offset):
+</p>
+<pre>   // offset time by duration
+   now + 10::second =&gt; time later;
+</pre>
+<p>example 2 (time subtraction):
+</p>
+<pre>   // time - time yields dur
+   later - now =&gt; dur D;
+</pre>
+<p>example 3 (addition):
+</p>
+<pre>   // dur + dur yields dur
+   10::second + 100::samp =&gt; dur foo;
+</pre>
+<p>example 4 (subtraction):
+</p>
+<pre>   // dur - dur yields dur
+   10::second - 100::samp =&gt; dur bar;
+</pre>
+<p>example 5 (division):
+</p>
+<pre>   // dur / dur yields number
+   10::second / 20::ms =&gt; float n;
+</pre>
+<p>example 6 (time mod):
+</p>
+<pre>    // time mod dur yields dur
+    now % 1::second =&gt; dur remainder;
+</pre>
+<p><br />
+example 7 (synchronize to period):
+</p>
+<pre>   // synchronize to period
+   .5::second =&gt; dur T;
+   T - (now % T) =&gt; now;
+</pre>
+<p>the above is useful in precisely timing on-the-fly shreds (see 
+otf_0[<a href="'http://chuck.cs.princeton.edu/doc/examples/otf_01.ck'" 
+class='external' title="http://chuck.cs.princeton.edu/doc/examples/otf 
+01.ck">1</a><span class="'urlexpansion'"> 
+(<i>http://chuck.cs.princeton.edu/doc/examples/otf_01.ck</i>)</span>, 
+<a href="'http://chuck.cs.princeton.edu/doc/examples/otf_02.ck'" 
+class='external' title="http://chuck.cs.princeton.edu/doc/examples/otf 
+02.ck">2</a><span class="'urlexpansion'"> 
+(<i>http://chuck.cs.princeton.edu/doc/examples/otf_02.ck</i>)</span>, 
+<a href="'http://chuck.cs.princeton.edu/doc/examples/otf_03.ck'" 
+class='external' title="http://chuck.cs.princeton.edu/doc/examples/otf 
+03.ck">3</a><span class="'urlexpansion'"> 
+(<i>http://chuck.cs.princeton.edu/doc/examples/otf_03.ck</i>)</span>, 
+<a href="'http://chuck.cs.princeton.edu/doc/examples/otf_04.ck'" 
+class='external' title="http://chuck.cs.princeton.edu/doc/examples/otf 
+04.ck">4</a><span class="'urlexpansion'"> 
+(<i>http://chuck.cs.princeton.edu/doc/examples/otf_04.ck</i>)</span>, 
+<a href="'http://chuck.cs.princeton.edu/doc/examples/otf_05.ck'" 
+class='external' title="http://chuck.cs.princeton.edu/doc/examples/otf 
+05.ck">5</a><span class="'urlexpansion'"> 
+(<i>http://chuck.cs.princeton.edu/doc/examples/otf_05.ck</i>)</span>, 
+<a href="'http://chuck.cs.princeton.edu/doc/examples/otf_06.ck'" 
+class='external' title="http://chuck.cs.princeton.edu/doc/examples/otf 
+06.ck">6</a><span class="'urlexpansion'"> 
+(<i>http://chuck.cs.princeton.edu/doc/examples/otf_06.ck</i>)</span>, 
+<a href="'http://chuck.cs.princeton.edu/doc/examples/otf_07.ck'" 
+class='external' title="http://chuck.cs.princeton.edu/doc/examples/otf 
+07.ck">7</a><span class="'urlexpansion'"> 
+(<i>http://chuck.cs.princeton.edu/doc/examples/otf_07.ck</i>)</span>].ck 
+in examples/)
+</p><p>(also see the <a href="'http://on-the-fly.cs.princeton.edu/'" 
+class='external' title="http://on-the-fly.cs.princeton.edu/">on-the-fly 
+programming</a><span class="'urlexpansion'"> 
+(<i>http://on-the-fly.cs.princeton.edu/</i>)</span> paper)
+</p><p><br />
+</p>
+<a name="operators"></a><h1>operators</h1>
+<ul><li> +
+</li><li> -
+</li><li> *
+</li><li> /
+</li><li> %
+</li><li> =&gt;
+</li><li> =&lt;
+</li><li> &amp;&amp;
+</li><li> ||
+</li><li> ==
+</li><li> ^
+</li><li> &amp;
+</li><li> |
+</li><li> ~
+</li><li>&nbsp;::
+</li><li> ++
+</li><li> --
+</li><li> &lt;
+</li><li> &gt;
+</li><li> @=&gt;
+</li><li> +=&gt;
+</li><li> -=&gt;
+</li><li> *=&gt;
+</li><li> /=&gt;
+</li><li> %=&gt;
+</li></ul>
+<p><br />
+</p>
+<a name="reserved"></a><h1>reserved</h1>
+<ul><li> then
+</li><li> before
+</li><li> after
+</li><li> at
+</li></ul>
+<br />
+<center>
+<br />
+<hr width="40%" />
+return to the <a href="./">Programmer's Guide</a>
+<br /><br />
+
+<center>
+<font size="1">
+<hr width="15%" />
+<a href="../../">chuck</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://www.cs.princeton.edu/">cs</a> |
+<a href="http://www.music.princeton.edu/">music</a> |
+<a href="http://ccrma.stanford.edu/">ccrma</a>
+<br />
+</td></tr></table>
+</td><td width="25%"></td></tr></table>
+<br /><br />
+</font>
+</body>
+</html>

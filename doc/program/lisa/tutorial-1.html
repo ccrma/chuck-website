@@ -1,0 +1,158 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>LiSa Tutorial: the Basics</title>
+</head>
+
+<body>
+<table width="800" border="0" align="center" cellpadding="8" cellspacing="8">
+  <tr>
+    <td><p align="center"><font size="4" face="Verdana, Arial, Helvetica, sans-serif">The <b>LiSa</b> Tutorial</font>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br />
+by Dan Trueman<br />
+            </font></p>
+      <p align="left"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>Tutorial #1: the Basics</strong></font></p>
+      <p align="left"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">LiSa is for sampling a live input (though it can readily be used/abused for other things as well). Let's sample something:</font></p>
+      <blockquote>
+        <p align="left"><strong><font size="3" face="Courier New, Courier, mono">//a simple signal path<br />
+  SinOsc sin =&gt; LiSa saveme =&gt; dac; </font></strong></p>
+        <p align="left"><strong><font size="3" face="Courier New, Courier, mono">//give the oscillator a frequency <br />
+  500 =&gt; sin.freq; </font></strong></p>
+        <p align="left"><strong><font size="3" face="Courier New, Courier, mono">//gotta tell LiSa how much memory to allocate <br />
+  5::second =&gt; saveme.duration; </font></strong></p>
+        <p align="left"><strong><font size="3" face="Courier New, Courier, mono">//start recording <br />
+  1 =&gt; saveme.record; </font></strong></p>
+        <p align="left"><strong><font size="3" face="Courier New, Courier, mono">//hang out <br />
+          1::second =&gt; now; </font></strong></p>
+        <p align="left"><strong><font size="3" face="Courier New, Courier, mono">//stop recording <br />
+  0 =&gt; saveme.record;</font></strong></p>
+      </blockquote>
+    <p align="left"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Yippee, we've recorded 1 second of a sine wave into a buffer. Now let's play it back:</font></p>
+    <blockquote>
+      <p align="left"><font size="2" face="Courier New, Courier, mono"><strong><font size="3">1 =&gt; saveme.play;</font></strong></font></p>
+      <p align="left"><font size="3"><strong><font face="Courier New, Courier, mono">1::second =&gt; now;</font></strong></font></p>
+      <p align="left"><font size="3"><strong><font face="Courier New, Courier, mono">0 =&gt; saveme.play;</font></strong></font></p>
+    </blockquote>    
+    <p align="left"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Holy cow! A sine wave! Let's make it just a little more fun; go ahead, replace the SinOsc with the adc analog-digital converter ugen and sample yourself snoring or something.</font></p>
+    <p align="left"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Let's say you don't want it to click: </font></p>
+    <blockquote>
+      <p align="left"><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">//gotta go back to the beginning <br />
+        0::ms =&gt; saveme.playPos</font></strong></font></strong></font></p>
+      <p align="left"><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">50::ms</font></strong></font><font size="3"> =&gt; saveme.rampUp;</font></strong></font></p>
+      <p align="left"><font size="3"><strong><font face="Courier New, Courier, mono">950::ms =&gt; now;</font></strong></font></p>
+      <p align="left"><font size="3"><strong><font size="3"><strong><font face="Courier New, Courier, mono">50::ms</font></strong></font><font face="Courier New, Courier, mono"> =&gt; saveme.rampDown;</font></strong></font></p>
+      <p align="left"><font size="3"><strong><font face="Courier New, Courier, mono">50::ms =&gt; now;</font></strong></font></p>
+    </blockquote>    
+    <p align="left"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Let's say you want to transpose it:</font></p>
+    <blockquote>
+      <p align="left"><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">//gotta go back to the beginning, again! <br />
+0::ms =&gt; saveme.playPos</font></strong></font></strong></font></p>
+      <p align="left"><font size="2" face="Courier New, Courier, mono"><strong><font size="3">50::ms =&gt; </font><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">saveme</font></strong></font></strong></font><font size="3">.rampUp;</font></strong></font></p>
+      <p align="left"><font size="2" face="Courier New, Courier, mono"><strong><font size="3">2 =&gt; </font><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">saveme</font></strong></font></strong></font><font size="3">.rate;</font></strong></font></p>
+      <p align="left"><font size="3"><strong><font face="Courier New, Courier, mono">950::ms =&gt; now;</font></strong></font></p>
+      <p align="left"><font size="3"><strong><font face="Courier New, Courier, mono">50::ms  =&gt; </font><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">saveme</font></strong></font></strong></font><font face="Courier New, Courier, mono">.rampDown;</font></strong></font></p>
+      <p align="left"><font size="3"><strong><font face="Courier New, Courier, mono">50::ms =&gt; now;</font></strong></font></p>
+    </blockquote>    
+    <p align="left"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Now, why is it clicking?? Cause it's going through the buffer twice as fast, and running out of recorded sample. How about this:</font></p>
+    <blockquote>
+      <p align="left"><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">0::ms =&gt; </font><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">saveme</font></strong></font></strong></font><font size="3">.playPos</font></strong></font></strong></font></p>
+      <p align="left"><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">//tell it to loop through what we've sampled <br />
+      </font></strong></font></strong></font><strong><font size="3" face="Courier New, Courier, mono">1 =&gt; </font><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">saveme</font></strong></font></strong></font><font size="3" face="Courier New, Courier, mono">.loop;</font></strong></p>
+      <p align="left"><strong><font size="3" face="Courier New, Courier, mono">//also tell it where the loop endpoint is <br />
+        1::second =&gt; </font><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">saveme</font></strong></font></strong></font><font size="3" face="Courier New, Courier, mono">.loopEnd;</font></strong></p>
+      <p align="left"><font size="2" face="Courier New, Courier, mono"><strong><font size="3">50::ms =&gt; </font><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">saveme</font></strong></font></strong></font><font size="3">.rampUp;</font></strong></font></p>
+      <p align="left"><font size="2" face="Courier New, Courier, mono"><strong><font size="3">2 =&gt; </font><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">saveme</font></strong></font></strong></font><font size="3">.rate;</font></strong></font></p>
+      <p align="left"><font size="3"><strong><font face="Courier New, Courier, mono">950::ms =&gt; now;</font></strong></font></p>
+      <p align="left"><font size="3"><strong><font face="Courier New, Courier, mono">50::ms  =&gt; </font><font size="2" face="Courier New, Courier, mono"><strong><font size="2" face="Courier New, Courier, mono"><strong><font size="3">saveme</font></strong></font></strong></font><font face="Courier New, Courier, mono">.rampDown;</font></strong></font></p>
+      <p align="left"><font size="3"><strong><font face="Courier New, Courier, mono">50::ms =&gt; now;</font></strong></font></p>
+    </blockquote>    
+    <p align="left"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Now, you still might hear a click, this time because as it goes across the end of what we've sampled and loops back to the beginning of the sample, there may be a discontinuity. Can we fix it? Yes we can! But we have to go back and re-record into our buffer with a nice envelope so that when playback loops over the record buffer edges it's nice and smooth. Let's start over:</font></p>
+    <blockquote>
+      <p><strong><font size="3" face="Courier New, Courier, mono">//signal path and setup <br />
+  SinOsc s =&gt; LiSa loopme =&gt; dac; <br />
+  440. =&gt; s.freq;<br />
+  0.2 =&gt; s.gain;</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">//alloc memory<br />
+  1::second =&gt; loopme.duration;<br />
+        loopme.recRamp(200::ms);</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">//start recording input, with 200ms ramp <br />
+        loopme.record(1);</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">//stop recording 1 second later, start playing what was just recorded<br />
+  1000::ms =&gt; now;<br />
+        0 =&gt; loopme.record;</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">//set playback rate<br />
+        1.5 =&gt; loopme.rate;
+        <br />
+        1 =&gt; loopme.loop; <br />
+      1 =&gt; loopme.play;</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">//loop backwards and forwards <br />
+        1 =&gt; loopme.bi;</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">while(true) {500::ms =&gt; now;}</font></strong></p>
+      </blockquote>
+    <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">now the internal buffer has a little ramp on either end so when you loop it there shouldn't be any clicking. This is distinct from the ramping that is created when you use rampUp() and rampDown() to start and stop <em>playback. </em>If you set the recRamp length to zero, you'll hear this click nicely at each end of the loop. Here's another example to belabor how all this works:</font></p>
+    <blockquote>
+      <p><font size="3"><strong><font face="Courier New, Courier, mono">SinOsc s =&gt; LiSa loopme =&gt; dac;
+        <br />
+        440. =&gt; s.freq;<br />
+        0.2 =&gt; s.gain;</font></strong></font></p>
+      <p><font size="3"><strong><font face="Courier New, Courier, mono">//alloc memory<br />
+        1::second =&gt; loopme.duration;<br />
+        10::ms =&gt; loopme.recRamp;</font></strong></font></p>
+      <p><font size="3"><strong><font face="Courier New, Courier, mono">//start recording input<br />
+        1 =&gt; loopme.record;</font></strong></font></p>
+      <p><font size="3"><strong><font face="Courier New, Courier, mono">//begin ramping down <br />
+        600::ms =&gt; now;<br />
+        400::ms =&gt; loopme.recRamp;</font></strong></font></p>
+      <p><font size="3"><strong><font face="Courier New, Courier, mono">//wait for ramp to finish, then stop recording <br />
+        400::ms =&gt; now;<br />
+        0 =&gt; loopme.record;</font></strong></font></p>
+      <p><font size="3"><strong><font face="Courier New, Courier, mono">//set playback rate<br />
+        1.5 =&gt; loopme.rate;
+        <br />
+        1 =&gt; loopme.loop;<br />
+        1 =&gt; loopme.bi;</font></strong></font><br />
+        <font size="3"><strong><font face="Courier New, Courier, mono">1 =&gt; loopme.play;</font></strong></font></p>
+      <p><font size="3"><strong><font face="Courier New, Courier, mono">while(true) {500::ms =&gt; now;}</font></strong></font></p>
+    </blockquote>    
+    <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">and yet another example, illustrating some other bookkeeping issues that might come up:</font></p>
+    <blockquote>
+      <p><strong><font size="3" face="Courier New, Courier, mono">SinOsc s =&gt; LiSa loopme =&gt; dac;
+      <br />
+        440. =&gt; s.freq;<br />
+        0.2 =&gt; s.gain;</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">//alloc memory; different length this time<br />
+        10::second =&gt; loopme.duration;<br />
+        10::ms =&gt; loopme.recRamp;</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">//need to specify where the recording will end if<br />
+        //we want the recRamping to work when turning<br />
+        //off recording<br />
+        1::second =&gt; loopme.loopEndRec;</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">//start recording input<br />
+        1 =&gt; loopme.record;</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">//stop recording 1 second later, start playing what was just recorded<br />
+        600::ms =&gt; now;<br />
+        400::ms =&gt; loopme.recRamp;</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">400::ms =&gt; now;<br />
+        0 =&gt; loopme.record;</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">//set playback rate<br />
+        1.5 =&gt; loopme.rate;</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">//now we need to tell it where to end the looping for playback<br />
+        //since the buffer size is longer than our actual desired<br />
+        //loop length<br />
+        1::second =&gt; loopme.loopEnd;</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">//now go ahead and play....<br />
+        1 =&gt; loopme.loop;<br />
+        1 =&gt; loopme.bi;<br />
+        1 =&gt; loopme.play;</font></strong></p>
+      <p><strong><font size="3" face="Courier New, Courier, mono">while(true) {500::ms =&gt; now;}</font></strong></p>
+    </blockquote>
+    <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">ok lot's of basic semi-tedious info there. Now let's look at how to handle <a href="tutorial-2.html">multiple voices with LiSa</a>.</font></p>
+    <p>&nbsp;</p></td>
+  </tr>
+</table>
+<p align="left">&nbsp;</p>
+</body>
+</html>
+

@@ -1,0 +1,110 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>LiSa Tutorial: Voices</title>
+</head>
+
+<body>
+<table width="800" border="0" align="center" cellpadding="8" cellspacing="8">
+  <tr>
+    <td><p align="center"><font size="4" face="Verdana, Arial, Helvetica, sans-serif">The <b>LiSa</b> Tutorial</font> <font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br />
+            </font></p>
+      <p align="left"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>Tutorial #2: using Voices </strong></font></p>
+      <p align="left"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Let's sample a little ascending SinOsc and then play it back, first forward, then backwards with a slight overlap. We use the Envelope ugen to control enveloping of the recording in this case, though we could also use recRamp as in the first tutorial:</font></p>
+      <blockquote>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//signal chain<br />
+  SinOsc s =&gt; Envelope e =&gt; LiSa loopme =&gt; dac;<br />
+  <br />
+  //monitor the input as well as LiSa <br />
+  s =&gt; dac; <br />
+  <br />
+  //initialize SinOsc parameters <br />
+  440. =&gt; s.freq;<br />
+  0.2 =&gt; s.gain;</font></strong></p>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//alloc memory<br />
+  6::second =&gt; loopme.duration;</font></strong></p>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//play s for a bit<br />
+  500::ms =&gt; now;</font></strong></p>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//sweep the freq for fun<br />
+  Envelope pitchmod =&gt; blackhole;<br />
+          <br />
+          //set the time to target to 2 seconds <br />
+          2::second =&gt; pitchmod.duration;<br />
+          <br />
+          //set the initial value for the sinwave
+          <br />
+          s.freq() =&gt; pitchmod.value;<br />
+          <br />
+          //set the target; &quot;pitchmod&quot; will begin moving towards<br />
+        //880 as soon as time begins to pass </font></strong><strong><font size="3" face="Courier New, Courier, mono"> <br />
+          880 =&gt; pitchmod.target;</font></strong></p>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//set times for recording fade in/out and sample loop length<br />
+  100::ms =&gt; dur recfadetime;<br />
+  1000::ms =&gt; dur mylooplen;<br />
+          recfadetime =&gt; e.duration;</font></strong></p>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//start recording input; record 1 seconds worth<br />
+          loopme.record(1);<br />
+          <br />
+          //turn in the Envelope for recording <br />
+        </font></strong><strong><font size="3" face="Courier New, Courier, mono">e.keyOn(); </font></strong></p>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//calculate the time we want to record to (until before ramping down) <br />
+          now + (mylooplen - recfadetime) =&gt; time later;<br />
+          <br />
+          //allow time to pass, recording and also updating the SinOsc frequency <br />
+          while(now &lt; later) {</font></strong></p>
+        <blockquote>
+          <p><strong><font size="3" face="Courier New, Courier, mono">pitchmod.value() =&gt; s.freq;<br />
+            10::ms =&gt; now;</font></strong></p>
+        </blockquote>
+        <p><strong><font size="3" face="Courier New, Courier, mono">}</font></strong><strong><font size="3" face="Courier New, Courier, mono"><br />
+              <br />
+              //start ramping down
+              <br />
+          e.keyOff();<br />
+          <br />
+          //wait for ramp to finish, and then stop recording <br />
+          recfadetime =&gt; now;<br />
+        loopme.record(0);</font></strong></p>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//at this point, we should have a nice enveloped sample<br />
+        //of the gliss in the LiSa internal buffer</font></strong></p>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//disconnect the SinOsc so we don't have to hear it<br />
+          //and hangout a bit before playing back.... <br />
+  s =&lt; dac;<br />
+  1000::ms =&gt; now;</font></strong></p>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//now, manipulate the sample<br />
+          //get an available voicenumber;<br />
+        //</font></strong><strong><font size="3" face="Courier New, Courier, mono">note that this voice won't actually be reserved until you play it<br />
+          loopme.getVoice() =&gt; int voice1;</font></strong></p>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//we'll play voice 1 forward, and then <br />
+          //crossfade it with voice 2 backwards <br />
+          loopme.play(voice1, 1);<br />
+          (mylooplen - recfadetime) =&gt; now;</font></strong></p>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//just as voice 1 is going to fade, bring in voice 2 backwards <br />
+  loopme.getVoice() =&gt; int voice2;<br />
+          loopme.rate(voice2, -1.);<br />
+          <br />
+          //note that we need to set the playback position <br />
+          loopme.playPos(voice2, mylooplen); <br />
+          <br />
+          //make it a little softer <br />
+          loopme.voiceGain(voice2, 0.2);<br />
+          <br />
+          //begin playing voice 2; helps us hear when voice 2 comes in
+          <br />
+          loopme.play(voice2, 1);</font></strong></p>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//wait until voice 1 had finished fading, then turn off<br />
+  recfadetime =&gt; now;<br />
+          loopme.play(voice1, 0);</font></strong></p>
+        <p><strong><font size="3" face="Courier New, Courier, mono">//wait for voice 2 to finish<br />
+  1000::ms =&gt; now;</font></strong></p>
+      </blockquote>    
+      <p align="left"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">So, we hear the input, which clicks when we start it up and finish it. In the midst of that, we sample it with some nice ramping, so our LiSa buffer doesn't have any clicks. Then, when we're done sampling, we play it, first forwards, and then just as the forward voice is about the ramp down (due to the ramping that we created when we recorded to the internal buffer), we bring in the backwards voice so it overlaps. If we change the voiceGain of voice 2 to unity, then this overlap will be seamless. As an Added Bonus, this example also illustrates a couple different applications of the Envelope ugen.</font></p>
+      <p align="left"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">more tutorials coming.... </font></p></td>
+  </tr>
+</table>
+<p align="left">&nbsp;</p>
+</body>
+</html>
+

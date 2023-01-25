@@ -1,0 +1,229 @@
+<html>
+<head>
+<title>ChucK - [Programming Guide - ChucK Shell]</title>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<font face="verdana" size="2">
+
+<br />
+<center> 
+<table border="0" width="640">
+<tr><td>
+<font face="verdana" size="2">
+<center>
+<font size="3">
+<b>ChucK</b> : Programming Guide
+</font>
+<br />
+<br />
+<font color="#3333aa" size="3">
+ChucK Shell</font>
+<br /><br />
+
+  <table bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="right"><font face="verdana" size="2">
+  version:</td><td><font face="verdana" size="2">
+  1.4.x.x (numchucks)
+  <br />
+  
+  </font></td>
+  </tr>
+  </table></td></tr>
+  </table>
+
+<br />
+<!--img src="../images/on-the-fly_50dpi.jpg"-->
+
+<table width="640" border="0" cellpadding="2" cellspacing="2">
+<tr><td align="justify"><font face="verdana" size="2">
+
+<hr width="10%" />
+<br /><p align="justify">
+The ChucK shell is a command line based interface which can streamline on-the-fly programming tasks.  
+<br /><br />
+
+<center>
+
+  <table bgcolor="#d9d9d9" border="0" cellpadding="0" cellspacing="1"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="8" cellspacing="2">
+  <tr>
+  <td align="left"><font face="verdana, sans-serif" size="2">
+
+<a name="lang"><center><strong>table of contents</strong></a><br />
+</center>
+<br />
+<ul>
+<li><strong><a href="#tutorial">tutorial</a></strong></li>
+<li><strong><a href="#options">command line options</a></strong></li>
+<li><strong><a href="#commands">shell commands</a></strong></li>
+<li><strong><a href="#code">in-shell code</a></strong></li>
+</ul>
+   </td></tr>
+   </table>
+   </tr></td>
+   </table>
+</center>
+
+<a name="tutorial" />
+<b>Tutorial</b><br />
+
+<p align="justify">
+To invoke the ChucK shell, specify the --shell option at the command line:
+<br /><br />
+<center>
+  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="left"><pre> %> chuck --shell
+ welcome to chuck shell!
+ chuck %> </td></tr></table></td></tr></table>
+</center>
+
+<br /><p align="justify">
+This will create a new shell instance and also runs a listener VM in the background.  
+To start using the shell, simply type in a command.  For example, 
+<br /><br />
+<center>
+  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="left"><pre> chuck %> + foo.ck</td></tr></table></td></tr></table>
+</center>
+
+<br /><p align="justify">
+will add the file 'foo.ck' to the listener VM.  To remove 
+<br /><br />
+<b>--add</b> / <b>+</b><br />
+        adds new shreds from source files to the listener VM.  this 
+        process then exits.
+        for example:
+
+<br /><br />
+<center>
+  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="left"><pre> %> chuck + foo.ck bar.ck</td></tr></table></td></tr></table>
+</center>
+<br /><p align="justify">
+        integrates foo.ck and bar.ck into the listener VM.  the shreds are 
+        internally responsible for finding about the timing and other 
+        shreds via the timing mechanism and vm interface. <br /><br />
+<b>--remove</b> / <b>-</b><br />
+        removes existing shreds from the VM by ID.  how to find out 
+        about the id?  (see --status below)  for example:
+
+<br /><br />
+<center>
+  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="left"><pre> %> chuck - 2 3 8</td></tr></table></td></tr></table>
+</center>
+<br /><p align="justify">
+
+        removes shred 2, 3, 8.
+<br /><br />
+<b>--replace</b> / <b>=</b><br />
+        replace existing shred with a new shred.  for example:
+<br /><br />
+<center>
+  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="left"><pre> %> chuck = 2 foo.ck</td></tr></table></td></tr></table>
+</center>
+<br /><p align="justify">
+        replaces shred 2 with foo.ck
+<br /><br />
+<b>--status</b> / <b>^</b><br />
+        queries the status of the VM - output on the listener VM.  for 
+example: <br /><br />
+<center>
+  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="left"><pre> %> chuck ^</td></tr></table></td></tr></table>
+</center>
+<br /><p align="justify">
+        this prints the internal shred start at the listener VM, 
+        something like:
+
+<br /><br />
+<center>
+  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="left"><pre> [chuck](VM): status (now == 0h:2m:34s) ...
+   [shred id]: 1  [source]: foo.ck  [sporked]: 21.43s ago 
+   [shred id]: 2  [source]: bar.ck  [sporked]: 28.37s ago</td></tr></table></td></tr></table>
+</center>
+<br /><p align="justify">
+<b>--time</b><br />
+        prints out the value of now on the listener VM.  for example:<br /><br />
+<center>
+  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="left"><pre> %> chuck --time</td></tr></table></td></tr></table>
+</center>
+<br />
+        something like:
+
+<br /><br />
+<center>
+  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="left"><pre> [chuck](VM): the value of now:
+    now = 403457 (samp)
+        = 9.148685 (second)
+        = 0.152478 (minute)
+        = 0.002541 (hour)
+        = 0.000106 (day)
+        = 0.000015 (week)</td></tr></table></td></tr></table>
+</center>
+<br />
+<b>--kill</b><br />
+        semi-gracefully kills the listener VM - removes all shreds first.
+<br /><p align="justify">
+<br /><br />
+<a name="remote"></a>
+<b>--remote<hostname></b> / <b>@<hostname></b><br />
+        specifies where to send the on-the-fly command.
+        must appear in the command line before any on-the-fly commands.
+        for example:
+
+<br /><br />
+<center>
+  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="left"><pre> %> chuck @192.168.1.1 + foo.ck bar.ck
+    (or)
+ %> chuck @foo.bar.com -p8888 + foo.ck bar.ck</td></tr></table></td></tr></table>
+</center>
+<br />
+        sends foo.ck and bar.ck to VM at 192.168.1.1 or foo.bar.com:8888<br />
+<br />
+<br />
+<center>
+<hr width="15%" />
+Next: <a href="stdlib.html">ChucK standard libraries</a><br />
+Return to <a href="./">Programmer's Guide</a><br /><br />
+
+</td></tr></table>
+<font size="1">
+<hr width="15%" />
+<a href="../../">chuck</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://www.cs.princeton.edu/">cs</a> |
+<a href="http://www.music.princeton.edu/">music</a> |
+<a href="http://ccrma.stanford.edu/">ccrma</a>
+<br />
+<br />
+</font>
+</body>
+</html>

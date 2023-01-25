@@ -1,0 +1,8 @@
+../hid/joy.ck
+
+../midi/gomidi.ck
+../midi/polyfony.ck
+../midi/polyfony2.ck
+
+../osc/s.ck (Open Sound Control sender)
+../osc/r.ck (Open Sound Control receiver)

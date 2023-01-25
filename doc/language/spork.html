@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC 
+"-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>ChucK - [Language Specification : Concurrency and Shreds]</title>
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<center>
+
+<!-- all in a big fat table-->
+
+<table id="page_layout" border="0" width="640">
+
+<!-- heading row-->
+
+<tr><td>
+<div id="chuck_header">
+<center>
+<h1>
+<strong>ChucK</strong> : Language Specification &gt; Concurrency &amp; Shreds
+</h1>
+
+<table border="0">
+<tr><td>
+  	<div id="chuck_revision">
+	version: 1.4.x.x (numchucks)
+  	</div>
+  	
+</td></tr>
+</table>
+
+<hr width="20%" />
+</center>
+</div>
+</td></tr>
+
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  &lt; (prev): <a href="func.html">functions</a> | (up): <a href="./">language specification</a> | (next): <a href="class.html">classes &amp; objects</a> &gt; 
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+
+
+<!-- lang specification section -->
+<tr><td>
+<div id="chuck_body">
+
+<div id="lang_topic_body">
+
+<h1><strong>Concurrency &amp; Shreds</strong></h1>
+<p>
+ChucK is able to run many processes concurrently (the process behave as if they are running in parallel).  A 
+ChucKian process is called a <i>shred</i>.  To <i>spork</i> a shred means creating and adding a new process to the 
+virtual machine.  Shreds may be sporked from a variety of places, and may themselves spork new shreds.</p>
+
+<p>
+ChucK supports sample-synchronous, non-preemptive concurrency.  Via the timing mechanism. any number 
+of programs/shreds can be automatically <i>shreduled</i> and synchronized use the timing information.
+A <i>shreduler</i> in the virtual machine does the shreduling.  The concurrency is 'sample-synchronous', meaning 
+that inter-process audio timing is guaranteed to be precise to the sample.  Note that each process/shred does not 
+necessarily need to know about each other - it only has to deal with time locally. The virtual machine will make 
+sure things happen correctly "across the board".  Finally, concurrency - like timing - is deterministic in ChucK.
+</p>
+
+<p>The simplest way to to run shreds concurrently is to specify them on the command line:</p>
+
+<pre>
+    %> chuck foo.ck bar.ck boo.ck
+</pre>
+
+<p>The above command runs chuck on foo.ck, bar.ck, and boo.ck concurrently.  There are other ways to run shreds 
+concurrently (see <a href="../program/otfp.html">on-the-fly programming commands</a>).  Next, we show how to 
+create new shreds from within ChucK programs.</p>
+
+<!-- index of code exmaples -->
+<div class="lang_code_ref">
+<a href="../examples/index.html#spork">View sample code</a> for shreds & sporking</a>
+</div>
+
+<!-- body of each sub topic -->
+
+<div class="lang_subtopic_body">
+<a name="spork"> </a>
+<h2><strong>sporking shreds (in code)</strong></h2>
+
+<p>To <i>spork</i> means to shredule a new shred.</p>
+
+<p>To spork a shred, use the <font face="courier"><b>spork</b></font> keyword/operator:</p>
+
+<ul>
+<li> <font face="courier"><b>spork</b></font> dynamically sporks shred from a function call
+<li> this operation is sample-synchronous, the new shred is shreduled to execute immediately
+<li> the parent shred continues to execute, until time is advanced (see <a href="time.html">
+manipulating time</a>) or until the parent explicitly yields (see next section).
+<li> in the current implementation, when a parent shred exits, all child shreds all exit (this
+behavior will be enhanced in the future.)
+<li> <font face="courier"><b>spork</b></font>ing a functions returns reference to the new shred,
+note that this operation does not return what functions returns - the ability to get back the return 
+value at some later point in time will be provided in a future release.
+</ul>
+
+<pre>
+    // define function go()
+    fun void go()
+    {
+        // insert code
+    }
+
+    // spork a new shred to start running from go()
+    spork ~ go();
+
+    // spork another, store reference to new shred in offspring
+    spork ~ go() => Shred @ offspring;
+</pre>
+
+<p>a slightly longer example:</p>
+
+<pre>
+   // define function
+   fun void foo( string s )
+   {
+       // infinite time loop
+       while( true )
+       {
+           // print s
+           <<< s >>>;
+           // advance time
+           500::ms => now;
+       }
+   }
+   
+   // spork shred, passing in "you" as argument to foo
+   spork ~ foo( "you" );
+   // advance time by 250 ms
+   250::ms => now;
+   // spork another shred
+   spork ~ foo( "me" );
+   
+   // infinite time loop - to keep child shreds around
+   while( true )
+        1::second => now;
+</pre>
+
+<p>also see <a href="func.html">function</a> section for more information on working with functions.</p>
+
+</div>
+
+<!-- additional sub topic sections go here... -->
+
+
+<div class="lang_subtopic_body">
+<a name="me"> </a>
+<h2><strong>the 'me' keyword</strong></h2>
+
+<p>The <font face="courier"><b>me</b></font> keyword (type <font face="courier">Shred</font>) refers the current 
+shred. </p>
+
+<p>Sometimes it is useful to suspend the current shred <i>without advancing time</i>, and let other shreds 
+shreduled for the current time to execute.  <font face="courier"><b>me.yield()</b></font> does exactly that.
+This is often useful immediately after sporking a new shred, and you would like for that shred to have a chance to 
+run but you do not want to advance time yet for yourself.</p>
+
+<pre>
+    // spork shred
+    spork ~ go();
+
+    // suspend the current shred ...
+    // ... give other shreds (shreduled for 'now') a chance to run
+    me.yield();
+</pre>
+
+<p>It may also be useful to exit the current shred.  For example if a MIDI device fails to open, you may exit the 
+current shred.</p>
+
+<pre>
+    // make a MidiIn object
+    MidiIn min;
+
+    // try to open device 0 (chuck --probe to list all device)
+    if( !min.open( 0 ) )
+    {
+        // print error message
+        <<< "can't open MIDI device" >>>;
+        // exit the current shred
+        me.exit();
+    }
+</pre>
+
+<p>You can get the shred id:</p>
+
+<pre>
+    // print out the shred id
+    <<< me.id(); >>>;
+</pre>
+
+<p>These functions are common to all shreds, but yield() and exit() are commonly used with the current shred.</p>
+
+</div>
+
+
+<div class="lang_subtopic_body">
+<a name="add"> </a>
+<h2><strong>using machine.add()</strong></h2>
+
+<p><font face="courier"><b>Machine.add( string path )</b></font> takes the path to a chuck program, and sporks it.  
+Unlike <font face="courier"><b>spork ~</b></font>, there is no parent-child relationship between the shred that 
+calls the function and the new shred that is added.  This is useful for dynamically running stored programs.</p>
+
+<pre>
+    // spork "foo.ck"
+    Machine.add( "foo.ck" );
+</pre>
+
+<p>Presently, this returns the id of the new shred, not a reference to the shred.  This will likely be 
+changed in the future.</p>
+
+<p>Similarly, you can remove shreds from the virtual machine.</p>
+
+<pre>
+    // add
+    Machine.add( "foo.ck" ) => int id;
+
+    // remove shred with id
+    Machine.remove( id );
+
+    // add
+    Machine.add( "boo.ck" ) => id
+
+    // replace shred with "bar.ck"
+    Machine.replace( id, "bar.ck" );
+</pre>
+
+</div>
+
+
+<div class="lang_subtopic_body">
+<a name="com"> </a>
+<h2><strong>inter-shred communication</strong></h2>
+
+<p>Shreds sporked in the same file can share the same global variables.  They can use time and events to 
+synchronize to each other.  (see <a href="event.html">events</a>)  Shreds sporked from different files can share 
+data (including events).  For now, this is done through a public class with static data (see <a href="class.html"> 
+classes</a>).  Static data is not completely implemented!  We will fix this very soon!
+
+</div>
+
+<div class="lang_subtopic_body">
+<a name="arguments"> </a>
+<h2><strong>command line arguments</strong></h2>
+
+<p>ChucK supports passing arbitrary data from the command line into ChucK programs using optional command line arguments.  An argument is specified by appending a colon character ":" to the name of the ChucK program to which you wish to send that argument, followed by the argument itself.  
+<pre>
+ %&gt; chuck foo.ck:foo
+</pre>
+Multiple arguments can be specified, each separated by the colon character.  
+<pre>
+ %&gt; chuck foo.ck:foo:bar:boo
+</pre>
+Furthermore, each ChucK program has its own set of arguments, which are specified separately.  
+<pre>
+ %&gt; chuck foo.ck:foo bar.ck:bar boo.ck
+</pre>
+Command line arguments can also be used when using on-the-fly programming facilities of ChucK.
+<pre>
+ %&gt; chuck + foo.ck:foo bar.ck:bar:boo
+</pre>
+<font face="courier"><b>Machine.add()</b></font> and <font face="courier"><b>Machine.replace()</b></font> accept command line arguments in a similar fashion.  
+<pre>
+    // add foo.ck
+    // pass foo and bar as command line arguments
+    Machine.add( "foo.ck:foo:bar" ) => int id;
+
+    // replace shred with "bar.ck"
+    // pass foo and bar as command line arguments
+    Machine.replace( id, "bar.ck:foo:bar" );
+</pre>
+</p>
+
+<p>
+To access command line arguments within a ChucK program, use the <strong><font face="courier">me.args()</font></strong> and <strong><font face="courier">me.arg()</font></strong> functions.  
+<pre>
+// print out all arguments
+for( int i; i < me.numArgs(); i++ )
+    &lt;&lt;&lt; me.arg( i ) &gt;&gt;&gt;;
+</pre>
+</p>
+</div>
+
+<!-- end subtopics ? -->
+
+</div>
+</div>
+</td></tr>
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  &lt; (prev): <a href="func.html">functions</a> | (up): <a href="./">language specification</a> | (next): <a href="class.html">classes &amp; objects</a> &gt; 
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+
+<!-- chuck-footer -->
+
+<tr><td>
+<div id ="chuck_footer">
+<center>
+<hr width="15%" / >
+<a href="../../">chuck</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://www.cs.princeton.edu/">cs</a> |
+<a href="http://www.music.princeton.edu/">music</a> |
+<a href="http://ccrma.stanford.edu/">ccrma</a>
+
+</center>
+</div>
+</td></tr>
+</table>
+
+</center>
+</body>
+</html>

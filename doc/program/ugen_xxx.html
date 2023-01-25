@@ -1,0 +1,170 @@
+
+<html>
+<head>
+<title>chuck documentation</title>
+<link rel="stylesheet" type="text/css" href="../ckdoc.css">
+</head>
+<body>
+<div class="container">
+<div class="library">
+<div class="exportlist">
+<div class="section">audio output</div>
+<div class="ugen">
+<h3><a class="heading" name="dac">[ugen]</a>: <span class="name">dac</span> </h3>
+<div class="comments"><ul>
+<li> digital/analog converter</li>
+<li> abstraction for underlying audio output device</li>
+</ul></div>
+</div>
+
+<div class="ugen">
+<h3><a class="heading" name="adc">[ugen]</a>: <span class="name">adc</span> </h3>
+<div class="comments"><ul>
+<li> analog/digital converter</li>
+<li> abstraction for underlying audio input device</li>
+</ul></div>
+</div>
+
+<div class="ugen">
+<h3><a class="heading" name="blackhole">[ugen]</a>: <span class="name">blackhole</span> </h3>
+<div class="comments"><ul>
+<li> sample rate sample sucker</li>
+<li> ( like dac, ticks ugens, but no more )</li>
+<li> see examples/<a href="../examples/pwm.ck">pwm.ck</a></li>
+</ul></div>
+</div>
+
+<div class="ugen">
+<h3><a class="heading" name="bunghole">[ugen]</a>: <span class="name">bunghole</span> </h3>
+<div class="comments"><ul>
+<li> sample rate sample sucker</li>
+<li> ( like dac, ticks ugens, but no more )</li>
+</ul></div>
+</div>
+
+<div class="ugen">
+<h3><a class="heading" name="gain">[ugen]</a>: <span class="name">Gain</span> </h3>
+<div class="comments"><ul>
+<li> gain control</li>
+<li> (NOTE - all unit generators can themselves change their gain)</li>
+<li> (this is a way to add N outputs together and scale them) </li>
+<li> used in \example i-robot.ck</li>
+</ul></div>
+
+<div class="members">
+[ctrl param]:
+<ul><li><b>.value</b> - ( float , READ/WRITE ) - <span class="comment">set gain ( all ugen's have this ) </span></li>
+</ul></div>
+
+<div class="example">[example]<br />
+<div class="code"> Noise n => Gain g => dac;
+ SinOsc s => g;
+ .3 => g.gain;
+ while( true ) { 100::ms => now; }
+</div></div></div>
+<div class="section">wave forms</div>
+<div class="ugen">
+<h3><a class="heading" name="noise">[ugen]</a>: <span class="name">Noise</span> </h3>
+<div class="comments"><ul>
+<li> white noise generator </li>
+<li> see examples/<a href="../examples/noise.ck">noise.ck</a> examples/<a href="../examples/powerup.ck">powerup.ck</a></li>
+</ul></div>
+</div>
+
+<div class="ugen">
+<h3><a class="heading" name="impulse">[ugen]</a>: <span class="name">Impulse</span> </h3>
+<div class="comments"><ul>
+<li> pulse generator - can set the value of the current sample</li>
+<li> default for each sample is 0 if not set</li>
+</ul></div>
+
+<div class="members">
+[ctrl param]:
+<ul><li><b>.value</b> - ( float , READ/WRITE ) - <span class="comment"></span></li>
+<li><b>.next</b> - ( float , READ/WRITE ) - <span class="comment">set value of next sample</span></li>
+</ul></div>
+
+<div class="example">[example]<br />
+<div class="code"> Impulse i => dac;
+ while( true ) {
+    1.0 => i.next;
+    100::ms => now;
+ }
+</div></div></div>
+
+<div class="ugen">
+<h3><a class="heading" name="step">[ugen]</a>: <span class="name">Step</span> </h3>
+<div class="comments"><ul>
+<li> step generator - like Impulse, but once a value is set, </li>
+<li> it is held for all following samples, until value is set again</li>
+<li> see examples/<a href="../examples/step.ck">step.ck</a></li>
+</ul></div>
+
+<div class="members">
+[ctrl param]:
+<ul><li><b>.value</b> - ( float , READ/WRITE ) - <span class="comment"></span></li>
+<li><b>.next</b> - ( float , READ/WRITE ) - <span class="comment">set the step value </span></li>
+</ul></div>
+
+<div class="example">[example]<br />
+<div class="code"> Step s => dac;
+ -1.0 => float amp;
+ // square wave using Step
+ while( true ) {
+     -amp => amp => s.next;
+     800::samp => now;
+ }
+</div></div></div>
+<div class="section">filters</div>
+<div class="ugen">
+<h3><a class="heading" name="halfrect">[ugen]</a>: <span class="name">HalfRect</span> </h3>
+<div class="comments"><ul>
+<li> half wave rectifier</li>
+<li> for half-wave rectification. </li>
+</ul></div>
+</div>
+
+<div class="ugen">
+<h3><a class="heading" name="fullrect">[ugen]</a>: <span class="name">FullRect</span> </h3>
+<div class="comments"><ul>
+<li> full wave rectifier</li>
+</ul></div>
+</div>
+
+<div class="ugen">
+<h3><a class="heading" name="zerox">[ugen]</a>: <span class="name">ZeroX</span> </h3>
+<div class="comments"><ul>
+<li> zero crossing detector</li>
+<li> emits a single pulse at the the zero crossing in the direction of the zero crossing.  </li>
+<li> (see examples/<a href="../examples/zerox.ck">zerox.ck</a>)</li>
+</ul></div>
+</div>
+<div class="section">sound files</div>
+<div class="ugen">
+<h3><a class="heading" name="sndbuf">[ugen]</a>: <span class="name">SndBuf</span> </h3>
+<div class="comments"><ul>
+<li> sound buffer ( now interpolating ) </li>
+<li> reads from a variety of file formats</li>
+<li> see examples/<a href="../examples/sndbuf.ck">sndbuf.ck</a></li>
+</ul></div>
+
+<div class="members">
+[ctrl param]:
+<ul><li><b>.read</b> - ( string , WRITE only ) - <span class="comment">loads file for reading</span></li>
+<li><b>.write</b> - ( string , WRITE only ) - <span class="comment">loads a file for writing ( or not ) </span></li>
+<li><b>.pos</b> - ( int , READ/WRITE ) - <span class="comment">set position ( 0 < p < .samples ) </span></li>
+<li><b>.loop</b> - ( int , READ/WRITE ) - <span class="comment">toggle looping </span></li>
+<li><b>.interp</b> - ( int , READ/WRITE ) - <span class="comment">set interpolation ( 0=drop, 1=linear, 2=sinc )</span></li>
+<li><b>.rate</b> - ( float , READ/WRITE ) - <span class="comment">playback rate ( relative to file's natural speed ) </span></li>
+<li><b>.play</b> - ( float , READ/WRITE ) - <span class="comment">play (same as rate) </span></li>
+<li><b>.freq</b> - ( float , READ/WRITE ) - <span class="comment">playback rate ( file loops / second ) </span></li>
+<li><b>.phase</b> - ( float , READ/WRITE ) - <span class="comment">set phase position ( 0-1 )</span></li>
+<li><b>.channel</b> - ( int , READ/WRITE ) - <span class="comment">select channel ( 0 < p < .channels )</span></li>
+<li><b>.phase_offset</b> - ( float , READ/WRITE ) - <span class="comment">set a phase offset</span></li>
+<li><b>.samples</b> - ( int , READ only ) - <span class="comment">fetch number of samples</span></li>
+<li><b>.length</b> - ( float , READ only ) - <span class="comment">fetch length in seconds</span></li>
+<li><b>.channels</b> - ( int , READ only ) - <span class="comment">fetch number of channels</span></li>
+</ul></div>
+</div>
+
+</div></div></div></body></html>

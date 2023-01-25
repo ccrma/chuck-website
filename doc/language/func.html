@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC 
+"-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>ChucK - [Language Specification : Functions]</title>
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<center>
+
+<!-- all in a big fat table-->
+
+<table id="page_layout" border="0" width="640">
+
+<!-- heading row-->
+
+<tr><td>
+<div id="chuck_header">
+<center>
+<h1>
+<strong>ChucK</strong> : Language Specification &gt; Functions
+</h1>
+
+<table border="0">
+<tr><td>
+  	<div id="chuck_revision">
+	version: 1.4.x.x (numchucks)
+  	</div>
+  	
+</td></tr>
+</table>
+
+<hr width="20%" />
+</center>
+</div>
+</td></tr>
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  &lt; (prev): <a href="time.html">manipulating time</a> | (up): <a href="./">language specification</a> | (next): <a href="spork.html">concurrency</a> &gt; 
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+<!-- lang specification section -->
+<tr><td>
+<div id="chuck_body">
+
+<div id="lang_topic_body">
+
+<h1><strong>Functions</strong></h1>
+<p>
+Functions provide ways to break up code/common tasks into individual 
+units.  This helps to promote code re-usability and readability. 
+</p>
+
+<!-- index of code exmaples -->
+<div class="lang_code_ref">
+<a href="../examples/index.html#func">View sample code</a> for functions
+</div>
+
+
+<!-- body of each sub topic -->
+
+<div class="lang_subtopic_body">
+<a name="write"> </a>
+<h2><strong>writing</strong></h2>
+
+<p>Declare functions with the keyword <font face="courier">fun</font> (or 
+<font face="courier">function</font>) followed by the return type and 
+then the name of the function. After the name of the function parentheses 
+must be opened to declare the types of the input arguments.</p>
+
+<pre>
+    // define function call 'funk'
+    fun void funk( int arg )
+    {
+        // insert code here
+    }
+</pre>
+
+<p>The above function returns no values (the return type is <font 
+face="courier">void</font>).  If the function is declared to return 
+any other type of values, the function body must return a value of 
+the appropriate type.</p>
+
+<pre>
+    // define function 'addOne'
+    fun int addOne(int x)
+    {
+        // result
+	return x + 1;
+    }
+</pre>
+
+</div>
+
+<!-- additional sub topic sections go here... -->
+
+<div class="lang_subtopic_body">
+<a name="calling"> </a>
+<h2><strong>calling</strong></h2>
+
+<p>To call a function use the name of the function with appropriate 
+arugments.</p>
+
+<pre>
+    // define 'hey'
+    fun int hey( int a, int b )
+    {
+        // do something
+	return a + b;
+    }
+
+    // call the function; store result
+    hey( 1, 2 ) => int result;
+</pre>
+
+<p>You can also use the ChucK operator to call functions!</p>
+
+<pre>
+    // call hey
+    ( 1, 2 ) => hey => int result;
+
+    // same
+    hey( 1, 2 ) => int result;
+
+    // several in a row
+    ( 10, 100 ) => Std.rand2 => Std.mtof => float foo;
+
+    // same
+    Std.mtof( Std.rand2( 10, 100 ) ) => float foo;
+</pre>
+
+</div>
+
+<div class="lang_subtopic_body">
+<a name="overloading"> </a>
+<h2><strong>overloading</strong></h2>
+
+<p>Overloading a function allows functions with the same name to be 
+defined with different arguments. The function must be written in 
+separate instances to handle the input, and the return type must 
+agree.</p>
+
+<pre>
+    // funk( int )
+    fun int add(int x)
+    {
+	return x + x;
+    }
+
+    // funk( int, int )
+    fun int add(int x, int y)
+    {
+	return x + y;
+    }
+
+    // compiler automatically choose the right one to call
+    add( 1 ) => int foo;
+    add( 1, 2 ) => int bar;
+</pre>
+</div>
+
+
+
+<!-- end subtopics ? -->
+
+</div>
+</div>
+</td></tr>
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  &lt; (prev): <a href="time.html">manipulating time</a> | (up): <a href="./">language specification</a> | (next): <a href="spork.html">concurrency</a> &gt; 
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+
+<!-- chuck-footer -->
+
+<tr><td>
+<div id ="chuck_footer">
+<center>
+<hr width="15%" / >
+<a href="../../">chuck</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://www.cs.princeton.edu/">cs</a> |
+<a href="http://www.music.princeton.edu/">music</a> |
+<a href="http://ccrma.stanford.edu/">ccrma</a>
+
+</center>
+</div>
+</td></tr>
+</table>
+
+</center>
+</body>
+</html>

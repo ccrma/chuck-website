@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>ChucK : [What's New?]</title>
+</head>
+<body bgcolor=#ffffff text=#000000>
+<center>
+<font face=verdana size=2>
+<br />
+<font size=3><b>ChucK</b> : What's New?</font>
+<br /><br />
+<font size=1><a href="http://chuck.cs.princeton.edu/">http://chuck.cs.princeton.edu/</a></font>
+<br /><br />
+<table width=580 border=0 cellpadding=4 cellspacing=4>
+<tr><td align=justify><font face=verdana size=2>
+new in chuck-1.2.x.x: (see 
+<a href="VERSIONS">current release notes</a> and 
+<a href="sorry.html">what's busted</a>)
+<br />
+<ul>
+<li> arrays
+<ul>
+<li> integer-indexed <i>and</i> associative
+<li> multidimensional
+</ul>
+<br />
+<li> classes and objects
+<ul>
+<li> create your own classes
+<li> polymorphic inheritance (similar to java | virtual in c++)
+<li> extend existing classes (object, ugen, event, etc.)
+<li> function overloading
+<li> also support static data and functions
+</ul>
+<br />
+<li> <a href="../doc/language/">language specification</a> (finally)
+<br /><br />
+<li> events - fundamental synchrnization mechanism
+<ul>
+<li> shreds can advance time by waiting on events
+<li> events can be signaled (wake one shred) or broadcast (wake all shreds)
+<li> can be subclassed to create custom events
+</ul>
+<br />
+<li> stereo (finally)
+<ul>
+<li> all stereo ugen has .left and .right members
+<li> new ugen: pan2
+<li> new ugen: mix2
+<li> adc and dac are now stereo
+</ul>
+<br />
+<li> better MIDI support
+<ul>
+<li> MidiMsg class replaces hexidecimal literals
+<li> MidiIn can be polled as before
+<li> MidiIn can also be used as an event to wait on
+</ul>
+<br />
+<li> added OSC support
+<br />
+<li> string
+<br />
+<li> new operators
+<ul>
+<br />
+<li> +=>, -=>, *=>, /=>, %=>
+<li> @=> for assignment
+<li> @ for reference
+<li> val $ T - casting val to type T
+<li> <<< x, y, z >>> for printing out values quickly
+</ul>
+<br />
+<li> language features
+<ul>
+<li> type system reimplemented to support classes, arrays
+<li> new bug fixes, new bugs
+<li> forward lookup of classes and functions
+<li> function calling by chucking: (x, y) => z.foo /* same as */ z.foo( x, y)
+<li> function overloading
+<li> implicit int to float casting (finally)
+<li> stack overflow detection (for large recursion)
+</ul>
+<br />
+<li> command line
+<ul>
+<li> --probe prints all audio and MIDI devices on system
+<li> --log or --verbose logs compiler and virtual machine
+<li> different log levels
+<li> -N sporks the next command line shred N times
+</ul>
+<br />
+<li> and more...
+</ul>
+<center>
+and now...<br />
+<br />
+<a href="./">let me have it!</a> | <a href="../">get it away from me!</a>
+</td></tr></table>
+<br />
+<font size=1>
+<hr width=15% />
+<a href="../">chuck</a>
+| <a href="http://soundlab.cs.princeton.edu/">soundlab</a>
+| <a href="http://ccrma.stanford.edu/">ccrma</a>
+<br /><br />
+</body>
+</html>

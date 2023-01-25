@@ -1,0 +1,557 @@
+<!DOCTYPE html PUBLIC 
+"-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>ChucK - [Language Specification : Classes & Objects]</title>
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<center>
+
+<!-- all in a big fat table-->
+
+<table id="page_layout" border="0" width="640">
+
+<!-- heading row-->
+
+<tr><td>
+<div id="chuck_header">
+<center>
+<h1>
+<b>ChucK</b> : Language Specification &gt; Classes  &amp; Objects
+</h1>
+
+<table border="0">
+<tr><td>
+  	<div id="chuck_revision">
+	version: 1.4.x.x (numchucks)
+  	</div>
+  	
+</td></tr>
+</table>
+
+<hr width="20%" />
+</center>
+</div>
+</td></tr>
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  &lt; (prev): <a href="spork.html">concurrency</a> | (up): <a href="./">language specification</a> | (next): <a href="ugen.html">unit generators</a> &gt; 
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+
+<!-- lang specification section -->
+<tr><td>
+<div id="chuck_body">
+
+<div id="lang_topic_body">
+
+<h1><strong>Classes  &amp; Objects</strong></h1>
+<p>
+General Overview of Topic
+</p>
+
+<!-- index of code exmaples -->
+<div class="lang_code_ref">
+<a href="../examples/index.html#class">View sample code</a> for classes &amp; objects</a>
+</div>
+
+<!-- body of each sub topic -->
+
+<div class="lang_subtopic_body">
+<a name="intro"> </a>
+<h2><strong>introduction</strong></h2>
+
+<p>Chuck implements an object system that borrows from both C++ and Java conventions. In our case this means: 
+</p>
+
+<ul>
+<li>You can define custom classes as new types and instantiate objects</li>
+<li>ChucK supports <em>polymorphic inheritance</em> (this is the same model used in Java, and also known as virtual inheritance in C++)</li>
+<li>All object variables are <em>references</em> (like Java), but instantiation resembles C++. We will discuss this in detail below. </li>
+<li>There is a default class library.</li>
+<li>All objects inherit from the Object class (as in Java)</li>
+</ul>
+
+<p>For the sake of clarity we will define these terms:</p>
+<ul>
+<li>a class is an <em>abstraction</em> of data (members) and behavior (methods)</li>
+<li>a class is a <em>type</em>.</li>
+<li>an <em>object</em> is an <em>instantiation</em> of that class</li>
+<li>a <em>reference variable</em> refers indirectly to an object - it is not the object itself.
+All ChucK <em>object variables</em> are reference variables (like in Java).</li>
+<li>similarly, <em>reference assignment</em> duplicates a reference to an object and assigns the reference to a 
+reference variable.  The object itself is not duplicated. All ChucK object assignments are reference assignments.</li>
+</ul>
+
+
+</div>
+
+<!-- additional sub topic sections go here... -->
+
+<div class="lang_subtopic_body">
+<a name="apropos"> </a>
+<h2><strong>learning about objects with .help()</strong></h2>
+
+<p>As of chuck-1.4.1.0, all objects (built-in and user-defined) can invoke the .help() function, which dynamically generates information regarding the underlying type of an object or a class—and outputs this information to the console.  The information includes the inheritance chain of the type in question, its methods and data as well as those inherited from its parent (and its parent's parent, and so on). The .help() feature is designed to be a run-time teaching/learning tool and a quick reference while programming. It's fun, sort of!</p>
+
+<pre>
+    // call help() on it to learn about a class and its API
+    // (the output is printed to the chuck console)
+    SinOsc.help();
+</pre>
+
+Check out the <a target="_blank" href="../examples/help.ck">help.ck</a> example.
+</div>
+
+<div class="lang_subtopic_body">
+<a name="base"> </a>
+<h2><strong>built-in classes</strong></h2>
+
+<p>ChucK has a number of classes defined within the language.</p>
+<ul>
+<li><strong><font face="courier">Object</font></strong> : base class to all ChucK objects. </li>
+<li><strong><font face="courier">Event</font></strong> : ChucK's basic synchronization mechanism; may be extended to create custom Event functionality (discussed <a href="event.html">here</a>).</li>
+<li><strong><font face="courier">Shred</font></strong> : basic abstraction for a non-pre&#235;mptive ChucK process.   </li>
+<li><strong><font face="courier">UGen</font></strong> : base unit generator class (discussed <a href="ugen.html">here</a>).</li>
+</ul>
+
+<p>These are some of the more commonly used classes in ChucK. </p>
+</div>
+
+<div class="lang_subtopic_body">
+<a name="new"> </a>
+<h2><strong>working with objects</strong></h2>
+
+<p>Let's begin with some examples.  For these examples, let's assume <font face="courier">Foo</font> is a defined 
+class.</p>
+
+<pre>
+    // create a Foo object; stored in reference variable bar
+    Foo bar;
+</pre>
+
+<p>The above code does two things:</p>
+
+<ul>
+<li> a reference variable <font face="courier">bar</font> is declared; its type is <font 
+face="courier">Foo</font>.</li>
+<li> a new instance of <font face="courier">Foo</font> is created, and its reference is assigned to <font 
+face="courier">bar</font>.</li>
+</ul>
+
+<p>Note that in contrast to Java, this statement both declares a reference variable <em>and</em> instantiates
+a instance of that class and assigns the reference to the variable.  Also note that in contrast to C++, <font 
+face="courier">bar</font> is a reference, and does not represent the object itself.</p>
+
+<p>To declare a reference variable that refers to nothing (also called a null reference):</p>
+
+<pre>
+    // create a null reference to a Foo object
+    Foo @ bar;
+</pre>
+
+<p>The above code only declare a reference and initializes it to null.  (random note: the above statement may be 
+read as "Foo at bar")</p>
+
+<p>We can assign a new instance to the reference variable:</p>
+
+<pre>
+    // assign new instance of Foo to bar
+    new Foo @=> Foo @ bar;
+
+    // (this statement is equivalent to 'Foo bar', above)
+</pre>
+
+<p>The code above is exactly equivalent to <font face="courier">Foo bar;</font> as shown above.  The <font 
+face="courier">new</font> operator creates an instance of a class, in this case <font face="courier">Foo</font>.
+The <font face="courier">@=&gt;</font> operator performs the reference assignment.  (see <a href="oper.html">here</a>
+for more information on <font face="courier">@=&gt;</font>)
+
+<p>It is possible to make many references to same object:</p>
+
+<pre>
+    // make a Foo
+    Foo bar;
+
+    // reference assign to duh
+    bar @=> Foo @ duh;
+
+    // (now both bar and duh points to the same object)
+</pre>
+
+<p>ChucK objects are reference counted and garbage collection takes place automatically.  (note: this is still being implemented!)</p>
+
+<p>As stated above, a classes may contain data and behavior, in the form of <em>member variables</em> and <em>member 
+functions</em>, respectively.  Members are accessed by using 'dot notation' - <em>reference</em>.<em>memberdata</em> and <em>reference</em>.<em>memberfunc()</em>. To invoke a member function of an object (assuming class Foo has a member function 
+called <font face="courier">compute</font> that takes two integers and returns an integer):</p>
+
+<pre>
+    // make a Foo
+    Foo bar;
+
+    // call compute(), store result in boo
+    bar.compute( 1, 2 ) => int boo;
+</pre>
+
+<div class="lang_subtopic_body">
+<a name="create"> </a>
+<h2><strong>writing a class</strong></h2>
+
+<!-- la la loo -->
+<p>If a class has already been defined in the ChucK virtual machine (either in the same file or as a public class in a 
+different file) then it can be instantiated similar to primitive types. </p>
+<p> Unless declared <font face="courier">public</font>, class definitions are scoped to the shred and 
+will not conflict with identically named classes in other running shreds.</p>
+ 
+<p>Classes encapsulate a set of behaviors and data. To define a new object type, the keyword <font face="courier">class</font> is used followed by the name of that class. 
+
+</p>
+<pre>
+// define class X
+class X
+{
+    // insert code here
+}
+</pre>
+
+<p>If a class is defined as <font face="courier"><b>public</b></font>, it is integrated into the central namespace (instead of the local one), and can be instantiated
+from other programs that are subsequently compiled.  There can be at most one public class per file.</p>
+
+<pre>
+// define public class MissPopular
+public class MissPopular
+{
+    // ...
+}
+
+// define non-public class Flarg
+class Flarg
+{
+    // ...
+}
+
+// both MissPopular and Flarg can be used in this file
+// only MissPopular can be used from another file
+
+</pre>
+
+<p>We define member data and methods to specify the data types and functionality required of the class.  Members, or instance data and instance functions are associated with 
+individual instances of a class, whereas <i>static</i> data and functions are only associated with the class (and shared by the instances).</p>
+
+</div>
+
+
+<div class="lang_subtopic_body">
+<a name="member"> </a>
+<h2><strong>members (instance data + functions)</strong></h2>
+
+<p>Instance data and methods are associated with an object.</p>
+
+<pre>
+// define class X
+class X
+{
+    // declare instance variable 'm_foo'
+    int m_foo;
+    // another instance variable 'm_bar'
+    float m_bar;
+    // yet another, this time an object
+    Event m_event;
+
+    // function that returns value of m_foo
+    fun int getFoo() { return m_foo; }
+
+    // function to set the value of m_foo
+    fun void setFoo( int value ) { value => m_foo; }
+
+    // calculate something
+    fun float calculate( float x, float y )
+    {
+        // insert code
+    }
+
+    // print some stuff
+    fun void print()
+    {
+        <<< m_foo, m_bar, m_event >>>;
+    }
+}
+
+// instantiate an X
+X x;
+
+// set the Foo
+x.setFoo( 5 );
+// print the Foo
+<<< x.getFoo() >>>;
+
+// call print
+x.print();
+</pre>
+
+<p><b>class constructors</b></p>
+
+<p>In the initial release, we do not support constructors yet.  However, we have a single <i>pre-constructor</i>.
+The code immediately inside a class definiton (and not inside any functions) is run every time an instance of
+that class is created.</p>
+
+<pre>
+// define class X
+class X
+{
+    // we can put any ChucK statements here as pre-constructor
+    
+    // initialize an instance data
+    109 => int m_foo;
+
+    // loop over stuff
+    for( 0 => int i; i < 5; i++ )
+    {
+        // print out message how silly
+        <<< "part of class pre-constructor...", this, i >>>;
+    }
+
+    // function
+    fun void doit()
+    {
+        // ...
+    }
+}
+
+// when we instantiate X, the pre-constructor is run
+X x;
+
+// print out m_foo
+<<< x.m_foo >>>;
+</pre>
+
+</div>
+
+
+<div class="lang_subtopic_body">
+<a name="static"> </a>
+<h2><strong>static (data + functions)</strong></h2>
+
+<p>Static data and functions are associated with a class, and are shared by all instances of that class -- in fact,static elements can be accessed without an instance, by using the name of the class: <font face="Courier">Classname.element</font>.</p>
+
+<pre>
+// define class X
+class X
+{
+    // static data
+    static int our_data;
+
+    // static function
+    fun static int doThatThing()
+    {
+        // return the data
+        return our_data;
+    }
+}
+
+// do not need an instance to access our_data
+2 => X.our_data;
+// print out
+<<< X.our_data >>>;
+// print
+<<< X.doThatThing() >>>;
+
+// create instances of X
+X x1;
+X x2;
+
+// print out their static data - should be same
+<<< x1.our_data, x2.our_data >>>;
+
+// change use one
+5 => x1.our_data;
+
+// the other should be changed as well
+<<< x1.our_data, x2.our_data >>>;
+
+</pre>
+
+</div>
+
+<div class="lang_subtopic_body">
+<a name="extend"> </a>
+<h2><strong>inheritance</strong></h2>
+
+<p>Inheritance in object-oriented code allows the programmer to take an existing class and extend or alter its functionality.  In doing so we can create a taxonomy of classes 
+that all share a specific set of behaviors, while implementing those behaviors in different, yet well-defined, ways.  We indicate that a new class inherits from another class 
+using the <font face="courier">extends</font> keyword.  The class from which we inherit is referred to as the <font face="courier">parent class</font>, and the inheriting class 
+is the <font face="courier">child class</font>.  The Child class receives all of the member data and functions from the parent class, although functions from the parent class 
+may be overridden ( below ).  Because the children contain the functionality of the parent class, references to instances of a child class may be assigned to a parent class 
+reference type. 
+</p>
+
+<p>For now, access modifiers (public, protected, private) are included but not fully implemented.  Everything is public by default.</p>
+
+<pre>
+// define class X
+class X
+{
+    // define member function
+    fun void doThatThing()
+    {
+        <<<"Hallo">>>;
+    }
+
+    // define another
+    fun void hey()
+    {
+        <<<"Hey!!!">>>;
+    }
+
+    // data
+    int the_data;
+}
+
+// define child class Y
+class Y extends X
+{
+    // override doThatThing()
+    fun void doThatThing()
+    {
+        <<<"No! Get away from me!">>>;
+    }
+}
+
+// instantiate a Y
+Y y;
+
+// call doThatThing
+y.doThatThing();
+
+// call hey() - should use X's hey(), since we didn't override
+y.hey();
+
+// data is also inherited from X
+<<< y.the_data >>>;
+</pre>
+
+
+<p>Inheritance provides us a way of efficiently sharing code between classes which perform similar roles.  We can define a particular complex pattern of behavior, while changing the way that certain aspects of the behavior operate. </p>
+
+
+<pre>
+// parent class defines some basic data and methods 
+class Xfunc
+{ 
+    int x; 
+
+    fun int doSomething( int a, int b ) { 
+        return 0; 
+    }
+}
+
+// child class, which overrides the doSomething function with an addition operation
+class Xadds extends Xfunc
+{ 
+    fun int doSomething ( int a, int b )
+    { 
+         return a + b ; 
+    }
+}
+
+// child class, which overrides the doSomething function with a multiply operation 
+class Xmuls extends Xfunc
+{ 
+    fun int doSomething ( int a, int b )
+    { 
+         return a * b; 
+    }
+}
+
+// array of references to Xfunc
+Xfunc @ operators[2];
+
+// instantiate two children and assign reference to the array 
+new Xadds @=> operators[0];
+new Xmuls @=> operators[1];
+
+// loop over the Xfunc
+for( 0 => int i; i < operators.cap(); i++ )
+{
+    // doSomething, potentially different for each Xfunc
+    <<< operators[i].doSomething( 4, 5 ) >>>;
+}
+</pre>
+
+<p>because Xmuls and Xadds each redefine doSomething( int a, int b ) with their own code, we say that they have 
+<font face="courier, monospaced">overridden</font> the behavior of the parent class.  They observe the same interface,
+but have potentially different implementation.  This is known as polymorphism.</p>
+
+</div>
+
+<div class="lang_subtopic_body">
+<a name="overloadation"> </a>
+<h2><strong>Overloading</strong></h2>
+
+<p>Function overloading in classes is similar to that of regular functions.  see <a href="func.html">functions</a>.</p>
+
+</div>
+
+
+
+
+<!-- end subtopics ? -->
+
+</div>
+</div>
+</td></tr>
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  &lt; (prev): <a href="spork.html">concurrency</a> | (up): <a href="./">language specification</a> | (next): <a href="ugen.html">unit generators</a> &gt; 
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+
+<!-- chuck-footer -->
+
+<tr><td>
+<div id ="chuck_footer">
+<center>
+<hr width="15%" / >
+<a href="../../">chuck</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://www.cs.princeton.edu/">cs</a> |
+<a href="http://www.music.princeton.edu/">music</a> |
+<a href="http://ccrma.stanford.edu/">ccrma</a>
+
+</center>
+</div>
+</td></tr>
+</table>
+
+</center>
+</body>
+</html>

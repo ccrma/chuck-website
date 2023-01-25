@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC 
+"-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>ChucK - [Language Specification : Events]</title>
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<center>
+
+<!-- all in a big fat table-->
+<table id="page_layout" border="0" width="640">
+
+<!-- heading row-->
+
+<tr><td>
+<div id="chuck_header">
+<center>
+<h1>
+<strong>ChucK</strong> : Language Specification &gt; Events
+</h1>
+
+<table border="0">
+<tr><td>
+  	<div id="chuck_revision">
+	version: 1.4.x.x (numchucks)
+  	</div>
+  	
+</td></tr>
+</table>
+
+<hr width="20%" />
+</center>
+</div>
+</td></tr>
+
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  &lt; (prev): <a href="uana.html">unit analyzers</a> | (up): <a href="./">language specification</a>
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+
+<!-- lang specification section -->
+<tr><td>
+<div id="chuck_body">
+
+<div id="lang_topic_body">
+
+<h1><strong>Events</strong></h1>
+<p>
+In addition to the built-in timing mechanisms for internal control, ChucK has an <strong>event</strong> class to allow exact synchronization across an arbitrary number of shreds.  
+</p>
+
+<!-- index of code exmaples -->
+<div class="lang_code_ref">
+<a href="../examples/index.html#event">View sample code</a> for events
+</div>
+
+<!-- body of each sub topic -->
+
+<div class="lang_subtopic_body">
+<a name="intro"> </a>
+<h2><strong>what they are</strong></h2>
+<p>ChucK events are a native class within the ChucK language.  We can
+create an event objects, and then chuck (=&gt;) that event to
+<strong>now</strong>.  The event places the current shred on the event's waiting list, 
+suspends the current shred (letting time advance from that shred's point of view). When
+the the event is triggered, one or more of the shreds on its waiting list is shreduled
+to run immediately.  This trigger may originate from another ChucK shred, or
+from activities taking place outside the Virtual
+Machine ( MIDI, OSC, or IPC ). </p>
+
+<pre>
+// declare event
+Event e;
+
+// function for shred
+fun void eventshred( Event event, string msg )
+{
+    // infinite loop
+    while ( true )
+    {
+        // wait on event
+        event =&gt; now;
+        // print
+        &lt;&lt;&lt;msg&gt;&gt;&gt;;
+    }
+}
+
+// create shreds
+spork ~ eventshred ( e, "fee" );
+spork ~ eventshred ( e, "fi" );
+spork ~ eventshred ( e, "fo" );
+spork ~ eventshred ( e, "fum" );
+
+// infinite time loop
+while ( true )
+{
+    // either signal or broadcast
+    if( maybe )
+    { 
+        &lt;&lt;&lt;"signaling..."&gt;&gt;&gt;;
+        e.signal();
+    }
+    else
+    { 
+        &lt;&lt;&lt;"broadcasting..."&gt;&gt;&gt;;
+        e.broadcast();
+    }
+
+    // advance time
+    0.5::second =&gt; now;
+}
+</pre>
+
+</div>
+
+<!-- additional sub topic sections go here... -->
+
+<div class="lang_subtopic_body">
+<a name="use"> </a>
+<h2><strong>use</strong></h2>
+<p>Chucking an event to now suspends the current shred, letting time 
+advance:</p>
+
+<pre>
+    // declare Event
+    Event e;
+
+    // ...
+
+    // wait on the event
+    e => now;
+
+    // after the event is trigger
+    <<< "I just woke up" >>>;
+</pre>
+
+<p>as shown above, events can be triggered in two ways, depending on the 
+desired behavior.</p>
+
+<pre>
+    // signal one shred waiting on the event e
+    e.signal();
+</pre>
+
+<p><font face="courier"><strong>signal()</strong></font> releases the 
+<em>first</em> shred in that event's queue, and shredule it to run at the 
+current time, respecting the order in which shreds were added to the 
+queue.</p>
+
+<pre>
+    // wake up all shreds waiting on the event e
+    e.broadcast();
+</pre>
+
+<p><font face="courier"><strong>broadcast()</strong></font> releases 
+<em>all</em> shreds queued by 
+that event, in the order they were added, and at the same instant in time. 
+</p>
+
+<p>The released shreds are shreduled to run immediately.  But of course 
+they will respect other shreds also shreduled to run at the same time.  
+Furthermore, the shred that called <font 
+face="courier"><strong>signal()</strong></font> or <font 
+face="courier"><strong>broadcast()</strong></font> will continue to run 
+until it advances time itself, or yield the virtual machine without 
+advancing time. (see <font face="courier">me.yield()</font> under
+<a href="spork.html#me">concurrency</a>)
+
+</div>
+
+
+<div class="lang_subtopic_body">
+<a name="midi"> </a>
+<h2><strong>MIDI events</strong></h2>
+<p>ChucK contains built-in MIDI classes to allow for interaction with MIDI based software or devices.</p>
+<pre>
+MidiIn min;
+MidiMsg msg;
+
+// open midi receiver, exit on fail
+if ( !min.open(0) ) me.exit(); 
+
+while( true )
+{
+    // wait on midi event
+    min => now;
+
+    // receive midimsg(s)
+    while( min.recv( msg ) )
+    {
+        // print content
+    	&lt;&lt;&lt; msg.data1, msg.data2, msg.data3 &gt;&gt;&gt;;
+    }
+}
+
+...
+
+</pre>
+<p><strong>MidiIn</strong> is a subclass of <strong>Event</strong>, and as such can be ChucKed to <strong>now</strong>.  MidiIn then takes a MidiMsg object to its 
+<strong>.recv()</strong> method to access the MIDI data.</p>  As a default, MidiIn events trigger the <strong>broadcast()</strong> event behavior. 
+</div>
+
+
+<div class="lang_subtopic_body">
+<a name="osc"> </a>
+<h2><strong>OSC events</strong></h2>
+<p>In addition to MIDI, ChucK has OSC communication classes as well:</p>
+<pre>
+...
+
+// create our OSC receiver
+OscRecv orec;
+// port 6449
+6449 =&gt; orec.port;
+// start listening (launch thread)
+orec.listen();
+
+function void rate_control_shred()
+{ 
+    // create an address in the receiver 
+    // and store it in a new variable.
+    orec.event("/sndbuf/buf/rate,f") @=> OscEvent rate_event; 
+
+    while ( true )
+    { 
+        rate_event =&gt; now; // wait for events to arrive.
+
+        // grab the next message from the queue. 
+        while( rate_event.nextMsg() != 0 )
+        { 
+            // getFloat fetches the expected float
+            // as indicated in the type string ",f"
+            buf.play( rate_event.getFloat() );
+            0 =&gt; buf.pos;
+        }
+    }       
+}
+
+...
+</pre>
+<p>The <strong>OscRecv</strong> class listens for incoming OSC packets on 
+the specified port.  Each instance of OscRecv can create 
+<strong>OscEvent</strong> objects using its </strong>event()</strong> 
+method to listen for packets at any valid OSC Address pattern.</p>
+<p>An OscEvent object can then be ChucKed to now to wait for messages to 
+arrive, after which the <strong>nextMsg()</strong> and <strong>get{Float|String|Int}()</strong> methods can be used to fetch message data.</p>
+
+</div>
+
+
+<div class="lang_subtopic_body">
+<a name="extend"> </a>
+<h2><strong>creating custom events</strong></h2>
+<p>Events, like any other class, can be subclassed to add functionality 
+and transmit data:</p>
+<pre>
+// extended event
+class TheEvent extends Event
+{
+    int value;
+}
+
+// the event
+TheEvent e;
+
+// handler
+fun int hi( TheEvent event )
+{
+    while( true )
+    {
+        // wait on event
+        event =&gt; now;
+        // get the data
+        &lt;&lt;&lt;e.value&gt;&gt;&gt;;
+    }
+}
+
+// spork
+spork ~ hi( e );
+spork ~ hi( e );
+spork ~ hi( e );
+spork ~ hi( e );
+
+// infinite time loop
+while( true )
+{
+    // advance time
+    1::second =&gt; now;
+
+    // set data
+    Math.rand2( 0, 5 ) =&gt; e.value;
+
+    // signal one waiting shred
+    e.signal();
+}
+</pre>
+</div>
+
+<!-- end subtopics ? -->
+
+</div>
+</div>
+</td></tr>
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  &lt; (prev): <a href="uana.html">unit analyzers</a> | (up): <a href="./">language specification</a>
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+
+<!-- chuck-footer -->
+
+<tr><td>
+<div id ="chuck_footer">
+<center>
+<hr width="15%" / >
+<a href="../../">chuck</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://www.cs.princeton.edu/">cs</a> |
+<a href="http://www.music.princeton.edu/">music</a> |
+<a href="http://ccrma.stanford.edu/">ccrma</a>
+
+</center>
+</div>
+</td></tr>
+</table>
+
+</center>
+</body>
+</html>

@@ -1,0 +1,831 @@
+
+<html>
+<head>
+<title>ChucK - [Programming Guide : Unit Generators]</title>
+</head>
+<body bgcolor=#ffffff text=#000000>
+<font face=verdana size=2>
+
+<br>
+<center> 
+<table border=0 width=640>
+<tr><td>
+<font face=verdana size=2>
+<center>
+<font size=3>
+<b>ChucK</b> : Programming Guide
+</font>
+<br>
+<br>
+<font color=#339933 size=4><b>Unit Generators</b></font>
+<br><br>
+
+  <table bgcolor="#d9d9d9" border=0 cellpadding=1 cellspacing=0><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border=0 cellpadding=1 cellspacing=2>
+  <tr>
+  <td align=right><font face=verdana size=2>
+  version:</td><td><font face=verdana size=2>
+  1.1.x (frankenstein)
+  <br>
+  
+  </font></td>
+  </tr>
+  </table></td></tr>
+  </table>
+
+<br>
+<!--img src="../images/on-the-fly_50dpi.jpg"-->
+
+<table width=580 border=0 cellpadding=2 cellspacing=2>
+<tr><td align=justify><font face=verdana size=2>
+
+<center>
+standard ChucK unit generators (so far)
+</center>
+<center>
+<a href=#dac>dac</a>&nbsp 
+<a href=#adc>adc</a>&nbsp 
+<a href=#noise>noise</a>&nbsp 
+<a href=#impulse>impulse</a>&nbsp 
+<a href=#step>step</a>&nbsp 
+<a href=#halfrect>halfrect</a>&nbsp 
+<a href=#fullrect>fullrect</a>&nbsp 
+<a href=#zerox>zerox</a>&nbsp 
+<a href=#sndbuf>sndbuf</a>&nbsp 
+<a href=#biquad>biquad</a>&nbsp 
+<a href=#sinosc>sinosc</a>&nbsp
+<a href=#blackhole>blackhole</a>&nbsp
+<br><br>
+STK unit generators in ChucK (so far)
+<br>	
+<a href=#ADSR>ADSR</a>&nbsp 
+<a href=#StkBiQuad>BiQuad</a>&nbsp
+<a href=#OneZero>OneZero</a>&nbsp
+<a href=#OnePole>OnePole</a>&nbsp
+<a href=#PoleZero>PoleZero</a>&nbsp
+<a href=#TwoZero>TwoZero</a>&nbsp
+<a href=#TwoPole>TwoPole</a>&nbsp
+<a href=#WaveLoop>WaveLoop</a>&nbsp
+<a href=#Delay>Delay</a>&nbsp
+<a href=#DelayA>DelayA</a>&nbsp
+<a href=#DelayL>DelayL</a>&nbsp
+<a href=#Echo>Echo</a>&nbsp 
+<a href=#JCRev>JCRev</a>&nbsp
+<a href=#Mandolin>Mandolin</a>&nbsp
+<a href=#Moog>Moog</a>&nbsp
+<a href=#Shakers>Shakers</a>&nbsp 
+<a href=#VoicForm>VoicForm</a>&nbsp
+</center>
+<br>
+<hr width=10%>
+<font size=3><b>Unit Generators</b></font>
+<br><br>
+Unit generators (ugen's) can be connected using the ChucK operator 
+(=>)<br><br>&nbsp; for example:<br><br>
+
+<center>
+  <table width=400 bgcolor="#d9d9d9" border=0 cellpadding=1 cellspacing=0><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border=0 cellpadding=1 cellspacing=2>
+  <tr>
+  <td align=left><pre> adc => dac;
+</pre>
+  </td></tr></table></td></tr></table>
+</center>
+<br>
+  the above connects the ugen 'adc' (a/d convertor, or audio input) to 'dac'
+  (d/a convertor, or audio output).<br><br>
+    
+- they can also unlinked (using =<) and relinked (see examples/unchuck.ck)
+<br><br>
+- Each unit generator have 0 or more control parameters.
+  They can be set also using the ChucK operator (=>, or ->)
+<br><br>
+&nbsp;  for example:
+
+<center>
+  <table width=400 bgcolor="#d9d9d9" border=0 cellpadding=1 cellspacing=0><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border=0 cellpadding=1 cellspacing=2>
+  <tr>
+  <td align=left><pre>
+  // connect sine oscillator to dac
+  sinosc osc => dac;
+  // set the osc's frequency to 60.0 hz
+  60.0 => osc.freq;
+
+  (see examples/osc.ck)
+</pre>
+  </td></tr></table></td></tr></table>
+</center>
+<br><br>
+- All ugen's have at least the following three parameters:
+<ul>
+  <li> 'op' (of type 'int')
+  <li> 'gain' (of type 'float')
+  <li> 'last' (of type 'float')
+</ul>
+  'op' determines whether the ugen processes data or not while connected 
+to other ugen's.
+<ul>
+      <li>1 - normal processing (on)
+      <li>0 - no processing - always output 0
+      <li>-1 - pass-through - always returns its input if any
+</ul>
+'gain' is the post gain for the ugen.<br>
+'last' is the last sample computed by the unit generator
+<br><br><br>
+<center>
+<table width=400 border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0>
+<tr><td>
+<table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2>
+<tr><td align=left>
+<pre><b>useful</b>: remember all unit generators implicitly have
+the control 'gain', 'op', and 'last' - not reflected here.</pre>
+</td></tr>
+</table>
+</td></tr>
+</table>
+</center>
+<br><br><br>
+<center>
+<hr width=60%>
+<font color=#3333aa size=3><b>Standard ChucK Unit Generators</b></font>
+(so far)
+<br><br>
+</center>
+<a name="dac"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>dac</b><br>
+  - digital/analog convertor<br>
+  - this is the abstraction for the underlying audio output device<br>
+<br>
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="adc"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>adc</b><br>
+  - analog/digital convertor<br>
+  - this is the abstraction for the underlying audio input device<br>
+<br>
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="noise"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>noise</b><br>
+  - white noise generator
+<br><br>
+example:
+<br><br>
+<center>
+  <table width=400 bgcolor="#d9d9d9" border=0 cellpadding=1 cellspacing=0><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border=0 cellpadding=1 cellspacing=2>
+  <tr>
+  <td align=left><pre>
+  noise n => dac;
+  // don't forget to advance time
+  while( true ) 1::second => now;
+</pre>
+  </td></tr></table>
+  </td></tr></table>
+</center>
+<br>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="impulse"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>impulse</b><br>
+  - pulse generator - can set the value of the current sample<br>
+  - default for each sample is 0 if not set<br>
+<br>
+[ctrl param]:<br>
+<ul>
+ <b>.next</b> - ( float, READ/WRITE ) --- set value of next sample
+</ul>
+example:
+<br><br>
+<center>
+  <table width=400 bgcolor="#d9d9d9" border=0 cellpadding=1 cellspacing=0><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border=0 cellpadding=1 cellspacing=2>
+  <tr>
+  <td align=left><pre>
+   impulse i => dac;
+
+   while( true ) {
+      1.0 => i.next;
+      100::ms => now;
+   }
+</pre>
+  </td></tr></table></td></tr></table>
+</center>
+<br>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="step"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>step</b><br>
+  - step generator - like impulse, but once a value is set,<br>
+    it is held for all following samples, until value is set again.
+<br><br>
+[ctrl param]: <br>
+<ul>
+<b>.next</b> - (float, READ/WRITE) --- set the step value
+</ul>
+example:
+<br><br>
+<center>
+  <table width=400 bgcolor="#d9d9d9" border=0 cellpadding=1 cellspacing=0><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border=0 cellpadding=1 cellspacing=2>
+  <tr>
+  <td align=left><pre>
+   step s => dac;
+   -1.0 => float amp;
+
+   // square wave using step
+   while( true ) {
+       -amp => amp => s.next;
+       800::samp => now;
+   }
+</pre>
+  </td></tr></table></td></tr></table>
+</center>
+<br>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="gain"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>gain</b><br>
+  - gain control<br>
+  - (NOTE - all unit generators can themselves change their gain)<br>
+  (this is way to add N outputs together and scale them)<br>
+<br>
+[ctrl param]:
+<ul>
+<b>.gain</b> - (float, READ/WRITE) --- set the gain (all ugen's have 
+this)
+</ul>
+example:
+<br><br>
+<center>
+  <table width=400 bgcolor="#d9d9d9" border=0 cellpadding=1 cellspacing=0><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border=0 cellpadding=1 cellspacing=2>
+  <tr>
+  <td align=left><pre>
+  noise n => gain g => dac;
+  sinosc s => g;
+  .3 => g.gain;
+
+  while( true ) { 100::ms => now; }
+</pre>
+  </td></tr></table></td></tr></table>
+</center>
+<br>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="halfrect"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>halfrect</b><br>
+  - half-wave rectifier<br>
+  - what for?  half-wave rectification<br>
+<br>
+[ctrl param]: (none)<br>
+<br>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="fullrect"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>fullrect</b><br>
+  - full-wave rectifier<br>
+<br>
+[ctrl param]: (none)<br>
+<br>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="zerox"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>zerox</b><br>
+  - zero-crossing detector<br>
+  - emits a single pulse at the zero crossing in the direction of the
+  zero crossing.<br>
+  - (see examples/zerox)<br>
+<br>
+[ctrl param]: (none)<br>
+<br>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="sndbuf"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>sndbuf</b><br>
+  sound buffer (now interpolating)<br>
+<br>
+[ctrl param]:
+<ul>
+<b>.read</b> - (string, write ONLY for now) --- loads a file for reading<br>
+<b>.write</b> - (string, write ONLY for now) --- opens a file for writing<br>
+<b>.interp</b> - (int, READ/WRITE) --- set interpolation mode (0=drop, 1=linear, 2=sinc)<br>
+<b>.rate</b> - (float, READ/WRITE) --- set playback rate<br>
+<b>.freq</b> - (float, READ/WRITE) --- set playback frequency (Hz)<br>
+<b>.phase</b> - (float, READ/WRITE) --- set phase (0-1)<br>
+<b>.phase_offset</b> - (float, READ/WRITE) ---  offset phase by (0-1). returns <b>.phase</b><br>
+<b>.pos</b> - (int, READ/WRITE) --- set playback position ( 0 &lt; p &lt; <b>.samples</b> ) <br>
+<b>.channel</b> - (int, READ/WRITE) --- select channel ( 0 &lt; c &lt; <b>.channels</b> ) <br>
+<b>.samples</b> - (int, read ONLY) --- returns the number of samples<br>
+<b>.length</b> - (int, read ONLY) --- returns the length of the buffer ( seconds )<br>
+<b>.channels</b> - (int, read ONLY) --- returns the number of channels<br>
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="biquad"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>biquad</b><br>
+  - BiQuad filter - two pole/zero zero filter<br>
+  - (see examples/wind.ck, examples/moe.ck)<br>
+<br>
+[ctrl param]:<br>
+<ul>
+<b>.pfreq</b> - (float, write ONLY) --- set resonance frequency (poles)<br>
+<b>.prad</b> - (float, write ONLY) --- set pole radius (less than 1 to be stable)<br>
+<b>.zfreq</b> - (float, write ONLY) --- set notch frequency (zeroes)<br>
+<b>.zrad</b> - (float, write ONLY) --- set zero radius<br>
+<b>.eqzs</b> - (float, write ONLY) --- set equal gain zeroes<br>
+<b>.norm</b> - (float, write ONLY) --- set normalization<br>
+<b>.b0, .b1, .b2, .a0, .a1, .a2</b> - (float, READ/WRITE) --- filter coefficients<br>
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="sinosc"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 
+cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd 
+cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>sinosc</b><br>
+  - sine oscillator<br>
+  - (examples/osc.ck)<br>
+<br>
+[ctrl param]: 
+<ul>
+<b>.freq</b> - ( float, READ/WRITE ) - frequency (hz)<br>
+<b>.sfreq</b> - ( float, READ/WRITE ) - frequency (hz), phase-preserving<br>
+<b>.phase</b> - ( float, READ/WRITE ) - set/get oscillator phase<br>
+<b>.phase_offset</b> - ( float, READ/WRITE ) - phase offset<br>
+<b>.sync</b> - ( int, READ/WRITE ) - sync (0=internal, 1=global)<br>
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="blackhole"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1
+cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd
+cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana
+size=2>
+<font color=#339933>[ugen]</font>: <b>blackhole</b><br>
+ - the super sample-rate sample sucker<br>
+ - (like dac, it ticks ugen's, but no more)
+</td></tr></table></td></tr></table>
+
+<br>
+
+<br><br>
+<center>
+<hr width=50%>
+<font color=#333399 size=3><b>STK Unit Generators</b></font>
+</center>
+
+<br>
+<a name="ADSR"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>ADSR</b>  (STK import)<br>
+  - attack decay sustain release<br>
+  - (see examples/adsr.ck)<br>
+<br>
+[ctrl param]:<br>
+<ul>
+<b>.keyOn</b> - (int, write ONLY) --- start the attack for non-zero values<br>
+<b>.keyOff</b> - (int, write ONLY) --- start the release for non-zero values<br>
+<b>.state</b> - (int, read ONLY) --- attack=0, decay=1, sustain=2, release=3, done=4<br>
+<b>.attackTime</b> - (float, write ONLY) --- set attack time<br>
+<b>.attackRate</b> - (flaot, READ/WRITE) --- set/get attack rate<br>
+<b>.decayTime</b> - (float, write ONLY) --- set decay time<br>
+<b>.decayRate</b> - (float, READ/WRITE) --- set/get decay rate<br>
+<b>.sustainLevel</b> - (float, READ/WRITE) --- set/get sustain level<br>
+<b>.releaseTime</b> - (float, write ONLY) --- set release time<br>
+<b>.releaseRate</b> - (float, READ/WRITE) --- set/get release rate<br>
+<b>.target</b> - (float, READ/WRITE) --- set/get target<br>
+<b>.value</b> - (float, READ/WRITE) --- set/get value<br>
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="StkBiQuad"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>BiQuad</b> (STK import)<br>
+  - BiQuad filter - two pole/zero zero filter<br>
+<br>
+[ctrl param]:<br>
+<ul>
+<b>.pfreq</b> - (float, write ONLY) --- set resonance frequency (poles)<br>
+<b>.prad</b> - (float, write ONLY) --- set pole radius (less than 1 to be stable)<br>
+<b>.zfreq</b> - (float, write ONLY) --- set notch frequency (zeroes)<br>
+<b>.zrad</b> - (float, write ONLY) --- set zero radius<br>
+<b>.eqzs</b> - (float, write ONLY) --- set equal gain zeroes<br>
+<b>.norm</b> - (float, write ONLY) --- set normalization<br>
+<b>.b0, .b1, .b2, .a0, .a1, .a2</b> - (float, READ/WRITE) --- filter coefficients<br>
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="OneZero"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>OneZero</b> (STK import)<br>
+  - OneZero - one zero filter<br>
+<br>
+[ctrl param]:<br>
+<ul>
+
+<b>.b0, .b1</b> - (float, write ONLY) --- filter coefficients<br>
+<b>.zero</b> - (float, write ONLY) --- set zero position<br>
+
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="TwoZero"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>TwoZero</b> (STK import)<br>
+  - TwoZero - a two zero notch filter<br>
+<br>
+[ctrl param]:<br>
+<ul>
+
+<b>.b0, .b1, .b2</b> - (float, write ONLY) --- filter coefficients<br>
+<b>.freq</b> - (float, write ONLY) --- set filter notch frequency<br>
+<b>.radius</b> - (float, write ONLY) --- set filter notch radius<br>
+
+
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="OnePole"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>OnePole</b> (STK import)<br>
+  - OnePole - a one pole filter<br>
+<br>
+[ctrl param]:<br>
+<ul>
+<b>.a1, .b0</b> - (float, write ONLY) --- filter coefficients<br>
+<b>.pole</b> - (float, write ONLY) --- set pole position along real-axis of z-plane<br>
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="TwoPole"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>TwoPole</b> (STK import)<br>
+  - TwoPole - two pole resonant filter<br>
+<br>
+[ctrl param]:<br>
+<ul>
+
+<b>.a1, .a2, .b0</b> - (float, write ONLY) --- filter coefficients<br>
+<b>.freq</b> - (float, write ONLY) --- set filter resonance frequency<br>
+<b>.radius</b> - (float, write ONLY) --- set filter resonance radius<br>
+<b>.norm</b> - (int, write ONLY) --- toggle filter normalization<br>
+
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="PoleZero"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>PoleZero</b> (STK import)<br>
+  - PoleZero -  pole/zero filter<br>
+<br>
+[ctrl param]:<br>
+<ul>
+<b>.a1, .b0, .b1</b> - (float, write ONLY) --- filter coefficients<br>
+<b>.freq</b> - (float, write ONLY) --- set filter resonance frequency<br>
+<b>.blockZero</b> - (float, write ONLY) --- make DC blocking filter with given pole position<br>
+<b>.allpass</b> - (float, write ONLY) --- create allpass filter with given coefficient<br>
+
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="WaveLoop"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>WaveLoop</b>  (STK import)<br>
+  - interpolating wave loop<br>
+<br>
+[ctrl param]: 
+<ul>
+<b>.path</b> - ( float, WRITE only ) - load from file<br>
+<b>.freq</b> - ( float, WRITE only ) - frequency (hz)<br>
+<b>.rate</b> - ( float, WRITE only ) - playback rate<br>
+<b>.addPhase</b> - ( float, WRITE only ) - as phase<br>
+<b>.addPhaseOffset</b> - ( int, WRITE only ) - phase offset<br>
+</ul><br>
+[built-in]:<br><br>
+(chuck these to <b>.path</b> to load <i>(see examples/dope.ck)</i>)
+<ul>
+      "special:ahh"<br>
+      "special:eee"<br>
+      "special:ooo"<br>
+      "special:britestk"<br>
+      "special:dope"<br>
+      "special:fwavblnk"<br>
+      "special:halfwave"<br>
+      "speical:impuls10"<br>
+      "special:impuls20"<br>
+      "special:impuls40"<br>
+      "special:mand1"<br>
+      "special:mandpluk"<br>
+      "special:marmstk1"<br>
+      "special:peksblnk"<br>
+      "special:ppksblnk"<br>
+      "special:slience"<br>
+      "speical:sineblnk"<br>
+      "special:sinewave"<br>
+      "special:snglpeak"<br>
+      "special:twopeaks"<br>
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="Delay"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>Delay</b>  (STK import)<br>
+  - non-interpolating delay line class<br>
+<br>
+[ctrl param]: 
+<ul>
+<b>.delay</b> - ( dur, READ/WRITE ) - length of delay<br>
+<b>.max</b> - ( dur, READ/WRITE ) - max delay (buffer size)<br>
+</ul>
+
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="DelayL"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>DelayL</b>  (STK import)<br>
+  - linear interpolating delay line class<br>
+<br>
+[ctrl param]: 
+<ul>
+<b>.delay</b> - ( dur, READ/WRITE ) - length of delay<br>
+<b>.max</b> - ( dur, READ/WRITE ) - max delay (buffer size)<br>
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="DelayA"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>DelayA</b>  (STK import)<br>
+  - allpass interpolating delay line class<br>
+
+<br>
+[ctrl param]: 
+<ul>
+<b>.delay</b> - ( dur, READ/WRITE ) - length of delay<br>
+<b>.max</b> - ( dur, READ/WRITE ) - max delay (buffer size)<br>
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="Echo"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>Echo</b>  (STK import)<br>
+  - Echo delay effect<br>
+
+<br>
+[ctrl param]: 
+<ul>
+<b>.delay</b> - ( dur, READ/WRITE ) - length of delay<br>
+<b>.max</b> - ( dur, READ/WRITE ) - max delay (buffer size)<br>
+<b>.mix</b> - ( float, READ/WRITE ) - mix (0=dry &lt; m &lt; 1=wet)<br>
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="JCRev"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>JCRev</b>  (STK import)<br>
+- John Chowning reverb<br>
+<br>
+[ctrl param]: ( float <b>mix</b> ) - dry/wet mix<br>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="Mandolin"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>Mandolin</b>  (STK import)<br>
+- Mandolin<br>
+<br>
+[ctrl param]: 
+<ul>
+<b>.pluck</b> - ( float, READ/WRITE ) - pluck the string<br>
+<b>.freq</b> - ( float, READ/WRITE ) - set string frequency (Hz)<br>
+<b>.pluckPos</b> - ( float, READ/WRITE ) - set pluck position (0-1)<br>
+<b>.bodySize</b> - ( float, READ/WRITE ) - set mandolin body size (0-1)<br>
+<b>.stringDamping</b> - ( float, READ/WRITE ) - set string damping (0-1)<br>
+<b>.stringDetune</b> - ( float, READ/WRITE ) - detune the string (0-1)<br>
+<b>.afterTouch</b> - ( float, READ/WRITE ) - set string afterTouch<br>
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<br>
+<a name="Moog"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>Moog</b>  (STK import)<br>
+- Moog Synthesizer<br>
+<br>
+[ctrl param]: 
+<ul>
+<b>.noteOn</b> - ( float, READ/WRITE ) - trigger a note (velocity 0-1)<br>
+<b>.freq</b> - ( float, READ/WRITE ) - set frequency ( of next note ) <br>
+<b>.modSpeed</b> - ( float, READ/WRITE ) - modulation speed<br>
+<b>.modDepth</b> - ( float, READ/WRITE ) - modulation depth<br>
+<b>.filterQ</b> - ( float, READ/WRITE ) - filter Q value<br>
+<b>.filterSweepRate</b> - ( float, READ/WRITE ) - filter sweep rate<br>
+<b>.afterTouch</b> - ( float, READ/WRITE ) - aftertouch <br>
+</ul>
+
+</td></tr></table></td></tr></table>
+
+
+
+<br>
+<a name="Shakers"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>Shakers</b>  (STK import)<br>
+<br>
+<pre>
+    PhISEM (Physically Informed Stochastic Event
+    Modeling) is an algorithmic approach for
+    simulating collisions of multiple independent
+    sound producing objects.  This class is a
+    meta-model that can simulate a Maraca, Sekere,
+    Cabasa, Bamboo Wind Chimes, Water Drops,
+    Tambourine, Sleighbells, and a Guiro.
+
+    PhOLIES (Physically-Oriented Library of
+    Imitated Environmental Sounds) is a similar
+    approach for the synthesis of environmental
+    sounds.  This class implements simulations of
+    breaking sticks, crunchy snow (or not), a
+    wrench, sandpaper, and more.
+
+    Control Change Numbers:
+      - Shake Energy = 2
+      - System Decay = 4
+      - Number Of Objects = 11
+      - Resonance Frequency = 1
+      - Shake Energy = 128
+      - Instrument Selection = 1071
+        - Maraca = 0
+        - Cabasa = 1
+        - Sekere = 2
+        - Guiro = 3
+        - Water Drops = 4
+        - Bamboo Chimes = 5
+        - Tambourine = 6
+        - Sleigh Bells = 7
+        - Sticks = 8
+        - Crunch = 9
+        - Wrench = 10
+        - Sand Paper = 11
+        - Coke Can = 12
+        - Next Mug = 13
+        - Penny + Mug = 14
+        - Nickle + Mug = 15
+        - Dime + Mug = 16
+        - Quarter + Mug = 17
+        - Franc + Mug = 18
+        - Peso + Mug = 19
+        - Big Rocks = 20
+        - Little Rocks = 21
+        - Tuned Bamboo Chimes = 22
+</pre>
+
+[ctrl param]: 
+<ul>
+<b>.noteon</b> - ( float, READ/WRITE ) - note on<br>
+<b>.noteoff</b> - ( float, READ/WRITE ) - note off<br>
+<b>.which</b> - ( int, WRITE only ) - select instrument (above)<br>
+</ul>
+</td></tr></table></td></tr></table>
+
+
+<br>
+<a name="VoicForm"> </a>
+<table width=100% border=0 bgcolor=d9d9d9 cellpadding=1 cellspacing=0><tr><td><table width=100% border=0 bgcolor=fdfdfd cellpadding=1 cellspacing=2><tr><td align=left><font face=verdana size=2>
+<font color=#339933>[ugen]</font>: <b>VoicForm</b>  (STK import)<br>
+- 4 formant voice model<br>
+<pre>
+    index(.setPhoneme) - formant(.phoneme) 
+
+        0 =  "eee"
+        1 =  "ihh"
+        2 =  "ehh"
+        3 =  "aaa"
+        4 =  "ahh"
+        5 =  "aww"
+        6 =  "ohh"
+        7 =  "uhh"
+        8 =  "uuu"
+        9 =  "ooo"
+        10 =  "rrr"
+        11 =  "lll"
+        12 =  "mmm"
+        13 =  "nnn"
+        14 =  "nng"
+        15 =  "ngg"
+        16 =  "fff"
+        17 =  "sss"
+        18 =  "thh"
+        19 =  "shh"
+        20 =  "xxx"
+        21 =  "hee"
+        22 =  "hoo"
+        23 =  "hah"
+        24 =  "bbb"
+        25 =  "ddd"
+        26 =  "jjj"
+        27 =  "ggg"
+        28 =  "vvv"
+        29 =  "zzz"
+        30 =  "thz"
+        31 =  "zhh"
+</pre>
+<ul>
+<b>.noteOn</b> - ( float, READ/WRITE ) - note on<br>
+<b>.noteOff</b> - ( float, READ/WRITE ) - note off<br>
+<b>.phoneme</b> - ( string, WRITE only ) - set phoneme (above)<br>
+<b>.freq</b> - ( float, READ/WRITE ) - voice frequency<br>
+<b>.speak</b> - ( float, READ/WRITE ) - start voice<br>
+<b>.quiet</b> - ( float, READ/WRITE ) - stop singing<br>
+<b>.voiced</b> - ( float, READ/WRITE ) - set voiced mix level<br>
+<b>.unVoiced</b> - ( float, READ/WRITE ) - set unvoiced mix level<br>
+<b>.pitchSweepRate</b> - ( float, READ/WRITE ) - set pitch sweep rate<br>
+<b>.voiceMix</b> - ( float, READ/WRITE ) - set voiced/unvoiced mix<br>
+<b>.setPhoneme</b> - ( float, READ/WRITE ) - select Phoneme<br>
+<b>.vibratoFreq</b> - ( float, READ/WRITE ) - set vibrato frequency<br>
+<b>.vibratoGain</b> - ( float, READ/WRITE ) - set vibrato gain<br>
+<b>.loudness</b> - ( float, READ/WRITE ) - set loudness<br>
+</ul>
+
+</td></tr></table></td></tr></table>
+
+<center>
+<hr width=100%>
+much more to come!
+<br><br>
+Return to <a href="./">Programming Guide</a>
+
+<br><br>
+</td></tr></table>
+
+<font size=1>
+<hr width=15%>
+<a href="http://chuck.cs.princeton.edu/">chuck</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://www.cs.princeton.edu/">cs</a> |
+<a href="http://www.music.princeton.edu/">music</a>
+<br>
+<br>
+</font>
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>ChucK - [Programming Guide : Unit Generators]</title>
+<link rel="stylesheet" type="text/css" href="../ckdoc.css" />
+</head>
+
+<body bgcolor="#ffffff" text="#000000">
+
+<div class="container">
+
+<div class="centered">
+
+<h1 class="sectiontitle">
+<b>ChucK</b> : Programming Guide
+</h1>
+
+<h2 class="pagetitle"><b>Unit Generators</b></h2>
+
+<h3 class="version">  version:
+  1.1.x (frankenstein)
+</h3>
+
+<div class = "libindex" >
+
+standard ChucK unit generators (so far) <br />
+
+<a href="ugen_xxx.html#dac">dac</a>&nbsp;
+<a href="ugen_xxx.html#adc">adc</a>&nbsp;
+<a href="ugen_xxx.html#blackhole">blackhole</a>&nbsp;
+<a href="ugen_xxx.html#bunghole">bunghole</a>&nbsp;
+<a href="ugen_xxx.html#gain">Gain</a>&nbsp;
+<a href="ugen_xxx.html#noise">Noise</a>&nbsp;
+<a href="ugen_xxx.html#impulse">Impulse</a>&nbsp;
+<a href="ugen_xxx.html#step">Step</a>&nbsp;
+<a href="ugen_xxx.html#halfrect">HalfRect</a>&nbsp;
+<a href="ugen_xxx.html#fullrect">FullRect</a>&nbsp;
+<a href="ugen_xxx.html#zerox">ZeroX</a>&nbsp;
+<a href="ugen_xxx.html#sndbuf">SndBuf</a>&nbsp;
+
+<br />
+
+<a href="ugen_osc.html#phasor">Phasor</a>&nbsp;
+<a href="ugen_osc.html#sinosc">SinOsc</a>&nbsp;
+<a href="ugen_osc.html#pulseosc">PulseOsc</a>&nbsp;
+<a href="ugen_osc.html#sqrosc">SqrOsc</a>&nbsp;
+<a href="ugen_osc.html#triosc">TriOsc</a>&nbsp;
+<a href="ugen_osc.html#sawosc">SawOsc</a>&nbsp;
+
+<br />
+
+<a href="ulib_net.html#netout">netout</a>&nbsp;
+<a href="ulib_net.html#netin">netin</a>&nbsp;
+
+<!-- ..._ind.html---  -->
+</div>
+
+<div class= "libindex" >
+STK unit generators in ChucK (so far) <br />	
+<br />
+
+<a href="ugen_stk.html#StkBiQuad">BiQuad</a>&nbsp;
+<a href="ugen_stk.html#BlowBotl">BlowBotl</a>&nbsp;
+<a href="ugen_stk.html#Chorus">Chorus</a>&nbsp;
+<a href="ugen_stk.html#Delay">Delay</a>&nbsp;
+<a href="ugen_stk.html#DelayA">DelayA</a>&nbsp;
+<a href="ugen_stk.html#DelayL">DelayL</a>&nbsp;
+<a href="ugen_stk.html#Echo">Echo</a>&nbsp;
+<a href="ugen_stk.html#Envelope">Envelope</a>&nbsp;
+<a href="ugen_stk.html#ADSR">ADSR</a>&nbsp;
+<a href="ugen_stk.html#Filter">Filter</a>&nbsp;
+<a href="ugen_stk.html#OnePole">OnePole</a>&nbsp;
+<a href="ugen_stk.html#TwoPole">TwoPole</a>&nbsp;
+<a href="ugen_stk.html#OneZero">OneZero</a>&nbsp;
+<a href="ugen_stk.html#TwoZero">TwoZero</a>&nbsp;
+<a href="ugen_stk.html#PoleZero">PoleZero</a>&nbsp;
+<a href="ugen_stk.html#FM">FM</a>&nbsp;
+<a href="ugen_stk.html#BeeThree">BeeThree</a>&nbsp;
+<a href="ugen_stk.html#FMVoices">FMVoices</a>&nbsp;
+<a href="ugen_stk.html#HevyMetl">HevyMetl</a>&nbsp;
+<a href="ugen_stk.html#PercFlut">PercFlut</a>&nbsp;
+<a href="ugen_stk.html#Rhodey">Rhodey</a>&nbsp;
+<a href="ugen_stk.html#TubeBell">TubeBell</a>&nbsp;
+<a href="ugen_stk.html#Wurley">Wurley</a>&nbsp;
+<a href="ugen_stk.html#Modulate">Modulate</a>&nbsp;
+<a href="ugen_stk.html#JCRev">JCRev</a>&nbsp;
+<a href="ugen_stk.html#Mandolin">Mandolin</a>&nbsp;
+<a href="ugen_stk.html#Moog">Moog</a>&nbsp;
+<a href="ugen_stk.html#NRev">NRev</a>&nbsp;
+<a href="ugen_stk.html#PitShift">PitShift</a>&nbsp;
+<a href="ugen_stk.html#PRCRev">PRCRev</a>&nbsp;
+<a href="ugen_stk.html#Shakers">Shakers</a>&nbsp;
+<a href="ugen_stk.html#SubNoise">SubNoise</a>&nbsp;
+<a href="ugen_stk.html#VoicForm">VoicForm</a>&nbsp;
+<a href="ugen_stk.html#WvIn">WvIn</a>&nbsp;
+<a href="ugen_stk.html#WaveLoop">WaveLoop</a>&nbsp;
+<a href="ugen_stk.html#WvOut">WvOut</a>&nbsp;
+
+</div>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<hr width="10%" />
+<font size="3"><b>Unit Generators</b></font>
+<br /><br />
+Unit generators (ugen's) can be connected using the ChucK operator 
+(=>)<br /><br />&nbsp; for example:<br /><br />
+
+<center>
+  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="left"><pre> adc => dac;
+</pre>
+  </td></tr></table></td></tr></table>
+</center>
+<br />
+  the above connects the ugen 'adc' (a/d convertor, or audio input) to 'dac'
+  (d/a convertor, or audio output).<br /><br />
+    
+- they can also unlinked (using =<) and relinked (see examples/unchuck.ck)
+<br /><br />
+- Each unit generator have 0 or more control parameters.
+  They can be set also using the ChucK operator (=>, or ->)
+<br /><br />
+&nbsp;  for example:
+
+<center>
+  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
+  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+  <tr>
+  <td align="left"><pre>
+  // connect sine oscillator to dac
+  SinOsc osc => dac;
+  // set the Osc's frequency to 60.0 hz
+  60.0 => osc.freq;
+
+  (see examples/osc.ck)
+</pre>
+  </td></tr></table></td></tr></table>
+</center>
+<br /><br />
+- All ugen's have at least the following three parameters:
+<ul>
+  <li> 'op' (of type 'int') </li>
+  <li> 'gain' (of type 'float') </li>
+  <li> 'last' (of type 'float') </li>
+</ul> 
+  'op' determines whether the ugen processes data or not while connected 
+to other ugen's.
+<ul>
+      <li>1 - normal processing (on) </li>
+      <li>0 - no processing - always output 0 </li>
+      <li>-1 - pass-through - always returns its input if any </li>
+</ul>
+'gain' is the post gain for the ugen.<br />
+'last' is the last sample computed by the unit generator
+<br /><br /><br />
+<center>
+<table width="400" border="0" bgcolor="d9d9d9" cellpadding="1" cellspacing="0">
+<tr><td>
+<table width="100%" border="0" bgcolor="fdfdfd" cellpadding="1" cellspacing="2">
+<tr><td align="left">
+<pre><b>useful</b>: remember all unit generators implicitly have
+the control 'gain', 'op', and 'last' - not reflected here.</pre>
+</td></tr>
+</table>
+</td></tr>
+</table>
+</center>
+
+</div>
+
+<div class="container">
+
+
+<table class="briefdesc" cellpadding="0" cellspacing="10" border="0">
+
+<!--- begin ugen_xxx.html -->
+<tr><td colspan="2" class="sectionMain">standard library</td></tr>
+<tr><td colspan="2" class="section">audio output</td></tr>
+<tr><td><h3><a class="heading" name="dac">[ugen]</a>
+<a class="name" href="ugen_xxx.html#dac">dac</a></h3></td>
+<td class="comments"><ul>
+<li>digital/analog converter <br /></li><li>abstraction for underlying audio output device <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="adc">[ugen]</a>
+<a class="name" href="ugen_xxx.html#adc">adc</a></h3></td>
+<td class="comments"><ul>
+<li>analog/digital converter <br /></li><li>abstraction for underlying audio input device <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="blackhole">[ugen]</a>
+<a class="name" href="ugen_xxx.html#blackhole">blackhole</a></h3></td>
+<td class="comments"><ul>
+<li>sample rate sample sucker <br /></li><li>( like dac, ticks ugens, but no more ) <br /></li><li>see examples/<a href="../examples/pwm.ck">pwm.ck</a> <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="bunghole">[ugen]</a>
+<a class="name" href="ugen_xxx.html#bunghole">bunghole</a></h3></td>
+<td class="comments"><ul>
+<li>sample rate sample sucker <br /></li><li>( like dac, ticks ugens, but no more ) <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="gain">[ugen]</a>
+<a class="name" href="ugen_xxx.html#gain">Gain</a></h3></td>
+<td class="comments"><ul>
+<li>gain control <br /></li><li>(NOTE - all unit generators can themselves change their gain) <br /></li><li>(this is a way to add N outputs together and scale them)  <br /></li><li>used in \example i-robot.ck <br /></li></ul></td></tr>
+
+<tr><td colspan="2" class="section">wave forms</td></tr><tr><td><h3><a class="heading" name="noise">[ugen]</a>
+<a class="name" href="ugen_xxx.html#noise">Noise</a></h3></td>
+<td class="comments"><ul>
+<li>white noise generator  <br /></li><li>see examples/<a href="../examples/noise.ck">noise.ck</a> examples/<a href="../examples/powerup.ck">powerup.ck</a> <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="impulse">[ugen]</a>
+<a class="name" href="ugen_xxx.html#impulse">Impulse</a></h3></td>
+<td class="comments"><ul>
+<li>pulse generator - can set the value of the current sample <br /></li><li>default for each sample is 0 if not set <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="step">[ugen]</a>
+<a class="name" href="ugen_xxx.html#step">Step</a></h3></td>
+<td class="comments"><ul>
+<li>step generator - like Impulse, but once a value is set,  <br /></li><li>it is held for all following samples, until value is set again <br /></li><li>see examples/<a href="../examples/step.ck">step.ck</a> <br /></li></ul></td></tr>
+
+<tr><td colspan="2" class="section">filters</td></tr><tr><td><h3><a class="heading" name="halfrect">[ugen]</a>
+<a class="name" href="ugen_xxx.html#halfrect">HalfRect</a></h3></td>
+<td class="comments"><ul>
+<li>half wave rectifier <br /></li><li>for half-wave rectification.  <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="fullrect">[ugen]</a>
+<a class="name" href="ugen_xxx.html#fullrect">FullRect</a></h3></td>
+<td class="comments"><ul>
+<li>full wave rectifier <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="zerox">[ugen]</a>
+<a class="name" href="ugen_xxx.html#zerox">ZeroX</a></h3></td>
+<td class="comments"><ul>
+<li>zero crossing detector <br /></li><li>emits a single pulse at the the zero crossing in the direction of the zero crossing.   <br /></li><li>(see examples/<a href="../examples/zerox.ck">zerox.ck</a>) <br /></li></ul></td></tr>
+
+<tr><td colspan="2" class="section">sound files</td></tr><tr><td><h3><a class="heading" name="sndbuf">[ugen]</a>
+<a class="name" href="ugen_xxx.html#sndbuf">SndBuf</a></h3></td>
+<td class="comments"><ul>
+<li>sound buffer ( now interpolating )  <br /></li><li>reads from a variety of file formats <br /></li>
+<li>see examples/<a href="../examples/sndbuf.ck">sndbuf.ck</a> <br /></li>
+</ul></td></tr>
+
+
+
+<!--- end ugen_xxx.html --->
+
+<!--- begin ugen_osc.html --->
+
+
+<tr><td colspan="2" class="sectionMain">oscillators</td></tr>
+
+<tr><td><h3><a class="heading" name="phasor">[ugen]</a>
+<a class="name" href="ugen_osc.html#phasor">Phasor</a></h3></td>
+<td class="comments"><ul>
+<li>phasor - simple ramp generator ( 0 to 1 ) <br /></li><li>this can be fed into other oscillators ( with sync mode of 2 )  <br /></li><li>as a phase control.  see examples/<a href="../examples/sixty.ck">sixty.ck</a> for an example <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="sinosc">[ugen]</a>
+<a class="name" href="ugen_osc.html#sinosc">SinOsc</a></h3></td>
+<td class="comments"><ul>
+<li>sine oscillator <br /></li><li>(see examples/<a href="../examples/osc.ck">osc.ck</a>) <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="pulseosc">[ugen]</a>
+<a class="name" href="ugen_osc.html#pulseosc">PulseOsc</a></h3></td>
+<td class="comments"><ul>
+<li>pulse oscillators <br /></li><li>a pulse wave oscillator with variable width. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="sqrosc">[ugen]</a>
+<a class="name" href="ugen_osc.html#sqrosc">SqrOsc</a></h3></td>
+<td class="comments"><ul>
+<li>square wave oscillator ( pulse with fixed width of 0.5 ) <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="triosc">[ugen]</a>
+<a class="name" href="ugen_osc.html#triosc">TriOsc</a></h3></td>
+<td class="comments"><ul>
+<li>triangle wave oscillator <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="sawosc">[ugen]</a>
+<a class="name" href="ugen_osc.html#sawosc">SawOsc</a></h3></td>
+<td class="comments"><ul>
+<li>sawtooth wave oscillator ( triangle, width forced to 0.0 or 1.0 ) <br /></li></ul></td></tr>
+
+<!--- end ugen_osc.html --->
+
+<!--- begin ulib_net.html --->
+
+<tr><td colspan="2" class="sectionMain">network</td></tr><tr><td><h3><a class="heading" name="netout">[ugen]</a>
+<a class="name" href="ulib_net.html#netout">netout</a></h3></td>
+<td class="comments"><ul>
+<li>UDP-based network audio transmitter <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="netin">[ugen]</a>
+<a class="name" href="ulib_net.html#netin">netin</a></h3></td>
+<td class="comments"><ul>
+<li>UDP-based network audio receiver <br /></li></ul></td></tr>
+
+
+
+
+
+<!--- end ulib_net.html --->
+</table>
+
+</div>
+
+
+<div class="container">
+
+
+
+<table class="briefdesc" cellpadding="0" cellspacing="10" border="0">
+
+<!---begin ugen_stk.html --->
+
+
+<tr><td colspan="2" class="sectionMain">STK</td></tr><tr><td><h3><a class="heading" name="StkBiQuad">[ugen]</a>
+<a class="name" href="ugen_stk.html#BiQuad">BiQuad</a></h3></td>
+<td class="comments"><ul>
+<li>STK biquad (two-pole, two-zero) filter class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="BlowBotl">[ugen]</a>
+<a class="name" href="ugen_stk.html#BlowBotl">BlowBotl</a></h3></td>
+<td class="comments"><ul>
+<li>STK blown bottle instrument class. <br /></li><li>STK blown bottle class <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="Chorus">[ugen]</a>
+<a class="name" href="ugen_stk.html#Chorus">Chorus</a></h3></td>
+<td class="comments"><ul>
+<li>STK chorus effect class. <br /></li></ul></td></tr>
+
+<tr><td colspan="2" class="section">delay</td></tr><tr><td><h3><a class="heading" name="Delay">[ugen]</a>
+<a class="name" href="ugen_stk.html#Delay">Delay</a></h3></td>
+<td class="comments"><ul>
+<li>STK non-interpolating delay line class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="DelayA">[ugen]</a>
+<a class="name" href="ugen_stk.html#DelayA">DelayA</a></h3></td>
+<td class="comments"><ul>
+<li>STK allpass interpolating delay line class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="DelayL">[ugen]</a>
+<a class="name" href="ugen_stk.html#DelayL">DelayL</a></h3></td>
+<td class="comments"><ul>
+<li>STK linear interpolating delay line class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="Echo">[ugen]</a>
+<a class="name" href="ugen_stk.html#Echo">Echo</a></h3></td>
+<td class="comments"><ul>
+<li>STK echo effect class. <br /></li></ul></td></tr>
+
+<tr><td colspan="2" class="section">envelopes</td></tr><tr><td><h3><a class="heading" name="Envelope">[ugen]</a>
+<a class="name" href="ugen_stk.html#Envelope">Envelope</a></h3></td>
+<td class="comments"><ul>
+<li>STK envelope base class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="ADSR">[ugen]</a>
+<a class="name" href="ugen_stk.html#ADSR">ADSR</a></h3></td>
+<td class="comments"><ul>
+<li>STK ADSR envelope class. <br /></li></ul></td></tr>
+
+<tr><td colspan="2" class="section">filters</td></tr><tr><td><h3><a class="heading" name="Filter">[ugen]</a>
+<a class="name" href="ugen_stk.html#Filter">Filter</a></h3></td>
+<td class="comments"><ul>
+<li>STK filter class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="OnePole">[ugen]</a>
+<a class="name" href="ugen_stk.html#OnePole">OnePole</a></h3></td>
+<td class="comments"><ul>
+<li>STK one-pole filter class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="TwoPole">[ugen]</a>
+<a class="name" href="ugen_stk.html#TwoPole">TwoPole</a></h3></td>
+<td class="comments"><ul>
+<li>STK two-pole filter class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="OneZero">[ugen]</a>
+<a class="name" href="ugen_stk.html#OneZero">OneZero</a></h3></td>
+<td class="comments"><ul>
+<li>STK one-zero filter class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="TwoZero">[ugen]</a>
+<a class="name" href="ugen_stk.html#TwoZero">TwoZero</a></h3></td>
+<td class="comments"><ul>
+<li>STK two-zero filter class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="PoleZero">[ugen]</a>
+<a class="name" href="ugen_stk.html#PoleZero">PoleZero</a></h3></td>
+<td class="comments"><ul>
+<li>STK one-pole, one-zero filter class. <br /></li></ul></td></tr>
+
+<tr><td colspan="2" class="section">fm synthesis</td></tr><tr><td><h3><a class="heading" name="FM">[ugen]</a>
+<a class="name" href="ugen_stk.html#FM">FM</a></h3></td>
+<td class="comments"><ul>
+<li>STK abstract FM synthesis base class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="BeeThree">[ugen]</a>
+<a class="name" href="ugen_stk.html#BeeThree">BeeThree</a></h3></td>
+<td class="comments"><ul>
+<li>STK Hammond-oid organ FM synthesis instrument. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="FMVoices">[ugen]</a>
+<a class="name" href="ugen_stk.html#FMVoices">FMVoices</a></h3></td>
+<td class="comments"><ul>
+<li>STK singing FM synthesis instrument. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="HevyMetl">[ugen]</a>
+<a class="name" href="ugen_stk.html#HevyMetl">HevyMetl</a></h3></td>
+<td class="comments"><ul>
+<li>STK heavy metal FM synthesis instrument. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="PercFlut">[ugen]</a>
+<a class="name" href="ugen_stk.html#PercFlut">PercFlut</a></h3></td>
+<td class="comments"><ul>
+<li>STK percussive flute FM synthesis instrument. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="Rhodey">[ugen]</a>
+<a class="name" href="ugen_stk.html#Rhodey">Rhodey</a></h3></td>
+<td class="comments"><ul>
+<li>STK Fender Rhodes-like electric piano FM <br /></li><li>see \examples rhodey.ck <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="TubeBell">[ugen]</a>
+<a class="name" href="ugen_stk.html#TubeBell">TubeBell</a></h3></td>
+<td class="comments"><ul>
+<li>STK tubular bell (orchestral chime) FM <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="Wurley">[ugen]</a>
+<a class="name" href="ugen_stk.html#Wurley">Wurley</a></h3></td>
+<td class="comments"><ul>
+<li>STK Wurlitzer electric piano FM <br /></li><li>see \examples wurley.ck <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="Modulate">[ugen]</a>
+<a class="name" href="ugen_stk.html#Modulate">Modulate</a></h3></td>
+<td class="comments"><ul>
+<li>STK periodic/random modulator. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="JCRev">[ugen]</a>
+<a class="name" href="ugen_stk.html#JCRev">JCRev</a></h3></td>
+<td class="comments"><ul>
+<li>John Chowning's reverberator class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="Mandolin">[ugen]</a>
+<a class="name" href="ugen_stk.html#Mandolin">Mandolin</a></h3></td>
+<td class="comments"><ul>
+<li>STK mandolin instrument model class. <br /></li><li>see \example mand-o-matic.ck <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="Moog">[ugen]</a>
+<a class="name" href="ugen_stk.html#Moog">Moog</a></h3></td>
+<td class="comments"><ul>
+<li>STK moog-like swept filter sampling synthesis class. <br /></li><li>see examples/<a href="../examples/moogie.ck">moogie.ck</a> <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="NRev">[ugen]</a>
+<a class="name" href="ugen_stk.html#NRev">NRev</a></h3></td>
+<td class="comments"><ul>
+<li>CCRMA's NRev reverberator class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="PitShift">[ugen]</a>
+<a class="name" href="ugen_stk.html#PitShift">PitShift</a></h3></td>
+<td class="comments"><ul>
+<li>STK simple pitch shifter effect class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="PRCRev">[ugen]</a>
+<a class="name" href="ugen_stk.html#PRCRev">PRCRev</a></h3></td>
+<td class="comments"><ul>
+<li>Perry's simple reverberator class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="Shakers">[ugen]</a>
+<a class="name" href="ugen_stk.html#Shakers">Shakers</a></h3></td>
+<td class="comments"><ul>
+<li>PhISEM and PhOLIES class. <br /></li><li>see \example shake-o-matic.ck <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="SubNoise">[ugen]</a>
+<a class="name" href="ugen_stk.html#SubNoise">SubNoise</a></h3></td>
+<td class="comments"><ul>
+<li>STK sub-sampled noise generator. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="VoicForm">[ugen]</a>
+<a class="name" href="ugen_stk.html#VoicForm">VoicForm</a></h3></td>
+<td class="comments"><ul>
+<li>Four formant synthesis instrument. <br /></li><li>see \example voic-o-form.ck <br /></li></ul></td></tr>
+
+<tr><td colspan="2" class="section">file interfaces</td></tr><tr><td><h3><a class="heading" name="WvIn">[ugen]</a>
+<a class="name" href="ugen_stk.html#WvIn">WvIn</a></h3></td>
+<td class="comments"><ul>
+<li>STK audio data input base class. <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="WaveLoop">[ugen]</a>
+<a class="name" href="ugen_stk.html#WaveLoop">WaveLoop</a></h3></td>
+<td class="comments"><ul>
+<li>STK waveform oscillator class. <br /></li><li>see examples/<a href="../examples/dope.ck">dope.ck</a> <br /></li></ul></td></tr>
+
+<tr><td><h3><a class="heading" name="WvOut">[ugen]</a>
+<a class="name" href="ugen_stk.html#WvOut">WvOut</a></h3></td>
+<td class="comments"><ul>
+<li>STK audio data output base class. <br /></li></ul></td></tr>
+
+<!---end ugen_stk.html --->
+
+</table>
+
+<hr width="100%" />
+much more to come!
+</div>
+
+<div class="container">
+<div class = "nav">
+
+<div class= "navopt">Prev: <a href="stdlib.html">Standard Library functions</a> </div>
+<div class= "navopt">Return to <a href="index.html">Programming Guide</a></div>
+
+<div class="bottomnav">
+<a href="http://chuck.cs.princeton.edu/">chuck</a> |
+<a href="http://on-the-fly.cs.princeton.edu/">on-the-fly</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://www.cs.princeton.edu/">cs</a> |
+<a href="http://www.music.princeton.edu/">music</a>
+</div>
+
+</div>
+</div>
+</body>
+</html>
