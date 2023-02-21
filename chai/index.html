@@ -1,6 +1,170 @@
-<html>
-<head><title>ChAI: ChucK => AI</title></head>
+<!--
+ChAI (ChucK => AI)
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TITLE -->
+    <title>ChAI: ChucK => AI</title>
+    <meta property="og:description"
+        content="ChAI (ChucK for AI) is a framework in the ChucK programming language for working with music and artificial intelligence. It contains a set of tools, systems, data, and examples for working with supervised and unsupervised learning, neural networks, interative music generation, and education. Whenever possible, ChAI is designed to operate in a real-time, interactive context. Combining audio analysis, machine learning/AI, and sound synthesis, ChAI aims to support artful AI-mediated toolbuilding for music composition, performance, design of instruments and expressive toys.">
+    <meta property="og:title" content="ChAI (ChucK => AI) [beta]" />
+    <meta property="og:url" content="https://chuck.stanford.edu/chai/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://chuck.stanford.edu/chai/images/chai-logo-1.png" />
+    <meta property="fb:app_id" content="966242223397117" /> <!--default app id-->
+    <meta name="keywords"
+        content="ChucK, Music, AI, ChAI, interactive machine learning, artificial intelligence, Wekinator, CCRMA, Stanford University, Princeton University, computer music, programming language">
+    <!-- FAVICON -->
+    <!--
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="./favicon_io/site.webmanifest">
+    -->
+    <!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/prism.css">
+</head>
+
+
 <body>
-coming soon
+<center>
+
+<!-- all in a big table why not-->
+
+<table id="page_layout" border="0" width="640">
+<!-- heading row-->
+
+<tbody><tr><td>
+<div id="chuck_header">
+<center>
+	<br>
+<h1>
+<font size="6"><strong>ChAI</strong> : ChucK for AI [beta]</font>
+</h1>
+<hr width="30%"><br>
+</center>
+</div>
+</td></tr>
+
+<tr><td>
+	<center>
+		<img width="50%" src="images/chai-logo-1-trim.png">
+		<br><br>
+		<i>(version: need ChucK-1.4.2.1 or higher<br>ChAI is also available in <a target="_blank" href="../webchuck/">WebChucK</a>)</i>
+	</center>
+</td></tr>
+
+<!-- lang specification section -->
+<tr><td>
+<div id="chuck_body">
+<div id="lang_topic_body">
+
+<h1><strong>Overview</strong></h1>
+<p><b>ChAI</b> (ChucK for AI) is a framework for working with music and artificial intelligence in the <a target="_blank" href="../">ChucK programming language</a>. It contains a set of tools, systems, data, and examples for working with supervised and unsupervised learning, neural networks, interative music generation, and education. Whenever possible, ChAI is designed to operate in a real-time, interactive context. Combining audio analysis, machine learning/AI, and sound synthesis, ChAI aims to support artful AI-mediated toolbuilding for music composition, performance, design of instruments and expressive toys.
+<br><br>
+The design and development of ChAI is led by <a target="_blank" href="https://ccrma.stanford.edu/~ge/">Ge Wang</a> and Yikai Li (2022-present). Aspects of ChAI evolved out from ChucK's unit analyzer (UAnae) framework, sMIRk (small music information retrieval toolKit), and on-the-fly learning framework in ChucK by Rebecca Fiebrink, Ge Wang, and Perry R. Cook (see historical note below). </p>
+
+</div><div id="lang_topic_body">
+
+<h1><strong>Tools and Examples</strong></h1>
+<p>ChAI first appeared in chuck-1.4.2.0 (January 2023). ChAI is currently in beta, and development is ongoing. This means that some of the APIs may change moving forward. Presently, here are are available tools and examples: <b>MLP, Wekinator, KNN, KNN2, SVM, HMM, PCA, Word2Vec</b>. Additionally, additional audio features have been added to the <a target="_blank" href="../uana/">unit analyzer</a> framework, including <b>MFCC, Chroma, Kurtosis, SFM</b>. The API for these objects can be references by calling their respective .help() method—e.g., MLP.help();—which will print the Object API to the console or terminal. Examples (also in beta!) can be found in <a target="_blank" href="../doc/examples/ai/">examples/ai/</a>. Additionally, these also be accessed in <a target="_blank" href="../webchuck/">WebChucK IDE</a>, under Examples->More Examples->ai.</p>
+
+
+<!--
+<p><b>MLP</b>
+— A multilayer perceptron (MLP)—a basic artificial neural network—that maps an input layer to an output layer across a number of fully-connected hidden layers. This implemention can be trained either 1) by using one of the comprehensive .train() functions OR 2) by iteratively calling .forward() and .backprop() for each input-output observation, and using .shuffle() for each epoch. Commonly used for regression or classification.
+<br>&nbsp;&nbsp;&nbsp;|
+<br>examples: 
+<a target="_blank" href="../doc/examples/ai/mlp/mlp.ck">mlp.ck</a> |
+<a target="_blank" href="../doc/examples/ai/mlp/mlp-manual.ck">mpl-manual.ck</a> |
+<a target="_blank" href="../doc/examples/ai/mlp/model-load.ck">model-load.ck</a> |
+<a target="_blank" href="../doc/examples/ai/mlp/model-save.ck">model-save.ck</a> |
+<a target="_blank" href="../doc/examples/ai/mlp/model.txt">model.txt</a>
+<br>
+</p>
+-->
+
+</div><div id="lang_topic_body">
+
+<h1><strong>Teaching</strong></h1>
+<p>ChAI has been used in the graduate-level "critical making" course <a target="_blank" href="https://ccrma.stanford.edu/courses/356/">Music and AI</a> (Music 356 / CS 470) at Stanford university.
+See some examples of the students' creatives works: <a target="_blank" href="https://ccrma.stanford.edu/courses/356/gallery/">homework gallery</a>. The development of ChAI is deeply indebted to the intrepid students of "Music and AI"—and to their immense creativity, and their awareness to be critical about AI.</p>
+
+</div><div id="lang_topic_body">
+
+
+<h1><strong>A Historical Note + Acknowledgements</strong></h1>
+<p>
+Much of ChAI and its ways of thinking and doing can be foundationally attributed to the work of <a target="_blank" href="https://researchers.arts.ac.uk/1594-rebecca-fiebrink">Dr. Rebecca Fiebrink</a>, her landmark Ph.D. Thesis, <i>Real-time Human Interaction With Supervised Learning Algorithms for Music Composition and Performance</i> [1], the <a target="_blank" href="http://www.wekinator.org/">Wekinator</a> framework [2], her teaching at the intersections of AI, HCI, and Music [3], as well as earlier collaborations between Rebecca and Ge [4,5] including SMIRK [6] (Small Musical Information Retrieval toolKit; 2008; early efforts in on-the-fly learning), the <a target="_blank" href="../uana/">unit analyzer framework</a> [7] (2007; afford real-time audio feature extraction). All of these have directly or indirectly contributed the creation of ChAI. Additionally, ChAI benefitted from the teaching and design philosophy of <a target="_blank" href="https://www.cs.princeton.edu/~prc/">Dr. Perry R. Cook</a> (Ph.D. advisor to Rebecca and Ge at Princeton, and ChucK co-author), who argued for the importance of real-time human interaction, parametric sound synthesis, and play in the design of technology-mediated musical tools.
+</p>
+[1] Fiebrink, Rebecca. 2011. <a target="_blank" href="https://www.cs.princeton.edu/techreports/2010/891.pdf"><i>Real-time Human Interaction With Supervised Learning Algorithms for Music Composition and Performance</i></a> Ph.D. Thesis. Princeton University.
+<br><br>
+
+[2] <a target="_blank" href="http://www.wekinator.org/">http://www.wekinator.org/</a>
+Wekinator | Software for real-time, interactive machine learning
+<br><br>
+
+[3] Fiebrink, Rebecca. <a target="_blank" href="https://www.kadenze.com/courses/machine-learning-for-musicians-and-artists/info">"Machine Learning for Musicians and Artists."</a> Kadenze online course.
+<br><br>
+
+[4] Fiebrink, R., G. Wang, P. R. Cook. 2008. <a target="_blank" href=" https://mcd.stanford.edu/publish/files/2008-icmc-learning.pdf">"Foundations for On-the-fly
+Learning in the ChucK Programming Language."</a> <i>International Computer Music
+Conference</i>.
+<br><br>
+
+[5] Fiebrink, R., G. Wang, P. R. Cook. 2008. <a target="_blank" href="https://mcd.stanford.edu/publish/files/2008-ismir-proto.pdf">"Support for Music Information
+Retrieval in the ChucK Programming Language."</a> <i>International Conference
+on Music Information Retrieval</i> (ISMIR).
+<br><br>
+
+[6] <a target="_blank" href="http://smirk.cs.princeton.edu/">http://smirk.cs.princeton.edu/</a>
+sMIRk | Small Music Information Retrieval toolKit
+<br><br>
+
+[7] Wang, G., R. Fiebrink, P. R. Cook. 2007. <a target="_blank" href="https://mcd.stanford.edu/publish/files/2007-icmc-uana.pdf">"Combining Analysis and
+Synthesis in the ChucK Programming Language."</a> <i>International Computer
+Music Conference</i>.
+
+<!-- end subtopics -->
+
+<tr><td>
+	<center>
+		<img width="50%" src="images/chai-logo-5a.png">
+		<br><br>
+		<i>"ChAI ON-THE-FLY" — a collaborative ChAI working logo</i>
+<br><br><br>
+	</center>
+</td></tr>
+
+</div>
+</div>
+</td></tr>
+
+<!-- chuck-footer -->
+
+<tr><td>
+<div id="chuck_footer">
+<center>
+<hr width="15%">
+<a href="http://chuck.stanford.edu/">chuck</a> |
+<a href="http://mcd.stanford.edu/">mcd</a> |
+<a href="http://ccrma.stanford.edu/">ccrma</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a>
+
+</center>
+</div>
+</td></tr>
+</tbody></table>
+
+</center>
+
+<script src="./js/prism.js"></script>
+
 </body>
 </html>
