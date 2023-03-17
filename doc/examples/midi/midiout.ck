@@ -1,5 +1,6 @@
 MidiOut mout;
-mout.open(0);
+// open a MIDI device for output
+if( !mout.open(1) ) me.exit();
 
 while(true)
 {
