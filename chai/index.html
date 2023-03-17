@@ -56,7 +56,7 @@ ChAI (ChucK => AI)
 	<center>
 		<img width="50%" src="images/chai-logo-1-trim.png">
 		<br><br>
-		<i>(version: need ChucK-1.4.2.1 or higher<br>ChAI is also available in <a target="_blank" href="../webchuck/">WebChucK</a>)</i>
+		<i>(version: need ChucK-1.5.0.0 or higher<br>ChAI is also available in <a target="_blank" href="../webchuck/">WebChucK</a>)</i>
 	</center>
 </td></tr>
 
@@ -68,7 +68,8 @@ ChAI (ChucK => AI)
 <h1><strong>Overview</strong></h1>
 <p><b>ChAI</b> (ChucK for AI) is a framework for music and artificial intelligence in the <a target="_blank" href="../">ChucK programming language</a>. It contains a set of tools, algorithms, data, and examples for working with supervised learning, unsupervised learning, neural networks, interative music generation, and education. Whenever possible, ChAI is designed to operate in a real-time, interactive context. Combining audio analysis, machine learning/AI, and sound synthesis, ChAI aims to support artful toolbuilding for music composition, performance, design of instruments and expressive toys, making use of AI as a tool for human expression.
 <br><br>
-The design and development of ChAI is led by <a target="_blank" href="https://ccrma.stanford.edu/~ge/">Ge Wang</a> and Yikai Li (2022-present), with contributions from the <a target="_blank" href="https://chuck.stanford.edu/doc/authors.html">ChucK Research and Development Team</a>. Aspects of ChAI evolved out from ChucK's unit analyzer (UAnae) framework, sMIRk (small music information retrieval toolKit), and on-the-fly learning framework in ChucK by <a target="_blank" href="https://researchers.arts.ac.uk/1594-rebecca-fiebrink">Rebecca Fiebrink</a>, Ge Wang, and <a target="_blank" href="https://www.cs.princeton.edu/~prc/">Perry R. Cook</a> (see historical note below). </p>
+The design and development of ChAI is led by <a target="_blank" href="https://ccrma.stanford.edu/~ge/">Ge Wang</a> and Yikai Li (2022-present), with contributions from the <a target="_blank" href="https://chuck.stanford.edu/doc/authors.html">ChucK Research and Development Team</a>. Aspects of ChAI evolved out from ChucK's unit analyzer (UAnae) framework, sMIRk (small music information retrieval toolKit), the on-the-fly learning framework in ChucK by <a target="_blank" href="https://researchers.arts.ac.uk/1594-rebecca-fiebrink">Rebecca Fiebrink</a>, Ge Wang, and <a target="_blank" href="https://www.cs.princeton.edu/~prc/">Perry R. Cook</a>, Wekinator by Rebecca Fiebrink, and MARSYAS by 
+<a target="_blank" href="http://webhome.csc.uvic.ca/~gtzan/">George Tzanetakis</a>. (See historical note below.)</p>
 
 </div><div id="lang_topic_body">
 
@@ -93,7 +94,7 @@ The design and development of ChAI is led by <a target="_blank" href="https://cc
 </div><div id="lang_topic_body">
 
 <h1><strong>Teaching</strong></h1>
-<p>ChAI has been used in the graduate-level "critical making" course <a target="_blank" href="https://ccrma.stanford.edu/courses/356/">Music and AI</a> (Music 356 / CS 470) at Stanford university.
+<p>Beginning in 2023, ChAI has been used in the graduate-level "critical making" course <a target="_blank" href="https://ccrma.stanford.edu/courses/356/">Music and AI</a> (Music 356 / CS 470) at Stanford University.
 See some examples of the students' creatives works: <a target="_blank" href="https://ccrma.stanford.edu/courses/356/gallery/">homework gallery</a>. The development of ChAI is deeply indebted to the intrepid students of "Music and AI"—and to their immense creativity, and their awareness to be critical about AI.</p>
 
 </div><div id="lang_topic_body">
@@ -101,7 +102,7 @@ See some examples of the students' creatives works: <a target="_blank" href="htt
 
 <h1><strong>A Historical Note + Acknowledgements</strong></h1>
 <p>
-Much of ChAI and its ways of thinking and doing can be foundationally attributed to the work of <a target="_blank" href="https://researchers.arts.ac.uk/1594-rebecca-fiebrink">Dr. Rebecca Fiebrink</a>, her landmark Ph.D. Thesis, <i>Real-time Human Interaction With Supervised Learning Algorithms for Music Composition and Performance</i> [1], the <a target="_blank" href="http://www.wekinator.org/">Wekinator</a> framework [2], her teaching at the intersections of AI, HCI, and Music [3], as well as earlier collaborations between Rebecca and Ge [4,5] including SMIRK [6] (Small Musical Information Retrieval toolKit; 2008; early efforts in on-the-fly learning), the <a target="_blank" href="../uana/">unit analyzer framework</a> [7] (2007; which affords real-time audio feature extraction). All of these have directly or indirectly contributed the creation of ChAI. Additionally, ChAI benefitted from the teaching and design philosophy of <a target="_blank" href="https://www.cs.princeton.edu/~prc/">Dr. Perry R. Cook</a> (Ph.D. advisor to Rebecca and Ge at Princeton, and ChucK co-author), who argued for the importance of real-time human interaction, parametric sound synthesis, and play in the design of technology-mediated musical tools.
+Much of ChAI and its ways of thinking and doing can be foundationally attributed to the work of <a target="_blank" href="https://researchers.arts.ac.uk/1594-rebecca-fiebrink">Dr. Rebecca Fiebrink</a>, her landmark Ph.D. Thesis, <i>Real-time Human Interaction With Supervised Learning Algorithms for Music Composition and Performance</i> [1], the <a target="_blank" href="http://www.wekinator.org/">Wekinator</a> framework [2], her teaching at the intersections of AI, HCI, and Music [3], as well as earlier collaborations between Rebecca and Ge [4,5] including SMIRK [6] (Small Musical Information Retrieval toolKit; 2008; early efforts in on-the-fly learning), <a target="_blank" href="https://github.com/marsyas/marsyas">MARSYAS</a> and the foundational MIR work of <a target="_blank" href="http://webhome.csc.uvic.ca/~gtzan/">Dr. George Tzanetakis</a> [7,8] (along with the humanistic and musical motiovations behind it), and the <a target="_blank" href="../uana/">unit analyzer framework</a> [9] (2007; which affords real-time audio feature extraction). All of these have directly or indirectly contributed the creation of ChAI. Additionally, ChAI benefitted from the teaching and design philosophy of <a target="_blank" href="https://www.cs.princeton.edu/~prc/">Dr. Perry R. Cook</a> (Ph.D. advisor to Rebecca, George, and Ge at Princeton, and ChucK co-author), who argued for the importance of real-time human interaction, parametric sound synthesis, and the importance of <i>play</i> in the design of technology-mediated musical tools.
 </p>
 [1] Fiebrink, Rebecca. 2011. <a target="_blank" href="https://www.cs.princeton.edu/techreports/2010/891.pdf"><i>Real-time Human Interaction With Supervised Learning Algorithms for Music Composition and Performance</i></a> Ph.D. Thesis. Princeton University.
 <br><br>
@@ -127,7 +128,13 @@ on Music Information Retrieval</i> (ISMIR).
 sMIRk | Small Music Information Retrieval toolKit
 <br><br>
 
-[7] Wang, G., R. Fiebrink, P. R. Cook. 2007. <a target="_blank" href="https://mcd.stanford.edu/publish/files/2007-icmc-uana.pdf">"Combining Analysis and
+[7] Tzanetakis, G. and P. R. Cook. 2000 <a target="_blank" href="http://webhome.csc.uvic.ca/~gtzan/output/marsyas2000.pdf">"MARSYAS: A Framework for Audio Analysis."</a> <i>Organised Sound.</i> 4:(3)
+<br><br>
+
+[8] Tzanetakis, G. and P. R. Cook. 2002 <a target="_blank" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=1021072">"Musical Genre Classification of Audio Signals."</a> <i>IEEE Transaction on Speech and Audio Processing.</i> 10(5).
+<br><br>
+
+[9] Wang, G., R. Fiebrink, P. R. Cook. 2007. <a target="_blank" href="https://mcd.stanford.edu/publish/files/2007-icmc-uana.pdf">"Combining Analysis and
 Synthesis in the ChucK Programming Language."</a> <i>International Computer
 Music Conference</i>.
 
