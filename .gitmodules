@@ -1,3 +1,6 @@
 [submodule "webchuck"]
 	path = webchuck
 	url = https://github.com/ccrma/webchuck.git
+[submodule "ide"]
+	path = ide
+	url = git@github.com:ccrma/webchuck-ide.git
