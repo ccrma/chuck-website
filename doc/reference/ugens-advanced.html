@@ -1,0 +1,546 @@
+<html>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
+<title>Advanced Unit Generators</title>
+<body>
+<a name="top"/>
+<div id="title">
+<div class="titleL"><h1><a href="index.html">ChucK Class Library Reference</a></h1></div>
+<div class="titleR"><h1>Advanced Unit Generators</h1></div>
+</div>
+<div id="body">
+<div class="toc"><a id="toc"/>
+<p class="toc_class"><a href="#LiSa" class="ckdoc_typename ckdoc_type_ugen">LiSa</a></p>
+<p class="toc_class"><a href="#LiSa2" class="ckdoc_typename ckdoc_type_ugen">LiSa2</a></p>
+<p class="toc_class"><a href="#LiSa6" class="ckdoc_typename ckdoc_type_ugen">LiSa6</a></p>
+<p class="toc_class"><a href="#LiSa8" class="ckdoc_typename ckdoc_type_ugen">LiSa8</a></p>
+<p class="toc_class"><a href="#LiSa10" class="ckdoc_typename ckdoc_type_ugen">LiSa10</a></p>
+<p class="toc_class"><a href="#LiSa16" class="ckdoc_typename ckdoc_type_ugen">LiSa16</a></p>
+<p class="toc_class"><a href="#GenX" class="ckdoc_typename ckdoc_type_ugen">GenX</a></p>
+<p class="toc_class"><a href="#Gen5" class="ckdoc_typename ckdoc_type_ugen">Gen5</a></p>
+<p class="toc_class"><a href="#Gen7" class="ckdoc_typename ckdoc_type_ugen">Gen7</a></p>
+<p class="toc_class"><a href="#Gen9" class="ckdoc_typename ckdoc_type_ugen">Gen9</a></p>
+<p class="toc_class"><a href="#Gen10" class="ckdoc_typename ckdoc_type_ugen">Gen10</a></p>
+<p class="toc_class"><a href="#Gen17" class="ckdoc_typename ckdoc_type_ugen">Gen17</a></p>
+<p class="toc_class"><a href="#CurveTable" class="ckdoc_typename ckdoc_type_ugen">CurveTable</a></p>
+<p class="toc_class"><a href="#WarpTable" class="ckdoc_typename ckdoc_type_ugen">WarpTable</a></p>
+<p class="toc_class"><a href="#Dyno" class="ckdoc_typename ckdoc_type_ugen">Dyno</a></p>
+</div>
+<div class="classes">
+<p class="group_desc">Advanced and specialty unit generators</p>
+<a name="LiSa" /><div class="class">
+<h2 class="class_title" name="LiSa">LiSa</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">LiSa provides basic live sampling functionality,    and is also often used for granular synthesis.    An internal buffer stores samples chucked to LiSa's input.    Segments of this buffer can be played back, with ramping and    speed/direction control.    Multiple voice facility is built in, allowing for a single    LiSa object to serve as a source for sample layering and    granular textures.    by Dan Trueman (2007)<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">bi</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice, <span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">For particular voice (arg 1), turn on/off bidirectional playback.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">bi</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">For particular voice (arg 1), get bidirectional playback status.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">bi</span>()</p>
+<p class="member_description">Get birectional playback status.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clear</span>()</p>
+<p class="member_description">Clear recording buffer.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">duration</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">Set buffer size; required to allocate memory, also resets all parameter values to default.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">duration</span>()</p>
+<p class="member_description">Get buffer size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">feedback</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
+<p class="member_description">Set feedback amount when overdubbing (loop recording; how much to retain).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">feedback</span>()</p>
+<p class="member_description">Get feedback amount when overdubbing (loop recording; how much to retain).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getVoice</span>()</p>
+<p class="member_description">Return an available voice (one that is not currently playing). Return -1 if no voice is available.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getbi</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">Turn on/off bidirectional playback (voice 0).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">loop0</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">Turn on/off looping (voice 0).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">loop0</span>()</p>
+<p class="member_description">Get looping status (voice 0).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">loop</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice, <span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">For particular voice (arg 1), turn on/off looping.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">loop</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">For particular voice (arg 1), get looping status.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">loopEnd</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">For particular voice (arg 1), set loop ending point for playback. only applicable when .loop(voice, 1).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">loopEnd</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">For particular voice (arg 1), get loop ending point for playback. only applicable when .loop(voice, 1).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">loopEnd</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">Set loop ending point for playback (voice 0). only applicable when 1 => loop.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">loopEnd</span>()</p>
+<p class="member_description">Get loop ending point for playback (voice 0). only applicable when 1 => loop.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">loopEndRec</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">Set end point in buffer for loop recording.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">loopEndRec</span>()</p>
+<p class="member_description">Get end point in buffer for loop recording.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">loopRec</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">Turn on/off loop recording.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">loopRec</span>()</p>
+<p class="member_description">Get loop recording status.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">loopStart</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">For particular voice (arg 1), set loop starting point for playback. only applicable when .loop(voice, 1).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">loopStart</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">For particular voice (arg 1), get loop starting point for playback. only applicable when .loop(voice, 1).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">loopStart</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">Set loop starting point for playback (voice 0). only applicable when 1 => loop.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">loopStart</span>()</p>
+<p class="member_description">Get loop starting point for playback (voice 0). only applicable when 1 => loop.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">maxVoices</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">Set the maximum number of voices allowable; 10 by default (256 is the current hardwired internal limit).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">maxVoices</span>()</p>
+<p class="member_description">Get the maximum number of voices allowable; 10 by default (256 is the current hardwired internal limit).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pan</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice, <span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
+<p class="member_description">For particular voice (arg 1), set panning value [0.0, number of channels - 1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pan</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">For particular voice (arg 1), get panning value.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pan</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
+<p class="member_description">For voice 0, set panning value [0.0, number of channels - 1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pan</span>()</p>
+<p class="member_description">For voice 0, get panning value.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">play</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice, <span class="ckdoc_typename ckdoc_type_primitive">int</span> toggle)</p>
+<p class="member_description">For particular voice (arg 1), turn on/off sample playback</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">play</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> toggle)</p>
+<p class="member_description">Turn on/off sample playback (voice 0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">playPos</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">For particular voice (arg 1), set playback position.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">playPos</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">For particular voice (arg 1), get playback position.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">playPos</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">Set playback position (voice 0).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">playPos</span>()</p>
+<p class="member_description">Get playback position (voice 0).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">playing</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">Get playing status.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rampDown</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">For particular voice (arg 1), turn off sample playback, with ramp</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rampDown</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">Turn off sample playback, with ramp (voice 0).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rampUp</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">For particular voice (arg 1), turn on sample playback, with ramp.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rampUp</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">Turn on sample playback, with ramp (voice 0).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice, <span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
+<p class="member_description">For particular voice (arg 1), set playback rate</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">For particular voice (arg 1), get playback rate</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
+<p class="member_description">Set playback rate (voice 0). Note that the int/float type for this method will determine whether the rate is being set (float, for voice 0) or read (int, for voice number).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
+<p class="member_description">Get playback rate (voice 0).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">recPos</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">Set record position.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">recPos</span>()</p>
+<p class="member_description">Get record position.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">recRamp</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">Set ramping when recording (from 0 to loopEndRec).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">record</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> toggle)</p>
+<p class="member_description">Turn recording on and off</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sync</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">Set input mode; (0) input is recorded to internal buffer, (1) input sets playback position [0,1] (phase value between loopStart and loopEnd for all active voices), (2) input sets playback position, interpreted as a time value in samples (only works with voice 0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sync</span>()</p>
+<p class="member_description">Get input mode; (0) input is recorded to internal buffer, (1) input sets playback position [0,1] (phase value between loopStart and loopEnd for all active voices), (2) input sets playback position, interpreted as a time value in samples (only works with voice 0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">track</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">Identical to sync.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">track</span>()</p>
+<p class="member_description">Identical to sync.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">value</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">For particular voice (arg 1), get value from the voice.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">value</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">Get value from voice 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">valueAt</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> val, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> index)</p>
+<p class="member_description">Set value directly in record buffer.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">valueAt</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> index)</p>
+<p class="member_description">Get value directly from record buffer.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">voiceGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice, <span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
+<p class="member_description">For particular voice (arg 1), set gain.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">voiceGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">Set playback gain (voice 0).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">voicePan</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice, <span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
+<p class="member_description">For particular voice (arg 1), set panning value [0.0, number of channels - 1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">voicePan</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">For particular voice (arg 1), get panning value.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="LiSa2" /><div class="class">
+<h2 class="class_title" name="LiSa2">LiSa2</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-advanced.html#LiSa" class="ckdoc_typename ckdoc_type_ugen">LiSa</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A (li)ve (sa)mpling unit generator (stereo edition); also popularly used for granular synthesis.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="LiSa6" /><div class="class">
+<h2 class="class_title" name="LiSa6">LiSa6</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-advanced.html#LiSa" class="ckdoc_typename ckdoc_type_ugen">LiSa</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A (li)ve (sa)mpling unit generator (6-channel edition); also popularly used for granular synthesis.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="LiSa8" /><div class="class">
+<h2 class="class_title" name="LiSa8">LiSa8</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-advanced.html#LiSa" class="ckdoc_typename ckdoc_type_ugen">LiSa</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A (li)ve (sa)mpling unit generator (8-channel edition); also popularly used for granular synthesis.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="LiSa10" /><div class="class">
+<h2 class="class_title" name="LiSa10">LiSa10</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-advanced.html#LiSa" class="ckdoc_typename ckdoc_type_ugen">LiSa</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A (li)ve (sa)mpling unit generator (10-channel edition); also popularly used for granular synthesis.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="LiSa16" /><div class="class">
+<h2 class="class_title" name="LiSa16">LiSa16</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-advanced.html#LiSa" class="ckdoc_typename ckdoc_type_ugen">LiSa</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A (li)ve (sa)mpling unit generator (16-channel edition); also popularly used for granular synthesis.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="GenX" /><div class="class">
+<h2 class="class_title" name="GenX">GenX</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Ported from rtcmix. See <a href="http://www.music.columbia.edu/cmix/makegens.html">    http://www.music.columbia.edu/cmix/makegens.html</a>     for more information on the GenX family of UGens. Currently coefficients past     the 100th are ignored.        Lookup can either be done using the lookup() function, or by driving the     table with an input UGen, typically a Phasor. For an input signal between     [ -1, 1 ], using the absolute value for [ -1, 0 ), GenX will output the     table value indexed by the current input.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">coefs</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> v)</p>
+<p class="member_description">Set lookup table coefficients; meaning is dependent on subclass</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lookup</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> which)</p>
+<p class="member_description">Get lookup table value at index i [ -1, 1 ]; absolute value is used in the range [ -1, 0 )</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Gen5" /><div class="class">
+<h2 class="class_title" name="Gen5">Gen5</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-advanced.html#GenX" class="ckdoc_typename ckdoc_type_ugen">GenX</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Constructs a lookup table composed of sequential exponential curves. For a table with N curves, starting value of y', and value yn for lookup index xn, set the coefficients to [ y', y0, x0, ..., yN-1, xN-1 ]. Note that there must be an odd number of coefficients. If an even number of coefficients is specified, behavior is undefined. The sum of xn for 0 &le; n < N must be 1. yn = 0 is approximated as 0.000001 to avoid strange results arising from the nature of exponential curves.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">coefs</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> v)</p>
+<p class="member_description">Set lookup table coefficients.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Gen7" /><div class="class">
+<h2 class="class_title" name="Gen7">Gen7</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-advanced.html#GenX" class="ckdoc_typename ckdoc_type_ugen">GenX</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Constructs a lookup table composed of sequential line segments. For a table with N lines, starting value of y', and value yn for lookupindex xn, set the coefficients to [ y', y0, x0, ..., yN-1, xN-1 ]. Note that there must be an odd number of coefficients. If an even number of coefficients is specified, behavior is undefined. The sum of xn for 0 &le; n < N must be 1.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">coefs</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> v)</p>
+<p class="member_description">Set lookup table coefficients.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Gen9" /><div class="class">
+<h2 class="class_title" name="Gen9">Gen9</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-advanced.html#GenX" class="ckdoc_typename ckdoc_type_ugen">GenX</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Constructs a lookup table of partials with specified amplitudes, phases, and harmonic ratios to the fundamental. Coefficients are specified in triplets of [ ratio, amplitude, phase ] arranged in a single linear array.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">coefs</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> v)</p>
+<p class="member_description">Set lookup table coefficients.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Gen10" /><div class="class">
+<h2 class="class_title" name="Gen10">Gen10</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-advanced.html#GenX" class="ckdoc_typename ckdoc_type_ugen">GenX</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Constructs a lookup table of harmonic partials with specified amplitudes. The amplitude of partial n is specified by the nth element of the coefficients. For example, setting coefs to [ 1 ] will produce a sine wave.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">coefs</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> v)</p>
+<p class="member_description">Set lookup table coefficients.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Gen17" /><div class="class">
+<h2 class="class_title" name="Gen17">Gen17</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-advanced.html#GenX" class="ckdoc_typename ckdoc_type_ugen">GenX</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Constructs a Chebyshev polynomial wavetable with harmonic partials of specified weights. The weight of partial n is specified by the nth element of the coefficients. Primarily used for waveshaping, driven by a SinOsc instead of a Phasor. See <a href="http://crca.ucsd.edu/~msp/techniques/v0.08/book-html/node74.html">http://crca.ucsd.edu/~msp/techniques/v0.08/book-html/node74.html</a> and <a href="http://en.wikipedia.org/wiki/Distortion_synthesis">http://en.wikipedia.org/wiki/Distortion_synthesis</a> for more information.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">coefs</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> v)</p>
+<p class="member_description">Set lookup table coefficients.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="CurveTable" /><div class="class">
+<h2 class="class_title" name="CurveTable">CurveTable</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-advanced.html#GenX" class="ckdoc_typename ckdoc_type_ugen">GenX</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Constructs a wavetable composed of segments of variable times, values, and curvatures. Coefficients are specified as a single linear array of triplets of [ time, value, curvature ] followed by a final duple of [ time, value ] to specify the final value of the table. time values are expressed in unitless, ascending values. For curvature equal to 0, the segment is a line; for curvature less than 0, the segment is a convex curve; for curvature greater than 0, the segment is a concave curve.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">coefs</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> v)</p>
+<p class="member_description">Set lookup table coefficients.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="WarpTable" /><div class="class">
+<h2 class="class_title" name="WarpTable">WarpTable</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-advanced.html#GenX" class="ckdoc_typename ckdoc_type_ugen">GenX</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">...<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">coefs</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> v)</p>
+<p class="member_description">Set lookup table coefficients.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Dyno" /><div class="class">
+<h2 class="class_title" name="Dyno">Dyno</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A dynamics processor. Includes presets for limiter, compressor, expander, noise gate, and ducker.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/Dyno-compress.ck">Dyno-compress.ck</a></li>
+<li><a href="../examples/Dyno-duck.ck">Dyno-duck.ck</a></li>
+<li><a href="../examples/Dyno-limit.ck">Dyno-limit.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">attackTime</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> aTime)</p>
+<p class="member_description">Set duration for the envelope to move linearly from current value to the absolute value of the signal's amplitude.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">attackTime</span>()</p>
+<p class="member_description">Get duration for the envelope to move linearly from current value to the absolute value of the signal's amplitude.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">compress</span>()</p>
+<p class="member_description">Set parameters to default compressor values.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">duck</span>()</p>
+<p class="member_description">Set parameters ot default ducker values.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">expand</span>()</p>
+<p class="member_description">Set parameters to default expander values.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">externalSideInput</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> externalSideInput)</p>
+<p class="member_description">Set to true to cue the amplitude envelope off of sideInput instead of the input signal. Note that this means you will need to manually set sideInput every so often.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">externalSideInput</span>()</p>
+<p class="member_description">Get externalSideInput state. if set to true, the amplitude envelope will be cued off of sideInput instead of the input signal. Note that this means you will need to manually set sideInput every so often.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">gate</span>()</p>
+<p class="member_description">Set parameters to default noise gate values.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">limit</span>()</p>
+<p class="member_description">Set parameters to default limiter values: slopeAbove = 0.1, slopeBelow = 1.0, thresh = 0.5, attackTime = 5 ms, releaseTime = 300 ms, externalSideInput = 0 (false)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">ratio</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> ratio)</p>
+<p class="member_description">An alternate way of setting slopeAbove and slopeBelow; sets slopeBelow to 1.0 and slopeAbove to 1.0 / ratio.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">ratio</span>()</p>
+<p class="member_description">Get the ratio set by .ratio(float); slopeBelow to 1.0 and slopeAbove to 1.0 / ratio.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">releaseTime</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> rTime)</p>
+<p class="member_description">Set duration for the envelope to decay down to around 1/10 of its current amplitude, if not brought back up by the signal.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">releaseTime</span>()</p>
+<p class="member_description">Get duration for the envelope to decay down to around 1/10 of its current amplitude, if not brought back up by the signal.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sideInput</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> sideInput)</p>
+<p class="member_description">If externalSideInput is set to true, replace the signal being processed as the input to the amplitude envelope.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sideInput</span>()</p>
+<p class="member_description">If externalSideInput is set to true, replaces the signal being processed as the input to the amplitude envelope.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">slopeAbove</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> slopeAbove)</p>
+<p class="member_description">Set the slope of the output gain vs the input envelope's level when the envelope is above thresh.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">slopeAbove</span>()</p>
+<p class="member_description">Get the slope of the output gain vs the input envelope's level when the envelope is above thresh.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">slopeBelow</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> slopeBelow)</p>
+<p class="member_description">Set the slope of the output gain vs the input envelope's level when the envelope is below thresh.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">slopeBelow</span>()</p>
+<p class="member_description">Get the slope of the output gain vs the input envelope's level when the envelope is below thresh.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">thresh</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> thresh)</p>
+<p class="member_description">Set threshold, above which to stop using slopeBelow and start using slopeAbove to determine output gain vs input gain.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">thresh</span>()</p>
+<p class="member_description">Get threshold, above which to stop using slopeBelow and start using slopeAbove to determine output gain vs input gain.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,543 @@
+<html>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
+<title>Unit Analyzers</title>
+<body>
+<a name="top"/>
+<div id="title">
+<div class="titleL"><h1><a href="index.html">ChucK Class Library Reference</a></h1></div>
+<div class="titleR"><h1>Unit Analyzers</h1></div>
+</div>
+<div id="body">
+<div class="toc"><a id="toc"/>
+<p class="toc_class"><a href="#Centroid" class="ckdoc_typename ckdoc_type_ugen">Centroid</a></p>
+<p class="toc_class"><a href="#Chroma" class="ckdoc_typename ckdoc_type_ugen">Chroma</a></p>
+<p class="toc_class"><a href="#Flux" class="ckdoc_typename ckdoc_type_ugen">Flux</a></p>
+<p class="toc_class"><a href="#Kurtosis" class="ckdoc_typename ckdoc_type_ugen">Kurtosis</a></p>
+<p class="toc_class"><a href="#MFCC" class="ckdoc_typename ckdoc_type_ugen">MFCC</a></p>
+<p class="toc_class"><a href="#RMS" class="ckdoc_typename ckdoc_type_ugen">RMS</a></p>
+<p class="toc_class"><a href="#RollOff" class="ckdoc_typename ckdoc_type_ugen">RollOff</a></p>
+<p class="toc_class"><a href="#SFM" class="ckdoc_typename ckdoc_type_ugen">SFM</a></p>
+<p class="toc_class"><a href="#ZeroX" class="ckdoc_typename ckdoc_type_ugen">ZeroX</a></p>
+<p class="toc_class"><a href="#AutoCorr" class="ckdoc_typename ckdoc_type_ugen">AutoCorr</a></p>
+<p class="toc_class"><a href="#DCT" class="ckdoc_typename ckdoc_type_ugen">DCT</a></p>
+<p class="toc_class"><a href="#FeatureCollector" class="ckdoc_typename ckdoc_type_ugen">FeatureCollector</a></p>
+<p class="toc_class"><a href="#FFT" class="ckdoc_typename ckdoc_type_ugen">FFT</a></p>
+<p class="toc_class"><a href="#Flip" class="ckdoc_typename ckdoc_type_ugen">Flip</a></p>
+<p class="toc_class"><a href="#IDCT" class="ckdoc_typename ckdoc_type_ugen">IDCT</a></p>
+<p class="toc_class"><a href="#IFFT" class="ckdoc_typename ckdoc_type_ugen">IFFT</a></p>
+<p class="toc_class"><a href="#UnFlip" class="ckdoc_typename ckdoc_type_ugen">UnFlip</a></p>
+<p class="toc_class"><a href="#XCorr" class="ckdoc_typename ckdoc_type_ugen">XCorr</a></p>
+</div>
+<div class="classes">
+<p class="group_desc">Unit analyzer (UAna) objects are specialized UGens that can also pass analysis information to other UAnae.</p>
+<a name="Centroid" /><div class="class">
+<h2 class="class_title" name="Centroid">Centroid</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A unit analyzer that computes the spectral centroid from a magnitude spectrum (either from incoming UAna or manually given), and outputs a single number.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/features/centroid.ck">ai/features/centroid.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
+<p class="member_description">Manually computes the centroid from a float array.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Chroma" /><div class="class">
+<h2 class="class_title" name="Chroma">Chroma</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A unit analyzer that computes the Chroma features from a magnitude spectrum (either from an incoming UAna, or given manually), and outputs a vector of coefficients.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/features/chroma.ck">ai/features/chroma.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> output)</p>
+<p class="member_description">Manually computes the Chroma of the input (an FFT spectrum), and stores the results in the output array (Chroma coefficients).</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">highOctNum</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> high_oct_num)</p>
+<p class="member_description">Set the highest octave number for Chroma analysis.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">highOctNum</span>()</p>
+<p class="member_description">Get the highest octave number for Chroma analysis.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">lowOctNum</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> low_oct_num)</p>
+<p class="member_description">Set the lowest octave number for Chroma analysis.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">lowOctNum</span>()</p>
+<p class="member_description">Get the lowest octave number for Chroma analysis.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sampleRate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> sample_rate)</p>
+<p class="member_description">Set the sample rate for Chroma analysis.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sampleRate</span>()</p>
+<p class="member_description">Get the sample rate for Chroma analysis.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Flux" /><div class="class">
+<h2 class="class_title" name="Flux">Flux</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A unit analyzer that computes the spectral flux between successive magnitude spectra (via incoming UAna, or given manually), and outputs a single number.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/features/flux.ck">ai/features/flux.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> lhs, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> rhs)</p>
+<p class="member_description">Manually computes the flux between two frames.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> lhs, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> rhs, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> diff)</p>
+<p class="member_description">Manually computes the flux between two frames, and stores the difference in a third array.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">reset</span>()</p>
+<p class="member_description">Reset the extractor.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Kurtosis" /><div class="class">
+<h2 class="class_title" name="Kurtosis">Kurtosis</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A unit analyzer that computes the kurtosis of a given input array, and outputs a single number.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/features/kurtosis.ck">ai/features/kurtosis.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
+<p class="member_description">Manually computes the kurtosis of a given input array.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="MFCC" /><div class="class">
+<h2 class="class_title" name="MFCC">MFCC</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A unit analyzer that computes Mel-frequency Cepstral Coefficients (MFCCs), and outputs a vector of coefficients.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/features/mfcc-basic.ck">ai/features/mfcc-basic.ck</a></li>
+<li><a href="../examples/ai/features/mfcc-mean.ck">ai/features/mfcc-mean.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> output)</p>
+<p class="member_description">Manually computes the MFCC of the input (an FFT spectrum), and stores the results in the output array (MFCC coefficients).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numCoeffs</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> n)</p>
+<p class="member_description">Set the number of MFCC coefficients to compute.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numCoeffs</span>()</p>
+<p class="member_description">Get the number of MFCC coefficients to compute.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numFilters</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> n)</p>
+<p class="member_description">Set the number of linearly spaced filters in MEL space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numFilters</span>()</p>
+<p class="member_description">Get the number of linearly spaced filters in MEL space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sampleRate</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> sr)</p>
+<p class="member_description">Set the sample rate for MFCC analysis; NOTE: by default this is set to current ChucK sample rate.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sampleRate</span>()</p>
+<p class="member_description">Get the sample rate for MFCC analysis.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="RMS" /><div class="class">
+<h2 class="class_title" name="RMS">RMS</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A unit analyzer that computes the RMS power mean from a magnitude spectrum (either from an incoming UAna, or given manually), and outputs a single number.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/features/rms.ck">ai/features/rms.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
+<p class="member_description">Manually computes the RMS from a float array.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="RollOff" /><div class="class">
+<h2 class="class_title" name="RollOff">RollOff</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A unit analyzer that computes the spectral rolloff from a magnitude spectrum (either from incoming UAna, or given manually), and outputs a single number.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/features/rolloff.ck">ai/features/rolloff.ck</a></li>
+<li><a href="../examples/ai/features/rolloff2.ck">ai/features/rolloff2.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input, <span class="ckdoc_typename ckdoc_type_primitive">float</span> percent)</p>
+<p class="member_description">Manually computes the rolloff from a float array.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">percent</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> percent)</p>
+<p class="member_description">Set the percentage for computing rolloff.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">percent</span>()</p>
+<p class="member_description">Get the percentage specified for the rolloff.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="SFM" /><div class="class">
+<h2 class="class_title" name="SFM">SFM</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A unit analyzer that computes the Spectral Flatness Measure (SFM) from a magnitude spectrum (either from an incoming UAna, or given manually), and outputs a single number.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/features/sfm.ck">ai/features/sfm.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> output)</p>
+<p class="member_description">Manually computes the SFM of the input (an FFT spectrum), and stores the results in the output array (SFM coefficients).</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">nrBands</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> nr_bands)</p>
+<p class="member_description">Set the number of frequency bands to use for SFM analysis.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">nrBands</span>()</p>
+<p class="member_description">Get the number of frequency bands to use for SFM analysis.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ZeroX" /><div class="class">
+<h2 class="class_title" name="ZeroX">ZeroX</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Zero crossing detector.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/features/zerox.ck">ai/features/zerox.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
+<p class="member_description">Manually computes the zero crossing rate for an array.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="AutoCorr" /><div class="class">
+<h2 class="class_title" name="AutoCorr">AutoCorr</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/analysis/autocorr.ck">analysis/autocorr.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input, <span class="ckdoc_typename ckdoc_type_primitive">int</span> normalize, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> output)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">normalize</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> flag)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">normalize</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="DCT" /><div class="class">
+<h2 class="class_title" name="DCT">DCT</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Computes the Discrete Cosine Transform on incoming audio samples, and outputs the result via its UAnaBlob as real values in the D.C. spectrum. A buffering mechanism maintains the previous DCT size # of samples, allowing DCT to be taken at any point in time, on demand (via .upchuck() or by upchucking a downstream UAna; see UAna documentation). The window size (along with an arbitrary window shape) is controlled via the .window method. The hop size is complete dynamic, and is throttled by how time is advanced.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> size)</p>
+<p class="member_description">Set the DCT size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>()</p>
+<p class="member_description">Get the DCT size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">spectrum</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> buffer)</p>
+<p class="member_description">Manually retrieve the results of a transform.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">transform</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> from)</p>
+<p class="member_description">Manually take DCT (as opposed to using .upchuck() / upchuck operator).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">window</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> win)</p>
+<p class="member_description">Set/get the transform window/size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">windowSize</span>()</p>
+<p class="member_description">Get the current window size.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="FeatureCollector" /><div class="class">
+<h2 class="class_title" name="FeatureCollector">FeatureCollector</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Turns UAna input into a single feature vector, upon .upchuck()<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="FFT" /><div class="class">
+<h2 class="class_title" name="FFT">FFT</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Computes the Fast Fourier Transform on incoming audio samples, and outputs the result via its UAnaBlob as both the complex spectrum and the magnitude spectrum. A buffering mechanism maintains the previous FFTsize # of samples, allowing FFT's to be taken at any point in time, on demand (via .upchuck() or by upchucking a downstream UAna. The window size (along with an arbitrary window shape) is controlled via the .window method. The hop size is complete dynamic, and is throttled by how time is advanced.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> size)</p>
+<p class="member_description">Set the FFT-size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>()</p>
+<p class="member_description">Get the FFT-size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">spectrum</span>(<span class="ckdoc_typename ckdoc_type_primitive">complex</span><span class="typename">[]</span> buffer)</p>
+<p class="member_description">Manually retrieve the results of a transform.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">transform</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> from)</p>
+<p class="member_description">Manually take FFT (as opposed to using .upchuck() / upchuck operator)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">window</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> win)</p>
+<p class="member_description">Set/get the transform window/size</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">windowSize</span>()</p>
+<p class="member_description">Get the current window size.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Flip" /><div class="class">
+<h2 class="class_title" name="Flip">Flip</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Turns audio samples into frames in the UAna domain.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">output</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> buffer)</p>
+<p class="member_description">Manually take Flip (as opposed to using .upchuck() / upchuck operator)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> size)</p>
+<p class="member_description">Set the Flip size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>()</p>
+<p class="member_description">Get the Flip size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">transform</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> from)</p>
+<p class="member_description">Manually take Flip (as opposed to using .upchuck() / upchuck operator).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">window</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> win)</p>
+<p class="member_description">Set/get the transform window/size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">windowSize</span>()</p>
+<p class="member_description">Get the current window size.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="IDCT" /><div class="class">
+<h2 class="class_title" name="IDCT">IDCT</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Computes the inverse Discrete Cosine Transform on incoming spectral frames (on demand), and overlap-adds the results into its internal buffer, ready to be sent to other UGen's connected via =>. The window size (along with an arbitrary window shape) is controlled via the .window method.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">samples</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> buffer)</p>
+<p class="member_description">Manually get result of previous IDCT.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> size)</p>
+<p class="member_description">Set the IDCT size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>()</p>
+<p class="member_description">Get the IDCT size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">transform</span>(<span class="ckdoc_typename ckdoc_type_primitive">complex</span><span class="typename">[]</span> from)</p>
+<p class="member_description">Manually take IDCT (as opposed to using .upchuck() / upchuck operator).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">window</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> win)</p>
+<p class="member_description">Set/get the transform window/size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">windowSize</span>()</p>
+<p class="member_description">Get the current window size.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="IFFT" /><div class="class">
+<h2 class="class_title" name="IFFT">IFFT</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Computes the inverse Fast Fourier Transform on incoming spectral frames (on demand), and overlap-adds the results into its internal buffer, ready to be sent to other UGen's connected via =>. The window size (along with an arbitrary window shape) is controlled via the .window method.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">samples</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> buffer)</p>
+<p class="member_description">Manually take IFFT (as opposed to using .upchuck() / upchuck operator)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> size)</p>
+<p class="member_description">Set the IFFT-size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>()</p>
+<p class="member_description">Get the IFFT-size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">transform</span>(<span class="ckdoc_typename ckdoc_type_primitive">complex</span><span class="typename">[]</span> from)</p>
+<p class="member_description">Manually take IFFT (as opposed to using .upchuck() / upchuck operator)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">window</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> win)</p>
+<p class="member_description">Set/get the transform window/size</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">windowSize</span>()</p>
+<p class="member_description">Get the current window size.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UnFlip" /><div class="class">
+<h2 class="class_title" name="UnFlip">UnFlip</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Turns UAna frames into audio samples, via overlap add.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">output</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> buffer)</p>
+<p class="member_description">Manually take pilF (as opposed to using .upchuck() / upchuck operator)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> size)</p>
+<p class="member_description">Set the pilF size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>()</p>
+<p class="member_description">Get the pilF size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">transform</span>()</p>
+<p class="member_description">Manually take pilF (as opposed to using .upchuck() / upchuck operator).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">window</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> win)</p>
+<p class="member_description">Set/get the transform window/size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">windowSize</span>()</p>
+<p class="member_description">Get the current window size.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="XCorr" /><div class="class">
+<h2 class="class_title" name="XCorr">XCorr</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/analysis/xcorr.ck">analysis/xcorr.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> f, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> g, <span class="ckdoc_typename ckdoc_type_primitive">int</span> normalize, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> y)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">normalize</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> flag)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">normalize</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+</div>
+</div>
+</body>
+</html>

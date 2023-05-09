@@ -1,0 +1,586 @@
+<html>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
+<title>AI tools</title>
+<body>
+<a name="top"/>
+<div id="title">
+<div class="titleL"><h1><a href="index.html">ChucK Class Library Reference</a></h1></div>
+<div class="titleR"><h1>AI tools</h1></div>
+</div>
+<div id="body">
+<div class="toc"><a id="toc"/>
+<p class="toc_class"><a href="#MLP" class="ckdoc_typename ckdoc_type_object">MLP</a></p>
+<p class="toc_class"><a href="#KNN" class="ckdoc_typename ckdoc_type_object">KNN</a></p>
+<p class="toc_class"><a href="#KNN2" class="ckdoc_typename ckdoc_type_object">KNN2</a></p>
+<p class="toc_class"><a href="#HMM" class="ckdoc_typename ckdoc_type_object">HMM</a></p>
+<p class="toc_class"><a href="#SVM" class="ckdoc_typename ckdoc_type_object">SVM</a></p>
+<p class="toc_class"><a href="#Word2Vec" class="ckdoc_typename ckdoc_type_object">Word2Vec</a></p>
+<p class="toc_class"><a href="#PCA" class="ckdoc_typename ckdoc_type_object">PCA</a></p>
+<p class="toc_class"><a href="#Wekinator" class="ckdoc_typename ckdoc_type_object">Wekinator</a></p>
+<p class="toc_class"><a href="#AI" class="ckdoc_typename ckdoc_type_object">AI</a></p>
+</div>
+<div class="classes">
+<p class="group_desc">ChucK for AI (ChAI) class library. These artificial intelligence-related tools are designed to support interactive ML for music.</p>
+<a name="MLP" /><div class="class">
+<h2 class="class_title" name="MLP">MLP</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A multilayer perceptron (MLP)--a basic artificial neural network--that maps an input layer to an output layer across a number of fully-connected hidden layers. This implemention can be trained either 1) by using one of the comprehensive .train() functions OR 2) by iteratively calling .forward() and .backprop() for each input-output observation, and using .shuffle() for each epoch. Commonly used for regression or classification.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/mlp/mlp.ck">ai/mlp/mlp.ck</a></li>
+<li><a href="../examples/ai/mlp/mlp-manual.ck">ai/mlp/mlp-manual.ck</a></li>
+<li><a href="../examples/ai/mlp/model-load.ck">ai/mlp/model-load.ck</a></li>
+<li><a href="../examples/ai/mlp/model-save.ck">ai/mlp/model-save.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shuffle</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> X, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> Y)</p>
+<p class="member_description">(Manually) shuffle the given input and output vectors.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">backprop</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> output, <span class="ckdoc_typename ckdoc_type_primitive">float</span> learningRate)</p>
+<p class="member_description">(Manually) backpropagate from the output layer, for a single input-output observation; compute the gradient of the loss function with respect to the weights in the network, one layer at a time.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">forward</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
+<p class="member_description">(Manually) forward-propagate the input vector through the network.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">getActivations</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> layer, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> activations)</p>
+<p class="member_description">Get the activations of the given layer, after a manual .forward().</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">getBiases</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> layer, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> biases)</p>
+<p class="member_description">Get the biases of the given layer.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">getGradients</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> layer, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> gradients)</p>
+<p class="member_description">Get the gradients of the given layer, after a manual .backprop().</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">getWeights</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> layer, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> weights)</p>
+<p class="member_description">Get the weights of the given layer.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">init</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> nodesPerLayer)</p>
+<p class="member_description">Initialize the MLP with the given number of nodes per layer.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">init</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> nodesPerLayer, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> activationPerLayer)</p>
+<p class="member_description">Initialize the MLP with the given number of nodes per layer and the given activation function per layer, as specified in 'activationPerLayer' (options: AI.Linear, AI.Sigmoid, AI.ReLU, AI.Tanh, or AI.Softmax).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">init</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> nodesPerLayer, <span class="ckdoc_typename ckdoc_type_primitive">int</span> activationFunction)</p>
+<p class="member_description">Initialize the MLP with the given number of nodes per layer and the given activation function for all layers (options: AI.Linear, AI.Sigmoid, AI.ReLU, AI.Tanh, or AI.Softmax).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">load</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+<p class="member_description">Load a MLP model from file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">predict</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> output)</p>
+<p class="member_description">Predict the output layer from an input layer.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">save</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+<p class="member_description">Save the MLP model to file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">train</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> inputs, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> outputs)</p>
+<p class="member_description">Train the MLP with the given input and output observations with default learning rate=.01 and epochs=100. (Also see MLP.train(inputs,outputs,learningRate,epochs).)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">train</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> inputs, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> outputs, <span class="ckdoc_typename ckdoc_type_primitive">float</span> learningRate, <span class="ckdoc_typename ckdoc_type_primitive">int</span> epochs)</p>
+<p class="member_description">Train the MLP with the given input and output observations, the learning rate, and number of epochs.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="KNN" /><div class="class">
+<h2 class="class_title" name="KNN">KNN</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A basic k-NN utility that searches for k nearest neighbors from a set of observations / feature vectors. (Also see KNN2. The differrence between KNN and KNN2 is that KNN does not deal with labels whereas KNN2 is designed to work with labels.)<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/knn/knn-search.ck">ai/knn/knn-search.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">search</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> query, <span class="ckdoc_typename ckdoc_type_primitive">int</span> k, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> indices)</p>
+<p class="member_description">Search for the 'k' nearest neighbors of 'query' and return their corresponding indices.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">search</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> query, <span class="ckdoc_typename ckdoc_type_primitive">int</span> k, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> indices, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> observations)</p>
+<p class="member_description">Search for the 'k' nearest neighbors of 'query' and return their corresponding indices and observations</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">train</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> x)</p>
+<p class="member_description">Train the KNN model with the given observations 'x'</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">weigh</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> weights)</p>
+<p class="member_description">Set the weights for each dimension in the data.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="KNN2" /><div class="class">
+<h2 class="class_title" name="KNN2">KNN2</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A k-NN utility that predicts probabilities of class membership based on distances from a test input to its k nearest neighbors. (Also see KNN. The differrence between KNN and KNN2 is that KNN does not deal with labels whereas KNN2 is designed to work with labels.)<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/knn/knn2-classify.ck">ai/knn/knn2-classify.ck</a></li>
+<li><a href="../examples/ai/knn/knn2-search.ck">ai/knn/knn2-search.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">predict</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> query, <span class="ckdoc_typename ckdoc_type_primitive">int</span> k, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> prob)</p>
+<p class="member_description">Predict the output probabilities 'prob' given unlabeled test input 'query' based on distances to 'k' nearest neighbors.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">search</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> query, <span class="ckdoc_typename ckdoc_type_primitive">int</span> k, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> labels)</p>
+<p class="member_description">Search for the 'k' nearest neighbors of 'query' and return their labels.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">search</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> query, <span class="ckdoc_typename ckdoc_type_primitive">int</span> k, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> labels, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> indices)</p>
+<p class="member_description">Search for the 'k' nearest neighbors of 'query' and return their labels and indices.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">search</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> query, <span class="ckdoc_typename ckdoc_type_primitive">int</span> k, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> labels, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> indices, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> observations)</p>
+<p class="member_description">Search for the 'k' nearest neighbors of 'query' and return their labels, indices, and observations.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">train</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> labels)</p>
+<p class="member_description">Train the KNN model with the given observations 'x' and corresponding labels.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">weigh</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> weights)</p>
+<p class="member_description">Set the weights for each dimension in the data.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="HMM" /><div class="class">
+<h2 class="class_title" name="HMM">HMM</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A hidden markov model (HMM) utility that generates a sequence of observations based on the training data.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/hmm/hmm-load.ck">ai/hmm/hmm-load.ck</a></li>
+<li><a href="../examples/ai/hmm/hmm-train.ck">ai/hmm/hmm-train.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">generate</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> length, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> output)</p>
+<p class="member_description">Generate a sequence of observations of the given length.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">load</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> initiailDistribution, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> transitionMatrix, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> emissionMatrix)</p>
+<p class="member_description">Initialize the HMM model with the given initial state distribution, transition matrix, and emission matrix.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">train</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> numStates, <span class="ckdoc_typename ckdoc_type_primitive">int</span> numEmissions, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> observations)</p>
+<p class="member_description">Train the HMM model with the given observations.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="SVM" /><div class="class">
+<h2 class="class_title" name="SVM">SVM</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A support vector machine (SVM) utility trains a model and predicts output based on new input<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/svm/svm-basic.ck">ai/svm/svm-basic.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">predict</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> x, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> y)</p>
+<p class="member_description">Predict the output 'y' given the input 'x'.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">train</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> x, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> y)</p>
+<p class="member_description">Train the SVM model with the given samples 'x' and 'y'.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Word2Vec" /><div class="class">
+<h2 class="class_title" name="Word2Vec">Word2Vec</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A word embeddings utility that maps words to vectors; can load a model and perform similarity retrieval.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/word2vec/word2vec-basic.ck">ai/word2vec/word2vec-basic.ck</a></li>
+<li><a href="../examples/ai/word2vec/poem-i-feel.ck">ai/word2vec/poem-i-feel.ck</a></li>
+<li><a href="../examples/ai/word2vec/poem-randomwalk.ck">ai/word2vec/poem-randomwalk.ck</a></li>
+<li><a href="../examples/ai/word2vec/poem-spew.ck">ai/word2vec/poem-spew.ck</a></li>
+<li><a href="../examples/ai/word2vec/poem-ungenerate.ck">ai/word2vec/poem-ungenerate.ck</a></li>
+<li><a href="../examples/ai/word2vec/word2vec-prompt.ck">ai/word2vec/word2vec-prompt.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">contains</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> word)</p>
+<p class="member_description">Query if 'word' is in the current model.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">dim</span>()</p>
+<p class="member_description">Get number of dimensions for word embedding.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getSimilar</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> word, <span class="ckdoc_typename ckdoc_type_primitive">int</span> k, <span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> output)</p>
+<p class="member_description">Get the k most similar words to the given word; return false if 'word' is not in model.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getSimilar</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> vec, <span class="ckdoc_typename ckdoc_type_primitive">int</span> k, <span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> output)</p>
+<p class="member_description">Get the k most similar words to the given vector.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getVector</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> word, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> output)</p>
+<p class="member_description">Get the vector of the given word; returns false if 'word' is not in model.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">load</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path)</p>
+<p class="member_description">Load pre-trained word embedding model from the given path.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">load</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path, <span class="ckdoc_typename ckdoc_type_primitive">int</span> useKDTreeDim)</p>
+<p class="member_description">Load pre-trained word embedding model from the given path; will use KDTree for similarity searches if the data dimension is less than or equal to 'useKDTreeDim'. Set 'useKDTreeDim' to 0 to use linear (brute force) similarity search; set 'useKDTreeDim' to less than 0 to always use KDTree.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">minMax</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> mins, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> maxs)</p>
+<p class="member_description">Retrieve the minimums and maximums for each dimension.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>()</p>
+<p class="member_description">Get number of words in dictionary.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">useKDTree</span>()</p>
+<p class="member_description">Get whether a KDTree is used for similarity search.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="PCA" /><div class="class">
+<h2 class="class_title" name="PCA">PCA</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A principle component analysis (PCA) utility, commonly used for dimensionality reduction.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/pca/pca.ck">ai/pca/pca.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">reduce</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> input, <span class="ckdoc_typename ckdoc_type_primitive">int</span> D, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> output)</p>
+<p class="member_description">Dimension-reduce 'input' (NxM) to 'output' (NxD) as the projection of the input data onto its first 'D' principle components</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Wekinator" /><div class="class">
+<h2 class="class_title" name="Wekinator">Wekinator</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A Wekinator utility that maps input vectors to output vectors, commonly used for interactive machine learning combining human-computer interaction and ML. Based on Rebecca Fiebrink's Wekinator framework.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/ai/wekinator/wekinator-basic.ck">ai/wekinator/wekinator-basic.ck</a></li>
+<li><a href="../examples/ai/wekinator/wekinator-customize.ck">ai/wekinator/wekinator-customize.ck</a></li>
+<li><a href="../examples/ai/wekinator/wekinator-import.ck">ai/wekinator/wekinator-import.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>()</p>
+<p class="member_description">Add current inputs and outputs to the observations.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> inputs, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> outputs)</p>
+<p class="member_description">Add given inputs and outputs to the observations.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> inputs, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> outputs)</p>
+<p class="member_description">Add given inputs and outputs to the observations for the specified output.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clear</span>()</p>
+<p class="member_description">Clear everything except the global properties.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clearAllObs</span>()</p>
+<p class="member_description">Clear all observations.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clearAllObs</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index)</p>
+<p class="member_description">Clear all observations for the specified output.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clearObs</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> lo, <span class="ckdoc_typename ckdoc_type_primitive">int</span> hi)</p>
+<p class="member_description">Clear the observations by id range.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clearObs</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> lo, <span class="ckdoc_typename ckdoc_type_primitive">int</span> hi)</p>
+<p class="member_description">Clear the observations by id range for the specified output.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">deleteLastRound</span>()</p>
+<p class="member_description">Delete the last round of observations.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">exportObs</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+<p class="member_description">Export the observations to a file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">exportObs</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+<p class="member_description">Export the observations for the specified output to a file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getAllRecordStatus</span>()</p>
+<p class="member_description">Get the record status for all outputs.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getAllRunStatus</span>()</p>
+<p class="member_description">Get the run status for all outputs.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">getObs</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> obs)</p>
+<p class="member_description">Get the observations in the Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">getObs</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> obs)</p>
+<p class="member_description">Get the observations for the specified output in the Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">getOutputProperty</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_object">string</span> property_name, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> property_value)</p>
+<p class="member_description">Get the output property of the Wekinator. See the Wekinator documentation for more information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">getOutputPropertyFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> property_type, <span class="ckdoc_typename ckdoc_type_object">string</span> property_name)</p>
+<p class="member_description">Get the output property of the Wekinator. See the Wekinator documentation for more information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getOutputPropertyInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_object">string</span> property_name)</p>
+<p class="member_description">Get the output property of the Wekinator. See the Wekinator documentation for more information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getOutputPropertyInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> property_type, <span class="ckdoc_typename ckdoc_type_object">string</span> property_name)</p>
+<p class="member_description">Get the output property of the Wekinator. See the Wekinator documentation for more information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getOutputRecordStatus</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index)</p>
+<p class="member_description">Get the record status for the specified output.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getOutputRunStatus</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index)</p>
+<p class="member_description">Get the run status for the specified output.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">getPropertyFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> property_type, <span class="ckdoc_typename ckdoc_type_object">string</span> property_name)</p>
+<p class="member_description">Get the property of the Wekinator. See the Wekinator documentation for more information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getPropertyInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> property_type, <span class="ckdoc_typename ckdoc_type_object">string</span> property_name)</p>
+<p class="member_description">Get the property of the Wekinator. See the Wekinator documentation for more information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getRound</span>()</p>
+<p class="member_description">Get the current recording round.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">importObs</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+<p class="member_description">Import the observations from a file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">input</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> inputs)</p>
+<p class="member_description">Set the inputs of the Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">inputDims</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> n)</p>
+<p class="member_description">Set the number of input dimensions to Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">inputDims</span>()</p>
+<p class="member_description">Get the number of input dimensions to Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">load</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+<p class="member_description">Load the Wekinator from a file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">modelType</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> model_type)</p>
+<p class="member_description">Set the model type of the Wekinator. Options: AI.Regression: AI.MLP, AI.LR, AI.Classification: AI.KNN, AI.SVM, AI.DT</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">modelType</span>()</p>
+<p class="member_description">Get the model type id of the Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">modelTypeName</span>()</p>
+<p class="member_description">Get the model type name of the Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">nextRound</span>()</p>
+<p class="member_description">Bump the recording round.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numObs</span>()</p>
+<p class="member_description">Get the number of observations in the Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numObs</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index)</p>
+<p class="member_description">Get the number of observations for the specified output in the Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">output</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> outputs)</p>
+<p class="member_description">Set the outputs of the Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">outputDims</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> n)</p>
+<p class="member_description">Set the number of output dimensions to Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">outputDims</span>()</p>
+<p class="member_description">Get the number of output dimensions to Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">predict</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> inputs, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> outputs)</p>
+<p class="member_description">Predict outputs for the given inputs.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">randomizeOutputs</span>()</p>
+<p class="member_description">Randomize the outputs of the Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">save</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+<p class="member_description">Save the Wekinator to a file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setAllRecordStatus</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> status)</p>
+<p class="member_description">Set the record status for all outputs.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setAllRunStatus</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> status)</p>
+<p class="member_description">Set the run status for all outputs.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setOutputProperty</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_object">string</span> property_name, <span class="ckdoc_typename ckdoc_type_primitive">int</span> property_value)</p>
+<p class="member_description">Set the output property of the Wekinator. See the Wekinator documentation for more information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setOutputProperty</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> property_type, <span class="ckdoc_typename ckdoc_type_object">string</span> property_name, <span class="ckdoc_typename ckdoc_type_primitive">int</span> property_value)</p>
+<p class="member_description">Set the output property of the Wekinator. See the Wekinator documentation for more information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setOutputProperty</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> property_type, <span class="ckdoc_typename ckdoc_type_object">string</span> property_name, <span class="ckdoc_typename ckdoc_type_primitive">float</span> property_value)</p>
+<p class="member_description">Set the output property of the Wekinator. See the Wekinator documentation for more information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setOutputProperty</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_object">string</span> property_name, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> property_value)</p>
+<p class="member_description">Set the output property of the Wekinator. See the Wekinator documentation for more information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setOutputRecordStatus</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> status)</p>
+<p class="member_description">Set the record status for the specified output.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setOutputRunStatus</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> output_index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> status)</p>
+<p class="member_description">Set the run status for the specified output.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setProperty</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> property_type, <span class="ckdoc_typename ckdoc_type_object">string</span> property_name, <span class="ckdoc_typename ckdoc_type_primitive">int</span> property_value)</p>
+<p class="member_description">Set the property of the Wekinator. See the Wekinator documentation for more information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setProperty</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> property_type, <span class="ckdoc_typename ckdoc_type_object">string</span> property_name, <span class="ckdoc_typename ckdoc_type_primitive">float</span> property_value)</p>
+<p class="member_description">Set the property of the Wekinator. See the Wekinator documentation for more information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">taskType</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> task_type)</p>
+<p class="member_description">Set the task type of the Wekinator. Options: AI.Regression, AI.Classification</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">taskType</span>()</p>
+<p class="member_description">Get the task type id of the Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">taskTypeName</span>()</p>
+<p class="member_description">Get the task type name of the Wekinator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">train</span>()</p>
+<p class="member_description">Train models for all outputs.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="AI" /><div class="class">
+<h2 class="class_title" name="AI">AI</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">AI class library.<p>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BOOST</span></p><p class="member_description">Model type: Boosting</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Classification</span></p><p class="member_description">Task type: Classification</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DT</span></p><p class="member_description">Model type: Decision tree</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">KNN</span></p><p class="member_description">Model type: K-nearest neighbor</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">LR</span></p><p class="member_description">Model type: Logistic regression</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Linear</span></p><p class="member_description">Activation type: Linear</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MLP</span></p><p class="member_description">Model type: Multi-layer perceptron</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NAIVEBAYES</span></p><p class="member_description">Model type: Naive Bayes</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PR</span></p><p class="member_description">Model type: Polynomial regression</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ReLU</span></p><p class="member_description">Activation type: ReLU</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Regression</span></p><p class="member_description">Task type: Regression</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">SVM</span></p><p class="member_description">Model type: Support vector machine</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Sigmoid</span></p><p class="member_description">Activation type: Sigmoid</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Softmax</span></p><p class="member_description">Activation type: Softmax</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Tanh</span></p><p class="member_description">Activation type: Tanh</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+</div>
+</div>
+</body>
+</html>

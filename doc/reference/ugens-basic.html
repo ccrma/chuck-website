@@ -1,0 +1,896 @@
+<html>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
+<title>Basic Unit Generators</title>
+<body>
+<a name="top"/>
+<div id="title">
+<div class="titleL"><h1><a href="index.html">ChucK Class Library Reference</a></h1></div>
+<div class="titleR"><h1>Basic Unit Generators</h1></div>
+</div>
+<div id="body">
+<div class="toc"><a id="toc"/>
+<p class="toc_class"><a href="#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a></p>
+<p class="toc_class"><a href="#Gain" class="ckdoc_typename ckdoc_type_ugen">Gain</a></p>
+<p class="toc_class"><a href="#Impulse" class="ckdoc_typename ckdoc_type_ugen">Impulse</a></p>
+<p class="toc_class"><a href="#Step" class="ckdoc_typename ckdoc_type_ugen">Step</a></p>
+<p class="toc_class"><a href="#SndBuf" class="ckdoc_typename ckdoc_type_ugen">SndBuf</a></p>
+<p class="toc_class"><a href="#ADSR" class="ckdoc_typename ckdoc_type_ugen">ADSR</a></p>
+<p class="toc_class"><a href="#Envelope" class="ckdoc_typename ckdoc_type_ugen">Envelope</a></p>
+<p class="toc_class"><a href="#Delay" class="ckdoc_typename ckdoc_type_ugen">Delay</a></p>
+<p class="toc_class"><a href="#DelayL" class="ckdoc_typename ckdoc_type_ugen">DelayL</a></p>
+<p class="toc_class"><a href="#DelayA" class="ckdoc_typename ckdoc_type_ugen">DelayA</a></p>
+<p class="toc_class"><a href="#DelayP" class="ckdoc_typename ckdoc_type_ugen">DelayP</a></p>
+<p class="toc_class"><a href="#Echo" class="ckdoc_typename ckdoc_type_ugen">Echo</a></p>
+<p class="toc_class"><a href="#Noise" class="ckdoc_typename ckdoc_type_ugen">Noise</a></p>
+<p class="toc_class"><a href="#CNoise" class="ckdoc_typename ckdoc_type_ugen">CNoise</a></p>
+<p class="toc_class"><a href="#Osc" class="ckdoc_typename ckdoc_type_ugen">Osc</a></p>
+<p class="toc_class"><a href="#SinOsc" class="ckdoc_typename ckdoc_type_ugen">SinOsc</a></p>
+<p class="toc_class"><a href="#TriOsc" class="ckdoc_typename ckdoc_type_ugen">TriOsc</a></p>
+<p class="toc_class"><a href="#SawOsc" class="ckdoc_typename ckdoc_type_ugen">SawOsc</a></p>
+<p class="toc_class"><a href="#PulseOsc" class="ckdoc_typename ckdoc_type_ugen">PulseOsc</a></p>
+<p class="toc_class"><a href="#SqrOsc" class="ckdoc_typename ckdoc_type_ugen">SqrOsc</a></p>
+<p class="toc_class"><a href="#Phasor" class="ckdoc_typename ckdoc_type_ugen">Phasor</a></p>
+<p class="toc_class"><a href="#HalfRect" class="ckdoc_typename ckdoc_type_ugen">HalfRect</a></p>
+<p class="toc_class"><a href="#FullRect" class="ckdoc_typename ckdoc_type_ugen">FullRect</a></p>
+<p class="toc_class"><a href="#Chugraph" class="ckdoc_typename ckdoc_type_ugen">Chugraph</a></p>
+<p class="toc_class"><a href="#Chugen" class="ckdoc_typename ckdoc_type_ugen">Chugen</a></p>
+<p class="toc_class"><a href="#UGen_Multi" class="ckdoc_typename ckdoc_type_ugen">UGen_Multi</a></p>
+<p class="toc_class"><a href="#UGen_Stereo" class="ckdoc_typename ckdoc_type_ugen">UGen_Stereo</a></p>
+<p class="toc_class"><a href="#SndBuf2" class="ckdoc_typename ckdoc_type_ugen">SndBuf2</a></p>
+<p class="toc_class"><a href="#Mix2" class="ckdoc_typename ckdoc_type_ugen">Mix2</a></p>
+<p class="toc_class"><a href="#Pan2" class="ckdoc_typename ckdoc_type_ugen">Pan2</a></p>
+</div>
+<div class="classes">
+<p class="group_desc">Basic unit generator (UGen) base classes, simple signal generators, envelopes, and more.</p>
+<a name="UGen" /><div class="class">
+<h2 class="class_title" name="UGen">UGen</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Base class for all unit generator (UGen) types.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">buffered</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">Set the unit generator's buffered operation mode, typically used externally from hosts that embed ChucK as a component. If true, the UGen stores a buffer of its most recent samples, which can be fetched using global variables in the host language.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">buffered</span>()</p>
+<p class="member_description">Get the ugen's buffered operation mode.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">UGen</span> <span class="membername">chan</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> num)</p>
+<p class="member_description">Get channel (as a UGen) at specified index.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">channels</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> num)</p>
+<p class="member_description">Set number of channels. (currently NOT supported)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">channels</span>()</p>
+<p class="member_description">Get number of channels.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">gain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
+<p class="member_description">Set the gain of the unit generator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">gain</span>()</p>
+<p class="member_description">Get the gain of the unit generator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isConnectedTo</span>(<span class="ckdoc_typename ckdoc_type_ugen">UGen</span> right)</p>
+<p class="member_description">Return true if this UGen's output is connected to the input of the argument; return false otherwise.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">last</span>()</p>
+<p class="member_description">Get the last sample value of the unit generator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">op</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">Set the unit generator's operation mode. Accepted values are: 1 (sum inputs), 2 (take difference between first input and subsequent inputs), 3 (multiply inputs), 4 (divide first input by subsequent inputs), 0 (do not synthesize audio, output 0) or -1 (passthrough inputs to output).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">op</span>()</p>
+<p class="member_description">Get the unit generator's operation mode.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Gain" /><div class="class">
+<h2 class="class_title" name="Gain">Gain</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A gain control unit generator. (All unit generators can already change their own gain; this is an explicit way to add multiple outputs together and scale them.)<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/basic/i-robot.ck">basic/i-robot.ck</a></li>
+</ul></div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Impulse" /><div class="class">
+<h2 class="class_title" name="Impulse">Impulse</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A impulse generator. Can be used to set the value of the next sample; default for each sample is 0 if not set. Additionally, this can be used to generate a digial signal, one sample at a time.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">next</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> next)</p>
+<p class="member_description">Set the value of next sample. (Note: if you are using the UGen.last() method to read the output of the impulse, the value set by Impulse.next() does not appear as the output until after the next sample boundary. In this case, there is a consistent 1::samp offset between setting .next(...) and reading that value using .last().)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">next</span>()</p>
+<p class="member_description">Get value of next sample to be generated.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Step" /><div class="class">
+<h2 class="class_title" name="Step">Step</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A step generator. Step behaves like Impulse, except that once a next value is set, that value is held for all following samples, until a different value is set.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/basic/step.ck">basic/step.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">next</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> next)</p>
+<p class="member_description">Set the next step value.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">next</span>()</p>
+<p class="member_description">Get the next step value.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="SndBuf" /><div class="class">
+<h2 class="class_title" name="SndBuf">SndBuf</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">An interpolating sound buffer/player with single-channel output; can read audio data from a variety of uncompressed formats.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/basic/sndbuf.ck">basic/sndbuf.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">channel</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel)</p>
+<p class="member_description">For sound file containing more than one channel of audio, select the channel to play.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">channel</span>()</p>
+<p class="member_description">Get the selected chanel of audio this buffer is playing.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">channels</span>()</p>
+<p class="member_description">Get number of channels available in the sound file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">chunks</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> frames)</p>
+<p class="member_description">Set chunk size, in frames, for loading the file from disk. Set to 0 to disable chunking.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">chunks</span>()</p>
+<p class="member_description">Get chunk size, in frames, for loading the file from disk. 0 indicates that chunking is disabled.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">frames</span>()</p>
+<p class="member_description">Get total number of sample frames in the file; same as .samples().</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq)</p>
+<p class="member_description">Set loop rate (in file loops per second).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>()</p>
+<p class="member_description">Get loop rate (in file loops per second).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">interp</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> interp)</p>
+<p class="member_description">Set interpolation mode: (0) drop sample; (1) linear interpolation; (2) sinc interpolation.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">interp</span>()</p>
+<p class="member_description">Get interpolation mode: (0) drop sample; (1) linear interpolation; (2) sinc interpolation.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">length</span>()</p>
+<p class="member_description">Get total length of the file as a duration.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">loop</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> loop)</p>
+<p class="member_description">Toggle looping file playback.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">loop</span>()</p>
+<p class="member_description">Get whether file playback is set to loop.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">phase</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> phase)</p>
+<p class="member_description">Set phase position, normalized to [0,1).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">phase</span>()</p>
+<p class="member_description">Get phase position, normalized to [0,1).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">phaseOffset</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Advance the playhead by the specified phase offset in [0,1), where 0 is no advance and 1 advance the entire length of the file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">play</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> play)</p>
+<p class="member_description">(same as .rate)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">play</span>()</p>
+<p class="member_description">(same as .rate)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> pos)</p>
+<p class="member_description">Set play position (between 0 and number of samples).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">pos</span>()</p>
+<p class="member_description">Get play position (between 0 and number of samples).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> rate)</p>
+<p class="member_description">Set playback rate (relative to file's natural speed). For example, 1.0 is 'normal', 0.5 is half speed, and 2 is twice as fast.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
+<p class="member_description">Get playback rate (relative to file's natural speed). For example, 1.0 is 'normal', 0.5 is half speed, and 2 is twice as fast.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">read</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> read)</p>
+<p class="member_description">Read file for reading.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">samples</span>()</p>
+<p class="member_description">Get total number of sample frames in the file; same as .frames().</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">valueAt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> pos)</p>
+<p class="member_description">Get sample value at given position (in samples). </p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> read)</p>
+<p class="member_description">Set file for writing (currently unsupported).</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ADSR" /><div class="class">
+<h2 class="class_title" name="ADSR">ADSR</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#Envelope" class="ckdoc_typename ckdoc_type_ugen">Envelope</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This Envelope subclass implements a traditional ADSR (Attack, Decay, Sustain, Release) envelope. It responds to simple `keyOn` and `keyOff` messages, keeping track of its state.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/basic/adsr.ck">basic/adsr.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ATTACK</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DECAY</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DONE</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RELEASE</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">SUSTAIN</span></p><p class="empty_member_description">No description available</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">attackRate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set attack rate.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">attackRate</span>()</p>
+<p class="member_description">Get attack rate.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">attackTime</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set attack time.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">attackTime</span>()</p>
+<p class="member_description">Get attack time.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">decayRate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set decay rate.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">decayRate</span>()</p>
+<p class="member_description">Get decay rate.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">decayTime</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set decay time.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">decayTime</span>()</p>
+<p class="member_description">Get decay time.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">releaseRate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set release rate.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">releaseRate</span>()</p>
+<p class="member_description">Get release rate.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">releaseTime</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set release time.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">releaseTime</span>()</p>
+<p class="member_description">Get release time.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> attackTime, <span class="ckdoc_typename ckdoc_type_primitive">float</span> decayTime, <span class="ckdoc_typename ckdoc_type_primitive">float</span> sustainLevel, <span class="ckdoc_typename ckdoc_type_primitive">float</span> releaseTime)</p>
+<p class="member_description">Set attack, decay, sustain, and release all at once (in seconds).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> attackDuration, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> decayDuration, <span class="ckdoc_typename ckdoc_type_primitive">float</span> sustainLevel, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> releaseDuration)</p>
+<p class="member_description">Set attack, decay, sustain, and release all at once.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">state</span>()</p>
+<p class="member_description">Get state; attack=0, decay=1, sustain=2, release=3, done=4</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sustainLevel</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set sustain level.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sustainLevel</span>()</p>
+<p class="member_description">Get sustain level.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Envelope" /><div class="class">
+<h2 class="class_title" name="Envelope">Envelope</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class implements a simple envelope generator which is capable of ramping to a target value by a specified rate. It also responds to simple `keyOn` and `keyOff` messages, ramping to 1.0 on `keyOn` and to 0.0 on `keyOff`.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/basic/envelope.ck">basic/envelope.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">duration</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set duration to reach target.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">duration</span>()</p>
+<p class="member_description">Get duration to reach target.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">keyOff</span>()</p>
+<p class="member_description">Get keyOff state.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">keyOff</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Ramp to 0.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">keyOn</span>()</p>
+<p class="member_description">Get keyOn state.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">keyOn</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Ramp to 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set rate of change.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
+<p class="member_description">Get rate of change.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">target</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set value to ramp to.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">target</span>()</p>
+<p class="member_description">Get value to ramp to.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">time</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set time to reach target (in seconds).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">time</span>()</p>
+<p class="member_description">Get time to reach target (in seconds).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">value</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set immediate value.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">value</span>()</p>
+<p class="member_description">Get immediate value.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Delay" /><div class="class">
+<h2 class="class_title" name="Delay">Delay</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A non-interpolating digital delay-line. A fixed maximum length of 4095 and a delay of zero is set using the default constructor. Alternatively, the delay and maximum length can be set during instantiation with an overloaded constructor.
+
+A non-interpolating delay line is typically used in fixed delay-length applications, such as for reverberation.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clear</span>()</p>
+<p class="member_description">Clear delay line.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set length of delay.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>()</p>
+<p class="member_description">Get length of delay.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set max delay (buffer size).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>()</p>
+<p class="member_description">Get max delay (buffer size).</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="DelayL" /><div class="class">
+<h2 class="class_title" name="DelayL">DelayL</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A fractional-length digital delay-line using first-order linear interpolation. A fixed maximum length of 4095 and a delay of zero is set using the default constructor. Alternatively, the delay and maximum length can be set during instantiation with an overloaded constructor.
+
+Linear interpolation is an efficient technique for achieving fractional delay lengths, though it does introduce high-frequency signal attenuation to varying degrees depending on the fractional delay setting. The use of higher order Lagrange interpolators can typically improve (minimize) this attenuation characteristic.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/basic/delay.ck">basic/delay.ck</a></li>
+<li><a href="../examples/basic/i-robot.ck">basic/i-robot.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clear</span>()</p>
+<p class="member_description">Clear delay line.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set length of delay.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>()</p>
+<p class="member_description">Get length of delay.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set max delay (buffer size).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>()</p>
+<p class="member_description">Get max delay (buffer size).</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="DelayA" /><div class="class">
+<h2 class="class_title" name="DelayA">DelayA</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A fractional-length digital delay-line using a first-order allpass filter. A fixed maximum length of 4095 and a delay of 0.5 is set using the default constructor. Alternatively, the delay and maximum length can be set during instantiation with an overloaded constructor.
+
+An allpass filter has unity magnitude gain but variable phase delay properties, making it useful in achieving fractional delays without affecting a signal's frequency magnitude response. In order to achieve a maximally flat phase delay response, the minimum delay possible in this implementation is limited to a value of 0.5.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clear</span>()</p>
+<p class="member_description">Clear delay line.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set length of delay.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>()</p>
+<p class="member_description">Get length of delay.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set max delay (buffer size).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>()</p>
+<p class="member_description">Get max delay (buffer size).</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="DelayP" /><div class="class">
+<h2 class="class_title" name="DelayP">DelayP</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> max)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">window</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> window)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">window</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Echo" /><div class="class">
+<h2 class="class_title" name="Echo">Echo</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">An echo effect.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/basic/echo.ck">basic/echo.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set length of echo.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>()</p>
+<p class="member_description">Get length of echo.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set max delay (buffer size).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>()</p>
+<p class="member_description">Get max delay (buffer size).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set mix level (wet/dry).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>()</p>
+<p class="member_description">Get mix level (wet/dry).</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Noise" /><div class="class">
+<h2 class="class_title" name="Noise">Noise</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A white noise generator.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/basic/wind.ck">basic/wind.ck</a></li>
+<li><a href="../examples/shred/powerup.ck">shred/powerup.ck</a></li>
+</ul></div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="CNoise" /><div class="class">
+<h2 class="class_title" name="CNoise">CNoise</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A noise generator with multiple noise synthesis modes.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fprob</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> fprob)</p>
+<p class="member_description">Probability [0-1] used for calculating XOR noise.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">mode</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> mode)</p>
+<p class="member_description">Noise synthesis mode. Supported modes are &quot;white&quot;, &quot;pink&quot;, &quot;flip&quot;, and &quot;xor&quot;.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Osc" /><div class="class">
+<h2 class="class_title" name="Osc">Osc</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Base class for simple oscillator unit generators.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> hz)</p>
+<p class="member_description">Set frequency of oscillator in Hertz; maintains phase.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>()</p>
+<p class="member_description">Get frequency of oscillator in Hertz.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">period</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set period of oscillator (inverse of frequency).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">period</span>()</p>
+<p class="member_description">Get period of oscillator (inverse of frequency).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">phase</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> phase)</p>
+<p class="member_description">Set oscillator phase, in range [0,1).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">phase</span>()</p>
+<p class="member_description">Get oscillator phase, in range [0,1).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sfreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> hz)</p>
+<p class="member_description">Set frequency of oscillator in Hertz; resets phase to 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sync</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> type)</p>
+<p class="member_description">Choose how to interpret input: (0) sync frequency to input; (1) sync phase to input; (2) frequency modulation (add input to internal frequency).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sync</span>()</p>
+<p class="member_description">Get current interpretation of input: (0) sync frequency to input; (1) sync phase to input; (2) frequency modulation (add input to internal frequency).</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="SinOsc" /><div class="class">
+<h2 class="class_title" name="SinOsc">SinOsc</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#Osc" class="ckdoc_typename ckdoc_type_ugen">Osc</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A sine wave oscillator.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/basic/whirl.ck">basic/whirl.ck</a></li>
+</ul></div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="TriOsc" /><div class="class">
+<h2 class="class_title" name="TriOsc">TriOsc</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#Osc" class="ckdoc_typename ckdoc_type_ugen">Osc</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A triangle wave oscillator.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">width</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> width)</p>
+<p class="member_description">Set width of triangle wave (ratio of rise time to fall time).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">width</span>()</p>
+<p class="member_description">Get width of triangle wave (ratio of rise time to fall time).</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="SawOsc" /><div class="class">
+<h2 class="class_title" name="SawOsc">SawOsc</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#TriOsc" class="ckdoc_typename ckdoc_type_ugen">TriOsc</a> : <a href="ugens-basic.html#Osc" class="ckdoc_typename ckdoc_type_ugen">Osc</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Sawtooth wave oscillator.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">width</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> width)</p>
+<p class="member_description">Whether sawtooth wave is to fall (0) or rise (1).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">width</span>()</p>
+<p class="member_description">Whether sawtooth wave is to fall (0) or rise (1).</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="PulseOsc" /><div class="class">
+<h2 class="class_title" name="PulseOsc">PulseOsc</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#Osc" class="ckdoc_typename ckdoc_type_ugen">Osc</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A pulse width oscillator.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">width</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> width)</p>
+<p class="member_description">Set width of duty cycle [0,1).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">width</span>()</p>
+<p class="member_description">Get width of duty cycle [0,1)/</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="SqrOsc" /><div class="class">
+<h2 class="class_title" name="SqrOsc">SqrOsc</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#PulseOsc" class="ckdoc_typename ckdoc_type_ugen">PulseOsc</a> : <a href="ugens-basic.html#Osc" class="ckdoc_typename ckdoc_type_ugen">Osc</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A square wave oscillator (same as PulseOsc with 0.5 duty cycle).<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">width</span>()</p>
+<p class="member_description">Set width of duty cycle (always 0.5).</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Phasor" /><div class="class">
+<h2 class="class_title" name="Phasor">Phasor</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#Osc" class="ckdoc_typename ckdoc_type_ugen">Osc</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A phasor oscillator; linearly rises from 0 to 1; can be used as a phase control.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="HalfRect" /><div class="class">
+<h2 class="class_title" name="HalfRect">HalfRect</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A half wave rectifier.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="FullRect" /><div class="class">
+<h2 class="class_title" name="FullRect">FullRect</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A full wave rectifier.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Chugraph" /><div class="class">
+<h2 class="class_title" name="Chugraph">Chugraph</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Base class for subgraph-based user-created in-language unit generators.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/extend/chugraph.ck">extend/chugraph.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">UGen</span> <span class="membername">inlet</span></p><p class="member_description">Terminal for sources chucked into this ugen.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">UGen</span> <span class="membername">outlet</span></p><p class="member_description">Terminal for the output of this ugen.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Chugen" /><div class="class">
+<h2 class="class_title" name="Chugen">Chugen</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Base class for user-created in-language unit generators.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/extend/chugen.ck">extend/chugen.ck</a></li>
+</ul></div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UGen_Multi" /><div class="class">
+<h2 class="class_title" name="UGen_Multi">UGen_Multi</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Base class for multi-channel unit generators.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">UGen</span> <span class="membername">chan</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> which)</p>
+<p class="member_description">Get UGen representing a specific channel of this UGen, or null if no such channel is available.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UGen_Stereo" /><div class="class">
+<h2 class="class_title" name="UGen_Stereo">UGen_Stereo</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen_Multi" class="ckdoc_typename ckdoc_type_ugen">UGen_Multi</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Base class for stereo unit generators.<p>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">UGen</span> <span class="membername">left</span></p><p class="member_description">Left channel (same as .chan(0)).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">UGen</span> <span class="membername">right</span></p><p class="member_description">Right channel (same as .chan(1)).</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pan</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
+<p class="member_description">Pan between left and right channels, in range [-1,1], with -1 being far-left, 1 far-right, and 0 centered.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pan</span>()</p>
+<p class="member_description">Pan between left and right channels, in range [-1,1], with -1 being far-left, 1 far-right, and 0 centered.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">panType</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">Set the panning type: (1) constant power panning, (0) unity gain anti-panning.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">panType</span>()</p>
+<p class="member_description">Get the panning type: (1) constant power panning, (0) unity gain anti-panning.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="SndBuf2" /><div class="class">
+<h2 class="class_title" name="SndBuf2">SndBuf2</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#SndBuf" class="ckdoc_typename ckdoc_type_ugen">SndBuf</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">An interpolating sound buffer with two-channel output. Reads from a variety of uncompressed formats.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Mix2" /><div class="class">
+<h2 class="class_title" name="Mix2">Mix2</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen_Stereo" class="ckdoc_typename ckdoc_type_ugen">UGen_Stereo</a> : <a href="ugens-basic.html#UGen_Multi" class="ckdoc_typename ckdoc_type_ugen">UGen_Multi</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A stereo-to-mono unit generator for mixing stereo signal to mono.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Pan2" /><div class="class">
+<h2 class="class_title" name="Pan2">Pan2</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen_Stereo" class="ckdoc_typename ckdoc_type_ugen">UGen_Stereo</a> : <a href="ugens-basic.html#UGen_Multi" class="ckdoc_typename ckdoc_type_ugen">UGen_Multi</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A mono-to-stereo unit generator for stereo panning.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stereo/moe2.ck">stereo/moe2.ck</a></li>
+</ul></div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+</div>
+</div>
+</body>
+</html>

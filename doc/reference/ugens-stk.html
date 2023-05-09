@@ -1,0 +1,2190 @@
+<html>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
+<title>Synthesis Toolkit (STK) UGens</title>
+<body>
+<a name="top"/>
+<div id="title">
+<div class="titleL"><h1><a href="index.html">ChucK Class Library Reference</a></h1></div>
+<div class="titleR"><h1>Synthesis Toolkit (STK) UGens</h1></div>
+</div>
+<div id="body">
+<div class="toc"><a id="toc"/>
+<p class="toc_class"><a href="#JCRev" class="ckdoc_typename ckdoc_type_ugen">JCRev</a></p>
+<p class="toc_class"><a href="#NRev" class="ckdoc_typename ckdoc_type_ugen">NRev</a></p>
+<p class="toc_class"><a href="#PRCRev" class="ckdoc_typename ckdoc_type_ugen">PRCRev</a></p>
+<p class="toc_class"><a href="#Chorus" class="ckdoc_typename ckdoc_type_ugen">Chorus</a></p>
+<p class="toc_class"><a href="#Modulate" class="ckdoc_typename ckdoc_type_ugen">Modulate</a></p>
+<p class="toc_class"><a href="#PitShift" class="ckdoc_typename ckdoc_type_ugen">PitShift</a></p>
+<p class="toc_class"><a href="#SubNoise" class="ckdoc_typename ckdoc_type_ugen">SubNoise</a></p>
+<p class="toc_class"><a href="#BLT" class="ckdoc_typename ckdoc_type_ugen">BLT</a></p>
+<p class="toc_class"><a href="#Blit" class="ckdoc_typename ckdoc_type_ugen">Blit</a></p>
+<p class="toc_class"><a href="#BlitSaw" class="ckdoc_typename ckdoc_type_ugen">BlitSaw</a></p>
+<p class="toc_class"><a href="#BlitSquare" class="ckdoc_typename ckdoc_type_ugen">BlitSquare</a></p>
+<p class="toc_class"><a href="#WvIn" class="ckdoc_typename ckdoc_type_ugen">WvIn</a></p>
+<p class="toc_class"><a href="#WaveLoop" class="ckdoc_typename ckdoc_type_ugen">WaveLoop</a></p>
+<p class="toc_class"><a href="#WvOut" class="ckdoc_typename ckdoc_type_ugen">WvOut</a></p>
+<p class="toc_class"><a href="#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a></p>
+<p class="toc_class"><a href="#BandedWG" class="ckdoc_typename ckdoc_type_ugen">BandedWG</a></p>
+<p class="toc_class"><a href="#BlowBotl" class="ckdoc_typename ckdoc_type_ugen">BlowBotl</a></p>
+<p class="toc_class"><a href="#BlowHole" class="ckdoc_typename ckdoc_type_ugen">BlowHole</a></p>
+<p class="toc_class"><a href="#Bowed" class="ckdoc_typename ckdoc_type_ugen">Bowed</a></p>
+<p class="toc_class"><a href="#Brass" class="ckdoc_typename ckdoc_type_ugen">Brass</a></p>
+<p class="toc_class"><a href="#Clarinet" class="ckdoc_typename ckdoc_type_ugen">Clarinet</a></p>
+<p class="toc_class"><a href="#Flute" class="ckdoc_typename ckdoc_type_ugen">Flute</a></p>
+<p class="toc_class"><a href="#Mandolin" class="ckdoc_typename ckdoc_type_ugen">Mandolin</a></p>
+<p class="toc_class"><a href="#ModalBar" class="ckdoc_typename ckdoc_type_ugen">ModalBar</a></p>
+<p class="toc_class"><a href="#Moog" class="ckdoc_typename ckdoc_type_ugen">Moog</a></p>
+<p class="toc_class"><a href="#Saxofony" class="ckdoc_typename ckdoc_type_ugen">Saxofony</a></p>
+<p class="toc_class"><a href="#Shakers" class="ckdoc_typename ckdoc_type_ugen">Shakers</a></p>
+<p class="toc_class"><a href="#Sitar" class="ckdoc_typename ckdoc_type_ugen">Sitar</a></p>
+<p class="toc_class"><a href="#StifKarp" class="ckdoc_typename ckdoc_type_ugen">StifKarp</a></p>
+<p class="toc_class"><a href="#VoicForm" class="ckdoc_typename ckdoc_type_ugen">VoicForm</a></p>
+<p class="toc_class"><a href="#FM" class="ckdoc_typename ckdoc_type_ugen">FM</a></p>
+<p class="toc_class"><a href="#BeeThree" class="ckdoc_typename ckdoc_type_ugen">BeeThree</a></p>
+<p class="toc_class"><a href="#FMVoices" class="ckdoc_typename ckdoc_type_ugen">FMVoices</a></p>
+<p class="toc_class"><a href="#HevyMetl" class="ckdoc_typename ckdoc_type_ugen">HevyMetl</a></p>
+<p class="toc_class"><a href="#PercFlut" class="ckdoc_typename ckdoc_type_ugen">PercFlut</a></p>
+<p class="toc_class"><a href="#Rhodey" class="ckdoc_typename ckdoc_type_ugen">Rhodey</a></p>
+<p class="toc_class"><a href="#TubeBell" class="ckdoc_typename ckdoc_type_ugen">TubeBell</a></p>
+<p class="toc_class"><a href="#Wurley" class="ckdoc_typename ckdoc_type_ugen">Wurley</a></p>
+</div>
+<div class="classes">
+<p class="group_desc">Utilities and physical models from the Synthesis Toolkit (STK) by Perry R. Cook and Gary Scavone.</p>
+<a name="JCRev" /><div class="class">
+<h2 class="class_title" name="JCRev">JCRev</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">John Chowning's reverberator class. This class is derived from the CLM NRev function, which is based on the use of networks of simple allpass and comb delay filters. This particular arrangement consists of 6 comb filters in parallel, followed by 3 allpass filters, a lowpass filter, and another allpass in series, followed by two allpass filters in parallel with corresponding right and left outputs.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set mix level.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>()</p>
+<p class="member_description">Get mix level.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="NRev" /><div class="class">
+<h2 class="class_title" name="NRev">NRev</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">CCRMA's NRev reverberator class. This class is derived from the CLM NRev function, which is based on the use of networks of simple allpass and comb delay filters. This particular arrangement consists of 6 comb filters in parallel, followed by 3 allpass filters, a lowpass filter, and another allpass in series, followed by two allpass filters in parallel with corresponding rightand left outputs.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set mix level.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>()</p>
+<p class="member_description">Get mix level.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="PRCRev" /><div class="class">
+<h2 class="class_title" name="PRCRev">PRCRev</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Perry's simple reverberator class. This class is based on some of the famous Stanford/CCRMA reverbs (NRev, KipRev), which were based on the Chowning/Moorer/Schroeder reverberators using networks of simple allpass and comb delay filters. This class implements two series allpass units and two parallel comb filters.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set mix level.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>()</p>
+<p class="member_description">Get mix level.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Chorus" /><div class="class">
+<h2 class="class_title" name="Chorus">Chorus</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A chorus effect.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">baseDelay</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set base delay.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">baseDelay</span>()</p>
+<p class="member_description">Get base delay.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">max</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> baseDelay, <span class="ckdoc_typename ckdoc_type_primitive">float</span> modDepth)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set effect mix.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>()</p>
+<p class="member_description">Get effect mix.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modDepth</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set modulation depth.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modDepth</span>()</p>
+<p class="member_description">Get modulation depth.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modFreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set modulation frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modFreq</span>()</p>
+<p class="member_description">Get modulation frequency.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Modulate" /><div class="class">
+<h2 class="class_title" name="Modulate">Modulate</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class combines random and periodic modulations to give a nice, natural human modulation function.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">randomGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set gain for random contribution.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">randomGain</span>()</p>
+<p class="member_description">Get gain for random contribution.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set gain for vibrato.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>()</p>
+<p class="member_description">Get gain for vibrato.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoRate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set rate for vibrato.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoRate</span>()</p>
+<p class="member_description">Get rate for vibrato.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="PitShift" /><div class="class">
+<h2 class="class_title" name="PitShift">PitShift</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class implements a simple pitch shifter using delay lines.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">effectMix</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set effect mix level</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">effectMix</span>()</p>
+<p class="member_description">Get effect mix level</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set mix level</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>()</p>
+<p class="member_description">Get mix level</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shift</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set degree of pitch shifting</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shift</span>()</p>
+<p class="member_description">Get degree of pitch shifting</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="SubNoise" /><div class="class">
+<h2 class="class_title" name="SubNoise">SubNoise</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Generates a new random number every 'rate' ticks using the C `rand()` function. The quality of the r`and()` function varies from one OS to another.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Set subsampling rate</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">rate</span>()</p>
+<p class="member_description">Get subsampling rate</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="BLT" /><div class="class">
+<h2 class="class_title" name="BLT">BLT</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Super-class for band-limited oscillators.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>()</p>
+<p class="member_description">Set frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">harmonics</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Set harmonics.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">harmonics</span>()</p>
+<p class="member_description">Get harmonics.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">phase</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set phase.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">phase</span>()</p>
+<p class="member_description">Get phase.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Blit" /><div class="class">
+<h2 class="class_title" name="Blit">Blit</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#BLT" class="ckdoc_typename ckdoc_type_ugen">BLT</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class generates a band-limited impulse train using a closed-form algorithm reported by Stilson and Smith in 'Alias-Free Digital Synthesis of Classic Analog Waveforms', 1996. The user can specify both the fundamental frequency of the impulse train and the number of harmonics contained in the resulting signal.
+
+The signal is normalized so that the peak value is +/-1.0.
+
+If `nHarmonics` is 0, then the signal will contain all harmonics up to half the sample rate. Note, however, that this setting may produce aliasing in the signal when the frequency is changing (no automatic modification of the number of harmonics is performed by the `setFrequency()` function).
+
+Original code by Robin Davies, 2005.
+Revisions by Gary Scavone for STK, 2005.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/basic/blit.ck">basic/blit.ck</a></li>
+</ul></div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="BlitSaw" /><div class="class">
+<h2 class="class_title" name="BlitSaw">BlitSaw</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#BLT" class="ckdoc_typename ckdoc_type_ugen">BLT</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class generates a band-limited sawtooth waveform using a closed-form algorithm reported by Stilson and Smith in 'Alias-Free Digital Synthesis of Classic Analog Waveforms', 1996. The user can specify both the fundamental frequency of the sawtooth and the number of harmonics contained in the resulting signal.
+
+If `nHarmonics` is 0, then the signal will contain all harmonics up to half the sample rate. Note, however, that this setting may produce aliasing in the signal when the frequency is changing (no automatic modification of the number of harmonics is performed by the `setFrequency()` function).
+
+Based on initial code of Robin Davies, 2005.
+Modified algorithm code by Gary Scavone, 2005.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="BlitSquare" /><div class="class">
+<h2 class="class_title" name="BlitSquare">BlitSquare</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#BLT" class="ckdoc_typename ckdoc_type_ugen">BLT</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class generates a band-limited square wave signal. It is derived in part from the approach reported by Stilson and Smith in 'Alias-Free Digital Synthesis of Classic Analog Waveforms', 1996. The algorithm implemented in this class uses a SincM function with an even M value to achieve a bipolar bandlimited impulse train. This signal is then integrated to achieve a square waveform. The integration process has an associated DC offset but that is subtracted off the output signal.
+
+The user can specify both the fundamental frequency of the waveform and the number of harmonics contained in the resulting signal.
+
+If `nHarmonics` is 0, then the signal will contain all harmonics up to half the sample rate. Note, however, that this setting may produce aliasing in the signal when the frequency is changing (no automatic modification of the number of harmonics is performed by the `setFrequency()` function).
+
+Based on initial code of Robin Davies, 2005.
+Modified algorithm code by Gary Scavone, 2005.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="WvIn" /><div class="class">
+<h2 class="class_title" name="WvIn">WvIn</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class provides input support for various audio file formats. It also serves as a base class for 'realtime' streaming subclasses.
+
+WvIn loads the contents of an audio file for subsequent output. Linear interpolation is used for fractional 'read rates'.
+
+WvIn supports multi-channel data in interleaved format. It is important to distinguish the `tick()` methods, which return samples produced by averaging across sample frames, from the `tickFrame()` methods, which return pointers to multi-channel sample frames. For single-channel data, these methods return equivalent values. Small files are completely read into local memory during instantiation. Large files are read incrementally from disk. The file size threshold and the increment size values are defined in WvIn.h.
+
+WvIn currently supports WAV, AIFF, SND (AU), MAT-file (Matlab), and STK RAW file formats. Signed integer (8-, 16-, and 32-bit) and floating-point (32- and 64-bit) data types are supported. Uncompressed data types are not supported. If using MAT-files, data should be saved in an array with each data channel filling a matrix row.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">path</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_description">Set file to be played.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">path</span>()</p>
+<p class="member_description">Get file to be played.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set playback rate.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
+<p class="member_description">Get playback rate.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="WaveLoop" /><div class="class">
+<h2 class="class_title" name="WaveLoop">WaveLoop</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#WvIn" class="ckdoc_typename ckdoc_type_ugen">WvIn</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class inherits from WvIn and provides audio file looping functionality.
+
+WaveLoop supports multi-channel data in interleaved format. It is important to distinguish the `tick()` methods, which return samples produced by averaging across sample frames, from the `tickFrame()` methods, which return pointers to multi-channel sample frames. For single-channel data, these methods return equivalent values.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">addPhase</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set offset by phase.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">addPhase</span>()</p>
+<p class="member_description">Get offset by phase.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">addPhaseOffset</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set phase offset.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">addPhaseOffset</span>()</p>
+<p class="member_description">Get phase offset.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set frequency of playback (loops/second).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>()</p>
+<p class="member_description">Get frequency of playback (loops/second).</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="WvOut" /><div class="class">
+<h2 class="class_title" name="WvOut">WvOut</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class provides output support for various audio file formats. It also serves as a base class for 'realtime' streaming subclasses.
+
+WvOut writes samples to an audio file. It supports multi-channel data in interleaved format. It is important to distinguish the `tick()` methods, which output single samples to all channels in a sample frame, from the `tickFrame()` method, which takes a pointer to multi-channel sample frame data.
+
+WvOut currently supports WAV, AIFF, AIFC, SND (AU), MAT-file (Matlab), and STK RAW file formats. Signed integer (8-, 16-, and 32-bit) and floating- point (32- and 64-bit) data types are supported. STK RAW files use 16-bit integers by definition. MAT-files will always be written as 64-bit floats. If a data type specification does not match the specified file type, the data type will automatically be modified. Uncompressed data types are not supported.
+
+Currently, WvOut is non-interpolating and the output rate is always `Stk::sampleRate()`.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">aifFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_description">Open an AIFF file for writing.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">autoPrefix</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_description">Set auto prefix string.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">autoPrefix</span>()</p>
+<p class="member_description">Get auto prefix string.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">closeFile</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_description">Close the file properly.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">closeFile</span>()</p>
+<p class="member_description">Close the file properly.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fileGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set file gain.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fileGain</span>()</p>
+<p class="member_description">Get file gain.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">filename</span>()</p>
+<p class="member_description">Get filename.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">matFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_description">Open MATLAB file for writing.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">rawFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_description">Open a raw file for writing.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">record</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Start/stop output.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">record</span>()</p>
+<p class="member_description">Start/stop output.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">sndFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_description">Open SND file for writing.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">wavFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_description">Open WAVE file for writing.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="StkInstrument" /><div class="class">
+<h2 class="class_title" name="StkInstrument">StkInstrument</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Super-class for STK instruments.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">controlChange</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> ctrl, <span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Assert control change; numbers are instrument specific; value range [0.0 - 127.0]</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>()</p>
+<p class="member_description">Get frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Trigger note off.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Trigger note on.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="BandedWG" /><div class="class">
+<h2 class="class_title" name="BandedWG">BandedWG</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class uses banded waveguide techniques to model a variety of sounds, including bowed bars, glasses, and bowls. For more information, see Essl, G. and Cook, P. 'Banded Waveguides: Towards Physical Modelling of Bar Percussion Instruments', Proceedings of the 1999 International Computer Music Conference.
+
+Control Change Numbers:
+
+- Bow Pressure = 2
+- Bow Motion = 4
+- Strike Position = 8 (not implemented)
+- Vibrato Frequency = 11
+- Gain = 1
+- Bow Velocity = 128
+- Instrument Presets = 16
+- Uniform Bar = 0
+- Tuned Bar = 1
+- Glass Harmonica = 2
+- Tibetan Bowl = 3
+
+by Georg Essl, 1999 - 2002.
+Modified for Stk 4.0 by Gary Scavone.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/band-o-matic.ck">stk/band-o-matic.ck</a></li>
+<li><a href="../examples/stk/bandedwg.ck">stk/bandedwg.ck</a></li>
+<li><a href="../examples/stk/bandedwg2.ck">stk/bandedwg2.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bowMotion</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set bow motion, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bowMotion</span>()</p>
+<p class="member_description">Get bow motion, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bowPressure</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set bow pressure, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bowPressure</span>()</p>
+<p class="member_description">Get bow pressure, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bowRate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set bowing rate (seconds).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bowRate</span>()</p>
+<p class="member_description">Get bowing rate (seconds).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">integrationConstant</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set integration constant, vibrato frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">integrationConstant</span>()</p>
+<p class="member_description">Get integration constant, vibrato frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modesGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set amplitude for modes.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modesGain</span>()</p>
+<p class="member_description">Get amplitude for modes.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pluck</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Pluck instrument, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">preset</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Set instrument preset, (0-3, see above).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">preset</span>()</p>
+<p class="member_description">Get instrument preset, (0-3, see above).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">startBowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Start bowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stopBowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Stop bowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">strikePosition</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set strike position, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">strikePosition</span>()</p>
+<p class="member_description">Get strike position, [0.0-1.0].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="BlowBotl" /><div class="class">
+<h2 class="class_title" name="BlowBotl">BlowBotl</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class implements a helmholtz resonator (biquad filter) with a polynomial jet excitation (a la Cook).
+
+Control Change Numbers:
+
+- Noise Gain = 4
+- Vibrato Frequency = 11
+- Vibrato Gain = 1
+- Volume = 128
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/blowbotl.ck">stk/blowbotl.ck</a></li>
+<li><a href="../examples/stk/blowbotl2.ck">stk/blowbotl2.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noiseGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set noise component gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noiseGain</span>()</p>
+<p class="member_description">Get noise component gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set rate of attack</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
+<p class="member_description">Get rate of attack</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">startBlowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Start blowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stopBlowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Stop blowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>()</p>
+<p class="member_description">Get vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>()</p>
+<p class="member_description">Get vibrato gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">volume</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set volume, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">volume</span>()</p>
+<p class="member_description">Get volume, [0.0-1.0].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="BlowHole" /><div class="class">
+<h2 class="class_title" name="BlowHole">BlowHole</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class is based on the clarinet model, with the addition of a two-port register hole and a three-port dynamic tonehole implementation, as discussed by Scavone and Cook (1998).
+
+In this implementation, the distances between the reed/register hole and tonehole/bell are fixed. As a result, both the tonehole and register hole will have variable influence on the playing frequency, which is dependent on the length of the air column. In addition, the highest playing freqeuency is limited by these fixed lengths. This is a digital waveguide model, making its use possibly subject to patents held by Stanford University, Yamaha, and others.
+
+Control Change Numbers:
+
+- Reed Stiffness = 2
+- Noise Gain = 4
+- Tonehole State = 11
+- Register State = 1
+- Breath Pressure = 128
+
+Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/blowhole.ck">stk/blowhole.ck</a></li>
+<li><a href="../examples/stk/blowhole2.ck">stk/blowhole2.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noiseGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set noise component gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noiseGain</span>()</p>
+<p class="member_description">Get noise component gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pressure</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set pressure, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pressure</span>()</p>
+<p class="member_description">Get pressure, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set rate of attack, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
+<p class="member_description">Get rate of attack, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">reed</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set reed stiffness, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">reed</span>()</p>
+<p class="member_description">Get reed stiffness, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">startBlowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Start blowing, [0.0-1.0]</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stopBlowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Stop blowing, [0.0-1.0]</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">tonehole</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set tonehole size, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">tonehole</span>()</p>
+<p class="member_description">Get tonehole size, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vent</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vent frequency, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vent</span>()</p>
+<p class="member_description">Get vent frequency, [0.0-1.0].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Bowed" /><div class="class">
+<h2 class="class_title" name="Bowed">Bowed</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class implements a bowed string model, a la Smith (1986), after McIntyre, Schumacher, Woodhouse (1983).
+
+This is a digital waveguide model, making its use possibly subject to patents held by Stanford University, Yamaha, and others.
+
+Control Change Numbers:
+
+- Bow Pressure = 2
+- Bow Position = 4
+- Vibrato Frequency = 11
+- Vibrato Gain = 1
+- Volume = 128
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/bowed.ck">stk/bowed.ck</a></li>
+<li><a href="../examples/stk/bowed2.ck">stk/bowed2.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bowPosition</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set bow position, [0.0-1.0]</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bowPosition</span>()</p>
+<p class="member_description">Get bow position, [0.0-1.0]</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bowPressure</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set bow pressure, [0.0-1.0]</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bowPressure</span>()</p>
+<p class="member_description">Get bow pressure, [0.0-1.0]</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">startBowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Start bowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stopBowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Stop bowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>()</p>
+<p class="member_description">Get vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>()</p>
+<p class="member_description">Get vibrato gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">volume</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set volume, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">volume</span>()</p>
+<p class="member_description">Get volume, [0.0-1.0].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Brass" /><div class="class">
+<h2 class="class_title" name="Brass">Brass</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class implements a simple brass instrument waveguide model, a la Cook (TBone, HosePlayer).
+
+This is a digital waveguide model, making its use possibly subject to patents held by Stanford University, Yamaha, and others.
+
+Control Change Numbers:
+
+- Lip Tension = 2
+- Slide Length = 4
+- Vibrato Frequency = 11
+- Vibrato Gain = 1
+- Volume = 128
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/brass.ck">stk/brass.ck</a></li>
+<li><a href="../examples/stk/brass2.ck">stk/brass2.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">clear</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Clear instrument.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lip</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set lip tension, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lip</span>()</p>
+<p class="member_description">Get lip tension, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set rate of attack (seconds).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
+<p class="member_description">Get rate of attack (seconds).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">slide</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set slide length, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">slide</span>()</p>
+<p class="member_description">Get slide length, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">startBlowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Start blowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stopBlowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Stop blowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>()</p>
+<p class="member_description">Get vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>()</p>
+<p class="member_description">Get vibrato gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">volume</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set volume, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">volume</span>()</p>
+<p class="member_description">Get volume, [0.0-1.0].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Clarinet" /><div class="class">
+<h2 class="class_title" name="Clarinet">Clarinet</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class implements a simple clarinet physical model, as discussed by Smith (1986), McIntyre, Schumacher, Woodhouse (1983), and others.
+
+This is a digital waveguide model, making its use possibly subject to patents held by Stanford University, Yamaha, and others.
+
+Control Change Numbers:
+
+- Reed Stiffness = 2
+- Noise Gain = 4
+- Vibrato Frequency = 11
+- Vibrato Gain = 1
+- Breath Pressure = 128
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/clarinet.ck">stk/clarinet.ck</a></li>
+<li><a href="../examples/stk/clarinet2.ck">stk/clarinet2.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">clear</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Clear instrument.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noiseGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set noise component gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noiseGain</span>()</p>
+<p class="member_description">Get noise component gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pressure</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set pressure, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pressure</span>()</p>
+<p class="member_description">Get pressure, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set rate of attack (seconds).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
+<p class="member_description">Get rate of attack (seconds).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">reed</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set reed stiffness, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">reed</span>()</p>
+<p class="member_description">Get reed stiffness, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">startBlowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Start blowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stopBlowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Stop blowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>()</p>
+<p class="member_description">Get vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>()</p>
+<p class="member_description">Get vibrato gain, [0.0-1.0].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Flute" /><div class="class">
+<h2 class="class_title" name="Flute">Flute</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class implements a simple flute physical model, as discussed by Karjalainen, Smith, Waryznyk, etc. The jet model uses a polynomial, a la Cook.
+
+This is a digital waveguide model, making its use possibly subject to patents held by Stanford University, Yamaha, and others.
+
+Control Change Numbers:
+
+- Jet Delay = 2
+- Noise Gain = 4
+- Vibrato Frequency = 11
+- Vibrato Gain = 1
+- Breath Pressure = 128
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/flute.ck">stk/flute.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">clear</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Clear instrument.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">endReflection</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set end reflection.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">endReflection</span>()</p>
+<p class="member_description">Get end reflection.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">jetDelay</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set jet delay.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">jetDelay</span>()</p>
+<p class="member_description">Get jet delay.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">jetReflection</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set jet reflection.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">jetReflection</span>()</p>
+<p class="member_description">Get jet reflection.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noiseGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set noise component gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noiseGain</span>()</p>
+<p class="member_description">Get noise component gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pressure</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set pressure, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pressure</span>()</p>
+<p class="member_description">Get pressure, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set rate of attack (seconds).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
+<p class="member_description">Get rate of attack (seconds).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">startBlowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Start blowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stopBlowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Stop blowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>()</p>
+<p class="member_description">Get vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>()</p>
+<p class="member_description">Get vibrato gain, [0.0-1.0].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Mandolin" /><div class="class">
+<h2 class="class_title" name="Mandolin">Mandolin</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class inherits from PluckTwo and uses 'commuted synthesis' techniques to model a mandolin instrument.
+
+This is a digital waveguide model, making its use possibly subject to patents held by Stanford University, Yamaha, and others. Commuted Synthesis, in particular, is covered by patents, granted, pending, and/or applied-for. All are assigned to the Board of Trustees, Stanford University. For information, contact the Office of Technology Licensing, Stanford University.
+
+Control Change Numbers:
+
+- Body Size = 2
+- Pluck Position = 4
+- String Sustain = 11
+- String Detuning = 1
+- Microphone Position = 128
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/mandolin.ck">stk/mandolin.ck</a></li>
+<li><a href="../examples/stk/mand-o-matic.ck">stk/mand-o-matic.ck</a></li>
+<li><a href="../examples/stk/mand-o-matic-simple.ck">stk/mand-o-matic-simple.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">afterTouch</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set aftertouch (currently unsupported).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">bodyIR</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path)</p>
+<p class="member_description">Set body impulse response.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">bodyIR</span>()</p>
+<p class="member_description">Get body impulse response.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bodySize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set body size (percentage).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bodySize</span>()</p>
+<p class="member_description">Get body size (percentage).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pluck</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Pluck instrument, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pluckPos</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set pluck position, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pluckPos</span>()</p>
+<p class="member_description">Get pluck position, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stringDamping</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set string damping, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stringDamping</span>()</p>
+<p class="member_description">Get string damping, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stringDetune</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set detuning of string pair, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stringDetune</span>()</p>
+<p class="member_description">Get detuning of string pair, [0.0-1.0].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ModalBar" /><div class="class">
+<h2 class="class_title" name="ModalBar">ModalBar</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class implements a number of different struck bar instruments. It inherits from the Modal class.
+
+Control Change Numbers:
+
+- Stick Hardness = 2
+- Stick Position = 4
+- Vibrato Gain = 11
+- Vibrato Frequency = 7
+- Direct Stick Mix = 1
+- Volume = 128
+- Modal Presets = 16
+- Marimba = 0
+- Vibraphone = 1
+- Agogo = 2
+- Wood1 = 3
+- Reso = 4
+- Wood2 = 5
+- Beats = 6
+- Two Fixed = 7
+- Clump = 8
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/modalbar.ck">stk/modalbar.ck</a></li>
+<li><a href="../examples/stk/modalbar2.ck">stk/modalbar2.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">clear</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Clear instrument.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">damp</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Damp bar, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">directGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set direct gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">directGain</span>()</p>
+<p class="member_description">Get direct gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">masterGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set master gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">masterGain</span>()</p>
+<p class="member_description">Get master gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Set mode.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mode</span>()</p>
+<p class="member_description">Get mode.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modeGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set gain for selected mode, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modeGain</span>()</p>
+<p class="member_description">Get gain for selected mode, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modeRadius</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set radius for selected mode, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modeRadius</span>()</p>
+<p class="member_description">Get radius for selected mode, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modeRatio</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set ratio for selected mode.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modeRatio</span>()</p>
+<p class="member_description">Get ratio for selected mode.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">preset</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Set preset (see above).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">preset</span>()</p>
+<p class="member_description">Get preset.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stickHardness</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set stick hardness, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stickHardness</span>()</p>
+<p class="member_description">Get stick hardness, [0.0-1.0]</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">strike</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Strike bar, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">strikePosition</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set strike position, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">strikePosition</span>()</p>
+<p class="member_description">Get strike position, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>()</p>
+<p class="member_description">Get vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>()</p>
+<p class="member_description">Get vibrato gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">volume</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set volume, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">volume</span>()</p>
+<p class="member_description">Get volume, [0.0-1.0].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Moog" /><div class="class">
+<h2 class="class_title" name="Moog">Moog</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This instrument uses one attack wave, one looped wave, and an ADSR envelope (inherited from the Sampler class) and adds two sweepable formant (FormSwep) filters.
+
+Control Change Numbers:
+
+- Filter Q = 2
+- Filter Sweep Rate = 4
+- Vibrato Frequency = 11
+- Vibrato Gain = 1
+- Gain = 128
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/moog.ck">stk/moog.ck</a></li>
+<li><a href="../examples/stk/moog2.ck">stk/moog2.ck</a></li>
+<li><a href="../examples/stk/moogie.ck">stk/moogie.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">afterTouch</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set aftertouch, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">filterQ</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set filter Q value, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">filterQ</span>()</p>
+<p class="member_description">Get filter Q value, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">filterStartFreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq)</p>
+<p class="member_description">Set filter starting frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">filterStartFreq</span>()</p>
+<p class="member_description">Get filter starting frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">filterSweepRate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set filter sweep rate, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">filterSweepRate</span>()</p>
+<p class="member_description">Get filter sweep rate, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lfoDepth</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set LFO modulation depth.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lfoDepth</span>()</p>
+<p class="member_description">Get LFO modulation depth.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lfoSpeed</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set LFO modulation speed.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lfoSpeed</span>()</p>
+<p class="member_description">Get LFO modulation speed.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modDepth</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set modulation depth.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modDepth</span>()</p>
+<p class="member_description">Get modulation depth.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modSpeed</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set modulation speed.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">modSpeed</span>()</p>
+<p class="member_description">Get modulation speed.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>()</p>
+<p class="member_description">Get vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>()</p>
+<p class="member_description">Get vibrato gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">volume</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set volume.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">volume</span>()</p>
+<p class="member_description">Get volume.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Saxofony" /><div class="class">
+<h2 class="class_title" name="Saxofony">Saxofony</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class implements a 'hybrid' digital waveguide instrument that can generate a variety of wind-like sounds. It has also been referred to as the 'blowed string' model. The waveguide section is essentially that of a string, with one rigid and one lossy termination. The non-linear function is a reed table. The string can be 'blown' at any point between the terminations, though just as with strings, it is impossible to excite the system at either end. If the excitation is placed at the string mid-point, the sound is that of a clarinet. At points closer to the 'bridge', the sound is closer to that of a saxophone. See Scavone (2002) for more details.
+
+This is a digital waveguide model, making its use possibly subject to patents held by Stanford University, Yamaha, and others.
+
+Control Change Numbers:
+
+- Reed Stiffness = 2
+- Reed Aperture = 26
+- Noise Gain = 4
+- Blow Position = 11
+- Vibrato Frequency = 29
+- Vibrato Gain = 1
+- Breath Pressure = 128
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/saxofony.ck">stk/saxofony.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aperture</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set reed aperture, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aperture</span>()</p>
+<p class="member_description">Get reed aperture, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">blowPosition</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set lip stiffness, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">blowPosition</span>()</p>
+<p class="member_description">Get lip stiffness, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">clear</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Clear instrument.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noiseGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set noise component gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noiseGain</span>()</p>
+<p class="member_description">Get noise component gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pressure</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set pressure, [0.0-1.0]</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pressure</span>()</p>
+<p class="member_description">Get pressure, [0.0-1.0]</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set rate of attack (seconds).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
+<p class="member_description">Get rate of attack (seconds).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">startBlowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Start blowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stiffness</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set reed stiffness, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stiffness</span>()</p>
+<p class="member_description">Get reed stiffness, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stopBlowing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Stop blowing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>()</p>
+<p class="member_description">Get vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>()</p>
+<p class="member_description">Get vibrato gain, [0.0-1.0].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Shakers" /><div class="class">
+<h2 class="class_title" name="Shakers">Shakers</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">PhISEM (Physically Informed Stochastic Event Modeling) is an algorithmic approach for simulating collisions of multiple independent sound producing objects. This class is a meta-model that can simulate a Maraca, Sekere, Cabasa, Bamboo Wind Chimes, Water Drops, Tambourine, Sleighbells, and a Guiro.
+
+PhOLIES (Physically-Oriented Library of Imitated Environmental Sounds) is a similar approach for the synthesis of environmental sounds. This class implements simulations of breaking sticks, crunchy snow (or not), a wrench, sandpaper, and more.
+
+Control Change Numbers:
+
+- Shake Energy = 2
+- System Decay = 4
+- Number Of Objects = 11
+- Resonance Frequency = 1
+- Shake Energy = 128
+- Instrument Selection = 1071
+- Maraca = 0
+- Cabasa = 1
+- Sekere = 2
+- Guiro = 3
+- Water Drops = 4
+- Bamboo Chimes = 5
+- Tambourine = 6
+- Sleigh Bells = 7
+- Sticks = 8
+- Crunch = 9
+- Wrench = 10
+- Sand Paper = 11
+- Coke Can = 12
+- Next Mug = 13
+- Penny + Mug = 14
+- Nickle + Mug = 15
+- Dime + Mug = 16
+- Quarter + Mug = 17
+- Franc + Mug = 18
+- Peso + Mug = 19
+- Big Rocks = 20
+- Little Rocks = 21
+- Tuned Bamboo Chimes = 22
+
+by Perry R. Cook, 1996 - 1999.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/shake-cycle.ck">stk/shake-cycle.ck</a></li>
+<li><a href="../examples/stk/shake-o-matic.ck">stk/shake-o-matic.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">decay</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set system decay, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">decay</span>()</p>
+<p class="member_description">Get system decay, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">energy</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set shake energy, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">energy</span>()</p>
+<p class="member_description">Get shake energy, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>()</p>
+<p class="member_description">Get frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Trigger note off.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Trigger note on.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">objects</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set number of objects, [0.0-128.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">objects</span>()</p>
+<p class="member_description">Get number of objects, [0.0-128.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">preset</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Set instrument, [0-22] (see above).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">preset</span>()</p>
+<p class="member_description">Get instrument, [0-22] (see above).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">which</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Set instrument, [0-22] (see above).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">which</span>()</p>
+<p class="member_description">Get instrument, [0-22] (see above).</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Sitar" /><div class="class">
+<h2 class="class_title" name="Sitar">Sitar</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class implements a sitar plucked string physical model based on the Karplus-Strong algorithm.
+    
+This is a digital waveguide model, making its use possibly subject to patents held by Stanford University, Yamaha, and others. There exist at least two patents, assigned to Stanford, bearing the names of Karplus and/or Strong.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/sitar.ck">stk/sitar.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">clear</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Clear instrument.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pluck</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Pluck string.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="StifKarp" /><div class="class">
+<h2 class="class_title" name="StifKarp">StifKarp</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class implements a simple plucked string algorithm (Karplus Strong) with enhancements (Jaffe-Smith, Smith, and others), including string stiffness and pluck position controls. The stiffness is modeled with allpass filters.
+
+This is a digital waveguide model, making its use possibly subject to patents held by Stanford University, Yamaha, and others.
+
+Control Change Numbers:
+
+- Pickup Position = 4
+- String Sustain = 11
+- String Stretch = 1
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/stifkarp.ck">stk/stifkarp.ck</a></li>
+<li><a href="../examples/stk/stif-o-karp.ck">stk/stif-o-karp.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">baseLoopGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set base loop gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">baseLoopGain</span>()</p>
+<p class="member_description">Get base loop gain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">clear</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Clear instrument.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pickupPosition</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set pickup position, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pickupPosition</span>()</p>
+<p class="member_description">Get pickup position, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pluck</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Pluck string.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stretch</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set string stretch, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">stretch</span>()</p>
+<p class="member_description">Get string stretch, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sustain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set string sustain, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sustain</span>()</p>
+<p class="member_description">Get string sustain, [0.0-1.0].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="VoicForm" /><div class="class">
+<h2 class="class_title" name="VoicForm">VoicForm</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This instrument contains an excitation singing wavetable (looping wave with random and periodic vibrato, smoothing on frequency, etc.), excitation noise, and four sweepable complex resonances.
+
+Measured formant data is included, and enough data is there to support either parallel or cascade synthesis. In the floating point case cascade synthesis is the most natural so that's what you'll find here.
+
+Control Change Numbers:
+Voiced/Unvoiced Mix = 2
+Vowel/Phoneme Selection = 4
+Vibrato Frequency = 11
+Vibrato Gain = 1
+Loudness (Spectral Tilt) = 128
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.
+
+Phoneme Names:
+
+    'eee'  'ihh'  'ehh'  'aaa'
+    'ahh'  'aww'  'ohh'  'uhh'
+    'uuu'  'ooo'  'rrr'  'lll'
+    'mmm'  'nnn'  'nng'  'ngg'
+    'fff'  'sss'  'thh'  'shh'
+    'xxx'  'hee'  'hoo'  'hah'
+    'bbb'  'ddd'  'jjj'  'ggg'
+    'vvv'  'zzz'  'thz'  'zhh'<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/voic-o-form.ck">stk/voic-o-form.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">loudness</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set 'loudness' of voice, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">loudness</span>()</p>
+<p class="member_description">Get 'loudness' of voice, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">phoneme</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_description">Set phoneme (see above).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">phoneme</span>()</p>
+<p class="member_description">Get phoneme (see above).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">phonemeNum</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Set phoneme by number, [0.0-128.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">phonemeNum</span>()</p>
+<p class="member_description">Get phoneme by number, [0.0-128.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pitchSweepRate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set rate of pitch sweep, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pitchSweepRate</span>()</p>
+<p class="member_description">Get rate of pitch sweep, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">quiet</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Stop singing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">speak</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Start singing, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">unVoiced</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set mix for unvoiced component, [0.0 - 1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">unVoiced</span>()</p>
+<p class="member_description">Get mix for unvoiced component, [0.0 - 1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoFreq</span>()</p>
+<p class="member_description">Get vibrato frequency (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vibrato gain (Hz), [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vibratoGain</span>()</p>
+<p class="member_description">Get vibrato gain (Hz), [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">voiceMix</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set voiced/unvoiced mix, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">voiceMix</span>()</p>
+<p class="member_description">Get voiced/unvoiced mix, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">voiced</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set mix for voiced component, [0.0 - 1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">voiced</span>()</p>
+<p class="member_description">Get mix for voiced component, [0.0 - 1.0].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="FM" /><div class="class">
+<h2 class="class_title" name="FM">FM</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">STK FM synthesis super class.
+
+This class controls an arbitrary number of waves and envelopes, determined via a constructor argument.
+
+Control Change Numbers:
+
+- Control One = 2
+- Control Two = 4
+- LFO Speed = 11
+- LFO Depth = 1
+- ADSR 2 & 4 Target = 128
+
+The basic Chowning/Stanford FM patent expired in 1995, but there exist follow-on patents, mostly assigned to Yamaha. If you are of the type who should worry about this (making money) worry away.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">afterTouch</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set aftertouch, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">afterTouch</span>()</p>
+<p class="member_description">Get aftertouch, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">controlOne</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set control one [instrument specific].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">controlOne</span>()</p>
+<p class="member_description">Get control one [instrument specific].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">controlTwo</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set control two [instrument specific].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">controlTwo</span>()</p>
+<p class="member_description">Get control two [instrument specific].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">getFMTableGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index)</p>
+<p class="member_description">Get table gain lookup.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">getFMTableSusLevel</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index)</p>
+<p class="member_description">Get sustain level lookup.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">getFMTableTime</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index)</p>
+<p class="member_description">Get table time lookup.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lfoDepth</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set modulation depth, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lfoDepth</span>()</p>
+<p class="member_description">Get modulation depth, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lfoSpeed</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set modulation speed (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lfoSpeed</span>()</p>
+<p class="member_description">Get modulation speed (Hz).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">op4Feedback</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set operator 4 feedback.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">op4Feedback</span>()</p>
+<p class="member_description">Get operator 4 feedback.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">opADSR</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> opNum, <span class="ckdoc_typename ckdoc_type_primitive">float</span> attack, <span class="ckdoc_typename ckdoc_type_primitive">float</span> decay, <span class="ckdoc_typename ckdoc_type_primitive">float</span> sustain, <span class="ckdoc_typename ckdoc_type_primitive">float</span> release)</p>
+<p class="member_description">Set operator ADSR: attack (sec), decay (sec), sustain [0.0-1.0], release (sec).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">opAM</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> opNum, <span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set operator amplitude modulation.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">opAM</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> opNum)</p>
+<p class="member_description">Get operator amplitude modulation.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">opGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> opNum, <span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set operator gain.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">opGain</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> opNum)</p>
+<p class="member_description">Get gperator gain.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">opRatio</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> opNum, <span class="ckdoc_typename ckdoc_type_primitive">float</span> ratio)</p>
+<p class="member_description">Set operator frequency ratio.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">opRatio</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> opNum)</p>
+<p class="member_description">Get operator frequency ratio.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">opWave</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> opNum, <span class="ckdoc_typename ckdoc_type_primitive">int</span> wave)</p>
+<p class="member_description">Set operator waveform [1-8].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="BeeThree" /><div class="class">
+<h2 class="class_title" name="BeeThree">BeeThree</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#FM" class="ckdoc_typename ckdoc_type_ugen">FM</a> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">STK Hammond-oid organ FM synthesis instrument.
+
+This class implements a simple 4 operator topology, also referred to as algorithm 8 of the TX81Z.
+
+Algorithm 8 is :
+    
+    1 --.
+    2 -\|
+    +-> Out
+    3 -/|
+    4 --.
+    
+Control Change Numbers:
+
+- Operator 4 (feedback) Gain = 2 (.controlOne)
+- Operator 3 Gain = 4 (.controlTwo)
+- LFO Speed = 11
+- LFO Depth = 1
+- ADSR 2 & 4 Target = 128
+
+The basic Chowning/Stanford FM patent expired in 1995, but there exist follow-on patents, mostly assigned to Yamaha. If you are of the type who should worry about this (making money) worry away.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="FMVoices" /><div class="class">
+<h2 class="class_title" name="FMVoices">FMVoices</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#FM" class="ckdoc_typename ckdoc_type_ugen">FM</a> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">STK singing FM synthesis instrument.
+
+This class implements 3 carriers and a common modulator, also referred to as algorithm 6 of the TX81Z.
+
+Algorithm 6 is :
+    
+    ___//->1 -\
+    4-||-->2 - +-> Out
+    ___\->3 -//
+    
+Control Change Numbers:
+
+- Vowel = 2 (.controlOne)
+- Spectral Tilt = 4 (.controlTwo)
+- LFO Speed = 11
+- LFO Depth = 1
+- ADSR 2 & 4 Target = 128
+
+The basic Chowning/Stanford FM patent expired in 1995, but there exist follow-on patents, mostly assigned to Yamaha. If you are of the type who should worry about this (making money) worry away.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">adsrTarget</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set ADSR targets, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">adsrTarget</span>()</p>
+<p class="member_description">Get ADSR targets, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">spectralTilt</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set spectral tilt, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">spectralTilt</span>()</p>
+<p class="member_description">Get spectral tilt, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vowel</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set vowel, [0.0-1.0].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">vowel</span>()</p>
+<p class="member_description">Get vowel, [0.0-1.0].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="HevyMetl" /><div class="class">
+<h2 class="class_title" name="HevyMetl">HevyMetl</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#FM" class="ckdoc_typename ckdoc_type_ugen">FM</a> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A STK heavy metal FM synthesis instrument.
+
+This class implements 3 cascade operators with feedback modulation, also referred to as algorithm 3 of the TX81Z.
+
+Algorithm 3 is :
+    
+    ____4--\
+    3-->2-- + -->1-->Out
+    
+Control Change Numbers:
+
+- Total Modulator Index = 2 (.controlOne)
+- Modulator Crossfade = 4 (.controlTwo)
+- LFO Speed = 11
+- LFO Depth = 1
+- ADSR 2 & 4 Target = 128
+
+The basic Chowning/Stanford FM patent expired in 1995, but there exist follow-on patents, mostly assigned to Yamaha. If you are of the type who should worry about this (making money) worry away.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="PercFlut" /><div class="class">
+<h2 class="class_title" name="PercFlut">PercFlut</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#FM" class="ckdoc_typename ckdoc_type_ugen">FM</a> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">STK percussive flute FM synthesis instrument.
+
+This class implements algorithm 4 of the TX81Z.
+
+Algorithm 4 is :
+    
+    4->3--\
+    ___2-- + -->1-->Out
+    
+Control Change Numbers:
+
+- Total Modulator Index = 2 (.controlOne)
+- Modulator Crossfade = 4 (.controlTwo)
+- LFO Speed = 11
+- LFO Depth = 1
+- ADSR 2 & 4 Target = 128
+
+The basic Chowning/Stanford FM patent expired in 1995, but there exist follow-on patents, mostly assigned to Yamaha. If you are of the type who should worry about this (making money) worry away.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Rhodey" /><div class="class">
+<h2 class="class_title" name="Rhodey">Rhodey</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#FM" class="ckdoc_typename ckdoc_type_ugen">FM</a> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">STK Fender Rhodes-like electric piano FM synthesis instrument.
+
+This class implements two simple FM Pairs summed together, also referred to as algorithm 5 of the TX81Z.
+
+Algorithm 5 is :
+    
+    4->3--
+    + --> Out
+    2->1--
+    
+Control Change Numbers:
+
+- Modulator Index One = 2 (.controlOne)
+- Crossfade of Outputs = 4 (.controlTwo)
+- LFO Speed = 11
+- LFO Depth = 1
+- ADSR 2 & 4 Target = 128
+
+The basic Chowning/Stanford FM patent expired in 1995, but there exist follow-on patents, mostly assigned to Yamaha. If you are of the type who should worry about this (making money) worry away.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/rhodey.ck">stk/rhodey.ck</a></li>
+</ul></div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="TubeBell" /><div class="class">
+<h2 class="class_title" name="TubeBell">TubeBell</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#FM" class="ckdoc_typename ckdoc_type_ugen">FM</a> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">STK tubular bell (orchestral chime) FM synthesis instrument.
+
+This class implements two simple FM Pairs summed together, also referred to as algorithm 5 of the TX81Z.
+
+Algorithm 5 is :
+    
+    4->3--
+    + --> Out
+    2->1--
+    
+Control Change Numbers:
+
+- Modulator Index One = 2 (.controlOne)
+- Crossfade of Outputs = 4 (.controlTwo)
+- LFO Speed = 11
+- LFO Depth = 1
+- ADSR 2 & 4 Target = 128
+
+The basic Chowning/Stanford FM patent expired in 1995, but there exist follow-on patents, mostly assigned to Yamaha. If you are of the type who should worry about this (making money) worry away.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Wurley" /><div class="class">
+<h2 class="class_title" name="Wurley">Wurley</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#FM" class="ckdoc_typename ckdoc_type_ugen">FM</a> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">STK Wurlitzer electric piano FM synthesis instrument.
+
+This class implements two simple FM Pairs summed together, also referred to as algorithm 5 of the TX81Z.
+
+Algorithm 5 is :
+
+4->3--
++ --> Out
+2->1--
+
+Control Change Numbers:
+
+- Modulator Index One = 2 (.controlOne)
+- Crossfade of Outputs = 4 (.controlTwo)
+- LFO Speed = 11
+- LFO Depth = 1
+- ADSR 2 & 4 Target = 128
+
+The basic Chowning/Stanford FM patent expired in 1995, but there exist follow-on patents, mostly assigned to Yamaha. If you are of the type who should worry about this (making money) worry away.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a href="../examples/stk/wurley.ck">stk/wurley.ck</a></li>
+<li><a href="../examples/stk/wurley2.ck">stk/wurley2.ck</a></li>
+<li><a href="../examples/stk/wurley3.ck">stk/wurley3.ck</a></li>
+</ul></div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+</div>
+</div>
+</body>
+</html>
