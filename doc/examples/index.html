@@ -469,8 +469,23 @@ or perhaps:
 </tr>
 
 <tr>
+<td width="60%"><div class="topic_sub">Polymorphism in ChucK</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="type/polymorph.ck">polymorph</a> </div></td>
+</tr>
+
+<tr>
 <td width="60%"><div class="topic_sub">Analysis-related type</div></td>
 <td><div class="topic_file_list"><a target="_blank" href="type/type_analysis.ck">type_analysis</a> </div></td>
+</tr>
+
+<tr>
+<td width="60%"><div class="topic_sub">Working with the Type type</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="type/type_type.ck">type_type</a> </div></td>
+</tr>
+
+<tr>
+<td width="60%"><div class="topic_sub">Querying active types in the VM</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="type/type_query.ck">type_query</a> </div></td>
 </tr>
 
 <tr>
@@ -530,6 +545,26 @@ or perhaps:
 <tr>
 <td ><div class="topic_sub">resizing arrays</div></td>
 <td><div class="topic_file_list"><a target="_blank" href="array/array_resize.ck">array_resized</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">negative indexing of arrays</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="array/array_negative.ck">array_negative</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">reversing an array</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="array/array_reverse.ck">array_reverse</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">shuffling an array</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="array/array_shuffle.ck">array_shuffle</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">zeroing the elements an array</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="array/array_zero.ck">array_zero</a> </div></td>
 </tr>
 
 <tr><td  colspan="2">
@@ -748,25 +783,41 @@ or perhaps:
 <td><div class="topic_file_list"><a target="_blank" href="shred/dir.ck">dir</a></div>
 </td></tr>
 
-
 <tr><td><div class="topic_sub">file input: reading ints</div></td>
 <td><div class="topic_file_list">
 	<a target="_blank" href="io/read-int.ck">read-int</a> |
-	<a target="_blank" href="io/int.txt">int.txt</a>
+	<a target="_blank" href="io/read-int.txt">read-int.txt</a>
+</div></td></tr>
+
+<tr><td><div class="topic_sub">file input: reading floats</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="io/read-float.ck">read-float</a> |
+	<a target="_blank" href="io/read-float.txt">read-float.txt</a>
 </div></td></tr>
 
 <tr><td><div class="topic_sub">file input: reading lines</div></td>
 <td><div class="topic_file_list">
 	<a target="_blank" href="io/read-line.ck">read-line</a> |
-	<a target="_blank" href="io/line.txt">line.txt</a>
+	<a target="_blank" href="io/read-line.txt">read-line.txt</a>
+</div></td></tr>
+
+<tr><td><div class="topic_sub">file input: reading tokens</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="io/read-tokens.ck">read-tokens</a> |
+	<a target="_blank" href="io/jabberwocky.txt">jabberwocky.txt</a>
 </div></td></tr>
 
 <tr><td><div class="topic_sub">file input: reading strings</div></td>
 <td><div class="topic_file_list">
 	<a target="_blank" href="io/read-str.ck">read-str</a> |
-	<a target="_blank" href="io/str.txt">str.txt</a>
+	<a target="_blank" href="io/read-str.txt">read-str.txt</a>
 </div></td></tr>
 
+<tr><td><div class="topic_sub">file input (binary mode): reading bytes</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="io/read-byte.ck">read-byte</a> |
+	<a target="_blank" href="io/read-byte.txt">read-byte.txt</a>
+</div></td></tr>
 
 <tr><td><div class="topic_sub">file output</div></td>
 <td><div class="topic_file_list">
@@ -774,6 +825,10 @@ or perhaps:
 	<a target="_blank" href="io/write2.ck">write2</a>
 </div></td></tr>
 
+<tr><td><div class="topic_sub">file output (binary mode): writing bytes</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="io/write-byte.ck">write-byte</a>
+</div></td></tr>
 
 <tr><td  colspan="2">
 <div class="topic_main">
@@ -1001,6 +1056,13 @@ or perhaps:
 </div></td></tr>
 
 <tr><td>
+<div class="topic_sub">LiSa2 stereo</div></td>
+<td><div class="topic_file_list">
+	<a target="_blank" href="special/LiSa-stereo.ck">LiSa-stereo</a>
+</div></td></tr>
+
+
+<tr><td>
 <div class="topic_sub">Granular sampling examples</div></td>
 <td><div class="topic_file_list">
 	<a target="_blank" href="special/LiSa-munger1.ck">LiSa-munger1</a> |<br>
@@ -1067,6 +1129,8 @@ or perhaps:
 	<a target="_blank" href="string/readline.ck">readline</a> |
 	<a target="_blank" href="string/token.ck">token</a>
 </div></td></tr>
+
+
 
 <tr><td  colspan="2">
 <div class="topic_main">
@@ -1216,7 +1280,7 @@ or perhaps:
 <td><div class="topic_file_list"><a target="_blank" href="analysis/win.ck">win</a>
 </div></td></tr>
 
-<tr><td ><div class="topic_sub">Flip</div></td>
+<tr><td ><div class="topic_sub">Flip / UnFlip</div></td>
 <td><div class="topic_file_list"><a target="_blank" href="analysis/flip.ck">flip</a>
 </div></td></tr>
 
@@ -1241,9 +1305,22 @@ or perhaps:
 <td><div class="topic_file_list"><a target="_blank" href="ai/features/centroid.ck">centroid</a>
 </div></td></tr>
 
+<tr><td ><div class="topic_sub">Chroma</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ai/features/chroma.ck">chroma</a>
+</div></td></tr>
+
 <tr><td ><div class="topic_sub">Flux</div></td>
 <td><div class="topic_file_list"> <a target="_blank" href="ai/features/flux.ck">flux</a>
 | <a target="_blank" href="ai/features/flux0.ck">flux0</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">Kurtosis</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ai/features/kurtosis.ck">kurtosis</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">MFCC</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ai/features/mfcc-basic.ck">mfcc-basic</a> |
+<a target="_blank" href="ai/features/mfcc-mean.ck">mfcc-mean</a>
 </div></td></tr>
 
 <tr><td ><div class="topic_sub">RMS</div></td>
@@ -1254,11 +1331,26 @@ or perhaps:
 <td><div class="topic_file_list"><a target="_blank" href="ai/features/rolloff.ck">rolloff</a>
 </div></td></tr>
 
+<tr><td ><div class="topic_sub">SFM</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ai/features/sfm.ck">sfm</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">ZeroX</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ai/features/zerox.ck">zerox</a>
+</div></td></tr>
+
 <tr><td ><div class="topic_sub">Feature Collector</div></td>
 <td><div class="topic_file_list"><a target="_blank" href="ai/features/features-combined.ck">features-combined</a>
 </div></td></tr>
+
 <tr><td ><div class="topic_sub">Feature Collector (alt use)</div></td>
 <td><div class="topic_file_list"><a target="_blank" href="analysis/concat.ck">concat</a>
+</div></td></tr>
+
+<tr><td ><div class="topic_sub">Feature-based Genre Classification (part of <a target="_blank" href="../../chai/">chai</a>)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ai/genre-classify/feature-extract.ck">features-extract</a> | 
+<a target="_blank" href="ai/genre-classify/genre-classify.ck">genre-classify</a> |
+<a target="_blank" href="ai/genre-classify/x-validate.ck">x-validate</a>
 </div></td></tr>
 
 </table>

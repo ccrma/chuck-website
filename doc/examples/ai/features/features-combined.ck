@@ -3,8 +3,6 @@
 // desc: extracting multiple features; collect into one vector
 //       e.g.,  Centroid, Flux, RMS, MFCC
 //
-// version: need chuck version 1.4.2.0 or higher (for MFCC)
-//
 // author: Ge Wang (https://ccrma.stanford.edu/~ge/)
 // date: Spring 2023
 //---------------------------------------------------------------------
