@@ -37,6 +37,8 @@
 <p class="class_description">A unit analyzer that computes the spectral centroid from a magnitude spectrum (either from incoming UAna or manually given), and outputs a single number.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ai/features/centroid.ck">ai/features/centroid.ck</a></li>
+<li><a target="_blank" href="../examples/ai/genre-classify/feature-extract.ck">ai/genre-classify/feature-extract.ck</a></li>
+<li><a target="_blank" href="../examples/ai/genre-classify/genre-classify.ck">ai/genre-classify/genre-classify.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
@@ -98,6 +100,7 @@
 <p class="class_description">A unit analyzer that computes the spectral flux between successive magnitude spectra (via incoming UAna, or given manually), and outputs a single number.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ai/features/flux.ck">ai/features/flux.ck</a></li>
+<li><a target="_blank" href="../examples/ai/features/flux0.ck">ai/features/flux0.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
@@ -304,6 +307,9 @@
 <h2 class="class_title" name="DCT">DCT</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Computes the Discrete Cosine Transform on incoming audio samples, and outputs the result via its UAnaBlob as real values in the D.C. spectrum. A buffering mechanism maintains the previous DCT size # of samples, allowing DCT to be taken at any point in time, on demand (via .upchuck() or by upchucking a downstream UAna; see UAna documentation). The window size (along with an arbitrary window shape) is controlled via the .window method. The hop size is complete dynamic, and is throttled by how time is advanced.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/analysis/dct.ck">analysis/dct.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -341,6 +347,7 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ai/genre-classify/feature-extract.ck">ai/genre-classify/feature-extract.ck</a></li>
 <li><a target="_blank" href="../examples/ai/genre-classify/genre-classify.ck">ai/genre-classify/genre-classify.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/concat.ck">analysis/concat.ck</a></li>
 </ul></div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -349,6 +356,14 @@
 <h2 class="class_title" name="FFT">FFT</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Computes the Fast Fourier Transform on incoming audio samples, and outputs the result via its UAnaBlob as both the complex spectrum and the magnitude spectrum. A buffering mechanism maintains the previous FFTsize # of samples, allowing FFT's to be taken at any point in time, on demand (via .upchuck() or by upchucking a downstream UAna. The window size (along with an arbitrary window shape) is controlled via the .window method. The hop size is complete dynamic, and is throttled by how time is advanced.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/analysis/fft.ck">analysis/fft.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/fft2.ck">analysis/fft2.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/fft3.ck">analysis/fft3.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/ifft.ck">analysis/ifft.ck</a></li>
+<li><a target="_blank" href="../examples/ai/genre-classify/feature-extract.ck">ai/genre-classify/feature-extract.ck</a></li>
+<li><a target="_blank" href="../examples/ai/genre-classify/genre-classify.ck">ai/genre-classify/genre-classify.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -383,6 +398,9 @@
 <h2 class="class_title" name="Flip">Flip</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Turns audio samples into frames in the UAna domain.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/analysis/flip.ck">analysis/flip.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">

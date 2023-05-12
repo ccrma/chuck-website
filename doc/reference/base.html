@@ -18,7 +18,6 @@
 <p class="toc_class"><a href="#Std" class="ckdoc_typename ckdoc_type_object">Std</a></p>
 <p class="toc_class"><a href="#string" class="ckdoc_typename ckdoc_type_object">string</a></p>
 <p class="toc_class"><a href="#@array" class="ckdoc_typename ckdoc_type_object">@array</a></p>
-<p class="toc_class"><a href="#CKDoc" class="ckdoc_typename ckdoc_type_object">CKDoc</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">Basic classes (Object, Event, Shred, etc.) and standard libraries (Math, Machine, Std)</p>
@@ -50,6 +49,14 @@
 <h2 class="class_title" name="Event">Event</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A mechanism for precise synchronization across shreds.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/event/broadcast.ck">event/broadcast.ck</a></li>
+<li><a target="_blank" href="../examples/event/signal.ck">event/signal.ck</a></li>
+<li><a target="_blank" href="../examples/event/signal4.ck">event/signal4.ck</a></li>
+<li><a target="_blank" href="../examples/event/event-extend.ck">event/event-extend.ck</a></li>
+<li><a target="_blank" href="../examples/event/event-x-bpm-1.ck">event/event-x-bpm-1.ck</a></li>
+<li><a target="_blank" href="../examples/event/event-x-bpm-2.ck">event/event-x-bpm-2.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -72,6 +79,16 @@
 <h2 class="class_title" name="Shred">Shred</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A strongly-timed ChucK thread of execution.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/shred/powerup.ck">shred/powerup.ck</a></li>
+<li><a target="_blank" href="../examples/shred/spork.ck">shred/spork.ck</a></li>
+<li><a target="_blank" href="../examples/shred/spork2.ck">shred/spork2.ck</a></li>
+<li><a target="_blank" href="../examples/shred/spork2-exit.ck">shred/spork2-exit.ck</a></li>
+<li><a target="_blank" href="../examples/shred/spork2-remove.ck">shred/spork2-remove.ck</a></li>
+<li><a target="_blank" href="../examples/event/broadcast.ck">event/broadcast.ck</a></li>
+<li><a target="_blank" href="../examples/event/signal.ck">event/signal.ck</a></li>
+<li><a target="_blank" href="../examples/event/signal4.ck">event/signal4.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
@@ -451,6 +468,14 @@
 <h2 class="class_title" name="Machine">Machine</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Machine is ChucK runtime interface to the virtual machine. This interface can be used to manage shreds, evalute code, set log levels, etc. Machine's shred commands are similar to the On-the-fly Programming Commands, except these are invoked from within a ChucK program, and are subject to the timing mechanism.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/machine/eval.ck">machine/eval.ck</a></li>
+<li><a target="_blank" href="../examples/machine/intsize.ck">machine/intsize.ck</a></li>
+<li><a target="_blank" href="../examples/machine/is-realtime.ck">machine/is-realtime.ck</a></li>
+<li><a target="_blank" href="../examples/machine/machine-shred.ck">machine/machine-shred.ck</a></li>
+<li><a target="_blank" href="../examples/book/digital-artists/chapter9/DrumMachine">book/digital-artists/chapter9/DrumMachine</a></li>
+<li><a target="_blank" href="../examples/book/digital-artists/chapter9/SmartMandolin/initialize.ck">book/digital-artists/chapter9/SmartMandolin/initialize.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
@@ -654,6 +679,13 @@
 <h2 class="class_title" name="string">string</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Textual data as a sequence of characters, along with functions for manipulating text.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/string/strops.ck">string/strops.ck</a></li>
+<li><a target="_blank" href="../examples/string/strops2.ck">string/strops2.ck</a></li>
+<li><a target="_blank" href="../examples/string/token.ck">string/token.ck</a></li>
+<li><a target="_blank" href="../examples/string/escape.ck">string/escape.ck</a></li>
+<li><a target="_blank" href="../examples/string/tostr.ck">string/tostr.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -841,90 +873,6 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">zero</span>()</p>
 <p class="member_description">Zero out the contents of the array; size is unchanged.</p>
-</div>
-</div>
-<p class="top_link">[ <a href="#top">top</a> ]</p>
-</div>
-<hr />
-<a name="CKDoc" /><div class="class">
-<h2 class="class_title" name="CKDoc">CKDoc</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">A ChucK documentation generator. Based on Spencer Salazar's ckdoc utility.<p>
-<h3 class="class_section_header">static member variables</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">HTML</span></p><p class="member_description">Output HTML format.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">JSON</span></p><p class="member_description">Output JSON format (not implemented).</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MARKDOWN</span></p><p class="member_description">Output MARKDOWN format (not implemented).</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NONE</span></p><p class="member_description">No output format.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TEXT</span></p><p class="member_description">Output TEXT format (not implemented).</p>
-</div>
-</div>
-<h3 class="class_section_header">member functions</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addGroup</span>(<span class="ckdoc_typename ckdoc_type_object">Type</span><span class="typename">[]</span> types, <span class="ckdoc_typename ckdoc_type_object">string</span> name, <span class="ckdoc_typename ckdoc_type_object">string</span> shortName, <span class="ckdoc_typename ckdoc_type_object">string</span> description)</p>
-<p class="member_description">Add a group of types to be documented, including group 'name', a 'shortName' to be used for any files, and a group 'description'.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addGroup</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> typeNames, <span class="ckdoc_typename ckdoc_type_object">string</span> name, <span class="ckdoc_typename ckdoc_type_object">string</span> shortName, <span class="ckdoc_typename ckdoc_type_object">string</span> description)</p>
-<p class="member_description">Add a group of types (by type name) to be documented, including group 'name', a 'shortName' to be used for any files, and a group 'description'.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clear</span>()</p>
-<p class="member_description">Clear all added groups.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">examplesRoot</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path)</p>
-<p class="member_description">Set the examples directory root path; returns what was set.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">examplesRoot</span>()</p>
-<p class="member_description">Get the current examples directory root path.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">genCSS</span>()</p>
-<p class="member_description">Generate CSS; return as string.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">genGroups</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> results)</p>
-<p class="member_description">Generate documentation for all added groups, return each in a separate entry</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">genIndex</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> indexTitle)</p>
-<p class="member_description">Generate top-level index; return as string.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">genType</span>(<span class="ckdoc_typename ckdoc_type_object">Type</span> type)</p>
-<p class="member_description">Generate documentation for a single Type.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">genType</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> typeName)</p>
-<p class="member_description">Generate documentation for a single Type (by name).</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numGroups</span>()</p>
-<p class="member_description">Get the number of groups added.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">outputFormat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> which)</p>
-<p class="member_description">Set which output format to use; see CKDoc.HTML, CKDoc.TEXT, CKDoc.MARKDOWN, CKDoc.JSON.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">outputFormat</span>()</p>
-<p class="member_description">Set which output format is selected; see CKDoc.HTML, CKDoc.TEXT, CKDoc.MARKDOWN, CKDoc.JSON.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">outputToDir</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path, <span class="ckdoc_typename ckdoc_type_object">string</span> indexTitle)</p>
-<p class="member_description">Generate everything as files into the output directory.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

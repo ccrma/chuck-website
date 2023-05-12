@@ -60,7 +60,8 @@
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-filters.html#FilterBasic" class="ckdoc_typename ckdoc_type_ugen">FilterBasic</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A resonant low-pass filter (2nd order Butterworth).<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/filter/lp.ck">filter/lp.ck</a></li>
+<li><a target="_blank" href="../examples/filter/lpf.ck">filter/lpf.ck</a></li>
+<li><a target="_blank" href="../examples/filter/rlpf.ck">filter/rlpf.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -126,7 +127,7 @@
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-filters.html#FilterBasic" class="ckdoc_typename ckdoc_type_ugen">FilterBasic</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A bandpass filter (2nd order Butterworth).<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/filter/bp.ck">filter/bp.ck</a></li>
+<li><a target="_blank" href="../examples/filter/bpf.ck">filter/bpf.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -159,7 +160,7 @@
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-filters.html#FilterBasic" class="ckdoc_typename ckdoc_type_ugen">FilterBasic</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A band-reject filter (2nd order Butterworth).<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/filter/br.ck">filter/br.ck</a></li>
+<li><a target="_blank" href="../examples/filter/brf.ck">filter/brf.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -191,6 +192,10 @@
 <h2 class="class_title" name="BiQuad">BiQuad</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A BiQuad (two-pole, two-zero) filter section from STK. A method is provided for creating a resonance in the frequency response while maintaining a constant filter gain.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/wind.ck">basic/wind.ck</a></li>
+<li><a target="_blank" href="../examples/basic/moe.ck">basic/moe.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -303,6 +308,7 @@
 <p class="class_description">A resonance filter with equal-gain zeros; keeps gain under control independent of frequency.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/filter/resonz.ck">filter/resonz.ck</a></li>
+<li><a target="_blank" href="../examples/filter/resonz.ck">filter/resonz.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -336,6 +342,9 @@
 <p class="class_description">This Filter subclass implements a one-pole digital filter. A method is provided for setting the pole position along the real axis of the z-plane while maintaining a constant peak filter gain.
 
 by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/deep/follower.ck">deep/follower.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -372,6 +381,11 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="class_description">This Filter subclass implements a one-zero digital filter. A method is provided for setting the zero position along the real axis of the z-plane while maintaining a constant filter gain.
 
 by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/deep/plu.ck">deep/plu.ck</a></li>
+<li><a target="_blank" href="../examples/deep/plu2.ck">deep/plu2.ck</a></li>
+<li><a target="_blank" href="../examples/deep/plu3.ck">deep/plu3.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -523,6 +537,16 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="class_description">A one-pole, one-zero digital filter. A method is provided for creating an allpass filter with a given coefficient. Another method is provided to create a DC blocking filter.
 
 by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/deep/plu2.ck">deep/plu2.ck</a></li>
+<li><a target="_blank" href="../examples/deep/plu3.ck">deep/plu3.ck</a></li>
+<li><a target="_blank" href="../examples/stk/flute.ck">stk/flute.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/tracking/pitch-track.ck">analysis/tracking/pitch-track.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/tracking/pitch-third.ck">analysis/tracking/pitch-third.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/tracking/pitch-fifth.ck">analysis/tracking/pitch-fifth.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/tracking/pitch-seventh.ck">analysis/tracking/pitch-seventh.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/tracking/Tracking.ck">analysis/tracking/Tracking.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
