@@ -1,24 +1,23 @@
 <html>
 <link rel="stylesheet" type="text/css" href="ckdoc.css" />
 <link rel="stylesheet" type="text/css" href="class.css" />
-<title>Input / Output</title>
+<title>Input & Output</title>
 <body>
 <a name="top"/>
 <div id="title">
-<div class="titleL"><h1>Input / Output</h1></div>
-<div class="titleR"><h1><a href="index.html">ChucK Class Library Reference</a></h1></div>
+<div class="titleL"><h1><a href="./">ChucK Class Library Reference</a></h1></div>
+<div class="titleR"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;Input & Output</h1></div>
 </div>
 <div id="body">
 <div class="toc"><a id="toc"/>
 <p class="toc_class"><a href="#IO" class="ckdoc_typename ckdoc_type_object">IO</a></p>
 <p class="toc_class"><a href="#FileIO" class="ckdoc_typename ckdoc_type_object">FileIO</a></p>
-<p class="toc_class"><a href="#StdOut" class="ckdoc_typename ckdoc_type_object">StdOut</a></p>
-<p class="toc_class"><a href="#StdErr" class="ckdoc_typename ckdoc_type_object">StdErr</a></p>
 <p class="toc_class"><a href="#OscIn" class="ckdoc_typename ckdoc_type_object">OscIn</a></p>
 <p class="toc_class"><a href="#OscOut" class="ckdoc_typename ckdoc_type_object">OscOut</a></p>
 <p class="toc_class"><a href="#OscMsg" class="ckdoc_typename ckdoc_type_object">OscMsg</a></p>
 <p class="toc_class"><a href="#Hid" class="ckdoc_typename ckdoc_type_object">Hid</a></p>
 <p class="toc_class"><a href="#HidMsg" class="ckdoc_typename ckdoc_type_object">HidMsg</a></p>
+<p class="toc_class"><a href="#KBHit" class="ckdoc_typename ckdoc_type_object">KBHit</a></p>
 <p class="toc_class"><a href="#SerialIO" class="ckdoc_typename ckdoc_type_object">SerialIO</a></p>
 <p class="toc_class"><a href="#MidiIn" class="ckdoc_typename ckdoc_type_object">MidiIn</a></p>
 <p class="toc_class"><a href="#MidiOut" class="ckdoc_typename ckdoc_type_object">MidiOut</a></p>
@@ -30,7 +29,7 @@
 <a name="IO" /><div class="class">
 <h2 class="class_title" name="IO">IO</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Event" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">Base class for other IO classes such as FileIO, StdOut and StdErr. Besides IO.newline(), it’s unlikely you need to use this class directly.<p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
@@ -148,7 +147,7 @@
 <a name="FileIO" /><div class="class">
 <h2 class="class_title" name="FileIO">FileIO</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="io.html#IO" class="ckdoc_typename ckdoc_type_object">IO</a> : <a href="base.html#Event" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">Helper class doing file-related operations such as reading, writing, seeking, etc. See examples for usage.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/io/chout.ck">io/chout.ck</a></li>
 <li><a target="_blank" href="../examples/io/read-float.ck">io/read-float.ck</a></li>
@@ -238,122 +237,6 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-</div>
-<p class="top_link">[ <a href="#top">top</a> ]</p>
-</div>
-<hr />
-<a name="StdOut" /><div class="class">
-<h2 class="class_title" name="StdOut">StdOut</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="io.html#IO" class="ckdoc_typename ckdoc_type_object">IO</a> : <a href="base.html#Event" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
-<h3 class="class_section_header">member functions</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">close</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">eof</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">flush</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">good</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> flag)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mode</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">more</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">readInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">readLine</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> val)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-</div>
-<p class="top_link">[ <a href="#top">top</a> ]</p>
-</div>
-<hr />
-<a name="StdErr" /><div class="class">
-<h2 class="class_title" name="StdErr">StdErr</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="io.html#IO" class="ckdoc_typename ckdoc_type_object">IO</a> : <a href="base.html#Event" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
-<h3 class="class_section_header">member functions</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">close</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">eof</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">flush</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">good</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> flag)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mode</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">more</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">readInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">readLine</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> val)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -772,6 +655,51 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">is_mouse_motion</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="KBHit" /><div class="class">
+<h2 class="class_title" name="KBHit">KBHit</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Event" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">KBHit (terminal only) is a simple mechanism for capturing keyboard input (for a more flexible mechanism, see HID).<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/hid/kbhit/kbhit.ck">hid/kbhit/kbhit.ck</a></li>
+<li><a target="_blank" href="../examples/hid/kbhit/kbhit2.ck">hid/kbhit/kbhit2.ck</a></li>
+<li><a target="_blank" href="../examples/hid/kbhit/clix.ck">hid/kbhit/clix.ck</a></li>
+<li><a target="_blank" href="../examples/hid/kbhit/clix2.ck">hid/kbhit/clix2.ck</a></li>
+<li><a target="_blank" href="../examples/hid/kbhit/clix3.ck">hid/kbhit/clix3.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">can_wait</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getchar</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Event</span> <span class="membername">hit</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">more</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">off</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">on</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">state</span>()</p>
 <p class="empty_member_description">No description available</p>
 </div>
 </div>

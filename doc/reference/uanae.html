@@ -5,8 +5,8 @@
 <body>
 <a name="top"/>
 <div id="title">
-<div class="titleL"><h1>Unit Analyzers</h1></div>
-<div class="titleR"><h1><a href="index.html">ChucK Class Library Reference</a></h1></div>
+<div class="titleL"><h1><a href="./">ChucK Class Library Reference</a></h1></div>
+<div class="titleR"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;Unit Analyzers</h1></div>
 </div>
 <div id="body">
 <div class="toc"><a id="toc"/>
@@ -187,7 +187,7 @@
 <a name="RMS" /><div class="class">
 <h2 class="class_title" name="RMS">RMS</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">A unit analyzer that computes the RMS power mean from a magnitude spectrum (either from an incoming UAna, or given manually), and outputs a single number.<p>
+<p class="class_description">A unit analyzer that computes the root-mean-square (RMS) power mean from a magnitude spectrum (either from an incoming UAna, or given manually), and outputs a single number.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ai/features/rms.ck">ai/features/rms.ck</a></li>
 </ul></div>
@@ -278,7 +278,7 @@
 <a name="AutoCorr" /><div class="class">
 <h2 class="class_title" name="AutoCorr">AutoCorr</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">A unit analyzer that computes auto-correlation of the incoming analysis frame.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/analysis/autocorr.ck">analysis/autocorr.ck</a></li>
 </ul></div>
@@ -397,9 +397,11 @@
 <a name="Flip" /><div class="class">
 <h2 class="class_title" name="Flip">Flip</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Turns audio samples into frames in the UAna domain.<p>
+<p class="class_description">Turn N (size) audio samples into a Unit Analyzer audio analysis frame.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/analysis/flip.ck">analysis/flip.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/autocorr.ck">analysis/autocorr.ck</a></li>
+<li><a target="_blank" href="../examples/ai/features/zerox.ck">ai/features/zerox.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -469,6 +471,11 @@
 <h2 class="class_title" name="IFFT">IFFT</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Computes the inverse Fast Fourier Transform on incoming spectral frames (on demand), and overlap-adds the results into its internal buffer, ready to be sent to other UGen's connected via =>. The window size (along with an arbitrary window shape) is controlled via the .window method.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/analysis/ifft.ck">analysis/ifft.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/ifft2.ck">analysis/ifft2.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/ifft3.ck">analysis/ifft3.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -503,6 +510,9 @@
 <h2 class="class_title" name="UnFlip">UnFlip</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Turns UAna frames into audio samples, via overlap add.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/analysis/flip.ck">analysis/flip.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -536,7 +546,7 @@
 <a name="XCorr" /><div class="class">
 <h2 class="class_title" name="XCorr">XCorr</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">A unit analyzer that computes cross-correlation between two incoming analysis frames.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/analysis/xcorr.ck">analysis/xcorr.ck</a></li>
 </ul></div>

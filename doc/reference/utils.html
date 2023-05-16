@@ -5,8 +5,8 @@
 <body>
 <a name="top"/>
 <div id="title">
-<div class="titleL"><h1>Utilities</h1></div>
-<div class="titleR"><h1><a href="index.html">ChucK Class Library Reference</a></h1></div>
+<div class="titleL"><h1><a href="./">ChucK Class Library Reference</a></h1></div>
+<div class="titleR"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;Utilities</h1></div>
 </div>
 <div id="body">
 <div class="toc"><a id="toc"/>
@@ -103,7 +103,7 @@
 <a name="StringTokenizer" /><div class="class">
 <h2 class="class_title" name="StringTokenizer">StringTokenizer</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">Break a string into tokens. This uses whitespace as the delimiter.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/string/token.ck">string/token.ck</a></li>
 <li><a target="_blank" href="../examples/string/readline.ck">string/readline.ck</a></li>
@@ -115,35 +115,35 @@
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">get</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Return the i-th token in the set string.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">get</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">string</span> out)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Return the i-th token in the set string. Additionally, write the token string to the `out` string variable.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">more</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Return true (1) if there are still more tokens, false (0) if no more tokens.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">next</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Return the next token string.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">next</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> out)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Return the next token string. Additionally, write the token string to the 'out' string variable.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">reset</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Reset token iteration back to the beginning of the set string.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> line)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the string to be tokenized.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Returns the number of token strings that the set string can be broken into.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -152,28 +152,33 @@
 <a name="ConsoleInput" /><div class="class">
 <h2 class="class_title" name="ConsoleInput">ConsoleInput</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Event" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">(Terminal only) a utility for prompting user input on the command line.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/string/readline.ck">string/readline.ck</a></li>
+<li><a target="_blank" href="../examples/ai/word2vec/word2vec-prompt.ck">ai/word2vec/word2vec-prompt.ck</a></li>
+<li><a target="_blank" href="../examples/ai/word2vec/poem-ungenerate.ck">ai/word2vec/poem-ungenerate.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">can_wait</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">(internal) used by virtual machine for synthronization.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">getLine</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Return the next line of input as a string.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">more</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Return whether there is more input to read.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Event</span> <span class="membername">prompt</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Return an Event to wait on.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Event</span> <span class="membername">prompt</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> what)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Print a prompt text and return an Event to wait on.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
