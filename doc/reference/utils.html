@@ -152,28 +152,33 @@
 <a name="ConsoleInput" /><div class="class">
 <h2 class="class_title" name="ConsoleInput">ConsoleInput</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Event" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">(Terminal only) a utility for prompting user input on the command line.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/string/readline.ck">string/readline.ck</a></li>
+<li><a target="_blank" href="../examples/ai/word2vec/word2vec-prompt.ck">ai/word2vec/word2vec-prompt.ck</a></li>
+<li><a target="_blank" href="../examples/ai/word2vec/poem-ungenerate.ck">ai/word2vec/poem-ungenerate.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">can_wait</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">(internal) used by virtual machine for synthronization.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">getLine</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Return the next line of input as a string.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">more</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Return whether there is more input to read.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Event</span> <span class="membername">prompt</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Return an Event to wait on.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Event</span> <span class="membername">prompt</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> what)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Print a prompt text and return an Event to wait on.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
