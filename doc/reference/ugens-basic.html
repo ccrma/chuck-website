@@ -15,12 +15,12 @@
 <p class="toc_class"><a href="#Impulse" class="ckdoc_typename ckdoc_type_ugen">Impulse</a></p>
 <p class="toc_class"><a href="#Step" class="ckdoc_typename ckdoc_type_ugen">Step</a></p>
 <p class="toc_class"><a href="#SndBuf" class="ckdoc_typename ckdoc_type_ugen">SndBuf</a></p>
+<p class="toc_class"><a href="#SndBuf2" class="ckdoc_typename ckdoc_type_ugen">SndBuf2</a></p>
 <p class="toc_class"><a href="#ADSR" class="ckdoc_typename ckdoc_type_ugen">ADSR</a></p>
 <p class="toc_class"><a href="#Envelope" class="ckdoc_typename ckdoc_type_ugen">Envelope</a></p>
 <p class="toc_class"><a href="#Delay" class="ckdoc_typename ckdoc_type_ugen">Delay</a></p>
 <p class="toc_class"><a href="#DelayL" class="ckdoc_typename ckdoc_type_ugen">DelayL</a></p>
 <p class="toc_class"><a href="#DelayA" class="ckdoc_typename ckdoc_type_ugen">DelayA</a></p>
-<p class="toc_class"><a href="#DelayP" class="ckdoc_typename ckdoc_type_ugen">DelayP</a></p>
 <p class="toc_class"><a href="#Echo" class="ckdoc_typename ckdoc_type_ugen">Echo</a></p>
 <p class="toc_class"><a href="#Noise" class="ckdoc_typename ckdoc_type_ugen">Noise</a></p>
 <p class="toc_class"><a href="#CNoise" class="ckdoc_typename ckdoc_type_ugen">CNoise</a></p>
@@ -37,7 +37,6 @@
 <p class="toc_class"><a href="#Chugen" class="ckdoc_typename ckdoc_type_ugen">Chugen</a></p>
 <p class="toc_class"><a href="#UGen_Multi" class="ckdoc_typename ckdoc_type_ugen">UGen_Multi</a></p>
 <p class="toc_class"><a href="#UGen_Stereo" class="ckdoc_typename ckdoc_type_ugen">UGen_Stereo</a></p>
-<p class="toc_class"><a href="#SndBuf2" class="ckdoc_typename ckdoc_type_ugen">SndBuf2</a></p>
 <p class="toc_class"><a href="#Mix2" class="ckdoc_typename ckdoc_type_ugen">Mix2</a></p>
 <p class="toc_class"><a href="#Pan2" class="ckdoc_typename ckdoc_type_ugen">Pan2</a></p>
 </div>
@@ -110,7 +109,12 @@
 <a name="Impulse" /><div class="class">
 <h2 class="class_title" name="Impulse">Impulse</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">A impulse generator. Can be used to set the value of the next sample; default for each sample is 0 if not set. Additionally, this can be used to generate a digial signal, one sample at a time.<p>
+<p class="class_description">An impulse generator. Can be used to set the value of the next sample; default for each sample is 0 if not set. Additionally, this can be used to generate a digital signal, one sample at a time.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/imp.ck">basic/imp.ck</a></li>
+<li><a target="_blank" href="../examples/basic/comb.ck">basic/comb.ck</a></li>
+<li><a target="_blank" href="../examples/deep/chant.ck">deep/chant.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -265,6 +269,13 @@
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
+<a name="SndBuf2" /><div class="class">
+<h2 class="class_title" name="SndBuf2">SndBuf2</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#SndBuf" class="ckdoc_typename ckdoc_type_ugen">SndBuf</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">An interpolating sound buffer with two-channel output. Reads from a variety of uncompressed formats.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
 <a name="ADSR" /><div class="class">
 <h2 class="class_title" name="ADSR">ADSR</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#Envelope" class="ckdoc_typename ckdoc_type_ugen">Envelope</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
@@ -278,19 +289,19 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ATTACK</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ATTACK</span></p><p class="member_description">See state() function. Denotes that the envelope is in the attack stage</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DECAY</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DECAY</span></p><p class="member_description">See state() function. Denotes that the envelope is in the decay stage</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DONE</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DONE</span></p><p class="member_description">See state() function. Denotes that the envelope has completed all stages</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RELEASE</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RELEASE</span></p><p class="member_description">See state() function. Denotes that the envelope is in the release stage</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">SUSTAIN</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">SUSTAIN</span></p><p class="member_description">See state() function. Denotes that the envelope is in the sustain stage</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -556,40 +567,6 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
-<a name="DelayP" /><div class="class">
-<h2 class="class_title" name="DelayP">DelayP</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
-<h3 class="class_section_header">member functions</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> max)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">window</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> window)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">window</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-</div>
-<p class="top_link">[ <a href="#top">top</a> ]</p>
-</div>
-<hr />
 <a name="Echo" /><div class="class">
 <h2 class="class_title" name="Echo">Echo</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
@@ -727,6 +704,10 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h2 class="class_title" name="TriOsc">TriOsc</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#Osc" class="ckdoc_typename ckdoc_type_ugen">Osc</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A triangle wave oscillator.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/oscillatronx.ck">basic/oscillatronx.ck</a></li>
+<li><a target="_blank" href="../examples/deep/shepard.ck">deep/shepard.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -747,7 +728,7 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="class_description">Sawtooth wave oscillator.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/deep/thx.ck">deep/thx.ck</a></li>
-<li><a target="_blank" href="../examples//basic/oscillatronx.ck">/basic/oscillatronx.ck</a></li>
+<li><a target="_blank" href="../examples/basic/oscillatronx.ck">basic/oscillatronx.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -808,6 +789,9 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h2 class="class_title" name="Phasor">Phasor</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#Osc" class="ckdoc_typename ckdoc_type_ugen">Osc</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A phasor oscillator; linearly rises from 0 to 1; can be used as a phase control.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/phasor.ck">basic/phasor.ck</a></li>
+</ul></div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -903,13 +887,6 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="member_description">Get the panning type: (1) constant power panning, (0) unity gain anti-panning.</p>
 </div>
 </div>
-<p class="top_link">[ <a href="#top">top</a> ]</p>
-</div>
-<hr />
-<a name="SndBuf2" /><div class="class">
-<h2 class="class_title" name="SndBuf2">SndBuf2</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#SndBuf" class="ckdoc_typename ckdoc_type_ugen">SndBuf</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">An interpolating sound buffer with two-channel output. Reads from a variety of uncompressed formats.<p>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />

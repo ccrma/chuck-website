@@ -25,6 +25,7 @@
 <p class="toc_class"><a href="#WvIn" class="ckdoc_typename ckdoc_type_ugen">WvIn</a></p>
 <p class="toc_class"><a href="#WaveLoop" class="ckdoc_typename ckdoc_type_ugen">WaveLoop</a></p>
 <p class="toc_class"><a href="#WvOut" class="ckdoc_typename ckdoc_type_ugen">WvOut</a></p>
+<p class="toc_class"><a href="#WvOut2" class="ckdoc_typename ckdoc_type_ugen">WvOut2</a></p>
 <p class="toc_class"><a href="#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a></p>
 <p class="toc_class"><a href="#BandedWG" class="ckdoc_typename ckdoc_type_ugen">BandedWG</a></p>
 <p class="toc_class"><a href="#BlowBotl" class="ckdoc_typename ckdoc_type_ugen">BlowBotl</a></p>
@@ -58,6 +59,11 @@
 <p class="class_description">John Chowning's reverberator class. This class is derived from the CLM NRev function, which is based on the use of networks of simple allpass and comb delay filters. This particular arrangement consists of 6 comb filters in parallel, followed by 3 allpass filters, a lowpass filter, and another allpass in series, followed by two allpass filters in parallel with corresponding right and left outputs.
 
 by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/effects/reverb.ck">effects/reverb.ck</a></li>
+<li><a target="_blank" href="../examples/otf_06.ck">otf_06.ck</a></li>
+<li><a target="_blank" href="../examples/otf_07.ck">otf_07.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -78,6 +84,11 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="class_description">CCRMA's NRev reverberator class. This class is derived from the CLM NRev function, which is based on the use of networks of simple allpass and comb delay filters. This particular arrangement consists of 6 comb filters in parallel, followed by 3 allpass filters, a lowpass filter, and another allpass in series, followed by two allpass filters in parallel with corresponding rightand left outputs.
 
 by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/effects/reverb.ck">effects/reverb.ck</a></li>
+<li><a target="_blank" href="../examples/stk/krstlchr-algo7.ck">stk/krstlchr-algo7.ck</a></li>
+<li><a target="_blank" href="../examples/deep/thx.ck">deep/thx.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -98,6 +109,9 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="class_description">Perry's simple reverberator class. This class is based on some of the famous Stanford/CCRMA reverbs (NRev, KipRev), which were based on the Chowning/Moorer/Schroeder reverberators using networks of simple allpass and comb delay filters. This class implements two series allpass units and two parallel comb filters.
 
 by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/effects/reverb.ck">effects/reverb.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -119,7 +133,7 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 
 by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/stk/chorus.ck">stk/chorus.ck</a></li>
+<li><a target="_blank" href="../examples/effects/chorus.ck">effects/chorus.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -208,6 +222,9 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="class_description">This class implements a simple pitch shifter using delay lines.
 
 by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/effects/pitch-shift.ck">effects/pitch-shift.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -497,6 +514,41 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">wavFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
 <p class="member_description">Open WAVE file for writing.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="WvOut2" /><div class="class">
+<h2 class="class_title" name="WvOut2">WvOut2</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#WvOut" class="ckdoc_typename ckdoc_type_ugen">WvOut</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/rec.ck">basic/rec.ck</a></li>
+<li><a target="_blank" href="../examples/basic/rec-auto.ck">basic/rec-auto.ck</a></li>
+<li><a target="_blank" href="../examples/basic/rec-auto-stereo.ck">basic/rec-auto-stereo.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">aifFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">matFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">rawFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">sndFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">wavFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
