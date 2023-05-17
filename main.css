@@ -1,0 +1,193 @@
+/* import bootstrap */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css');
+
+body
+{
+    text-align: center;
+    background-color: #fff;
+    color: #000;
+    justify-content: center;
+    margin-top: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.mainContainer
+{
+    max-width: 720px;
+    margin: auto;
+}
+
+.outlineTable
+{
+    border: 0;
+    background-color: #d9d9d9;
+    margin: auto;
+}
+
+.innerTable
+{
+    border: 0;
+    background-color: #fdfdfd;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+.innerTable td
+{
+    padding: 4px;
+    text-align: center;
+}
+
+#headerTable td.left
+{
+    width: 42%;
+    text-align: right;
+}
+
+#headerTable td.right
+{
+    text-align: left;
+}
+
+h1
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40px;
+}
+
+h2
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-style: bold;
+}
+
+h3
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #666;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.logoContainer
+{
+    width: 100%;
+    text-align: center;
+}
+
+.logo
+{
+    transition: transform 0.3s ease;
+    width: auto;
+}
+
+.logo:hover
+{
+    animation: glow 1.5s infinite;
+}
+
+.description
+{
+    text-align: justify;
+}
+
+.link-table-container
+{
+    display: flex;
+    /* justify-content: left; */
+    justify-content: center;
+}
+
+.link-table
+{
+    border: 0;
+    /* text-align: left; */
+    text-align: left;
+    margin-left: 2rem;
+}
+
+
+
+
+/* ----------------- Utility ------------------- */
+.flex-container
+{
+    display: flex;
+    justify-content: center;
+}
+
+.flex-item
+{
+    width: 33.33%;
+    height: auto;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container
+{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 140px;
+    margin: auto;
+}
+
+.image-container img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+.no-border
+{
+    border: none;
+}
+
+.big-text
+{
+    font-size: 1.2em;
+}
+
+.mid-text
+{
+    font-size: 0.9em;
+}
+
+.small-text
+{
+    font-size: 0.8em;
+}
+
+.tiny-text 
+{
+    font-size: 0.6em;
+}
+
+.bold {
+    font-weight: bold;
+}
+.gray
+{
+    color: #999;
+}
+
+.light-em
+{
+    color: #666;
+    font-style: italic;
+}
+
+.center
+{
+    margin: auto;
+}
