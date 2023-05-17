@@ -190,14 +190,14 @@ h3
 .bold {
     font-weight: bold;
 }
-.gray
+.green
 {
-    color: #999;
+    color: green;
 }
 
 .light-em
 {
-    color: #666;
+    color: orange;
     font-style: italic;
 }
 
