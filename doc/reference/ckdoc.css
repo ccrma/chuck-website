@@ -75,7 +75,7 @@ a
     left: 0;
     right: 0;
     border-bottom: 1px solid black;
-    padding: 1em 2em;
+    padding: 0.5em 2em;
     margin-bottom: 1.5em;
     background-color: white;
     float: left;
@@ -86,15 +86,40 @@ a
 {
     float: left;
     width: auto;
-    clear: none;
+    /* vertically center */
+    line-height: 48px;
+    height: 48px;
 }
+
+.gray
+{
+    color: gray;
+}
+
+.inline
+{
+    display: inline;
+}
+
 
 .titleR
 {
-    /* float: right; */
-    width: auto;
+    float: right;
+    width: initial;
     clear: none;
-    color: gray;
+}
+
+.titleLogo
+{
+    width: 48px;
+    height: 48px;
+    padding-right: 8px;
+}
+
+.titleLogo img
+{
+    width: 48px;
+    height: 48px;
 }
 
 h1

@@ -5,8 +5,11 @@
 <body>
 <a name="top"/>
 <div id="title">
-<div class="titleL"><h1><a href="./">ChucK Class Library Reference</a></h1></div>
-<div class="titleR"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;Chugins Library</h1></div>
+<div class="titleL">
+<div style="display: flex; align-items: center;"><div class="inline titlelogo"><a href="https://chuck.stanford.edu/" target="_blank"><img src="https://chuck.stanford.edu/doc/images/chuck-logo2023w.png" /> </div><div class="inline"><h1><a href="./">ChucK Class Library Reference</a></h1></div>
+<div class="inline gray"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;Chugins Library</h1></div>
+</div>
+</div>
 </div>
 <div id="body">
 <div class="toc"><a id="toc"/>
@@ -465,56 +468,48 @@
 <a name="Mesh2D" /><div class="class">
 <h2 class="class_title" name="Mesh2D">Mesh2D</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">This class implements a rectilinear, two-dimensional digital waveguide mesh structure.  For details, see Van Duyne and Smith, &quot;Physical Modeling with the 2-D Digital Waveguide Mesh,&quot; <i>Proceedings of the 1993 International Computer Music Conference</i>. <br/><br/>This is a digital waveguide model, making its use possibly subject to patents held by Stanford University, Yamaha, and others. <p>
+<p class="empty_class_description">No description available</p>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">decay</span>()</p>
-<p class="member_description">Decay constant (0 = instant decay, 1.0 = long decay time).</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">controlChange</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> ctrl, <span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">decay</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="member_description">Decay constant (0 = instant decay, 1.0 = long decay time).</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">decay</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="member_description">Release the model.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">energy</span>()</p>
+<p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="member_description">Trigger the mesh with given amplitude.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">inputPosition</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> xval, <span class="ckdoc_typename ckdoc_type_primitive">float</span> yval)</p>
+<p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">x</span>()</p>
-<p class="member_description">X dimension of &quot;plate&quot; (max 12).</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">x</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
-<p class="member_description">X dimension of &quot;plate&quot; (max 12).</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> note, <span class="ckdoc_typename ckdoc_type_primitive">float</span> vel)</p>
+<p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">xpos</span>()</p>
-<p class="member_description">Strike x position (appears to be on range (0.0, 2.0)).</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">nx</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">xpos</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="member_description">Strike x position (appears to be on range (0.0, 2.0)).</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">nx</span>()</p>
+<p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">y</span>()</p>
-<p class="member_description">Y dimension of &quot;plate&quot; (max 12).</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ny</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">y</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
-<p class="member_description">Y dimension of &quot;plate&quot; (max 12).</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">ypos</span>()</p>
-<p class="member_description">Strike y position (appears to be on range (0.0, 2.0)).</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">ypos</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="member_description">Strike y position (appears to be on range (0.0, 2.0)).</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ny</span>()</p>
+<p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
