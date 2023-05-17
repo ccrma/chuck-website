@@ -43,6 +43,9 @@
 <h2 class="class_title" name="ABSaturator">ABSaturator</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Soft clip saturating distortion, based on examples from Abel/Berners' Music 424 course at Stanford.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/effects/ABSaturator.ck">effects/ABSaturator.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -68,28 +71,31 @@
 <a name="AmbPan3" /><div class="class">
 <h2 class="class_title" name="AmbPan3">AmbPan3</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">Third-order ambisonics panner (https://en.wikipedia.org/wiki/Ambisonics)<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/spatial/AmbPan3-CCRMA.ck">spatial/AmbPan3-CCRMA.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">azimuth</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set horizontal angle of point source</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">azimuth</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get horizontal angle of point source</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">channelMap</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the mapping of channels for the amibsonic system</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">elevation</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set vertical angle of point source</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">elevation</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get vertical angle of point source</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -99,6 +105,9 @@
 <h2 class="class_title" name="Bitcrusher">Bitcrusher</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Applies aliased downsampling and sample-width reduction to create a variety of distortion effects. <p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/effects/Bitcrusher.ck">effects/Bitcrusher.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -132,44 +141,50 @@
 <a name="Elliptic" /><div class="class">
 <h2 class="class_title" name="Elliptic">Elliptic</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">Elliptic implements cascaded IIR filters and a built-in elliptical filter design. It is capable of low-pass, high-pass, or bandpass filtering with very steep slopes.
+The atten determines how much of the signal is attenuated outside the passband.
+Elliptic filters come with a trade-off for their steep slopes: they have a certain amount of ripple outside the passbands. A very small ripple (0.1 or 0.2 dB) produces very little ringing, whereas a large ripple (eg. 20 dB) produces a very strong harmonic ring.
+The filter design algorithm sometimes can't fulfill the design criteria -- a particular combination of cutoff frequencies, ripple, and attenuation. If that happens, the user is warned that the filter is not initialized, and the filter is bypassed. This may happen, for instance, if you ask for a very steep attenuation with very low ripple.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/filter/Elliptic-help.ck">filter/Elliptic-help.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">atten</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set filter attenuation in dB. Default 90.0</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">atten</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get filter attenuation in dB.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">bpf</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> stop, <span class="ckdoc_typename ckdoc_type_primitive">float</span> hip, <span class="ckdoc_typename ckdoc_type_primitive">float</span> lop)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Create a band-pass filter.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">bypass</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set switch bypass. 1 is on, 0 is off. Default 0</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">bypass</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get switch bypass. 1 is on, 0 is off.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hpf</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> stop, <span class="ckdoc_typename ckdoc_type_primitive">float</span> pass)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Create a high-pass filter.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">lpf</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> stop, <span class="ckdoc_typename ckdoc_type_primitive">float</span> pass)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Create a low-pass filter.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">ripple</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set filter ripple in dB. Default 0.2</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">ripple</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get filter ripple in dB.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -178,56 +193,62 @@
 <a name="ExpDelay" /><div class="class">
 <h2 class="class_title" name="ExpDelay">ExpDelay</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">Feedback delay at exponentially changing delay times.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/effects/ExpDelay.ck">effects/ExpDelay.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">ampcurve</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> ampcurve)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set steepness of amplitude decay [0.0001-inf].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">ampcurve</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get steepness of amplitude decay [0.0001-inf].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set duration of delay.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get duration of delay.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">durcurve</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> durcurve)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set steepness of delay curve [0.0001-inf]:
+       1 = steady
+      <1 = starts fast and slows down
+      >1 = starts slow and speeds up</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">durcurve</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get steepness of delay curve [0.0001-inf].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> max)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set maximum possible delay duration.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get maximum possible delay duration.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> mix)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set dry/wet mix [0-1].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get dry/wet mix [0-1].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">reps</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> reps)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set number of repetitions.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">reps</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get number of repetitions.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -236,16 +257,26 @@
 <a name="ExpEnv" /><div class="class">
 <h2 class="class_title" name="ExpEnv">ExpEnv</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">ChucK Simple Decaying Exponential Envelope UGen
+
+Simple single time constant exponential decay, applied to any signal passed through it.  Obeys:  value, T60, radius, and keyOn Especially useful for Modal synthesis.  One of these for each mode:
+SinOsc s => ExpEnv e => dac;
+
+Also useful for noise excitation pulse, using it like:
+Noise n => ExpEnv e => dac;<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/effects/ExpEnv.ck">effects/ExpEnv.ck</a></li>
+<li><a target="_blank" href="../examples/effects/ExpEnv-modes.ck">effects/ExpEnv-modes.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">T60</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set T60 delay time (time for sounds to decay by 60dB</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">T60</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get T60 delay time (time for sounds to decay by 60dB</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">keyOn</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
@@ -274,40 +305,52 @@
 <a name="FIR" /><div class="class">
 <h2 class="class_title" name="FIR">FIR</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">Yo!  This here is a ChugIn for ChucK. It's a general-purpose FIR filter.
+You make a new one:
+
+FIR myFilter;
+
+Then specify order:
+
+N => myFilter.order;<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/filter/FIR-convolve-homer.ck">filter/FIR-convolve-homer.ck</a></li>
+<li><a target="_blank" href="../examples/filter/FIR-greyhole-down-up-decimate.ck">filter/FIR-greyhole-down-up-decimate.ck</a></li>
+<li><a target="_blank" href="../examples/filter/FIR-sinc-explicit.ck">filter/FIR-sinc-explicit.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">bpHetero</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">bpHetero</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq)</p>
+<p class="member_description">Cosine modulate lowpass filter to freq.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">coeff</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg, <span class="ckdoc_typename ckdoc_type_primitive">float</span> arg2)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">coeff</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> idx, <span class="ckdoc_typename ckdoc_type_primitive">float</span> coeff)</p>
+<p class="member_description">Set filter idx's coefficient to coeff.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">coeff</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">coeff</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> idx)</p>
+<p class="member_description">Set filter idx's coefficient.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gaussian</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gaussian</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> cutoff_freq)</p>
+<p class="member_description">Create a gaussian lowpass filter with cutoff cutoff_freq.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">hpHetero</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Cosine modulate lowpass filter to 1/2 the sample rate.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">order</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set filter's order.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">order</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get filter's order.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sinc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sinc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> cutoff_freq)</p>
+<p class="member_description">Create a sinc lowpass filter with cutoff cutoff_freq.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -317,6 +360,10 @@
 <h2 class="class_title" name="FoldbackSaturator">FoldbackSaturator</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Foldback saturator that inverts a signal and multiplies it by an index as it passes a threshold.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/effects/FoldbackSaturator-index.ck">effects/FoldbackSaturator-index.ck</a></li>
+<li><a target="_blank" href="../examples/effects/FoldbackSaturator-threshold.ck">effects/FoldbackSaturator-threshold.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -350,64 +397,68 @@
 <a name="GVerb" /><div class="class">
 <h2 class="class_title" name="GVerb">GVerb</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">GVerb is a very smooth reverberator with the ability to produce very long reverb times.
+GVERB is based on the original "gverb/gigaverb" by Juhana Sadeharju (kouhia at nic.funet.fi). The code for this version was adapted from RTcmix (http:rtcmix.org), which in turn adapted it from the Max/MSP version by Olaf Mtthes (olaf.matthes at gmx.de).<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/effects/GVerb.ck">effects/GVerb.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bandwidth</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get the input bandwidth [0 - 1]. Same as damping control, but on the input signal. Default 0.5.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bandwidth</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the input bandwidth [0 - 1]. Same as damping control, but on the input signal. Default 0.5.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">damping</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get high frequency rolloff [0 - 1]. 0 damps the reverb signal completely, 1 not at all. Default 0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">damping</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set high frequency rolloff [0 - 1]. 0 damps the reverb signal completely, 1 not at all. Default 0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">dry</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get the amount of dry signal [0 - 1]. Default 0.5.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">dry</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the amount of dry signal [0 - 1]. Default 0.5.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">early</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get the early reflection level [0 - 1]. Default 0.4.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">early</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the early reflection level [0 - 1]. Default 0.4.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">revtime</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set reverberation time. Default 5::second.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">revtime</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get reverberation time.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">roomsize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set room size [1.0 - 300.0]. Default 30.0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">roomsize</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get room size [1.0 - 300.0].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">tail</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get the tail level [0 - 1]. Default 0.5.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">tail</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the tail level [0 - 1]. Default 0.5.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -416,32 +467,38 @@
 <a name="KasFilter" /><div class="class">
 <h2 class="class_title" name="KasFilter">KasFilter</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">Under-sampling-based resonant lowpass filter, based on two sample & holds with a cosine crossfading between them. Each S&H samples at the moment it's faded out.
+The frequency of the crossfading and sampling of the input sets the cutoff. This leads to a infinitely steep cutoff, at the price of aliasing. Negative feedback is used for resonance at the cutoff frequency, a technique that I believe is new here.
+In addition to the traditional modulation options waveshaping of the crossfading signal is provided. This leads to distortion at the cutoff frequency. At extreme values (and assuming no feedback is used) that makes the effect closer to traditional under-sampling.
+Linear interpolation is used on the input signal to avoid the S&Hs being quantised to ChucK's sample rate; This technique causes quite a few interesting artifacts that result from the ratio between the frequency of the input and the cutoff frequency. To emphasise those it makes sense to try to minimise artifacts induced by the digital environment itself. Thanks to Rob Hordijk for sharing his insights there.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/filter/KasFilter.ck">filter/KasFilter.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">accent</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Sets the amount of waveshaping on the crossfading sine [0 - 1]. 1 is close to regular under-sampling (if no resonance is used).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">accent</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Gets the amount of waveshaping on the crossfading sine [0 - 1]. 1 is close to regular under-sampling (if no resonance is used).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Sets the cutoff frequency. This sets both the frequency at which the two sample & holds sample the input signal  and the frequency of the sine that crossfades between them.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Gets the cutoff frequency. This sets both the frequency at which the two sample & holds sample the input signal  and the frequency of the sine that crossfades between them.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">resonance</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Sets the resonance, which is implemented as negative feedback [0 - 0.95].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">resonance</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Gets the resonance, which is implemented as negative feedback [0 - 0.95].</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -518,44 +575,47 @@
 <a name="Multicomb" /><div class="class">
 <h2 class="class_title" name="Multicomb">Multicomb</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">Multiple simultaneous comb filters randomly chosen within a specified frequency range and spread across the stereo field.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/filter/Multicomb.ck">filter/Multicomb.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">maxfreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> maxfreq)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set max frequency. Default 880.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">maxfreq</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get max frequency. Default 880.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">minfreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> minfreq)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set low frequency. Default 220.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">minfreq</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get low frequency. Default 220.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">num</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> num)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set number of comb filters. Default 5.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">num</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get number of comb filters. Default 5.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">revtime</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> revtime)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set total ring time. Default 1::second.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">revtime</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get total ring time. Default 1::second.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> minfreq, <span class="ckdoc_typename ckdoc_type_primitive">float</span> maxfreq)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set both low and high frequencies.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -564,16 +624,19 @@
 <a name="Pan4" /><div class="class">
 <h2 class="class_title" name="Pan4">Pan4</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Pan position [0-4]. <p>
+<p class="class_description">Four-channel equal-power panner. <p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/spatial/Pan4.ck">spatial/Pan4.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pan</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set pan position [0-4].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pan</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get pan position [0-4].</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -582,16 +645,19 @@
 <a name="Pan8" /><div class="class">
 <h2 class="class_title" name="Pan8">Pan8</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">Eight-channel equal-power panner.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/spatial/Pan8.ck">spatial/Pan8.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pan</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set pan position [0-8].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pan</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get pan position [0-8].</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -600,16 +666,16 @@
 <a name="Pan16" /><div class="class">
 <h2 class="class_title" name="Pan16">Pan16</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">Sixteen-channel equal-power panner.<p>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pan</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set pan position [0-16].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pan</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get pan position [0-16].</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -618,52 +684,55 @@
 <a name="PitchTrack" /><div class="class">
 <h2 class="class_title" name="PitchTrack">PitchTrack</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">PitchTrack is a monophonic autocorrelation pitch tracker with a fast response and extremely high accuracy, even at low frequencies. It is adapted from [helmholtz~] for Pd by Katja, documented at http://www.katjaas.nl/helmholtz/helmholtz.html<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/analysis/PitchTrack.ck">analysis/PitchTrack.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bias</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the bias. Katja's pitch tracker introduces a small bias to help with the tracking. See the link above.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bias</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get the bias. Katja's pitch tracker introduces a small bias to help with the tracking. See the link above.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fidelity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the threshold for certainty about the result. A highly periodic signal (i.e. one that has a strong pitch center) should produce a result with a high fidelity, which a non-periodic signal (eg noise) will have a very low fidelity. Setting this parameter close to 1 should reduce the number of inaccurate reports. [0-1], default 0.95.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fidelity</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get the threshold for certainty about the result. A highly periodic signal (i.e. one that has a strong pitch center) should produce a result with a high fidelity, which a non-periodic signal (eg noise) will have a very low fidelity. Setting this parameter close to 1 should reduce the number of inaccurate reports. [0-1], default 0.95.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">frame</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set size of FFT frame for analysis. Smaller values result in lower latency and high responsiveness but less accuracy. Higher values result in considerably greater CPU load. Values that aren't powers of 2 get rounded up to the next power of 2. Recommend 512, 1024, or 2048. [128-?], default 2048.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">frame</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get size of FFT frame for analysis. Smaller values result in lower latency and high responsiveness but less accuracy. Higher values result in considerably greater CPU load. Values that aren't powers of 2 get rounded up to the next power of 2. Recommend 512, 1024, or 2048. [128-?], default 2048.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">get</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get calculated frequency.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">overlap</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set how much to overlap successive analysis frames. Higher values should produce smoother values, at the cost of an increase of CPU load. [1-?], default 2.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">overlap</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get how much to overlap successive analysis frames. Higher values should produce smoother values, at the cost of an increase of CPU load. [1-?], default 2.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sensitivity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the minimum RMS value to trigger a pitch calculation. Setting this parameter low forces PitchTrack to attempt to find the pitch of even very quiet sounds. Higher values will cause it to trigger only on louder notes. [0-1], default 0.003.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sensitivity</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get the minimum RMS value to trigger a pitch calculation. Setting this parameter low forces PitchTrack to attempt to find the pitch of even very quiet sounds. Higher values will cause it to trigger only on louder notes. [0-1], default 0.003.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -673,6 +742,10 @@
 <h2 class="class_title" name="PowerADSR">PowerADSR</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#Envelope" class="ckdoc_typename ckdoc_type_ugen">Envelope</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">ADSR envelope that uses a power function to create curved envelope phases. In general, curves under 1.0 are sharp, while curves over 1.0 are soft.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/effects/PowerADSR-feedback-beatings.ck">effects/PowerADSR-feedback-beatings.ck</a></li>
+<li><a target="_blank" href="../examples/effects/PowerADSR.ck">effects/PowerADSR.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -782,64 +855,67 @@
 <a name="Sigmund" /><div class="class">
 <h2 class="class_title" name="Sigmund">Sigmund</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">Sinusoidal analysis & pitch tracking. Adapted from Miller Puckette’s sigmund~ Max object.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/analysis/Sigmund.ck">analysis/Sigmund.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">amp</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> amp)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Report amplitude of nth sinusoundal peak sorting depends on parameter "tracks."</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clear</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Clear buffers and reset.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">env</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get reported RMS value (in dB) of input signal.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freq</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get reported frequency of input signal.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">maxfreq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set maximum frequency of sinusoidal peaks to look for. This can be useful in situations where background noise creates high-frequency, spurious peaks...</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">minpower</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the minimum dB level to report a pitch. Signals quieter than this will be assumed to be crosstalk and ignored. default: 50</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">npeak</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> npeak)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the maximum number of sinusoidal peaks to look for. The computation time is quadratic in the number of peaks actually found (this number only sets an upper limit). Use it to balance CPU time with quality of results.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">npts</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> npts)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the number of points used in analysis. Must be a power of 2, at least 128. The minimum frequency that can be tracked is about 2 * samplerate / npts. Default: 1024.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">param1</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Mysterious setting...</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">param2</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Mysterious setting...</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">param3</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Mysterious setting...</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">peak</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> peak)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Report freq of nth sinusoundal peak sorting. Depends on parameter "tracks."</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">stabletime</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> stabletime)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set period of stability needed for note. Not implemented.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tracks</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> tracks)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Toggle whether peak and amp are sorted in order of amplitude or organized into tracks. Default false.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -848,112 +924,115 @@
 <a name="Spectacle" /><div class="class">
 <h2 class="class_title" name="Spectacle">Spectacle</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">FFT-based spectral delay and EQ by John Gibson. Inspired by the totally awesome Spektral Delay plug-in by Native Instruments.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/effects/Spectacle.ck">effects/Spectacle.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">bands</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set number of frequency bands, [1 - 512], default 64</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">bands</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get number of frequency bands, [1 - 512], default 64</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clear</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Reset Spectacle.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delay</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the same delay duration for all bands.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delayMax</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set maximum delay time.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delayMax</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get maximum delay time.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delayMin</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set minimum delay time.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">delayMin</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get minimum delay time.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">eq</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> eq)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the same EQ value for all bands (value is +/- dB).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">feedback</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> feedback)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set the same feedback value for all bands [-1.0 - 1.0].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">fftlen</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set FFT frame size (power of 2).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">fftlen</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get FFT frame size (power of 2).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freqMax</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set maximum frequency processed by Spectacle.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freqMax</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get maximum frequency processed by Spectacle.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freqMin</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set minimum frequency processed by Spectacle.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">freqMin</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get minimum frequency processed by Spectacle.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">hold</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set hold. True to suppress input, false disables.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">hold</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get hold. True to suppress input, false disables.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> mix)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set mix of processed and unprocessed signal [0 - 1].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get mix of processed and unprocessed signal [0 - 1].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">overlap</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set frame overlap; best between 2 and 6.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">overlap</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get frame overlap; best between 2 and 6.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">posteq</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set posteq to true to apply EQ after delay, rather than before.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">posteq</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get posteq. True applies EQ after delay, rather than before.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">range</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg1, <span class="ckdoc_typename ckdoc_type_primitive">float</span> arg2)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set both min and max freqs in one command.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">table</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> table, <span class="ckdoc_typename ckdoc_type_object">string</span> type)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Set "delay", “eq”, or "feedback" tables to the types "random", "ascending", or "descending." Example: table("delay", "random");</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -962,7 +1041,10 @@
 <a name="WinFuncEnv" /><div class="class">
 <h2 class="class_title" name="WinFuncEnv">WinFuncEnv</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#Envelope" class="ckdoc_typename ckdoc_type_ugen">Envelope</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">WinFunEnv is an Attack/Release envelope built around window functions!<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/effects/WinFuncEnv.ck">effects/WinFuncEnv.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -1069,6 +1151,9 @@
 <h2 class="class_title" name="WPDiodeLadder">WPDiodeLadder</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Virtual analog low pass filter based on Will Pirkle's Diode Ladder application notes<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/filter/WPDiodeLadder.ck">filter/WPDiodeLadder.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -1077,7 +1162,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">cutoff</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get cuttoff frequency in Hz [0..Nyquist).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">nlp_type</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
@@ -1085,7 +1170,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">nlp_type</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get non-linear output setting. 1 is normalized.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">nonlinear</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
@@ -1093,7 +1178,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">nonlinear</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get non-linear saturator setting. 1 is enabled.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">resonance</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
@@ -1101,7 +1186,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">resonance</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get resonance [0 - 17].</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">saturation</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
@@ -1109,7 +1194,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">saturation</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get saturation. Saturation is a scalar gain, and can be used to drive the non-linearity.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -1119,6 +1204,9 @@
 <h2 class="class_title" name="WPKorg35">WPKorg35</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Virtual analog low pass filter based on Will Pirkle's Korg35 application notes<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/filter/WPKorg35.ck">filter/WPKorg35.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -1127,7 +1215,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">cutoff</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get cutoff in Hz [0..Nyquist).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">nonlinear</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> arg)</p>
@@ -1135,7 +1223,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">nonlinear</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get non-linear saturator setting. 1 is enabled.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">resonance</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
@@ -1143,7 +1231,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">resonance</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get resonance [0 - 2).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">saturation</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> arg)</p>
@@ -1151,7 +1239,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">saturation</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get saturation. Saturation is a scalar gain, and can be used to drive the non-linearity.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
