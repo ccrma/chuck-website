@@ -9,6 +9,8 @@ body
     justify-content: center;
     margin-top: 2rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 .mainContainer
@@ -42,7 +44,7 @@ body
 
 #headerTable td.left
 {
-    width: 42%;
+    width: 40%;
     text-align: right;
 }
 
@@ -72,10 +74,22 @@ h3
     font-size: 15px;
 }
 
-.logoContainer
+.logo-container
+{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 256px;
+    height: 256px;
+    margin: auto;
+}
+
+.logo-container img
 {
     width: 100%;
-    text-align: center;
+    height: 100%;
+    object-fit: contain;
 }
 
 .logo
