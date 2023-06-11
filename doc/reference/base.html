@@ -487,17 +487,17 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">eval</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> code)</p>
-<p class="member_description">Evaluate a string as ChucK code, compiling it and spork it as a child shred of the current shred.</p>
+<p class="member_description">Evaluate a string as ChucK code, compile it 
+and spork it as an independent shred.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">eval</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> code, <span class="ckdoc_typename ckdoc_type_object">string</span> args)</p>
-<p class="member_description">Evaluate a string as ChucK code, with optional arguments (bundled in 'args' as "ARG1:ARG2:...", compiling it and spork it as a child shred of the current shred.</p>
-</div>
+<p class="member_description">Evaluate a string as ChucK code, with 
+optional arguments (bundled in 'args' as "ARG1:ARG2:...", compile it and spork it as an independent shred.</p> </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">eval</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> code, <span class="ckdoc_typename ckdoc_type_object">string</span> args, <span class="ckdoc_typename ckdoc_type_primitive">int</span> count)</p>
-<p class="member_description">Evaluate a string as ChucK code, with optional arguments (bundled in 'args' as "ARG1:ARG2:...", compiling it and sporking 'count' instances as a child shreds of the current shred.</p>
-</div>
-<div class="member">
+<p class="member_description">Evaluate a string as ChucK code, with optional arguments (bundled in 'args' as "ARG1:ARG2:...", compile it and sporking 'count' independent shreds.</p> </div> <div 
+class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">intsize</span>()</p>
 <p class="member_description">Return the bit size of an integer.</p>
 </div>
