@@ -184,7 +184,7 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">PI</span></p><p class="member_description">An approximation of pi. (Same as global keyword 'pi'.)</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RANDOM_MAX</span></p><p class="member_description">Lhe largest possible value returned by random().</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RANDOM_MAX</span></p><p class="member_description">The largest possible value returned by random().</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">TWO_PI</span></p><p class="member_description">An approximation of 2*pi</p>
@@ -487,17 +487,17 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">eval</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> code)</p>
-<p class="member_description">Evaluate a string as ChucK code, compile it 
-and spork it as an independent shred.</p>
+<p class="member_description">Evaluate a string as ChucK code, compile it and spork it as an independent shred.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">eval</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> code, <span class="ckdoc_typename ckdoc_type_object">string</span> args)</p>
-<p class="member_description">Evaluate a string as ChucK code, with 
-optional arguments (bundled in 'args' as "ARG1:ARG2:...", compile it and spork it as an independent shred.</p> </div>
+<p class="member_description">Evaluate a string as ChucK code, with optional arguments (bundled in 'args' as "ARG1:ARG2:...", compile it and spork it as an independent shred.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">eval</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> code, <span class="ckdoc_typename ckdoc_type_object">string</span> args, <span class="ckdoc_typename ckdoc_type_primitive">int</span> count)</p>
-<p class="member_description">Evaluate a string as ChucK code, with optional arguments (bundled in 'args' as "ARG1:ARG2:...", compile it and spork 'count' independent shreds.</p> </div> <div 
-class="member">
+<p class="member_description">Evaluate a string as ChucK code, with optional arguments (bundled in 'args' as "ARG1:ARG2:...", compile it and spork 'count' independent shreds.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">intsize</span>()</p>
 <p class="member_description">Return the bit size of an integer.</p>
 </div>
@@ -560,6 +560,12 @@ class="member">
 <h2 class="class_title" name="Std">Std</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A standard library in ChucK, which includes utility functions for random number generation, unit conversions, and absolute value.<p>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RAND_MAX</span></p><p class="member_description">The largest possible value returned by Std.rand().</p>
+</div>
+</div>
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
@@ -664,7 +670,7 @@ class="member">
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">srand</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> seed)</p>
-<p class="member_description">Seed the random number generator. Different seeds will likely generate different sequences of random numbers even if the seeds are close together; alternatively, a sequence of random numbers can be repeated by setting the same seed.</p>
+<p class="member_description">Seed the random number generator. Different seeds will likely generate different sequences of random numbers even if the seeds are close together; alternatively, a sequence of random numbers can be repeated by setting the same seed. (NOTE: this is deprecated; use Math.srandom())</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">system</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> cmd)</p>

@@ -45,10 +45,22 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BINARY</span></p><p class="member_description">Flag denoting binary IO mode.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FLOAT32</span></p><p class="member_description">Flag denoting 32-bit floating point type.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FLOAT64</span></p><p class="member_description">Flag denoting 64-bit floating point type.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">INT16</span></p><p class="member_description">Flag denoting 16-bit integer type.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">INT24</span></p><p class="member_description">Flag denoting 24-bit integer type.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">INT32</span></p><p class="member_description">Flag denoting 32-bit integer type.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">INT64</span></p><p class="member_description">Flag denoting 64-bit integer type.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">INT8</span></p><p class="member_description">Flag denoting 8-bit integer type.</p>
@@ -64,6 +76,36 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">READ_WRITE</span></p><p class="member_description">Flag denoting read/write mode.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">SINT16</span></p><p class="member_description">Flag denoting 16-bit signed integer type.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">SINT24</span></p><p class="member_description">Flag denoting 24-bit signed integer type.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">SINT32</span></p><p class="member_description">Flag denoting 32-bit signed integer type.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">SINT64</span></p><p class="member_description">Flag denoting 64-bit signed integer type.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">SINT8</span></p><p class="member_description">Flag denoting 8-bit signed integer type.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">UINT16</span></p><p class="member_description">Flag denoting 16-bit unsigned integer type.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">UINT24</span></p><p class="member_description">Flag denoting 24-bit unsigned integer type.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">UINT32</span></p><p class="member_description">Flag denoting 32-bit unsigned integer type.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">UINT64</span></p><p class="member_description">Flag denoting 64-bit unsigned integer type.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">UINT8</span></p><p class="member_description">Flag denoting 8-bit unsigned integer type.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">WRITE</span></p><p class="member_description">Flag denoting write mode.</p>
@@ -111,8 +153,12 @@
 <p class="member_description">Return whether there is more to read; the opposite of .eof().</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">readFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_description">Read and return the next floating point value; binary mode: 'flags' denotes the size of float to read (IO.FLOAT32 or IO.FLOAT64).</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">readInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="member_description">Read and return the next integer (binary mode); 'flags' denotes the bit-size of int (IO.INT8, IO.INT16, or IO.INT32).</p>
+<p class="member_description">Read and return the next integer; binary mode: 'flags' denotes the bit-size of int (IO.INT8, IO.INT16, or IO.INT32).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">readLine</span>()</p>
@@ -198,8 +244,16 @@
 <p class="member_description">Open a file by name with flags (bitwise combinations of IO.READ, IO.WRITE, IO.READ_WRITE, IO_APPEND, IO.ASCII, IO.BINARY).</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">readFloat</span>()</p>
+<p class="member_description">Read and return the next floating point value.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">readFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_description">Read and return the next floating point value; if binary mode: 'flags' denotes the size of float to read (IO.FLOAT32 or IO.FLOAT64).</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">readInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="member_description">Read and return an integer by size (binary mode) as specified in 'flags' (IO.INT8, IO.INT16, IO.INT32).</p>
+<p class="member_description">Read and return an integer; binary mode: 'flags' specifies int size to read (IO.INT8, IO.INT16, IO.INT32 default to unsigned values; for signed integers use IO.SINT8, IO.SINT16, IO.SINT32).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">readLine</span>()</p>
@@ -227,11 +281,15 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="member_description">Write integer to file (binary mode) by size as specified by 'flags' (IO.INT8, IO.INT16, IO.INT32).</p>
+<p class="member_description">Write integer value to file; binary mode: int size specified by 'flags' (IO.INT8, IO.INT16, IO.INT32).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
-<p class="member_description">Write integer to file.</p>
+<p class="member_description">Write floating point value to file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> val, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_description">Write floating point value to file; binary mode: flags indicate float size (IO.FLOAT32 or IO.FLOAT64).</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

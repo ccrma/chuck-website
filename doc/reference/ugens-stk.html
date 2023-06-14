@@ -463,12 +463,17 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/basic/rec.ck">basic/rec.ck</a></li>
 <li><a target="_blank" href="../examples/basic/rec-auto.ck">basic/rec-auto.ck</a></li>
 <li><a target="_blank" href="../examples/basic/rec-auto-stereo.ck">basic/rec-auto-stereo.ck</a></li>
+<li><a target="_blank" href="../examples/stk/wvout-24bit.ck">stk/wvout-24bit.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">aifFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
-<p class="member_description">Open an AIFF file for writing.</p>
+<p class="member_description">Open an AIFF file for writing (with default datatype IO.INT16).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">aifFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value, <span class="ckdoc_typename ckdoc_type_primitive">int</span> datatype)</p>
+<p class="member_description">Open an AIFF file for writing, with datatype (e.g., IO.INT16, IO.INT24, IO.INT32, IO.FLOAT32, IO.FLOAT64).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">autoPrefix</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
@@ -500,11 +505,19 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">matFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
-<p class="member_description">Open MATLAB file for writing.</p>
+<p class="member_description">Open MATLAB file for writing (with default datatype IO.FLOAT64).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">matFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value, <span class="ckdoc_typename ckdoc_type_primitive">int</span> datatype)</p>
+<p class="member_description">Open MATLAB file for writing; datatype for MATLAB files can only be IO.FLOAT64.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">rawFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
-<p class="member_description">Open a raw file for writing.</p>
+<p class="member_description">Open a RAW file for writing (note: raw audio files are mono and 16-bit).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">rawFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value, <span class="ckdoc_typename ckdoc_type_primitive">int</span> datatype)</p>
+<p class="member_description">Open a RAW file for writing; datatype for raw files can only be IO.INT16.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">record</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
@@ -516,11 +529,19 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">sndFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
-<p class="member_description">Open SND file for writing.</p>
+<p class="member_description">Open SND file for writing (with default datatype IO.INT16).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">sndFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value, <span class="ckdoc_typename ckdoc_type_primitive">int</span> datatype)</p>
+<p class="member_description">Open SND file for writing, with datatype (e.g., IO.INT16, IO.INT24, IO.INT32, IO.FLOAT32, IO.FLOAT64).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">wavFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
-<p class="member_description">Open WAVE file for writing.</p>
+<p class="member_description">Open WAVE file for writing (with default datatype IO.INT16).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">wavFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value, <span class="ckdoc_typename ckdoc_type_primitive">int</span> datatype)</p>
+<p class="member_description">Open WAVE file for writing, with datatype (e.g., IO.INT16, IO.INT24, IO.INT32, IO.FLOAT32, IO.FLOAT64).</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -529,35 +550,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <a name="WvOut2" /><div class="class">
 <h2 class="class_title" name="WvOut2">WvOut2</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#WvOut" class="ckdoc_typename ckdoc_type_ugen">WvOut</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<p class="class_description">WvOut2 is the stereo version of WvOut; opens and writes a 2-channel audio file; see WvOut for usage.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/rec.ck">basic/rec.ck</a></li>
 <li><a target="_blank" href="../examples/basic/rec-auto.ck">basic/rec-auto.ck</a></li>
 <li><a target="_blank" href="../examples/basic/rec-auto-stereo.ck">basic/rec-auto-stereo.ck</a></li>
+<li><a target="_blank" href="../examples/stk/wvout-24bit.ck">stk/wvout-24bit.ck</a></li>
 </ul></div>
-<h3 class="class_section_header">member functions</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">aifFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">matFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">rawFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">sndFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">wavFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
