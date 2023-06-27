@@ -2,6 +2,75 @@
 ChucK VERSIONS log
 ------------------
 
+1.5.0.4 (June 2023)
+---
+- (added) Math.randomize() -- implicitly randomize RNG seed
+  ---
+  "Randomize the seed of the random number generator (RNG), using an
+   non-deterministic mechanism. Whereas srandom() explicitly seeds the
+   RNG and will produce a deterministic sequence of pseudo-random
+   numbers, randomize() "shakes things up" and causes RNG to start
+   generating from a practically unpredicable seed. The quality of
+   randomize() depends on the underlying implementation."
+- (added) examples
+    |- math/randomize.ck -- shows Math.randomize() in action
+    |- math/maybe.ck -- can't decide? flip a coin with maybe
+    |- math/int-dist.ck -- simulates distribution of Math.random2()
+- (updated) improved RNG behavior that probably no one will notice
+- (fixed) assignments into a full array declaration now results in a
+  compiler error (previously this would cause a crash). for example:
+  === code ===
+    [1,2] @=> int foo[2];
+  === resulting compiler error ===
+    cannot assign '@=>' to full array declaration...
+      |- hint: declare right-hand-side as empty array
+      |- e.g., int foo[]
+- (note) as before, assignments into a full non-array declaration still 
+  works, effectively treating the right-hand-side declaration as a 
+  reference:
+  === code ===
+    // effective same as new Object @=> Object @ foo;
+    // works as before
+    new Object @=> Object foo;
+- (added) --chugin-probe command-line flag to probe (and verify version)
+  for chugins and auto-load chuck sources in the search paths; print 
+  results and any version mismatches (e.g., `chuck --chugin-probe`)
+  also, explicited named chugins can be probed using --chugins:[FILE]
+  (e.g., `chuck --chugin:Foo.chug --chugin:Bar.chug --chugin-probe`) 
+- (added) chugins loading in search directories now will recursively
+  search in subdirectories
+- (added, macOS + Linux) ~/.chuck/lib added to the list of default
+  search directories; this makes it easier to locally install/organize
+  chugins (and auto-load .ck files) without administrator privilege
+  ---
+  macOS
+    /usr/local/lib/chuck
+    /Library/Application Support/ChucK/chugins
+    ~/Library/Application Support/ChucK/chugins
+    ~/.chuck/lib
+  Linux
+    /usr/local/lib/chuck
+    ~/.chuck/lib
+  Windows
+    C:\Windows\system32\ChucK
+    C:\Program Files\ChucK\chugins
+    C:\Program Files (x86)\ChucK\chugins
+    C:\Users\%USERNAME%\Documents\ChucK\chugins
+  ---
+- (updated) chuck --verbose output now streamlined and more effectively
+  describes what is happening under-the-hood; e.g.,
+    `chuck [FILENAMES] -v2` to see SYSTEM output
+    `chuck [FILENAMES] -v5` to see INFORM output
+    `chuck [FILENAMES] -v10` to see ALL!!! output
+- (updated) setting chuck log level is no longer logged below INFORM
+  log-level
+- (fixed, developer) distinct notions of base type reference and array 
+  reference; for example SinOsc @ foo[] -> `SinOsc @` is base type 
+  reference and `foo[]` is array reference
+- (fixed, developer) instruction dumps (via +d flag) more correctly
+  prints reference-related (@) declarations and new operations
+
+
 1.5.0.3 (June 2023)
 ---
 - (fixed) chuck audio I/O now correctly carries out extended probing
