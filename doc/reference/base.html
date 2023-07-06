@@ -481,6 +481,7 @@
 <p class="class_description">Machine is ChucK runtime interface to the virtual machine. This interface can be used to manage shreds, evalute code, set log levels, etc. Machine's shred commands are similar to the On-the-fly Programming Commands, except these are invoked from within a ChucK program, and are subject to the timing mechanism.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/machine/eval.ck">machine/eval.ck</a></li>
+<li><a target="_blank" href="../examples/machine/eval-global.ck">machine/eval-global.ck</a></li>
 <li><a target="_blank" href="../examples/machine/intsize.ck">machine/intsize.ck</a></li>
 <li><a target="_blank" href="../examples/machine/is-realtime.ck">machine/is-realtime.ck</a></li>
 <li><a target="_blank" href="../examples/machine/machine-shred.ck">machine/machine-shred.ck</a></li>
@@ -499,15 +500,15 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">eval</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> code)</p>
-<p class="member_description">Evaluate a string as ChucK code, compile it and spork it immediately as an independent shred, shreduled to run on the same sample.</p>
+<p class="member_description">Evaluate a string as ChucK code, compile it and immediately spork it as a new independent shred, and automatically yield the current shred to give the new shred a chance to run, without advancing time.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">eval</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> code, <span class="ckdoc_typename ckdoc_type_object">string</span> args)</p>
-<p class="member_description">Evaluate a string as ChucK code, with optional arguments (bundled in 'args' as "ARG1:ARG2:...", compile it and spork it as an independent shred.</p>
+<p class="member_description">Evaluate a string as ChucK code, with arguments (bundled in 'args' as "ARG1:ARG2:...", compile it and immediately spork it as a new independent shred, and automatically yield the current shred to give the new shred a chance to run, without advancing time.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">eval</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> code, <span class="ckdoc_typename ckdoc_type_object">string</span> args, <span class="ckdoc_typename ckdoc_type_primitive">int</span> count)</p>
-<p class="member_description">Evaluate a string as ChucK code, with optional arguments (bundled in 'args' as "ARG1:ARG2:...", compile it and spork 'count' independent shreds.</p>
+<p class="member_description">Evaluate a string as ChucK code, with optional arguments (bundled in 'args' as "ARG1:ARG2:...", compile it and immediately spork 'count' independent shreds; and automatically yield the current shred to give all new shreds a chance to run, without advancing time.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">intsize</span>()</p>
