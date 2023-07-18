@@ -45,10 +45,13 @@
 <p class="toc_class"><a href="#Sitar" class="ckdoc_typename ckdoc_type_ugen">Sitar</a></p>
 <p class="toc_class"><a href="#StifKarp" class="ckdoc_typename ckdoc_type_ugen">StifKarp</a></p>
 <p class="toc_class"><a href="#VoicForm" class="ckdoc_typename ckdoc_type_ugen">VoicForm</a></p>
+<p class="toc_class"><a href="#KrstlChr" class="ckdoc_typename ckdoc_type_ugen">KrstlChr</a></p>
 <p class="toc_class"><a href="#FM" class="ckdoc_typename ckdoc_type_ugen">FM</a></p>
 <p class="toc_class"><a href="#BeeThree" class="ckdoc_typename ckdoc_type_ugen">BeeThree</a></p>
 <p class="toc_class"><a href="#FMVoices" class="ckdoc_typename ckdoc_type_ugen">FMVoices</a></p>
 <p class="toc_class"><a href="#HevyMetl" class="ckdoc_typename ckdoc_type_ugen">HevyMetl</a></p>
+<p class="toc_class"><a href="#HnkyTonk" class="ckdoc_typename ckdoc_type_ugen">HnkyTonk</a></p>
+<p class="toc_class"><a href="#FrencHrn" class="ckdoc_typename ckdoc_type_ugen">FrencHrn</a></p>
 <p class="toc_class"><a href="#PercFlut" class="ckdoc_typename ckdoc_type_ugen">PercFlut</a></p>
 <p class="toc_class"><a href="#Rhodey" class="ckdoc_typename ckdoc_type_ugen">Rhodey</a></p>
 <p class="toc_class"><a href="#TubeBell" class="ckdoc_typename ckdoc_type_ugen">TubeBell</a></p>
@@ -1933,6 +1936,36 @@ Phoneme Names:
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
+<a name="KrstlChr" /><div class="class">
+<h2 class="class_title" name="KrstlChr">KrstlChr</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#FM" class="ckdoc_typename ckdoc_type_ugen">FM</a> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">STK-style "Crystal Choir" FM synthesis instrument.
+
+This class implements 3 parallel operators with being modulated (feedback modulation), also referred to as algorithm 7 of the TX81Z.
+
+Algorithm 7 is :
+    
+    1 -\
+    2 - +-> Out 
+    4-->3 -/ 
+    
+Control Change Numbers:
+
+- Total Modulator Index = 2 (.controlOne)
+- Modulator Crossfade = 4 (.controlTwo)
+- LFO Speed = 11
+- LFO Depth = 1
+- ADSR 2 & 4 Target = 128
+
+The basic Chowning/Stanford FM patent expired in 1995, but there exist follow-on patents, mostly assigned to Yamaha. If you are of the type who should worry about this (making money) worry away.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/stk/krstlchr-algo7.ck">stk/krstlchr-algo7.ck</a></li>
+</ul></div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
 <a name="FM" /><div class="class">
 <h2 class="class_title" name="FM">FM</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
@@ -2162,6 +2195,60 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/stk/hevymetl-algo3.ck">stk/hevymetl-algo3.ck</a></li>
 <li><a target="_blank" href="../examples/stk/hevymetl-dance-now.ck">stk/hevymetl-dance-now.ck</a></li>
 <li><a target="_blank" href="../examples/stk/hevymetl-trumpet-algo3.ck">stk/hevymetl-trumpet-algo3.ck</a></li>
+</ul></div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="HnkyTonk" /><div class="class">
+<h2 class="class_title" name="HnkyTonk">HnkyTonk</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#FM" class="ckdoc_typename ckdoc_type_ugen">FM</a> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">STK-style Honkey Tonk Piano FM synthesis instrument.
+
+This class implements 4 cascade operators with feedback modulation, also referred to as algorithm 1 of the TX81Z.
+
+Algorithm 1 is :
+    
+    ____4-->3-->2-->1-->Out
+    
+Control Change Numbers:
+
+- Total Modulator Index = 2 (.controlOne)
+- Modulator Crossfade = 4 (.controlTwo)
+- LFO Speed = 11
+- LFO Depth = 1
+- ADSR 2 & 4 Target = 128
+
+The basic Chowning/Stanford FM patent expired in 1995, but there exist follow-on patents, mostly assigned to Yamaha. If you are of the type who should worry about this (making money) worry away.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="FrencHrn" /><div class="class">
+<h2 class="class_title" name="FrencHrn">FrencHrn</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-stk.html#FM" class="ckdoc_typename ckdoc_type_ugen">FM</a> : <a href="ugens-stk.html#StkInstrument" class="ckdoc_typename ckdoc_type_ugen">StkInstrument</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">STK-style French Horn FM synthesis instrument.
+
+This class implements 3 cascade operators and a 4th modulator with feedback modulation, also referred to as algorithm 2 of the TX81Z.
+
+Algorithm 2 is :
+    
+    ____4--\
+    3--+-->>2-->1-->Out
+    
+Control Change Numbers:
+
+- Total Modulator Index = 2 (.controlOne)
+- Modulator Crossfade = 4 (.controlTwo)
+- LFO Speed = 11
+- LFO Depth = 1
+- ADSR 2 & 4 Target = 128
+
+The basic Chowning/Stanford FM patent expired in 1995, but there exist follow-on patents, mostly assigned to Yamaha. If you are of the type who should worry about this (making money) worry away.
+
+by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/stk/frenchrn-algo2.ck">stk/frenchrn-algo2.ck</a></li>
 </ul></div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
