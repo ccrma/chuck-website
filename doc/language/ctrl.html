@@ -192,8 +192,40 @@ A few more points:
 for( 0 => int foo; foo < 4 ; foo++ )
 {
     // debug-print value of 'foo'
-    &lt;&lt;&lt;foo&gt;&gt;&gt;;
+    &lt;&lt;&lt; foo &gt;&gt;&gt;;
 }
+</pre>
+</div>
+
+<a name="foreach"> </a>
+<div class="lang_subtopic_body">
+<h2><strong>for-each</strong></h2>
+
+<p>For-each is used to iterate over the contents of an array, using a temporary variable that will take on the respective value of each array element in each iteration of the loop. (Requires chuck-1.5.0.8 or higher.)</p>
+<pre>
+// an array
+[1,2,3] @=> int array[];
+// for-each loop
+for( int a : array )
+{
+    // debug-print value of 'a'
+    &lt;&lt;&lt; a &gt;&gt;&gt;;
+}
+
+// OR over a literal array of value
+for( int a : [4,5,6] )
+{
+    // debug-print value of 'a'
+    &lt;&lt;&lt; a &gt;&gt;&gt;;
+}
+
+// AND can make use the 'auto' type
+for( auto a : array )
+{
+    // 'a' is automatically inferred from context to be of type 'int'
+    &lt;&lt;&lt; a &gt;&gt;&gt;;
+}
+
 </pre>
 </div>
 
