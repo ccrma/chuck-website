@@ -57,6 +57,7 @@
 <li><a target="_blank" href="../examples/event/signal.ck">event/signal.ck</a></li>
 <li><a target="_blank" href="../examples/event/signal4.ck">event/signal4.ck</a></li>
 <li><a target="_blank" href="../examples/event/event-extend.ck">event/event-extend.ck</a></li>
+<li><a target="_blank" href="../examples/event/event-extend2.ck">event/event-extend2.ck</a></li>
 <li><a target="_blank" href="../examples/event/event-x-bpm-1.ck">event/event-x-bpm-1.ck</a></li>
 <li><a target="_blank" href="../examples/event/event-x-bpm-2.ck">event/event-x-bpm-2.ck</a></li>
 </ul></div>
@@ -816,11 +817,14 @@
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Storage construct for sequential data of the same type; can also be used as an associative map data structure; also can be used as a stack with << operator to append/push and popBack to pop.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/array/array_append.ck">array/array_append.ck</a></li>
 <li><a target="_blank" href="../examples/array/array_argument.ck">array/array_argument.ck</a></li>
 <li><a target="_blank" href="../examples/array/array_assign.ck">array/array_assign.ck</a></li>
 <li><a target="_blank" href="../examples/array/array_associative.ck">array/array_associative.ck</a></li>
 <li><a target="_blank" href="../examples/array/array_capacity.ck">array/array_capacity.ck</a></li>
 <li><a target="_blank" href="../examples/array/array_dynamic.ck">array/array_dynamic.ck</a></li>
+<li><a target="_blank" href="../examples/array/array_erase.ck">array/array_erase.ck</a></li>
+<li><a target="_blank" href="../examples/array/array_erase2.ck">array/array_erase2.ck</a></li>
 <li><a target="_blank" href="../examples/array/array_mdim.ck">array/array_mdim.ck</a></li>
 <li><a target="_blank" href="../examples/array/array_mmixed.ck">array/array_mmixed.ck</a></li>
 <li><a target="_blank" href="../examples/array/array_negative.ck">array/array_negative.ck</a></li>
@@ -850,24 +854,36 @@
 <p class="member_description">Clear the contents of the array.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">erase</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> key)</p>
-<p class="member_description">(map only) Erase all elements with the specified key.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">erase</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> position)</p>
+<p class="member_description">Remove element at 'position' from the array (same as popOut(int)).</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">find</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> key)</p>
-<p class="member_description">(map only) Get number of elements with the specified key.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">erase</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> begin, <span class="ckdoc_typename ckdoc_type_primitive">int</span> end)</p>
+<p class="member_description">Remove element(s) in the range [begin,end).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">erase</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> key)</p>
+<p class="member_description">(map only) Erase all elements with the specified key.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">getKeys</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> keys)</p>
 <p class="member_description">Return all keys found in associative array in keys</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isInMap</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> key)</p>
+<p class="member_description">(map only) test if 'key' is in the map; (historical) this was renamed from .find() to avoid confusion with the vector part of array.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">popBack</span>()</p>
-<p class="member_description">Remove the last item of the array.</p>
+<p class="member_description">Remove the last element of the array.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">popFront</span>()</p>
+<p class="member_description">Remove the first element of the array.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">popOut</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> position)</p>
-<p class="member_description">Removes the item with position from the array</p>
+<p class="member_description">Remove the element at 'position' from the array (same as erase(int)).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">reset</span>()</p>
