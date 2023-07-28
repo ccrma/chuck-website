@@ -80,7 +80,8 @@ technology, engineering, education" />
 <p align=justify>
 The following are example programs that demonstrate basic language features, tools, and techniques.  All of these 
 examples files can be found in the distribution (<a target="_blank" href="../../release">download page</a>)
-under the folder <i>examples</i>. Additionally, they can be accessed from within miniAudicle, under "File > Open Example..."  Good luck and have fun!</p>
+under the folder <i>examples</i>. Additionally, they can be accessed from within miniAudicle, under "File > Open Example..." Many of these examples are also linked from
+the <a target="_blank" href="../reference/">ChucK API Reference</a>. Good luck and have fun!</p>
 
 <center>
 <table border="0">
@@ -314,7 +315,8 @@ or perhaps:
 
 <tr>
 <td ><div class="topic_sub">sndbuf (file read/write/playback)</div></td>
-<td><div class="topic_file_list"> <a target="_blank" href="basic/sndbuf.ck">sndbuf</a> </div></td>
+<td><div class="topic_file_list"> <a target="_blank" href="basic/sndbuf.ck">sndbuf</a>
+| <a target="_blank" href="basic/doh.ck">doh</a> </div></td>
 </tr>
 
 <tr>
@@ -491,6 +493,11 @@ or perhaps:
 </tr>
 
 <tr>
+<td width="60%"><div class="topic_sub">The 'auto' type</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="type/type_auto.ck">type_auto</a> </div></td>
+</tr>
+
+<tr>
 <td width="60%"><div class="topic_sub">Polymorphism in ChucK</div></td>
 <td><div class="topic_file_list"><a target="_blank" href="type/polymorph.ck">polymorph</a> </div></td>
 </tr>
@@ -537,6 +544,39 @@ or perhaps:
 <tr>
 <td ><div class="topic_sub">appending to an array</div></td>
 <td><div class="topic_file_list"><a target="_blank" href="array/array_append.ck">array_append</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">for-each in array</div></td>
+<td><div class="topic_file_list">
+ <a target="_blank" href="array/foreach-1.ck">foreach-1</a> |
+ <a target="_blank" href="array/foreach-2.ck">foreach-2</a> |
+ <a target="_blank" href="array/foreach-3.ck">foreach-3</a> |
+ <a target="_blank" href="array/foreach-4.ck">foreach-4</a> |
+ <a target="_blank" href="array/foreach-5.ck">foreach-5</a> |
+ <a target="_blank" href="array/foreach-6.ck">foreach-6</a>
+</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">for-each in array (with auto type)</div></td>
+<td><div class="topic_file_list">
+ <a target="_blank" href="array/foreach-auto1.ck">foreach-auto1</a> |
+ <a target="_blank" href="array/foreach-auto2.ck">foreach-auto2</a>
+</div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">arrays are automatically resized<br>(e.g., using append and popBack)</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="array/array_dynamic.ck">array_dynamic</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">erasing elements in an array</div></td>
+<td><div class="topic_file_list">
+ <a target="_blank" href="array/array_erase.ck">array_erase</a> |
+ <a target="_blank" href="array/array_erase2.ck">array_erase2</a>
+</div></td>
 </tr>
 
 <tr>
@@ -650,6 +690,11 @@ or perhaps:
 </tr>
 
 <tr>
+<td ><div class="topic_sub">for-each loop</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ctrl/ctrl_foreach.ck">ctrl_foreach</a></div></td>
+</tr>
+
+<tr>
 <td ><div class="topic_sub">until</div></td>
 <td><div class="topic_file_list"><a target="_blank" href="ctrl/ctrl_until.ck">ctrl_until</a> </div></td>
 </tr>
@@ -657,6 +702,16 @@ or perhaps:
 <tr>
 <td ><div class="topic_sub">do-until</div></td>
 <td><div class="topic_file_list"><a target="_blank" href="ctrl/ctrl_do_until.ck">ctrl_do_until</a></div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">while</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ctrl/ctrl_while.ck">ctrl_while</a> </div></td>
+</tr>
+
+<tr>
+<td ><div class="topic_sub">do-while</div></td>
+<td><div class="topic_file_list"><a target="_blank" href="ctrl/ctrl_do_while.ck">ctrl_do_while</a> </div></td>
 </tr>
 
 <tr>
@@ -741,7 +796,7 @@ or perhaps:
 </td></tr>
 
 <tr>
-<td width="60%" ><div class="topic_sub">learning about objects with .help()<br>(requires chuck-1.4.1.0 or later)</div></td>
+<td width="60%" ><div class="topic_sub">learning about objects with .help()</div></td>
 <td><div class="topic_file_list"><a target="_blank" href="help.ck">help</a> </div></td>
 </tr>
 

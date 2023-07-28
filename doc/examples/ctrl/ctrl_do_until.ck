@@ -6,7 +6,7 @@
 do { 
     1 +=> j;
     1 +=> i;
-} until ( i >= 5 );
+} until( i >= 5 );
 
 // test
-if ( j == 5 ) <<<"success">>>;
+if( j == 5 ) <<<"success">>>;
