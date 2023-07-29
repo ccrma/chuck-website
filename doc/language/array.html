@@ -142,14 +142,14 @@ the initializer array to foo.
 <div class="lang_subtopic_body">
 <h2><strong>multi-dimensional arrays</strong></h2>
 
-<p>It is possible (and equally easy) to declare multi-dimensional arrays:</p>
+<p>It is possible to declare multi-dimensional arrays:</p>
 
 <pre>
     // declare 4 by 6 by 8 array of float
     float foo3D[4][6][8];
 </pre>
 
-<p>Initializers work in similar ways:</p>
+<p>Initializers for multi-dimensional arrays work in a similar way:</p>
 
 <pre>
     // declare 2 by 2 array of int
@@ -162,7 +162,7 @@ In the above code, note the two <font face="courier">[][]</font> since we make a
 
 <a name="use"> </a>
 <div class="lang_subtopic_body">
-<h2><strong>lookup</strong></h2>
+<h2><strong>lookup and looping</strong></h2>
 
 <p>Elements in an array can be accessed using <font face="courier">[]</font> (in the appropriate quantities).</p>
 
@@ -184,12 +184,39 @@ In the above code, note the two <font face="courier">[][]</font> since we make a
     [ 1, 2, 3, 4, 5, 6 ] @=> float foo[];
 
     // loop over the entire array
-    for( 0 => int i; i < foo.cap(); i++ )
+    for( 0 => int i; i < foo.size(); i++ )
     {
         // do something (debug print)
         <<< foo[i] >>>;
     }
 </pre>
+
+<p>As of chuck-1.5.0.8, it is possible to use a 'for-each' control structure</p>
+
+<pre>
+    // array of floats again
+    [ 1, 2, 3, 4, 5, 6 ] @=> float foo[];
+
+    // for each element 'e' in array 'foo'
+    for( int e : foo )
+    {
+        // do something (debug print)
+        <<< e >>>;
+    }
+</pre>
+
+<p>It is also possible to iterate over array initializer list to use the 'auto' type (requires chuck-1.5.0.8 or higher):</p>
+
+<pre>
+    // for each element 'x' in array 'foo'
+    // FYI by context, x will be inferred here to have type 'int'
+    for( auto x : [1,2,3] )
+    {
+        // do something (debug print)
+        <<< x >>>;
+    }
+</pre>
+
 
 <p>Accessing multi-dimensional array:</p>
 
@@ -371,7 +398,7 @@ null.  A null reference to an array can be created in this fashion:</p>
     fun void print( int bar[] )
     {
         // print it
-        for( 0 => int i; i < bar.cap(); i++ )
+        for( 0 => int i; i < bar.size(); i++ )
             <<< bar[0] >>>;
     }
 

@@ -164,20 +164,16 @@ in time and at any desired control rate.</li>
       </ul>
 
 <!-- link to built-in ugen documentation -->
-      <div class="lang_code_ref"><a href="http://chuck.cs.princeton.edu/doc/program/uana.html">View
-a list</a> of ChucK's built-in unit analyzer classes </div>
+      <div class="lang_code_ref"><a target="_blank" href="../reference/uanae.html">View a list</a> of ChucK's built-in unit analyzer classes in the <a target="_blank" href="../reference/">ChucK API Reference</a>.</div>
 
 <!-- index of code exmaples -->
-      <div class="lang_code_ref"><a href="http://chuck.cs.princeton.edu/doc/examples/index.html#uana">View
-sample code</a> for unit analyzers </div>
+      <div class="lang_code_ref"><a target="_blank" href="../examples/index.html#uana">View sample code</a> for unit analyzers.</div>
 
 <!-- body of each sub topic -->
       <div class="lang_subtopic_body"><a name="declaring"></a>
       <h2><strong>declaring</strong></h2>
 
-      <p>Unit analyzers (UAnae) are objects, and they need to be
-instantiated before they can be used.
-We declare unit analyzers the same way we declare UGens and other <a href="http://chuck.cs.princeton.edu/doc/language/class.html#new">objects</a>.</p>
+      <p>Unit analyzers (UAnae) are objects, and they need to be instantiated before they can be used. We declare unit analyzers the same way we declare UGens and other <a href="http://chuck.cs.princeton.edu/doc/language/class.html#new">objects</a>.</p>
 
       <pre> // instantiate an FFT, assign reference to variable f<br /> FFT f;<br /></pre>
 
@@ -479,7 +475,7 @@ base class, it does no computation of its own. However, after&nbsp;<font face="c
 all other UAnae will have up-to-date results that are synchronized,
 computed, and cached so that they are available to be accessed
 via&nbsp;<font face="courier"><b>upchuck()</b></font>
-on each UAna (possibly by a different shred waiting for an event-- see <a href="#using_events">below</a>).<br />
+on each UAna (possibly by a different shred waiting for an event). <!-- see <a href="#using_events">below</a>).--><br />
 
       <pre> adc =&gt; FFT fft =^ Flux flux =^ UAna agglom =&gt; blackhole;<br /> fft =^ Centroid centroid =^ agglom;<br /> // could add abitrarily many more UAnae that connect to agglom via =^<br /><br /> while (true) {<br /> 100::ms =&gt; now;<br />	agglom.upchuck(); // forces computation of both centroid and flux (and therefore fft, too)<br /> }</pre>
 
@@ -506,16 +502,11 @@ so be careful.<br />
       <div class="lang_subtopic_body">Another handy UAna
 for synchronizing feature extraction is the <font face="courier"><b>FeatureCollector</b></font>. Calling
       <font face="courier"><b>upchuck()</b></font> on a <font face="courier"><b>FeatureCollector</b></font> triggers computation of all upstream
-UAnae, and it concatenates their output blob data into a feature vector
-that can be used as input to a classifier, for example using <a href="http://smirk.cs.princeton.edu/">smirk</a>. <br />
+UAnae, and it concatenates their output blob data into a feature vector that can be used as input to a classifier, for example using 
+<a target="_blank" href="../../chai">ChAI</a> (chuck for AI) or its predecessor, <a target="_blank" href="http://smirk.cs.princeton.edu/">smirk</a>. <br />
 
       <pre> adc =&gt; FFT fft =^ Flux flux =^ FeatureCollector fc =&gt; blackhole;<br /> fft =^ Centroid centroid =^ fc;<br /> // could add abitrarily many more UAnae that connect to fc via =^<br /><br /> while (true) {<br /> 100::ms =&gt; now;<br />	// forces computation of both centroid and flux (and therefore fft, too)<br />	// an vectorBlob's fvals and cvals will be a concatenation of the feature values<br />	fc.upchuck() @=&gt; UAnaBlob vectorBlob; <br /> }</pre>
-
       </div>
-
-      <a name="using_events"></a><br />
-
-      <a name="using_events"></a>
 <!-- <div class="lang_subtopic_body>
 <h2><strong>using events</strong></h2>
 When a UAna is&nbsp;<font face="courier"><b>upchuck()</b></font>-ed,
@@ -524,17 +515,14 @@ results of FFT whenever it is computed.<br />
 <pre> adc =&gt; FFT fft =&gt; blackhole;<br /> spork ~printer(); // spork a printing shred<br /> while (true) {<br /> 50::ms =&gt; now; // perform FFT every 50 ms<br /> fft.upchuck();<br /> }<br /><br /> printer() {<br /> UAnaBlob blob;<br /> while (true) {<br /> // wait until fft has been computed<br /> fft =&gt; now;<br /> fft.upchuck() @=&gt; blob; // get (cached) fft result<br /> for (int i = 0; i &lt; blob.fvals().cap(); i++)<br /> &lt;&lt;&lt; blob.fvals(i) &gt;&gt;&gt;;<br /> } <br /> }<br /></pre>
 </div> -->
       <div class="lang_subtopic_body"><a name="built-in"></a>
-      <h2><strong>built-in
-unit analyzers</strong></h2>
+      <h2><strong>built-in unit analyzers</strong></h2>
 
-      <p>ChucK has a number of
-built-in UAna classes. These
-classes
-perform many basic transform functions (FFT, IFFT) and feature
-extraction
+      <p>ChucK has a number of built-in UAna classes. These classes
+perform many basic transform functions (FFT, IFFT) and feature extraction
 methods (both spectral and time-domain features).&nbsp;A list of
 built-in ChucK unit analyzers can
-be found <a href="http://chuck.cs.princeton.edu/doc/program/uana.html">here</a>.</p>
+be found in the <a target="_blank" href="../reference/">ChucK Class Library Reference</a>, and under 
+the <a target="_blank" href="../reference/uanae.html">UAnae section</a>.</p>
 
       </div>
 

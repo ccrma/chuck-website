@@ -205,7 +205,7 @@ for( 0 => int foo; foo < 4 ; foo++ )
 <pre>
 // an array
 [1,2,3] @=> int array[];
-// for-each loop
+// for each element 'a' in array 'array'
 for( int a : array )
 {
     // debug-print value of 'a'
@@ -219,7 +219,7 @@ for( int a : [4,5,6] )
     &lt;&lt;&lt; a &gt;&gt;&gt;;
 }
 
-// AND can make use the 'auto' type
+// ALSO can make use the 'auto' type
 for( auto a : array )
 {
     // 'a' is automatically inferred from context to be of type 'int'
@@ -227,6 +227,44 @@ for( auto a : array )
 }
 
 </pre>
+</div>
+
+<a name="repeat"> </a>
+<div class="lang_subtopic_body">
+<h2><strong>repeat</strong></h2>
+
+<p>A loop that iterates a fixed number of times.</p>
+<pre>
+// repeat loop
+repeat( 4 )
+{
+    // print now in seconds
+    &lt;&lt;&lt; now / second &gt;&gt;&gt;;
+    // advance time
+    500::ms => now;
+}
+</pre>
+
+
+<p>The repeat loop condition is evaluated immediately (when first encountered) and only once.</p>
+
+<pre>
+// variable
+5 => int x
+
+// in the repeat condition, 'x' is evaluated once and only once, at
+// the start of the loop; if the value of x is updated subsequently,
+// it will not alter the number of repetitions
+repeat( x )
+{
+    // print now in seconds
+    &lt;&lt;&lt; now / second &gt;&gt;&gt;;
+    // advance time
+    500::ms => now;
+}
+</pre>
+
+
 </div>
 
 <!-- body of each sub topic -->
