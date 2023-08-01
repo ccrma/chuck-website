@@ -2,6 +2,169 @@
 ChucK VERSIONS log
 ------------------
 
+1.5.0.8 (August 2023)
+===
+(note) this release introduces a for-each control structure for more 
+easily iterating over arrays, as well as an experimental 'auto' type. 
+array support has also been expanded; internally, engine support has been 
+added for a number of features in WebChucK and WebChucK IDE, including 
+retrieving and display the chuck 'now', along with a number of critical 
+chuck parameters; updated ChucK c++ integration API
+===
+- (added) new 'for' control structure in this general syntax:
+      for( VAR : ARRAY )
+      { ... }
+    where VAR is a declared variable of the same base type as the ARRAY,
+    in each iteration of the for loop body, VAR will take on the value of
+    each element in ARRAY, until the end of ARRAY is reached. For example:
+      ```
+      // create empty array
+      float array[0];
+      // append
+      array << 1 << 2.5 << 3;
+      // for each element 'x' in array
+      for( float x : array )
+      {
+          // print the element
+          <<< x >>>;
+      }
+      ```
+    or loop over an array literal of values:
+      ```
+      // iterating over an array literal
+      for( int x : [ 1, 2, 3 ] ) { <<< x >>>; }
+      ```
+- (added) new examples using for-each control structure
+    examples/array/foreach-1.ck
+    examples/array/foreach-2.ck
+    examples/array/foreach-3.ck
+    examples/array/foreach-4.ck
+    examples/array/foreach-5.ck
+    examples/array/foreach-6.ck
+    examples/ctrl/ctrl_foreach.ck
+- (added) new 'auto' type; in certain declarations, infers the actual
+  type of a variable from context. For example:
+     ```
+     // 'a' will be automatically typed as 'float'
+     1.5 => auto a;
+     // 'arr' will be automatically typed as 'int[]'
+     [1,2,3] @=> auto arr[];
+     // can use in the new for-each control structure
+     for( auto x : arr )
+     // x is automatically typed as 'int'
+     { <<< x >>>; }
+     ```
+- (added) new examples for 'auto'
+    examples/type/type_auto.ck
+    examples/array/foreach-auto1.ck
+    examples/array/foreach-auto2.ck
+- (added) new array operations
+	void erase(int position)
+	    Remove element at 'position' from the array.
+	void erase(int begin, int end)
+	    Remove element(s) in the range [begin,end).
+	void popFront()
+	    Remove the first element of the array.
+  See full array API reference with examples:
+    https://chuck.stanford.edu/doc/reference/base.html#@array
+- (added) new array examples
+    examples/array/array_append.ck
+    examples/array/array_erase.ck
+    examples/array/array_erase2.ck
+- (update) map-only function @array.find(string) has been renmed to
+    @array.isInMap(string) to avoid confusion with vector
+- (added) error checking for out-of-order dependency issues where
+  a function is called (or a class instantiated) that would skip
+  a neede variable initialization; this addresses a long-standing
+  issue that has caused much confusion because previously the issue
+  failed but silently.
+  ---
+  For example, consider this 'foobar.ck' code
+  ```
+    // does not work here: precedes 'bar' initialization
+    foo();
+    // where 'bar' initializes
+    5 => int bar;
+    // FYI calling foo() works here: after 'bar' initializes
+    // foo();
+
+    // the function definition
+    fun void foo()
+    {
+        // needs 'bar' to be initialized
+        <<< "bar:", bar >>>;
+    }
+  ```
+  The new resulting compiler error:
+  ```
+    > chuck foobar.ck
+    foobar.ck:4:1: error: calling 'foo()' at this point skips
+                   initialization of a needed variable:
+    [4] foo();
+        ^
+    foobar.ck:7:10: error: ...(note: this skipped variable
+                    initialization is needed by 'fun void foo()')
+    [7] 5 => int bar;
+                 ^
+    foobar.ck:16:17: error: ...(note: this is where the variable
+                     is used within 'fun void foo()')
+    [16]     <<< "bar:", bar >>>;
+                         ^
+    error-depend-var.ck: ...(hint: try calling 'foo()' after the
+                         variable initialization)
+  ```
+  ---
+  Similar errors are reported for class definitions that reference
+    file-top-level variables, etc.
+- (added) error reporting for public class definitions that access
+    out-of-class local variables and functions; this is necessary
+    to disallow since public classes can be instantiated from any
+    context (file or code)
+- (updated, documentation) STK classes HnkyTonk and FrencHrn now 
+  properly included in the API reference, and with more examples:
+    https://chuck.stanford.edu/doc/reference/ugens-stk.html#HnkyTonk
+    https://chuck.stanford.edu/doc/reference/ugens-stk.html#FrencHrn
+- (added) new STK examples
+    https://chuck.stanford.edu/doc/examples/stk/honkeytonk-algo1.ck
+    https://chuck.stanford.edu/doc/examples/stk/honkeytonk-algo3.ck
+    https://chuck.stanford.edu/doc/examples/stk/frenchrn-algo2.ck
+- (added) new examples for Event and SndBuf and repeat
+    examples/event/event-extend2.ck
+    examples/basic/doh.ck
+    examples/ctrl/ctrl_repeat.ck
+- (added) error checking for public class definitions using an external 
+    file-level, non-global variable
+- (updated, developer) core VM code streamlined for cleaner operation
+  regarding shreds status, remove.all, and access to these from C++;
+  can now use a callback function to get replies from VM queue_msg()
+- (updated, developer) re-worked ChucK::compileFile() and
+    ChucK::compileCode() to immediately make sporked shred ID available
+- (developer, added) a 4th example host code in C++ showing how to embed
+  ChucK core as a component inside a host C++ program and get shred info
+    example-4-shreds.cpp (working with shreds and VM msg queue)
+- (updated, developer) WebChucK API expansion including the following
+  methods available in javascript that calls down to ChucK core:
+    chuck.now()
+    void chuck.setParamInt( string, number )
+    void chuck.setParamFloat( string, number )
+    void chuck.setParamString( string, string )
+    number chuck.getParamInt( string )
+    number chuck.getParamFloat( string )
+    string chuck.getParamString( string )
+- (updated, developer) VM instruction dump (through +d flag) now
+    prints control structures and other statements
+===
+WebChucK/IDE-- a number of UI updates with underlying VM support:
+    https://chuck.stanford.edu/ide/
+    https://chuck.stanford.edu/webchuck/
+===
+miniAudicle (macOS) critical install bug (which affects those who 
+installed chuck-1.5.0.5 through 1.5.0.7 on macOS) is now addressed, if 
+you are experiencing strangeness with opening CK files, try this 
+troubleshooting recommendation:
+    https://chuck.stanford.edu/release/images/mA-install-duplicate.jpg
+
+
 1.5.0.7 (July 2023)
 ---
 - (note) this patch release contains general internal maintenance for 
