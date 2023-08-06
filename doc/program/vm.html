@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>ChucK - [Programming Guide : Virtual Machine Options]</title>
+<title>ChucK - [Programming Guide : ChucK CLI Options]</title>
 </head>
 <body bgcolor="#ffffff" text="#000000">
 <font face="verdana" size="2">
@@ -15,7 +15,7 @@
 <b>ChucK</b> : Programming Guide
 </font>
 <br /><br />
-<font color="#33aa33" size="3">Virtual Machine Options</font>
+<font color="#33aa33" size="3">Command-line Options</font>
 <br />
 <br />
 
@@ -24,7 +24,7 @@
   <tr>
   <td align="right"><font face="verdana" size="2">
   version:</td><td><font face="verdana" size="2">
-  1.4.x.x (numchucks)
+  1.5.x.x (chai)
   <br />
   
   </font></td>
@@ -40,44 +40,24 @@
 
 <p align="justify">
 <hr width="10%" />
-<b>The ChucK Compiler + Virtual Machine</b>
-<br /><br />
-<p align="justify">
-Let's start with the compiler and virtual machine (VM), both of which run in the 
-same chuck process.  By now, you should have built/installed ChucK (<a 
-href="../build/">guide</a>), and perhaps taken the <a 
-href="../learn/">tutorial</a>.  This guide is intended to be more 
-complete and referential than the tutorial.  Additionally, see
-the <a href="../language/">language specification</a>.<br />
-<hr width="10%" />
-<br />
+<br>
 <a name="options"></a>
-<b>SYNOPSIS</b> (a man-esque page)
-<br /><br />
 <center>
-<b>usage</b>:<br />
+<b>chuck command-line options</b>:<br />
   <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
   <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
   <tr>
   <td align="left"><pre>chuck --[options|commands] [+-=^] file1 file2 file3 ...
    [options] = halt|loop|audio|silent|dump|nodump|about|probe|
-               channels:&lt;N&gt;|out:&lt;N&gt;|in:&lt;N&gt;|dac:&lt;N&gt;|adc:&lt;N&gt;|
+               channels:&lt;N&gt;|out:&lt;N&gt;|in:&lt;N&gt;|dac:&lt;N&gt;|adc:&lt;N&gt;|driver:&lt;name&gt;
                srate:&lt;N&gt;|bufsize:&lt;N&gt;|bufnum:&lt;N&gt;|shell|empty|
                remote:&lt;hostname&gt;|port:&lt;N&gt;|log:&lt;N&gt;|level:&lt;N&gt;|
-               callback|deprecate:{stop|warn|ignore}|
-               chugin-load:{auto|off}|chugin-path:&lt;path>|chugin:&lt;name>
-   [commands] = add|remove|replace|remove.all|status|time|kill
-   [+-=^] = shortcuts for add, remove, replace, status
-
-chuck version: 1.4.x.x (numchucks)<!--  <td align="left"><pre>chuck --[options|commands] [+-=^] file1 file2 file3 ...
-   [options] = halt|loop|audio|silent|dump|nodump|about
-               srate&lt;N&gt;|bufsize&lt;N&gt;|bufnum&lt;N&gt;|dac&lt;N&gt;|adc&lt;N&gt;|
-               remote&lt;hostname&gt;|port&lt;N&gt;|verbose&lt;N&gt;|probe
-   [commands] = add|remove|replace|status|time|kill
-   [+-=^] = shortcuts for add, remove, replace, status
-
-chuck version: 1.2.0.0 (dracula)
-   http://chuck.cs.princeton.edu/-->
+               callback|deprecate:{stop|warn|ignore}|chugin-probe|
+               chugin-load:{auto|off}|chugin-path:&lt;path>|chugin:&lt;name>|
+               --color:{on|off}|--no-color|--pid-file:&lt;path&gt;
+   [commands] = add|remove|replace|remove.all|status|time|
+                clear.vm|reset.id|abort.shred|exit
+       [+-=^] = shortcuts for add, remove, replace, status
 </td></tr></table></td></tr></table>
 </center>
 <br />
@@ -149,7 +129,7 @@ shreds in the VM.
 <br /><br />
 <b>--srate(N)</b><br />
         sets the internal sample rate to (N) Hz.  by default,
-        ChucK runs at 44100Hz on OS X and Windows, and 48000Hz on 
+        ChucK runs at 44100Hz on macOS and Windows, and 48000Hz on 
         linux/ALSA.  even if the VM is running in --silent mode, the 
         sample rate is still used by some unit generaters to compute  
         audio, this is important for computing samples and writing to 
@@ -165,10 +145,13 @@ shreds in the VM.
   <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
   <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
   <tr>
-  <td align="left"><pre> %> chuck --bufsize950</td></tr></table></td></tr></table> </center> <br />
+  <td align="left"><pre> %> chuck --bufsize:950</td></tr></table></td></tr></table> </center> <br />
 
-        this sets the buffer size to 1024.
+        this will implicitly set the buffer size to 1024.
 <br /><br />
+<b>--driver(name)</b><br />
+        Choose a specific driver to use by name. Drivers tend to be platform-specific between Linux (ALSA, Pulse, Jack), Windows (DirectSound, WASPI, ASIO), and macOS (CoreAudio).
+<br><br>
 <b>--dac(N)</b><br />
         opens audio output device #(N) for real-time audio.  by default,
         (N) is 0.
@@ -198,21 +181,55 @@ shreds in the VM.
         probes the system for all audio devices and MIDI devices, and prints them.
 <br /><br />
 
+<b>--chugin-probe</b><br />
+        probes your system for chugins, and verify chugin versions between chugins and the host. Also see: --chugin-path for default chugins search paths.
+<br><br>
+
 <b>--chugin-load:{auto|off}</b><br />
 (default: auto) specifies whether ChucK should automatically load ChuGins (auto) or disable ChuGin loading (off).
 <br /><br />
 
 <b>--chugin-path:(path)/-G(path)</b><br />
-adds (path) to the list of paths searched for ChuGin to load. Any .ck files in the ChuGin path are also loaded and executed when chuck is run. By default, on Mac OS X the paths consist of /usr/lib/chuck and /Library/Application Support/ChucK/ChuGins. On Windows the only default path is C:\Program Files\ChucK\chugins. On Linux, the only path in the default list is /usr/lib/chuck.
+adds (path) to the list of paths searched for ChuGin to load. Any file ending in .chug (chugins) and .ck (chuck files to pre-load) in the ChuGin path are loaded when chuck is run. Each platform has its default chugins search paths:
+<pre>
+macOS
+  /usr/local/lib/chuck
+  /Library/Application Support/ChucK/chugins
+  ~/Library/Application Support/ChucK/chugins
+  ~/.chuck/lib
+
+Linux 
+  /usr/local/lib/chuck
+  ~/.chuck/lib
+
+Windows
+  C:\Windows\system32\ChucK
+  C:\Program Files\ChucK\chugins
+  C:\Program Files (x86)\ChucK\chugins
+  C:\Users\%USERNAME%\Documents\ChucK\chugins
+</pre>
+<br />
+
+<b>--chugin:(filename)/-g(filename)</b><br />
+loads a specific ChuGin at the location specified by (filename). This can be used to load ChuGins not in the default list of paths (see --chugin-path).
 <br /><br />
 
-<b>--chugin:(path)/-g(path)</b><br />
-loads a specific ChuGin at the location specified by (path). This can be used to load ChuGins not in the default list of paths (see --chugin-path).
-<br /><br />
+<b>--color:{on|off}</b><br>
+specify whether chuck should output ANSI color codes for TTY terminal. (See <a target="_blank" href="../images/chuck-tty-color2023.png">example</a>)
+<br><br>
+
+<b>--no-color</b><br>
+disable ANSI color codes for TTY terminal.
+<br><br>
+
+<b>--pid-file:(filename)</b><br>
+If this flag is specified with argument, chuck will attempt to write its process ID to the given file upon startup, and then remove that file upon shutdown. This assists external process supervision (through tools like monit,etc) for long-running installations that need auto-rebooting, instant kill switches for live performances, and other programmatic external process control.
+<br><br>
 
 <b>--callback</b><br />
         utilizes a callback system for real-time audio (default). 
 <br /><br />
+
 <b>--blocking</b> (no longer available)<br />
         utilizes blocking behavior for real-time audio.
 <br /><br />
