@@ -632,8 +632,12 @@
 <p class="member_description">Convert frequency (Hz) to MIDI note number space.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">getenv</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">getenv</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> key)</p>
 <p class="member_description">Get the value of an environment variable (e.g., PATH).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">getenv</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> key, <span class="ckdoc_typename ckdoc_type_object">string</span> default)</p>
+<p class="member_description">Get the value of an environment variable, returning the provided default if unset.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">itoa</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> i)</p>
@@ -831,6 +835,7 @@
 <li><a target="_blank" href="../examples/array/array_resize.ck">array/array_resize.ck</a></li>
 <li><a target="_blank" href="../examples/array/array_reverse.ck">array/array_reverse.ck</a></li>
 <li><a target="_blank" href="../examples/array/array_shuffle.ck">array/array_shuffle.ck</a></li>
+<li><a target="_blank" href="../examples/array/array_sort.ck">array/array_sort.ck</a></li>
 <li><a target="_blank" href="../examples/array/array_storage.ck">array/array_storage.ck</a></li>
 <li><a target="_blank" href="../examples/array/array_sub_assign.ck">array/array_sub_assign.ck</a></li>
 <li><a target="_blank" href="../examples/array/array_zero.ck">array/array_zero.ck</a></li>
@@ -904,6 +909,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">size</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> newSize)</p>
 <p class="member_description">Set the size of the array. If the new size is less than the current size, elements will be deleted from the end; if the new size is larger than the current size, 0 or null elements will be added to the end.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sort</span>()</p>
+<p class="member_description">Sort the contents of the array in ascending order.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">zero</span>()</p>

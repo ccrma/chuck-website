@@ -1,4 +1,4 @@
-// print
+// print complex
 <<< #(1,1) >>>;
 // print polar
 <<< %(1,2*pi) >>>;
