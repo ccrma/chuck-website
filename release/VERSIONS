@@ -2,6 +2,112 @@
 ChucK VERSIONS log
 ------------------
 
+1.5.1.0 (August 2023)
+=======
+(note) this release (1.5.1.0) updates a long-standing policy regarding 
+`return`statements in function declarations; adds @array.sort(), a new 
+command-line options, general bug fixes and stability improvements.
+
+(note) much has been added between 1.5.0.0 and 1.5.1.0, including:
+  * new for-each loop syntax for iterating through arrays (1.5.0.8)
+  * enhanced and more accurate compiler error reporting; now
+    highlights code and pinpointing error location in code (1.5.0.5)
+  * color terminal support for CLI chuck (1.5.0.5)
+  * expanded class library support in IO, random number generation,
+    Machine.eval(), chugins management, and array
+  * new features in CLI chuck, miniAudicle, WebChucK & IDE
+  * (developer) The Great ChucK Repo Cleanup of 2023 (1.5.0.2)
+  * (developer) streamlined c++ integration for those wishing to
+    incorporate ChucK core into other c++ hosts (1.5.0.7)
+    https://github.com/ccrma/chuck/tree/main/src/host-examples
+  * (see below for more information)
+
+---
+(update) `return` statements in function definitions:
+
+PREVIOUSLY: chuck does not require all control paths in non-void 
+functions to explicitly return values -- in cases of missing `return` 
+statements at the end of a function, ChucK implicitly sets the return 
+value to some form of 0 or null, depending on the return type.
+
+NEW: the chuck compiler now rejects non-void function definitions in 
+which not all control paths return a value, and will print a compiler
+error in the form of:
+
+  "error: not all control paths in 'fun int f()' return a value"
+
+RATIONALE: *** while this may break some existing working code 
+(apologies!) *** that assumed the previous return semantics (or forgot to 
+return a value or accidentally declared a function as returning something 
+when it should return `void`), we believe this change will be more 
+beneficial in the long run and will lead to clearer, more intentional 
+code. This will hopefully benefit students learning or using the language, 
+as well as veterans.
+
+example:
+```
+// as of chuck-1.5.1.0, will result in a compiler error
+fun int foo()
+{
+    // no return
+}
+```
+
+ChucK performs syntactical analysis of function control paths:
+```
+// this is valid code, even though the function does not end in a `return`
+fun float foo( int v )
+{
+    if( v == 1 ) return 1;
+    else if( v == 2 ) return 2;
+    else return 3;
+}
+
+// this code will result in a compiler error, since there is no `else`
+// and no subsequent `return`
+fun float foo( int v )
+{
+    if( v == 1 ) return 1;
+    else if( v == 2 ) return 2;
+}
+```
+- (added) array sorting
+	void sort()
+        Sort the contents of the array in ascending order.
+  ** array sorting semantics, by type **
+        int[]: sort by value
+      float[]: sort by value
+    complex[]: sort by magnitude (2-norm) with phase as tie-breaker
+      polar[]: sort by magnitude with phase as tie-breaker
+       vec3[]: sort by magnitude with x then y then z
+       vec4[]: sort by magnitude with x then y then z then w
+- (added) new examples
+    |- examples/array/array_sort.ck
+- (added) IO (cherr, chout, FileIO) for complex, polar, vec3, vec3
+    e.g., cherr <= #(1,1) <= IO.nl();
+    e.g., chout <= #(1,1)$polar <= IO.nl();
+- (added) overloded Std.getenv() variant (thanks @ynohtna)
+        string getenv(string value)
+        Get the value of an environment variable, returning the provided 
+            default if unset.
+- (added) --pid-file:<FILENAME> CLI option (thanks @ynohtna)
+    "If this flag is specified with argument, chuck will attempt to write 
+     its process ID to the given file upon startup, and then remove that 
+     file upon shutdown. This assists external process supervision 
+     (through tools like monit,etc) for long-running installations that 
+     need auto-rebooting, instant kill switches for live performances, 
+     and other programmatic external process control."
+- (fixed) for-each for complex, polar, vec3, vec4 types;
+    (e.g., `for( vec3 n : myVec3Array ) { ... }`
+- (fixed) compiler issue (introduced in 1.5.0.8) where a declaration in 
+    the middle of a three-part chuck statement incorrectly reports error
+    that variable already declared (e.g., `440 => float f => osc.freq;`)
+- (fixed) error reporting printing for a few binary and unary operators:
+    spork ~, typeof, sizeof, new, <-, ->
+- (fixed) implicit cast from 'int' to 'float' in function returns;
+    (e.g., `fun float foo() { return 5; }`)
+
+
 1.5.0.8 (August 2023)
 ===
 (note) this release introduces a for-each control structure for more 
