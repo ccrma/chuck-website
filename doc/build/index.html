@@ -12,7 +12,7 @@
 <font face="verdana" size="2">
 <center>
 <font size="3">
-<b>ChucK</b> : Build/Install Instructions
+<b>ChucK</b> : Install &amp; Build
 </font>
 <br />
 <br />
@@ -40,15 +40,20 @@ home: <a href="http://chuck.cs.princeton.edu/">http://chuck.cs.princeton.edu/</a
 <font face="verdana" size="2">
 
 <hr width=100>
+
 <br>
+While this page is specific to installing and building command-line interface (CLI) <b>chuck</b> and <b>miniAudicle</b>, a graphical integrated development environment (IDE) for Chuck, it is worth noting that ChucK can be used in many contexts (command-line, graphical IDE, <a target="_blank" href="../../webchuck/">on the web</a>, within <a target="_blank" href="../../chunity/">Unity</a>,
+<a target="_blank" href="https://github.com/DBraun/ChucKDesigner">TouchDesigner</a>,
+<a target="_blank" href="https://github.com/shakfu/pd-chuck">Pure Data</a>,
+<a target="_blank" href="https://github.com/shakfu/chuck-max">Max/MSP</a>, and 
+<a target="_blank" href="https://github.com/ccrma/chunreal">Unreal Engine</a>, and even in embedded systems).
 
-<font size=3>Installing ChucK + miniAudicle</font>
 <br><br>
+<font size=3><b>Installing ChucK + miniAudicle</b></font>
 
-On MacOS and Windows, the straightforward way to install ChucK is through
-the respective installers found on the <a target="_blank" href="../release/">release page</a>.
-This will install ChucK for the command line and miniAudicle
-(a GUI-based integrated ChucK development environment) to your system.
+<br><br>
+On macOS and Windows, install ChucK through the respective installers found on the <a target="_blank" href="../release/">release page</a>. This will install the <b>chuck</b> command line program and <b>miniAudicle</b> to your computer.
+
 <!--
 If you are using the executable, you only need to put chuck (osx) or
 chuck.exe (win32) in your path...
@@ -80,168 +85,70 @@ start->run: cmd (or use <a href="http://www.cygwin.com/">cygwin</a>)
 -->
 
 <br><br>
-If you are planning to use miniAudicle and it installed without error, then you can skip the rest of this page. If you'd like to also use the command line version of ChucK, continue.
+If you are planning to use miniAudicle and it installed without error, then you can skip the rest of this section. If you'd like to also use the command line version of ChucK, continue.
+
 <br><br>
-At this point, you should be able to invoke 'chuck' from either Terminal
-(in MacOS) or 'cmd' under windowsm, from any directory:<br><br>
+At this point, you should be able to invoke 'chuck' from either Terminal (in MacOS) or 'cmd' under windowsm, from any directory:<br><br>
 
 <center>
   <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
   <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
   <tr>
   <td align="left"><pre>%> chuck
-[chuck]: no input files... (try --help)</pre></td>
+[chuck]: no input files... (try --help/-h)</pre></td>
   </tr>
   </table></td></tr>
   </table>
 </center>
 <br>
-(this is the correct output, since we didn't specify the files to run)
+(this is the correct output, since we didn't specify any chuck (.ck) files to run)
 
-<br>
-<ul>
-<!--<li>Have a question?  Post to the <a target="_blank"
-href="http://chuck.cs.princeton.edu/community.html">mailing lists</a> or
-email <a target="_blank" href="mailto:ge@ccrma.stanford.edu/">us</a>...-->
-<li><i>Optionally, feel free to skip to step 7 below to test further on command...</i>
-</ul>
-
-<br>
-<hr width=100>
-<br>
-
-<font size=3>Building ChucK from source</font>
 <br><br>
-
-To build chuck from the source on Linus, MacOS, or Windows:
-<br />
-<ol>
-<li> Follow instructions for your platform on the <a target="_blank"
-href="http://chuck.stanford.edu/release/">download page</a>.  
-<br /><br />
-
-<li> If you are building in Windows with Visual C++ 6.0 (or higher), open 
-src/chuck_win32.dsw, choose build -> set active config -> release, hit F7 
-to build.<br /><br />
-Otherwise:
-
-<br /><br /><li> unzip/tar the source <font size="1">(replace chuck-x.x.x.x.tgz with the actual file name)</font>:<br /><br />
-<center>
-  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
-  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
-  <tr>
-  <td align="left"><pre>%> tar xvzf chuck-x.x.x.x.tgz</pre></td>
-  </tr>
-  </table></td></tr>
-  </table>
-</center>
-
-<br /><li> Go to the src/ directory <font size="1">(replace chuck-x.x.x.x with the actual directory name)</font>:<br /><br />
-<center>
-  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
-  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
-  <tr>
-  <td align="left"><pre>%> cd chuck-x.x.x.x/src/</pre></td>
-  </tr>
-  </table></td></tr>
-  </table>
-</center>
-  
-<br /><li> If you type 'make' here, you should get the following message:<br /><br />
+To test out the audio/vm, go to the <b>examples/</b> directory (while the macOS and Windows installer install examples, it may be easier to also <a target="_blank" href="../../release/">download the source</a>, which includes the latest examples). Try running the .ck files. <font 
+color="#ff3300"><i>To stop a continuously running ChucK program, pressed <b>ctrl-c</b></i></font>:<br /><br />
 <center>
   <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
   <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
   <tr>
   <td align="left">
-<pre>%> make
-[chuck build]: please use one of the following configurations:
-   make linux-alsa, make linux-jack, make linux-oss,
-   make osx, make osx, make win32</pre></td>
-  </tr>
-  </table></td></tr>
-  </table>
-</center>
-<br />
-Now, type the command corresponding to your platform...
-<br /><br />for example, for MacOS:<br /><br />
-<center>
-  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
-  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
-  <tr>
-  <td align="left">
-<pre>%> make osx</pre>
-  </tr>
-  </table></td></tr>
-  </table>
-</center>
-
-<br />If all goes well, you should end up with a 'chuck' file in the 
-current directory.
-<br />
-
-<br /><li> If you like to install chuck manually, do the following. By default "make install" will copy <b>chuck</b> into /usr/local/bin.  If you prefer a different destination, edit the makefile under 'install', or skip this step altogether.
-(we recommend putting it <i>somewhere</i> in your path)<br /><br />
-<center>
-  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
-  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
-  <tr>
-  <td align="left">
-<pre># (optional: edit the makefile first)
-%> make install</pre>
-  </tr>
-  </table></td></tr>
-  </table>
-</center>
-<br />
-If you haven't gotten any egregous error messages up to this 
-point, then you should be done!
-<br />
-<br /><li> For a quick sanity check, execute the following (use 
-'./chuck' if chuck is not in your path), and see if you get the same 
-output:<br /><br />
-<center>
-  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
-  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
-  <tr>
-  <td align="left">
-<pre>%> chuck
-[chuck]: no input files...</pre>
-  </tr>
-  </table></td></tr>
-  </table>
-</center>
-<br />To test out the audio/vm, go to the <b>examples/</b> directory 
-and run (assuming 'chuck' is in your path). <font 
-color="#ff3300"><i>To stop, pressed <b>ctrl-c</b></i></font>:<br /><br />
-<center>
-  <table width="400" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
-  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
-  <tr>
-  <td align="left">
-<pre># (run otf_05.ck - the .ck is optional...)
+<pre># (run otf_05.ck - the .ck is optional)
 %> chuck otf_05.ck
 
-# (run any number of files in parallel...)
+# (run any number of files in parallel)
 %> chuck otf_01 otf_06
 
 # (or...)
 %> chuck otf_01 otf_02 otf_05
 
-# (or run all whose name starts with 'otf'...)
+# (or run all whose name starts with 'otf')
 %> chuck otf*
 
-# (and fire up the mand-o-matic, in stk/ directory...)
+# (or fire up the mand-o-matic, in stk/ directory)
 %> chuck stk/mand-o-matic.ck</pre>
   </tr>
   </table></td></tr>
   </table>
 </center>
+<br /> You are ready to ChucK! If this is your first time programming in ChucK, you may want to look at the <a href="../">documentation</a> and checkout various tutorials and play with the examples. Those working with command-line <b>chuck</b> may also find these helpful:
+<a target="_blank" href="../program/vm.html">command-line options</a> and
+<a target="_blank" href="../program/otfp.html">on-the-fly programming commands</a>.
+
+<br><br>
+Thank you, go forth, and ChucK. Have a question? Want to hang out with others learning and working with ChucK? Join the <a target="_blank" href="../../community">community</a>!
 <br />
-(if you do get error messages during compilation, or you run into some other problem - please <a href="https://https://github.com/ccrma/chuck">let us know</a> and we will do our best to provide support)
-<br />
-<br /><li> You are ready to ChucK.  If this is your first time programming in ChucK, you may want to look at the <a href="../">documentation</a>, or take the <a href="../learn/">ChucK Tutorial</a>.  Thank you, go forth, and ChucK - <a href="mailto:ge@ccrma.stanford.edu">contact us</a> for support or to make a suggestion or to call us idiots.
-<br />
-</ol>
+
+<br>
+<hr width=100>
+<br>
+
+<font size=3><b>Building ChucK from source</b></font>
+<br><br>
+
+ChucK is an open-source project. Those wishing to build chuck from the source for macOS, Linux, or Windows, follow the instructions on the <a target="_blank" href="https://github.com/ccrma/chuck/#readme">ChucK github page</a>. Similar instructions for building miniAudicle can be found on the <a target="_blank" href="https://githbu.com/ccrma/miniAudicle/#readme">miniAudicle github page</a>. There is a community of developers <a target="_blank" href="https://github.com/ccrma/chuck/#contributing-to-chuck">contributing to ChucK</a>, or integrating the ChucK compiler, VM, and synthesis engine as <a target="_blank" href="https://github.com/ccrma/chuck/#integrating-chuck-as-component-in-other-c-hosts">a component into other C++ based host programs</a>. You are warmly invited to join the growing <a target="_blank" href="../../community">community</a> of users and developers.
+<br /><br />
+
+Happy ChucKing, all!
+
 <center>
 - Ge + Perry
 <br />
