@@ -48,14 +48,14 @@
   <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
   <tr>
   <td align="left"><pre>chuck --[options|commands] [+-=^] file1 file2 file3 ...
-   [options] = halt|loop|audio|silent|dump|nodump|about|probe|
+   [options] = halt|loop|audio|silent|dump|nodump|about|probe
                channels:&lt;N&gt;|out:&lt;N&gt;|in:&lt;N&gt;|dac:&lt;N&gt;|adc:&lt;N&gt;|driver:&lt;name&gt;
-               srate:&lt;N&gt;|bufsize:&lt;N&gt;|bufnum:&lt;N&gt;|shell|empty|
-               remote:&lt;hostname&gt;|port:&lt;N&gt;|log:&lt;N&gt;|level:&lt;N&gt;|
-               callback|deprecate:{stop|warn|ignore}|chugin-probe|
-               chugin-load:{auto|off}|chugin-path:&lt;path>|chugin:&lt;name>|
-               --color:{on|off}|--no-color|--pid-file:&lt;path&gt;
-   [commands] = add|remove|replace|remove.all|status|time|
+               srate:&lt;N&gt;|bufsize:&lt;N&gt;|bufnum:&lt;N&gt;|shell|empty
+               remote:&lt;hostname&gt;|port:&lt;N&gt;|log:&lt;N&gt;|level:&lt;N&gt;
+               callback|deprecate:{stop|warn|ignore}|chugin-probe
+               chugin-load:{auto|off}|chugin-path:&lt;path>|chugin:&lt;name>
+               color:{on|off}|pid-file:&lt;path&gt;|--cmd-listener:{on|off}
+   [commands] = add|remove|replace|remove.all|status|time
                 clear.vm|reset.id|abort.shred|exit
        [+-=^] = shortcuts for add, remove, replace, status
 </td></tr></table></td></tr></table>
@@ -215,15 +215,23 @@ loads a specific ChuGin at the location specified by (filename). This can be use
 <br /><br />
 
 <b>--color:{on|off}</b><br>
-specify whether chuck should output ANSI color codes for TTY terminal. (See <a target="_blank" href="../images/chuck-tty-color2023.png">example</a>)
+specifies whether chuck should output ANSI color codes for TTY terminal. (See <a target="_blank" href="../images/chuck-tty-color2023.png">example</a>)
 <br><br>
 
 <b>--no-color</b><br>
-disable ANSI color codes for TTY terminal.
+disables ANSI color codes for TTY terminal; same as --color:off
 <br><br>
 
 <b>--pid-file:(filename)</b><br>
-If this flag is specified with argument, chuck will attempt to write its process ID to the given file upon startup, and then remove that file upon shutdown. This assists external process supervision (through tools like monit,etc) for long-running installations that need auto-rebooting, instant kill switches for live performances, and other programmatic external process control.
+if this flag is specified with argument, chuck will attempt to write its process ID to the given file upon startup, and then remove that file upon shutdown. This assists external process supervision (through tools like monit,etc) for long-running installations that need auto-rebooting, instant kill switches for live performances, and other programmatic external process control.
+<br><br>
+
+<b>--cmd-listener:{on|off}</b><br>
+specifies whether chuck should listen for incoming OTF commands (e.g., add, replace, remove, etc.).
+<br><br>
+
+<b>--no-cmd-listener</b><br>
+disables listening for incoming OTF commands; same as --cmd-listener:off
 <br><br>
 
 <b>--callback</b><br />
