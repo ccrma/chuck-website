@@ -197,6 +197,13 @@
 <li><a target="_blank" href="../examples/io/read-byte.ck">io/read-byte.ck</a></li>
 <li><a target="_blank" href="../examples/io/write-byte.ck">io/write-byte.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">expandPath</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path)</p>
+<p class="member_description">Expand platform-specific filepath to an absolute path, which is returned. On macOS and Linux expandPath() will attempt to resolve `~` or `~[username]`; on Windows expandPath() will attempt to resolve %USERNAME%. (Known issue: (macOS) expandPath currently introduced an audio click; it recommended to call expandPath() at the beginning; e.g., expanding path ahead of time could avoid a click instead of calling Machine.add() on a filepath with `~`.)</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -622,10 +629,10 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">deltaY</span></p><p class="member_description">Change in Y-axis of pointing device.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">deviceNum</span></p><p class="member_description">Device number that produced the messsage.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">deviceNum</span></p><p class="member_description">Device number that produced the message.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">deviceType</span></p><p class="member_description">Device type that produced the messsage.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">deviceType</span></p><p class="member_description">Device type that produced the message.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fdata</span></p><p class="member_description">Float data generate from the Hid device.</p>
@@ -661,7 +668,7 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">type</span></p><p class="member_description">A number representing the message type.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">time</span> <span class="membername">when</span></p><p class="member_description">Time when the HidMsg occured, relative to the start of the file.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">time</span> <span class="membername">when</span></p><p class="member_description">Time when the HidMsg occurred, relative to the start of the file.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">which</span></p><p class="member_description">Code (platform dependent) associated with a keyboard key.</p>

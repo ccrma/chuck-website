@@ -479,12 +479,13 @@
 <a name="Machine" /><div class="class">
 <h2 class="class_title" name="Machine">Machine</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Machine is ChucK runtime interface to the virtual machine. This interface can be used to manage shreds, evalute code, set log levels, etc. Machine's shred commands are similar to the On-the-fly Programming Commands, except these are invoked from within a ChucK program, and are subject to the timing mechanism.<p>
+<p class="class_description">Machine is the runtime interface to the ChucK Virtual Machine (Ck.VM or simply VM). This interface can be used to manage shreds, evaluate code, set log levels, etc. Machine's shred commands (add, replace, remove, etc.) are similar to the on-the-fly programming commands, except these are invoked from within a ChucK program, and benefit from ChucK's strongly-timed mechanics.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/machine/eval.ck">machine/eval.ck</a></li>
 <li><a target="_blank" href="../examples/machine/eval-global.ck">machine/eval-global.ck</a></li>
 <li><a target="_blank" href="../examples/machine/intsize.ck">machine/intsize.ck</a></li>
 <li><a target="_blank" href="../examples/machine/is-realtime.ck">machine/is-realtime.ck</a></li>
+<li><a target="_blank" href="../examples/machine/machine-help.ck">machine/machine-help.ck</a></li>
 <li><a target="_blank" href="../examples/machine/machine-shred.ck">machine/machine-shred.ck</a></li>
 <li><a target="_blank" href="../examples/machine/version.ck">machine/version.ck</a></li>
 <li><a target="_blank" href="../examples/book/digital-artists/chapter9/DrumMachine">book/digital-artists/chapter9/DrumMachine</a></li>
@@ -494,7 +495,11 @@
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path)</p>
-<p class="member_description">Compile and spork a new shred from file at 'path' into the VM now, returns the shred ID.</p>
+<p class="member_description">Compile and spork a new shred from file at 'path' into the VM; returns the new shred ID. It is possible to include arguments with the file being added, e.g., `Machine.add( "foo.ck:bar:3:5.0" )`.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">clearVM</span>()</p>
+<p class="member_description">Reset the type system, removing all user-defined types and all global variables; removes all shreds in the VM (including the shred calling this function). Use with care.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">crash</span>()</p>
@@ -548,8 +553,20 @@
 <p class="member_description">Remove shred from VM by shred ID (returned by Machine.add).</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">removeAllShreds</span>()</p>
+<p class="member_description">Remove all shreds in the VM (including the shred calling this function).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">removeLastShred</span>()</p>
+<p class="member_description">Remove the most recently added shred in the VM.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">replace</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> id, <span class="ckdoc_typename ckdoc_type_object">string</span> path)</p>
-<p class="member_description">Replace shred with new shred from file. Returns shred ID , or 0 on error.</p>
+<p class="member_description">Replace shred with new shred from file. Returns new shred ID, or 0 on error. It is possible to include arguments, e.g., `Machine.replace( outID, "foo.ck:bar:3:5.0" )`.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">resetShredID</span>()</p>
+<p class="member_description">Reset shred IDs to 1 + the highest current shred ID in the VM; can be used as shred management to keep shred IDs low, after a lot of sporks. Returns what the next shred ID would be.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">shreds</span>()</p>
@@ -561,11 +578,15 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">status</span>()</p>
-<p class="member_description">Display the current status of VM.</p>
+<p class="member_description">Print the current status of the VM.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">timeCheck</span>()</p>
+<p class="member_description">Print the current time information in the VM.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">version</span>()</p>
-<p class="member_description">Return version string</p>
+<p class="member_description">Return language and VM version string.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

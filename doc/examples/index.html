@@ -103,7 +103,8 @@ the <a target="_blank" href="../reference/">ChucK API Reference</a>. Good luck a
 <li><a href="#time">time and duration</a></li>
 <li><a href="#ctrl">control structures</a></li>
 <li><a href="#func">functions</a></li>
-<li><a href="#shred">shreds &amp; concurrency</a></li>
+<li><a href="#spork">shreds &amp; concurrency</a></li>
+<li><a href="#machine">virtual machine functions</a></li>
 </ul>
 <li><a href="#tools">tools &amp; techniques</a></li>
 <ul>
@@ -759,7 +760,6 @@ or perhaps:
 </div></td>
 </tr>
 
-
 <tr>
 <td ><div class="topic_sub">recursive function calls</div></td>
 <td><div class="topic_file_list"><a target="_blank" href="func/func_recursion.ck">func_recursion</a> </div></td>
@@ -776,7 +776,6 @@ or perhaps:
 <a name="spork"> </a>Shreds &amp; Concurrency</div>
 </td></tr>
 
-
 <tr>
 <td ><div class="topic_sub">sporking shreds</div></td>
 <td><div class="topic_file_list">
@@ -790,9 +789,32 @@ or perhaps:
 </tr>
 
 <tr>
-<td ><div class="topic_sub">machine.add() .remove() .replace()</div></td>
+<td ><div class="topic_sub">Machine.add() .remove() .replace()</div></td>
 <td><div class="topic_file_list"><a target="_blank" href="shred/machine.ck">machine</a></div>
 </td></tr>
+
+<tr><td  colspan="2">
+<div class="topic_main">
+<a name="machine"> </a>Virtual Machine functions</div>
+</td></tr>
+
+<tr>
+<td ><div class="topic_sub">evaluating string as code</div></td>
+<td><div class="topic_file_list">
+    <a target="_blank" href="machine/eval.ck">eval</a> |
+    <a target="_blank" href="machine/eval-global.ck">eval-global</a>
+</div></td></tr>
+
+<tr>
+<td ><div class="topic_sub">VM operations hodge-podge</div></td>
+<td><div class="topic_file_list">
+    <a target="_blank" href="machine/machine-help.ck">machine-help</a> |<br>
+    <a target="_blank" href="machine/version.ck">version</a> |
+    <a target="_blank" href="machine/is-realtime.ck">is-realtime</a> |<br>
+    <a target="_blank" href="machine/intsize.ck">intsize</a> |
+    <a target="_blank" href="machine/crash.ck">crash</a>
+</div></td></tr>
+
 
 </table>
 <br><br>
@@ -825,7 +847,7 @@ or perhaps:
 <a name="extend"> </a>Extending ChucK Unit Generators</div>
 </td></tr>
 
-<tr><td ><div class="topic_sub">chugraph (rhymes with "subgraph")</div></td>
+<tr><td ><div class="topic_sub">chugraph (rhymes with "u-graph")</div></td>
 <td><div class="topic_file_list"><a target="_blank" href="extend/chugraph.ck">chugraph</a></div></td></tr>
 
 <tr><td ><div class="topic_sub">chugen (rhymes with "ugen")</div></td>
