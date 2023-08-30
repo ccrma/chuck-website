@@ -295,24 +295,6 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/basic/adsr.ck">basic/adsr.ck</a></li>
 <li><a target="_blank" href="../examples/basic/blit2.ck">basic/blit2.ck</a></li>
 </ul></div>
-<h3 class="class_section_header">static member variables</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ATTACK</span></p><p class="member_description">See state() function. Denotes that the envelope is in the attack stage</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DECAY</span></p><p class="member_description">See state() function. Denotes that the envelope is in the decay stage</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DONE</span></p><p class="member_description">See state() function. Denotes that the envelope has completed all stages</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RELEASE</span></p><p class="member_description">See state() function. Denotes that the envelope is in the release stage</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">SUSTAIN</span></p><p class="member_description">See state() function. Denotes that the envelope is in the sustain stage</p>
-</div>
-</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -382,6 +364,24 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sustainLevel</span>()</p>
 <p class="member_description">Get sustain level.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ATTACK</span></p><p class="member_description">See state() function. Denotes that the envelope is in the attack stage</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DECAY</span></p><p class="member_description">See state() function. Denotes that the envelope is in the decay stage</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DONE</span></p><p class="member_description">See state() function. Denotes that the envelope has completed all stages</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RELEASE</span></p><p class="member_description">See state() function. Denotes that the envelope is in the release stage</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">SUSTAIN</span></p><p class="member_description">See state() function. Denotes that the envelope is in the sustain stage</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -868,15 +868,6 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h2 class="class_title" name="UGen_Stereo">UGen_Stereo</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen_Multi" class="ckdoc_typename ckdoc_type_ugen">UGen_Multi</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Base class for stereo unit generators.<p>
-<h3 class="class_section_header">member variables</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">UGen</span> <span class="membername">left</span></p><p class="member_description">Left channel (same as .chan(0)).</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">UGen</span> <span class="membername">right</span></p><p class="member_description">Right channel (same as .chan(1)).</p>
-</div>
-</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -894,6 +885,15 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">panType</span>()</p>
 <p class="member_description">Get the panning type: (1) constant power panning, (0) unity gain anti-panning.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">UGen</span> <span class="membername">left</span></p><p class="member_description">Left channel (same as .chan(0)).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">UGen</span> <span class="membername">right</span></p><p class="member_description">Right channel (same as .chan(1)).</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
