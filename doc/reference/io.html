@@ -328,7 +328,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">port</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> p)</p>
-<p class="member_description">Set which port to listen on.</p>
+<p class="member_description">Set which port to listen on; this will begin priming the background OSC listener on the named port. If port is set to 0, a usable port would be automatically assigned; the auto-assigned port number can be retrieved by calling .port() but may initially take some time to acquire (e.g., hundreds of milliseconds); if there is more than one OscIn client on port 0, they all will eventually share the same auto-assigned port.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">recv</span>(<span class="ckdoc_typename ckdoc_type_object">OscMsg</span> msg)</p>

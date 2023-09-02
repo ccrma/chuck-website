@@ -739,6 +739,7 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/string/strops.ck">string/strops.ck</a></li>
 <li><a target="_blank" href="../examples/string/strops2.ck">string/strops2.ck</a></li>
+<li><a target="_blank" href="../examples/string/replace.ck">string/replace.ck</a></li>
 <li><a target="_blank" href="../examples/string/token.ck">string/token.ck</a></li>
 <li><a target="_blank" href="../examples/string/escape.ck">string/escape.ck</a></li>
 <li><a target="_blank" href="../examples/string/tostr.ck">string/tostr.ck</a></li>
@@ -787,11 +788,15 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replace</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> position, <span class="ckdoc_typename ckdoc_type_object">string</span> str)</p>
-<p class="member_description">Get characters from the start position to the end of the string with str.</p>
+<p class="member_description">Replace characters from 'position' with contents of 'str'.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replace</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> position, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length, <span class="ckdoc_typename ckdoc_type_object">string</span> str)</p>
-<p class="member_description">Get length characters from the start position with str.</p>
+<p class="member_description">Replace 'length' characters from 'position' with contents of 'str'.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replace</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> from, <span class="ckdoc_typename ckdoc_type_object">string</span> to)</p>
+<p class="member_description">Replace all instances of 'from' in the string with 'to'.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">rfind</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> theChar)</p>
