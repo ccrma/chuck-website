@@ -498,8 +498,8 @@
 <p class="member_description">Compile and spork a new shred from file at 'path' into the VM; returns the new shred ID. It is possible to include arguments with the file being added, e.g., `Machine.add( "foo.ck:bar:3:5.0" )`.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">clearVM</span>()</p>
-<p class="member_description">Reset the type system, removing all user-defined types and all global variables; removes all shreds in the VM (including the shred calling this function). Use with care.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clearVM</span>()</p>
+<p class="member_description">Reset the type system, removing all user-defined types and all global variables; removes all shreds in the VM (including the shred calling this function); use with care.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">crash</span>()</p>
@@ -527,10 +527,10 @@
        |- 0: NONE
        |- 1: CORE
        |- 2: SYSTEM
-       |- 3: SEVERE
+       |- 3: HERALD
        |- 4: WARNING
        |- 5: INFO
-       |- 6: CONFIG
+       |- 6: DEBUG
        |- 7: FINE
        |- 8: FINER
        |- 9: FINEST
@@ -539,6 +539,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">loglevel</span>()</p>
 <p class="member_description">Get log level.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">printStatus</span>()</p>
+<p class="member_description">Print (to terminal or console) the current status of the VM.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">printTimeCheck</span>()</p>
+<p class="member_description">Print (to terminal or console) the current time information in the VM.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">realtime</span>()</p>
@@ -553,12 +561,12 @@
 <p class="member_description">Remove shred from VM by shred ID (returned by Machine.add).</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">removeAllShreds</span>()</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">removeAllShreds</span>()</p>
 <p class="member_description">Remove all shreds in the VM (including the shred calling this function).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">removeLastShred</span>()</p>
-<p class="member_description">Remove the most recently added shred in the VM.</p>
+<p class="member_description">Remove the most recently added shred in the VM (could be the shred calling this function); returns the ID of the removed shred.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">replace</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> id, <span class="ckdoc_typename ckdoc_type_object">string</span> path)</p>
@@ -566,7 +574,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">resetShredID</span>()</p>
-<p class="member_description">Reset shred IDs to 1 + the highest current shred ID in the VM; can be used as shred management to keep shred IDs low, after a lot of sporks. Returns what the next shred ID would be.</p>
+<p class="member_description">Reset shred IDs to 1 + the highest current shred ID in the VM; can be used as shred management to keep shred IDs low, after a lot of sporks; returns what the next shred ID would be.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">shreds</span>()</p>
@@ -578,11 +586,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">status</span>()</p>
-<p class="member_description">Print the current status of the VM.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">timeCheck</span>()</p>
-<p class="member_description">Print the current time information in the VM.</p>
+<p class="member_description">Print the current status of the VM; legacy version of printStatus().</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">version</span>()</p>
