@@ -2,7 +2,9 @@
 <!-- Add ChuGL logo -->
 <!-- <img align="left" style="width:260px" src="https://github.com/raysan5/raylib/blob/master/logo/raylib_logo_animation.gif" width="288px"> -->
 
-<h1>ChuGL</h1>
+![logo](images/chugl-glogo2023t.png)
+
+<!-- <h1>ChuGL</h1> -->
 
 Version 0.1.0  [alpha]
 <a href="https://ccrma.stanford.edu/~azaday/"> Andrew Zhu Aday </a> and <a href="https://ccrma.stanford.edu/~ge/">Ge Wang</a> 
@@ -52,6 +54,6 @@ Congrats, you now have ChuGL properly installed!
 
 ## Learning Resouces
 
-- [API Reference](./doc/)
-- [Examples](./examples/)
-- [ChuGL Tutorial](./tutorial.html)
+- [API Reference](https://chuck.stanford.edu/chugl/api/)
+- [Examples](https://chuck.stanford.edu/chugl/examples/)
+- [ChuGL Tutorial](https://chuck.stanford.edu/chugl/doc/tutorial.html)
