@@ -31,6 +31,7 @@
 <p class="toc_class"><a href="#Pan16" class="ckdoc_typename ckdoc_type_ugen">Pan16</a></p>
 <p class="toc_class"><a href="#PitchTrack" class="ckdoc_typename ckdoc_type_ugen">PitchTrack</a></p>
 <p class="toc_class"><a href="#PowerADSR" class="ckdoc_typename ckdoc_type_ugen">PowerADSR</a></p>
+<p class="toc_class"><a href="#RegEx" class="ckdoc_typename ckdoc_type_object">RegEx</a></p>
 <p class="toc_class"><a href="#Sigmund" class="ckdoc_typename ckdoc_type_ugen">Sigmund</a></p>
 <p class="toc_class"><a href="#Spectacle" class="ckdoc_typename ckdoc_type_ugen">Spectacle</a></p>
 <p class="toc_class"><a href="#WinFuncEnv" class="ckdoc_typename ckdoc_type_ugen">WinFuncEnv</a></p>
@@ -864,6 +865,32 @@ Linear interpolation is used on the input signal to avoid the S&Hs being quantis
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
+<a name="RegEx" /><div class="class">
+<h2 class="class_title" name="RegEx">RegEx</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Class for regular expression matching and replacing in strings. Regex style is POSIX-extended.<p>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">match</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> pattern, <span class="ckdoc_typename ckdoc_type_object">string</span> str)</p>
+<p class="member_description">Return true if match for pattern is found in str, false otherwise.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">match</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> pattern, <span class="ckdoc_typename ckdoc_type_object">string</span> str, <span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> matches)</p>
+<p class="member_description">Return the match and sub-patterns in matches. matches[0] in the entire matched pattern, matches[1] is the first sub-pattern (if any), and so on.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">replace</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> pattern, <span class="ckdoc_typename ckdoc_type_object">string</span> replacement, <span class="ckdoc_typename ckdoc_type_object">string</span> str)</p>
+<p class="member_description">Replace the first instance of pattern in str with replacement, returning the result.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">replaceAll</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> pattern, <span class="ckdoc_typename ckdoc_type_object">string</span> replacement, <span class="ckdoc_typename ckdoc_type_object">string</span> str)</p>
+<p class="member_description">Replace all instances of pattern in str with replacement, returning the result.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
 <a name="Sigmund" /><div class="class">
 <h2 class="class_title" name="Sigmund">Sigmund</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
@@ -1138,6 +1165,14 @@ Linear interpolation is used on the input signal to avoid the S&Hs being quantis
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPoisson</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> a)</p>
 <p class="member_description">Set Poisson Window Envelope with a custom value. </p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setSigmoid</span>()</p>
+<p class="member_description">Set Sigmoid Window Envelope with default value (2.0). </p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setSigmoid</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> k)</p>
+<p class="member_description">Set Sigmoid Window Envelope with a custom value. </p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setTukey</span>()</p>
