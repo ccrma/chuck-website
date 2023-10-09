@@ -69,11 +69,15 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">can_wait</span>()</p>
-<p class="member_description">Can the event can be waited on? Internally used by virtual machine for synthronization.</p>
+<p class="member_description">Can the event can be waited on? (internal) used by virtual machine for synchronization.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">signal</span>()</p>
 <p class="member_description">Signal one shred that is waiting on this event.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">waiting_on</span>()</p>
+<p class="member_description">(internal) used by virtual machine to be notified when a shred starts waiting on this Event.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -109,6 +113,22 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">args</span>()</p>
 <p class="member_description">Get the number of arguments provided to the Shred.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">childMemSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> sizeInBytes)</p>
+<p class="member_description">Set size hint of per-shred call stack ("mem") for children shreds subsequently sporked from the calling shred (NOTE this size hint does not affect the calling shred--only its descendants); if sizeInBytes <= 0, the size hint is set to the VM default. (FYI This is an arcane functionality that most programmers never need to worry about. Advanced usage: set size hint to small values (e.g., 1K) to support A LOT (e.g., >10000) of simultaneous shreds; set size hint to large values (e.g., >65K) to spork functions with extremely deep recursion, or to support A LOT (>10000) of declared local variables. Use with care.)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">childMemSize</span>()</p>
+<p class="member_description">Get the memory stack size hint (in bytes) for shreds sporked from this one.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">childRegSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> sizeInBytes)</p>
+<p class="member_description">Set size hint of per-shred operand stack ("reg") for children shreds subsequently sporked from the calling shred (NOTE this size hint does not affect the calling shred--only its descendants); if sizeInBytes <= 0, the size hint is set to the VM default. (FYI This is an arcane functionality that most programmers never need to worry about. Advanced usage: set size hint to small values (e.g., 256 bytes) to support A LOT (>10000) of simultaneous shreds; set size hint to large values (e.g., >20K) to spork functions with extremely lengthy (>10000) statements, including array initializer lists. Use with care.)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">childRegSize</span>()</p>
+<p class="member_description">Get the operand stack size hint (in bytes) for shreds sporked from this one.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">dir</span>()</p>
@@ -541,6 +561,10 @@
 <p class="member_description">Get log level.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numShreds</span>()</p>
+<p class="member_description">Get the number of shreds currently in the VM.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">printStatus</span>()</p>
 <p class="member_description">Print (to terminal or console) the current status of the VM.</p>
 </div>
@@ -571,6 +595,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">replace</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> id, <span class="ckdoc_typename ckdoc_type_object">string</span> path)</p>
 <p class="member_description">Replace shred with new shred from file. Returns new shred ID, or 0 on error. It is possible to include arguments, e.g., `Machine.replace( outID, "foo.ck:bar:3:5.0" )`.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">resetOperators</span>()</p>
+<p class="member_description">Reset operator overloading state to default startup state; removes all public @operator overloads; use with care.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">resetShredID</span>()</p>

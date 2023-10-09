@@ -33,6 +33,7 @@
 <p class="toc_class"><a href="#IFFT" class="ckdoc_typename ckdoc_type_ugen">IFFT</a></p>
 <p class="toc_class"><a href="#UnFlip" class="ckdoc_typename ckdoc_type_ugen">UnFlip</a></p>
 <p class="toc_class"><a href="#XCorr" class="ckdoc_typename ckdoc_type_ugen">XCorr</a></p>
+<p class="toc_class"><a href="#Windowing" class="ckdoc_typename ckdoc_type_object">Windowing</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">Unit analyzer (<a target="_blank" href="../../uana/">UAna</a>) objects are specialized UGens that can perform audio analysis and pass analysis information to other UAnae. (See also: <a href="ai.html">AI Tools API reference</a>.)</p>
@@ -652,6 +653,45 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">normalize</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Windowing" /><div class="class">
+<h2 class="class_title" name="Windowing">Windowing</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/analysis/win.ck">analysis/win.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/xsynth.ck">analysis/xsynth.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/tracking/pitch-track.ck">analysis/tracking/pitch-track.ck</a></li>
+<li><a target="_blank" href="../examples/ai/features/rolloff2.ck">ai/features/rolloff2.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/win.ck">analysis/win.ck</a></li>
+<li><a target="_blank" href="../examples/ai/genre-classify/feature-extract.ck">ai/genre-classify/feature-extract.ck</a></li>
+<li><a target="_blank" href="../examples/ai/genre-classify/genre-classify.ck">ai/genre-classify/genre-classify.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">blackmanHarris</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> size)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">hamming</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> size)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">hann</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> size)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">rectangle</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> size)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">triangle</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> size)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 </div>

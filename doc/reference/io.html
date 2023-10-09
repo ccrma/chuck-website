@@ -194,6 +194,7 @@
 <li><a target="_blank" href="../examples/io/seek.ck">io/seek.ck</a></li>
 <li><a target="_blank" href="../examples/io/write.ck">io/write.ck</a></li>
 <li><a target="_blank" href="../examples/io/write2.ck">io/write2.ck</a></li>
+<li><a target="_blank" href="../examples/io/write-auto.ck">io/write-auto.ck</a></li>
 <li><a target="_blank" href="../examples/io/read-byte.ck">io/read-byte.ck</a></li>
 <li><a target="_blank" href="../examples/io/write-byte.ck">io/write-byte.ck</a></li>
 </ul></div>
@@ -207,6 +208,18 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">autoExtension</span>()</p>
+<p class="member_description">Get auto extension for "special:auto" filename generation (applicable to file writing only).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">autoPrefix</span>()</p>
+<p class="member_description">Get auto prefix for "special:auto" filename generation (applicable to file writing only).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">autoPrefixExtension</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> prefix, <span class="ckdoc_typename ckdoc_type_object">string</span> extension)</p>
+<p class="member_description">Set auto prefix and extension for "special:auto" filename generation (applicable to file writing only).</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">close</span>()</p>
 <p class="member_description">Close (and flush) the currently open file.</p>
 </div>
@@ -217,6 +230,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">eof</span>()</p>
 <p class="member_description">Return whether end-of-file has been reached; the opposite of .more().</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">filename</span>()</p>
+<p class="member_description">Get current filename.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">flush</span>()</p>
@@ -502,12 +519,24 @@
 <p class="member_description">Open a joystick/gamepad by device number.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">openJoystick</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> num, <span class="ckdoc_typename ckdoc_type_primitive">int</span> suppressErrMsg)</p>
+<p class="member_description">Open a joystick/gamepad by device number, with option (true/false) to suppress error messages.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">openKeyboard</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> num)</p>
 <p class="member_description">Open a keyboard by device number.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">openKeyboard</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> num, <span class="ckdoc_typename ckdoc_type_primitive">int</span> suppressErrMsg)</p>
+<p class="member_description">Open a keyboard by device number, with option (true/false) to suppress error messages.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">openMouse</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> num)</p>
 <p class="member_description">Open a mouse/trackpad by device number.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">openMouse</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> num, <span class="ckdoc_typename ckdoc_type_primitive">int</span> suppressErrMsg)</p>
+<p class="member_description">Open a mouse/trackpad by device number, with option (true/false) to suppress error messages.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">openTiltSensor</span>()</p>
