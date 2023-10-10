@@ -4,17 +4,18 @@
 
 ![logo](images/chugl-glogo2023t.png)
 
-<a href="https://ccrma.stanford.edu/~azaday/">Andrew Zhu Aday</a> + <a href="https://ccrma.stanford.edu/~ge/">Ge Wang</a>
-<br>with <a href="https://chuck.stanford.edu/doc/authors.html">ChucK Team</a>
-
-
-## ChuGL == ChucK Graphics
+## ChuGL =&gt; ChucK Graphics
 Version 0.1.0 [alpha]
 
 </div> <!-- end center -->
 
 <p align="justify">
 ChuGL is a unified audiovisual programming tool built into the ChucK language. It combines ChucK's <b>strongly-timed, concurrent programming model</b> and <b>real-time audio synthesis</b> capabilities with a <b>hardware-accelerated 3D graphics engine and API</b>. At its core is a scenegraph architecture that provides <b>low-latency, high performance audiovisual synchronization at frame-level accuracy</b>.
+
+ChuGL was created by <a href="https://ccrma.stanford.edu/~azaday/">Andrew Zhu Aday</a> and
+<a href="https://ccrma.stanford.edu/~ge/">Ge Wang</a>, with support from the <a 
+href="https://chuck.stanford.edu/doc/authors.html">ChucK Team</a>, and benefitted from prior 
+prototypes of ChuGL and GLucK by Spencer Salazar and Philip Davidson.
 </p>
 
 ___
@@ -36,7 +37,12 @@ Download the `ChuGL.chug` binary from the installation links above and move it t
 
 ### Linux
 
-We are working on it! Let us know if you get it working (or would like to help us to get it working)!
+We are working on it! Let us know if you get it working (or would like to help us to get it 
+working)!
+
+### Source
+
+ChuGL source can be found <a target="_blank" href="https://github.com/ccrma/chugl/">here</a>.
 
 ## Running
 
