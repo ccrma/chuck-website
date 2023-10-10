@@ -4,11 +4,12 @@
 
 ![logo](images/chugl-glogo2023t.png)
 
-Version 0.1.0  [alpha]
-<a href="https://ccrma.stanford.edu/~azaday/"> Andrew Zhu Aday </a> and <a href="https://ccrma.stanford.edu/~ge/">Ge Wang</a> 
+<a href="https://ccrma.stanford.edu/~azaday/">Andrew Zhu Aday</a> + <a href="https://ccrma.stanford.edu/~ge/">Ge Wang</a>
+<br>with <a href="https://chuck.stanford.edu/doc/authors.html">ChucK Team</a>
 
 
 ## ChuGL == ChucK Graphics
+Version 0.1.0 [alpha]
 
 </div> <!-- end center -->
 
@@ -29,10 +30,13 @@ https://chuck.stanford.edu/release/alpha/chugl/
 
 Run the .pkg file, which will install the ChuGL chugin in the appropriate location
 
-
 ### Windows
 
 Download the `ChuGL.chug` binary from the installation links above and move it to `C:\Users\<usename>\Documents\ChucK\chugins\`
+
+### Linux
+
+We are working on it! Let us know if you get it working (or would like to help us to get it working)!
 
 ## Running
 
@@ -43,8 +47,6 @@ You can run commandline ChucK with the option `--chugin-probe` to check which ch
 ### Minimal Example
 
 If the chugin is properly loaded, running the following example via commandline chuck will open a blank window. Press `esc` to exit. 
-
-
 
 ```cpp
 while (true) { GG.nextFrame() => now; }
