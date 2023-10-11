@@ -3,14 +3,14 @@
 <!-- <img align="left" style="width:260px" src="https://github.com/raysan5/raylib/blob/master/logo/raylib_logo_animation.gif" width="288px"> -->
 
 ![logo](images/chugl-glogo2023t.png)
-
-## **ChuGL =&gt; ChucK Graphics** • v0.1.0 [alpha]
+<!--**ChuGL =&gt; ChucK Graphics** • -->
+### version 0.1.0 (alpha)
 
 </div> <!-- end center -->
 
 <p align="justify">
-ChuGL is a unified audiovisual programming framework built into the <a 
-target="_blank" href="../">ChucK</a> programming language. It combines 
+<b>ChuGL</b> is a unified audiovisual programming framework built into the 
+<a target="_blank" href="../">ChucK</a> programming language. It combines 
 ChucK's <b>strongly-timed, concurrent programming model</b> and 
 <b>real-time audio synthesis</b> capabilities with a 
 <b>hardware-accelerated 3D graphics engine and API</b>. At its core is a 
