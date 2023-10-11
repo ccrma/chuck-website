@@ -20,6 +20,10 @@ prototypes of ChuGL and GLucK by Spencer Salazar and Philip Davidson.
 
 ___
 
+[**API Reference**](https://chuck.stanford.edu/chugl/api/)
+• [**Examples**](https://chuck.stanford.edu/chugl/examples/)
+• [**ChuGL Tutorial**](https://chuck.stanford.edu/chugl/doc/tutorial.html)
+
 ## Installation
 
 1. **Get the latest ChucK (requires 1.5.1.5 or higher)**
