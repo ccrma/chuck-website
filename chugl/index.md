@@ -4,7 +4,6 @@
 
 ![logo](images/chugl-glogo2023t.png)
 <!--**ChuGL =&gt; ChucK Graphics** • -->
-### version 0.1.0 (alpha)
 
 </div> <!-- end center -->
 
@@ -25,12 +24,14 @@ benefitted from prior prototypes of ChuGL and GLucK by Spencer Salazar and
 Philip Davidson.
 </p>
 
-___
+---
 
-*Quick links* — 
-[**ChuGL API Reference**](https://chuck.stanford.edu/chugl/api/)
+**ChuGL v0.1.0** (alpha) — [**ChuGL API 
+Reference**](https://chuck.stanford.edu/chugl/api/)
 • [**ChuGL Examples**](https://chuck.stanford.edu/chugl/examples/)
 • [**ChuGL Tutorial**](https://chuck.stanford.edu/chugl/doc/tutorial.html)
+• **Video Introduction**
+• **Showcase**
 
 ___
 
