@@ -1,13 +1,33 @@
-# ChuGL Tutorial
+# ChuGL Tutorial (work in progress)
 
-## (WORK IN PROGRESS)
-
-## Sections
-
-- 
+- [ChuGL Tutorial (work in progress)](#chugl-tutorial-work-in-progress)
+  - [The Gameloop](#the-gameloop)
+    - [The Many Ways to Update()](#the-many-ways-to-update)
+      - [Sporking Gameloop Shreds](#sporking-gameloop-shreds)
+      - [Extending GGens](#extending-ggens)
+      - [Yet another way: continuous vs discrete updates](#yet-another-way-continuous-vs-discrete-updates)
+      - [Mysteries of Time: one way that somehow DOESN'T work](#mysteries-of-time-one-way-that-somehow-doesnt-work)
+  - [The Scene Graph](#the-scene-graph)
+    - [Grucking](#grucking)
+    - [GScene](#gscene)
+    - [Further Reading](#further-reading)
+  - [Optimizations + Do's and Dont's](#optimizations--dos-and-donts)
+    - [Don't Pass Time in the update() logic](#dont-pass-time-in-the-update-logic)
+    - [Audio Problems in an Audio-First Engine](#audio-problems-in-an-audio-first-engine)
+    - [Speeding up Load Times -- Sharing Geometry and Materials](#speeding-up-load-times----sharing-geometry-and-materials)
+      - [What is a Mesh?](#what-is-a-mesh)
+      - [G(Types) vs GMesh](#gtypes-vs-gmesh)
+    - [Pre-loading Resources](#pre-loading-resources)
+    - [Simplifying Geometry](#simplifying-geometry)
+    - [Reducing Draw Calls](#reducing-draw-calls)
+    - [One Last Remark](#one-last-remark)
+  - [ChuGL Shader Programming](#chugl-shader-programming)
+    - [Word of Caution](#word-of-caution)
+    - [Shaders in ChuGL](#shaders-in-chugl)
+      - [Creating a Custom Fragment Shader](#creating-a-custom-fragment-shader)
+      - [Creating a Custom Vertex Shader](#creating-a-custom-vertex-shader)
 
 ## The Gameloop
-
 
 The heartbeat of any realtime graphics system is its *gameloop* function, which is computed once per frame. In class Ge showed everyone *audio buffer callbacks*, i.e. some function in the inner loop which computes the upcoming audio buffer on-demand so that it may be sent to the audio driver and then eventually be played back as sound. UGens (ChucK's sound generators), for example, all implement a `tick()` function which is called at *audio rate* (typically 44.1khz or 48khz) to compute a sample of sound at that particular moment in time.
 
@@ -15,9 +35,10 @@ In ChuGL we can think of the gameloop as exactly analagous, but instead of compu
 
 So the gameloop decides what's drawn on screen each frame, but what's actually happening inside? How will it know to draw all the mesmerizing patterns you envision for your next audio visualizer?
 
-![](images/gameloop.png)
+<img src="./images/gameloop.png" alt="drawing" style="width:50%;display:block;margin:0 auto;padding: 10px"/>
 
-The above diagram shows that at the highest and simplest level, the gameloop can be broken into just 2 parts: 
+The above diagram shows that at the highest and simplest level, the gameloop can be broken into just 2 parts:
+
 1. updating state (the green `Update()` block) and...
 2. drawing that state. (the blue `Render()` block)
   
@@ -36,6 +57,7 @@ while (true) {
 ```
 
 A quick breakdown
+
 - `GG.nextFrame()` is the equivalent of `Render()`. It's ChucK VM thread telling the ChuGL rendering thread: "hey I'm done updating the state, now draw it". `nextFrame()` returns an event that this chuck shred will wait on (by piping it `=> now`) while the render thread does stuff to prepare all the newly-updated state for drawing
 - When the renderer is done, it broadcasts a wakeup signal back to the chuck shred, to move onto the next iteration of the gameloop
 - ChucK events work in a way that while being waited on, other shreds are not blocked and continue to compute audio data! So no need to worry about dropping samples!
@@ -74,6 +96,7 @@ But what if your scene starts getting more complex? Imagine trying to make a gam
 A defining feature of Chuck is its strongly-timed, deterministic, user-space threading, aka **shreds**. Just like we can spork shreds to compute audio in parallel, say for multiple instruments at the same time, we can also spork shreds to update graphics in parallel, e.g. for many entities that act independently but are on screen at the same time.
 
 Here's an example:
+
 ```cpp
 
 // audio shred
@@ -103,13 +126,14 @@ fun void EnemyUpdater() {
 // same gameloop as usual
 while (true) { GG.nextFrame() => now; }
 ```
+
 Breakdown:
+
 - `SoundTrack()` is your typical audio shred
 - `PlayerUpdater()` and `EnemyUpdater()` are separate graphics shreds that compute update logic for their own entities (the player and enemy, respectively).
 - **Important**: these shreds must also call `GG.nextFrame() => now`! This accomplishes 2 things
   1. Waiting on the Chuck Event returned by `nextFrame()` throttles the while-loop to run exactly once per frame. Any more often you're doing unnecessary work because only the most recent update will get drawn to screen anyways. Any less often and you're potentially missing frames, resulting in choppy, unresponsive animation.
   2. Calling `.nextFrame()` also registers the calling shred with the ChuGL backend, so *ChuGL knows to wait for all shreds to finish their update logic before kicking off the next Render()*. E.g. in our above code snippet 3 shreds are calling `GG.nextFrame()`, so each gameloop ChuGL knows that once `.nextFrame()` has been called 3 times, the update logic is done for this cycle and it can now begin rendering. Otherwise ChuGL might kick off the render before a shred has finished its update-logic, again resulting in choppy or delayed visuals.
-
 
 #### Extending GGens
 
@@ -147,17 +171,19 @@ while (true) { GG.nextFrame() => now; }
 ```
 
 Now what's going on?
+
 - Player and Enemy are now GGens, which can themselves be containers of multiple GGens and be grucked direclty into the scene
 - A new update function `fun void update(float dt)` that overrides the default
-  - It's analagous to the `tick()` defined by every UGen, and how you can extend Chugens and implement your own `tick()` audio function 
+  - It's analagous to the `tick()` defined by every UGen, and how you can extend Chugens and implement your own `tick()` audio function
   - `float dt` is the deltatime in seconds since the last gameloop iteration. E.g. if your app is running at 60FPS, the dt will be around 1/60 = .01667 seconds.
     - Use this deltaTime to drive animations so that they run *independent of framerate*
   - **No more need to call `GG.nextFrame()!`**
 - How many shreds are left now? Just 1: the main gameloop that's been there since the very beginning.
 
 How this all works: after every registered shred has called `nextFrame()` (which is just 1 in the above code snippet), ChuGL will *walk the scenegraph in depth-first order*, starting from the the root `GG.scene()`, and automatically call `update(float dt)` on all connected GGens.
+
 - **Note:** Parent updates are therefore called before children. So if update order matters, work around this carefully!! Or just use the simpler sporking method.
-- If your custom GGen class also instantiates and contains other custom GGens, those updates will also be called automatically 
+- If your custom GGen class also instantiates and contains other custom GGens, those updates will also be called automatically
 - Overloading `update(float dt)` in your custom GGen classes is completely optional
 
 #### Yet another way: continuous vs discrete updates
@@ -186,13 +212,14 @@ fun void pulser(Event @ pulseEvent) {
 ```
 
 The breakdown:
+
 - This way of handling discrete updates is particularly elegant because it's exactly what ChucK was designed for, only now we're controlling visuals instead of audio
 - no `nextFrame()` and no `update()`, instead we either listen for an Event or chuck some time to now, and *just do the thing when it needs to be done*
 - ChuGL's underlying synchronization mechanisms will ensure these discrete updates get propagated to the very next frame
 
 > Exercise: why don't we need to call `nextFrame()` in these discrete scenarios?
 
-Note that this update pattern also lends itself well to handling input controls e.g. mouse clicks or key presses. 
+Note that this update pattern also lends itself well to handling input controls e.g. mouse clicks or key presses.
 
 #### Mysteries of Time: one way that somehow DOESN'T work
 
@@ -211,11 +238,11 @@ From reading the code, it looks like the cube should now be animating at 60fps a
 
 Run this code for yourself. What do you see? Surprised? We certainly were.
 
-The reason the code above *doesn't* work is really something I'm still wrapping my head around and gets to the very heart of how computers handle "time" as it relates to either audio or graphics. In short, audio-time and graphics-time *are not the same "Time"*, and the challenge of synchronizing the two in realtime is what  motivated and guided the entire ChuGL architecture. We're obviously as biased as it gets, but this mystery is also what makes ChuGL a unique, non-trivial, and powerful tool for audiovisual design. 
+The reason the code above *doesn't* work is really something I'm still wrapping my head around and gets to the very heart of how computers handle "time" as it relates to either audio or graphics. In short, audio-time and graphics-time *are not the same "Time"*, and the challenge of synchronizing the two in realtime is what  motivated and guided the entire ChuGL architecture. We're obviously as biased as it gets, but this mystery is also what makes ChuGL a unique, non-trivial, and powerful tool for audiovisual design.
 
-So in short, don't do this! Use the other update() methods outlined above. 
+So in short, don't do this! Use the other update() methods outlined above.
 
-And for the curious reader I'll leave these questions: 
+And for the curious reader I'll leave these questions:
 > Exercise: Why doesn't the above code work??? What's really going on here?
 
 ___
@@ -233,6 +260,7 @@ Scene Graphs are a data-structure for organizing 3D objects in parent-child hier
 3. Scale: a vec3 describing stretching/scaling along the x,y,z axis in local space
 
 Notice how all these components of the transform are in **local space**, which you can think of relative position/rotation/scale. Before drawing anything, the render thread needs to convert all this transform data into **world space**, which is like absolute position/rotation/scale. It computes this by going down the scenegraph, from root to leaves, and compounding transforms along the way.
+
 - E.g. if a parent GGen has worldspace position (1,0,0) and its child has local space position (2,0,1), what would the child's world-space position be?
   - answer: (1,0,0) + (2,0,1) = (3,0,1)
 - Rotation is similarly compounded with addition, whereas scale is multiplied
@@ -241,6 +269,7 @@ Notice how all these components of the transform are in **local space**, which y
 ### Grucking
 
 In ChuGL, GGens are connected/disconnected to the scenegraph with the **gruck/ungruck** operators `-->` and `--<`. Something like `A --> B` has 2 effects:
+
 1. `A` is now the child of `B` and will therefore inherit all of B's transform data (e.g. A will be translated by the position of B, A will be rotated by how much B is rotated, and scaled by how much B is scaled)
 2. `A` will now be connected to the main scene, and be picked up in both the update pass and the draw pass
 
@@ -250,7 +279,7 @@ Likewise, if you have some `class Player extends GGen` with its own overriden `u
 
 As a corollary, if you want to *disable* a GGen, i.e. stop drawing it and have ChuGL stop calling it's `update()` function, simply disconnect it from the scene:
 
-```
+```cpp
 // every second we either disconnect or reconnect the sphere to the scene, toggling whether or not it will be drawn
 GSphere s;
 while (true) {
@@ -262,9 +291,10 @@ while (true) {
 ```
 
 Some other notes about these scenegraph connections:
+
 - a GGen can only have 1 parent, but can have any number of children
 - a GGen cannot be connected to itself
-- the scenegraph is acyclic, i.e. A cannot be both a parent AND child of B. 
+- the scenegraph is acyclic, i.e. A cannot be both a parent AND child of B.
   - If A is already a parent of B, setting B to be the parent of A will implicitly replace the previous connection.
 
 ```cpp
@@ -281,17 +311,17 @@ The root GGen of any ChuGL project is the main scene, accessed via `GG.scene()`.
 The ChuGL renderer will always take this main scene `GG.scene()` as the root and origin of the world. For all the update and draw passes, it starts there and does a DFS downwards through children. By default the mainscene has no parent, and making it the child of some other GGen will have no effect.
 
 By default, the `GScene` comes with 2 children:
+
 1. the main camera, `GG.camera()`
 2. a default directional light, `GG.light()`
 
 In addition, the scene GGen stores state regarding global, scene-wide visual information like background color or fog information.
 
-
 ### Further Reading
 
 [ThreeJS Fundamentals: Scenegraph](https://threejs.org/manual/#en/scenegraph): Part of the a tutorial for threejs, a javascript 3D library for the web which is a primary inspiration for ChuGL's own scenegraph design
 
-[Learn OpenGL: Scene Graphs](https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph): another great resource for learning low-level graphics graphics programming general. 
+[Learn OpenGL: Scene Graphs](https://learnopengl.com/Guest-Articles/2021/Scene/Scene-Graph): another great resource for learning low-level graphics graphics programming general.
 
 ___
 
@@ -300,6 +330,7 @@ ___
 As a rule of thumb you should never optimize until you have to, (1) because the more optimized code is, the more locked-in and inflexible it comes, reducing your avenues for creative exploration, and (2) you can't actually know what to optimize until the slow code exists in the first place.
 
 But since we're programming realtime audiovisual systems in the class, it may frequently be the case that you do have to optimize. Running in realtime has strict performance requirements:
+
 - For graphics running at 60FPS, you have 16.7ms to compute all your update logic each frame. Miss this deadline and your visuals will start to stutter and at worst freeze
 - For audio running at 48khz sampling rate, 256 sample buffsize (which is the default for ChucK on MacOS), ChucK has a measly 5.3ms to generate each audio buffer. Miss this deadline and it'll sound like some terrible creature is trying to scratch and claw its way out of your speakers
 
@@ -317,7 +348,7 @@ while (true) {
 }
 ```
 
-Passing time in the gameloop or update functions will just artificially reduce your framerate. If you need to pass time to do musical timing, spork and do it in a separate shred. 
+Passing time in the gameloop or update functions will just artificially reduce your framerate. If you need to pass time to do musical timing, spork and do it in a separate shred.
 
 ### Audio Problems in an Audio-First Engine
 
@@ -328,6 +359,7 @@ Short answer: no.
 Long answer: no, because ChuGL is an **Audio-First** graphics engine. Unlike other game frameworks where you can dispatch audio calls from the main thread, ChuGL is the reverse--audio takes priority, and the audio thread controls when the render thread draws. Graphics blocks on audio, not the other way around. Doing a lot of compute in ChucK can slow your update logic and therefore reduce the framerate, but long drawtimes in the renderer *will never* slow down audio synthesis.
 
 So if your audio is suffering, try:
+
 1. look at how you're using UGens. Load SndBufs and instantiate UGens on program startup, rather than during inner loops
 2. Reduce the complexity of your update logic. E.g. drawing 1,000,000 points might be ok, but looping over a million points in chuck every frame to change some value might be too expensive, depending on your machine.
 
@@ -347,9 +379,10 @@ What's going on here? Why is adding 1 sphere instant, but 512 spheres so slow? T
 
 #### What is a Mesh?
 
-GMesh is simply a container for 2 other ChuGL data types: `Geometry` and `Material`. 
+GMesh is simply a container for 2 other ChuGL data types: `Geometry` and `Material`.
 
 `Geometry` classes describe the geometry, i.e. vertex, data for a GMesh. The `BoxGeometry`, for example, contains vertex data for the 8 points that make a cube. This vertex data is comprised of:
+
 - positions (3 floats xyz per vert)
 - colors (4 floats rgba)
 - UVs (2 floats for texcoords U and V)
@@ -358,6 +391,7 @@ GMesh is simply a container for 2 other ChuGL data types: `Geometry` and `Materi
 `Material` classes meanwhile describe how a shape described by `Geometry` actually looks on screen. I.e. what color are the pixels that make up the surfaces described by the geometry? Different materials have different logic for picking pixel color. E.g. `PhongMaterial` uses a basic diffuse/specular lighting model to decide, whereas `MangoUVMaterial` just inserts texture coordinates into the red and green channels. On the renderer side, a `Material` represents a combination of vertex shader, fragment shader, and shader uniforms (don't worry if you don't know what those are!)
 
 A `GMesh` then is simply a pairing of `Geometry` + `Material`, combined with it's own transform of position/rotation/scale so that the renderer knows where to draw this mesh in the world. To reiterate, a GMesh contains these 3 pieces of info needed for the GPU to draw a 3D object on screen:
+
 1. vertex data, stored in mesh geometry
 2. shaders + uniform parameters, stored in the mesh material
 3. transform, i.e. the position/rotation/scale stored by every GGen
@@ -373,7 +407,6 @@ mesh.geo();  // reference to its underlying geometry
 #### G(Types) vs GMesh
 
 Now we're ready to tackle the question -- what exactly is a `GSphere`, or a `GCube`, or any of these GGens which inherit `GMesh`? They are just convenience abstractions that create a `GMesh` with a preset material and geometry. For example, the following two spheres are equivalent from a data perspective:
-
 
 ```cpp
 GSphere s1;
@@ -408,13 +441,14 @@ Run this code and you'll see how much faster it is than creating 512 `GSpheres` 
 
 ### Pre-loading Resources
 
-By "resources" I mean pretty much anything in ChuGL that's *not* a GGen, but is used by GGens to determine appearance. This includes types like `Geometry`, `Material`, and `Texture`. Each of these resource types has an initialization process that involves setting up state in the GPU, and can therefore spike render times! 
+By "resources" I mean pretty much anything in ChuGL that's *not* a GGen, but is used by GGens to determine appearance. This includes types like `Geometry`, `Material`, and `Texture`. Each of these resource types has an initialization process that involves setting up state in the GPU, and can therefore spike render times!
 
 Say you have a complex geometry that has millions of vertices. If you instantiate it during the gameloop, you'll probably get a sudden FPS drop because the renderer now has to send all that data to the GPU. A better practice is to push any initialization work to program start.
 
 The `FileTexture` class in particular is slow because it requires IO to read data from a given filepath. If you want to switch between 2 textures say, every second, it's much faster to preload *both* textures separately at start-time, and switch which texture you're using, rather than just have 1 texture that constantly reloads either filepath.
 
 The slow way:
+
 ```cpp
 GPlane plane --> GG.scene();
 FileTexture tex;
@@ -433,6 +467,7 @@ fun void textureSwapper() {
 ```
 
 The fast way:
+
 ```cpp
 GPlane plane --> GG.scene();
 FileTexture tex1, tex2;
@@ -458,7 +493,7 @@ fun void textureSwapper() {
 
 The amount of work the renderer and GPU have to do scales according to the amount of geometry that's on screen. How do you quantify that? The GPU doesn't see geometry in terms of `GToruses`, `GSpheres`, or your custom GGens; rather all it knows how to process is individual groups of 3 vertices which make up a single triangle. Triangles are the building block of all 3D geometry, and everything in ChuGL that's not a line or point is really just a collection of triangles.
 
-So a simple way to measure the complexity of the scene is by counting how many triangles are on the screen at once. A mesh made up of more triangles can be said to be *high-poly* or *high-resolution* whereas a mesh simplified down to only a few triangles is *low-poly* or *low-resolution*. If your rendering is slow despite your update logic being simple, one possibility is that you just have too many triangles on the screen! Of course one solution is to only spawn 500 GSpheres instead of 10,000, but where's the fun in that? 
+So a simple way to measure the complexity of the scene is by counting how many triangles are on the screen at once. A mesh made up of more triangles can be said to be *high-poly* or *high-resolution* whereas a mesh simplified down to only a few triangles is *low-poly* or *low-resolution*. If your rendering is slow despite your update logic being simple, one possibility is that you just have too many triangles on the screen! Of course one solution is to only spawn 500 GSpheres instead of 10,000, but where's the fun in that?
 
 It turns out every Geometry has a `.set()` function which lets you reconstruct its vertex data on the fly, according to some *build parameters* which you pass in. These build parameters let you determine not only the shape and dimensions, but also the polycount/resolution of the mesh. By decreasing the resolution, we can reduce the triangle count of our scene while still keeping the same number of GGens. Here's an example:
 
@@ -502,7 +537,6 @@ See [basic/points.ck](https://chuck.stanford.edu/chugl/examples/basic/points.ck)
 
 See [sndpeek](https://chuck.stanford.edu/chugl/examples/sndpeek/) for an example of how to draw millions of lines using this method
 
-
 ### One Last Remark
 
 This is a class about audiovisual design, NOT optimization. So please don't stress about this aspect! As always ask for help from your classmates or instructors, and remember the Artful Design Principle: *Less is More*
@@ -513,22 +547,23 @@ ___
 
 ![OpenGL Render Pipeline](images/render-pipeline.png)
 
-A **Shader** is simply a program that is compiled and run on the GPU. After sending geometry/material data to the GPU and issuing a draw call, all this data gets processed through the [3D Rendering Pipeline](https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview) before appearing on-screen. The image above illustrates the OpenGL Render pipeline (which ChuGL currently runs on). At each of the 6 depicted stages, it runs shaders to perform important graphics operations. These stages do everything necessary to transform a virtual 3D world into colored pixels on your computer screen. 
+A **Shader** is simply a program that is compiled and run on the GPU. After sending geometry/material data to the GPU and issuing a draw call, all this data gets processed through the [3D Rendering Pipeline](https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview) before appearing on-screen. The image above illustrates the OpenGL Render pipeline (which ChuGL currently runs on). At each of the 6 depicted stages, it runs shaders to perform important graphics operations. These stages do everything necessary to transform a virtual 3D world into colored pixels on your computer screen.
 
 Modern graphics APIs are all **Programmable Pipeline**, meaning certain stages can be loaded with custom shaders that you write yourself! These are the colored blue boxes in the diagram above, and the two which ChuGL exposes via `ShaderMaterial` are:
 
 1. **Vertex Shader:** runs on each vertex of a geometry. Typically used to transform vertex positions from local space into clip space, can also be used to distort geometry by displacing vertices
 2. **Fragment Shader**: runs on each pixel contained within a geometry, e.g. all the pixels within a triangle. (Technically pixels and fragments are not the same thing, but that's unimportant for now) Typically used to perform lighting calculations and calculate the correct color for a given pixel.
 
-Teaching the modern rendering pipeline is well outside the scope of this course, as is teaching how to do shader programming, which really is an art in of itself. If you want to learn how to do the former, take [CS248A](https://gfxcourses.stanford.edu/cs248a/winter23), aptly nick-named "Death Graphics". 
+Teaching the modern rendering pipeline is well outside the scope of this course, as is teaching how to do shader programming, which really is an art in of itself. If you want to learn how to do the former, take [CS248A](https://gfxcourses.stanford.edu/cs248a/winter23), aptly nick-named "Death Graphics".
 
 For learning the latter i.e. Shader programming, here are some useful resources:
+
 - [Video Compilation of amazing shaders](https://www.youtube.com/watch?v=7BB8TkY4Aeg&ab_channel=dorni): useful for getting a sense of what shaders can do in the first place
 - [ShaderToy](https://www.shadertoy.com/) an online community for writing/sharing fragment shaders
 - [The Book of Shaders](https://thebookofshaders.com/): great starting point with emphasis on using shaders to draw 2D procedural art
 - [Freya Holmer's "Shaders for Game Devs" series](https://www.youtube.com/watch?v=kfM-yu0iQBk&ab_channel=FreyaHolm%C3%A9r): more practical, how shaders are commonly used for lighting in video games
 - [ShaderToy Tutorial](https://inspirnathan.com/posts/47-shadertoy-tutorial-part-1): gets straight to drawing 3D Ray-marched scenes
-- [Setting up a ShaderToy scene in three.js](https://threejs.org/manual/?q=shader#en/shadertoy): can use this as a reference for how to setup a shadertoy scene in ChuGL 
+- [Setting up a ShaderToy scene in three.js](https://threejs.org/manual/?q=shader#en/shadertoy): can use this as a reference for how to setup a shadertoy scene in ChuGL
 
 [And here's an example of creating an audiovisualizer using a custom fragment shader in ChuGL](https://chuck.stanford.edu/chugl/examples/audioshader/)
 
@@ -587,13 +622,14 @@ out vec4 FragColor;
 void main()
 {
   // your amazing shader code here
-	// output final color
-	FragColor = vec4(1.0);
+ // output final color
+ FragColor = vec4(1.0);
 }
  
 ```
 
 #### Creating a Custom Vertex Shader
+
 Similarly, you can choose to only set a vertex shader, which will preserve the default fragment shader (at time of writting this is the `NormalsMaterial`)
 
 ```cpp
@@ -643,3 +679,7 @@ void main()
 }
 
 ```
+
+___
+
+Happy ChuGLing!
