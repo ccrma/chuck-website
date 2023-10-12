@@ -569,7 +569,7 @@ For learning the latter i.e. Shader programming, here are some useful resources:
 
 ### Word of Caution
 
-Creating procedural graphics entirely within shaders, especially if they are 3D, can be both **impractical** and **highly difficult**. This stems both from performance issues and just the inherent complexity of GPU programming. The featured shaders in ShaderToy, while visually stunning, are basically like the graphics-equivalent of code golf or CTF challenges. Anyone who is new to graphics programming and interested in writing custom shaders for their project is **strongly encouraged to speak with the course advisors**, so we can talk about your ideas and set you off on the right path.
+Creating procedural graphics entirely within shaders, especially if they are 3D, can be both **impractical** and **difficult**. This stems both from performance issues and the amount of background knowledge required. The featured shaders in ShaderToy, while visually stunning, are basically like the graphics-equivalent of code golf or CTF challenges. Anyone who is new to graphics programming and interested in writing custom shaders for their project is **strongly encouraged to speak with the course advisors**, so we can talk about your ideas and set you off on the right path.
 
 That said, there are cases where writing custom shaders really is the best/only option, and we don't want to deter anyone from exploring this powerful tool!
 
