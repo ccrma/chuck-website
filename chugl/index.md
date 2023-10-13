@@ -52,12 +52,11 @@ Download the `ChuGL.chug` binary from the installation links above and move it t
 
 ### Linux
 
-We are working on it! Let us know if you get it working (or would like to help us to get it 
-working)!
+Build ChuGL from source; see <a target="_blank" href="https://github.com/ccrma/chugl#building-chugl">instructions</a>.
 
 ### Source
 
-ChuGL source can be found <a target="_blank" href="https://github.com/ccrma/chugl/">here</a>.
+ChuGL source can be found <a target="_blank" href="https://github.com/ccrma/chugl/">here</a>, along with instructions for building ChuGL on each operator system.
 
 ## Running
 
