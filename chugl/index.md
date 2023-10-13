@@ -3,18 +3,20 @@
 <!-- <img align="left" style="width:260px" src="https://github.com/raysan5/raylib/blob/master/logo/raylib_logo_animation.gif" width="288px"> -->
 
 ![logo](images/chugl-glogo2023t.png)
-<!--**ChuGL =&gt; ChucK Graphics** • -->
+<h2>ChuGL =&gt; ChucK Graphics Library</h2>
 
 </div> <!-- end center -->
 
 <p align="justify">
-<b>ChuGL</b> is a unified audiovisual programming framework built into the 
-<a target="_blank" href="../">ChucK</a> programming language. It combines 
-ChucK's <b>strongly-timed, concurrent programming model</b> and 
-<b>real-time audio synthesis</b> capabilities with a 
-<b>hardware-accelerated 3D graphics engine and API</b>. At its core is a 
-scenegraph architecture that provides <b>low-latency, high performance 
-audiovisual synchronization at frame-level accuracy</b>.
+
+<b>ChuGL</b> (sounds like "chuckle"; rhymes with "juggle") is a unified 
+audiovisual programming framework built into the <a target="_blank" 
+href="../">ChucK</a> programming language. It combines ChucK's 
+<b>strongly-timed, concurrent programming model</b> and <b>real-time audio 
+synthesis</b> capabilities with a <b>hardware-accelerated 3D graphics 
+engine and API</b>. At its core is a scenegraph architecture that provides 
+<b>low-latency, high performance audiovisual synchronization at 
+frame-level accuracy</b>.
 
 ChuGL was created by <a href="https://ccrma.stanford.edu/~azaday/">Andrew 
 Zhu Aday</a> and <a href="https://ccrma.stanford.edu/~ge/">Ge Wang</a>, 
@@ -54,9 +56,11 @@ Download the `ChuGL.chug` binary from the installation links above and move it t
 
 Build ChuGL from source; see <a target="_blank" href="https://github.com/ccrma/chugl#building-chugl">instructions</a>.
 
-### Source
+## Building ChuGL From Source
 
-ChuGL source can be found <a target="_blank" href="https://github.com/ccrma/chugl/">here</a>, along with instructions for building ChuGL on each operator system.
+Like ChucK, ChuGL is free open-source software. ChuGL source can be found 
+<a target="_blank" href="https://github.com/ccrma/chugl/">here</a>, along 
+with instructions for building ChuGL on each operating system.
 
 ## Running
 
