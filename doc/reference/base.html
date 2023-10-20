@@ -261,6 +261,10 @@
 <p class="member_description">Compute the euclidean distance between arrays a and b.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">euclidean</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> a, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> b)</p>
+<p class="member_description">Compute the euclidean distance between 2D vectors a and b.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">euclidean</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> a, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> b)</p>
 <p class="member_description">Compute the euclidean distance between 3D vectors a and b.</p>
 </div>
@@ -611,6 +615,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">silent</span>()</p>
 <p class="member_description">Return false if the shred is in realtime mode, true if it's in silent mode (i.e. --silent is enabled)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sp_mem</span>()</p>
+<p class="member_description">Get the calling shred's memory (aka "mem") stack pointer; intended for either debugging or curiosity.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sp_reg</span>()</p>
+<p class="member_description">Get the calling shred's operand (aka "reg"/register) stack pointer; intended for either debugging or curiosity.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">status</span>()</p>
