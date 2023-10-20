@@ -21,17 +21,17 @@ frame-level accuracy</b>.
 ChuGL was created by <a href="https://ccrma.stanford.edu/~azaday/">Andrew 
 Zhu Aday</a> and <a href="https://ccrma.stanford.edu/~ge/">Ge Wang</a>, 
 with support from the <a 
-href="https://chuck.stanford.edu/doc/authors.html">ChucK Team</a>, and 
+href="../doc/authors.html">ChucK Team</a>, and 
 benefitted from prior prototypes of ChuGL and GLucK by Spencer Salazar and 
 Philip Davidson.
 </p>
 
 ---
 
-**ChuGL v0.1.0** (alpha) — [**ChuGL API 
-Reference**](https://chuck.stanford.edu/chugl/api/)
-• [**ChuGL Examples**](https://chuck.stanford.edu/chugl/examples/)
-• [**ChuGL Tutorial**](https://chuck.stanford.edu/chugl/doc/tutorial.html)
+**ChuGL v0.1.1** (alpha) — [**ChuGL API 
+Reference**](./api/)
+• [**ChuGL Examples**](./examples/)
+• [**ChuGL Tutorial**](./tutorial.html)
 • **Video Introduction**
 • **Showcase**
 
@@ -39,7 +39,7 @@ ___
 
 ## Installation
 
-1. **Get the latest ChucK (requires 1.5.1.5 or higher)**
+1. **Get the latest ChucK (requires 1.5.1.7 or higher)**
 https://chuck.stanford.edu/release/
 2. **Get the latest ChuGL chugin**
 https://chuck.stanford.edu/release/alpha/chugl/
@@ -80,6 +80,6 @@ Congrats, you now have ChuGL properly installed!
 
 ## Learning Resouces
 
-- [API Reference](https://chuck.stanford.edu/chugl/api/)
-- [Examples](https://chuck.stanford.edu/chugl/examples/)
-- [ChuGL Tutorial](https://chuck.stanford.edu/chugl/doc/tutorial.html)
+- [API Reference](./api/)
+- [Examples](./examples/)
+- [ChuGL Tutorial](./doc/tutorial.html)
