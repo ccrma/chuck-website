@@ -15,6 +15,7 @@
 <div class="toc"><a id="toc"/>
 <p class="toc_class"><a href="#GG" class="ckdoc_typename ckdoc_type_object">GG</a></p>
 <p class="toc_class"><a href="#WindowResizeEvent" class="ckdoc_typename ckdoc_type_object">WindowResizeEvent</a></p>
+<p class="toc_class"><a href="#Color" class="ckdoc_typename ckdoc_type_object">Color</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">Basic classes for ChuGL: strongly-timed audiovisual programming in ChucK.</p>
@@ -143,6 +144,107 @@
 <h2 class="class_title" name="WindowResizeEvent">WindowResizeEvent</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Event triggered whenever the ChuGL window is resized, either by the user or programmatically.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Color" /><div class="class">
+<h2 class="class_title" name="Color">Color</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">ChuGL color utility class.<p>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">grayscale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> rgb)</p>
+<p class="member_description">Convert an rgb value to grayscale, scaled according to NTSC formula based on human perception.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">hsv2rgb</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> hsv)</p>
+<p class="member_description">Convert from hsv colorspace to rgb.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">random</span>()</p>
+<p class="member_description">Generate a random rgb color.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">rgb2hsv</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> rgb)</p>
+<p class="member_description">Convert from rgb colorspace to hsvhsv stands for hue, saturation, value, and is a more human-friendly color formathue takes on a value between 0 and 360, and represents the color itselfsaturation takes on a value between 0 and 1, and represents the amount of colorvalue takes on a value between 0 and 1, and represents the brightness of the color.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">BEIGE</span></p><p class="member_description">Beige: (.827, .69, .514)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">BLACK</span></p><p class="member_description">Black: (0.0, 0.0, 0.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">BLUE</span></p><p class="member_description">Blue: (0.0, 0.0, 1.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">BROWN</span></p><p class="member_description">Brown: (.498, .416, .31)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">DARKBLUE</span></p><p class="member_description">Darkblue: (0, .322, .675)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">DARKBROWN</span></p><p class="member_description">Darkbrown: (.298, .247, .184)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">DARKGRAY</span></p><p class="member_description">Darkgray: (.3, .3, .3)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">DARKGREEN</span></p><p class="member_description">Darkgreen: (0, .459, .173)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">DARKPURPLE</span></p><p class="member_description">Darkpurple: (.439, .122, .494)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GOLD</span></p><p class="member_description">Gold: (1.0, .796, 0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GRAY</span></p><p class="member_description">Gray: (.51, .51, .51)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GREEN</span></p><p class="member_description">Green: (0.0, 1.0, 0.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">LIGHTGRAY</span></p><p class="member_description">Lightgray: (.784, .784, .784)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">LIME</span></p><p class="member_description">Lime: (0, .619, .184)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">MAGENTA</span></p><p class="member_description">Magenta: (1.0, 0.0, 1.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">MAROON</span></p><p class="member_description">Maroon: (.745, .129, .216)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">ORANGE</span></p><p class="member_description">Orange: (1.0, .631, 0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">PINK</span></p><p class="member_description">Pink: (1.0, .427, .76)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">PURPLE</span></p><p class="member_description">Purple: (.784, .478, 1.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">RED</span></p><p class="member_description">Red: (1.0, 0.0, 0.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">SKYBLUE</span></p><p class="member_description">Skyblue: (.4, .749, 1.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">VIOLET</span></p><p class="member_description">Violet: (.529, .235, .745)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">WHITE</span></p><p class="member_description">White: (1.0, 1.0, 1.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">YELLOW</span></p><p class="member_description">Yellow: (.9921, .976, 0)</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
