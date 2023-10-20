@@ -43,6 +43,7 @@ ___
 https://chuck.stanford.edu/release/
 2. **Get the latest ChuGL chugin**
 https://chuck.stanford.edu/release/alpha/chugl/
+3. What's new? See [**release notes**](https://docs.google.com/document/d/1Hv6hrg5oCX8nwwuXBMI4hK04JKRhfrbJns98PoyFeug/edit)
 
 ### MacOS
 
