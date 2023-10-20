@@ -1,0 +1,164 @@
+<html>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
+<title>ChuGL GUI</title>
+<body>
+<a name="top"/>
+<div id="title">
+<div class="titleL">
+<div style="display: flex; align-items: center;"><div class="inline titlelogo"><a href="https://chuck.stanford.edu/" target="_blank"><img src="https://chuck.stanford.edu/doc/images/chuck-logo2023w.png" /> </div><div class="inline"><h1><a href="./">ChucK Class Library Reference</a></h1></div>
+<div class="inline gray"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;ChuGL GUI</h1></div>
+</div>
+</div>
+</div>
+<div id="body">
+<div class="toc"><a id="toc"/>
+<p class="toc_class"><a href="#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a></p>
+<p class="toc_class"><a href="#UI_Window" class="ckdoc_typename ckdoc_type_object">UI_Window</a></p>
+<p class="toc_class"><a href="#UI_Button" class="ckdoc_typename ckdoc_type_object">UI_Button</a></p>
+<p class="toc_class"><a href="#UI_SliderFloat" class="ckdoc_typename ckdoc_type_object">UI_SliderFloat</a></p>
+<p class="toc_class"><a href="#UI_SliderInt" class="ckdoc_typename ckdoc_type_object">UI_SliderInt</a></p>
+<p class="toc_class"><a href="#UI_Checkbox" class="ckdoc_typename ckdoc_type_object">UI_Checkbox</a></p>
+<p class="toc_class"><a href="#UI_Color3" class="ckdoc_typename ckdoc_type_object">UI_Color3</a></p>
+<p class="toc_class"><a href="#UI_Dropdown" class="ckdoc_typename ckdoc_type_object">UI_Dropdown</a></p>
+</div>
+<div class="classes">
+<p class="group_desc">API methods for creating widgets such as buttons, sliders, dropdowns, etc.
+    Use widgets to control parameter values during runtime. Great for experimentation
+    and fine-tuning values. Also usable for building application user-interfaces.</p>
+<a name="UI_Element" /><div class="class">
+<h2 class="class_title" name="UI_Element">UI_Element</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Base class for all GUI elements. Do not instantiate directlyAll GUI elements are Chuck Events, and can be used as such.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
+<p class="member_description">Set the text label of this element.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>()</p>
+<p class="member_description">Get the text label of this element.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_Window" /><div class="class">
+<h2 class="class_title" name="UI_Window">UI_Window</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Window element. Each instance will create a separate GUI window.Add elements to the window via .add() to display them.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_object">UI_Element</span> element)</p>
+<p class="member_description">Adds an element to this window, will be displayed in the order they are added.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_Button" /><div class="class">
+<h2 class="class_title" name="UI_Button">UI_Button</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Button widget, clicking will trigger the button instance, which itself is a Chuck Event.<p>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_SliderFloat" /><div class="class">
+<h2 class="class_title" name="UI_SliderFloat">UI_SliderFloat</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Float slider widgetCTRL+Click on any slider to turn them into an input box. Manually input values aren't clamped and can go off-bounds.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">power</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> power)</p>
+<p class="member_description">Set the power of the slider, e.g. 2.0 for an exponential domain. Defaults to 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">range</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> max)</p>
+<p class="member_description">Set the range of the slider.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">val</span>()</p>
+<p class="member_description">Get the current value of the slider.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_SliderInt" /><div class="class">
+<h2 class="class_title" name="UI_SliderInt">UI_SliderInt</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Int slider widgetCTRL+Click on any slider to turn them into an input box. Manually input values aren't clamped and can go off-bounds.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">range</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> min, <span class="ckdoc_typename ckdoc_type_primitive">int</span> max)</p>
+<p class="member_description">Set the range of the slider.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">val</span>()</p>
+<p class="member_description">Get the current value of the slider.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_Checkbox" /><div class="class">
+<h2 class="class_title" name="UI_Checkbox">UI_Checkbox</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Checkbox widget.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">val</span>()</p>
+<p class="member_description">Get the current state of the checkbox, 1 for checked, 0 for unchecked.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_Color3" /><div class="class">
+<h2 class="class_title" name="UI_Color3">UI_Color3</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Color picker widgetTtip: the ColorEdit* functions have a little colored preview square that can be left-clicked to open a picker, and right-clicked to open an option menu.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">val</span>()</p>
+<p class="member_description">Get the current value of the color picker.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_Dropdown" /><div class="class">
+<h2 class="class_title" name="UI_Dropdown">UI_Dropdown</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Dropdown widgetCreate a dropdown menu with the given list of itemsOn select, the widget will store the selected items *index* and will trigger an event.<p>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">options</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> options)</p>
+<p class="member_description">Set the list of options for the dropdown menu.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">val</span>()</p>
+<p class="member_description">Get the integer index of the curerntly selected dropdown item.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> idx)</p>
+<p class="member_description">Set the integer index of the selected dropdown item.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+</div>
+</div>
+</body>
+</html>
