@@ -176,7 +176,7 @@ systems!</i>
     dry => Delay delay => outlet;
     delay => Gain feedback => delay;
     0.8 => feedback.gain;
-    1::second => delay.delay;
+    1::second => delay.max => delay.delay;
 }</code></pre>
 <p>(Chugraphs that don’t need to process an input signal, such as audio synthesis algorithms, may omit the connection from inlet.)
 </p>
