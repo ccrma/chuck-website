@@ -31,7 +31,7 @@ Philip Davidson.
 **ChuGL v0.1.1** (alpha) — [**ChuGL API 
 Reference**](./api/)
 • [**ChuGL Examples**](./examples/)
-• [**ChuGL Tutorial**](./tutorial.html)
+• [**ChuGL Tutorial**](./doc/tutorial.html)
 • **Video Introduction**
 • **Showcase**
 
