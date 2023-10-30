@@ -23,6 +23,7 @@
 <p class="toc_class"><a href="#GCube" class="ckdoc_typename ckdoc_type_object">GCube</a></p>
 <p class="toc_class"><a href="#GSphere" class="ckdoc_typename ckdoc_type_object">GSphere</a></p>
 <p class="toc_class"><a href="#GTorus" class="ckdoc_typename ckdoc_type_object">GTorus</a></p>
+<p class="toc_class"><a href="#GCylinder" class="ckdoc_typename ckdoc_type_object">GCylinder</a></p>
 <p class="toc_class"><a href="#GLight" class="ckdoc_typename ckdoc_type_object">GLight</a></p>
 <p class="toc_class"><a href="#GPointLight" class="ckdoc_typename ckdoc_type_object">GPointLight</a></p>
 <p class="toc_class"><a href="#GDirLight" class="ckdoc_typename ckdoc_type_object">GDirLight</a></p>
@@ -41,6 +42,14 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">child</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> n)</p>
+<p class="member_description">Get the n'th child of this GGen.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">child</span>()</p>
+<p class="member_description">Get the 0th child of this GGen.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">forward</span>()</p>
 <p class="member_description">Get the forward vector of this GGen in world space.</p>
 </div>
@@ -57,12 +66,24 @@
 <p class="member_description">Get the direction this GGen is looking, i.e. the forward vector of this GGen in world space.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numChildren</span>()</p>
+<p class="member_description">Get the number of children for this GGen.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">parent</span>()</p>
+<p class="member_description">Get the parent of this GGen.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">pos</span>()</p>
 <p class="member_description">Get object position in local space.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> pos)</p>
 <p class="member_description">Set object position in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">posLocalToWorld</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> localPos)</p>
+<p class="member_description">Transform a position in local space to world space.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">posWorld</span>()</p>
@@ -394,6 +415,16 @@
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
+<a name="GCylinder" /><div class="class">
+<h2 class="class_title" name="GCylinder">GCylinder</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Creates a Mesh that uses CylinderGeometry and PhongMaterial.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/geometry/cylinder.ck">geometry/cylinder.ck</a></li>
+</ul></div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
 <a name="GLight" /><div class="class">
 <h2 class="class_title" name="GLight">GLight</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
@@ -507,11 +538,11 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">viewSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> s)</p>
-<p class="member_description">(orthographic mode) set the height of the view in pixels. Width is automatically calculated based on aspect ratio.</p>
+<p class="member_description">(orthographic mode) set the height of the view in world space units. Width is automatically calculated based on aspect ratio.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">viewSize</span>()</p>
-<p class="member_description">(orthographic mode) get the height of the view in pixels.</p>
+<p class="member_description">(orthographic mode) get the height of the view in world space units.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">worldPosToScreenCoord</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> worldPos)</p>

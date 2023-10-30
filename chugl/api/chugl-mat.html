@@ -30,6 +30,7 @@
 <p class="class_description">Base material class, do not instantiate directly.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/polygon-modes.ck">basic/polygon-modes.ck</a></li>
+<li><a target="_blank" href="../examples/basic/transparency.ck">basic/transparency.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -83,7 +84,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pointSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> size)</p>
-<p class="member_description">Set point size if rendering with Material.POLYGON_POINT. NOTE: unsupported on macOS.</p>
+<p class="member_description">Set point size of PointsMaterial. Also affects point size if rendering in mode Material.POLYGON_POINT.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">pointSprite</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> sprite)</p>
@@ -112,6 +113,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> tex)</p>
 <p class="member_description">Set specular map texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">transparent</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> transparent)</p>
+<p class="member_description">Set if material should be rendered with transparency. 1 for true, 0 for falseMeshes using this material will then be rendered in the transparent pass with depth writing disabled.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">transparent</span>()</p>
+<p class="member_description">Returns whether material is marked transparent. 1 for true, 0 for false.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformBool</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> name, <span class="ckdoc_typename ckdoc_type_primitive">int</span> b0)</p>
@@ -217,6 +226,7 @@
 <p class="class_description">Used by GPoints.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/points.ck">basic/points.ck</a></li>
+<li><a target="_blank" href="../examples/textures/snowstorm.ck">textures/snowstorm.ck</a></li>
 </ul></div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>

@@ -20,6 +20,7 @@
 <p class="toc_class"><a href="#LatheGeometry" class="ckdoc_typename ckdoc_type_object">LatheGeometry</a></p>
 <p class="toc_class"><a href="#PlaneGeometry" class="ckdoc_typename ckdoc_type_object">PlaneGeometry</a></p>
 <p class="toc_class"><a href="#TorusGeometry" class="ckdoc_typename ckdoc_type_object">TorusGeometry</a></p>
+<p class="toc_class"><a href="#CylinderGeometry" class="ckdoc_typename ckdoc_type_object">CylinderGeometry</a></p>
 <p class="toc_class"><a href="#CustomGeometry" class="ckdoc_typename ckdoc_type_object">CustomGeometry</a></p>
 </div>
 <div class="classes">
@@ -136,7 +137,7 @@
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">int</span> segments, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaStart, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaLength)</p>
-<p class="member_description">Set cirle dimensions and subdivisions.</p>
+<p class="member_description">Set circle dimensions and subdivisions.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -186,6 +187,23 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">float</span> tubeRadius, <span class="ckdoc_typename ckdoc_type_primitive">int</span> radialSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> tubularSegments, <span class="ckdoc_typename ckdoc_type_primitive">float</span> arcLength)</p>
 <p class="member_description">Set torus dimensions and subdivisions.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="CylinderGeometry" /><div class="class">
+<h2 class="class_title" name="CylinderGeometry">CylinderGeometry</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-geo.html#Geometry" class="ckdoc_typename ckdoc_type_object">Geometry</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Geometry class for constructing vertex data for cylinders.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/geometry/cylinder.ck">geometry/cylinder.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radiusTop, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radiusBottom, <span class="ckdoc_typename ckdoc_type_primitive">float</span> height, <span class="ckdoc_typename ckdoc_type_primitive">int</span> radialSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> heightSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> openEnded, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaStart, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaLength)</p>
+<p class="member_description">Set cylinder dimensions and subdivisions.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

@@ -51,6 +51,9 @@
 <h2 class="class_title" name="UI_Window">UI_Window</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Window element. Each instance will create a separate GUI window.Add elements to the window via .add() to display them.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -65,6 +68,9 @@
 <h2 class="class_title" name="UI_Button">UI_Button</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Button widget, clicking will trigger the button instance, which itself is a Chuck Event.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
+</ul></div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -72,6 +78,9 @@
 <h2 class="class_title" name="UI_SliderFloat">UI_SliderFloat</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Float slider widgetCTRL+Click on any slider to turn them into an input box. Manually input values aren't clamped and can go off-bounds.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -86,6 +95,10 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">val</span>()</p>
 <p class="member_description">Get the current value of the slider.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
+<p class="member_description">Set the current value of the slider.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -94,6 +107,9 @@
 <h2 class="class_title" name="UI_SliderInt">UI_SliderInt</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Int slider widgetCTRL+Click on any slider to turn them into an input box. Manually input values aren't clamped and can go off-bounds.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -104,6 +120,10 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">val</span>()</p>
 <p class="member_description">Get the current value of the slider.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">Set the current value of the slider.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -112,11 +132,18 @@
 <h2 class="class_title" name="UI_Checkbox">UI_Checkbox</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Checkbox widget.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">val</span>()</p>
 <p class="member_description">Get the current state of the checkbox, 1 for checked, 0 for unchecked.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">Set the current state of the checkbox, 1 for checked, 0 for unchecked.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -126,11 +153,18 @@
 <h2 class="class_title" name="UI_Color3">UI_Color3</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Color picker widgetTtip: the ColorEdit* functions have a little colored preview square that can be left-clicked to open a picker, and right-clicked to open an option menu.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">val</span>()</p>
 <p class="member_description">Get the current value of the color picker.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Set the current value of the color picker.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -140,6 +174,9 @@
 <h2 class="class_title" name="UI_Dropdown">UI_Dropdown</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Dropdown widgetCreate a dropdown menu with the given list of itemsOn select, the widget will store the selected items *index* and will trigger an event.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
