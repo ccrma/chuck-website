@@ -16,6 +16,7 @@
 <p class="toc_class"><a href="#Geometry" class="ckdoc_typename ckdoc_type_object">Geometry</a></p>
 <p class="toc_class"><a href="#BoxGeometry" class="ckdoc_typename ckdoc_type_object">BoxGeometry</a></p>
 <p class="toc_class"><a href="#SphereGeometry" class="ckdoc_typename ckdoc_type_object">SphereGeometry</a></p>
+<p class="toc_class"><a href="#TriangleGeometry" class="ckdoc_typename ckdoc_type_object">TriangleGeometry</a></p>
 <p class="toc_class"><a href="#CircleGeometry" class="ckdoc_typename ckdoc_type_object">CircleGeometry</a></p>
 <p class="toc_class"><a href="#LatheGeometry" class="ckdoc_typename ckdoc_type_object">LatheGeometry</a></p>
 <p class="toc_class"><a href="#PlaneGeometry" class="ckdoc_typename ckdoc_type_object">PlaneGeometry</a></p>
@@ -124,6 +125,23 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">int</span> widthSeg, <span class="ckdoc_typename ckdoc_type_primitive">int</span> heightSeg, <span class="ckdoc_typename ckdoc_type_primitive">float</span> phiStart, <span class="ckdoc_typename ckdoc_type_primitive">float</span> phiLength, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaStart, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaLength)</p>
 <p class="member_description">Set sphere dimensions and subdivisions.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="TriangleGeometry" /><div class="class">
+<h2 class="class_title" name="TriangleGeometry">TriangleGeometry</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-geo.html#Geometry" class="ckdoc_typename ckdoc_type_object">Geometry</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Geometry class for constructing vertex data for triangles.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/geometry/triangle.ck">geometry/triangle.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> theta, <span class="ckdoc_typename ckdoc_type_primitive">float</span> width, <span class="ckdoc_typename ckdoc_type_primitive">float</span> height)</p>
+<p class="member_description">Set triangle construction params.Theta is the angle in radians betweeen the base and the hypotenuseWidth is the length of the baseHeight is distance from base to the opposite vertex.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

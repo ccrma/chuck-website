@@ -18,6 +18,7 @@
 <p class="toc_class"><a href="#GPoints" class="ckdoc_typename ckdoc_type_object">GPoints</a></p>
 <p class="toc_class"><a href="#GLines" class="ckdoc_typename ckdoc_type_object">GLines</a></p>
 <p class="toc_class"><a href="#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a></p>
+<p class="toc_class"><a href="#GTriangle" class="ckdoc_typename ckdoc_type_object">GTriangle</a></p>
 <p class="toc_class"><a href="#GCircle" class="ckdoc_typename ckdoc_type_object">GCircle</a></p>
 <p class="toc_class"><a href="#GPlane" class="ckdoc_typename ckdoc_type_object">GPlane</a></p>
 <p class="toc_class"><a href="#GCube" class="ckdoc_typename ckdoc_type_object">GCube</a></p>
@@ -64,6 +65,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">lookAtDir</span>()</p>
 <p class="member_description">Get the direction this GGen is looking, i.e. the forward vector of this GGen in world space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">name</span>()</p>
+<p class="member_description">Get the custom name of this GGen.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">name</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> name)</p>
+<p class="member_description">Set the custom name of this GGen.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numChildren</span>()</p>
@@ -130,27 +139,27 @@
 <p class="member_description">Set rotation of this GGen in local space as euler angles.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">rotX</span>()</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotX</span>()</p>
 <p class="member_description">Get the rotation of this GGen on the X axis in local space.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">rotX</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotX</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
 <p class="member_description">Set the rotation of this GGen on the X axis in local space to the given radians.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">rotY</span>()</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotY</span>()</p>
 <p class="member_description">Get the rotation of this GGen on the Y axis in local space.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">rotY</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotY</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
 <p class="member_description">Set the rotation of this GGen on the Y axis in local space to the given radians.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">rotZ</span>()</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotZ</span>()</p>
 <p class="member_description">Get the rotation of this GGen on the Z axis in local space.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">rotZ</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotZ</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
 <p class="member_description">Set the rotation of this GGen on the Z axis in local space to the given radians.</p>
 </div>
 <div class="member">
@@ -377,6 +386,16 @@
 <p class="member_description">Set the geometry and material of the mesh.</p>
 </div>
 </div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="GTriangle" /><div class="class">
+<h2 class="class_title" name="GTriangle">GTriangle</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Creates a Mesh that uses TriangleGeometry and PhongMaterial.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/geometry/triangle.ck">geometry/triangle.ck</a></li>
+</ul></div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
