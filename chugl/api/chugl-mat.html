@@ -32,6 +32,13 @@
 <li><a target="_blank" href="../examples/basic/polygon-modes.ck">basic/polygon-modes.ck</a></li>
 <li><a target="_blank" href="../examples/basic/transparency.ck">basic/transparency.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Material</span>()</p>
+<p class="member_description">Default constructor for Material.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -61,6 +68,46 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">diffuseMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> tex)</p>
 <p class="member_description">Set diffuse map texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">envMapBlend</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> blendMode)</p>
+<p class="member_description">For PhongMaterial: set environment map blend mode. Can be Material.BLEND_MODE_ADD, Material.BLEND_MODE_MULTIPLY, or Material.BLEND_MODE_MIX.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">envMapBlend</span>()</p>
+<p class="member_description">For PhongMaterial: returns environment map blend mode.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">envMapEnabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> enabled)</p>
+<p class="member_description">For PhongMaterial: enable or disable environment mapping.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">envMapEnabled</span>()</p>
+<p class="member_description">For PhongMaterial: returns 1 if environment mapping is enabled, else 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">envMapIntensity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> intensity)</p>
+<p class="member_description">For PhongMaterial: set environment map intensity. Environment Map lighting contribution is multiplied by this value.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">envMapIntensity</span>()</p>
+<p class="member_description">For PhongMaterial: returns environment map intensity.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">envMapMethod</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> method)</p>
+<p class="member_description">For PhongMaterial: set environment map method. Can be Material.ENV_MAP_REFLECT or Material.ENV_MAP_REFRACT.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">envMapMethod</span>()</p>
+<p class="member_description">For PhongMaterial: returns environment map method.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">envMapRefractionRatio</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> ratio)</p>
+<p class="member_description">For PhongMaterial: set environment map refactive ratio.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">envMapRefractionRatio</span>()</p>
+<p class="member_description">For PhongMaterial: returns environment map refactive ratio.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">fragShader</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> frag)</p>
@@ -178,6 +225,21 @@
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BLEND_MODE_ADD</span></p><p class="member_description">Blend colors by adding them.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BLEND_MODE_MIX</span></p><p class="member_description">Blend colors by mixing, i.e. interpolating between them.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BLEND_MODE_MULTIPLY</span></p><p class="member_description">Blend colors by multiplying them.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ENV_MAP_REFLECT</span></p><p class="member_description">Pass into Material.envMapMethod() to use reflection mapping.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ENV_MAP_REFRACT</span></p><p class="member_description">Pass into Material.envMapMethod() to use refraction mapping.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">LINE_LOOP</span></p><p class="member_description">Used by LineMaterial to render lines as a loop, connecting each vertex to the next, and also the last to the first.</p>
 </div>
 <div class="member">
@@ -203,6 +265,13 @@
 <h2 class="class_title" name="NormalsMaterial">NormalsMaterial</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-mat.html#Material" class="ckdoc_typename ckdoc_type_object">Material</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Color each pixel using the surface normal at that point.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">NormalsMaterial</span>()</p>
+<p class="member_description">Default constructor for NormalsMaterial.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -210,6 +279,13 @@
 <h2 class="class_title" name="FlatMaterial">FlatMaterial</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-mat.html#Material" class="ckdoc_typename ckdoc_type_object">Material</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Color each pixel using a flat color.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">FlatMaterial</span>()</p>
+<p class="member_description">Default constructor for FlatMaterial.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -217,6 +293,13 @@
 <h2 class="class_title" name="PhongMaterial">PhongMaterial</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-mat.html#Material" class="ckdoc_typename ckdoc_type_object">Material</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Color each pixel using a phong specular shading.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">PhongMaterial</span>()</p>
+<p class="member_description">Default constructor for PhongMaterial.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -228,6 +311,13 @@
 <li><a target="_blank" href="../examples/basic/points.ck">basic/points.ck</a></li>
 <li><a target="_blank" href="../examples/textures/snowstorm.ck">textures/snowstorm.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">PointMaterial</span>()</p>
+<p class="member_description">Default constructor for PointMaterial.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -239,6 +329,13 @@
 <li><a target="_blank" href="../examples/sndpeek/sndpeek-minimal.ck">sndpeek/sndpeek-minimal.ck</a></li>
 <li><a target="_blank" href="../examples/sndpeek/sndpeek.ck">sndpeek/sndpeek.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">LineMaterial</span>()</p>
+<p class="member_description">Default constructor for LineMaterial.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -246,6 +343,13 @@
 <h2 class="class_title" name="MangoUVMaterial">MangoUVMaterial</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-mat.html#Material" class="ckdoc_typename ckdoc_type_object">Material</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Color each pixel using its UV coordinates. Looks like a mango, yum.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">MangoUVMaterial</span>()</p>
+<p class="member_description">Default constructor for MangoUVMaterial.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -256,6 +360,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/audioshader/audio-texture.ck">audioshader/audio-texture.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ShaderMaterial</span>()</p>
+<p class="member_description">Default constructor for ShaderMaterial.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />

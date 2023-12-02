@@ -29,6 +29,7 @@
 <p class="toc_class"><a href="#GPointLight" class="ckdoc_typename ckdoc_type_object">GPointLight</a></p>
 <p class="toc_class"><a href="#GDirLight" class="ckdoc_typename ckdoc_type_object">GDirLight</a></p>
 <p class="toc_class"><a href="#GCamera" class="ckdoc_typename ckdoc_type_object">GCamera</a></p>
+<p class="toc_class"><a href="#GText" class="ckdoc_typename ckdoc_type_object">GText</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">Graphics generators (GGens) that can be composed together in a scene graph.</p>
@@ -40,6 +41,13 @@
 <li><a target="_blank" href="../examples/basic/orbits.ck">basic/orbits.ck</a></li>
 <li><a target="_blank" href="../examples/basic/circles.ck">basic/circles.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GGen</span>()</p>
+<p class="member_description">Default constructor for GGen.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -264,7 +272,15 @@
 <p class="class_description">Scene class. Static--all instances point to the same underlying ChuGL main scene. GGens must be added to a scene to be rendered.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/fog.ck">basic/fog.ck</a></li>
+<li><a target="_blank" href="../examples/basic/skybox.ck">basic/skybox.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GScene</span>()</p>
+<p class="member_description">Default constructor for GScene.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -315,6 +331,22 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numLights</span>()</p>
 <p class="member_description">Get the number of instantiated lights.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">CubeTexture</span> <span class="membername">skybox</span>(<span class="ckdoc_typename ckdoc_type_object">CubeTexture</span> cubemap)</p>
+<p class="member_description">Set the skybox of the scene. Pass in a cubemap texture. Will enable the skybox.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">CubeTexture</span> <span class="membername">skybox</span>()</p>
+<p class="member_description">Get the skybox of the scene.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">skyboxEnabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> enabled)</p>
+<p class="member_description">Enable or disable the skybox.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">skyboxEnabled</span>()</p>
+<p class="member_description">Get whether the skybox is enabled or disabled.</p>
+</div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
@@ -332,6 +364,13 @@
 <h2 class="class_title" name="GPoints">GPoints</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Creates a Mesh that uses CustomGeometry and PointMaterial.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GPoints</span>()</p>
+<p class="member_description">Default constructor for GPoints.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -344,6 +383,13 @@
 <li><a target="_blank" href="../examples/sndpeek/sndpeek-minimal.ck">sndpeek/sndpeek-minimal.ck</a></li>
 <li><a target="_blank" href="../examples/sndpeek/sndpeek.ck">sndpeek/sndpeek.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GLines</span>()</p>
+<p class="member_description">Default constructor for GLines.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -351,6 +397,13 @@
 <h2 class="class_title" name="GMesh">GMesh</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Mesh class. A mesh is a geometry and a material. It can be added to a scene to be rendered. Parent class of GCube, GSphere, GCircle, etc.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GMesh</span>()</p>
+<p class="member_description">Default constructor for GMesh.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -396,6 +449,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/geometry/triangle.ck">geometry/triangle.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GTriangle</span>()</p>
+<p class="member_description">Default constructor for GTriangle.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -403,6 +463,13 @@
 <h2 class="class_title" name="GCircle">GCircle</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Creates a Mesh that uses CircleGeometry and PhongMaterial.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GCircle</span>()</p>
+<p class="member_description">Default constructor for GCircle.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -410,6 +477,13 @@
 <h2 class="class_title" name="GPlane">GPlane</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Creates a Mesh that uses PlaneGeometry and PhongMaterial.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GPlane</span>()</p>
+<p class="member_description">Default constructor for GPlane.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -417,6 +491,13 @@
 <h2 class="class_title" name="GCube">GCube</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Creates a Mesh that uses BoxGeometry and PhongMaterial.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GCube</span>()</p>
+<p class="member_description">Default constructor for GCube.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -424,6 +505,13 @@
 <h2 class="class_title" name="GSphere">GSphere</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Creates a Mesh that uses SphereGeometry and PhongMaterial.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GSphere</span>()</p>
+<p class="member_description">Default constructor for GSphere.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -431,6 +519,13 @@
 <h2 class="class_title" name="GTorus">GTorus</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Creates a Mesh that uses TorusGeometry and PhongMaterial.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GTorus</span>()</p>
+<p class="member_description">Default constructor for GTorus.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -441,6 +536,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/geometry/cylinder.ck">geometry/cylinder.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GCylinder</span>()</p>
+<p class="member_description">Default constructor for GCylinder.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -448,6 +550,13 @@
 <h2 class="class_title" name="GLight">GLight</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Light class. Parent class of GPointLight and GDirectionalLight. Don't instantiate this class directly.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GLight</span>()</p>
+<p class="member_description">Default constructor for GLight.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -493,6 +602,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/light.ck">basic/light.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GPointLight</span>()</p>
+<p class="member_description">Default constructor for GPointLight.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -507,6 +623,13 @@
 <h2 class="class_title" name="GDirLight">GDirLight</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GLight" class="ckdoc_typename ckdoc_type_object">GLight</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Directional class. Position of this light has no affect, only rotation.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GDirLight</span>()</p>
+<p class="member_description">Default constructor for GDirLight.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -517,6 +640,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/mousecast.ck">basic/mousecast.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GCamera</span>()</p>
+<p class="member_description">Default constructor for GCamera.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -575,6 +705,63 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PERSPECTIVE</span></p><p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="GText" /><div class="class">
+<h2 class="class_title" name="GText">GText</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GText</span>()</p>
+<p class="member_description">Default constructor for GText.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Set text color. supports HDR values.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get text color.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">controlPoints</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> controlPoints)</p>
+<p class="member_description">Set control points for text. x = horizontal, y = verticalThe control point is a ratio within the text's bounding box that determines where its origin isFor example, (0.5, 0.5) will place the origin at the center the text(0.0, 0.0) will place the origin at the top-left of the text(1.0, 1.0) will place the origin at the bottom-right of the text.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">controlPoints</span>()</p>
+<p class="member_description">Get control points.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">font</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> font)</p>
+<p class="member_description">Set path to a font file (supported types: .otf and .ttf)If not provided, will default to the font set via GG.font()</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">font</span>()</p>
+<p class="member_description">Get font path.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lineSpacing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> lineSpacing)</p>
+<p class="member_description">Set vertical line spacing. Default is 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lineSpacing</span>()</p>
+<p class="member_description">Get vertical line spacing.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
+<p class="member_description">Set text.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>()</p>
+<p class="member_description">Get text.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

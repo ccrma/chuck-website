@@ -41,6 +41,14 @@
 <p class="member_description">Time in seconds since the last render frame.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">font</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> fontPath)</p>
+<p class="member_description">Sets the default font for all text rendering.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">font</span>()</p>
+<p class="member_description">Gets the path to the default font file for all text rendering.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">fps</span>()</p>
 <p class="member_description">FPS of current window, averaged over sliding window of 30 frames.</p>
 </div>
@@ -57,12 +65,28 @@
 <p class="member_description">Fullscreen the window. This will significantly improve performance.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">FX</span> <span class="membername">fx</span>()</p>
+<p class="member_description">Returns the root of the post processing chain. See the ChuGL post processing tutorial for more information.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hideCursor</span>()</p>
 <p class="member_description">Hides mouse cursor when focused on window.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">lockCursor</span>()</p>
 <p class="member_description">Hides and locks cursor to the window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mouseCapturedByUI</span>()</p>
+<p class="member_description">Returns true if the ImGui library is currently capturing the mouse.I.e. if the mouse is currently over an ImGui windowUseful for disabling mouse controls when the mouse is over an ImGui window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mouseDX</span>()</p>
+<p class="member_description">Mouse horizontal position change since last frame.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mouseDY</span>()</p>
+<p class="member_description">Mouse vertical position change since last frame.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">mouseMode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> mode)</p>
@@ -156,6 +180,13 @@
 <h2 class="class_title" name="WindowResizeEvent">WindowResizeEvent</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Event triggered whenever the ChuGL window is resized, either by the user or programmatically.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">WindowResizeEvent</span>()</p>
+<p class="member_description">Default constructor for WindowResizeEvent.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />

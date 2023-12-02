@@ -16,6 +16,7 @@
 <p class="toc_class"><a href="#Texture" class="ckdoc_typename ckdoc_type_object">Texture</a></p>
 <p class="toc_class"><a href="#FileTexture" class="ckdoc_typename ckdoc_type_object">FileTexture</a></p>
 <p class="toc_class"><a href="#DataTexture" class="ckdoc_typename ckdoc_type_object">DataTexture</a></p>
+<p class="toc_class"><a href="#CubeTexture" class="ckdoc_typename ckdoc_type_object">CubeTexture</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">Textures can be loaded from file, created dynamically from data; they are passed into materials and mapped onto 2D and 3D surfaces.</p>
@@ -23,8 +24,23 @@
 <h2 class="class_title" name="Texture">Texture</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Base texture class, do not instantiate directly.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Texture</span>()</p>
+<p class="member_description">Default constructor for Texture.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">colorSpace</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> colorSpace)</p>
+<p class="member_description">Set the colorspace of the texture data. Default COLOR_SPACE_LINEAR.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">colorSpace</span>()</p>
+<p class="member_description">Get the colorspace of the texture data. Default COLOR_SPACE_LINEAR.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">filter</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> min, <span class="ckdoc_typename ckdoc_type_primitive">int</span> mag)</p>
 <p class="member_description">Set texture sampler min and mag filter modes Texture.FILTER_NEAREST or Texture.FILTER_LINEAR.</p>
@@ -53,6 +69,12 @@
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">COLOR_SPACE_LINEAR</span></p><p class="member_description">Specifices the texture data to be in linear colorspace.Textures used for lighting parameters (like specular or normal maps) are typically in this linear spacePass into Texture.colorSpace()</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">COLOR_SPACE_SRGB</span></p><p class="member_description">Specifices the colorspace of the texture data to be in gamma-corrected sRGB colorspace.Textures used for color data (like diffuse maps) are typically in this colorspacePass into Texture.colorSpace()</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FILTER_LINEAR</span></p><p class="member_description">When passed into Texture.filter(), sets texture sampler to use bilinear filtering.</p>
 </div>
 <div class="member">
@@ -79,6 +101,13 @@
 <li><a target="_blank" href="../examples/textures/textures-1.ck">textures/textures-1.ck</a></li>
 <li><a target="_blank" href="../examples/textures/snowstorm.ck">textures/snowstorm.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">FileTexture</span>()</p>
+<p class="member_description">Default constructor for FileTexture.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -100,11 +129,42 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/audioshader/audio-texture.ck">audioshader/audio-texture.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">DataTexture</span>()</p>
+<p class="member_description">Default constructor for DataTexture.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">data</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> data, <span class="ckdoc_typename ckdoc_type_primitive">int</span> width, <span class="ckdoc_typename ckdoc_type_primitive">int</span> height)</p>
 <p class="member_description">Set the data for this texture. Data is expected to be a float array of length width*height*4, where each pixel is represented by 4 floats for r,g,b,a.Currently only supports unsigned bytes, so each float must be in range [0,255].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="CubeTexture" /><div class="class">
+<h2 class="class_title" name="CubeTexture">CubeTexture</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-tex.html#Texture" class="ckdoc_typename ckdoc_type_object">Texture</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Class for loading cubemap textures from external files or chuck arrays.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/skybox.ck">basic/skybox.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">CubeTexture</span>()</p>
+<p class="member_description">Default constructor for CubeTexture.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">paths</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> right, <span class="ckdoc_typename ckdoc_type_object">string</span> left, <span class="ckdoc_typename ckdoc_type_object">string</span> top, <span class="ckdoc_typename ckdoc_type_object">string</span> bottom, <span class="ckdoc_typename ckdoc_type_object">string</span> front, <span class="ckdoc_typename ckdoc_type_object">string</span> back)</p>
+<p class="member_description">Pass in paths to the 6 faces of the cubemap in the order: right, left, top, bottom, front, back.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

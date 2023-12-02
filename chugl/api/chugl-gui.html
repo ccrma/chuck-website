@@ -16,11 +16,20 @@
 <p class="toc_class"><a href="#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a></p>
 <p class="toc_class"><a href="#UI_Window" class="ckdoc_typename ckdoc_type_object">UI_Window</a></p>
 <p class="toc_class"><a href="#UI_Button" class="ckdoc_typename ckdoc_type_object">UI_Button</a></p>
+<p class="toc_class"><a href="#UI_SliderFloatBase" class="ckdoc_typename ckdoc_type_object">UI_SliderFloatBase</a></p>
 <p class="toc_class"><a href="#UI_SliderFloat" class="ckdoc_typename ckdoc_type_object">UI_SliderFloat</a></p>
+<p class="toc_class"><a href="#UI_SliderFloat2" class="ckdoc_typename ckdoc_type_object">UI_SliderFloat2</a></p>
+<p class="toc_class"><a href="#UI_SliderFloat3" class="ckdoc_typename ckdoc_type_object">UI_SliderFloat3</a></p>
+<p class="toc_class"><a href="#UI_SliderFloat4" class="ckdoc_typename ckdoc_type_object">UI_SliderFloat4</a></p>
+<p class="toc_class"><a href="#UI_SliderIntBase" class="ckdoc_typename ckdoc_type_object">UI_SliderIntBase</a></p>
 <p class="toc_class"><a href="#UI_SliderInt" class="ckdoc_typename ckdoc_type_object">UI_SliderInt</a></p>
+<p class="toc_class"><a href="#UI_SliderInt2" class="ckdoc_typename ckdoc_type_object">UI_SliderInt2</a></p>
+<p class="toc_class"><a href="#UI_SliderInt3" class="ckdoc_typename ckdoc_type_object">UI_SliderInt3</a></p>
+<p class="toc_class"><a href="#UI_SliderInt4" class="ckdoc_typename ckdoc_type_object">UI_SliderInt4</a></p>
 <p class="toc_class"><a href="#UI_Checkbox" class="ckdoc_typename ckdoc_type_object">UI_Checkbox</a></p>
 <p class="toc_class"><a href="#UI_Color3" class="ckdoc_typename ckdoc_type_object">UI_Color3</a></p>
 <p class="toc_class"><a href="#UI_Dropdown" class="ckdoc_typename ckdoc_type_object">UI_Dropdown</a></p>
+<p class="toc_class"><a href="#UI_Text" class="ckdoc_typename ckdoc_type_object">UI_Text</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">API methods for creating widgets such as buttons, sliders, dropdowns, etc.
@@ -33,6 +42,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_Element</span>()</p>
+<p class="member_description">Default constructor for UI_Element.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -54,6 +70,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_Window</span>()</p>
+<p class="member_description">Default constructor for UI_Window.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -71,16 +94,30 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_Button</span>()</p>
+<p class="member_description">Default constructor for UI_Button.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
-<a name="UI_SliderFloat" /><div class="class">
-<h2 class="class_title" name="UI_SliderFloat">UI_SliderFloat</h2>
+<a name="UI_SliderFloatBase" /><div class="class">
+<h2 class="class_title" name="UI_SliderFloatBase">UI_SliderFloatBase</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Float slider widgetCTRL+Click on any slider to turn them into an input box. Manually input values aren't clamped and can go off-bounds.<p>
+<p class="class_description">Base class for float slider widgetDon't instaniate directly, use one of the subclasses e.g. UI_SliderFloat or UI_SliderFloat2CTRL+Click on any slider to turn them into an input box. Manually input values aren't clamped and can go off-bounds.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_SliderFloatBase</span>()</p>
+<p class="member_description">Default constructor for UI_SliderFloatBase.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -88,9 +125,34 @@
 <p class="member_description">Set the power of the slider, e.g. 2.0 for an exponential domain. Defaults to 1.0.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">power</span>()</p>
+<p class="member_description">Get the power of the slider.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">range</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> max)</p>
 <p class="member_description">Set the range of the slider.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">range</span>()</p>
+<p class="member_description">Get the range of the slider.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_SliderFloat" /><div class="class">
+<h2 class="class_title" name="UI_SliderFloat">UI_SliderFloat</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_SliderFloatBase" class="ckdoc_typename ckdoc_type_object">UI_SliderFloatBase</a> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Float slider widget.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_SliderFloat</span>()</p>
+<p class="member_description">Default constructor for UI_SliderFloat.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">val</span>()</p>
 <p class="member_description">Get the current value of the slider.</p>
@@ -103,13 +165,98 @@
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
-<a name="UI_SliderInt" /><div class="class">
-<h2 class="class_title" name="UI_SliderInt">UI_SliderInt</h2>
+<a name="UI_SliderFloat2" /><div class="class">
+<h2 class="class_title" name="UI_SliderFloat2">UI_SliderFloat2</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_SliderFloatBase" class="ckdoc_typename ckdoc_type_object">UI_SliderFloatBase</a> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Float2 slider widget. 2 float sliders side by side.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/fx/custom-fx.ck">fx/custom-fx.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_SliderFloat2</span>()</p>
+<p class="member_description">Default constructor for UI_SliderFloat2.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">val</span>()</p>
+<p class="member_description">Get the current value of the slider.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> val)</p>
+<p class="member_description">Set the current value of the slider.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_SliderFloat3" /><div class="class">
+<h2 class="class_title" name="UI_SliderFloat3">UI_SliderFloat3</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_SliderFloatBase" class="ckdoc_typename ckdoc_type_object">UI_SliderFloatBase</a> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Float3 slider widget. 3 float sliders side by side.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_SliderFloat3</span>()</p>
+<p class="member_description">Default constructor for UI_SliderFloat3.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">val</span>()</p>
+<p class="member_description">Get the current value of the slider.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> val)</p>
+<p class="member_description">Set the current value of the slider.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_SliderFloat4" /><div class="class">
+<h2 class="class_title" name="UI_SliderFloat4">UI_SliderFloat4</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_SliderFloatBase" class="ckdoc_typename ckdoc_type_object">UI_SliderFloatBase</a> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Float4 slider widget. 4 float sliders side by side.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_SliderFloat4</span>()</p>
+<p class="member_description">Default constructor for UI_SliderFloat4.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">val</span>()</p>
+<p class="member_description">Get the current value of the slider.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> val)</p>
+<p class="member_description">Set the current value of the slider.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_SliderIntBase" /><div class="class">
+<h2 class="class_title" name="UI_SliderIntBase">UI_SliderIntBase</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Int slider widgetCTRL+Click on any slider to turn them into an input box. Manually input values aren't clamped and can go off-bounds.<p>
+<p class="class_description">Int slider Base class widgetCTRL+Click on any slider to turn them into an input box. Manually input values aren't clamped and can go off-bounds.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_SliderIntBase</span>()</p>
+<p class="member_description">Default constructor for UI_SliderIntBase.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -117,11 +264,107 @@
 <p class="member_description">Set the range of the slider.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">range</span>()</p>
+<p class="member_description">Get the range of the slider.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_SliderInt" /><div class="class">
+<h2 class="class_title" name="UI_SliderInt">UI_SliderInt</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_SliderIntBase" class="ckdoc_typename ckdoc_type_object">UI_SliderIntBase</a> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Int slider widgetCTRL+Click on any slider to turn them into an input box. Manually input values aren't clamped and can go off-bounds.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_SliderInt</span>()</p>
+<p class="member_description">Default constructor for UI_SliderInt.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">val</span>()</p>
 <p class="member_description">Get the current value of the slider.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">Set the current value of the slider.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_SliderInt2" /><div class="class">
+<h2 class="class_title" name="UI_SliderInt2">UI_SliderInt2</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_SliderIntBase" class="ckdoc_typename ckdoc_type_object">UI_SliderIntBase</a> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Int2 slider widget. 2 int sliders side by side.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_SliderInt2</span>()</p>
+<p class="member_description">Default constructor for UI_SliderInt2.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">val</span>()</p>
+<p class="member_description">Get the current value of the slider.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> val)</p>
+<p class="member_description">Set the current value of the slider.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_SliderInt3" /><div class="class">
+<h2 class="class_title" name="UI_SliderInt3">UI_SliderInt3</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_SliderIntBase" class="ckdoc_typename ckdoc_type_object">UI_SliderIntBase</a> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Int3 slider widget. 3 int sliders side by side.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_SliderInt3</span>()</p>
+<p class="member_description">Default constructor for UI_SliderInt3.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">val</span>()</p>
+<p class="member_description">Get the current value of the slider.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> val)</p>
+<p class="member_description">Set the current value of the slider.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_SliderInt4" /><div class="class">
+<h2 class="class_title" name="UI_SliderInt4">UI_SliderInt4</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_SliderIntBase" class="ckdoc_typename ckdoc_type_object">UI_SliderIntBase</a> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Int4 slider widget. 4 int sliders side by side.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_SliderInt4</span>()</p>
+<p class="member_description">Default constructor for UI_SliderInt4.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">val</span>()</p>
+<p class="member_description">Get the current value of the slider.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> val)</p>
 <p class="member_description">Set the current value of the slider.</p>
 </div>
 </div>
@@ -135,6 +378,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_Checkbox</span>()</p>
+<p class="member_description">Default constructor for UI_Checkbox.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -156,6 +406,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_Color3</span>()</p>
+<p class="member_description">Default constructor for UI_Color3.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -177,6 +434,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_Dropdown</span>()</p>
+<p class="member_description">Default constructor for UI_Dropdown.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -190,6 +454,70 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> idx)</p>
 <p class="member_description">Set the integer index of the selected dropdown item.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_Text" /><div class="class">
+<h2 class="class_title" name="UI_Text">UI_Text</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-gui.html#UI_Element" class="ckdoc_typename ckdoc_type_object">UI_Element</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Text widgetAdd text to the UI windowSupports options such as color, style, and wrapping.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/ui/basic-ui.ck">ui/basic-ui.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_Text</span>()</p>
+<p class="member_description">Default constructor for UI_Text.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the text color.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Set the text color, defaults to alpha of 1.0 ie fully opaque.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mode</span>()</p>
+<p class="member_description">Get the text mode. Default is MODE_DEFAULT, meaning no additional formattingMODE_BULLET will display text as a bullet pointMODE_SEPARATOR will display text with a horizontal separator line.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> mode)</p>
+<p class="member_description">Set the text mode. Default is MODE_DEFAULT, meaning no additional formattingMODE_BULLET will display text as a bullet pointMODE_SEPARATOR will display text with a horizontal separator line.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
+<p class="member_description">Get the text string.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>()</p>
+<p class="member_description">Set the text string.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">wrap</span>()</p>
+<p class="member_description">Get the text wrapping mode. Default True, meaning text will wrap to end of window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">wrap</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> wrap)</p>
+<p class="member_description">Set the text wrapping mode. Default True, meaning text will wrap to end of windowIf false, text will extend past the window bounds, and the user will need to scroll horizontally to see it.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MODE_BULLET</span></p><p class="member_description">Display text as a bullet point.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MODE_DEFAULT</span></p><p class="member_description">Default text mode, no additional formatting.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MODE_SEPARATOR</span></p><p class="member_description">Display text with a horizontal separator line.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
