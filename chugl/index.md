@@ -28,8 +28,7 @@ Philip Davidson.
 
 ---
 
-**ChuGL v0.1.3** (alpha) — [**ChuGL API 
-Reference**](./api/)
+**ChuGL v0.1.5** (alpha) — [**ChuGL API Reference**](./api/)
 • [**ChuGL Examples**](./examples/)
 • [**ChuGL Tutorial**](./doc/tutorial.html)
 • **Video Introduction**
@@ -39,7 +38,7 @@ ___
 
 ## Installation
 
-1. **Get the latest ChucK (requires 1.5.1.8 or higher)**
+1. **Get the latest ChucK (requires 1.5.2.0 or higher)**
 https://chuck.stanford.edu/release/
 2. **Get the latest ChuGL chugin**
 https://chuck.stanford.edu/release/alpha/chugl/
