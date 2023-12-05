@@ -33,15 +33,11 @@
 <h2 class="class_title" name="IO">IO</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Event" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Base class for other IO classes such as FileIO, StdOut and StdErr. Besides IO.newline(), it’s unlikely you need to use this class directly.<p>
-<h3 class="class_section_header">static member functions</h3>
+<h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">newline</span>()</p>
-<p class="member_description">Newline character; same as IO.nl().</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">nl</span>()</p>
-<p class="member_description">Newline character; same as IO.newline().</p>
+<p class="member_declaration"><span class="membername">IO</span>()</p>
+<p class="member_description">Default constructor for IO.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -97,6 +93,17 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
 <p class="member_description">Write floating point number 'val'.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">newline</span>()</p>
+<p class="member_description">Newline character; same as IO.nl().</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">nl</span>()</p>
+<p class="member_description">Newline character; same as IO.newline().</p>
 </div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
@@ -198,11 +205,11 @@
 <li><a target="_blank" href="../examples/io/read-byte.ck">io/read-byte.ck</a></li>
 <li><a target="_blank" href="../examples/io/write-byte.ck">io/write-byte.ck</a></li>
 </ul></div>
-<h3 class="class_section_header">static member functions</h3>
+<h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">expandPath</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path)</p>
-<p class="member_description">Expand platform-specific filepath to an absolute path, which is returned. On macOS and Linux expandPath() will attempt to resolve `~` or `~[username]`; on Windows expandPath() will attempt to resolve %USERNAME%. (Known issue: (macOS) expandPath currently introduced an audio click; it recommended to call expandPath() at the beginning; e.g., expanding path ahead of time could avoid a click instead of calling Machine.add() on a filepath with `~`.)</p>
+<p class="member_declaration"><span class="membername">FileIO</span>()</p>
+<p class="member_description">Default constructor for FileIO.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -316,6 +323,13 @@
 <p class="member_description">Write floating point value to file; binary mode: flags indicate float size (IO.FLOAT32 or IO.FLOAT64).</p>
 </div>
 </div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">expandPath</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path)</p>
+<p class="member_description">Expand platform-specific filepath to an absolute path, which is returned. On macOS and Linux expandPath() will attempt to resolve `~` or `~[username]`; on Windows expandPath() will attempt to resolve %USERNAME%. (Known issue: (macOS) expandPath currently introduced an audio click; it recommended to call expandPath() at the beginning; e.g., expanding path ahead of time could avoid a click instead of calling Machine.add() on a filepath with `~`.)</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -329,6 +343,13 @@
 <li><a target="_blank" href="../examples/osc/osc-dump.ck">osc/osc-dump.ck</a></li>
 <li><a target="_blank" href="../examples/multi-msg/r-multi-msg.ck">multi-msg/r-multi-msg.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">OscIn</span>()</p>
+<p class="member_description">Default constructor for OscIn.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -372,6 +393,13 @@
 <li><a target="_blank" href="../examples/osc/r.ck">osc/r.ck</a></li>
 <li><a target="_blank" href="../examples/osc/osc-dump.ck">osc/osc-dump.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">OscOut</span>()</p>
+<p class="member_description">Default constructor for OscOut.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -416,6 +444,13 @@
 <li><a target="_blank" href="../examples/osc/osc-dump.ck">osc/osc-dump.ck</a></li>
 <li><a target="_blank" href="../examples/multi-msg/r-multi-msg.ck">multi-msg/r-multi-msg.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">OscMsg</span>()</p>
+<p class="member_description">Default constructor for OscMsg.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -465,27 +500,11 @@
 <li><a target="_blank" href="../examples/hid/joy-noise.ck">hid/joy-noise.ck</a></li>
 <li><a target="_blank" href="../examples/hid/joy-shake.ck">hid/joy-shake.ck</a></li>
 </ul></div>
-<h3 class="class_section_header">static member functions</h3>
+<h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">globalTiltPollRate</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> d)</p>
-<p class="member_description">Set tilt-sensor poll rate.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">globalTiltPollRate</span>()</p>
-<p class="member_description">Get tilt-sensor poll rate.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">readTiltSensor</span>()</p>
-<p class="member_description">Read tilt-sensor and return as an int array.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">startCursorTrack</span>()</p>
-<p class="member_description">Start cursor tracking; return whether the request was successful.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">stopCursorTrack</span>()</p>
-<p class="member_description">Stop cursor tracking; return whether the request was successful.</p>
+<p class="member_declaration"><span class="membername">Hid</span>()</p>
+<p class="member_description">Default constructor for Hid.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -557,6 +576,29 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">send</span>(<span class="ckdoc_typename ckdoc_type_object">HidMsg</span> msg)</p>
 <p class="member_description">Send a HidMsg to device; return whether the operation was successful.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">globalTiltPollRate</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> d)</p>
+<p class="member_description">Set tilt-sensor poll rate.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">globalTiltPollRate</span>()</p>
+<p class="member_description">Get tilt-sensor poll rate.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">readTiltSensor</span>()</p>
+<p class="member_description">Read tilt-sensor and return as an int array.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">startCursorTrack</span>()</p>
+<p class="member_description">Start cursor tracking; return whether the request was successful.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">stopCursorTrack</span>()</p>
+<p class="member_description">Stop cursor tracking; return whether the request was successful.</p>
 </div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
@@ -634,6 +676,13 @@
 <li><a target="_blank" href="../examples/hid/joy-noise.ck">hid/joy-noise.ck</a></li>
 <li><a target="_blank" href="../examples/hid/joy-shake.ck">hid/joy-shake.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">HidMsg</span>()</p>
+<p class="member_description">Default constructor for HidMsg.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -687,10 +736,10 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ascii</span></p><p class="member_description">ASCII value associated with a keyboard key.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">axisPosition</span></p><p class="member_description">Joystick axis position (float).</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">axis_position</span></p><p class="member_description">Joystick axis position (int).</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">axis_position</span></p><p class="member_description">Joystick axis position (int).</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">axisPosition</span></p><p class="member_description">Joystick axis position (float).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">cursorX</span></p><p class="member_description">Position of X-axis of pointing device.</p>
@@ -723,13 +772,13 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">key</span></p><p class="member_description">Code (USB) for a keyboard key.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">scaled_axis_position</span></p><p class="member_description">Position of the primary pointing device, scaled between 0.0 and 1.0.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">scaledCursorX</span></p><p class="member_description">Position of X-axis of pointing device, scaled between 0.0 and 1.0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">scaledCursorY</span></p><p class="member_description">Position of Y-axis of pointing device, scaled between 0.0 and 1.0.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">scaled_axis_position</span></p><p class="member_description">Position of the primary pointing device, scaled between 0.0 and 1.0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">touchSize</span></p><p class="member_description">Multi-touch size.</p>
@@ -773,6 +822,13 @@
 <li><a target="_blank" href="../examples/hid/kbhit/clix2.ck">hid/kbhit/clix2.ck</a></li>
 <li><a target="_blank" href="../examples/hid/kbhit/clix3.ck">hid/kbhit/clix3.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">KBHit</span>()</p>
+<p class="member_description">Default constructor for KBHit.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -821,11 +877,11 @@
 <li><a target="_blank" href="../examples/serial/write-bytes.ck">serial/write-bytes.ck</a></li>
 <li><a target="_blank" href="../examples/serial/write.ck">serial/write.ck</a></li>
 </ul></div>
-<h3 class="class_section_header">static member functions</h3>
+<h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> <span class="membername">list</span>()</p>
-<p class="member_description">Get list of available serial devices.</p>
+<p class="member_declaration"><span class="membername">SerialIO</span>()</p>
+<p class="member_description">Default constructor for SerialIO.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -903,6 +959,13 @@
 <p class="member_description">Write array of bytes.</p>
 </div>
 </div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> <span class="membername">list</span>()</p>
+<p class="member_description">Get list of available serial devices.</p>
+</div>
+</div>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
@@ -955,6 +1018,13 @@
 <li><a target="_blank" href="../examples/midi/polyfony.ck">midi/polyfony.ck</a></li>
 <li><a target="_blank" href="../examples/midi/polyfony2.ck">midi/polyfony2.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">MidiIn</span>()</p>
+<p class="member_description">Default constructor for MidiIn.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -1000,6 +1070,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/midi/midiout.ck">midi/midiout.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">MidiOut</span>()</p>
+<p class="member_description">Default constructor for MidiOut.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -1044,6 +1121,13 @@
 <li><a target="_blank" href="../examples/midi/polyfony.ck">midi/polyfony.ck</a></li>
 <li><a target="_blank" href="../examples/midi/polyfony2.ck">midi/polyfony2.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">MidiMsg</span>()</p>
+<p class="member_description">Default constructor for MidiMsg.</p>
+</div>
+</div>
 <h3 class="class_section_header">member variables</h3>
 <div class="members">
 <div class="member">
@@ -1070,6 +1154,13 @@
 <li><a target="_blank" href="../examples/examples/midi/midiplay-play.ck">examples/midi/midiplay-play.ck</a></li>
 <li><a target="_blank" href="../examples/examples/midi/bwv772.mid">examples/midi/bwv772.mid</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">MidiFileIn</span>()</p>
+<p class="member_description">Default constructor for MidiFileIn.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">

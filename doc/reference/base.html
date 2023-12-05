@@ -27,6 +27,20 @@
 <a name="Object" /><div class="class">
 <h2 class="class_title" name="Object">Object</h2>
 <p class="class_description">Base class for all class types in ChucK.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Object</span>()</p>
+<p class="member_description">Default constructor for Object.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">toString</span>()</p>
+<p class="member_description">Get a textual description of this object.</p>
+</div>
+</div>
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
@@ -36,13 +50,6 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span> <span class="membername">typeOf</span>()</p>
 <p class="member_description">Get the type of this object (or class).</p>
-</div>
-</div>
-<h3 class="class_section_header">member functions</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">toString</span>()</p>
-<p class="member_description">Get a textual description of this object.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -61,6 +68,13 @@
 <li><a target="_blank" href="../examples/event/event-x-bpm-1.ck">event/event-x-bpm-1.ck</a></li>
 <li><a target="_blank" href="../examples/event/event-x-bpm-2.ck">event/event-x-bpm-2.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Event</span>()</p>
+<p class="member_description">Default constructor for Event.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -88,20 +102,22 @@
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A strongly-timed ChucK thread of execution.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/shred/powerup.ck">shred/powerup.ck</a></li>
 <li><a target="_blank" href="../examples/shred/spork.ck">shred/spork.ck</a></li>
 <li><a target="_blank" href="../examples/shred/spork2.ck">shred/spork2.ck</a></li>
 <li><a target="_blank" href="../examples/shred/spork2-exit.ck">shred/spork2-exit.ck</a></li>
 <li><a target="_blank" href="../examples/shred/spork2-remove.ck">shred/spork2-remove.ck</a></li>
+<li><a target="_blank" href="../examples/shred/powerup.ck">shred/powerup.ck</a></li>
 <li><a target="_blank" href="../examples/event/broadcast.ck">event/broadcast.ck</a></li>
 <li><a target="_blank" href="../examples/event/signal.ck">event/signal.ck</a></li>
 <li><a target="_blank" href="../examples/event/signal4.ck">event/signal4.ck</a></li>
+<li><a target="_blank" href="../examples/shred/parent.ck">shred/parent.ck</a></li>
+<li><a target="_blank" href="../examples/shred/ancestor.ck">shred/ancestor.ck</a></li>
 </ul></div>
-<h3 class="class_section_header">static member functions</h3>
+<h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Shred</span> <span class="membername">fromId</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> id)</p>
-<p class="member_description">Get Shred corresponding to a Shred ID.</p>
+<p class="member_declaration"><span class="membername">Shred</span>()</p>
+<p class="member_description">Default constructor for Shred.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -140,7 +156,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">done</span>()</p>
-<p class="member_description">Is the Shred done running?</p>
+<p class="member_description">Has the Shred reached the end of its execution?</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">exit</span>()</p>
@@ -156,7 +172,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">running</span>()</p>
-<p class="member_description">Is the Shred currently running?</p>
+<p class="member_description">Is the Shred currently actively running in the VM?</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">sourceDir</span>()</p>
@@ -169,6 +185,21 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">yield</span>()</p>
 <p class="member_description">Cause the current Shred to temporarily suspend without advancing time, allowing other simultaneously schreduled shreds to run as needed. NOTE: yield() is equivalent to '0::second +=> now;'</p>
+</div>
+</div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Shred</span> <span class="membername">ancestor</span>()</p>
+<p class="member_description">Get the calling shred's "ancestor" shred (i.e., the top-level shred). Returns itself if the calling shred is the top-level shred. (Related: see Shred.parent())</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Shred</span> <span class="membername">fromId</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> id)</p>
+<p class="member_description">Get Shred corresponding to a Shred ID.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Shred</span> <span class="membername">parent</span>()</p>
+<p class="member_description">Get the calling shred's parent shred (i.e., the shred that sporked the calling shred). Returns null if there is no parent Shred. (Related: see Shred.ancestor())</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -452,6 +483,9 @@
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">e</span></p><p class="member_description">Euler's number; base of the natural logarithm.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">E</span></p><p class="member_description">Euler's number; base of the natural logarithm.</p>
 </div>
 <div class="member">
@@ -459,6 +493,9 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">FLOAT_MIN_MAG</span></p><p class="member_description">Smallest representable non-negative floating-point value.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">complex</span> <span class="membername">i</span></p><p class="member_description">The complex number sqrt(-1).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">complex</span> <span class="membername">I</span></p><p class="member_description">The complex number sqrt(-1).</p>
@@ -470,7 +507,13 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">INT_MAX</span></p><p class="member_description">Largest representable integer value.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">complex</span> <span class="membername">j</span></p><p class="member_description">The complex number sqrt(-1).</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">complex</span> <span class="membername">J</span></p><p class="member_description">The complex number sqrt(-1).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pi</span></p><p class="member_description">An approximation of pi. (Same as global keyword 'pi'.)</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">PI</span></p><p class="member_description">An approximation of pi. (Same as global keyword 'pi'.)</p>
@@ -479,22 +522,10 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RANDOM_MAX</span></p><p class="member_description">The largest possible value returned by random().</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">TWO_PI</span></p><p class="member_description">An approximation of 2*pi.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">e</span></p><p class="member_description">Euler's number; base of the natural logarithm.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">complex</span> <span class="membername">i</span></p><p class="member_description">The complex number sqrt(-1).</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">complex</span> <span class="membername">j</span></p><p class="member_description">The complex number sqrt(-1).</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pi</span></p><p class="member_description">An approximation of pi. (Same as global keyword 'pi'.)</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">two_pi</span></p><p class="member_description">An approximation of 2*pi.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">TWO_PI</span></p><p class="member_description">An approximation of 2*pi.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -788,6 +819,17 @@
 <li><a target="_blank" href="../examples/string/escape.ck">string/escape.ck</a></li>
 <li><a target="_blank" href="../examples/string/tostr.ck">string/tostr.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">string</span>()</p>
+<p class="member_description">Default constructor for string.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">string</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str)</p>
+<p class="member_description">Construct a string as a copy of another string.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">

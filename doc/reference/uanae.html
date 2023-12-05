@@ -41,6 +41,13 @@
 <h2 class="class_title" name="UAna">UAna</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Base class from which all unit analyzer (UAna) types inherit; UAnae (note plural form) can be interconnected using => (chuck operator for synthesis; all UAnae are also UGens) or using =^ (upchuck operator for analysis) -- the operator used will determine how data is passed. When .upchuck() is invoked on a given UAna, the UAna-chain (i.e., UAnae connected via =^) is traversed upstream from the upchucked UAna, and analysis is performed at each UAna along the chain; the analysis results are returned in UAnaBlobs.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UAna</span>()</p>
+<p class="member_description">Default constructor for UAna.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -68,12 +75,6 @@
 <p class="member_description">Initiate analysis at the UAna and return result.</p>
 </div>
 </div>
-<h3 class="class_section_header">member variables</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">UAnaBlob</span> <span class="membername">m_blob</span></p><p class="empty_member_description">No description available</p>
-</div>
-</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -81,6 +82,13 @@
 <h2 class="class_title" name="UAnaBlob">UAnaBlob</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A data structure that contains results associated with UAna analysis. There is a UAnaBlob associated with every UAna. As a UAna is upchucked (using .upchuck()), the result is stored in the UAnaBlob's floating point vector and/or complex vector. The interpretation of the results depends on the specific UAna.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UAnaBlob</span>()</p>
+<p class="member_description">Default constructor for UAnaBlob.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -128,6 +136,13 @@
 <li><a target="_blank" href="../examples/ai/genre-classify/feature-extract.ck">ai/genre-classify/feature-extract.ck</a></li>
 <li><a target="_blank" href="../examples/ai/genre-classify/genre-classify.ck">ai/genre-classify/genre-classify.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Centroid</span>()</p>
+<p class="member_description">Default constructor for Centroid.</p>
+</div>
+</div>
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
@@ -145,15 +160,19 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ai/features/chroma.ck">ai/features/chroma.ck</a></li>
 </ul></div>
-<h3 class="class_section_header">static member functions</h3>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Chroma</span>()</p>
+<p class="member_description">Default constructor for Chroma.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> output)</p>
 <p class="member_description">Manually computes the Chroma of the input (an FFT spectrum), and stores the results in the output array (Chroma coefficients).</p>
 </div>
-</div>
-<h3 class="class_section_header">member functions</h3>
-<div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">highOctNum</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> high_oct_num)</p>
 <p class="member_description">Set the highest octave number for Chroma analysis.</p>
@@ -190,6 +209,20 @@
 <li><a target="_blank" href="../examples/ai/features/flux.ck">ai/features/flux.ck</a></li>
 <li><a target="_blank" href="../examples/ai/features/flux0.ck">ai/features/flux0.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Flux</span>()</p>
+<p class="member_description">Default constructor for Flux.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">reset</span>()</p>
+<p class="member_description">Reset the extractor.</p>
+</div>
+</div>
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
@@ -199,13 +232,6 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> lhs, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> rhs, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> diff)</p>
 <p class="member_description">Manually computes the flux between two frames, and stores the difference in a third array.</p>
-</div>
-</div>
-<h3 class="class_section_header">member functions</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">reset</span>()</p>
-<p class="member_description">Reset the extractor.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -218,6 +244,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ai/features/kurtosis.ck">ai/features/kurtosis.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Kurtosis</span>()</p>
+<p class="member_description">Default constructor for Kurtosis.</p>
+</div>
+</div>
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
@@ -238,6 +271,13 @@
 <li><a target="_blank" href="../examples/ai/genre-classify/feature-extract.ck">ai/genre-classify/feature-extract.ck</a></li>
 <li><a target="_blank" href="../examples/ai/genre-classify/genre-classify.ck">ai/genre-classify/genre-classify.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">MFCC</span>()</p>
+<p class="member_description">Default constructor for MFCC.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -279,6 +319,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ai/features/rms.ck">ai/features/rms.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">RMS</span>()</p>
+<p class="member_description">Default constructor for RMS.</p>
+</div>
+</div>
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
@@ -297,11 +344,11 @@
 <li><a target="_blank" href="../examples/ai/features/rolloff.ck">ai/features/rolloff.ck</a></li>
 <li><a target="_blank" href="../examples/ai/features/rolloff2.ck">ai/features/rolloff2.ck</a></li>
 </ul></div>
-<h3 class="class_section_header">static member functions</h3>
+<h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input, <span class="ckdoc_typename ckdoc_type_primitive">float</span> percent)</p>
-<p class="member_description">Manually computes the rolloff from a float array.</p>
+<p class="member_declaration"><span class="membername">RollOff</span>()</p>
+<p class="member_description">Default constructor for RollOff.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -315,6 +362,13 @@
 <p class="member_description">Get the percentage specified for the rolloff.</p>
 </div>
 </div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input, <span class="ckdoc_typename ckdoc_type_primitive">float</span> percent)</p>
+<p class="member_description">Manually computes the rolloff from a float array.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -325,15 +379,19 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ai/features/sfm.ck">ai/features/sfm.ck</a></li>
 </ul></div>
-<h3 class="class_section_header">static member functions</h3>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">SFM</span>()</p>
+<p class="member_description">Default constructor for SFM.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> output)</p>
 <p class="member_description">Manually computes the SFM of the input (an FFT spectrum), and stores the results in the output array (SFM coefficients).</p>
 </div>
-</div>
-<h3 class="class_section_header">member functions</h3>
-<div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">nrBands</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> nr_bands)</p>
 <p class="member_description">Set the number of frequency bands to use for SFM analysis.</p>
@@ -353,6 +411,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/ai/features/zerox.ck">ai/features/zerox.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ZeroX</span>()</p>
+<p class="member_description">Default constructor for ZeroX.</p>
+</div>
+</div>
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
@@ -370,11 +435,11 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/analysis/autocorr.ck">analysis/autocorr.ck</a></li>
 </ul></div>
-<h3 class="class_section_header">static member functions</h3>
+<h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input, <span class="ckdoc_typename ckdoc_type_primitive">int</span> normalize, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> output)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="membername">AutoCorr</span>()</p>
+<p class="member_description">Default constructor for AutoCorr.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -388,6 +453,13 @@
 <p class="empty_member_description">No description available</p>
 </div>
 </div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input, <span class="ckdoc_typename ckdoc_type_primitive">int</span> normalize, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> output)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -398,6 +470,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/analysis/dct.ck">analysis/dct.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">DCT</span>()</p>
+<p class="member_description">Default constructor for DCT.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -437,6 +516,13 @@
 <li><a target="_blank" href="../examples/ai/genre-classify/genre-classify.ck">ai/genre-classify/genre-classify.ck</a></li>
 <li><a target="_blank" href="../examples/analysis/concat.ck">analysis/concat.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">FeatureCollector</span>()</p>
+<p class="member_description">Default constructor for FeatureCollector.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -452,6 +538,13 @@
 <li><a target="_blank" href="../examples/ai/genre-classify/feature-extract.ck">ai/genre-classify/feature-extract.ck</a></li>
 <li><a target="_blank" href="../examples/ai/genre-classify/genre-classify.ck">ai/genre-classify/genre-classify.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">FFT</span>()</p>
+<p class="member_description">Default constructor for FFT.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -491,6 +584,13 @@
 <li><a target="_blank" href="../examples/analysis/autocorr.ck">analysis/autocorr.ck</a></li>
 <li><a target="_blank" href="../examples/ai/features/zerox.ck">ai/features/zerox.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Flip</span>()</p>
+<p class="member_description">Default constructor for Flip.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -525,6 +625,13 @@
 <h2 class="class_title" name="IDCT">IDCT</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="uanae.html#UAna" class="ckdoc_typename ckdoc_type_ugen">UAna</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Computes the inverse Discrete Cosine Transform on incoming spectral frames (on demand), and overlap-adds the results into its internal buffer, ready to be sent to other UGen's connected via =>. The window size (along with an arbitrary window shape) is controlled via the .window method.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">IDCT</span>()</p>
+<p class="member_description">Default constructor for IDCT.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -564,6 +671,13 @@
 <li><a target="_blank" href="../examples/analysis/ifft2.ck">analysis/ifft2.ck</a></li>
 <li><a target="_blank" href="../examples/analysis/ifft3.ck">analysis/ifft3.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">IFFT</span>()</p>
+<p class="member_description">Default constructor for IFFT.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -601,6 +715,13 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/analysis/flip.ck">analysis/flip.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UnFlip</span>()</p>
+<p class="member_description">Default constructor for UnFlip.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -638,11 +759,11 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/analysis/xcorr.ck">analysis/xcorr.ck</a></li>
 </ul></div>
-<h3 class="class_section_header">static member functions</h3>
+<h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> f, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> g, <span class="ckdoc_typename ckdoc_type_primitive">int</span> normalize, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> y)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="membername">XCorr</span>()</p>
+<p class="member_description">Default constructor for XCorr.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -653,6 +774,13 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">normalize</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+</div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">compute</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> f, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> g, <span class="ckdoc_typename ckdoc_type_primitive">int</span> normalize, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> y)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 </div>

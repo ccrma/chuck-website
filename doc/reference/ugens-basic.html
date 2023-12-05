@@ -49,6 +49,13 @@
 <h2 class="class_title" name="UGen">UGen</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Base class for all unit generator (UGen) types.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UGen</span>()</p>
+<p class="member_description">Default constructor for UGen.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -106,6 +113,17 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/i-robot.ck">basic/i-robot.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Gain</span>()</p>
+<p class="member_description">Default constructor for Gain.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Gain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> gain)</p>
+<p class="member_description">Construct a Gain with default value.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -118,6 +136,13 @@
 <li><a target="_blank" href="../examples/basic/comb.ck">basic/comb.ck</a></li>
 <li><a target="_blank" href="../examples/deep/chant.ck">deep/chant.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Impulse</span>()</p>
+<p class="member_description">Default constructor for Impulse.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -141,6 +166,17 @@
 <li><a target="_blank" href="../examples/basic/fm3.ck">basic/fm3.ck</a></li>
 <li><a target="_blank" href="../examples/basic/zerox.ck">basic/zerox.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Step</span>()</p>
+<p class="member_description">Default constructor for Step.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Step</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Construct a Step with default 'value'</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -168,6 +204,25 @@
 <li><a target="_blank" href="../examples/otf_03.ck">otf_03.ck</a></li>
 <li><a target="_blank" href="../examples/otf_04.ck">otf_04.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">SndBuf</span>()</p>
+<p class="member_description">Default constructor for SndBuf.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">SndBuf</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path)</p>
+<p class="member_description">Construct a SndBuf with the 'path' to a sound file to read.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">SndBuf</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rate)</p>
+<p class="member_description">Construct a SndBuf with the 'path' to a sound file to read, and a default playback 'rate' (1.0 is normal rate)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">SndBuf</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rate, <span class="ckdoc_typename ckdoc_type_primitive">int</span> pos)</p>
+<p class="member_description">Construct a SndBuf with the 'path' to a sound file to read, a default playback 'rate' (1.0 is normal rate), and starting at sample position 'pos'</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -263,6 +318,10 @@
 <p class="member_description">Read file for reading.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ready</span>()</p>
+<p class="member_description">Query whether the SndBuf is ready for use (e.g., sound file successfully loaded).</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">samples</span>()</p>
 <p class="member_description">Get total number of sample frames in the file; same as .frames().</p>
 </div>
@@ -282,6 +341,13 @@
 <h2 class="class_title" name="SndBuf2">SndBuf2</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#SndBuf" class="ckdoc_typename ckdoc_type_ugen">SndBuf</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">An interpolating sound buffer with two-channel output. Reads from a variety of uncompressed formats.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">SndBuf2</span>()</p>
+<p class="member_description">Default constructor for SndBuf2.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -295,6 +361,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/basic/adsr.ck">basic/adsr.ck</a></li>
 <li><a target="_blank" href="../examples/basic/blit2.ck">basic/blit2.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ADSR</span>()</p>
+<p class="member_description">Default constructor for ADSR.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -398,6 +471,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/basic/chirp2.ck">basic/chirp2.ck</a></li>
 <li><a target="_blank" href="../examples/deep/say-chu.ck">deep/say-chu.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Envelope</span>()</p>
+<p class="member_description">Default constructor for Envelope.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -472,6 +552,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/basic/comb.ck">basic/comb.ck</a></li>
 <li><a target="_blank" href="../examples/deep/plu.ck">deep/plu.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Delay</span>()</p>
+<p class="member_description">Default constructor for Delay.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -513,6 +600,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/analysis/xcorr.ck">analysis/xcorr.ck</a></li>
 <li><a target="_blank" href="../examples/ai/word2vec/poem-i-feel.ck">ai/word2vec/poem-i-feel.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">DelayL</span>()</p>
+<p class="member_description">Default constructor for DelayL.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -550,6 +644,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/deep/ks-chord.ck">deep/ks-chord.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">DelayA</span>()</p>
+<p class="member_description">Default constructor for DelayA.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -587,6 +688,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/stk/rhodey.ck">stk/rhodey.ck</a></li>
 <li><a target="_blank" href="../examples/stk/wurley2.ck">stk/wurley2.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Echo</span>()</p>
+<p class="member_description">Default constructor for Echo.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -632,6 +740,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h2 class="class_title" name="CNoise">CNoise</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A noise generator with multiple noise synthesis modes.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">CNoise</span>()</p>
+<p class="member_description">Default constructor for CNoise.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -650,6 +765,21 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h2 class="class_title" name="Osc">Osc</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Base class for simple oscillator unit generators.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Osc</span>()</p>
+<p class="member_description">Default constructor for Osc.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Osc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq)</p>
+<p class="member_description">Construct Osc at specified frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Osc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq, <span class="ckdoc_typename ckdoc_type_primitive">float</span> phase)</p>
+<p class="member_description">Construct Osc at specified frequency and phase.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -706,6 +836,21 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/basic/whirl.ck">basic/whirl.ck</a></li>
 <li><a target="_blank" href="../examples/analysis/fft.ck">analysis/fft.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">SinOsc</span>()</p>
+<p class="member_description">Default constructor for SinOsc.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">SinOsc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq)</p>
+<p class="member_description">Construct SinOsc at specified frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">SinOsc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq, <span class="ckdoc_typename ckdoc_type_primitive">float</span> phase)</p>
+<p class="member_description">Construct SinOsc at specified frequency and phase.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -717,6 +862,21 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/basic/oscillatronx.ck">basic/oscillatronx.ck</a></li>
 <li><a target="_blank" href="../examples/deep/shepard.ck">deep/shepard.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">TriOsc</span>()</p>
+<p class="member_description">Default constructor for TriOsc.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">TriOsc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq)</p>
+<p class="member_description">Construct TriOsc at specified frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">TriOsc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq, <span class="ckdoc_typename ckdoc_type_primitive">float</span> phase)</p>
+<p class="member_description">Construct TriOsc at specified frequency and phase.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -739,6 +899,21 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/deep/thx.ck">deep/thx.ck</a></li>
 <li><a target="_blank" href="../examples/basic/oscillatronx.ck">basic/oscillatronx.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">SawOsc</span>()</p>
+<p class="member_description">Default constructor for SawOsc.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">SawOsc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq)</p>
+<p class="member_description">Construct SawOsc at specified frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">SawOsc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq, <span class="ckdoc_typename ckdoc_type_primitive">float</span> phase)</p>
+<p class="member_description">Construct SawOsc at specified frequency and phase.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -760,6 +935,21 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/pulse.ck">basic/pulse.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">PulseOsc</span>()</p>
+<p class="member_description">Default constructor for PulseOsc.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">PulseOsc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq)</p>
+<p class="member_description">Construct PulseOsc at specified frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">PulseOsc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq, <span class="ckdoc_typename ckdoc_type_primitive">float</span> phase)</p>
+<p class="member_description">Construct PulseOsc at specified frequency and phase.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -784,6 +974,21 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/filter/rlpf.ck">filter/rlpf.ck</a></li>
 <li><a target="_blank" href="../examples/filter/rhpf.ck">filter/rhpf.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">SqrOsc</span>()</p>
+<p class="member_description">Default constructor for SqrOsc.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">SqrOsc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq)</p>
+<p class="member_description">Construct SqrOsc at specified frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">SqrOsc</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq, <span class="ckdoc_typename ckdoc_type_primitive">float</span> phase)</p>
+<p class="member_description">Construct SqrOsc at specified frequency and phase.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -801,6 +1006,21 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/phasor.ck">basic/phasor.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Phasor</span>()</p>
+<p class="member_description">Default constructor for Phasor.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Phasor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq)</p>
+<p class="member_description">Construct Phasor at specified frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Phasor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> freq, <span class="ckdoc_typename ckdoc_type_primitive">float</span> phase)</p>
+<p class="member_description">Construct Phasor at specified frequency and phase.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -828,6 +1048,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/class/try.ck">class/try.ck</a></li>
 <li><a target="_blank" href="../examples/deep/ks-chord.ck">deep/ks-chord.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Chugraph</span>()</p>
+<p class="member_description">Default constructor for Chugraph.</p>
+</div>
+</div>
 <h3 class="class_section_header">member variables</h3>
 <div class="members">
 <div class="member">
@@ -847,6 +1074,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/extend/chugen.ck">extend/chugen.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Chugen</span>()</p>
+<p class="member_description">Default constructor for Chugen.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -854,6 +1088,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h2 class="class_title" name="UGen_Multi">UGen_Multi</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Base class for multi-channel unit generators.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UGen_Multi</span>()</p>
+<p class="member_description">Default constructor for UGen_Multi.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -868,6 +1109,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h2 class="class_title" name="UGen_Stereo">UGen_Stereo</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen_Multi" class="ckdoc_typename ckdoc_type_ugen">UGen_Multi</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Base class for stereo unit generators.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">UGen_Stereo</span>()</p>
+<p class="member_description">Default constructor for UGen_Stereo.</p>
+</div>
+</div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
@@ -903,6 +1151,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h2 class="class_title" name="Mix2">Mix2</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen_Stereo" class="ckdoc_typename ckdoc_type_ugen">UGen_Stereo</a> : <a href="ugens-basic.html#UGen_Multi" class="ckdoc_typename ckdoc_type_ugen">UGen_Multi</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A stereo-to-mono unit generator for mixing stereo signal to mono.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Mix2</span>()</p>
+<p class="member_description">Default constructor for Mix2.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -924,6 +1179,13 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <li><a target="_blank" href="../examples/hanoi2.ck">hanoi2.ck</a></li>
 <li><a target="_blank" href="../examples/hanoi3.ck">hanoi3.ck</a></li>
 </ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Pan2</span>()</p>
+<p class="member_description">Default constructor for Pan2.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
