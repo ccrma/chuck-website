@@ -38,9 +38,12 @@ ___
 
 ## Installation
 
-1. **Get the latest ChucK (requires 1.5.2.0 or higher)**
+1. as of chuck 1.5.2.1, ChuGL (alpha) is part of the **standard ChucK distribution**
 https://chuck.stanford.edu/release/
-2. **Get the latest ChuGL chugin**
+<br>
+(macOS and Windows; build ChuGL from source on Linux. NOTE ChuGL 
+(alpha) only works from command-line ChucK; miniAudicle support is being worked on.)
+2. for chuck versions prior to 1.5.2.1, **Install the ChuGL chugin**
 https://chuck.stanford.edu/release/alpha/chugl/
 3. What's new? See [**release notes**](https://docs.google.com/document/d/1Hv6hrg5oCX8nwwuXBMI4hK04JKRhfrbJns98PoyFeug/edit)
 
