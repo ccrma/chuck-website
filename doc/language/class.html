@@ -307,40 +307,52 @@ x.print();
 
 <p><b>class constructors</b></p>
 
-<p>In the initial release, we do not support constructors yet.  However, we have a single <i>pre-constructor</i>.
-The code immediately inside a class definiton (and not inside any functions) is run every time an instance of
-that class is created.</p>
+<p> As of version 1.5.2.0, ChucK now supports constructors and destructors.</p>
+<p> Constructors can be invoked when declaring a variable or with `new`:</p>
 
 <pre>
-// define class X
-class X
-{
-    // we can put any ChucK statements here as pre-constructor
-    
-    // initialize an instance data
-    109 => int m_foo;
-
-    // loop over stuff
-    for( 0 => int i; i < 5; i++ )
-    {
-        // print out message how silly
-        <<< "part of class pre-constructor...", this, i >>>;
-    }
-
-    // function
-    fun void doit()
-    {
-        // ...
-    }
-}
-
-// when we instantiate X, the pre-constructor is run
-X x;
-
-// print out m_foo
-<<< x.m_foo >>>;
+// connecting UGens, with construtors
+SinOsc foo( 440 ) => Gain g( .5 ) => dac;
+// `new` and assignment
+new TriOsc( 440, 0.5 ) @=> Osc @ oscillator;
+// can combine constructors with arrays
+string arr( "foo" )[10];
 </pre>
 
+<p> Constructors can also be defined and overloaded in class definitions: </p>
+<pre>
+class Foo
+{
+    // a member variable
+    1 => int num;
+
+    // constructor "default"
+    fun Foo() { 2 => num; }
+
+    // another constructor
+    fun Foo( int x ) { x => num; }
+
+    // yet another constructor
+    fun Foo( int x, int y ) { x*y => num; }
+
+    // alternate way of defining a constructor, using the @construct keyword
+    fun @construct( int x, int y, int z ) { x*y*z => num; }
+
+    // destructor
+    fun @destruct() { <<< "bye:", this.num >>>; }
+}
+
+// constructor "default"
+Foo f1();
+// another constructor
+Foo f2( 15 );
+// yet another constructor
+new Foo( 8, 9 ) @=> Foo @ f3;
+// yet another constructor
+new Foo( 10, 11, 12 ) @=> Foo @ f4;
+// print
+<<< f1.num, f2.num, f3.num, f4.num >>>;
+</pre>
 </div>
 
 
