@@ -211,10 +211,10 @@
 <p class="class_description">Math class library.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/blit2.ck">basic/blit2.ck</a></li>
-<li><a target="_blank" href="../examples/basic/mand-o-matic.ck">basic/mand-o-matic.ck</a></li>
+<li><a target="_blank" href="../examples/stk/mand-o-matic.ck">stk/mand-o-matic.ck</a></li>
 <li><a target="_blank" href="../examples/math/randomize.ck">math/randomize.ck</a></li>
 <li><a target="_blank" href="../examples/math/maybe.ck">math/maybe.ck</a></li>
-<li><a target="_blank" href="../examples/math/ind-dist.ck">math/ind-dist.ck</a></li>
+<li><a target="_blank" href="../examples/math/int-dist.ck">math/int-dist.ck</a></li>
 <li><a target="_blank" href="../examples/math/map.ck">math/map.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">static member functions</h3>
@@ -372,12 +372,20 @@
 <p class="member_description">Map 'value' from range [x1,y1] into range [x2,y2]; 'value' can be outside range[x1,y1]. (see also: Math.map2())</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">max</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y)</p>
+<p class="member_description">Return the greater of x and y (integer).</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">max</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> x, <span class="ckdoc_typename ckdoc_type_primitive">float</span> y)</p>
-<p class="member_description">Return the greater of x and y.</p>
+<p class="member_description">Return the greater of x and y (float).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">min</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y)</p>
+<p class="member_description">Return the lesser of x and y (int).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">min</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> x, <span class="ckdoc_typename ckdoc_type_primitive">float</span> y)</p>
-<p class="member_description">Return the lesser of x and y.</p>
+<p class="member_description">Return the lesser of x and y (float).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mtof</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>

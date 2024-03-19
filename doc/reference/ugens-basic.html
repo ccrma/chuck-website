@@ -87,8 +87,8 @@
 <p class="member_description">Get the gain of the unit generator.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isConnectedTo</span>(<span class="ckdoc_typename ckdoc_type_ugen">UGen</span> right)</p>
-<p class="member_description">Return true if this UGen's output is connected to the input of the argument; return false otherwise.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isConnectedTo</span>(<span class="ckdoc_typename ckdoc_type_ugen">UGen</span> rhs)</p>
+<p class="member_description">Return true if this UGen's output is connected to the input of rhs; if either this UGen or rhs has more than one channel, this function returns true if any connections exist between the channels; return false if there are no connections.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">last</span>()</p>
