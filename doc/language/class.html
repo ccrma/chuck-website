@@ -68,7 +68,7 @@ General Overview of Topic
 
 <!-- index of code exmaples -->
 <div class="lang_code_ref">
-<a href="../examples/index.html#class">View sample code</a> for classes &amp; objects</a>
+View <a target="_blank" href="../examples/index.html#class">sample code</a> for classes &amp; objects and the <a target="_blank" href="../reference/">ChucK API Reference</a></a>
 </div>
 
 <!-- body of each sub topic -->
@@ -123,22 +123,24 @@ Check out the <a target="_blank" href="../examples/help.ck">help.ck</a> example.
 <a name="base"> </a>
 <h2><strong>built-in classes</strong></h2>
 
-<p>ChucK has a number of classes defined within the language.</p>
+<p>ChucK has many classes defined within the language.</p>
 <ul>
 <li><strong><font face="courier">Object</font></strong> : base class to all ChucK objects. </li>
 <li><strong><font face="courier">Event</font></strong> : ChucK's basic synchronization mechanism; may be extended to create custom Event functionality (discussed <a href="event.html">here</a>).</li>
 <li><strong><font face="courier">Shred</font></strong> : basic abstraction for a non-pre&#235;mptive ChucK process.   </li>
-<li><strong><font face="courier">UGen</font></strong> : base unit generator class (discussed <a href="ugen.html">here</a>).</li>
+<li><strong><font face="courier">UGen</font></strong> : unit generator base class (discussed <a href="ugen.html">here</a>).</li>
+<li><strong><font face="courier">UAna</font></strong> : unit analyzer base class (discussed <a href="uana.html">here</a>).</li>
+<li><strong><font face="courier">GGen</font></strong> : graphics generator base class (new as of ChuGL) (discussed <a href="../../chugl/">here</a>).</li>
 </ul>
 
-<p>These are some of the more commonly used classes in ChucK. </p>
+<p>The above are some commonly used base classes in ChucK. </p>
 </div>
 
 <div class="lang_subtopic_body">
 <a name="new"> </a>
 <h2><strong>working with objects</strong></h2>
 
-<p>Let's begin with some examples.  For these examples, let's assume <font face="courier">Foo</font> is a defined 
+<p>Let's begin with some examples.  For these, let's assume <font face="courier">Foo</font> is a defined 
 class.</p>
 
 <pre>
@@ -195,10 +197,9 @@ for more information on <font face="courier">@=&gt;</font>)
     // (now both bar and duh points to the same object)
 </pre>
 
-<p>ChucK objects are reference counted and garbage collection takes place automatically.  (note: this is still being implemented!)</p>
+<p>ChucK objects are reference counted and garbage collection takes place automatically.</p>
 
-<p>As stated above, a classes may contain data and behavior, in the form of <em>member variables</em> and <em>member 
-functions</em>, respectively.  Members are accessed by using 'dot notation' - <em>reference</em>.<em>memberdata</em> and <em>reference</em>.<em>memberfunc()</em>. To invoke a member function of an object (assuming class Foo has a member function 
+<p>As stated above, a classes may contain data and behavior, in the form of <em>member variables</em> and <em>member functions</em>, respectively.  Members are accessed by using 'dot notation' - <em>reference</em>.<em>memberdata</em> and <em>reference</em>.<em>memberfunc()</em>. To invoke a member function of an object (assuming class Foo has a member function 
 called <font face="courier">compute</font> that takes two integers and returns an integer):</p>
 
 <pre>
@@ -211,11 +212,12 @@ called <font face="courier">compute</font> that takes two integers and returns a
 
 <div class="lang_subtopic_body">
 <a name="create"> </a>
-<h2><strong>writing a class</strong></h2>
+<h2><strong>writing a custom class</strong></h2>
 
 <!-- la la loo -->
-<p>If a class has already been defined in the ChucK virtual machine (either in the same file or as a public class in a 
-different file) then it can be instantiated similar to primitive types. </p>
+<p>ChucK is an object-oriented language and it is possible to define new types and their behavior by authoring a new class. If a class has been defined (either in the same file or as a public class in a 
+different file) then it can be instantiated similar to any other type.</p>
+
 <p> Unless declared <font face="courier">public</font>, class definitions are scoped to the shred and 
 will not conflict with identically named classes in other running shreds.</p>
  
@@ -246,8 +248,8 @@ class Flarg
     // ...
 }
 
-// both MissPopular and Flarg can be used in this file
-// only MissPopular can be used from another file
+// Both MissPopular and Flarg can be used in this file.
+// Only MissPopular can be used from another file. Poor Flarg.
 
 </pre>
 
@@ -405,9 +407,7 @@ X x2;
 <a name="extend"> </a>
 <h2><strong>inheritance</strong></h2>
 
-<p>Inheritance in object-oriented code allows the programmer to take an existing class and extend or alter its functionality.  In doing so we can create a taxonomy of classes 
-that all share a specific set of behaviors, while implementing those behaviors in different, yet well-defined, ways.  We indicate that a new class inherits from another class 
-using the <font face="courier">extends</font> keyword.  The class from which we inherit is referred to as the <font face="courier">parent class</font>, and the inheriting class 
+<p>Inheritance in object-oriented code allows the programmer to take an existing class and extend or alter its functionality.  In doing so we can create a taxonomy of classes that all share a specific set of behaviors, while implementing those behaviors in different, yet well-defined, ways.  We indicate that a new class inherits from another class using the <font face="courier">extends</font> keyword.  The class from which we inherit is referred to as the <font face="courier">parent class</font>, and the inheriting class 
 is the <font face="courier">child class</font>.  The Child class receives all of the member data and functions from the parent class, although functions from the parent class 
 may be overridden ( below ).  Because the children contain the functionality of the parent class, references to instances of a child class may be assigned to a parent class 
 reference type. 
