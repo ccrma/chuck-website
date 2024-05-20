@@ -29,8 +29,9 @@ Philip Davidson.
 ---
 
 **ChuGL v0.1.5** (alpha) — [**ChuGL API Reference**](./api/)
-• [**ChuGL Examples**](./examples/)
-• [**ChuGL Tutorial**](./doc/tutorial.html)
+• [**Examples**](./examples/)
+• [**Tutorial**](./doc/tutorial.html)
+• [**Paper**](https://mcd.stanford.edu/publish/files/2024-nime-chugl.pdf)
 • **Video Introduction**
 • **Showcase**
 
