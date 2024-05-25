@@ -14,6 +14,7 @@
 <div id="body">
 <div class="toc"><a id="toc"/>
 <p class="toc_class"><a href="#CKDoc" class="ckdoc_typename ckdoc_type_object">CKDoc</a></p>
+<p class="toc_class"><a href="#Type" class="ckdoc_typename ckdoc_type_object">Type</a></p>
 <p class="toc_class"><a href="#StringTokenizer" class="ckdoc_typename ckdoc_type_object">StringTokenizer</a></p>
 <p class="toc_class"><a href="#ConsoleInput" class="ckdoc_typename ckdoc_type_object">ConsoleInput</a></p>
 </div>
@@ -109,6 +110,146 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TEXT</span></p><p class="member_description">Output TEXT format (not implemented).</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Type" /><div class="class">
+<h2 class="class_title" name="Type">Type</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">A representation of a ChucK type.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/type/type_type.ck">type/type_type.ck</a></li>
+<li><a target="_blank" href="../examples/type/type_query.ck">type/type_query.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">Type</span>()</p>
+<p class="member_description">Default constructor for Type.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">arrayDepth</span>()</p>
+<p class="member_description">Return the number of array dimensions associated with this Type (e.g., 'int[][]' has 2; 'int' has 0).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">baseName</span>()</p>
+<p class="member_description">Return the base name of this Type. The base of name of an array Type is the type without the array dimensions (e.g., base name of 'int[][]' is 'int')</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span><span class="typename">[]</span> <span class="membername">children</span>()</p>
+<p class="member_description">Retrieve this Type's children Types.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">equals</span>(<span class="ckdoc_typename ckdoc_type_object">Type</span> another)</p>
+<p class="member_description">Return whether this Type is same as 'another'.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isArray</span>()</p>
+<p class="member_description">Return whether this Type is some kind of an array.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isPrimitive</span>()</p>
+<p class="member_description">Return whether this is a primitive Type (e.g., 'int' and 'dur' are primitives types; 'Object' and its children Types are not).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isa</span>(<span class="ckdoc_typename ckdoc_type_object">Type</span> another)</p>
+<p class="member_description">Return whether this Type is a kind of 'another'.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isa</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> another)</p>
+<p class="member_description">Return whether this Type is a kind of 'another'.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">name</span>()</p>
+<p class="member_description">Return the name of this Type.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">origin</span>()</p>
+<p class="member_description">Return a string describing where this Type was defined (e.g., "builtin", "chugin", "cklib", "user").</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span> <span class="membername">parent</span>()</p>
+<p class="member_description">Return this Type's parent Type; returns null if this Type is 'Object'.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span> <span class="membername">find</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> typeName)</p>
+<p class="member_description">Find and return the Type associated with 'typeName'; returns null if no Types currently in the VM with that name.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span><span class="typename">[]</span> <span class="membername">getTypes</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> attributes, <span class="ckdoc_typename ckdoc_type_primitive">int</span> origins)</p>
+<p class="member_description">Retrieve all top-level Types in the ChucK runtime type system that fit the attributes and origins flags. Flags that can bitwise-OR'ed for attributes: Type.ATTRIB_OBJECT, Type.ATTRIB_PRIMITIVE,  TYPE_SPECIAL -- and for origins: Type.ORIGIN_BUILTIN, Type.ORIGIN_CHUGIN, Type.ORIGIN_CKLIB, Type.ORIGIN_USER.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span><span class="typename">[]</span> <span class="membername">getTypes</span>()</p>
+<p class="member_description">Retrieves all top-level Types currently in the type system.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span> <span class="membername">of</span>(<span class="ckdoc_typename ckdoc_type_object">Object</span> obj)</p>
+<p class="member_description">Return the Type of 'obj'</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span> <span class="membername">of</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> val)</p>
+<p class="member_description">Return the Type associated with 'int'.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span> <span class="membername">of</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> val)</p>
+<p class="member_description">Return the Type associated with 'float'.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span> <span class="membername">of</span>(<span class="ckdoc_typename ckdoc_type_primitive">time</span> val)</p>
+<p class="member_description">Return the Type associated with 'time'.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span> <span class="membername">of</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> val)</p>
+<p class="member_description">Return the Type associated with 'dur'.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span> <span class="membername">of</span>(<span class="ckdoc_typename ckdoc_type_primitive">complex</span> val)</p>
+<p class="member_description">Return the Type associated with 'complex'.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span> <span class="membername">of</span>(<span class="ckdoc_typename ckdoc_type_primitive">polar</span> val)</p>
+<p class="member_description">Return the Type associated with 'polar'.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span> <span class="membername">of</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> val)</p>
+<p class="member_description">Return the Type associated with 'vec3'.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Type</span> <span class="membername">of</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> val)</p>
+<p class="member_description">Return the Type associated with 'vec4'.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUILTIN</span></p><p class="member_description">Origin bit for "builtin".</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">CHUGIN</span></p><p class="member_description">Origin bit for "chugin".</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">CKLIB</span></p><p class="member_description">Origin bit for "cklib".</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">OBJECT</span></p><p class="member_description">Attribute bit for non-primitive Object types.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PRIMITIVE</span></p><p class="member_description">Attribute bit for primitive types.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">SPECIAL</span></p><p class="member_description">Attribute bit for special types (e.g., @array and @function).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">USER</span></p><p class="member_description">Origin bit for "user".</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
