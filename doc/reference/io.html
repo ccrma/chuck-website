@@ -339,6 +339,7 @@
 <p class="class_description">Class for receiving Open Sound Control (OSC) messages. See examples for usage.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/osc/r.ck">osc/r.ck</a></li>
+<li><a target="_blank" href="../examples/osc/r2.ck">osc/r2.ck</a></li>
 <li><a target="_blank" href="../examples/osc/s.ck">osc/s.ck</a></li>
 <li><a target="_blank" href="../examples/osc/osc-dump.ck">osc/osc-dump.ck</a></li>
 <li><a target="_blank" href="../examples/osc/multi-msg/r-multi-msg.ck">osc/multi-msg/r-multi-msg.ck</a></li>
@@ -391,6 +392,7 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/osc/s.ck">osc/s.ck</a></li>
 <li><a target="_blank" href="../examples/osc/r.ck">osc/r.ck</a></li>
+<li><a target="_blank" href="../examples/osc/r2.ck">osc/r2.ck</a></li>
 <li><a target="_blank" href="../examples/osc/osc-dump.ck">osc/osc-dump.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
@@ -440,6 +442,7 @@
 <p class="class_description">Helper class for receiving the contents of an OSC message.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/osc/r.ck">osc/r.ck</a></li>
+<li><a target="_blank" href="../examples/osc/r2.ck">osc/r2.ck</a></li>
 <li><a target="_blank" href="../examples/osc/s.ck">osc/s.ck</a></li>
 <li><a target="_blank" href="../examples/osc/osc-dump.ck">osc/osc-dump.ck</a></li>
 <li><a target="_blank" href="../examples/osc/multi-msg/r-multi-msg.ck">osc/multi-msg/r-multi-msg.ck</a></li>
@@ -1066,9 +1069,10 @@
 <a name="MidiOut" /><div class="class">
 <h2 class="class_title" name="MidiOut">MidiOut</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Class for sending out Midi messages.<p>
+<p class="class_description">Class for sending out MIDI messages. Note that channel numbers are 0-based.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/midi/midiout.ck">midi/midiout.ck</a></li>
+<li><a target="_blank" href="../examples/midi/midiout2.ck">midi/midiout2.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -1080,12 +1084,28 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">channelPressure</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> pressure)</p>
+<p class="member_description">Send out a channelPressure message.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">controlChange</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> controller, <span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Send out a controlChange message.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">good</span>()</p>
 <p class="member_description">Return true (1) if a device has been opened for this instance and there was no error connecting to it. Return false (0) if a device has not been opened or there was an error opening a device.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">name</span>()</p>
 <p class="member_description">Return the Midi device's name as string.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> velocity)</p>
+<p class="member_description">Send out a noteOff message.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> velocity)</p>
+<p class="member_description">Send out a noteOn message.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">num</span>()</p>
@@ -1100,12 +1120,32 @@
 <p class="member_description">Open Midi device using the device's name.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">pitchBend</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Send out a pitchBend message.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">pitchBend</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> lsb, <span class="ckdoc_typename ckdoc_type_primitive">int</span> msb)</p>
+<p class="member_description">Send out a pitchBend message with fine and coarse values.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">polyPressure</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> pressure)</p>
+<p class="member_description">Send out a polyPressure message.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">printerr</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> print_or_not)</p>
 <p class="member_description">Set error printing (1 for on, 0 for off). On by default.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">programChange</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> program)</p>
+<p class="member_description">Send out a programChange message.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">send</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> status, <span class="ckdoc_typename ckdoc_type_primitive">int</span> data1, <span class="ckdoc_typename ckdoc_type_primitive">int</span> data2)</p>
+<p class="member_description">Send out a MIDI message consisting of one status byte and two data bytes.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">send</span>(<span class="ckdoc_typename ckdoc_type_object">MidiMsg</span> msg)</p>
-<p class="member_description">Send out a MidiMsg message.</p>
+<p class="member_description">Send out a MIDI message using a MidiMsg.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

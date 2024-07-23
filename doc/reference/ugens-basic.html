@@ -367,6 +367,14 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="member_declaration"><span class="membername">ADSR</span>()</p>
 <p class="member_description">Default constructor for ADSR.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ADSR</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> attack, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> decay, <span class="ckdoc_typename ckdoc_type_primitive">float</span> sustain, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> release)</p>
+<p class="member_description">Construct an ADSR with attack, decay, sustain, and release values. Attack, decay, and release values are durations; sustain is a float value typically between 0 and 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ADSR</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> attack, <span class="ckdoc_typename ckdoc_type_primitive">float</span> decay, <span class="ckdoc_typename ckdoc_type_primitive">float</span> sustain, <span class="ckdoc_typename ckdoc_type_primitive">float</span> release)</p>
+<p class="member_description">Construct an ADSR with attack, decay, sustain, and release values. Attack, decay, and release values are in seconds; sustain is a float value typically between 0 and 1.</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -468,6 +476,7 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/envelope.ck">basic/envelope.ck</a></li>
+<li><a target="_blank" href="../examples/basic/envelope2.ck">basic/envelope2.ck</a></li>
 <li><a target="_blank" href="../examples/basic/chirp2.ck">basic/chirp2.ck</a></li>
 <li><a target="_blank" href="../examples/deep/say-chu.ck">deep/say-chu.ck</a></li>
 </ul></div>
@@ -476,6 +485,22 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <div class="member">
 <p class="member_declaration"><span class="membername">Envelope</span>()</p>
 <p class="member_description">Default constructor for Envelope.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Envelope</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> durationToTarget)</p>
+<p class="member_description">Construct an Envelope with duration to reach target (assumed to be 1.0); FYI this does not start the Envelope until .keyOn() is called.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Envelope</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> secondsToTarget)</p>
+<p class="member_description">Construct an Envelope with duration (in seconds) to reach target (assumed to be 1.0); FYI this does not start the Envelope until .keyOn() is called.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Envelope</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> durationToTarget, <span class="ckdoc_typename ckdoc_type_primitive">float</span> target)</p>
+<p class="member_description">Construct an Envelope with duration to reach target; FYI this does not start the Envelope until .keyOn() is called.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Envelope</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> secondsToTarget, <span class="ckdoc_typename ckdoc_type_primitive">float</span> target)</p>
+<p class="member_description">Construct an Envelope with duration (in seconds) to reach target; FYI this does not start the Envelope until .keyOn() is called.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -503,6 +528,14 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">keyOn</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
 <p class="member_description">Ramp to 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">ramp</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> durationToTarget, <span class="ckdoc_typename ckdoc_type_primitive">float</span> target)</p>
+<p class="member_description">Over the given duration, ramp toward the specified target; returns the given duration.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">ramp</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> secondsToTarget, <span class="ckdoc_typename ckdoc_type_primitive">float</span> target)</p>
+<p class="member_description">Over the given duration (in seconds), ramp toward the specified target; returns the given duration.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
@@ -558,6 +591,14 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="member_declaration"><span class="membername">Delay</span>()</p>
 <p class="member_description">Default constructor for Delay.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Delay</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay)</p>
+<p class="member_description">Construct a Delay with delay length and, implicitly, delay max.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Delay</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> max)</p>
+<p class="member_description">Construct a Delay with delay length and delay max.</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -580,6 +621,10 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>()</p>
 <p class="member_description">Get max delay (buffer size).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> max)</p>
+<p class="member_description">Set delay length and delay max; delay should be <= max.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -595,6 +640,7 @@ Linear interpolation is an efficient technique for achieving fractional delay le
 by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/delay.ck">basic/delay.ck</a></li>
+<li><a target="_blank" href="../examples/basic/delay2.ck">basic/delay2.ck</a></li>
 <li><a target="_blank" href="../examples/basic/i-robot.ck">basic/i-robot.ck</a></li>
 <li><a target="_blank" href="../examples/multi/we-robot.ck">multi/we-robot.ck</a></li>
 <li><a target="_blank" href="../examples/analysis/xcorr.ck">analysis/xcorr.ck</a></li>
@@ -605,6 +651,14 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <div class="member">
 <p class="member_declaration"><span class="membername">DelayL</span>()</p>
 <p class="member_description">Default constructor for DelayL.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">DelayL</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay)</p>
+<p class="member_description">Construct a DelayL with delay length and, implicitly, delay max.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">DelayL</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> max)</p>
+<p class="member_description">Construct a DelayL with delay length and delay max.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -628,6 +682,10 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>()</p>
 <p class="member_description">Get max delay (buffer size).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> max)</p>
+<p class="member_description">Set delay length and delay max; delay should be <= max.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -650,6 +708,14 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="member_declaration"><span class="membername">DelayA</span>()</p>
 <p class="member_description">Default constructor for DelayA.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">DelayA</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay)</p>
+<p class="member_description">Construct a DelayA with delay length and, implicitly, delay max.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">DelayA</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> max)</p>
+<p class="member_description">Construct a DelayA with delay length and delay max.</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -673,6 +739,10 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">max</span>()</p>
 <p class="member_description">Get max delay (buffer size).</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> max)</p>
+<p class="member_description">Set delay length and delay max; delay should be <= max.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -693,6 +763,14 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <div class="member">
 <p class="member_declaration"><span class="membername">Echo</span>()</p>
 <p class="member_description">Default constructor for Echo.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Echo</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay)</p>
+<p class="member_description">Construct an Echo with delay length and, implicitly, delay max.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Echo</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> max)</p>
+<p class="member_description">Construct an Echo with delay length and delay max.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -721,6 +799,10 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mix</span>()</p>
 <p class="member_description">Get mix level (wet/dry).</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> delay, <span class="ckdoc_typename ckdoc_type_primitive">dur</span> max)</p>
+<p class="member_description">Set delay length and delay max; delay should be <= max.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -746,6 +828,10 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="member_declaration"><span class="membername">CNoise</span>()</p>
 <p class="member_description">Default constructor for CNoise.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">CNoise</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> mode)</p>
+<p class="member_description">Construct a CNoise with synthesis mode. Supported modes are "white", "pink", "flip", and "xor".</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -755,7 +841,7 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">mode</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> mode)</p>
-<p class="member_description">Noise synthesis mode. Supported modes are &quot;white&quot;, &quot;pink&quot;, &quot;flip&quot;, and &quot;xor&quot;.</p>
+<p class="member_description">Noise synthesis mode. Supported modes are "white", "pink", "flip", and "xor".</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
