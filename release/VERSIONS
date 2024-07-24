@@ -2,6 +2,126 @@
 ChucK VERSIONS log
 ------------------
 
+1.5.2.5 (July 2024)
+=======
+- (updated) chugin API version from 10.1 to 10.2
+- (added) chugin API for callback on shutdown
+- (added) chugin API for setting array elements (thanks azaday)
+- (added) overloaded constructors (more to come) 
+==================
+    Envelope( dur durationToTarget )
+        Construct an Envelope with duration to reach target (assumed to be 1.0);
+        FYI this does not start the Envelope until .keyOn() is called.
+    Envelope( float secondsToTarget )
+        Construct an Envelope with duration (in seconds) to reach target (assumed to be 1.0);
+        FYI this does not start the Envelope until .keyOn() is called.
+    Envelope( dur durationToTarget, float target )
+        Construct an Envelope with duration to reach target;
+        FYI this does not start the Envelope until .keyOn() is called.
+    Envelope( float durationToTarget, float target )
+        Construct an Envelope with duration (in seconds) to reach target;
+        FYI this does not start the Envelope until .keyOn() is called.
+
+    ADSR( dur attack, dur decay, float sustain, dur release )
+        Construct an ADSR with attack, decay, sustain, and release values. Attack, 
+        decay, and release values are durations; sustain is a float value typically 
+        between 0 and 1.
+    ADSR( float attack, float decay, float sustain, float release )
+        Construct an ADSR with attack, decay, sustain, and release values. Attack, 
+        decay, and release values are in seconds; sustain is a float value 
+        typically between 0 and 1.
+
+    Delay( dur delay, dur max )
+        Construct a Delay with delay length and delay max.
+    Delay( dur delay )
+        Construct a Delay with delay length and, implicitly, delay max.
+
+    DelayA( dur delay, dur max )
+        Construct a DelayA with delay length and delay max.
+    DelayA( dur delay )
+        Construct a DelayA with delay length and, implicitly, delay max.
+
+    DelayL( dur delay, dur max )
+        Construct a DelayL with delay length and delay max.
+    DelayL( dur delay )
+        Construct a DelayL with delay length and, implicitly, delay max.
+
+    Echo( dur delay, dur max )
+        Construct an Echo with delay length and delay max.
+    Echo( dur delay )
+        Construct an Echo with delay length and, implicitly, delay max.
+==================
+- (added) new member functions
+==================
+    dur Envelope.ramp( dur durationToTarget, float target );
+        Over the given duration, ramp toward the specified target; returns the given 
+        duration.
+    dur Envelope.ramp( float secondsToTarget, float target );
+        Over the given duration (in seconds), ramp toward the specified target; returns
+        the given duration.
+
+    void Delay.set( dur delay, dur max )
+        Set delay length and delay max; delay should be <= max.
+
+    void DelayA.set( dur delay, dur max )
+        Set delay length and delay max; delay should be <= max.
+
+    void DelayL.set( dur delay, dur max )
+        Set delay length and delay max; delay should be <= max.
+
+    void Echo.set( dur delay, dur max )
+        Set delay length and delay max; delay should be <= max.
+==================
+- (added) examples/basic/envelope2.ck -- to show Envelope.ramp() in action
+- (added) new MidiOut message voice message convenience functions (thanks @cviejo;
+        previously these are possible only through `MidiOut.send( MidiMsg msg )`:
+==================
+    int send( int status, int data1, int data2 );
+        Send out a MIDI message consisting of one status byte and two data bytes.
+    int channelPressure(int channel, int pressure)
+        Send out a channelPressure message.
+    int controlChange(int channel, int controller, int value)
+        Send out a controlChange message.
+    int noteOff(int channel, int note, int velocity)
+        Send out a noteOff message.
+    int noteOn(int channel, int note, int velocity)
+        Send out a noteOn message.
+    int pitchBend(int channel, int value)
+        Send out a pitchBend message.
+    int pitchBend(int channel, int lsb, int msb)
+        Send out a pitchBend message with fine and coarse values.
+    int polyPressure(int channel, int note, int pressure)
+        Send out a polyPressure message.
+    int programChange(int channel, int program)
+        Send out a programChange message.
+==================
+- (added) examples/midi/midiout2.ck -- demonstrates using the above channel
+          voice messages
+- (added) examples/deep/smb.ck -- a ChucK rendition of Super Mario Bros.
+          original theme by Koji Kondo; (meticulously) modeled in ChucK by 
+          Wesley Burchell in 2017
+- (added) examples/basic/delay2.ck -- example showing DelayL constructor
+          and modulating delay line length
+- (added) examples/basic/blit3.ck -- lounge blit; made for svork concert
+          lounge music for premiere in May 2024
+- (added) examples/special/scream-o-matic/scream-o-matic.ck -- using 
+          multiple LiSas for granular synthesis, to make continuous 
+          scream generator
+- (added) command line query system `--query:<name>`
+- (added) CKDoc JSON output (terry feng)
+- (added) Type type added to CKDoc script and deployed online:
+    https://chuck.stanford.edu/doc/reference/utils.html#Type
+- (added) CKDoc.sort( int ) -- toggle alphabetical sorting of functions and variables
+    within Type documentation generation (thanks azaday)
+- (fixed) globals events system synchronization (FYI this fixes a long-running,
+    elusive Chunity crashing bug involving various syncers)
+- (fixed) STK Moog parameters now consistent (should sound more Moog-y)
+- (fixed) local non-control structure local scope Objects now correctly cleaned
+          up at the end of local scope
+- (updated) more and clearer error messages when initializing real-time audio
+- (developer) streamline makefile targets 'test' 'doc' 'clean'
+
+
 1.5.2.4 (April 2024)
 =======
 - (fixed) runtime exception line number reporting
@@ -15,10 +135,10 @@ ChucK VERSIONS log
 1.5.2.3 (April 2024)
 =======
 - (fixed) regression issue with connecting arrays of mono UGens to 
-  non-mono ugens; e.g., `Gain a[2] => dac;`
-  FYI examples/stereo/ugen-array.ck now works once again
+    non-mono ugens; e.g., `Gain a[2] => dac;`
+    FYI examples/stereo/ugen-array.ck now works once again
 - (updated) examples/array/array_ugens.ck contains additional 
-  examples of array of ugens connecting with stereo ugens
+    examples of array of ugens connecting with stereo ugens
 
 
 1.5.2.2 (March 2024)
