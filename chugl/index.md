@@ -26,55 +26,43 @@ benefitted from prior prototypes of ChuGL and GLucK by Spencer Salazar and
 Philip Davidson.
 </p>
 
+![logo](images/chugl-banner.jpg)
+
 ---
 
 **ChuGL v0.1.5** (alpha) — [**ChuGL API Reference**](./api/)
 • [**Examples**](./examples/)
 • [**Tutorial**](./doc/tutorial.html)
-• [**Paper**](https://mcd.stanford.edu/publish/files/2024-nime-chugl.pdf)
-• **Video Introduction**
-• **Showcase**
-
+• [**Paper (NIME 2024)**](https://mcd.stanford.edu/publish/files/2024-nime-chugl.pdf)
+<br>
+**Videos** [SoundBulb Audiovisualizer](https://www.youtube.com/watch?v=wnSmS_y9-Cs) 
+| [Selected Student Projects](https://vimeo.com/909845445)
 ___
 
 ## Installation
 
-1. as of chuck 1.5.2.1, ChuGL (alpha) is part of the **standard ChucK distribution**
-https://chuck.stanford.edu/release/
-<br>
-(macOS and Windows; build ChuGL from source on Linux. NOTE ChuGL 
-(alpha) only works from command-line ChucK; miniAudicle support is being worked on.)
-2. for chuck versions prior to 1.5.2.1, **Install the ChuGL chugin**
-https://chuck.stanford.edu/release/alpha/chugl/
-3. What's new? See [**release notes**](https://docs.google.com/document/d/1Hv6hrg5oCX8nwwuXBMI4hK04JKRhfrbJns98PoyFeug/edit)
+### macOS and Windows
 
-### MacOS
-
-Run the .pkg file, which will install the ChuGL chugin in the appropriate location
-
-### Windows
-
-Download the `ChuGL.chug` binary from the installation links above and move it to `C:\Users\<usename>\Documents\ChucK\chugins\`
+As of chuck 1.5.2.1, ChuGL (alpha) is part of the [**standard ChucK 
+distribution**](https://chuck.stanford.edu/release/) on macOS and 
+Windows
 
 ### Linux
 
 Build ChuGL from source; see <a target="_blank" href="https://github.com/ccrma/chugl#building-chugl">instructions</a>.
 
-## Building ChuGL From Source
-
-Like ChucK, ChuGL is free open-source software. ChuGL source can be found 
-<a target="_blank" href="https://github.com/ccrma/chugl/">here</a>, along 
-with instructions for building ChuGL on each operating system.
-
 ## Running
 
-**Note:** Currently ChuGL only supports command-line chuck. MiniAudicle support to come soon. 
-
-You can run commandline ChucK with the option `--chugin-probe` to check which chugins are found and properly loaded.
+**Note:** currently ChuGL only supports command-line chuck. MiniAudicle support to come soon. 
+To run any ChuGL program (e.g., example.ck) on the terminal / command line prompt:
+```
+> chuck example.ck
+```
 
 ### Minimal Example
 
-If the chugin is properly loaded, running the following example via commandline chuck will open a blank window. Press `esc` to exit. 
+If the chugin is properly loaded, running the following example via commandline chuck will 
+open a blank window. Press `esc` to exit.
 
 ```cpp
 while (true) { GG.nextFrame() => now; }
