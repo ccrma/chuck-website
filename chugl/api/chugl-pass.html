@@ -1,0 +1,290 @@
+<html>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
+<title>ChuGL Passes</title>
+<body>
+<a name="top"/>
+<div id="title">
+<div class="titleL">
+<div style="display: flex; align-items: center;"><div class="inline titlelogo"><a href="https://chuck.stanford.edu/" target="_blank"><img src="https://chuck.stanford.edu/doc/images/chuck-logo2023w.png" /> </div><div class="inline"><h1><a href="./">ChucK Class Library Reference</a></h1></div>
+<div class="inline gray"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;ChuGL Passes</h1></div>
+</div>
+</div>
+</div>
+<div id="body">
+<div class="toc"><a id="toc"/>
+<p class="toc_class"><a href="#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a></p>
+<p class="toc_class"><a href="#RenderPass" class="ckdoc_typename ckdoc_type_object">RenderPass</a></p>
+<p class="toc_class"><a href="#ScreenPass" class="ckdoc_typename ckdoc_type_object">ScreenPass</a></p>
+<p class="toc_class"><a href="#OutputPass" class="ckdoc_typename ckdoc_type_object">OutputPass</a></p>
+<p class="toc_class"><a href="#ComputePass" class="ckdoc_typename ckdoc_type_object">ComputePass</a></p>
+<p class="toc_class"><a href="#BloomPass" class="ckdoc_typename ckdoc_type_object">BloomPass</a></p>
+</div>
+<div class="classes">
+<p class="group_desc">Render/Compute pass abstraction for creating custom render graphs</p>
+<a name="GPass" /><div class="class">
+<h2 class="class_title" name="GPass">GPass</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Base class for all passes, used to describe a render graph.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GPass</span>()</p>
+<p class="member_description">Default constructor for GPass.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GPass</span> <span class="membername">next</span>()</p>
+<p class="member_description">Get the GPass this is connected to.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="RenderPass" /><div class="class">
+<h2 class="class_title" name="RenderPass">RenderPass</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-pass.html#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Render pass for drawing a GScene. If RenderPass.scene() is not set, will default to the main scene, GG.scene() If RenderPass.colorOutput() is not set, will default to the screen.  If RenderPass.camera() is not set, will default to the scene's main camera: GG.scene().camera()<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">RenderPass</span>()</p>
+<p class="member_description">Default constructor for RenderPass.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorOutput</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> color_texture)</p>
+<p class="member_description">Set the target texture to draw the scene to.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorOutput</span>()</p>
+<p class="member_description">Get the target texture to draw the scene to.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">autoClearColor</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> clear)</p>
+<p class="member_description">Set whether the framebuffer's color target should be cleared each frame. Default true.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">autoClearColor</span>()</p>
+<p class="member_description">Get whether the framebuffer's color target is cleared each frame.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ScreenPass" /><div class="class">
+<h2 class="class_title" name="ScreenPass">ScreenPass</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-pass.html#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Screen pass for applying screen shaders and visual effects to the entire screen.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ScreenPass</span>()</p>
+<p class="member_description">Default constructor for ScreenPass.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ScreenPass</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> screen_shader)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shader</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> shader)</p>
+<p class="member_description">Set the screen shader to apply to the screen. In your screen shader be sure to #include SCREEN_PASS_VERTEX_SHADER which supplies your fragment shader with a full-screen quad.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorOutput</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
+<p class="member_description">Set the color attachment output texture of this screen pass.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="OutputPass" /><div class="class">
+<h2 class="class_title" name="OutputPass">OutputPass</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-pass.html#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">OutputPass</span>()</p>
+<p class="member_description">Default constructor for OutputPass.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">input</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> input_texture)</p>
+<p class="member_description">Set the input texture to apply tonemapping and gamma correction to.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tonemap</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> tonemap_type)</p>
+<p class="member_description">Set the tonemapping algorithm to apply to the input texture. Choose a value from the OutputPass.ToneMap_* enum.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tonemap</span>()</p>
+<p class="member_description">Get the tonemapping algorithm applied to the input texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">exposure</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> exposure)</p>
+<p class="member_description">Set the exposure value for the tonemapping algorithm.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">exposure</span>()</p>
+<p class="member_description">Get the exposure value for the tonemapping algorithm.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_None</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_Linear</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_Reinhard</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_Cineon</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_ACES</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_Uncharted</span></p><p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ComputePass" /><div class="class">
+<h2 class="class_title" name="ComputePass">ComputePass</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-pass.html#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Compute pass for running compute shaders.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/rendergraph/boids_compute.ck">rendergraph/boids_compute.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ComputePass</span>()</p>
+<p class="member_description">Default constructor for ComputePass.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shader</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> shader)</p>
+<p class="member_description">Set the compute shader to run.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">float</span> uniform_value)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> uniform_value)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> uniform_value)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat4</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> uniform_value)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> uniform_value)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">storageBuffer</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">StorageBuffer</span> buffer)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">texture</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">storageTexture</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">workgroup</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y, <span class="ckdoc_typename ckdoc_type_primitive">int</span> z)</p>
+<p class="member_description">Set the workgroup size for the compute shader. Used to determine the dimensions of the compute pass dispatch.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="BloomPass" /><div class="class">
+<h2 class="class_title" name="BloomPass">BloomPass</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-pass.html#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/deep/soundbulb.ck">deep/soundbulb.ck</a></li>
+<li><a target="_blank" href="../examples/rendergraph/bloom.ck">rendergraph/bloom.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">BloomPass</span>()</p>
+<p class="member_description">Default constructor for BloomPass.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorOutput</span>()</p>
+<p class="member_description">Get the render texture that the bloom pass writes to.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">input</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> bloom_texture)</p>
+<p class="member_description">Set the render texture to apply bloom to.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">radius</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> blend_factor)</p>
+<p class="member_description">Set the blend factor between mip levels of the bloom texture during upsample.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">intensity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> blend_factor)</p>
+<p class="member_description">Set the blend factor between the bloom texture and the original image.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span>()</p>
+<p class="member_description">Get the blend factor between mip levels of the bloom texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">intensity</span>()</p>
+<p class="member_description">Get the blend factor between the bloom texture and the original image.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">levels</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> num_levels)</p>
+<p class="member_description">Number of blur passes to apply to the bloom texture. Clamped between 0 and 16.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">levels</span>()</p>
+<p class="member_description">Get the number of blur passes applied to the bloom texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">threshold</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> threshold)</p>
+<p class="member_description">Set the threshold for the bloom pass (colors with all rgb values below threshold are not bloomed)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">threshold</span>()</p>
+<p class="member_description">Get the threshold for the bloom pass.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+</div>
+</div>
+</body>
+</html>
