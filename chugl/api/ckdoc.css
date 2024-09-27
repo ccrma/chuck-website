@@ -53,6 +53,23 @@ a
     line-height: 1.5em;
 }
 
+.index_group_external
+{
+    padding-top: 0.15em;
+    padding-left: 1em;
+    padding-bottom: 0.15em;
+
+    margin: 0;
+    margin-left: 20%;
+    width: 75%;
+}
+
+.index_group_external a
+{
+    margin-right: 0;
+    line-height: 1.5em;
+}
+
 .index_group_desc
 {
     color: #555;

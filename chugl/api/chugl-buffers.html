@@ -1,0 +1,55 @@
+<html>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
+<title>GPU Buffers</title>
+<body>
+<a name="top"/>
+<div id="title">
+<div class="titleL">
+<div style="display: flex; align-items: center;"><div class="inline titlelogo"><a href="https://chuck.stanford.edu/" target="_blank"><img src="https://chuck.stanford.edu/doc/images/chuck-logo2023w.png" /> </div><div class="inline"><h1><a href="./">ChucK Class Library Reference</a></h1></div>
+<div class="inline gray"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;GPU Buffers</h1></div>
+</div>
+</div>
+</div>
+<div id="body">
+<div class="toc"><a id="toc"/>
+<p class="toc_class"><a href="#StorageBuffer" class="ckdoc_typename ckdoc_type_object">StorageBuffer</a></p>
+</div>
+<div class="classes">
+<p class="group_desc">GPU Buffer wrappers for ChuGL</p>
+<a name="StorageBuffer" /><div class="class">
+<h2 class="class_title" name="StorageBuffer">StorageBuffer</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Class representing a GPU Storage Buffer.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/rendergraph/boids_compute.ck">rendergraph/boids_compute.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">StorageBuffer</span>()</p>
+<p class="member_description">Default constructor for StorageBuffer.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">size</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> size)</p>
+<p class="member_description">Sets size in 4-byte units of the buffer. Does NOT copy data from old buffer to new one if buffer is resized. Buffer size in bytes will be 4 * size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> data)</p>
+<p class="member_description">Writes data to the start of buffer. Floats from the chuck data array are converted into 4-byte f32s. Will increase buffer size if needed. Will not decrease buffer size if data is smaller than buffer size.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> data, <span class="ckdoc_typename ckdoc_type_primitive">int</span> offset_bytes)</p>
+<p class="member_description">Writes data to the buffer at the specified offset in floatas. Floats from the chuck array are converted into 4-byte f32s. Fails if buffer size is too small.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+</div>
+</div>
+</body>
+</html>

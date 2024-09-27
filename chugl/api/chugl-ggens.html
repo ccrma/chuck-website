@@ -18,28 +18,31 @@
 <p class="toc_class"><a href="#GPoints" class="ckdoc_typename ckdoc_type_object">GPoints</a></p>
 <p class="toc_class"><a href="#GLines" class="ckdoc_typename ckdoc_type_object">GLines</a></p>
 <p class="toc_class"><a href="#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a></p>
-<p class="toc_class"><a href="#GTriangle" class="ckdoc_typename ckdoc_type_object">GTriangle</a></p>
 <p class="toc_class"><a href="#GCircle" class="ckdoc_typename ckdoc_type_object">GCircle</a></p>
 <p class="toc_class"><a href="#GPlane" class="ckdoc_typename ckdoc_type_object">GPlane</a></p>
 <p class="toc_class"><a href="#GCube" class="ckdoc_typename ckdoc_type_object">GCube</a></p>
 <p class="toc_class"><a href="#GSphere" class="ckdoc_typename ckdoc_type_object">GSphere</a></p>
 <p class="toc_class"><a href="#GTorus" class="ckdoc_typename ckdoc_type_object">GTorus</a></p>
 <p class="toc_class"><a href="#GCylinder" class="ckdoc_typename ckdoc_type_object">GCylinder</a></p>
+<p class="toc_class"><a href="#GKnot" class="ckdoc_typename ckdoc_type_object">GKnot</a></p>
+<p class="toc_class"><a href="#GSuzanne" class="ckdoc_typename ckdoc_type_object">GSuzanne</a></p>
 <p class="toc_class"><a href="#GLight" class="ckdoc_typename ckdoc_type_object">GLight</a></p>
 <p class="toc_class"><a href="#GPointLight" class="ckdoc_typename ckdoc_type_object">GPointLight</a></p>
 <p class="toc_class"><a href="#GDirLight" class="ckdoc_typename ckdoc_type_object">GDirLight</a></p>
 <p class="toc_class"><a href="#GCamera" class="ckdoc_typename ckdoc_type_object">GCamera</a></p>
+<p class="toc_class"><a href="#GOrbitCamera" class="ckdoc_typename ckdoc_type_object">GOrbitCamera</a></p>
+<p class="toc_class"><a href="#GFlyCamera" class="ckdoc_typename ckdoc_type_object">GFlyCamera</a></p>
 <p class="toc_class"><a href="#GText" class="ckdoc_typename ckdoc_type_object">GText</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">Graphics generators (GGens) that can be composed together in a scene graph.</p>
 <a name="GGen" /><div class="class">
 <h2 class="class_title" name="GGen">GGen</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Base class for all Gens. Can be extended to create your own, or initialized as an empty group container.<p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Chugl graphics generator. Can be grucked to the scenegraph. Contains methods for transform manipulation.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/orbits.ck">basic/orbits.ck</a></li>
-<li><a target="_blank" href="../examples/basic/circles.ck">basic/circles.ck</a></li>
+<li><a target="_blank" href="../examples/deep/ik.ck">deep/ik.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -51,92 +54,16 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">child</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> n)</p>
-<p class="member_description">Get the n'th child of this GGen.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">rotY</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
+<p class="member_description">Set the rotation of this GGen on the Y axis in local space to the given radians.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">child</span>()</p>
-<p class="member_description">Get the 0th child of this GGen.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotZ</span>()</p>
+<p class="member_description">Get the rotation of this GGen on the Z axis in local space.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">forward</span>()</p>
-<p class="member_description">Get the forward vector of this GGen in world space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">id</span>()</p>
-<p class="member_description">Internal debug. Get the unique ChuGL ID of this GGen.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">lookAt</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> pos)</p>
-<p class="member_description">Look at the given position in world space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">lookAtDir</span>()</p>
-<p class="member_description">Get the direction this GGen is looking, i.e. the forward vector of this GGen in world space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">name</span>()</p>
-<p class="member_description">Get the custom name of this GGen.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">name</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> name)</p>
-<p class="member_description">Set the custom name of this GGen.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numChildren</span>()</p>
-<p class="member_description">Get the number of children for this GGen.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">parent</span>()</p>
-<p class="member_description">Get the parent of this GGen.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">pos</span>()</p>
-<p class="member_description">Get object position in local space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> pos)</p>
-<p class="member_description">Set object position in local space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">posLocalToWorld</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> localPos)</p>
-<p class="member_description">Transform a position in local space to world space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">posWorld</span>()</p>
-<p class="member_description">Get object position in world space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">posWorld</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> pos)</p>
-<p class="member_description">Set object position in world space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">posX</span>()</p>
-<p class="member_description">Get X position of this GGen in local space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">posX</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> pos)</p>
-<p class="member_description">Set X position of this GGen in local space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">posY</span>()</p>
-<p class="member_description">Get Y position of this GGen in local space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">posY</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> pos)</p>
-<p class="member_description">Set Y position of this GGen in local space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">posZ</span>()</p>
-<p class="member_description">Get Z position of this GGen in local space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">posZ</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> pos)</p>
-<p class="member_description">Set Z position of this GGen in local space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">right</span>()</p>
-<p class="member_description">Get the right vector of this GGen in world space.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">rotZ</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
+<p class="member_description">Set the rotation of this GGen on the Z axis in local space to the given radians.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">rot</span>()</p>
@@ -147,40 +74,8 @@
 <p class="member_description">Set rotation of this GGen in local space as euler angles.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotX</span>()</p>
-<p class="member_description">Get the rotation of this GGen on the X axis in local space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotX</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
-<p class="member_description">Set the rotation of this GGen on the X axis in local space to the given radians.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotY</span>()</p>
-<p class="member_description">Get the rotation of this GGen on the Y axis in local space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotY</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
-<p class="member_description">Set the rotation of this GGen on the Y axis in local space to the given radians.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotZ</span>()</p>
-<p class="member_description">Get the rotation of this GGen on the Z axis in local space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotZ</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
-<p class="member_description">Set the rotation of this GGen on the Z axis in local space to the given radians.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">rotate</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> eulers)</p>
 <p class="member_description">Rotate this GGen by the given euler angles in local space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">rotateOnLocalAxis</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> axis, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
-<p class="member_description">Rotate this GGen by the given radians on the given axis in local space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">rotateOnWorldAxis</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> axis, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
-<p class="member_description">Rotate this GGen by the given radians on the given axis in world space.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">rotateX</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
@@ -195,31 +90,23 @@
 <p class="member_description">Rotate this GGen by the given radians on the Z axis in local space.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">sca</span>()</p>
-<p class="member_description">Get object scale in local space.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">rotateOnLocalAxis</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> axis, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
+<p class="member_description">Rotate this GGen by the given radians on the given axis in local space.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">sca</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> scale)</p>
-<p class="member_description">Set object scale in local space.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">rotateOnWorldAxis</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> axis, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
+<p class="member_description">Rotate this GGen by the given radians on the given axis in world space.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">sca</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> scale)</p>
-<p class="member_description">Set object scale in local space uniformly across all axes.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">scaWorld</span>()</p>
-<p class="member_description">Get object scale in world space.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">scaWorld</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> scale)</p>
-<p class="member_description">Set object scale in world space.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">lookAt</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> pos)</p>
+<p class="member_description">Look at the given position in world space.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">scaX</span>()</p>
 <p class="member_description">Get X scale of this GGen in local space.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">scaX</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> scale)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">scaX</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> scale)</p>
 <p class="member_description">Set X scale of this GGen in local space.</p>
 </div>
 <div class="member">
@@ -227,7 +114,7 @@
 <p class="member_description">Get Y scale of this GGen in local space.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">scaY</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> scale)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">scaY</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> scale)</p>
 <p class="member_description">Set Y scale of this GGen in local space.</p>
 </div>
 <div class="member">
@@ -235,8 +122,120 @@
 <p class="member_description">Get Z scale of this GGen in local space.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">scaZ</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> scale)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">scaZ</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> scale)</p>
 <p class="member_description">Set Z scale of this GGen in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">sca</span>()</p>
+<p class="member_description">Get object scale in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">sca</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> scale)</p>
+<p class="member_description">Set object scale in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">sca</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> scale)</p>
+<p class="member_description">Set object scale in local space uniformly across all axes.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">scaWorld</span>()</p>
+<p class="member_description">Get object scale in world space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">scaWorld</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> scale)</p>
+<p class="member_description">Set object scale in world space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">posLocalToWorld</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> localPos)</p>
+<p class="member_description">Transform a position in local space to world space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">parent</span>()</p>
+<p class="member_description">Get the parent of this GGen.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">child</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> n)</p>
+<p class="member_description">Get the n'th child of this GGen.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">scene</span>()</p>
+<p class="member_description">Get the scene this GGen is attached to. Returns null if not attached.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">child</span>()</p>
+<p class="member_description">Get the 0th child of this GGen.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numChildren</span>()</p>
+<p class="member_description">Get the number of children for this GGen.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">detachParent</span>()</p>
+<p class="member_description">Detach this GGen from its parent. Equivalent to ggen --< ggen.parent()</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">detachChildren</span>()</p>
+<p class="member_description">Detach all children from this GGen. Equivalent to ggen --< ggen.child(i) for all children. children are NOT reparented.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">detach</span>()</p>
+<p class="member_description">Detach this GGen from its parent and all children. children are NOT reparented.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">update</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> dt)</p>
+<p class="member_description">This method is automatically invoked once per frame for all GGens connected to the scene graph.Override this method in custom GGen classes to implement your own update logic.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">right</span>()</p>
+<p class="member_description">Get the right vector of this GGen in world space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">forward</span>()</p>
+<p class="member_description">Get the forward vector of this GGen in world space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">up</span>()</p>
+<p class="member_description">Get the up vector of this GGen in world space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">posX</span>()</p>
+<p class="member_description">Get X position of this GGen in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">posX</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> pos)</p>
+<p class="member_description">Set X position of this GGen in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">posY</span>()</p>
+<p class="member_description">Get Y position of this GGen in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">posY</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> pos)</p>
+<p class="member_description">Set Y position of this GGen in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">posZ</span>()</p>
+<p class="member_description">Get Z position of this GGen in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">posZ</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> pos)</p>
+<p class="member_description">Set Z position of this GGen in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">pos</span>()</p>
+<p class="member_description">Get object position in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> pos)</p>
+<p class="member_description">Set object position in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">posWorld</span>()</p>
+<p class="member_description">Get object position in world space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">posWorld</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> pos)</p>
+<p class="member_description">Set object position in world space.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">translate</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> translation)</p>
@@ -255,12 +254,16 @@
 <p class="member_description">Translate this GGen by given amount on the Z axis in local space.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">up</span>()</p>
-<p class="member_description">Get the up vector of this GGen in world space.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotX</span>()</p>
+<p class="member_description">Get the rotation of this GGen on the X axis in local space.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">update</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> dt)</p>
-<p class="member_description">This method is automatically invoked once per frame for all GGens connected to the scene graph.Override this method in custom GGen classes to implement your own update logic.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">rotX</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
+<p class="member_description">Set the rotation of this GGen on the X axis in local space to the given radians.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotY</span>()</p>
+<p class="member_description">Get the rotation of this GGen on the Y axis in local space.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -268,12 +271,8 @@
 <hr />
 <a name="GScene" /><div class="class">
 <h2 class="class_title" name="GScene">GScene</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Scene class. Static--all instances point to the same underlying ChuGL main scene. GGens must be added to a scene to be rendered.<p>
-<h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/basic/fog.ck">basic/fog.ck</a></li>
-<li><a target="_blank" href="../examples/basic/skybox.ck">basic/skybox.ck</a></li>
-</ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -284,7 +283,7 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">backgroundColor</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">backgroundColor</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
 <p class="member_description">Set the background color of the scene.</p>
 </div>
 <div class="member">
@@ -292,69 +291,28 @@
 <p class="member_description">Get the background color of the scene.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">disableFog</span>()</p>
-<p class="member_description">Disable fog for the scene.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GCamera</span> <span class="membername">camera</span>(<span class="ckdoc_typename ckdoc_type_object">GCamera</span> camera)</p>
+<p class="member_description">Set the main camera of the scene.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">enableFog</span>()</p>
-<p class="member_description">Enable fog for the scene.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GCamera</span> <span class="membername">camera</span>()</p>
+<p class="member_description">Get the main camera of the scene.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">fogColor</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
-<p class="member_description">Set the fog color of the scene.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">ambient</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Set the ambient lighting of the scene. Sets material visibility even when no light is present.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">fogColor</span>()</p>
-<p class="member_description">Get the fog color of the scene.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fogDensity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> density)</p>
-<p class="member_description">Set fog density. typically between 0.0 and 0.1.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fogDensity</span>()</p>
-<p class="member_description">Get fog density.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">fogType</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> type)</p>
-<p class="member_description">Set fog type. Use one of the static constants: FOG_EXP or FOG_EXP2.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">fogType</span>()</p>
-<p class="member_description">Get fog type. Can be FOG_EXP or FOG_EXP2.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">ambient</span>()</p>
+<p class="member_description">Get the ambient lighting value of the scene.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GLight</span> <span class="membername">light</span>()</p>
-<p class="member_description">Get the default directional light of the scene.</p>
+<p class="member_description">Get the first light of the scene. On the initial default scene, this returns the default directional light.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numLights</span>()</p>
-<p class="member_description">Get the number of instantiated lights.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">CubeTexture</span> <span class="membername">skybox</span>(<span class="ckdoc_typename ckdoc_type_object">CubeTexture</span> cubemap)</p>
-<p class="member_description">Set the skybox of the scene. Pass in a cubemap texture. Will enable the skybox.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">CubeTexture</span> <span class="membername">skybox</span>()</p>
-<p class="member_description">Get the skybox of the scene.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">skyboxEnabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> enabled)</p>
-<p class="member_description">Enable or disable the skybox.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">skyboxEnabled</span>()</p>
-<p class="member_description">Get whether the skybox is enabled or disabled.</p>
-</div>
-</div>
-<h3 class="class_section_header">static member variables</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FOG_EXP</span></p><p class="member_description">Fog type: exponential.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FOG_EXP2</span></p><p class="member_description">Fog type: exponential-squared. more aggressive.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GLight</span><span class="typename">[]</span> <span class="membername">lights</span>()</p>
+<p class="member_description">Get array of all lights in the scene.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -362,8 +320,12 @@
 <hr />
 <a name="GPoints" /><div class="class">
 <h2 class="class_title" name="GPoints">GPoints</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Creates a Mesh that uses CustomGeometry and PointMaterial.<p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Class for creating instanced points in 3D space.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/gpoints.ck">basic/gpoints.ck</a></li>
+<li><a target="_blank" href="../examples/basic/points.ck">basic/points.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -371,17 +333,74 @@
 <p class="member_description">Default constructor for GPoints.</p>
 </div>
 </div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colors</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> colors)</p>
+<p class="member_description">Set per-point colors. If there are more points than colors, extra points cycle through the colors. The final color is multiplied by the global point color, GPoints.color()</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
+<p class="member_description">Set the sampler used for the point texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">texture</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
+<p class="member_description">Set the texture applied to each point.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">positions</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> positions)</p>
+<p class="member_description">Set positions of the points.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sizes</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> sizes)</p>
+<p class="member_description">Set per-point sizes. If there are more points than sizes, extra points cycle through the sizes. The final size is multiplied by the global point size, GPoints.size()</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Set the global color of the points.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the global color of the points.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">size</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> size)</p>
+<p class="member_description">Set the global size of the points (in world-space units, a size of 1 means each point is 1 unit wide)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">size</span>()</p>
+<p class="member_description">Get the global size of the points.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
+<p class="member_description">Get the sampler used for the point texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">texture</span>()</p>
+<p class="member_description">Get the texture applied to each point.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">billboard</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> billboard)</p>
+<p class="member_description">Set whether the points should always face the camera (billboard mode). 0 for no, 1 for yes.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">billboard</span>()</p>
+<p class="member_description">Get whether the points should always face the camera.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
 <a name="GLines" /><div class="class">
 <h2 class="class_title" name="GLines">GLines</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Creates a Mesh that uses CustomGeometry and LineMaterial.<p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Class for creating 2D lines.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/circles.ck">basic/circles.ck</a></li>
-<li><a target="_blank" href="../examples/sndpeek/sndpeek-minimal.ck">sndpeek/sndpeek-minimal.ck</a></li>
-<li><a target="_blank" href="../examples/sndpeek/sndpeek.ck">sndpeek/sndpeek.ck</a></li>
+<li><a target="_blank" href="../examples/basic/glines.ck">basic/glines.ck</a></li>
+<li><a target="_blank" href="../examples/deep/sndpeek.ck">deep/sndpeek.ck</a></li>
+<li><a target="_blank" href="../examples/deep/sndpeek_minimal.ck">deep/sndpeek_minimal.ck</a></li>
+<li><a target="_blank" href="../examples/deep/soundbulb.ck">deep/soundbulb.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -390,70 +409,88 @@
 <p class="member_description">Default constructor for GLines.</p>
 </div>
 </div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colors</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> colors)</p>
+<p class="member_description">Set the line colors. If the array is shorter than the number of lines, the last color is used for the remaining lines. Equivalent to LinesGeometry.lineColors()</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">positions</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> points)</p>
+<p class="member_description">Set the line positions. Z values are fixed to 0.0. Equivalent to LinesGeometry.linePoints()</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">width</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> width)</p>
+<p class="member_description">Set the thickness of the lines in the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">width</span>()</p>
+<p class="member_description">Get the thickness of the lines in the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Set the line color.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the line color.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
 <a name="GMesh" /><div class="class">
 <h2 class="class_title" name="GMesh">GMesh</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Mesh class. A mesh is a geometry and a material. It can be added to a scene to be rendered. Parent class of GCube, GSphere, GCircle, etc.<p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Mesh class for renderables. Can be assigned Geometry and Material components.<p>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="membername">GMesh</span>()</p>
 <p class="member_description">Default constructor for GMesh.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">GMesh</span>(<span class="ckdoc_typename ckdoc_type_object">Geometry</span> geo, <span class="ckdoc_typename ckdoc_type_object">Material</span> mat)</p>
+<p class="empty_member_description">No description available</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GMesh</span> <span class="membername">dup</span>()</p>
-<p class="member_description">Clone both the mesh geometry and material and set it to this mesh.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Geometry</span> <span class="membername">dupGeo</span>()</p>
-<p class="member_description">Clone the mesh geometry and set it to this mesh.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Material</span> <span class="membername">dupMat</span>()</p>
-<p class="member_description">Clone the mesh material and set it to this mesh.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Geometry</span> <span class="membername">geo</span>(<span class="ckdoc_typename ckdoc_type_object">Geometry</span> geo)</p>
-<p class="member_description">Set the mesh geometry.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Material</span> <span class="membername">mat</span>()</p>
+<p class="member_description">Get the material of this GMesh (shorthand for backwards compatibility)</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Geometry</span> <span class="membername">geo</span>()</p>
-<p class="member_description">Get the mesh geometry.</p>
+<p class="member_description">Get the geometry of this GMesh (shorthand for backwards compatibility)</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Material</span> <span class="membername">mat</span>(<span class="ckdoc_typename ckdoc_type_object">Material</span> mat)</p>
-<p class="member_description">Set the mesh material.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Material</span> <span class="membername">material</span>()</p>
+<p class="member_description">Get the material of this GMesh.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Material</span> <span class="membername">mat</span>()</p>
-<p class="member_description">Get the mesh material.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GMesh</span> <span class="membername">material</span>(<span class="ckdoc_typename ckdoc_type_object">Material</span> material)</p>
+<p class="member_description">Set the material of this GMesh.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set</span>(<span class="ckdoc_typename ckdoc_type_object">Geometry</span> geo, <span class="ckdoc_typename ckdoc_type_object">Material</span> mat)</p>
-<p class="member_description">Set the geometry and material of the mesh.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GMesh</span> <span class="membername">mat</span>(<span class="ckdoc_typename ckdoc_type_object">Material</span> material)</p>
+<p class="member_description">Set the material of this GMesh (shorthand for backwards compatibility)</p>
 </div>
-</div>
-<p class="top_link">[ <a href="#top">top</a> ]</p>
-</div>
-<hr />
-<a name="GTriangle" /><div class="class">
-<h2 class="class_title" name="GTriangle">GTriangle</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Creates a Mesh that uses TriangleGeometry and PhongMaterial.<p>
-<h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/geometry/triangle.ck">geometry/triangle.ck</a></li>
-</ul></div>
-<h3 class="class_section_header">constructors</h3>
-<div class="members">
 <div class="member">
-<p class="member_declaration"><span class="membername">GTriangle</span>()</p>
-<p class="member_description">Default constructor for GTriangle.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Geometry</span> <span class="membername">geometry</span>()</p>
+<p class="member_description">Get the geometry of this GMesh.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GMesh</span> <span class="membername">geometry</span>(<span class="ckdoc_typename ckdoc_type_object">Geometry</span> geometry)</p>
+<p class="member_description">Set the geometry of this GMesh.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GMesh</span> <span class="membername">geo</span>(<span class="ckdoc_typename ckdoc_type_object">Geometry</span> geometry)</p>
+<p class="member_description">Set the geometry of this GMesh (shorthand for backwards compatibility)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">mesh</span>(<span class="ckdoc_typename ckdoc_type_object">Geometry</span> geometry, <span class="ckdoc_typename ckdoc_type_object">Material</span> material)</p>
+<p class="member_description">Set the geometry and material of this GMesh.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -461,8 +498,11 @@
 <hr />
 <a name="GCircle" /><div class="class">
 <h2 class="class_title" name="GCircle">GCircle</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Creates a Mesh that uses CircleGeometry and PhongMaterial.<p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Convenience class for creating a GMesh(CircleGeometry, PhongMaterial)<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/ggen_primitives.ck">basic/ggen_primitives.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -470,13 +510,108 @@
 <p class="member_description">Default constructor for GCircle.</p>
 </div>
 </div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
+<p class="member_description">Get the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">specular</span>()</p>
+<p class="member_description">Get the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
+<p class="member_description">Get the log shininess exponent.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">emission</span>()</p>
+<p class="member_description">Get the emission color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">normalFactor</span>()</p>
+<p class="member_description">Get the normal factor of the material. Scales effect of normal map. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
+<p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">specularMap</span>()</p>
+<p class="member_description">Get the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">aoMap</span>()</p>
+<p class="member_description">Get the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">emissiveMap</span>()</p>
+<p class="member_description">Get the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalMap</span>()</p>
+<p class="member_description">Get the normal texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specular</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> specular)</p>
+<p class="member_description">Set the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> diffuse)</p>
+<p class="member_description">Set the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shine</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> shine)</p>
+<p class="member_description">Set the log shininess exponent. default 5.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emission</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> emission)</p>
+<p class="member_description">Set the emission color of the material. Default black.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> normalFactor)</p>
+<p class="member_description">Set the normal factor of the material. Scales effect of normal map.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> aoFactor)</p>
+<p class="member_description">Set the ambient occlusion factor of the material. Default 1.0. 0 disables AO. Set between 0 and 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> albedoTexture)</p>
+<p class="member_description">Set the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
+<p class="member_description">Set the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> aoTexture)</p>
+<p class="member_description">Set the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emissiveMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> emissiveTexture)</p>
+<p class="member_description">Set the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> normalTexture)</p>
+<p class="member_description">Set the normal texture of the material.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
 <a name="GPlane" /><div class="class">
 <h2 class="class_title" name="GPlane">GPlane</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Creates a Mesh that uses PlaneGeometry and PhongMaterial.<p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Convenience class for creating a GMesh(PlaneGeometry, PhongMaterial)<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/ggen_primitives.ck">basic/ggen_primitives.ck</a></li>
+<li><a target="_blank" href="../examples/sequencers/drum_machine.ck">sequencers/drum_machine.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -484,13 +619,108 @@
 <p class="member_description">Default constructor for GPlane.</p>
 </div>
 </div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
+<p class="member_description">Get the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">specular</span>()</p>
+<p class="member_description">Get the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
+<p class="member_description">Get the log shininess exponent.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">emission</span>()</p>
+<p class="member_description">Get the emission color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">normalFactor</span>()</p>
+<p class="member_description">Get the normal factor of the material. Scales effect of normal map. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
+<p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">specularMap</span>()</p>
+<p class="member_description">Get the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">aoMap</span>()</p>
+<p class="member_description">Get the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">emissiveMap</span>()</p>
+<p class="member_description">Get the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalMap</span>()</p>
+<p class="member_description">Get the normal texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specular</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> specular)</p>
+<p class="member_description">Set the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> diffuse)</p>
+<p class="member_description">Set the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shine</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> shine)</p>
+<p class="member_description">Set the log shininess exponent. default 5.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emission</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> emission)</p>
+<p class="member_description">Set the emission color of the material. Default black.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> normalFactor)</p>
+<p class="member_description">Set the normal factor of the material. Scales effect of normal map.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> aoFactor)</p>
+<p class="member_description">Set the ambient occlusion factor of the material. Default 1.0. 0 disables AO. Set between 0 and 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> albedoTexture)</p>
+<p class="member_description">Set the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
+<p class="member_description">Set the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> aoTexture)</p>
+<p class="member_description">Set the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emissiveMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> emissiveTexture)</p>
+<p class="member_description">Set the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> normalTexture)</p>
+<p class="member_description">Set the normal texture of the material.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
 <a name="GCube" /><div class="class">
 <h2 class="class_title" name="GCube">GCube</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Creates a Mesh that uses BoxGeometry and PhongMaterial.<p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Convenience class for creating a GMesh(CubeGeometry, PhongMaterial)<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/ggen_primitives.ck">basic/ggen_primitives.ck</a></li>
+<li><a target="_blank" href="../examples/basic/jello.ck">basic/jello.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -498,13 +728,108 @@
 <p class="member_description">Default constructor for GCube.</p>
 </div>
 </div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
+<p class="member_description">Get the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">specular</span>()</p>
+<p class="member_description">Get the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
+<p class="member_description">Get the log shininess exponent.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">emission</span>()</p>
+<p class="member_description">Get the emission color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">normalFactor</span>()</p>
+<p class="member_description">Get the normal factor of the material. Scales effect of normal map. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
+<p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">specularMap</span>()</p>
+<p class="member_description">Get the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">aoMap</span>()</p>
+<p class="member_description">Get the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">emissiveMap</span>()</p>
+<p class="member_description">Get the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalMap</span>()</p>
+<p class="member_description">Get the normal texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specular</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> specular)</p>
+<p class="member_description">Set the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> diffuse)</p>
+<p class="member_description">Set the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shine</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> shine)</p>
+<p class="member_description">Set the log shininess exponent. default 5.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emission</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> emission)</p>
+<p class="member_description">Set the emission color of the material. Default black.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> normalFactor)</p>
+<p class="member_description">Set the normal factor of the material. Scales effect of normal map.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> aoFactor)</p>
+<p class="member_description">Set the ambient occlusion factor of the material. Default 1.0. 0 disables AO. Set between 0 and 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> albedoTexture)</p>
+<p class="member_description">Set the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
+<p class="member_description">Set the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> aoTexture)</p>
+<p class="member_description">Set the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emissiveMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> emissiveTexture)</p>
+<p class="member_description">Set the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> normalTexture)</p>
+<p class="member_description">Set the normal texture of the material.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
 <a name="GSphere" /><div class="class">
 <h2 class="class_title" name="GSphere">GSphere</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Creates a Mesh that uses SphereGeometry and PhongMaterial.<p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Convenience class for creating a GMesh(SphereGeometry, PhongMaterial)<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/ggen_primitives.ck">basic/ggen_primitives.ck</a></li>
+<li><a target="_blank" href="../examples/basic/orbits.ck">basic/orbits.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -512,13 +837,107 @@
 <p class="member_description">Default constructor for GSphere.</p>
 </div>
 </div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
+<p class="member_description">Get the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">specular</span>()</p>
+<p class="member_description">Get the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
+<p class="member_description">Get the log shininess exponent.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">emission</span>()</p>
+<p class="member_description">Get the emission color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">normalFactor</span>()</p>
+<p class="member_description">Get the normal factor of the material. Scales effect of normal map. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
+<p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">specularMap</span>()</p>
+<p class="member_description">Get the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">aoMap</span>()</p>
+<p class="member_description">Get the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">emissiveMap</span>()</p>
+<p class="member_description">Get the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalMap</span>()</p>
+<p class="member_description">Get the normal texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specular</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> specular)</p>
+<p class="member_description">Set the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> diffuse)</p>
+<p class="member_description">Set the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shine</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> shine)</p>
+<p class="member_description">Set the log shininess exponent. default 5.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emission</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> emission)</p>
+<p class="member_description">Set the emission color of the material. Default black.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> normalFactor)</p>
+<p class="member_description">Set the normal factor of the material. Scales effect of normal map.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> aoFactor)</p>
+<p class="member_description">Set the ambient occlusion factor of the material. Default 1.0. 0 disables AO. Set between 0 and 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> albedoTexture)</p>
+<p class="member_description">Set the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
+<p class="member_description">Set the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> aoTexture)</p>
+<p class="member_description">Set the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emissiveMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> emissiveTexture)</p>
+<p class="member_description">Set the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> normalTexture)</p>
+<p class="member_description">Set the normal texture of the material.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
 <a name="GTorus" /><div class="class">
 <h2 class="class_title" name="GTorus">GTorus</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Creates a Mesh that uses TorusGeometry and PhongMaterial.<p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Convenience class for creating a GMesh(TorusGeometry, PhongMaterial)<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/ggen_primitives.ck">basic/ggen_primitives.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -526,15 +945,106 @@
 <p class="member_description">Default constructor for GTorus.</p>
 </div>
 </div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
+<p class="member_description">Get the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">specular</span>()</p>
+<p class="member_description">Get the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
+<p class="member_description">Get the log shininess exponent.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">emission</span>()</p>
+<p class="member_description">Get the emission color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">normalFactor</span>()</p>
+<p class="member_description">Get the normal factor of the material. Scales effect of normal map. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
+<p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">specularMap</span>()</p>
+<p class="member_description">Get the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">aoMap</span>()</p>
+<p class="member_description">Get the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">emissiveMap</span>()</p>
+<p class="member_description">Get the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalMap</span>()</p>
+<p class="member_description">Get the normal texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specular</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> specular)</p>
+<p class="member_description">Set the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> diffuse)</p>
+<p class="member_description">Set the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shine</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> shine)</p>
+<p class="member_description">Set the log shininess exponent. default 5.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emission</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> emission)</p>
+<p class="member_description">Set the emission color of the material. Default black.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> normalFactor)</p>
+<p class="member_description">Set the normal factor of the material. Scales effect of normal map.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> aoFactor)</p>
+<p class="member_description">Set the ambient occlusion factor of the material. Default 1.0. 0 disables AO. Set between 0 and 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> albedoTexture)</p>
+<p class="member_description">Set the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
+<p class="member_description">Set the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> aoTexture)</p>
+<p class="member_description">Set the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emissiveMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> emissiveTexture)</p>
+<p class="member_description">Set the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> normalTexture)</p>
+<p class="member_description">Set the normal texture of the material.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
 <a name="GCylinder" /><div class="class">
 <h2 class="class_title" name="GCylinder">GCylinder</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Creates a Mesh that uses CylinderGeometry and PhongMaterial.<p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Convenience class for creating a GMesh(CylinderGeometry, PhongMaterial)<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/geometry/cylinder.ck">geometry/cylinder.ck</a></li>
+<li><a target="_blank" href="../examples/basic/ggen_primitives.ck">basic/ggen_primitives.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -543,53 +1053,369 @@
 <p class="member_description">Default constructor for GCylinder.</p>
 </div>
 </div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
+<p class="member_description">Get the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">specular</span>()</p>
+<p class="member_description">Get the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
+<p class="member_description">Get the log shininess exponent.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">emission</span>()</p>
+<p class="member_description">Get the emission color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">normalFactor</span>()</p>
+<p class="member_description">Get the normal factor of the material. Scales effect of normal map. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
+<p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">specularMap</span>()</p>
+<p class="member_description">Get the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">aoMap</span>()</p>
+<p class="member_description">Get the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">emissiveMap</span>()</p>
+<p class="member_description">Get the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalMap</span>()</p>
+<p class="member_description">Get the normal texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specular</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> specular)</p>
+<p class="member_description">Set the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> diffuse)</p>
+<p class="member_description">Set the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shine</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> shine)</p>
+<p class="member_description">Set the log shininess exponent. default 5.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emission</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> emission)</p>
+<p class="member_description">Set the emission color of the material. Default black.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> normalFactor)</p>
+<p class="member_description">Set the normal factor of the material. Scales effect of normal map.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> aoFactor)</p>
+<p class="member_description">Set the ambient occlusion factor of the material. Default 1.0. 0 disables AO. Set between 0 and 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> albedoTexture)</p>
+<p class="member_description">Set the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
+<p class="member_description">Set the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> aoTexture)</p>
+<p class="member_description">Set the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emissiveMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> emissiveTexture)</p>
+<p class="member_description">Set the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> normalTexture)</p>
+<p class="member_description">Set the normal texture of the material.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="GKnot" /><div class="class">
+<h2 class="class_title" name="GKnot">GKnot</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Convenience class for creating a GMesh(KnotGeometry, PhongMaterial)<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/ggen_primitives.ck">basic/ggen_primitives.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GKnot</span>()</p>
+<p class="member_description">Default constructor for GKnot.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
+<p class="member_description">Get the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">specular</span>()</p>
+<p class="member_description">Get the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
+<p class="member_description">Get the log shininess exponent.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">emission</span>()</p>
+<p class="member_description">Get the emission color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">normalFactor</span>()</p>
+<p class="member_description">Get the normal factor of the material. Scales effect of normal map. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
+<p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">specularMap</span>()</p>
+<p class="member_description">Get the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">aoMap</span>()</p>
+<p class="member_description">Get the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">emissiveMap</span>()</p>
+<p class="member_description">Get the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalMap</span>()</p>
+<p class="member_description">Get the normal texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specular</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> specular)</p>
+<p class="member_description">Set the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> diffuse)</p>
+<p class="member_description">Set the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shine</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> shine)</p>
+<p class="member_description">Set the log shininess exponent. default 5.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emission</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> emission)</p>
+<p class="member_description">Set the emission color of the material. Default black.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> normalFactor)</p>
+<p class="member_description">Set the normal factor of the material. Scales effect of normal map.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> aoFactor)</p>
+<p class="member_description">Set the ambient occlusion factor of the material. Default 1.0. 0 disables AO. Set between 0 and 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> albedoTexture)</p>
+<p class="member_description">Set the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
+<p class="member_description">Set the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> aoTexture)</p>
+<p class="member_description">Set the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emissiveMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> emissiveTexture)</p>
+<p class="member_description">Set the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> normalTexture)</p>
+<p class="member_description">Set the normal texture of the material.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="GSuzanne" /><div class="class">
+<h2 class="class_title" name="GSuzanne">GSuzanne</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Convenience class for creating a GMesh(SuzanneGeometry, PhongMaterial)<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/ggen_primitives.ck">basic/ggen_primitives.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GSuzanne</span>()</p>
+<p class="member_description">Default constructor for GSuzanne.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
+<p class="member_description">Get the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">specular</span>()</p>
+<p class="member_description">Get the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
+<p class="member_description">Get the log shininess exponent.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">emission</span>()</p>
+<p class="member_description">Get the emission color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">normalFactor</span>()</p>
+<p class="member_description">Get the normal factor of the material. Scales effect of normal map. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
+<p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">specularMap</span>()</p>
+<p class="member_description">Get the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">aoMap</span>()</p>
+<p class="member_description">Get the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">emissiveMap</span>()</p>
+<p class="member_description">Get the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalMap</span>()</p>
+<p class="member_description">Get the normal texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specular</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> specular)</p>
+<p class="member_description">Set the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> diffuse)</p>
+<p class="member_description">Set the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shine</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> shine)</p>
+<p class="member_description">Set the log shininess exponent. default 5.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emission</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> emission)</p>
+<p class="member_description">Set the emission color of the material. Default black.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> normalFactor)</p>
+<p class="member_description">Set the normal factor of the material. Scales effect of normal map.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> aoFactor)</p>
+<p class="member_description">Set the ambient occlusion factor of the material. Default 1.0. 0 disables AO. Set between 0 and 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> albedoTexture)</p>
+<p class="member_description">Set the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
+<p class="member_description">Set the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> aoTexture)</p>
+<p class="member_description">Set the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emissiveMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> emissiveTexture)</p>
+<p class="member_description">Set the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> normalTexture)</p>
+<p class="member_description">Set the normal texture of the material.</p>
+</div>
+</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
 <a name="GLight" /><div class="class">
 <h2 class="class_title" name="GLight">GLight</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Light class. Parent class of GPointLight and GDirectionalLight. Don't instantiate this class directly.<p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Base class for all light components.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/light.ck">basic/light.ck</a></li>
+<li><a target="_blank" href="../examples/basic/pbr.ck">basic/pbr.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="membername">GLight</span>()</p>
 <p class="member_description">Default constructor for GLight.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">GLight</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> type)</p>
+<p class="empty_member_description">No description available</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">ambient</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> a)</p>
-<p class="member_description">Set ambient color. Ambient color is multiplied by the material ambient color, and will be visible even when no light is directly shining on the object.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">mode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> mode)</p>
+<p class="member_description">Set the light type. Use GLight.Directional or GLight.Point.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">ambient</span>()</p>
-<p class="member_description">Get the light ambient color.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mode</span>()</p>
+<p class="member_description">Get the light type. Returns either GLight.Directional or GLight.Point.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">diffuse</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> d)</p>
-<p class="member_description">Set diffuse color. Diffuse color is multiplied by the material diffuse color.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Set the light color.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">diffuse</span>()</p>
-<p class="member_description">Get the light diffuse color.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the light color.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">intensity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> i)</p>
-<p class="member_description">Set intensity from 0-1. 0 is off, 1 is full intensity.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">intensity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> intensity)</p>
+<p class="member_description">Set the light intensity. Default 1.0. Use 0 to turn off the light. The intensity is multiplied by the color in final lighting calculations.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">intensity</span>()</p>
-<p class="member_description">Get light intensity.</p>
+<p class="member_description">Get the light intensity.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Directional</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">specular</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> s)</p>
-<p class="member_description">Set specular color. Specular color is multiplied by the material specular color.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">specular</span>()</p>
-<p class="member_description">Get the light specular color.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Point</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -597,11 +1423,8 @@
 <hr />
 <a name="GPointLight" /><div class="class">
 <h2 class="class_title" name="GPointLight">GPointLight</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GLight" class="ckdoc_typename ckdoc_type_object">GLight</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Point light class.<p>
-<h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/basic/light.ck">basic/light.ck</a></li>
-</ul></div>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GLight" class="ckdoc_typename ckdoc_type_object">GLight</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Point light component.<p>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -612,8 +1435,20 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">falloff</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> linear, <span class="ckdoc_typename ckdoc_type_primitive">float</span> quadratic)</p>
-<p class="member_description">Set point light falloff. See https://learnopengl.com/Lighting/Light-casters for a falloff chart.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span>()</p>
+<p class="member_description">Get the point light radius.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">radius</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius)</p>
+<p class="member_description">Set the point light radius.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">falloff</span>()</p>
+<p class="member_description">Get the point light falloff exponent, i.e. how quickly the light intensity ramps down to 0. A value of 1.0 means linear, 2.0 means quadratic. Default is 2.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">falloff</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> falloff_exponent)</p>
+<p class="member_description">Set the point light falloff exponent, i.e. how quickly the light intensity ramps down to 0. A value of 1.0 means linear, 2.0 means quadratic. Default is 2.0.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -621,8 +1456,8 @@
 <hr />
 <a name="GDirLight" /><div class="class">
 <h2 class="class_title" name="GDirLight">GDirLight</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GLight" class="ckdoc_typename ckdoc_type_object">GLight</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Directional class. Position of this light has no affect, only rotation.<p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GLight" class="ckdoc_typename ckdoc_type_object">GLight</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Directional light component.<p>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -635,10 +1470,10 @@
 <hr />
 <a name="GCamera" /><div class="class">
 <h2 class="class_title" name="GCamera">GCamera</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Camera class. Static--all instances point to the same underlying ChuGL main camera.<p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">ChuGL Camera class. Can be used to create perspective or orthographic cameras. Also comes with builtin OrbitCamera and FlyCamera controllers.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/basic/mousecast.ck">basic/mousecast.ck</a></li>
+<li><a target="_blank" href="../examples/basic/mousepick.ck">basic/mousepick.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -651,60 +1486,150 @@
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clip</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> near, <span class="ckdoc_typename ckdoc_type_primitive">float</span> far)</p>
-<p class="member_description">Set camera clipping planes.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">clipFar</span>()</p>
-<p class="member_description">Get far clipping plane.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">clipNear</span>()</p>
-<p class="member_description">Get near clipping plane.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fov</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> f)</p>
-<p class="member_description">(perspective mode) set the field of view in degrees.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fov</span>()</p>
-<p class="member_description">(perspective mode) get the field of view in degrees.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mode</span>()</p>
-<p class="member_description">Get camera mode. Can be GCamera.MODE_PERSP or GCamera.MODE_ORTHO.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">orthographic</span>()</p>
-<p class="member_description">Set camera to orthographic mode.</p>
+<p class="member_description">Set camera clip planes.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">perspective</span>()</p>
-<p class="member_description">Set camera to perspective mode.</p>
+<p class="member_description">Set camera mode to perspective.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">screenCoordToWorldRay</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> screenX, <span class="ckdoc_typename ckdoc_type_primitive">float</span> screenY)</p>
-<p class="member_description">Get a ray in world space representing the normalized directional vector from camera world position to screen coordinatescreenX and screenY are screen coordinates, which you can get from GG.mouseX() and GG.mouseY() or you can pass coordinates directlyuseful if you want to do mouse picking or raycasting.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">orthographic</span>()</p>
+<p class="member_description">Set camera mode to orthographic.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">viewSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> s)</p>
-<p class="member_description">(orthographic mode) set the height of the view in world space units. Width is automatically calculated based on aspect ratio.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mode</span>()</p>
+<p class="member_description">Get camera mode. Returns either GCamera.PERSPECTIVE or GCamera.ORTHOGRAPHIC.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">clipNear</span>()</p>
+<p class="member_description">Get camera near clip plane.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">clipFar</span>()</p>
+<p class="member_description">Get camera far clip plane.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">fov</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> fov_radians)</p>
+<p class="member_description">Set camera field of view in radians.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fov</span>()</p>
+<p class="member_description">Get camera field of view in radians.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">viewSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> size)</p>
+<p class="member_description">(orthographic mode) set the height of the view volume in world space units. Width is automatically calculated based on aspect ratio.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">viewSize</span>()</p>
-<p class="member_description">(orthographic mode) get the height of the view in world space units.</p>
+<p class="member_description">(orthographic mode) get the height of the view volume in world space units.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">worldPosToScreenCoord</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> worldPos)</p>
-<p class="member_description">Get a screen coordinate from a world position by casting a ray from worldPos back to the camera and finding the intersection with the near clipping planeworldPos is a vec3 representing a world positionreturns a vec3. X and Y are screen coordinates, Z is the depth-value of the worldPosRemember, screen coordinates have origin at the top-left corner of the window.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">screenCoordToWorldPos</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> screen_pos, <span class="ckdoc_typename ckdoc_type_primitive">float</span> distance)</p>
+<p class="member_description">Returns the world position of a point in screen space at a given distance from the camera. Useful in combination with GWindow.mousePos() for mouse picking.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">worldPosToScreenCoord</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> world_pos)</p>
+<p class="member_description">Get a screen coordinate from a world position by casting a ray from worldPos back to the camera and finding the intersection with the near clipping planeworld_pos is a vec3 representing a world position.Returns a vec2 screen coordinate.Remember, screen coordinates have origin at the top-left corner of the window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">NDCToWorldPos</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> clip_pos)</p>
+<p class="member_description">Convert a point in clip space to world space. Clip space x and y should be in range [-1, 1], and z in the range [0, 1]. For x and y, 0 is the center of the screen. For z, 0 is the near clip plane and 1 is the far clip plane.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">worldPosToNDC</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> world_pos)</p>
+<p class="member_description">Convert a point in world space to this camera's clip space.</p>
 </div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ORTHO</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PERSPECTIVE</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PERSPECTIVE</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ORTHOGRAPHIC</span></p><p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="GOrbitCamera" /><div class="class">
+<h2 class="class_title" name="GOrbitCamera">GOrbitCamera</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GCamera" class="ckdoc_typename ckdoc_type_object">GCamera</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Built-in orbit camera controller. Click and drag to rotate the camera. Scroll to zoom.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GOrbitCamera</span>()</p>
+<p class="member_description">Default constructor for GOrbitCamera.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">update</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> dt)</p>
+<p class="member_description">Overrides the GGen.update(float dt) method. Called automatically every frame.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">dragSpeed</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> speed)</p>
+<p class="member_description">Set the horizontal and vertical speed of the camera's rotation when dragging with the mouse.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">dragSpeed</span>()</p>
+<p class="member_description">Get the speed of the camera's rotation when dragging with the mouse.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">zoomSpeed</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> speed)</p>
+<p class="member_description">Set the speed of the camera's zoom when scrolling with the mouse wheel.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">zoomSpeed</span>()</p>
+<p class="member_description">Get the speed of the camera's zoom when scrolling with the mouse wheel.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">target</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> target)</p>
+<p class="member_description">Set the point in world space that the camera orbits around.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">target</span>()</p>
+<p class="member_description">Get the point in world space that the camera orbits around.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="GFlyCamera" /><div class="class">
+<h2 class="class_title" name="GFlyCamera">GFlyCamera</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GCamera" class="ckdoc_typename ckdoc_type_object">GCamera</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Built-in fly camera controller. Use WASD to move and mouse to look. Use QE to move up and down.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GFlyCamera</span>()</p>
+<p class="member_description">Default constructor for GFlyCamera.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">speed</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> speed)</p>
+<p class="member_description">Set the move speed of the camera.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">update</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> dt)</p>
+<p class="member_description">Overrides the GGen.update(dt) method. Called automatically every frame.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">speed</span>()</p>
+<p class="member_description">Get the move speed of the camera.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sensitivity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> sensitivity)</p>
+<p class="member_description">Set the mouse look sensitivity of the camera.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sensitivity</span>()</p>
+<p class="member_description">Get the mouse look sensitivity of the camera.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -712,8 +1637,11 @@
 <hr />
 <a name="GText" /><div class="class">
 <h2 class="class_title" name="GText">GText</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="empty_class_description">No description available</p>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Builtin fonts are "chugl:cousine-regular", "chugl:karla-regular", "chugl:proggy-tiny", "chugl:proggy-clean" which can be assigned to GText.font(string)<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/gtext.ck">basic/gtext.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -724,44 +1652,59 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
-<p class="member_description">Set text color. supports HDR values.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">texture</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
+<p class="member_description">Set a texture to be applied to the text block. Default 1 white pixel.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> color)</p>
+<p class="member_description">Set text color.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">color</span>()</p>
 <p class="member_description">Get text color.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">controlPoints</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> controlPoints)</p>
-<p class="member_description">Set control points for text. x = horizontal, y = verticalThe control point is a ratio within the text's bounding box that determines where its origin isFor example, (0.5, 0.5) will place the origin at the center the text(0.0, 0.0) will place the origin at the top-left of the text(1.0, 1.0) will place the origin at the bottom-right of the text.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">controlPoints</span>()</p>
-<p class="member_description">Get control points.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">font</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> font)</p>
-<p class="member_description">Set path to a font file (supported types: .otf and .ttf)If not provided, will default to the font set via GG.font()</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">font</span>()</p>
-<p class="member_description">Get font path.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lineSpacing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> lineSpacing)</p>
-<p class="member_description">Set vertical line spacing. Default is 1.0.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">lineSpacing</span>()</p>
-<p class="member_description">Get vertical line spacing.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">text</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
 <p class="member_description">Set text.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>()</p>
 <p class="member_description">Get text.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">font</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> font)</p>
+<p class="member_description">Set path to a font file (supported types: .otf and .ttf). If not provided, will default to the font set via GText.defaultFont(). See top of class doc for list of builtin font names.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">font</span>()</p>
+<p class="member_description">Get path to font file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">spacing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> spacing)</p>
+<p class="member_description">Set vertical line spacing. Default is 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">spacing</span>()</p>
+<p class="member_description">Get vertical line spacing.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">controlPoints</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> control_points)</p>
+<p class="member_description">Set control points for text. x = horizontal, y = verticalThe control point is a ratio within the text's bounding box that determines where its origin isFor example, (0.5, 0.5) will place the origin at the center the text. (0.0, 0.0) will place the origin at the bottom-left of the text. (1.0, 1.0) will place the origin at the top-right of the text.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">controlPoints</span>()</p>
+<p class="member_description">Get control points for text. Default is (0.5, 0.5), meaning the center of the text string is at the position of the text transform.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">texture</span>()</p>
+<p class="member_description">Get the current texture applied to the text block.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">defaultFont</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> default_font)</p>
+<p class="member_description">Set default font file to be used by all GText not given a font path.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
