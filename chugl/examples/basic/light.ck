@@ -1,6 +1,11 @@
-// Note: current max# of supported lights is:
-// 12 point lights
-// 12 directional lights
+//--------------------------------------------------------------------
+// name: light.ck
+// desc: lights (no limit on max # of lights)
+// requires: ChuGL + chuck-1.5.3.0 or higher
+// 
+// author: Andrew Zhu Aday
+//   date: Fall 2024
+//--------------------------------------------------------------------
 
 // window title
 GG.windowTitle( "ChuGL light demo" );
@@ -17,8 +22,8 @@ class LightBulb extends GGen
     mat.color(@(1, 1, 1));
     @(0.1, 0.1, 0.1) => bulb.sca;
 
-    // set light falloff
-    light.falloff(0.14, 0.7);  // falloff chart: https://wiki.ogre3d.org/tiki-index.php?page=-Point+Light+Attenuation
+    // set light radius (how far the light reaches)
+    light.radius(2);
 
     vec3 lightCol;
     Math.random2f(0.5, 1.5) => float pulseRate;  // randomize pulse rate for fading in/out
@@ -26,7 +31,7 @@ class LightBulb extends GGen
     fun void color(float r, float g, float b) {
         @(r, g, b) => lightCol;  // save the set color
         mat.color(@(r, g, b));   // set material color
-        light.diffuse(@(r, g, b));  // set light diffuse color
+        light.color(@(r, g, b));  // set light diffuse color
     }
 
     // this is called automatically every frame but ChuGL
@@ -39,15 +44,20 @@ class LightBulb extends GGen
     }
 }
 
-// camera angle
-GG.camera() @=> GCamera @ cam;
-@(0, 10, 10) => cam.pos;
-cam.lookAt(@(0, 0, 0));
-
 // scene setup
 GG.scene() @=> GScene @ scene;
-scene.backgroundColor(@(0, 0, 0)); // black background
-scene.light().intensity(0);  // disable default directional light
+// connect camera to scenegraph
+GOrbitCamera cam --> scene;
+// select as main camera
+scene.camera( cam );
+
+// disable default directional light
+scene.light().intensity(0);
+// disable default ambient light
+scene.ambient(@(0,0,0));
+
+// camera angle
+@(0, 10, 10) => cam.pos;
 
 // ground for lights to cast on
 GPlane ground --> GG.scene();
@@ -60,7 +70,7 @@ LightBulb redLight--> lightGroup;
 LightBulb greenLight--> lightGroup;
 LightBulb blueLight--> lightGroup;
 LightBulb whiteLight--> lightGroup;
-1 => lightGroup.posY;  // lift all lights 1 unit off the ground
+1 => lightGroup.posY; // lift all lights 1 unit off the ground
 
 // set light colors
 2 => redLight.posX;
@@ -73,10 +83,29 @@ blueLight.color(0, 0, 1);
 whiteLight.color(1, 1, 1);
 
 // Gameloop ==================================
+UI_Float light_radius(2);
+UI_Float light_falloff(2);
+
 while (true)
 {
+    GG.nextFrame() => now;
     // rotate lights
     GG.dt() => lightGroup.rotateY;
-    // nextFrame
-    GG.nextFrame() => now;
+
+    if (UI.begin("Point light demo")) {
+        if (UI.slider("Light radius", light_radius, 0, 10)) {
+            redLight.light.radius(light_radius.val());
+            greenLight.light.radius(light_radius.val());
+            blueLight.light.radius(light_radius.val());
+            whiteLight.light.radius(light_radius.val());
+        }
+
+        if (UI.slider("Light falloff", light_falloff, 0, 10)) {
+            redLight.light.falloff(light_falloff.val());
+            greenLight.light.falloff(light_falloff.val());
+            blueLight.light.falloff(light_falloff.val());
+            whiteLight.light.falloff(light_falloff.val());
+        }
+    }
+    UI.end();
 }
