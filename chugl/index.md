@@ -43,9 +43,12 @@ ___
 
 ### macOS and Windows
 
-As of chuck 1.5.2.1, ChuGL (alpha) is part of the [**standard ChucK 
-distribution**](https://chuck.stanford.edu/release/) on macOS and 
-Windows
+As of ChucK 1.5.2.1, ChuGL (alpha) is part of the [**standard ChucK 
+distribution**](https://chuck.stanford.edu/release/) on macOS and Windows. ChucK 1.5.2.5 contains 
+the latest and last OpenGL-based ChuGL v0.1.5 (alpha). ChucK 1.5.3.0 introduces ChuGL v0.2.0 
+(alpha) featuring a significant re-write and transition from OpenGL to WebGPU as the underlying 
+graphics library.
+
 
 ### Linux
 
