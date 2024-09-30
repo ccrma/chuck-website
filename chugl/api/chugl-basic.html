@@ -14,6 +14,7 @@
 <div id="body">
 <div class="toc"><a id="toc"/>
 <p class="toc_class"><a href="#GG" class="ckdoc_typename ckdoc_type_object">GG</a></p>
+<p class="toc_class"><a href="#GWindow" class="ckdoc_typename ckdoc_type_object">GWindow</a></p>
 <p class="toc_class"><a href="#NextFrameEvent" class="ckdoc_typename ckdoc_type_object">NextFrameEvent</a></p>
 <p class="toc_class"><a href="#WindowResizeEvent" class="ckdoc_typename ckdoc_type_object">WindowResizeEvent</a></p>
 <p class="toc_class"><a href="#WindowResizeEvent" class="ckdoc_typename ckdoc_type_object">WindowResizeEvent</a></p>
@@ -35,6 +36,26 @@
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">dt</span>()</p>
+<p class="member_description">Return the laptime of the graphics thread's last frame in seconds.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GScene</span> <span class="membername">scene</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">fullscreen</span>()</p>
+<p class="member_description">Shorthand for GWindow.fullscreen(). Added for backwards compatibility.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">windowed</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> width, <span class="ckdoc_typename ckdoc_type_primitive">int</span> height)</p>
+<p class="member_description">Shorthand for GWindow.windowed(). Added for backwards compatibility.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GCamera</span> <span class="membername">camera</span>()</p>
+<p class="member_description">Shorthand for getting the default Camera that is created upon startup.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">NextFrameEvent</span> <span class="membername">nextFrame</span>()</p>
 <p class="member_description">Registers the calling shred to be notified when the next frame is finished rendering. When all graphics shreds are finished calling.Note: this function returns an event that MUST be waited on for correct behavior, i.e. GG.nextFrame() => now;See the ChuGL tutorial and examples for more information.</p>
 </div>
@@ -43,20 +64,12 @@
 <p class="member_description">Set the log level for ChuGL's renderer and graphics thread. Levels are: GG.LogLevel_Trace, GG.LogLevel_Debug, GG.LogLevel_Info, GG.LogLevel_Warn, GG.LogLevel_Error, GG.LogLevel_Fatal. Setting a log level will allow all messages of that level and higher to be printed to the console. Default is GG.LogLevel_Error.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GScene</span> <span class="membername">scene</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GScene</span> <span class="membername">scene</span>(<span class="ckdoc_typename ckdoc_type_object">GScene</span> scene)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fps</span>()</p>
 <p class="member_description">FPS of current window, updated every second.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">dt</span>()</p>
-<p class="member_description">Return the laptime of the graphics thread's last frame in seconds.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">fc</span>()</p>
@@ -83,20 +96,8 @@
 <p class="member_description">Set whether GGen update() functions are automatically called on all GGens in active scene graphs every frame. Default is true.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">fullscreen</span>()</p>
-<p class="member_description">Shorthand for GWindow.fullscreen(). Added for backwards compatibility.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">windowed</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> width, <span class="ckdoc_typename ckdoc_type_primitive">int</span> height)</p>
-<p class="member_description">Shorthand for GWindow.windowed(). Added for backwards compatibility.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">windowed</span>()</p>
 <p class="member_description">Shorthand for GWindow.windowed(). Added for backwards compatibility.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GCamera</span> <span class="membername">camera</span>()</p>
-<p class="member_description">Shorthand for getting the default Camera that is created upon startup.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">windowTitle</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> title)</p>
@@ -146,6 +147,551 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">LogLevel_Fatal</span></p><p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="GWindow" /><div class="class">
+<h2 class="class_title" name="GWindow">GWindow</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">All the properties and methods for window management.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/gwindow.ck">basic/gwindow.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">windowSize</span>()</p>
+<p class="member_description">Get the window size in screen coordinates.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">position</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y)</p>
+<p class="member_description">Set the window position in screen coordinates.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">key</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key)</p>
+<p class="member_description">Get the whether the specified key is being held down. Use the GWindow key constants for param `key`, e.g. GWindow.key(GWindow.Key_Space)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">close</span>()</p>
+<p class="member_description">Close the window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">center</span>()</p>
+<p class="member_description">Center the window on its current monitor.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">WindowCloseEvent</span> <span class="membername">closeEvent</span>()</p>
+<p class="member_description">Returns the event triggered whenever the user attempts to close this ChuGL window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">WindowResizeEvent</span> <span class="membername">resizeEvent</span>()</p>
+<p class="member_description">Returns the event triggered whenever the ChuGL window is resized, either by the user or programmatically.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Event</span> <span class="membername">contentScaleEvent</span>()</p>
+<p class="member_description">Returns the event triggered whenever the content scale of the window changes.The content scale is the ratio between the current DPI and the platform's default DPI.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">closeable</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> closeable)</p>
+<p class="member_description">Enable or disable the window's close button.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">closeable</span>()</p>
+<p class="member_description">Get the current state of the window's close button.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">fullscreen</span>()</p>
+<p class="member_description">Set the window to fullscreen mode.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">fullscreen</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> width, <span class="ckdoc_typename ckdoc_type_primitive">int</span> height)</p>
+<p class="member_description">Set the window to fullscreen mode with the specified resolution.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">maximize</span>()</p>
+<p class="member_description">Set the window to windowed fullscreen mode.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">windowed</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> width, <span class="ckdoc_typename ckdoc_type_primitive">int</span> height)</p>
+<p class="member_description">Set the window to windowed mode with the specified width and height.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">windowed</span>()</p>
+<p class="member_description">Set the window to windowed mode with the last size before going fullscreen. Default 1280 x 960.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">framebufferSize</span>()</p>
+<p class="member_description">Get the framebuffer size in pixels.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">contentScale</span>()</p>
+<p class="member_description">Get the content scale of current monitor.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sizeLimits</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> minWidth, <span class="ckdoc_typename ckdoc_type_primitive">int</span> minHeight, <span class="ckdoc_typename ckdoc_type_primitive">int</span> maxWidth, <span class="ckdoc_typename ckdoc_type_primitive">int</span> maxHeight, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> aspectRatio)</p>
+<p class="member_description">Set the window size limits, including min/max size and aspect ratio.To disable a limit, pass 0 for the corresponding argument, or @(0, 0)to disable fixed aspect ratio.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">title</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> title)</p>
+<p class="member_description">Set the window title.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">iconify</span>()</p>
+<p class="member_description">Iconify the window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">restore</span>()</p>
+<p class="member_description">Restore the window from iconified state.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">resizable</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> resizable)</p>
+<p class="member_description">Set the window resizable attribute. Must call before GG.nextFrame(). Default is true.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">decorated</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> decorated)</p>
+<p class="member_description">Set whether the window has decorations such as a border, a close widget, etc.Must call before GG.nextFrame(). Default is true.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">floating</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> floating)</p>
+<p class="member_description">Set whether the specified window is floating, also called topmost or always-on-top. Must call before GG.nextFrame(). Default is false.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">transparent</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> transparent)</p>
+<p class="member_description">Set whether the specified window has a transparent framebuffer, i.e. the window contents is composited with the background using the window framebuffer alpha channel.Not supported on all platforms. To enable, call GWindow.transparent() BEFORE GG.nextFrame() is ever called.If platform supports it, you can change opacity via GWindow.opacity(float)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">opacity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> opacity)</p>
+<p class="member_description">Set the window opacity, 0.0 is fully transparent, 1.0 is fully opaque.only works if GWindow.transparent() has been called before GG.nextFrame()AND the platform supports transparent framebuffers.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">mousePos</span>()</p>
+<p class="member_description">Get the current mouse position in screen coordinates.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">mouseDeltaPos</span>()</p>
+<p class="member_description">Get the change in mouse position since the last call.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">mouseMode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> mode)</p>
+<p class="member_description">Set the mouse mode. Possible values are: GWindow.MouseMode_Normal (0) , GWindow.MouseMode_Disabled (1), and GWindow.MouseMode_Hidden (2)Normal mode is the default mode, the cursor is visible and behaves normally.Disabled mode hides the cursor and locks it to the window, useful for first-person games.Hidden mode hides the cursor when it is focused and hovering over the window, but does not lock it to the window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">scrollX</span>()</p>
+<p class="member_description">Get the horizontal scroll delta of the mouse wheel.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">scrollY</span>()</p>
+<p class="member_description">Get the vertical scroll delta of the mouse wheel.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">scroll</span>()</p>
+<p class="member_description">Get the 2D scroll delta of the mouse wheel.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mouseLeft</span>()</p>
+<p class="member_description">Get the state of the left mouse button. 1 if pressed, 0 if not.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mouseRight</span>()</p>
+<p class="member_description">Get the state of the right mouse button. 1 if pressed, 0 if not.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mouseLeftDown</span>()</p>
+<p class="member_description">1 on the frame the left mouse button is pressed, 0 otherwise.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mouseRightDown</span>()</p>
+<p class="member_description">1 on the frame the right mouse button is pressed, 0 otherwise.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mouseLeftUp</span>()</p>
+<p class="member_description">1 on the frame the left mouse button is released, 0 otherwise.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mouseRightUp</span>()</p>
+<p class="member_description">1 on the frame the right mouse button is released, 0 otherwise.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">keyDown</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key)</p>
+<p class="member_description">Get the whether the specified key was pressed this frame. Use the GWindow key constants for param `key`, e.g. GWindow.keyDown(GWindow.Key_Space)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">keyUp</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key)</p>
+<p class="member_description">Get the whether the specified key was released this frame. Use the GWindow key constants for param `key`, e.g. GWindow.keyUp(GWindow.Key_Space)</p>
+</div>
+</div>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Space</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Apostrophe</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Comma</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Minus</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Period</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Slash</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_0</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_1</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_2</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_3</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_4</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_5</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_6</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_7</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_8</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_9</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Semicolon</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Equal</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_A</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_B</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_C</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_D</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_E</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_G</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_H</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_I</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_J</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_K</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_L</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_M</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_N</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_O</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_P</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Q</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_R</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_S</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_T</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_U</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_V</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_W</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_X</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Y</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Z</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_LeftBracket</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Backslash</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_RightBracket</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_GraveAccent</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_World1</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_World2</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Escape</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Enter</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Tab</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Backspace</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Insert</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Delete</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Right</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Left</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Down</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Up</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_PageUp</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_PageDown</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Home</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_End</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_CapsLock</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_ScrollLock</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_NumLock</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_PrintScreen</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Pause</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F1</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F2</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F3</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F4</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F5</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F6</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F7</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F8</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F9</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F10</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F11</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F12</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F13</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F14</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F15</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F16</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F17</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F18</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F19</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F20</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F21</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F22</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F23</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F24</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_F25</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_0</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_1</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_2</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_3</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_4</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_5</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_6</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_7</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_8</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_9</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_Decimal</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_Divide</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_Multiply</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_Subtract</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_Add</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_Enter</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Keypad_Equal</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_LeftShift</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_LeftControl</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_LeftAlt</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_LeftSuper</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_RightShift</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_RightControl</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_RightAlt</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_RightSuper</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Key_Menu</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MouseMode_Normal</span></p><p class="member_description">Normal mouse mode, the cursor is visible and behaves normally. Set via GWindow.mouseMode()</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MouseMode_Hidden</span></p><p class="member_description">Hidden mouse mode, hides the cursor when it is focused and hovering over the window, but does not lock it to the window. Set via GWindow.mouseMode(). May not be supported on all platforms.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MouseMode_Disabled</span></p><p class="member_description">Disabled mouse mode, hides the cursor and locks it to the window, useful for first-person games. Set via GWindow.mouseMode()</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -217,12 +763,12 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">id</span>()</p>
-<p class="member_description">Get the unique chugl id of this component.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">name</span>()</p>
 <p class="member_description">Get the name of this component.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">id</span>()</p>
+<p class="member_description">Get the unique chugl id of this component.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">name</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> name)</p>
@@ -239,6 +785,10 @@
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">random</span>()</p>
+<p class="member_description">Generate a random rgb color.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">hsv2rgb</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> hsv)</p>
 <p class="member_description">Convert from hsv colorspace to rgb.</p>
 </div>
@@ -250,37 +800,9 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">grayscale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> rgb)</p>
 <p class="member_description">Convert an rgb value to grayscale, scaled according to NTSC formula based on human perception.</p>
 </div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">random</span>()</p>
-<p class="member_description">Generate a random rgb color.</p>
-</div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">RED</span></p><p class="member_description">Red: (1.0, 0.0, 0.0)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GREEN</span></p><p class="member_description">Green: (0.0, 1.0, 0.0)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">BLUE</span></p><p class="member_description">Blue: (0.0, 0.0, 1.0)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">LIGHTGRAY</span></p><p class="member_description">Lightgray: (.784, .784, .784)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GRAY</span></p><p class="member_description">Gray: (.51, .51, .51)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">DARKGRAY</span></p><p class="member_description">Darkgray: (.3, .3, .3)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">YELLOW</span></p><p class="member_description">Yellow: (.9921, .976, 0)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GOLD</span></p><p class="member_description">Gold: (1.0, .796, 0)</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">ORANGE</span></p><p class="member_description">Orange: (1.0, .631, 0)</p>
 </div>
@@ -328,6 +850,30 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">MAGENTA</span></p><p class="member_description">Magenta: (1.0, 0.0, 1.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">RED</span></p><p class="member_description">Red: (1.0, 0.0, 0.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GREEN</span></p><p class="member_description">Green: (0.0, 1.0, 0.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">BLUE</span></p><p class="member_description">Blue: (0.0, 0.0, 1.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">LIGHTGRAY</span></p><p class="member_description">Lightgray: (.784, .784, .784)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GRAY</span></p><p class="member_description">Gray: (.51, .51, .51)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">DARKGRAY</span></p><p class="member_description">Darkgray: (.3, .3, .3)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">YELLOW</span></p><p class="member_description">Yellow: (.9921, .976, 0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GOLD</span></p><p class="member_description">Gold: (1.0, .796, 0)</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
