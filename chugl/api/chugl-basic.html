@@ -44,26 +44,6 @@
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">fullscreen</span>()</p>
-<p class="member_description">Shorthand for GWindow.fullscreen(). Added for backwards compatibility.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">windowed</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> width, <span class="ckdoc_typename ckdoc_type_primitive">int</span> height)</p>
-<p class="member_description">Shorthand for GWindow.windowed(). Added for backwards compatibility.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GCamera</span> <span class="membername">camera</span>()</p>
-<p class="member_description">Shorthand for getting the default Camera that is created upon startup.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">NextFrameEvent</span> <span class="membername">nextFrame</span>()</p>
-<p class="member_description">Registers the calling shred to be notified when the next frame is finished rendering. When all graphics shreds are finished calling.Note: this function returns an event that MUST be waited on for correct behavior, i.e. GG.nextFrame() => now;See the ChuGL tutorial and examples for more information.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logLevel</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> level)</p>
-<p class="member_description">Set the log level for ChuGL's renderer and graphics thread. Levels are: GG.LogLevel_Trace, GG.LogLevel_Debug, GG.LogLevel_Info, GG.LogLevel_Warn, GG.LogLevel_Error, GG.LogLevel_Fatal. Setting a log level will allow all messages of that level and higher to be printed to the console. Default is GG.LogLevel_Error.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GScene</span> <span class="membername">scene</span>(<span class="ckdoc_typename ckdoc_type_object">GScene</span> scene)</p>
 <p class="empty_member_description">No description available</p>
 </div>
@@ -96,8 +76,20 @@
 <p class="member_description">Set whether GGen update() functions are automatically called on all GGens in active scene graphs every frame. Default is true.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">fullscreen</span>()</p>
+<p class="member_description">Shorthand for GWindow.fullscreen(). Added for backwards compatibility.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">windowed</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> width, <span class="ckdoc_typename ckdoc_type_primitive">int</span> height)</p>
+<p class="member_description">Shorthand for GWindow.windowed(). Added for backwards compatibility.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">windowed</span>()</p>
 <p class="member_description">Shorthand for GWindow.windowed(). Added for backwards compatibility.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GCamera</span> <span class="membername">camera</span>()</p>
+<p class="member_description">Shorthand for getting the default Camera that is created upon startup.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">windowTitle</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> title)</p>
@@ -126,6 +118,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">frameHeight</span>()</p>
 <p class="member_description">Get the height of the current window's framebuffer in pixels. Shorthand for GWindow.framebufferSize().y, added for backwards compatibility.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">NextFrameEvent</span> <span class="membername">nextFrame</span>()</p>
+<p class="member_description">Registers the calling shred to be notified when the next frame is finished rendering. When all graphics shreds are finished calling.Note: this function returns an event that MUST be waited on for correct behavior, i.e. GG.nextFrame() => now;See the ChuGL tutorial and examples for more information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logLevel</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> level)</p>
+<p class="member_description">Set the log level for ChuGL's renderer and graphics thread. Levels are: GG.LogLevel_Trace, GG.LogLevel_Debug, GG.LogLevel_Info, GG.LogLevel_Warn, GG.LogLevel_Error, GG.LogLevel_Fatal. Setting a log level will allow all messages of that level and higher to be printed to the console. Default is GG.LogLevel_Error.</p>
 </div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
@@ -162,10 +162,6 @@
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">windowSize</span>()</p>
-<p class="member_description">Get the window size in screen coordinates.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">position</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y)</p>
 <p class="member_description">Set the window position in screen coordinates.</p>
 </div>
@@ -174,20 +170,24 @@
 <p class="member_description">Get the whether the specified key is being held down. Use the GWindow key constants for param `key`, e.g. GWindow.key(GWindow.Key_Space)</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">close</span>()</p>
-<p class="member_description">Close the window.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">windowSize</span>()</p>
+<p class="member_description">Get the window size in screen coordinates.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">center</span>()</p>
 <p class="member_description">Center the window on its current monitor.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">WindowCloseEvent</span> <span class="membername">closeEvent</span>()</p>
-<p class="member_description">Returns the event triggered whenever the user attempts to close this ChuGL window.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">close</span>()</p>
+<p class="member_description">Close the window.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">WindowResizeEvent</span> <span class="membername">resizeEvent</span>()</p>
 <p class="member_description">Returns the event triggered whenever the ChuGL window is resized, either by the user or programmatically.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">WindowCloseEvent</span> <span class="membername">closeEvent</span>()</p>
+<p class="member_description">Returns the event triggered whenever the user attempts to close this ChuGL window.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Event</span> <span class="membername">contentScaleEvent</span>()</p>
@@ -804,6 +804,30 @@
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">RED</span></p><p class="member_description">Red: (1.0, 0.0, 0.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GREEN</span></p><p class="member_description">Green: (0.0, 1.0, 0.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">BLUE</span></p><p class="member_description">Blue: (0.0, 0.0, 1.0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">LIGHTGRAY</span></p><p class="member_description">Lightgray: (.784, .784, .784)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GRAY</span></p><p class="member_description">Gray: (.51, .51, .51)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">DARKGRAY</span></p><p class="member_description">Darkgray: (.3, .3, .3)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">YELLOW</span></p><p class="member_description">Yellow: (.9921, .976, 0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GOLD</span></p><p class="member_description">Gold: (1.0, .796, 0)</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">ORANGE</span></p><p class="member_description">Orange: (1.0, .631, 0)</p>
 </div>
 <div class="member">
@@ -850,30 +874,6 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">MAGENTA</span></p><p class="member_description">Magenta: (1.0, 0.0, 1.0)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">RED</span></p><p class="member_description">Red: (1.0, 0.0, 0.0)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GREEN</span></p><p class="member_description">Green: (0.0, 1.0, 0.0)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">BLUE</span></p><p class="member_description">Blue: (0.0, 0.0, 1.0)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">LIGHTGRAY</span></p><p class="member_description">Lightgray: (.784, .784, .784)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GRAY</span></p><p class="member_description">Gray: (.51, .51, .51)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">DARKGRAY</span></p><p class="member_description">Darkgray: (.3, .3, .3)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">YELLOW</span></p><p class="member_description">Yellow: (.9921, .976, 0)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">GOLD</span></p><p class="member_description">Gold: (1.0, .796, 0)</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
