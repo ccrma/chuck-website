@@ -36,7 +36,8 @@ Philip Davidson.
 • [**Tutorial**](./doc/tutorial.html)
 • [**Paper (NIME 2024)**](https://mcd.stanford.edu/publish/files/2024-nime-chugl.pdf)
 <br>
-**Videos** [SoundBulb Audiovisualizer](https://www.youtube.com/watch?v=wnSmS_y9-Cs) 
+**Videos** [SoundBulb Audiovisualizer](https://www.youtube.com/watch?v=wnSmS_y9-Cs) (code: 
+[soundbulb.ck](examples/deep/soundbulb.ck) | [sndpeek.ck](examples/deep/sndpeek.ck))
 | [Selected Student Projects](https://vimeo.com/909845445)
 ___
 
