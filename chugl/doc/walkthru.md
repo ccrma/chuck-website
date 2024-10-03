@@ -113,7 +113,7 @@ Open `tutorial.ck` in your text editor of choice and write the following:
 
 ```c
 while (true) {
- GG.nextFrame() => now;
+    GG.nextFrame() => now;
 }
 ```
 
@@ -150,7 +150,7 @@ Now that we have a graphics window, let's start drawing to it. Add the following
 GSuzanne suz --> GG.scene();
 
 while (true) {
- GG.nextFrame() => now;
+    GG.nextFrame() => now;
 }
 ```
 
@@ -184,14 +184,14 @@ ChuGL offers a way to view the current scenegraph through its builtin UI system.
 GSuzanne suz --> GG.scene(); // connect a GGen to the scenegraph
 
 while (true) {
- GG.nextFrame() => now;   // on every frame...
-
- // draw UI
- if (UI.begin("Tutorial")) {  // draw a UI window called "Tutorial"
-  // scenegraph view of the current scene
-  UI.scenegraph(GG.scene()); 
- }
- UI.end(); // end of UI window, must match UI.begin(...)
+   GG.nextFrame() => now;   // on every frame...
+  
+   // draw UI
+   if (UI.begin("Tutorial")) {  // draw a UI window called "Tutorial"
+      // scenegraph view of the current scene
+      UI.scenegraph(GG.scene()); 
+   }
+   UI.end(); // end of UI window, must match UI.begin(...)
 }
 ```
 
@@ -229,23 +229,23 @@ GSuzanne suz --> GG.scene(); // connect a GGen to the scenegraph
 TriOsc tri => dac; // connect a triangle oscillator to audio out
 
 while (true) {
- GG.nextFrame() => now;   // on every frame...
-
- // draw UI
- if (UI.begin("Tutorial")) {  // draw a UI window called "Tutorial"
-  // scenegraph view of the current scene
-  UI.scenegraph(GG.scene()); 
- }
- UI.end(); // end of UI window, must match UI.begin(...)
-
- /* NEW CODE */
- // user input
- // if the key is pressed
- if (GWindow.key(GWindow.Key_Space)) { 
-  .2 => tri.gain; // volume on!
- } else {
-  .0 => tri.gain; // volume off!
- }
+   GG.nextFrame() => now;   // on every frame...
+  
+   // draw UI
+   if (UI.begin("Tutorial")) {  // draw a UI window called "Tutorial"
+      // scenegraph view of the current scene
+      UI.scenegraph(GG.scene()); 
+   }
+   UI.end(); // end of UI window, must match UI.begin(...)
+  
+   /* NEW CODE */
+   // user input
+   // if the key is pressed
+   if (GWindow.key(GWindow.Key_Space)) { 
+      .2 => tri.gain; // volume on!
+   } else {
+      .0 => tri.gain; // volume off!
+   }
 }
 ```
 
@@ -258,15 +258,15 @@ Now comes the exciting part: synchronizing audio and graphics! Let's make Suzann
 
 ```c
 // inside the gameloop ...
- // user input
- // if the key is pressed
- if (GWindow.key(GWindow.Key_Space)) { 
-  Color.WHITE => suz.color; // change color
-  .2 => tri.gain; // volume on!
- } else {
-  Color.BLACK => suz.color; // change color
-  .0 => tri.gain; // volume off!
- }
+   // user input
+   // if the key is pressed
+   if (GWindow.key(GWindow.Key_Space)) { 
+      Color.WHITE => suz.color; // change color
+      .2 => tri.gain; // volume on!
+   } else {
+      Color.BLACK => suz.color; // change color
+      .0 => tri.gain; // volume off!
+   }
 // ...
 ```
 
@@ -304,25 +304,25 @@ And in our user input code:
 
 ```c
 // inside the gameloop ...
- // user input
- // if the key is pressed
- if (GWindow.key(GWindow.Key_Space)) { 
-  Color.WHITE => suz.color; // change color
-  
-  // OLD delete
-  // .2 => tri.gain; // volume on!
-  
-  // New 
-  env.keyOn();
- } else {
-  Color.BLACK => suz.color; // change color
-  
-  // OLD delete
-  // .0 => tri.gain; // volume off!
-  
-  // New
-  env.keyOff();
- }
+   // user input
+   // if the key is pressed
+   if (GWindow.key(GWindow.Key_Space)) { 
+      Color.WHITE => suz.color; // change color
+      
+      // OLD delete
+      // .2 => tri.gain; // volume on!
+      
+      // New 
+      env.keyOn();
+   } else {
+      Color.BLACK => suz.color; // change color
+      
+      // OLD delete
+      // .0 => tri.gain; // volume off!
+      
+      // New
+      env.keyOff();
+   }
 // ...
 ```
 
@@ -335,23 +335,23 @@ Adding to the same place in code:
 
 ```c
 // inside the gameloop ...
- // user input
- // if the key is pressed
- if (GWindow.key(GWindow.Key_Space)) { 
-  // OLD delete
-  // Color.WHITE => suz.color; // change color
+   // user input
+   // if the key is pressed
+   if (GWindow.key(GWindow.Key_Space)) { 
+      // OLD delete
+      // Color.WHITE => suz.color; // change color
+      
+      env.keyOn();
+   } else {
+      // OLD delete
+      // Color.BLACK => suz.color; // change color
+      
+      env.keyOff();
+   }
   
-  env.keyOn();
- } else {
-  // OLD delete
-  // Color.BLACK => suz.color; // change color
-  
-  env.keyOff();
- }
-
- // NEW
- // change color according to volume
- env.value() * Color.WHITE => suz.color; 
+   // NEW
+   // change color according to volume
+   env.value() * Color.WHITE => suz.color; 
 // ...
 
 ```
@@ -380,23 +380,23 @@ TriOsc tri => Envelope env => dac; // connect a triangle osc to audio out
 1::second => env.duration; // time it takes to reach full volume
 
 while (true) {
- GG.nextFrame() => now;   // on every frame...
-
- // draw UI
- if (UI.begin("Tutorial")) {  // draw a UI window called "Tutorial"
-  // scenegraph view of the current scene
-  UI.scenegraph(GG.scene()); 
- }
- UI.end(); // end of UI window, must match UI.begin(...)
-
- // user input
- // if the key is pressed this frame
- if (GWindow.key(GWindow.Key_Space)) { 
+    GG.nextFrame() => now;   // on every frame...
+    
+    // draw UI
+    if (UI.begin("Tutorial")) {  // draw a UI window called "Tutorial"
+        // scenegraph view of the current scene
+        UI.scenegraph(GG.scene()); 
+    }
+    UI.end(); // end of UI window, must match UI.begin(...)
+    
+    // user input
+    // if the key is pressed this frame
+    if (GWindow.key(GWindow.Key_Space)) {
         env.keyOn(); // open envelope
- } else {
+    } else {
         env.keyOff(); // close envelope
     }
-
+    
     // match color to volume
     env.value() * Color.WHITE => suz.color;
 }
@@ -474,7 +474,7 @@ spork ~ addVoice(60, 2::second, 3::second, 0::second);
 
 // original gameloop
 while (true) {
- GG.nextFrame() => now;   // on every frame...
+    GG.nextFrame() => now;   // on every frame...
 }
 ```
 
@@ -513,19 +513,19 @@ fun void addGraphics(Envelope env, float midi) {
     GPlane suz --> GG.scene();
     .1 => suz.sca;
     Color.BLACK => suz.color;
-
- // NEW
- // place location according to pitch
+    
+    // NEW
+    // place location according to pitch
     Math.remap(
         midi,      // value
         53, 68,    // value range
         -2.0, 2.0  // output range 
     ) => suz.posX;
-
+    
     // graphical loop
     while (true) {
         GG.nextFrame() => now;
-
+    
         // sync color to volume
         env.value() * Color.WHITE => suz.color;
         // sync vertical scale to volume
