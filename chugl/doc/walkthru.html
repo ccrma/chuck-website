@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+  <style>
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+        body {
+            background-color: rgb(13,17,23)
+        }
+    }
+    /* Light mode */
+    @media (prefers-color-scheme: light) {
+        body {
+            background-color: white;
+        }
+    }
+  </style>
   <head>
     <script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +22,7 @@
     <title>ChuGL Example Walkthrough: Music for Airports</title>
   </head>
 
-  <body style="background-color:rgb(13,17,23);">
+  <body>
     <div class="pure-g">
       <div class="w3-container w3-content w3-left-align w3-padding-64" style="max-width:1000px" id="band">
         <div class="pure-u-1-1 center">
