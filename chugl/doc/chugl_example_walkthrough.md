@@ -18,7 +18,7 @@
 
 ## Overview
 
-This ChuGL walkthrough begins with the basics of installing and running chuck programs and ends with an audiovisual recreation of track 2/1 from Brian Eno's *Music for Airports*. Along the way, we will have cover creating and drawing to a window, reading user input,  methods for synchronizing audio and graphics, and more.
+This ChuGL walkthrough begins with the basics of installing and running chuck programs and ends with an audiovisual recreation of track 2/1 from Brian Eno's *Music for Airports*. Along the way, we will cover creating and drawing to a window, reading user input,  methods for synchronizing audio and graphics, and more.
 
 ## Installing ChucK/ChuGL
 
