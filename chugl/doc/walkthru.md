@@ -1,6 +1,6 @@
 # ChuGL Example Walkthrough - Music for Airports
 
-- [ChuGL Example Walkthrough - Music for Airports](#chugl-example-walkthrough---music-for-airports)
+- [ChuGL Example Walkthrough - Music for Airports](#walkthrough---music-for-airports)
   - [Overview](#overview)
   - [Installing ChucK/ChuGL](#installing-chuckchugl)
   - [Running  ChucK/ChuGL](#running--chuckchugl)
