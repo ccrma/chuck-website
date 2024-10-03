@@ -33,6 +33,7 @@ Philip Davidson.
 **ChuGL v0.1.5** (alpha) — [**ChuGL API Reference**](./api/)
 • [**Examples**](./examples/)
 • [**Cheatsheet**](./doc/cheatsheet.html)
+• [**Walkthrough**](./doc/chugl_example_walkthrough.html)
 • [**Tutorial**](./doc/tutorial.html)
 • [**Paper (NIME 2024)**](https://mcd.stanford.edu/publish/files/2024-nime-chugl.pdf)
 <br>
