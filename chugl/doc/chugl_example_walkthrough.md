@@ -474,7 +474,7 @@ spork ~ addVoice(60, 2::second, 3::second, 0::second);
 
 // original gameloop
 while (true) {
- GG.nextFrame() => now;   // on every frame...
+    GG.nextFrame() => now;   // on every frame...
 }
 ```
 
