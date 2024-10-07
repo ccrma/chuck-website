@@ -13,6 +13,7 @@
   - [Make my own geometries?](#make-my-own-geometries)
   - [Add a UI?](#add-a-ui)
   - [View the Current Scenegraph?](#view-the-current-scenegraph)
+  - [Give names to objects in the UI scenegraph view?](#give-names-to-objects-in-the-ui-scenegraph-view)
   - [Create an object where my mouse is?](#create-an-object-where-my-mouse-is)
   - [Get the object I'm clicking on?](#get-the-object-im-clicking-on)
   - [Do collision detection?](#do-collision-detection)
@@ -468,6 +469,18 @@ while (true) {
  }
  UI.end();
 }
+```
+
+___
+
+## Give names to objects in the UI scenegraph view?
+
+Every ChuGL component (GGens, Textures, Materials, Shaders, etc) has a `.name()` method, which if set will appear in the scenegraph view. E.g.
+
+```c
+GGen my_ggen --> GG.scene();
+my_ggen.name("my ggen");
+GG.scene().name("scene name");
 ```
 
 ___
