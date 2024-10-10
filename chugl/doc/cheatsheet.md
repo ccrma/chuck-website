@@ -5,6 +5,7 @@
   - [Change color?](#change-color)
   - [Change the Lighting?](#change-the-lighting)
   - [Get mouse/keyboard input?](#get-mousekeyboard-input)
+  - [Add/Remove graphics objects from the scene? Connect/Disconnect objects from each other?](#addremove-graphics-objects-from-the-scene-connectdisconnect-objects-from-each-other)
   - [Add Bloom?](#add-bloom)
   - [Control the camera?](#control-the-camera)
   - [Load 3D models and other assets?](#load-3d-models-and-other-assets)
@@ -166,6 +167,28 @@ You have a couple options here
 
 - [Hid](https://chuck.stanford.edu/doc/reference/io.html#Hid)
 - [GWindow](https://chuck.stanford.edu/chugl/api/chugl-basic.html#GWindow)
+
+___
+
+## Add/Remove graphics objects from the scene? Connect/Disconnect objects from each other?
+
+`GGens` are connected via the "gruck" operator `-->`.
+
+You can remove graphics objects by disconnecting them from the scene to which they are currently connected. There are a few options for this, enumerated below:
+
+```c
+// connect a cube to the scene. the cube will now be rendered
+GCube cube --> GG.scene();  
+
+// disconnect the cube via the "ungruck" operator. LHS is child, RHS is parent.
+cube --< GG.scene();
+// OR
+cube.detachParent(); // remove cube from its parent
+// OR 
+GG.scene().detachChildren(); // disconnects ALL children of GG.scene()
+// OR
+cube.detach(); // disconnects cube from its parent AND all children from cube
+```
 
 ___
 
