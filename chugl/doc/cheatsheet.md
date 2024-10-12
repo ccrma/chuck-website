@@ -513,7 +513,7 @@ ___
 ```c
 // convert from mouse position to world space
 1.0 => float distance_from_camera;
-GG.camera().screenCordToWorldPos(GWindow.mousePos(), distance_from_camera) => vec3 pos;
+GG.camera().screenCoordToWorldPos(GWindow.mousePos(), distance_from_camera) => vec3 pos;
 
 // spawn something at that location
 GCube cube --> GG.scene();
