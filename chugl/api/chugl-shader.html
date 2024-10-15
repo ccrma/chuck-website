@@ -29,9 +29,6 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Float</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Float2</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Float3</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -41,13 +38,16 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Int</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Int4</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Float2</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Int2</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Int3</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Int4</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -67,28 +67,28 @@
 <h3 class="class_section_header">member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">vertexCode</span></p><p class="member_description">Vertex shader string. Set if passing a raw shader code (not a filepath)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">vertexPath</span></p><p class="member_description">Vertex shader filepath. Set if passing a filepath to a shader file.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">fragmentPath</span></p><p class="member_description">Fragment shader filepath. Set if passing a filepath to a shader file.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">vertexPath</span></p><p class="member_description">Vertex shader filepath. Set if passing a filepath to a shader file.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">fragmentCode</span></p><p class="member_description">Fragment shader string. Set if passing a raw shader code (not a filepath)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">vertexLayout</span></p><p class="member_description">Array of VertexFormat enums describing the vertex data layout.E.g. if your vertex shader takes a vec3 position and a vec2 uv, set `vertexLayout` to [VertexFormat.Float3, VertexFormat.Float2]. By default this field is set to the standard vertex layout, [VertexFormat.Float3, VertexFormat.Float3, VertexFormat.Float2, VertexFormat.Float4]. This corresponds to position, normal, uv, tangent.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">computePath</span></p><p class="member_description">Compute shader filepath. Set if passing a filepath to a shader file.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">computeCode</span></p><p class="member_description">Compute shader string. Set if passing a raw shader code (not a filepath)</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">computePath</span></p><p class="member_description">Compute shader filepath. Set if passing a filepath to a shader file.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">vertexCode</span></p><p class="member_description">Vertex shader string. Set if passing a raw shader code (not a filepath)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">vertexLayout</span></p><p class="member_description">Array of VertexFormat enums describing the vertex data layout.E.g. if your vertex shader takes a vec3 position and a vec2 uv, set `vertexLayout` to [VertexFormat.Float3, VertexFormat.Float2]. By default this field is set to the standard vertex layout, [VertexFormat.Float3, VertexFormat.Float3, VertexFormat.Float2, VertexFormat.Float4]. This corresponds to position, normal, uv, tangent.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">lit</span></p><p class="member_description">Set to true if the shader is lit (uses lighting calculations). If set, the renderer will pass in lighting information as part of the per-frame uniforms.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">fragmentCode</span></p><p class="member_description">Fragment shader string. Set if passing a raw shader code (not a filepath)</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -115,20 +115,16 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">vertexCode</span>()</p>
-<p class="member_description">Get the vertex shader string passed in the ShaderDesc at creation.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">vertexPath</span>()</p>
+<p class="member_description">Get the vertex shader filepath passed in the ShaderDesc at creation.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">fragmentPath</span>()</p>
 <p class="member_description">Get the fragment shader filepath passed in the ShaderDesc at creation.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">vertexPath</span>()</p>
-<p class="member_description">Get the vertex shader filepath passed in the ShaderDesc at creation.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">fragmentCode</span>()</p>
-<p class="member_description">Get the fragment shader string passed in the ShaderDesc at creation.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">vertexCode</span>()</p>
+<p class="member_description">Get the vertex shader string passed in the ShaderDesc at creation.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">vertexLayout</span>()</p>
@@ -137,6 +133,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">lit</span>()</p>
 <p class="member_description">Get whether the shader is lit (uses lighting calculations).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">fragmentCode</span>()</p>
+<p class="member_description">Get the fragment shader string passed in the ShaderDesc at creation.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
