@@ -1180,7 +1180,7 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">data3</span></p><p class="member_description">Third byte of a Midi message, usually a velocity value.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">when</span></p><p class="member_description">Time when the MidiMsg occurred, relative to the start of the file (only valid for MidiFileIn).</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">when</span></p><p class="member_description">Duration since the last MidiMsg (only valid for MidiFileIn).</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -1203,6 +1203,14 @@
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">beatsPerMinute</span>()</p>
+<p class="member_description">Get the beats per minute (BPM) value from the MIDI file header.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bpm</span>()</p>
+<p class="member_description">Same as beatsPerMinute().</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">close</span>()</p>
 <p class="member_description">Close the MIDI file.</p>
@@ -1230,6 +1238,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rewind</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> track)</p>
 <p class="member_description">Rewind MIDI reader to beginning of track 'track'.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ticksPerQuarter</span>()</p>
+<p class="member_description">Get the ticks per quarter (TPQ) value from the MIDI file header.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tpq</span>()</p>
+<p class="member_description">Same as ticksPerQuarter().</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
