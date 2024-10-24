@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC 
+"-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>ChucK - [Language Specification : Import System]</title>
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<center>
+
+<!-- all in a big fat table-->
+
+<table id="page_layout" border="0" width="640">
+
+<!-- heading row-->
+
+<tr><td>
+<div id="chuck_header">
+<center>
+<h1>
+<strong>ChucK</strong> : Language Specification &gt; Import System
+</h1>
+
+<table border="0">
+<tr><td>
+  	<div id="chuck_revision">
+	version: 1.5.x.x (numchucks)
+  	</div>
+  	
+</td></tr>
+</table>
+
+<hr width="20%" />
+</center>
+</div>
+</td></tr>
+
+<!-- navigation bar -->
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  &lt; (prev): <a href="time.html">manipulating time</a> | (up): <a href="./">language specification</a> | (next): <a href="spork.html">concurrency</a> &gt; 
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+<!-- lang specification section -->
+<tr><td>
+<div id="chuck_body">
+<div id="lang_topic_body">
+
+<h1><strong>Import System</strong></h1>
+<p>
+The <b>@import</b> system imports classes and operator overloads from other ChucK (.ck) and chugin (.chug) files; it is designed to faciliate creating, using, and distributing multi-file programs and libraries.
+</p>
+
+<!-- index of code exmaples -->
+<div class="lang_code_ref">
+<a href="../examples/index.html#import">View sample code</a> for importing files
+</div>
+
+
+<!-- body of each sub topic -->
+
+<div class="lang_subtopic_body">
+<a name="syntax"> </a>
+<h2><strong>syntax</strong></h2>
+
+<p><b>@import</b> statements can appear anywhere in .ck file, so long as they are on the top-most scope. Some example usage of <b>@import</b>:</p>
+
+<pre>
+    // import a ChucK file (.ck)
+    @import "Foo.ck"
+
+    // import a chugin (.chug or .chug.wasm)
+    @import "Bar.chug"
+
+    // multiple imports can be grouped together
+    @import { "AAA.ck", "BBB.chug", "CCC" }
+
+    // can use implicit filename (with no extension)
+    // if the file 'Blarg' exists, it will be imported as a .ck file
+    // if not, @import will automatically match for .ck and .chug files
+    @import "Blarg"
+
+    // import a file using absolute path
+    @import "/Users/ge/chuck/examples/import/foo-user.ck"
+
+    // paths are relative to the location of the container .ck file
+    @import "../dir/Blarg.ck"
+</pre>
+</div>
+
+<!-- additional sub topic sections go here... -->
+
+<div class="lang_subtopic_body">
+<a name="semantics"> </a>
+<h2><strong>what gets imported?</strong></h2>
+
+<p>The <b>@import</b> system imports <i>all</i> <b>public</b>&mdash;and <i>only</i> <b>public</b>&mdash;class definitions and operator overloads from imported ChucK files. For example:</p>
+
+in <b>Foo.ck</b>
+<pre>
+// define a public Foo class (picked up by @import)
+public class Foo
+{
+    // member variable
+    int num;
+
+    // constructor
+    fun Foo( int n ) { n => num; }
+}
+
+// a non-public class definition (ignored by @import)
+class Bar
+{
+    // ...
+}
+
+// public operator overloading + for Foo (picked up by @import)
+public Foo @operator +( Foo lhs, Foo rhs )
+{
+    // return a new Foo
+    return new Foo( lhs.num + rhs.num );
+}
+
+// non-public binary operator overload for '=>' (ignored by @import)
+fun void @operator =^( Foo lhs, Foo rhs )
+{ 
+    // for sake of example, just print contents
+    <<< lhs.num, "=^", rhs.num >>>;
+}
+</pre>
+
+in <b>test.ck</b>
+<pre>
+// import Foo.ck
+@import "Foo.ck"
+
+// instantiate class defined in imported file
+Foo a(1), b(2);
+
+// use operator overload defined in imported file
+<<< (a + b).num >>>;
+</pre>
+
+Imports works recursively; it is possible to @import files that @import other files, etc. There is built-in cycle-detection; if an @import cycle is detected, a compiler error will be issued.
+<br><br>
+
+Imports are resolved at compile-time, before the rest of the host file is evaluated; this makes it possible for a a host .ck file to @import one or more files and make use of their contents immediately (when it comes to dependency management, this compile-time import mechanism is more powerful than the run-time Machine.add()).
+<br><br>
+
+If the imported file is a chugin (.chug) file, <b>@import</b> will resolve the filename (see next section for details) and load the chugin. Unlike .ck files, <i>all</i> contents that a chugin adds to the ChucK type system will be imported.
+</div>
+
+<div class="lang_subtopic_body">
+<a name="semantics"> </a>
+<h2><strong>filename resolution</strong></h2>
+It is possible to import a filename without an extension. As an example, if a host .ck file contains this statement:
+<pre>
+    @import "Blarg"
+</pre>
+In this case following steps are taken to automatically locate and resolve "Blarg" to either a .ck file or a .chug file, while taking import paths into account. More specifically, the import system will attempt to locate on disk (starting from the directory where the host .ck file resides) "Blarg", "Blarg.ck", "Blarg.chug", and "Blarg.chug.wasm" (for WebChucK), resolving "Blarg" to the first matching file. If no match is found, the import system will expand the search to platform-specific search paths.
+
+</div>
+
+<div class="lang_subtopic_body">
+<a name="semantics"> </a>
+<h2><strong>additional usage notes</strong></h2>
+@import only adds new definitions to the type system, and will never automatically run any code; client code must first instantiate class or use an operator to execute the contents of imported files.
+<br><br>
+This makes it possible to write unit-test code for public classes in the same file in which it is defined; any code outside of public class/operator definition will NOT be type-checked or run (this code will only scanned for syntax):
+<br><br>
+<b>Bar.ck</b>
+<pre>
+// a class definition (public; will be picked by @import)
+public class Bar extends Chugraph
+{
+    // ...
+}
+
+// unit-test or provide example for KS (will be ignored by @import)
+Bar bar => dac;
+// ...
+</pre>
+
+</div>
+
+
+<!-- end subtopics ? -->
+
+</div>
+</div>
+</td></tr>
+
+<!-- navigation bar -->
+
+<tr><td>
+<center>
+<div class="chuck_nav">
+
+	<table border="0"><tr><td>
+	<center>
+	<div class="chuck_nav_bar">	
+  &lt; (prev): <a href="time.html">manipulating time</a> | (up): <a href="./">language specification</a> | (next): <a href="spork.html">concurrency</a> &gt; 
+	</div>
+	</center>  
+	</td></tr></table>
+
+</div>
+</center>
+</td></tr>
+
+<!-- chuck-footer -->
+
+<tr><td>
+<div id ="chuck_footer">
+<center>
+<hr width="15%" / >
+<a href="../../">chuck</a> |
+<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
+<a href="http://www.cs.princeton.edu/">cs</a> |
+<a href="http://www.music.princeton.edu/">music</a> |
+<a href="http://ccrma.stanford.edu/">ccrma</a>
+
+</center>
+</div>
+</td></tr>
+</table>
+
+</center>
+</body>
+</html>
