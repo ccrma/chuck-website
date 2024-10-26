@@ -164,6 +164,16 @@ Imports are resolved at compile-time, before the rest of the host file is evalua
 If the imported file is a chugin (.chug) file, <b>@import</b> will resolve the filename (see next section for details) and load the chugin. Unlike .ck files, <i>all</i> contents that a chugin adds to the ChucK type system will be imported.
 </div>
 
+<div class="lang_subtopic_body">
+<a name="resolution"> </a>
+<h2><strong>filename resolution</strong></h2>
+It is possible to import a filename without an extension. As an example, if a host .ck file contains this statement:
+<pre>
+    @import "Blarg"
+</pre>
+In this case, the @import system will attempt to automatically locate and resolve "Blarg"&mdash;to either a .ck file or a .chug file, while taking import paths into account. More specifically, the import system will attempt to locate on disk (starting from the directory where the host .ck file resides) and match for different extensions&mdash;e.g., "Blarg", "Blarg.ck", "Blarg.chug", and "Blarg.chug.wasm" (for WebChucK)&mdash;resolving "Blarg" to the first matching file. If no match is found, the import system will expand the search to platform-specific search paths.
+
+</div>
 
 <div class="lang_subtopic_body">
 <a name="public"> </a>
@@ -216,17 +226,6 @@ public class Bar
     Blarg blarg;
 }
 </pre>
-
-</div>
-
-<div class="lang_subtopic_body">
-<a name="resolution"> </a>
-<h2><strong>filename resolution</strong></h2>
-It is possible to import a filename without an extension. As an example, if a host .ck file contains this statement:
-<pre>
-    @import "Blarg"
-</pre>
-In this case, the @import system will attempt to automatically locate and resolve "Blarg"&mdash;to either a .ck file or a .chug file, while taking import paths into account. More specifically, the import system will attempt to locate on disk (starting from the directory where the host .ck file resides) and match for different extensions&mdash;e.g., "Blarg", "Blarg.ck", "Blarg.chug", and "Blarg.chug.wasm" (for WebChucK)&mdash;resolving "Blarg" to the first matching file. If no match is found, the import system will expand the search to platform-specific search paths.
 
 </div>
 
