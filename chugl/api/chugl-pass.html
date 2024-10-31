@@ -57,20 +57,20 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorOutput</span>()</p>
-<p class="member_description">Get the target texture to draw the scene to.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">autoClearColor</span>()</p>
-<p class="member_description">Get whether the framebuffer's color target is cleared each frame.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorOutput</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> color_texture)</p>
 <p class="member_description">Set the target texture to draw the scene to.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorOutput</span>()</p>
+<p class="member_description">Get the target texture to draw the scene to.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">autoClearColor</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> clear)</p>
 <p class="member_description">Set whether the framebuffer's color target should be cleared each frame. Default true.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">autoClearColor</span>()</p>
+<p class="member_description">Get whether the framebuffer's color target is cleared each frame.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -90,20 +90,16 @@
 <p class="member_declaration"><span class="membername">ScreenPass</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> screen_shader)</p>
 <p class="empty_member_description">No description available</p>
 </div>
-<div class="member">
-<p class="member_declaration"><span class="membername">ScreenPass</span>()</p>
-<p class="member_description">Default constructor for ScreenPass.</p>
-</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shader</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> shader)</p>
-<p class="member_description">Set the screen shader to apply to the screen. In your screen shader be sure to #include SCREEN_PASS_VERTEX_SHADER which supplies your fragment shader with a full-screen quad.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorOutput</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
 <p class="member_description">Set the color attachment output texture of this screen pass.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shader</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> shader)</p>
+<p class="member_description">Set the screen shader to apply to the screen. In your screen shader be sure to #include SCREEN_PASS_VERTEX_SHADER which supplies your fragment shader with a full-screen quad.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -131,12 +127,12 @@
 <p class="member_description">Set the tonemapping algorithm to apply to the input texture. Choose a value from the OutputPass.ToneMap_* enum.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">exposure</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> exposure)</p>
-<p class="member_description">Set the exposure value for the tonemapping algorithm.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tonemap</span>()</p>
 <p class="member_description">Get the tonemapping algorithm applied to the input texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">exposure</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> exposure)</p>
+<p class="member_description">Set the exposure value for the tonemapping algorithm.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">exposure</span>()</p>
@@ -146,22 +142,22 @@
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_Linear</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_None</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_Linear</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_Reinhard</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_Cineon</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_ACES</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_Uncharted</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ToneMap_Cineon</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -170,7 +166,7 @@
 <a name="ComputePass" /><div class="class">
 <h2 class="class_title" name="ComputePass">ComputePass</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-pass.html#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Compute pass for running compute shaders.<p>
+<p class="class_description">Compute pass for running compute shaders. Note that unlike Materials, all Compute Pass bindings must be bound under @group(0), NOT @group(1)<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/rendergraph/boids_compute.ck">rendergraph/boids_compute.ck</a></li>
 </ul></div>
@@ -184,31 +180,7 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shader</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> shader)</p>
-<p class="member_description">Set the compute shader to run.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> uniform_value)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat4</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> uniform_value)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> uniform_value)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">float</span> uniform_value)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> uniform_value)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">storageTexture</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -217,6 +189,30 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">texture</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">storageTexture</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shader</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> shader)</p>
+<p class="member_description">Set the compute shader to run.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">float</span> uniform_value)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> uniform_value)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> uniform_value)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat4</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> uniform_value)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -245,6 +241,10 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorOutput</span>()</p>
+<p class="member_description">Get the render texture that the bloom pass writes to.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">input</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> bloom_texture)</p>
 <p class="member_description">Set the render texture to apply bloom to.</p>
 </div>
@@ -253,16 +253,8 @@
 <p class="member_description">Set the blend factor between mip levels of the bloom texture during upsample.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">threshold</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> threshold)</p>
-<p class="member_description">Set the threshold for the bloom pass (colors with all rgb values below threshold are not bloomed)</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">intensity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> blend_factor)</p>
 <p class="member_description">Set the blend factor between the bloom texture and the original image.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorOutput</span>()</p>
-<p class="member_description">Get the render texture that the bloom pass writes to.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span>()</p>
@@ -277,12 +269,16 @@
 <p class="member_description">Number of blur passes to apply to the bloom texture. Clamped between 0 and 16.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">threshold</span>()</p>
-<p class="member_description">Get the threshold for the bloom pass.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">levels</span>()</p>
 <p class="member_description">Get the number of blur passes applied to the bloom texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">threshold</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> threshold)</p>
+<p class="member_description">Set the threshold for the bloom pass (colors with all rgb values below threshold are not bloomed)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">threshold</span>()</p>
+<p class="member_description">Get the threshold for the bloom pass.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

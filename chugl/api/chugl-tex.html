@@ -29,6 +29,7 @@
 <li><a target="_blank" href="../examples/deep/game_of_life.ck">deep/game_of_life.ck</a></li>
 <li><a target="_blank" href="../examples/deep/audio_donut.ck">deep/audio_donut.ck</a></li>
 <li><a target="_blank" href="../examples/deep/snowstorm.ck">deep/snowstorm.ck</a></li>
+<li><a target="_blank" href="../examples/basic/skybox.ck">basic/skybox.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -44,28 +45,20 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> pixel_data)</p>
-<p class="member_description">Convenience function for writing into a texture. Assumes pixel_data is being written into the texture origin (0,0,0) with a region equal to the full texture dimensions (width, height, depth) at mip level 0.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span>()</p>
 <p class="member_description">Get the texture width (immutable)</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span>()</p>
-<p class="member_description">Get the texture height (immutable)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">dimension</span>()</p>
-<p class="member_description">Get the texture dimension (immutable). Returns a value from the Texture.Dimension_XXXXX enum, e.g. Texture.Dimension_2D.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> pixel_data)</p>
+<p class="member_description">Convenience function for writing into a texture. Assumes pixel_data is being written into the texture origin (0,0,0) with a region equal to the full texture dimensions (width, height, depth) at mip level 0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">format</span>()</p>
 <p class="member_description">Get the texture format (immutable). Returns a value from the Texture.Format_XXXXX enum, e.g. Texture.Format_RGBA8Unorm.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mips</span>()</p>
-<p class="member_description">Get the number of mip levels (immutable). Returns the number of mip levels in the texture.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">dimension</span>()</p>
+<p class="member_description">Get the texture dimension (immutable). Returns a value from the Texture.Dimension_XXXXX enum, e.g. Texture.Dimension_2D.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">depth</span>()</p>
@@ -74,6 +67,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">usage</span>()</p>
 <p class="member_description">Get the texture usage flags (immutable). Returns a bitmask of usage flgas from the Texture.Usage_XXXXX enum e.g. Texture.Usage_TextureBinding | Texture.Usage_RenderAttachment. By default, textures are created with ALL usages enabled.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mips</span>()</p>
+<p class="member_description">Get the number of mip levels (immutable). Returns the number of mip levels in the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span>()</p>
+<p class="member_description">Get the texture height (immutable)</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> pixel_data, <span class="ckdoc_typename ckdoc_type_object">TextureWriteDesc</span> write_desc)</p>
@@ -90,26 +91,21 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">load</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filepath, <span class="ckdoc_typename ckdoc_type_object">TextureLoadDesc</span> load_desc)</p>
 <p class="member_description">Load a 2D texture from a file with additional parameters.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">load</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> right, <span class="ckdoc_typename ckdoc_type_object">string</span> left, <span class="ckdoc_typename ckdoc_type_object">string</span> top, <span class="ckdoc_typename ckdoc_type_object">string</span> bottom, <span class="ckdoc_typename ckdoc_type_object">string</span> back, <span class="ckdoc_typename ckdoc_type_object">string</span> front)</p>
+<p class="member_description">Load a cubemap texture from 6 filepaths, one for each face.</p>
+</div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Dimension_2D</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_All</span></p><p class="member_description">Texture usage flag: all usages enabled.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_CopySrc</span></p><p class="member_description">Texture usage flag: can be used as a source for copy/write operations.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_CopyDst</span></p><p class="member_description">Texture usage flag: can be used destination for copy/write operations.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_CopySrc</span></p><p class="member_description">Texture usage flag: can be used as a source for copy/write operations.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_TextureBinding</span></p><p class="member_description">Texture usage flag: texture can be bound to a shader.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Format_RGBA8Unorm</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_StorageBinding</span></p><p class="member_description">Texture usage flag: texture can be bound as a storage texture to a shader.</p>
@@ -118,10 +114,19 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_RenderAttachment</span></p><p class="member_description">Texture usage flag: texture can be used as a render attachment, i.e. written to by a render pass.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Format_RGBA32Float</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_All</span></p><p class="member_description">Texture usage flag: all usages enabled.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Dimension_2D</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Format_RGBA8Unorm</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Format_RGBA16Float</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Format_RGBA32Float</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Format_R32Float</span></p><p class="empty_member_description">No description available</p>
@@ -144,22 +149,22 @@
 <h3 class="class_section_header">member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">filterMip</span></p><p class="member_description">Mip level filter. Valid values are TextureSampler.Filter_Nearest, TextureSampler.Filter_Linear.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">wrapV</span></p><p class="member_description">V-axis (vertical) wrap mode. Valid values are TextureSampler.Wrap_Repeat, TextureSampler.Wrap_Mirror, TextureSampler.Wrap_Clamp.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">wrapU</span></p><p class="member_description">U-axis (horizontal) wrap mode. Valid values are TextureSampler.Wrap_Repeat, TextureSampler.Wrap_Mirror, TextureSampler.Wrap_Clamp.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">filterMag</span></p><p class="member_description">Magnification filter. Valid values are TextureSampler.Filter_Nearest, TextureSampler.Filter_Linear.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">wrapV</span></p><p class="member_description">V-axis (vertical) wrap mode. Valid values are TextureSampler.Wrap_Repeat, TextureSampler.Wrap_Mirror, TextureSampler.Wrap_Clamp.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">wrapW</span></p><p class="member_description">W-axis wrap mode. Valid values are TextureSampler.Wrap_Repeat, TextureSampler.Wrap_Mirror, TextureSampler.Wrap_Clamp.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">filterMin</span></p><p class="member_description">Minification filter. Valid values are TextureSampler.Filter_Nearest, TextureSampler.Filter_Linear.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">filterMag</span></p><p class="member_description">Magnification filter. Valid values are TextureSampler.Filter_Nearest, TextureSampler.Filter_Linear.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">filterMip</span></p><p class="member_description">Mip level filter. Valid values are TextureSampler.Filter_Nearest, TextureSampler.Filter_Linear.</p>
 </div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
@@ -171,10 +176,10 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Wrap_Mirror</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Filter_Nearest</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Wrap_Clamp</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Wrap_Clamp</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Filter_Nearest</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Filter_Linear</span></p><p class="empty_member_description">No description available</p>
@@ -200,22 +205,22 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span></p><p class="member_description">Width in texels. Default is 1.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span></p><p class="member_description">Height in texels. Default is 1.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">dimension</span></p><p class="member_description">Texture dimension. Valid options are defined in the Texture.Dimension_* enum. Default is Texture.Dimension_2D.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">format</span></p><p class="member_description">Texture format. Valid options are defined in the Texture.Format_* enum. Default is Texture.Format_RGBA8Unorm.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mips</span></p><p class="member_description">Number of mip levels. Default is 1.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">dimension</span></p><p class="member_description">Texture dimension. Valid options are defined in the Texture.Dimension_* enum. Default is Texture.Dimension_2D.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">depth</span></p><p class="member_description">Depth in texels. Default is 1.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">usage</span></p><p class="member_description">Bit mask of texture usage flags. Valid flags are defined in the Texture.Usage_* enum. Default is Texture.Usage_All, which enables all usages.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mips</span></p><p class="member_description">Number of mip levels. Default is 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span></p><p class="member_description">Height in texels. Default is 1.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -235,6 +240,9 @@
 <h3 class="class_section_header">member variables</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span></p><p class="member_description">Width of write region. Default 0.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">y</span></p><p class="member_description">Y offset of write region. Default 0.</p>
 </div>
 <div class="member">
@@ -244,16 +252,13 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">z</span></p><p class="member_description">Z offset of write region. Default 0.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span></p><p class="member_description">Width of write region. Default 0.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span></p><p class="member_description">Height of write region. Default 0.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">depth</span></p><p class="member_description">Depth of write region. Default 0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mip</span></p><p class="member_description">Which mip level to write to. Default is 0 (base level)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span></p><p class="member_description">Height of write region. Default 0.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -273,10 +278,10 @@
 <h3 class="class_section_header">member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gen_mips</span></p><p class="member_description">Generate mipmaps for the texture. Default true.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">flip_y</span></p><p class="member_description">Flip the image vertically before loading. Default false.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">flip_y</span></p><p class="member_description">Flip the image vertically before loading. Default false.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gen_mips</span></p><p class="member_description">Generate mipmaps for the texture. Default true.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

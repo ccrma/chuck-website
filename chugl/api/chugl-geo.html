@@ -44,16 +44,40 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">indices</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> indices)</p>
-<p class="member_description">Set the indices for a geometry.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">vertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> numComponents, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> attributeData)</p>
 <p class="member_description">Set the vertex attribute data for a geometry. location must be between 0 and AttributeLocation_Max.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">vertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> numComponents, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> attributeData)</p>
+<p class="member_description">Set the vertex attribute data for a geometry. location must be between 0 and Geometry.AttributeLocation_Count.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">positions</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> positions)</p>
+<p class="member_description">Set the positions for a geometry. Equivalent to vertexAttribute(0, 3, positions)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normals</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> normals)</p>
+<p class="member_description">Set the normals for a geometry. Equivalent to vertexAttribute(1, 3, normals)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvs</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> uvs)</p>
+<p class="member_description">Set the UVs for a geometry. Equivalent to vertexAttribute(2, 2, uvs)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tangents</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span><span class="typename">[]</span> tangents)</p>
+<p class="member_description">Set the tangents for a geometry. Equivalent to vertexAttribute(3, 4, tangents)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> <span class="membername">positions</span>()</p>
+<p class="member_description">Get the positions for a geometry. Equivalent to getVertexAttributeData(0)</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> <span class="membername">normals</span>()</p>
 <p class="member_description">Get the normals for a geometry. Equivalent to getVertexAttributeData(1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> <span class="membername">uvs</span>()</p>
+<p class="member_description">Get the UVs for a geometry. Equivalent to getVertexAttributeData(2)</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span><span class="typename">[]</span> <span class="membername">tangents</span>()</p>
@@ -64,39 +88,23 @@
 <p class="member_description">Get the component count for all vertex attributes on this geometry.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> <span class="membername">positions</span>()</p>
-<p class="member_description">Get the positions for a geometry. Equivalent to getVertexAttributeData(0)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tangents</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span><span class="typename">[]</span> tangents)</p>
-<p class="member_description">Set the tangents for a geometry. Equivalent to vertexAttribute(3, 4, tangents)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">positions</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> positions)</p>
-<p class="member_description">Set the positions for a geometry. Equivalent to vertexAttribute(0, 3, positions)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvs</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> uvs)</p>
-<p class="member_description">Set the UVs for a geometry. Equivalent to vertexAttribute(2, 2, uvs)</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">vertexAttributeData</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
 <p class="member_description">Get the vertex data for a vertex attribute. Default empty array.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normals</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> normals)</p>
-<p class="member_description">Set the normals for a geometry. Equivalent to vertexAttribute(1, 3, normals)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">vertexAttributeDataInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Get the vertex data for a vertex attribute. Default empty array.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> <span class="membername">uvs</span>()</p>
-<p class="member_description">Get the UVs for a geometry. Equivalent to getVertexAttributeData(2)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">indices</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> indices)</p>
+<p class="member_description">Set the indices for a geometry.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">vertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> numComponents, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> attributeData)</p>
-<p class="member_description">Set the vertex attribute data for a geometry. location must be between 0 and Geometry.AttributeLocation_Count.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">indices</span>()</p>
+<p class="member_description">Get the indices for a geometry.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pulledVertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> data)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pulledVertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> data)</p>
 <p class="member_description">Set storage buffer for programmable vertex pulling.  pulled attributes will be set as storage buffers bound to @group(3) in the shader. Location must be between 0-3.</p>
 </div>
 <div class="member">
@@ -104,19 +112,11 @@
 <p class="member_description">Set storage buffer for programmable vertex pulling.  pulled attributes will be set as storage buffers bound to @group(3) in the shader. Location must be between 0-3.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pulledVertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span><span class="typename">[]</span> data)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pulledVertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> data)</p>
 <p class="member_description">Set storage buffer for programmable vertex pulling.  pulled attributes will be set as storage buffers bound to @group(3) in the shader. Location must be between 0-3.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">indices</span>()</p>
-<p class="member_description">Get the indices for a geometry.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">vertexAttributeDataInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
-<p class="member_description">Get the vertex data for a vertex attribute. Default empty array.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pulledVertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> data)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pulledVertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span><span class="typename">[]</span> data)</p>
 <p class="member_description">Set storage buffer for programmable vertex pulling.  pulled attributes will be set as storage buffers bound to @group(3) in the shader. Location must be between 0-3.</p>
 </div>
 <div class="member">
@@ -124,20 +124,20 @@
 <p class="member_description">Set storage buffer for programmable vertex pulling.  pulled attributes will be set as storage buffers bound to @group(3) in the shader. Location must be between 0-3.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">vertexCount</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> count)</p>
-<p class="member_description">If this geometry uses vertex pulling or non-indexed drawing, Set the number of vertices to be drawn of this geometry by the rendererDefault is -1, which means all vertices are drawn. Values will be clamped to the actual number of vertices in the geometry.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">pulledVertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Get the pulled vertex attribute data at this location. location must be between 0-3.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">pulledVertexAttributeInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
 <p class="member_description">Get the pulled vertex attribute data at this location. location must be between 0-3.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">generateTangents</span>()</p>
-<p class="member_description">Generate tangents assuming default vertex attribute locations: position=0, normal=1, uv=2, tangent=3. Tangents are written to location = 3.Indices are supported but optional. Call *after* all other attribute data and indices have been supplied.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">vertexCount</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> count)</p>
+<p class="member_description">If this geometry uses vertex pulling or non-indexed drawing, Set the number of vertices to be drawn of this geometry by the rendererDefault is -1, which means all vertices are drawn. Values will be clamped to the actual number of vertices in the geometry.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">pulledVertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
-<p class="member_description">Get the pulled vertex attribute data at this location. location must be between 0-3.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">generateTangents</span>()</p>
+<p class="member_description">Generate tangents assuming default vertex attribute locations: position=0, normal=1, uv=2, tangent=3. Tangents are written to location = 3.Indices are supported but optional. Call *after* all other attribute data and indices have been supplied.</p>
 </div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
@@ -146,13 +146,13 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AttributeLocation_Count</span></p><p class="member_description">Maximum number of vertex attributes.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AttributeLocation_UV</span></p><p class="member_description">UV attribute location used by builtin renderer.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AttributeLocation_Position</span></p><p class="member_description">Position attribute location used by builtin renderer.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AttributeLocation_Normal</span></p><p class="member_description">Normal attribute location used by builtin renderer.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AttributeLocation_Position</span></p><p class="member_description">Position attribute location used by builtin renderer.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AttributeLocation_UV</span></p><p class="member_description">UV attribute location used by builtin renderer.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AttributeLocation_Tangent</span></p><p class="member_description">Tangent attribute location used by builtin renderer.</p>
@@ -175,25 +175,9 @@
 <p class="member_declaration"><span class="membername">CubeGeometry</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> width, <span class="ckdoc_typename ckdoc_type_primitive">float</span> height, <span class="ckdoc_typename ckdoc_type_primitive">float</span> depth, <span class="ckdoc_typename ckdoc_type_primitive">int</span> widthSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> heightSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> depthSegments)</p>
 <p class="member_description">Create box with given dimensions and subdivisions.</p>
 </div>
-<div class="member">
-<p class="member_declaration"><span class="membername">CubeGeometry</span>()</p>
-<p class="member_description">Default constructor for CubeGeometry.</p>
-</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">width</span>()</p>
-<p class="member_description">Get the box width.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">height</span>()</p>
-<p class="member_description">Get the box height.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">depth</span>()</p>
-<p class="member_description">Get the box depth.</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">heightSegments</span>()</p>
 <p class="member_description">Get the number of segments along the height.</p>
@@ -209,6 +193,18 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">depthSegments</span>()</p>
 <p class="member_description">Get the number of segments along the depth.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">width</span>()</p>
+<p class="member_description">Get the box width.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">height</span>()</p>
+<p class="member_description">Get the box height.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">depth</span>()</p>
+<p class="member_description">Get the box depth.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -232,10 +228,6 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span>()</p>
-<p class="member_description">Get the sphere radius.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">heightSegments</span>()</p>
 <p class="member_description">Get the number of segments along the height.</p>
 </div>
@@ -244,24 +236,28 @@
 <p class="member_description">Get the number of segments along the width.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">thetaStart</span>()</p>
-<p class="member_description">Get the starting angle of the sphere along the central diameter.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">build</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">int</span> widthSeg, <span class="ckdoc_typename ckdoc_type_primitive">int</span> heightSeg, <span class="ckdoc_typename ckdoc_type_primitive">float</span> phiStart, <span class="ckdoc_typename ckdoc_type_primitive">float</span> phiLength, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaStart, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaLength)</p>
+<p class="member_description">Set sphere dimensions and subdivisions.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">thetaLength</span>()</p>
 <p class="member_description">Get the length of the sphere along the central diameter.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">build</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">int</span> widthSeg, <span class="ckdoc_typename ckdoc_type_primitive">int</span> heightSeg, <span class="ckdoc_typename ckdoc_type_primitive">float</span> phiStart, <span class="ckdoc_typename ckdoc_type_primitive">float</span> phiLength, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaStart, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaLength)</p>
-<p class="member_description">Set sphere dimensions and subdivisions.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">thetaStart</span>()</p>
+<p class="member_description">Get the starting angle of the sphere along the central diameter.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">phiLength</span>()</p>
+<p class="member_description">Get the length of the sphere along the circumference.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">phiStart</span>()</p>
 <p class="member_description">Get the starting angle of the sphere along the circumference.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">phiLength</span>()</p>
-<p class="member_description">Get the length of the sphere along the circumference.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span>()</p>
+<p class="member_description">Get the sphere radius.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -281,32 +277,28 @@
 <p class="member_declaration"><span class="membername">CircleGeometry</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">int</span> segments, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaStart, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaLength)</p>
 <p class="empty_member_description">No description available</p>
 </div>
-<div class="member">
-<p class="member_declaration"><span class="membername">CircleGeometry</span>()</p>
-<p class="member_description">Default constructor for CircleGeometry.</p>
-</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span>()</p>
-<p class="member_description">Get the circle radius.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">thetaStart</span>()</p>
-<p class="member_description">Get the starting angle of the circle.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">build</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">int</span> segments, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaStart, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaLength)</p>
+<p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">thetaLength</span>()</p>
 <p class="member_description">Get the length of the circle.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">build</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">int</span> segments, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaStart, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaLength)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">thetaStart</span>()</p>
+<p class="member_description">Get the starting angle of the circle.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">segments</span>()</p>
 <p class="member_description">Get the number of segments.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span>()</p>
+<p class="member_description">Get the circle radius.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -330,14 +322,6 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">width</span>()</p>
-<p class="member_description">Get the plane width.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">height</span>()</p>
-<p class="member_description">Get the plane height.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">heightSegments</span>()</p>
 <p class="member_description">Get the number of segments along the height.</p>
 </div>
@@ -348,6 +332,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">build</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> width, <span class="ckdoc_typename ckdoc_type_primitive">float</span> height, <span class="ckdoc_typename ckdoc_type_primitive">int</span> widthSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> heightSegments)</p>
 <p class="member_description">Set plane dimensions and subdivisions.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">width</span>()</p>
+<p class="member_description">Get the plane width.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">height</span>()</p>
+<p class="member_description">Get the plane height.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -371,16 +363,8 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span>()</p>
-<p class="member_description">Get the torus radius.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">build</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">float</span> tubeRadius, <span class="ckdoc_typename ckdoc_type_primitive">int</span> radialSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> tubularSegments, <span class="ckdoc_typename ckdoc_type_primitive">float</span> arcLength)</p>
 <p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">tubeRadius</span>()</p>
-<p class="member_description">Get the torus tube radius.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">arcLength</span>()</p>
@@ -393,6 +377,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">radialSegments</span>()</p>
 <p class="member_description">Get the number of radial segments.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">tubeRadius</span>()</p>
+<p class="member_description">Get the torus tube radius.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span>()</p>
+<p class="member_description">Get the torus radius.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -412,48 +404,44 @@
 <p class="member_declaration"><span class="membername">CylinderGeometry</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radiusTop, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radiusBottom, <span class="ckdoc_typename ckdoc_type_primitive">float</span> height, <span class="ckdoc_typename ckdoc_type_primitive">int</span> radialSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> heightSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> openEnded, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaStart, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaLength)</p>
 <p class="empty_member_description">No description available</p>
 </div>
-<div class="member">
-<p class="member_declaration"><span class="membername">CylinderGeometry</span>()</p>
-<p class="member_description">Default constructor for CylinderGeometry.</p>
-</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">height</span>()</p>
-<p class="member_description">Get the cylinder height.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">heightSegments</span>()</p>
 <p class="member_description">Get the number of height segments.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">thetaStart</span>()</p>
-<p class="member_description">Get the starting angle of the cylinder.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">thetaLength</span>()</p>
-<p class="member_description">Get the length of the cylinder.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">build</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radiusTop, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radiusBottom, <span class="ckdoc_typename ckdoc_type_primitive">float</span> height, <span class="ckdoc_typename ckdoc_type_primitive">int</span> radialSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> heightSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> openEnded, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaStart, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thetaLength)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">thetaLength</span>()</p>
+<p class="member_description">Get the length of the cylinder.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">thetaStart</span>()</p>
+<p class="member_description">Get the starting angle of the cylinder.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">radialSegments</span>()</p>
 <p class="member_description">Get the number of radial segments.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radiusTop</span>()</p>
-<p class="member_description">Get the cylinder top radius.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">openEnded</span>()</p>
+<p class="member_description">Get the cylinder open ended flag.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radiusBottom</span>()</p>
 <p class="member_description">Get the cylinder bottom radius.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">openEnded</span>()</p>
-<p class="member_description">Get the cylinder open ended flag.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radiusTop</span>()</p>
+<p class="member_description">Get the cylinder top radius.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">height</span>()</p>
+<p class="member_description">Get the cylinder height.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -473,13 +461,29 @@
 <p class="member_declaration"><span class="membername">KnotGeometry</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">float</span> tube, <span class="ckdoc_typename ckdoc_type_primitive">int</span> tubularSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> radialSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> p, <span class="ckdoc_typename ckdoc_type_primitive">int</span> q)</p>
 <p class="empty_member_description">No description available</p>
 </div>
-<div class="member">
-<p class="member_declaration"><span class="membername">KnotGeometry</span>()</p>
-<p class="member_description">Default constructor for KnotGeometry.</p>
-</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">build</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">float</span> tube, <span class="ckdoc_typename ckdoc_type_primitive">int</span> tubularSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> radialSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> p, <span class="ckdoc_typename ckdoc_type_primitive">int</span> q)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tubularSegments</span>()</p>
+<p class="member_description">Get the number of tubular segments.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">radialSegments</span>()</p>
+<p class="member_description">Get the number of radial segments.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">q</span>()</p>
+<p class="member_description">Get the knot q value.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">tube</span>()</p>
+<p class="member_description">Get the knot tube radius.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span>()</p>
 <p class="member_description">Get the knot radius.</p>
@@ -487,26 +491,6 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">p</span>()</p>
 <p class="member_description">Get the knot p value.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">build</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">float</span> tube, <span class="ckdoc_typename ckdoc_type_primitive">int</span> tubularSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> radialSegments, <span class="ckdoc_typename ckdoc_type_primitive">int</span> p, <span class="ckdoc_typename ckdoc_type_primitive">int</span> q)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">radialSegments</span>()</p>
-<p class="member_description">Get the number of radial segments.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tubularSegments</span>()</p>
-<p class="member_description">Get the number of tubular segments.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">tube</span>()</p>
-<p class="member_description">Get the knot tube radius.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">q</span>()</p>
-<p class="member_description">Get the knot q value.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

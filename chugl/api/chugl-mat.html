@@ -45,84 +45,12 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">cullMode</span>()</p>
-<p class="member_description">Get the cull mode of the material. Material.Cull_None, Material.Cull_Front, or Material.Cull_Back.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">topology</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> topology)</p>
-<p class="member_description">Set the primitive topology of the material. valid options: Material.Topology_PointList, Material.Topology_LineList, Material.Topology_LineStrip, Material.Topology_TriangleList, or Material.Topology_TriangleStrip.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Shader</span> <span class="membername">shader</span>()</p>
-<p class="member_description">Get the shader of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">cullMode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> cullMode)</p>
-<p class="member_description">Set the cull mode of the material. valid options: Material.Cull_None, Material.Cull_Front, or Material.Cull_Back.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">topology</span>()</p>
-<p class="member_description">Get the primitive topology of the material. Material.Topology_PointList, Material.Topology_LineList, Material.Topology_LineStrip, Material.Topology_TriangleList, or Material.Topology_TriangleStrip.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">activeUniformLocations</span>()</p>
-<p class="member_description">Get list of active uniform locations, i.e. uniform locations that have been set (bind group entry locations)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shader</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> shader)</p>
-<p class="member_description">Set the shader of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> uniform_value)</p>
-<p class="member_description">Set a vec2 uniform value at the given location.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat4</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> uniform_value)</p>
 <p class="member_description">Set a vec4 uniform value at the given location.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">uniformFloat4</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
 <p class="member_description">Get a vec4 uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> uniform_value)</p>
-<p class="member_description">Set a vec3 uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uniformFloat2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
-<p class="member_description">Get a vec2 uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">uniformFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
-<p class="member_description">Get a float uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">uniformFloat3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
-<p class="member_description">Get a vec3 uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">float</span> uniform_value)</p>
-<p class="member_description">Set a float uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">uniformInt2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
-<p class="member_description">Get an vec2<i32> uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformInt2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y)</p>
-<p class="member_description">Set an vec2<i32> uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">uniformInt3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
-<p class="member_description">Get an vec3<i32> uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformInt3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y, <span class="ckdoc_typename ckdoc_type_primitive">int</span> z)</p>
-<p class="member_description">Set an vec3<i32> uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformInt4</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y, <span class="ckdoc_typename ckdoc_type_primitive">int</span> z, <span class="ckdoc_typename ckdoc_type_primitive">int</span> w)</p>
-<p class="member_description">Set an vec4<i32> uniform value at the given location.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> uniform_value)</p>
@@ -133,24 +61,28 @@
 <p class="member_description">Get an int uniform value at the given location.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">texture</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
-<p class="member_description">Get the texture at the given location.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformInt2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y)</p>
+<p class="member_description">Set an vec2<i32> uniform value at the given location.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
-<p class="member_description">Bind a sampler at the given location.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">uniformInt2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Get an vec2<i32> uniform value at the given location.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
-<p class="member_description">Get the sampler at the given location.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformInt3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y, <span class="ckdoc_typename ckdoc_type_primitive">int</span> z)</p>
+<p class="member_description">Set an vec3<i32> uniform value at the given location.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">storageTexture</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
-<p class="member_description">Binds a storage texture at the given location. Defaults to the textures base mip level 0.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">uniformInt3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Get an vec3<i32> uniform value at the given location.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">texture</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
-<p class="member_description">Bind a texture at the given location.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformInt4</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y, <span class="ckdoc_typename ckdoc_type_primitive">int</span> z, <span class="ckdoc_typename ckdoc_type_primitive">int</span> w)</p>
+<p class="member_description">Set an vec4<i32> uniform value at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">uniformInt4</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Get an vec4<i32> uniform value at the given location.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">storageBuffer</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> storageBuffer)</p>
@@ -161,26 +93,85 @@
 <p class="member_description">Bind a storage buffer at the given location.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">uniformInt4</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
-<p class="member_description">Get an vec4<i32> uniform value at the given location.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
+<p class="member_description">Bind a sampler at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Get the sampler at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">texture</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
+<p class="member_description">Bind a texture at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">texture</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Get the texture at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">storageTexture</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
+<p class="member_description">Binds a storage texture at the given location. Defaults to the textures base mip level 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Shader</span> <span class="membername">shader</span>()</p>
+<p class="member_description">Get the shader of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shader</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> shader)</p>
+<p class="member_description">Set the shader of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">cullMode</span>()</p>
+<p class="member_description">Get the cull mode of the material. Material.Cull_None, Material.Cull_Front, or Material.Cull_Back.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">cullMode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> cullMode)</p>
+<p class="member_description">Set the cull mode of the material. valid options: Material.Cull_None, Material.Cull_Front, or Material.Cull_Back.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">topology</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> topology)</p>
+<p class="member_description">Set the primitive topology of the material. valid options: Material.Topology_PointList, Material.Topology_LineList, Material.Topology_LineStrip, Material.Topology_TriangleList, or Material.Topology_TriangleStrip.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">topology</span>()</p>
+<p class="member_description">Get the primitive topology of the material. Material.Topology_PointList, Material.Topology_LineList, Material.Topology_LineStrip, Material.Topology_TriangleList, or Material.Topology_TriangleStrip.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">activeUniformLocations</span>()</p>
+<p class="member_description">Get list of active uniform locations, i.e. uniform locations that have been set (bind group entry locations)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">float</span> uniform_value)</p>
+<p class="member_description">Set a float uniform value at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">uniformFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Get a float uniform value at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> uniform_value)</p>
+<p class="member_description">Set a vec2 uniform value at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uniformFloat2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Get a vec2 uniform value at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> uniform_value)</p>
+<p class="member_description">Set a vec3 uniform value at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">uniformFloat3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Get a vec3 uniform value at the given location.</p>
 </div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Cull_Front</span></p><p class="member_description">Cull front faces.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Cull_None</span></p><p class="member_description">No culling.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Topology_TriangleList</span></p><p class="member_description">Interpret each triplet of vertices as a triangle.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Topology_TriangleStrip</span></p><p class="member_description">Each vertex after the first two defines a triangle primitive between it and the previous two vertices.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Topology_LineStrip</span></p><p class="member_description">Each vertex after the first defines a line primitive between it and the previous vertex.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Cull_Front</span></p><p class="member_description">Cull front faces.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Cull_Back</span></p><p class="member_description">Cull back faces.</p>
@@ -190,6 +181,15 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Topology_LineList</span></p><p class="member_description">Interpret each pair of vertices as a line.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Topology_LineStrip</span></p><p class="member_description">Each vertex after the first defines a line primitive between it and the previous vertex.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Topology_TriangleList</span></p><p class="member_description">Interpret each triplet of vertices as a triangle.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Topology_TriangleStrip</span></p><p class="member_description">Each vertex after the first two defines a triangle primitive between it and the previous two vertices.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -262,20 +262,12 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> scale)</p>
-<p class="member_description">Set the texture sampler scale of the material. Default (1, 1). Useful for scaling textures or sampling a subregion of a texture atlas. E.g. A scale of (0.5, 0.5) will sample 1/4 of the texture.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
+<p class="member_description">Get the sampler of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
 <p class="member_description">Get the color of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">offset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
-<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
-<p class="member_description">Get the sampler of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
@@ -286,20 +278,28 @@
 <p class="member_description">Set the sampler of the material.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">offset</span>()</p>
-<p class="member_description">Get the texture sampler offset of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">scale</span>()</p>
-<p class="member_description">Get the texture sampler scale of the material.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
+<p class="member_description">Get the color map of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> colorMap)</p>
 <p class="member_description">Set the color map of the material.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
-<p class="member_description">Get the color map of the material.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">offset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
+<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">offset</span>()</p>
+<p class="member_description">Get the texture sampler offset of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> scale)</p>
+<p class="member_description">Set the texture sampler scale of the material. Default (1, 1). Useful for scaling textures or sampling a subregion of a texture atlas. E.g. A scale of (0.5, 0.5) will sample 1/4 of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">scale</span>()</p>
+<p class="member_description">Get the texture sampler scale of the material.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -309,6 +309,9 @@
 <h2 class="class_title" name="PhongMaterial">PhongMaterial</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-mat.html#Material" class="ckdoc_typename ckdoc_type_object">Material</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Phong specular shading model.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/skybox.ck">basic/skybox.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -319,16 +322,20 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
-<p class="member_description">Get the diffuse color of the material.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
 <p class="member_description">Get the diffuse texture of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">specular</span>()</p>
 <p class="member_description">Get the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specular</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> specular)</p>
+<p class="member_description">Set the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the diffuse color of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> diffuse)</p>
@@ -339,36 +346,16 @@
 <p class="member_description">Get the log shininess exponent.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specular</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> specular)</p>
-<p class="member_description">Set the specular color of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
-<p class="member_description">Set the specular texture of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">aoMap</span>()</p>
-<p class="member_description">Get the ambient occlusion texture of the material.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shine</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> shine)</p>
 <p class="member_description">Set the log shininess exponent. default 5.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
-<p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">specularMap</span>()</p>
-<p class="member_description">Get the specular texture of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">emission</span>()</p>
 <p class="member_description">Get the emission color of the material.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> albedoTexture)</p>
-<p class="member_description">Set the diffuse texture of the material.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emission</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> emission)</p>
+<p class="member_description">Set the emission color of the material. Default black.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">normalFactor</span>()</p>
@@ -379,32 +366,104 @@
 <p class="member_description">Set the normal factor of the material. Scales effect of normal map.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emission</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> emission)</p>
-<p class="member_description">Set the emission color of the material. Default black.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
+<p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> aoFactor)</p>
 <p class="member_description">Set the ambient occlusion factor of the material. Default 1.0. 0 disables AO. Set between 0 and 1.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalMap</span>()</p>
-<p class="member_description">Get the normal texture of the material.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> albedoTexture)</p>
+<p class="member_description">Set the diffuse texture of the material.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">emissiveMap</span>()</p>
-<p class="member_description">Get the emissive texture of the material.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">specularMap</span>()</p>
+<p class="member_description">Get the specular texture of the material.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> normalTexture)</p>
-<p class="member_description">Set the normal texture of the material.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
+<p class="member_description">Set the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">aoMap</span>()</p>
+<p class="member_description">Get the ambient occlusion texture of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> aoTexture)</p>
 <p class="member_description">Set the ambient occlusion texture of the material.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">emissiveMap</span>()</p>
+<p class="member_description">Get the emissive texture of the material.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emissiveMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> emissiveTexture)</p>
 <p class="member_description">Set the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalMap</span>()</p>
+<p class="member_description">Get the normal texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> normalTexture)</p>
+<p class="member_description">Set the normal texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">envmapMethod</span>()</p>
+<p class="member_description">Get the environment map sampling method. One of PhongMaterial.EnvmapMethod_None, PhongMaterial.EnvmapMethod_Reflect, PhongMaterial.EnvmapMethod_Refract. Set the environment map via GScene.envMap(Texture). Default EnvmapMethod_Reflect.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">envmapMethod</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> envmapMethod)</p>
+<p class="member_description">Set the environment map sampling method. One of PhongMaterial.EnvmapMethod_None, PhongMaterial.EnvmapMethod_Reflect, PhongMaterial.EnvmapMethod_Refract. Default EnvmapMethod_Reflect.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">refractionRatio</span>()</p>
+<p class="member_description">Get the refraction ratio of the material. Only used when envmapMethod is PhongMaterial.EnvmapMethod_Refract. Default 0.5.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">refractionRatio</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> ratio)</p>
+<p class="member_description">Set the refraction ratio of the material. Only used when envmapMethod is PhongMaterial.EnvmapMethod_Refract. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">envmapBlend</span>()</p>
+<p class="member_description">Get the blend mode of the environment map. One of PhongMaterial.EnvmapBlend_None, PhongMaterial.EnvmapBlend_Mix, PhongMaterial.EnvmapBlend_Add, PhongMaterial.EnvmapBlend_Multiply. Default EnvmapBlend_None.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">envmapBlend</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> blendMode)</p>
+<p class="member_description">Set the blend mode of the environment map. One of PhongMaterial.EnvmapBlend_None, PhongMaterial.EnvmapBlend_Mix, PhongMaterial.EnvmapBlend_Add, PhongMaterial.EnvmapBlend_Multiply. Set to EnvmapBlend_None to disable environment lighting.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">envmapIntensity</span>()</p>
+<p class="member_description">Get the intensity of the environment map lighting. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">envmapIntensity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> intensity)</p>
+<p class="member_description">Set the intensity of the environment map lighting. Default 1.0.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapMethod_None</span></p><p class="member_description">No environment map sampling.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapMethod_Reflection</span></p><p class="member_description">Sample the environment map via reflection (like chrome or a mirror)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapMethod_Refraction</span></p><p class="member_description">Sample the environment map via refraction (like glass or water)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapBlend_None</span></p><p class="member_description">No environment map blending.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapBlend_Add</span></p><p class="member_description">Add the environment map color to the material color.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapBlend_Multiply</span></p><p class="member_description">Multiply the environment map color with the material color.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapBlend_Mix</span></p><p class="member_description">Linearly mix the environment map color with the material color. An intensity of 0.0 will show only the material color, 1.0 will show only the environment map color.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -428,16 +487,16 @@
 <p class="member_description">Get the thickness of the lines in the material.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">width</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
+<p class="member_description">Set the thickness of the lines in the material.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
 <p class="member_description">Get the line color.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
 <p class="member_description">Set the line color.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">width</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
-<p class="member_description">Set the thickness of the lines in the material.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -474,88 +533,88 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
-<p class="member_description">Get the albedo color of the material.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
 <p class="member_description">Get the albedo texture of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">aoMap</span>()</p>
-<p class="member_description">Get the ambient occlusion texture of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
-<p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">normalFactor</span>()</p>
 <p class="member_description">Get the normal factor of the material. Scales effect of normal map. Default 1.0.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalMap</span>()</p>
-<p class="member_description">Get the normal texture of the material.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
+<p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">aoMap</span>()</p>
+<p class="member_description">Get the ambient occlusion texture of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">emissiveMap</span>()</p>
 <p class="member_description">Get the emissive texture of the material.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">metallic</span>()</p>
-<p class="member_description">Get the metallic factor of the material.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalMap</span>()</p>
+<p class="member_description">Get the normal texture of the material.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">roughness</span>()</p>
-<p class="member_description">Get the roughness factor of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">emissive</span>()</p>
-<p class="member_description">Get the emissive color of the material.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the albedo color of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> albedo)</p>
 <p class="member_description">Set the albedo color of the material.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">roughness</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> roughness)</p>
-<p class="member_description">Set the roughness factor of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> aoFactor)</p>
-<p class="member_description">Set the ambient occlusion factor of the material. Default 1.0.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">emissive</span>()</p>
+<p class="member_description">Get the emissive color of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emissive</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> emissive)</p>
 <p class="member_description">Set the emissive color of the material.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">metallic</span>()</p>
+<p class="member_description">Get the metallic factor of the material.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">metallic</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> metallic)</p>
 <p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">roughness</span>()</p>
+<p class="member_description">Get the roughness factor of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">roughness</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> roughness)</p>
+<p class="member_description">Set the roughness factor of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> normalFactor)</p>
 <p class="member_description">Set the normal factor of the material. Scales effect of normal map. Default 1.0.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">mrMap</span>()</p>
-<p class="member_description">Get the metallic-roughness texture of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> normalTexture)</p>
-<p class="member_description">Set the normal texture of the material.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> aoFactor)</p>
+<p class="member_description">Set the ambient occlusion factor of the material. Default 1.0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> albedoTexture)</p>
 <p class="member_description">Set the albedo texture of the material.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">mrMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> mrTexture)</p>
-<p class="member_description">Set the metallic-roughness texture of the material.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> normalTexture)</p>
+<p class="member_description">Set the normal texture of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> aoTexture)</p>
 <p class="member_description">Set the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">mrMap</span>()</p>
+<p class="member_description">Get the metallic-roughness texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">mrMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> mrTexture)</p>
+<p class="member_description">Set the metallic-roughness texture of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emissiveMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> emissiveTexture)</p>
