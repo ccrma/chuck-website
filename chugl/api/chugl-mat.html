@@ -15,7 +15,7 @@
 <div class="toc"><a id="toc"/>
 <p class="toc_class"><a href="#Material" class="ckdoc_typename ckdoc_type_object">Material</a></p>
 <p class="toc_class"><a href="#NormalMaterial" class="ckdoc_typename ckdoc_type_object">NormalMaterial</a></p>
-<p class="toc_class"><a href="#TangentMaterial" class="ckdoc_typename ckdoc_type_object">TangentMaterial</a></p>
+<p class="toc_class"><a href="#WireframeMaterial" class="ckdoc_typename ckdoc_type_object">WireframeMaterial</a></p>
 <p class="toc_class"><a href="#FlatMaterial" class="ckdoc_typename ckdoc_type_object">FlatMaterial</a></p>
 <p class="toc_class"><a href="#PhongMaterial" class="ckdoc_typename ckdoc_type_object">PhongMaterial</a></p>
 <p class="toc_class"><a href="#LinesMaterial" class="ckdoc_typename ckdoc_type_object">LinesMaterial</a></p>
@@ -44,6 +44,58 @@
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Shader</span> <span class="membername">shader</span>()</p>
+<p class="member_description">Get the shader of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shader</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> shader)</p>
+<p class="member_description">Set the shader of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">cullMode</span>()</p>
+<p class="member_description">Get the cull mode of the material. Material.Cull_None, Material.Cull_Front, or Material.Cull_Back.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">cullMode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> cullMode)</p>
+<p class="member_description">Set the cull mode of the material. valid options: Material.Cull_None, Material.Cull_Front, or Material.Cull_Back.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">topology</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> topology)</p>
+<p class="member_description">Set the primitive topology of the material. valid options: Material.Topology_PointList, Material.Topology_LineList, Material.Topology_LineStrip, Material.Topology_TriangleList, or Material.Topology_TriangleStrip.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">topology</span>()</p>
+<p class="member_description">Get the primitive topology of the material. Material.Topology_PointList, Material.Topology_LineList, Material.Topology_LineStrip, Material.Topology_TriangleList, or Material.Topology_TriangleStrip.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">activeUniformLocations</span>()</p>
+<p class="member_description">Get list of active uniform locations, i.e. uniform locations that have been set (bind group entry locations)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">float</span> uniform_value)</p>
+<p class="member_description">Set a float uniform value at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">uniformFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Get a float uniform value at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> uniform_value)</p>
+<p class="member_description">Set a vec2 uniform value at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uniformFloat2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Get a vec2 uniform value at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> uniform_value)</p>
+<p class="member_description">Set a vec3 uniform value at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">uniformFloat3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Get a vec3 uniform value at the given location.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat4</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> uniform_value)</p>
 <p class="member_description">Set a vec4 uniform value at the given location.</p>
@@ -112,58 +164,6 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">storageTexture</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
 <p class="member_description">Binds a storage texture at the given location. Defaults to the textures base mip level 0.</p>
 </div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Shader</span> <span class="membername">shader</span>()</p>
-<p class="member_description">Get the shader of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shader</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> shader)</p>
-<p class="member_description">Set the shader of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">cullMode</span>()</p>
-<p class="member_description">Get the cull mode of the material. Material.Cull_None, Material.Cull_Front, or Material.Cull_Back.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">cullMode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> cullMode)</p>
-<p class="member_description">Set the cull mode of the material. valid options: Material.Cull_None, Material.Cull_Front, or Material.Cull_Back.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">topology</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> topology)</p>
-<p class="member_description">Set the primitive topology of the material. valid options: Material.Topology_PointList, Material.Topology_LineList, Material.Topology_LineStrip, Material.Topology_TriangleList, or Material.Topology_TriangleStrip.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">topology</span>()</p>
-<p class="member_description">Get the primitive topology of the material. Material.Topology_PointList, Material.Topology_LineList, Material.Topology_LineStrip, Material.Topology_TriangleList, or Material.Topology_TriangleStrip.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">activeUniformLocations</span>()</p>
-<p class="member_description">Get list of active uniform locations, i.e. uniform locations that have been set (bind group entry locations)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">float</span> uniform_value)</p>
-<p class="member_description">Set a float uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">uniformFloat</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
-<p class="member_description">Get a float uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> uniform_value)</p>
-<p class="member_description">Set a vec2 uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uniformFloat2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
-<p class="member_description">Get a vec2 uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> uniform_value)</p>
-<p class="member_description">Set a vec3 uniform value at the given location.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">uniformFloat3</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
-<p class="member_description">Get a vec3 uniform value at the given location.</p>
-</div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
@@ -220,26 +220,42 @@
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
-<a name="TangentMaterial" /><div class="class">
-<h2 class="class_title" name="TangentMaterial">TangentMaterial</h2>
+<a name="WireframeMaterial" /><div class="class">
+<h2 class="class_title" name="WireframeMaterial">WireframeMaterial</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-mat.html#Material" class="ckdoc_typename ckdoc_type_object">Material</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Visualize tangents of a mesh.<p>
+<p class="class_description">View a mesh as wireframe. Uses barycentric coordinates to draw lines. WARNING: May not work with indexed geometry, rendering some or all faces incorrectly as solid. Known issues with SphereGeometry, CircleGeometry, KnotGeometry, CylinderGeometry. In those cases, set Material.topology() to Material.Topology_LineList or Material.Topology_LineStrip. You will no longer be able to set thickness, but the wireframe will render correctly.<p>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="membername">TangentMaterial</span>()</p>
-<p class="member_description">Default constructor for TangentMaterial.</p>
+<p class="member_declaration"><span class="membername">WireframeMaterial</span>()</p>
+<p class="member_description">Default constructor for WireframeMaterial.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">worldspaceTangents</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> use_worldspace_tangents)</p>
-<p class="member_description">Set whether to use worldspace tangents. If false, visualizes tangents in local object space.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">thickness</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
+<p class="member_description">Set the thickness of the wireframe lines.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">worldspaceTangents</span>()</p>
-<p class="member_description">Get whether to use worldspace tangents. If false, visualizes tangents in local object space.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">thickness</span>()</p>
+<p class="member_description">Get the thickness of the wireframe lines.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alphaCutoff</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alphaCutoff)</p>
+<p class="member_description">Set the alpha cutoff value for the wireframe material. Default 0.5. Fragments with alpha values below this threshold will be discarded.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alphaCutoff</span>()</p>
+<p class="member_description">Get the alpha cutoff value for the wireframe material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Set the color of the wireframe lines.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the color of the wireframe lines.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -261,6 +277,10 @@
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">offset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
+<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
 <p class="member_description">Get the sampler of the material.</p>
@@ -284,10 +304,6 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> colorMap)</p>
 <p class="member_description">Set the color map of the material.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">offset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
-<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">offset</span>()</p>

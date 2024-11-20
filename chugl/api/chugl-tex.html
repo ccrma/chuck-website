@@ -30,6 +30,8 @@
 <li><a target="_blank" href="../examples/deep/audio_donut.ck">deep/audio_donut.ck</a></li>
 <li><a target="_blank" href="../examples/deep/snowstorm.ck">deep/snowstorm.ck</a></li>
 <li><a target="_blank" href="../examples/basic/skybox.ck">basic/skybox.ck</a></li>
+<li><a target="_blank" href="../examples/deep/webcam_echo.ck">deep/webcam_echo.ck</a></li>
+<li><a target="_blank" href="../examples/basic/texture_read.ck">basic/texture_read.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -44,14 +46,6 @@
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span>()</p>
-<p class="member_description">Get the texture width (immutable)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> pixel_data)</p>
-<p class="member_description">Convenience function for writing into a texture. Assumes pixel_data is being written into the texture origin (0,0,0) with a region equal to the full texture dimensions (width, height, depth) at mip level 0.</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">format</span>()</p>
 <p class="member_description">Get the texture format (immutable). Returns a value from the Texture.Format_XXXXX enum, e.g. Texture.Format_RGBA8Unorm.</p>
@@ -73,12 +67,28 @@
 <p class="member_description">Get the number of mip levels (immutable). Returns the number of mip levels in the texture.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span>()</p>
-<p class="member_description">Get the texture height (immutable)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> pixel_data)</p>
+<p class="member_description">Convenience function for writing into a texture. Assumes pixel_data is being written into the texture origin (0,0,0) with a region equal to the full texture dimensions (width, height, depth) at mip level 0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> pixel_data, <span class="ckdoc_typename ckdoc_type_object">TextureWriteDesc</span> write_desc)</p>
 <p class="member_description">Write pixel data to an arbitrary texture region. The input float data is automatically converted based on the texture format.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span>()</p>
+<p class="member_description">Get the texture width (immutable)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span>()</p>
+<p class="member_description">Get the texture height (immutable)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Event</span> <span class="membername">read</span>()</p>
+<p class="member_description">Initializes an async readback of texture data at mip level 0 from GPU to CPU. This function returns an Event object which can be waited on until the data is ready. Access the newly acquired data via `Texture.data()`. Note that it can take several frames for the data to read back to chuck.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">data</span>()</p>
+<p class="member_description">Get the most recently read texture data. This function should be called after waiting on the Event object returned by `Texture.read()`.</p>
 </div>
 </div>
 <h3 class="class_section_header">static member functions</h3>
@@ -94,6 +104,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">load</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> right, <span class="ckdoc_typename ckdoc_type_object">string</span> left, <span class="ckdoc_typename ckdoc_type_object">string</span> top, <span class="ckdoc_typename ckdoc_type_object">string</span> bottom, <span class="ckdoc_typename ckdoc_type_object">string</span> back, <span class="ckdoc_typename ckdoc_type_object">string</span> front)</p>
 <p class="member_description">Load a cubemap texture from 6 filepaths, one for each face.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">copy</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> dst_texture, <span class="ckdoc_typename ckdoc_type_object">Texture</span> src_texture)</p>
+<p class="member_description">Copy the entire src texture to the dst texture at mip level 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">copy</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> dst_texture, <span class="ckdoc_typename ckdoc_type_object">TextureLocation</span> dst_location, <span class="ckdoc_typename ckdoc_type_object">Texture</span> src_texture, <span class="ckdoc_typename ckdoc_type_object">TextureLocation</span> src_location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> size_x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> size_y, <span class="ckdoc_typename ckdoc_type_primitive">int</span> size_z)</p>
+<p class="member_description">Copy a region of the src texture to a location in the dst texture. The size parameter is floored to integers and specifies the 3D dimensions of the region to copy.</p>
 </div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
@@ -202,9 +220,6 @@
 <h3 class="class_section_header">member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span></p><p class="member_description">Width in texels. Default is 1.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">format</span></p><p class="member_description">Texture format. Valid options are defined in the Texture.Format_* enum. Default is Texture.Format_RGBA8Unorm.</p>
 </div>
 <div class="member">
@@ -221,6 +236,9 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span></p><p class="member_description">Height in texels. Default is 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span></p><p class="member_description">Width in texels. Default is 1.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -240,6 +258,15 @@
 <h3 class="class_section_header">member variables</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">depth</span></p><p class="member_description">Depth of write region. Default 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mip</span></p><p class="member_description">Which mip level to write to. Default is 0 (base level)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span></p><p class="member_description">Height of write region. Default 0.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span></p><p class="member_description">Width of write region. Default 0.</p>
 </div>
 <div class="member">
@@ -250,15 +277,6 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">z</span></p><p class="member_description">Z offset of write region. Default 0.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">depth</span></p><p class="member_description">Depth of write region. Default 0.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mip</span></p><p class="member_description">Which mip level to write to. Default is 0 (base level)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span></p><p class="member_description">Height of write region. Default 0.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

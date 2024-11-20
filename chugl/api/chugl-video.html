@@ -39,10 +39,6 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">texture</span>()</p>
-<p class="member_description">Get the RGBA texture of the video.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">framerate</span>()</p>
 <p class="member_description">Get the framerate of the video.</p>
 </div>
@@ -57,6 +53,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">duration</span>()</p>
 <p class="member_description">Get total length of the file as a duration.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">texture</span>()</p>
+<p class="member_description">Get the RGBA texture of the video.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span>()</p>
@@ -100,6 +100,7 @@
 <p class="class_description">ChuGL Webcam class. Opens a webcam at any device id 0-7, and updates a texture with the webcam feed. The webcam texture may be accessed with the `.texture()` member function.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/webcam.ck">basic/webcam.ck</a></li>
+<li><a target="_blank" href="../examples/deep/webcam_echo.ck">deep/webcam_echo.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -119,10 +120,6 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">texture</span>()</p>
-<p class="member_description">Get the RGBA texture of the webcam.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">framerate</span>()</p>
 <p class="member_description">Get the framerate of the webcam in frames per second.</p>
 </div>
@@ -141,6 +138,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aspect</span>()</p>
 <p class="member_description">Get the aspect ratio of the webcam.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">texture</span>()</p>
+<p class="member_description">Get the RGBA texture of the webcam.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">deviceID</span>()</p>

@@ -23,6 +23,7 @@
 <p class="toc_class"><a href="#KnotGeometry" class="ckdoc_typename ckdoc_type_object">KnotGeometry</a></p>
 <p class="toc_class"><a href="#SuzanneGeometry" class="ckdoc_typename ckdoc_type_object">SuzanneGeometry</a></p>
 <p class="toc_class"><a href="#LinesGeometry" class="ckdoc_typename ckdoc_type_object">LinesGeometry</a></p>
+<p class="toc_class"><a href="#PolygonGeometry" class="ckdoc_typename ckdoc_type_object">PolygonGeometry</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">ChuGL geometries for assigning vertex data such as positions, normals, UV coordinates, and tangents to a GMesh.</p>
@@ -64,10 +65,6 @@
 <p class="member_description">Set the UVs for a geometry. Equivalent to vertexAttribute(2, 2, uvs)</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tangents</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span><span class="typename">[]</span> tangents)</p>
-<p class="member_description">Set the tangents for a geometry. Equivalent to vertexAttribute(3, 4, tangents)</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> <span class="membername">positions</span>()</p>
 <p class="member_description">Get the positions for a geometry. Equivalent to getVertexAttributeData(0)</p>
 </div>
@@ -78,10 +75,6 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> <span class="membername">uvs</span>()</p>
 <p class="member_description">Get the UVs for a geometry. Equivalent to getVertexAttributeData(2)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span><span class="typename">[]</span> <span class="membername">tangents</span>()</p>
-<p class="member_description">Get the tangents for a geometry. Equivalent to getVertexAttributeData(3)</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">vertexAttributeNumComponents</span>()</p>
@@ -135,10 +128,6 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">vertexCount</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> count)</p>
 <p class="member_description">If this geometry uses vertex pulling or non-indexed drawing, Set the number of vertices to be drawn of this geometry by the rendererDefault is -1, which means all vertices are drawn. Values will be clamped to the actual number of vertices in the geometry.</p>
 </div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">generateTangents</span>()</p>
-<p class="member_description">Generate tangents assuming default vertex attribute locations: position=0, normal=1, uv=2, tangent=3. Tangents are written to location = 3.Indices are supported but optional. Call *after* all other attribute data and indices have been supplied.</p>
-</div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
@@ -153,9 +142,6 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AttributeLocation_UV</span></p><p class="member_description">UV attribute location used by builtin renderer.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AttributeLocation_Tangent</span></p><p class="member_description">Tangent attribute location used by builtin renderer.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -530,6 +516,36 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">lineColors</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> colors)</p>
 <p class="member_description">Set the line colors. Colors between line points are interpolated. If the number of colors is less than the number of points, the vertices will cycle through the colors.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="PolygonGeometry" /><div class="class">
+<h2 class="class_title" name="PolygonGeometry">PolygonGeometry</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-geo.html#Geometry" class="ckdoc_typename ckdoc_type_object">Geometry</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">ChuGL port of the earcut triangulation library: https://github.com/mapbox/earcut.hpp Supports arbitrary polygons with holes.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/geo_and_mat.ck">basic/geo_and_mat.ck</a></li>
+<li><a target="_blank" href="../examples/basic/triangulate.ck">basic/triangulate.ck</a></li>
+<li><a target="_blank" href="../examples/deep/fish.ck">deep/fish.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">PolygonGeometry</span>()</p>
+<p class="member_description">Default constructor for PolygonGeometry.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">build</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> points)</p>
+<p class="member_description">Construct a polygon from the given points. The points are automatically closed.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">build</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> points, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> holes, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> hole_counts)</p>
+<p class="member_description">Construct a polygon (with holes) from the given points and holes. `points` forms the closed shape. Any winding order is supported. The points and holes are automatically closed. `hole_counts` specifies the number of points in each hole. E.g. build([@(0,0), @(1,0), @(1,1), @(0,1)], [@(0.25,0.25), @(0.5, 0.75), @(0.75, 0.25)], [3]) will create a square with a triangular hole in the center.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

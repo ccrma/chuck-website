@@ -169,7 +169,7 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">x</span>()</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -177,7 +177,7 @@
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">x</span>()</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 </div>
@@ -198,7 +198,7 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y, <span class="ckdoc_typename ckdoc_type_primitive">int</span> z)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">x</span>()</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -206,11 +206,11 @@
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">x</span>()</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">z</span>()</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">z</span>()</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y, <span class="ckdoc_typename ckdoc_type_primitive">int</span> z)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 </div>
@@ -231,15 +231,11 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y, <span class="ckdoc_typename ckdoc_type_primitive">int</span> z, <span class="ckdoc_typename ckdoc_type_primitive">int</span> w)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">x</span>()</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">y</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">x</span>()</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -248,6 +244,10 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">w</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">val</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> x, <span class="ckdoc_typename ckdoc_type_primitive">int</span> y, <span class="ckdoc_typename ckdoc_type_primitive">int</span> z, <span class="ckdoc_typename ckdoc_type_primitive">int</span> w)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 </div>
@@ -396,20 +396,20 @@ About Main Area vs Work Area:
 <p class="member_description">Main Area: Center position of the viewport.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">size</span>()</p>
-<p class="member_description">Main Area: Size of the viewport.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">flags</span>()</p>
+<p class="member_description">Returns the UI_ViewportFlags for the viewport.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">id</span>()</p>
 <p class="member_description">Returns the unique identifier for the viewport.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">flags</span>()</p>
-<p class="member_description">Returns the UI_ViewportFlags for the viewport.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">pos</span>()</p>
 <p class="member_description">Main Area: Position of the viewport (Dear ImGui coordinates are the same as OS desktop/native coordinates).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">size</span>()</p>
+<p class="member_description">Main Area: Size of the viewport.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">workPos</span>()</p>
@@ -450,120 +450,8 @@ You may modify the ImGui::GetStyle() main instance during initialization and bef
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logSliderDeadzone</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> logSliderDeadzone)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tabRounding</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> tabRounding)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tabBorderSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> tabBorderSize)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tabMinWidthForCloseButton</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> tabMinWidthForCloseButton)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tabBarBorderSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> tabBarBorderSize)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableAngledHeadersAngle</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> tableAngledHeadersAngle)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableAngledHeadersTextAlign</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> tableAngledHeadersTextAlign)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorButtonPosition</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> ui_direction)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">buttonTextAlign</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> buttonTextAlign)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">selectableTextAlign</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> selectableTextAlign)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">separatorTextBorderSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> separatorTextBorderSize)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">separatorTextAlign</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> separatorTextAlign)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">separatorTextPadding</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> separatorTextPadding)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">displayWindowPadding</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> displayWindowPadding)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">displaySafeAreaPadding</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> displaySafeAreaPadding)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">dockingSeparatorSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> dockingSeparatorSize)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">mouseCursorScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> mouseCursorScale)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">antiAliasedLines</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> antiAliasedLines)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">antiAliasedLinesUseTex</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> antiAliasedLinesUseTex)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">antiAliasedFill</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> antiAliasedFill)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">curveTessellationTol</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> curveTessellationTol)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">circleTessellationMaxError</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> circleTessellationMaxError)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> ui_color_flag, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> color)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hoverStationaryDelay</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> hoverStationaryDelay)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hoverDelayShort</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> hoverDelayShort)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hoverDelayNormal</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> hoverDelayNormal)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hoverFlagsForTooltipMouse</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> hoverFlagsForTooltipMouse)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hoverFlagsForTooltipNav</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> hoverFlagsForTooltipNav)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">windowPadding</span>()</p>
-<p class="member_description">Padding within a window.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> ui_color_flag)</p>
+<p class="member_description">Get the color for a specific UI_Color flag.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">disabledAlpha</span>()</p>
@@ -572,6 +460,10 @@ You may modify the ImGui::GetStyle() main instance during initialization and bef
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alpha</span>()</p>
 <p class="member_description">Global alpha applies to everything in ImGui.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">windowPadding</span>()</p>
+<p class="member_description">Padding within a window.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">windowRounding</span>()</p>
@@ -750,10 +642,6 @@ You may modify the ImGui::GetStyle() main instance during initialization and bef
 <p class="member_description">Maximum error (in pixels) allowed when using AddCircle()/AddCircleFilled() or drawing rounded corner rectangles with no explicit segment count specified. Decrease for higher quality but more geometry.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> ui_color_flag)</p>
-<p class="member_description">Get the color for a specific UI_Color flag.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">hoverStationaryDelay</span>()</p>
 <p class="member_description">Delay for IsItemHovered(ImGuiHoveredFlags_Stationary). Time required to consider mouse stationary.</p>
 </div>
@@ -871,6 +759,118 @@ You may modify the ImGui::GetStyle() main instance during initialization and bef
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">grabRounding</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> grabRounding)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logSliderDeadzone</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> logSliderDeadzone)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tabRounding</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> tabRounding)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tabBorderSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> tabBorderSize)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tabMinWidthForCloseButton</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> tabMinWidthForCloseButton)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tabBarBorderSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> tabBarBorderSize)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableAngledHeadersAngle</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> tableAngledHeadersAngle)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableAngledHeadersTextAlign</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> tableAngledHeadersTextAlign)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorButtonPosition</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> ui_direction)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">buttonTextAlign</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> buttonTextAlign)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">selectableTextAlign</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> selectableTextAlign)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">separatorTextBorderSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> separatorTextBorderSize)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">separatorTextAlign</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> separatorTextAlign)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">separatorTextPadding</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> separatorTextPadding)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">displayWindowPadding</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> displayWindowPadding)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">displaySafeAreaPadding</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> displaySafeAreaPadding)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">dockingSeparatorSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> dockingSeparatorSize)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">mouseCursorScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> mouseCursorScale)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">antiAliasedLines</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> antiAliasedLines)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">antiAliasedLinesUseTex</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> antiAliasedLinesUseTex)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">antiAliasedFill</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> antiAliasedFill)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">curveTessellationTol</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> curveTessellationTol)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">circleTessellationMaxError</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> circleTessellationMaxError)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> ui_color_flag, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> color)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hoverStationaryDelay</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> hoverStationaryDelay)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hoverDelayShort</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> hoverDelayShort)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hoverDelayNormal</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> hoverDelayNormal)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hoverFlagsForTooltipMouse</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> hoverFlagsForTooltipMouse)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hoverFlagsForTooltipNav</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> hoverFlagsForTooltipNav)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 </div>
@@ -1043,6 +1043,78 @@ Important: Treat as a regular enum! Do NOT combine multiple values using binary 
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ResizeGripActive</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Tab</span></p><p class="member_description">TabItem in a TabBar.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TabHovered</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TabActive</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TabUnfocused</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TabUnfocusedActive</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DockingPreview</span></p><p class="member_description">Preview overlay color when about to docking something.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DockingEmptyBg</span></p><p class="member_description">Background color for empty node (e.g. CentralNode with no window docked into it)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PlotLines</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PlotLinesHovered</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PlotHistogram</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PlotHistogramHovered</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TableHeaderBg</span></p><p class="member_description">Table header background.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TableBorderStrong</span></p><p class="member_description">Table outer and header borders (prefer using Alpha=1.0 here)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TableBorderLight</span></p><p class="member_description">Table inner borders (prefer using Alpha=1.0 here)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TableRowBg</span></p><p class="member_description">Table row background (even rows)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TableRowBgAlt</span></p><p class="member_description">Table row background (odd rows)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TextSelectedBg</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DragDropTarget</span></p><p class="member_description">Rectangle highlighting a drop target.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NavHighlight</span></p><p class="member_description">Gamepad/keyboard: current highlighted item.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NavWindowingHighlight</span></p><p class="member_description">Highlight window when using CTRL+TAB.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NavWindowingDimBg</span></p><p class="member_description">Darken/colorize entire screen behind the CTRL+TAB window list, when active.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ModalWindowDimBg</span></p><p class="member_description">Darken/colorize entire screen behind a modal window, when one is active.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">COUNT</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Border</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -1137,78 +1209,6 @@ Important: Treat as a regular enum! Do NOT combine multiple values using binary 
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ResizeGripHovered</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ResizeGripActive</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Tab</span></p><p class="member_description">TabItem in a TabBar.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TabHovered</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TabActive</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TabUnfocused</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TabUnfocusedActive</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DockingPreview</span></p><p class="member_description">Preview overlay color when about to docking something.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DockingEmptyBg</span></p><p class="member_description">Background color for empty node (e.g. CentralNode with no window docked into it)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PlotLines</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PlotLinesHovered</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PlotHistogram</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PlotHistogramHovered</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TableHeaderBg</span></p><p class="member_description">Table header background.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TableBorderStrong</span></p><p class="member_description">Table outer and header borders (prefer using Alpha=1.0 here)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TableBorderLight</span></p><p class="member_description">Table inner borders (prefer using Alpha=1.0 here)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TableRowBg</span></p><p class="member_description">Table row background (even rows)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TableRowBgAlt</span></p><p class="member_description">Table row background (odd rows)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TextSelectedBg</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DragDropTarget</span></p><p class="member_description">Rectangle highlighting a drop target.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NavHighlight</span></p><p class="member_description">Gamepad/keyboard: current highlighted item.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NavWindowingHighlight</span></p><p class="member_description">Highlight window when using CTRL+TAB.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NavWindowingDimBg</span></p><p class="member_description">Darken/colorize entire screen behind the CTRL+TAB window list, when active.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ModalWindowDimBg</span></p><p class="member_description">Darken/colorize entire screen behind a modal window, when one is active.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">COUNT</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -1342,9 +1342,6 @@ During initialization or between frames, feel free to just poke into ImGuiStyle 
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MouseButtonLeft</span></p><p class="member_description">React on left mouse button (default)</p>
 </div>
 <div class="member">
@@ -1352,6 +1349,9 @@ During initialization or between frames, feel free to just poke into ImGuiStyle 
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MouseButtonMiddle</span></p><p class="member_description">React on center mouse button.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -1364,9 +1364,6 @@ During initialization or between frames, feel free to just poke into ImGuiStyle 
 <p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">COUNT</span></p><p class="empty_member_description">No description available</p>
 </div>
@@ -1382,6 +1379,9 @@ During initialization or between frames, feel free to just poke into ImGuiStyle 
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Down</span></p><p class="empty_member_description">No description available</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -1393,9 +1393,6 @@ During initialization or between frames, feel free to just poke into ImGuiStyle 
 <p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PopupAlignLeft</span></p><p class="member_description">Align the popup toward the left by default.</p>
 </div>
@@ -1420,6 +1417,9 @@ During initialization or between frames, feel free to just poke into ImGuiStyle 
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">WidthFitPreview</span></p><p class="member_description">Width dynamically calculated from preview contents.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -1434,9 +1434,6 @@ We use the same sets of flags for DragXXX() and SliderXXX() functions as the fea
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AlwaysClamp</span></p><p class="member_description">Clamp value to min/max bounds when input manually with CTRL+Click. By default CTRL+Click allows going out of bounds.</p>
 </div>
 <div class="member">
@@ -1447,6 +1444,9 @@ We use the same sets of flags for DragXXX() and SliderXXX() functions as the fea
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoInput</span></p><p class="member_description">Disable CTRL+Click or Enter key allowing to input text directly into the widget.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -1460,9 +1460,6 @@ We use the same sets of flags for DragXXX() and SliderXXX() functions as the fea
 <p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">CharsDecimal</span></p><p class="member_description">Allow 0123456789.+-*/.</p>
 </div>
@@ -1526,6 +1523,9 @@ We use the same sets of flags for DragXXX() and SliderXXX() functions as the fea
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EscapeClearsAll</span></p><p class="member_description">Escape key clears content if not empty, and deactivate otherwise (contrast to default behavior of Escape to revert)</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -1537,12 +1537,6 @@ We use the same sets of flags for DragXXX() and SliderXXX() functions as the fea
 <p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoInputs</span></p><p class="member_description">ColorEdit, ColorPicker: disable inputs sliders/text widgets (e.g. to show only the small preview color square).</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoAlpha</span></p><p class="member_description">ColorEdit, ColorPicker, ColorButton: ignore Alpha component (will only read 3 components from the input pointer).</p>
 </div>
@@ -1609,6 +1603,12 @@ We use the same sets of flags for DragXXX() and SliderXXX() functions as the fea
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">InputHSV</span></p><p class="member_description">[Input]       ColorEdit, ColorPicker: input and output data in HSV format.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoInputs</span></p><p class="member_description">ColorEdit, ColorPicker: disable inputs sliders/text widgets (e.g. to show only the small preview color square).</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -1621,7 +1621,7 @@ We use the same sets of flags for DragXXX() and SliderXXX() functions as the fea
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FramePadding</span></p><p class="member_description">Use FramePadding (even for an unframed text node) to vertically align text baseline to regular widget height. Equivalent to calling AlignTextToFramePadding().</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Selected</span></p><p class="member_description">Draw as selected.</p>
@@ -1672,7 +1672,7 @@ We use the same sets of flags for DragXXX() and SliderXXX() functions as the fea
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">CollapsingHeader</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FramePadding</span></p><p class="member_description">Use FramePadding (even for an unframed text node) to vertically align text baseline to regular widget height. Equivalent to calling AlignTextToFramePadding().</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -1685,9 +1685,6 @@ We use the same sets of flags for DragXXX() and SliderXXX() functions as the fea
 <p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AllowOverlap</span></p><p class="member_description">(WIP) Hit testing to allow subsequent widgets to overlap this one.</p>
 </div>
@@ -1702,6 +1699,9 @@ We use the same sets of flags for DragXXX() and SliderXXX() functions as the fea
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Disabled</span></p><p class="member_description">Cannot be selected, display grayed out text.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -1722,7 +1722,13 @@ and want to use another flag, you need to pass in the ImGuiPopupFlags_MouseButto
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MouseButtonLeft</span></p><p class="member_description">For BeginPopupContext*(): open on Left Mouse release. Guaranteed to always be == 0 (same as ImGuiMouseButton_Left)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MouseButtonRight</span></p><p class="member_description">For BeginPopupContext*(): open on Right Mouse release. Guaranteed to always be == 1 (same as ImGuiMouseButton_Right)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MouseButtonMiddle</span></p><p class="member_description">For BeginPopupContext*(): open on Middle Mouse release. Guaranteed to always be == 2 (same as ImGuiMouseButton_Middle)</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoReopen</span></p><p class="member_description">For OpenPopup*(), BeginPopupContext*(): don't reopen same popup if already open (won't reposition, won't reinitialize navigation)</p>
@@ -1743,13 +1749,7 @@ and want to use another flag, you need to pass in the ImGuiPopupFlags_MouseButto
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AnyPopup</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MouseButtonLeft</span></p><p class="member_description">For BeginPopupContext*(): open on Left Mouse release. Guaranteed to always be == 0 (same as ImGuiMouseButton_Left)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MouseButtonRight</span></p><p class="member_description">For BeginPopupContext*(): open on Right Mouse release. Guaranteed to always be == 1 (same as ImGuiMouseButton_Right)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MouseButtonMiddle</span></p><p class="member_description">For BeginPopupContext*(): open on Middle Mouse release. Guaranteed to always be == 2 (same as ImGuiMouseButton_Middle)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -1783,12 +1783,6 @@ If you specify a value for 'inner_width' then effectively the scrolling space is
 <p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoSavedSettings</span></p><p class="member_description">Disable persisting columns order, width and sort settings in the .ini file.</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Resizable</span></p><p class="member_description">Enable resizing columns.</p>
 </div>
@@ -1891,6 +1885,12 @@ If you specify a value for 'inner_width' then effectively the scrolling space is
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">HighlightHoveredColumn</span></p><p class="member_description">Highlight column headers when hovered (may evolve into a fuller highlight)</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoSavedSettings</span></p><p class="member_description">Disable persisting columns order, width and sort settings in the .ini file.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -1903,10 +1903,10 @@ If you specify a value for 'inner_width' then effectively the scrolling space is
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Headers</span></p><p class="member_description">Identify header row (set default background color + width of its contents accounted differently for auto column width)</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Headers</span></p><p class="member_description">Identify header row (set default background color + width of its contents accounted differently for auto column width)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -1919,12 +1919,6 @@ If you specify a value for 'inner_width' then effectively the scrolling space is
 <p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoResize</span></p><p class="member_description">Disable manual resizing.</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Disabled</span></p><p class="member_description">Overriding/master disable flag: hide column, won't show in context menu (unlike calling TableSetColumnEnabled() which manipulates the user accessible state)</p>
 </div>
@@ -1991,6 +1985,12 @@ If you specify a value for 'inner_width' then effectively the scrolling space is
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">IsHovered</span></p><p class="member_description">Status: is hovered by mouse.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoResize</span></p><p class="member_description">Disable manual resizing.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -2011,9 +2011,6 @@ If you set the color of RowBg1 or ColumnBg1 target, your color will blend over t
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RowBg0</span></p><p class="member_description">Set row background color 0 (generally used for background, automatically set when ImGuiTableFlags_RowBg is used)</p>
 </div>
 <div class="member">
@@ -2021,6 +2018,9 @@ If you set the color of RowBg1 or ColumnBg1 target, your color will blend over t
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">CellBg</span></p><p class="member_description">Set cell background color (top-most color)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -2033,9 +2033,6 @@ If you set the color of RowBg1 or ColumnBg1 target, your color will blend over t
 <p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoTooltip</span></p><p class="member_description">Disable tooltips when hovering a tab.</p>
 </div>
@@ -2060,6 +2057,9 @@ If you set the color of RowBg1 or ColumnBg1 target, your color will blend over t
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FittingPolicyScroll</span></p><p class="member_description">Add scroll buttons when tabs don't fit.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -2073,9 +2073,6 @@ Those values are guaranteed to be stable and we frequently use 0/1 directly. Nam
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Middle</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">COUNT</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -2083,6 +2080,9 @@ Those values are guaranteed to be stable and we frequently use 0/1 directly. Nam
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Right</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Middle</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -2101,7 +2101,7 @@ Forward declared enum type ImGuiKey.<p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Tab</span></p><p class="member_description">== ImGuiKey_NamedKey_BEGIN.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">LeftArrow</span></p><p class="empty_member_description">No description available</p>
@@ -2551,7 +2551,16 @@ Forward declared enum type ImGuiKey.<p>
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">KeysData_OFFSET</span></p><p class="member_description">Accesses to io.KeysData[] must use (key - ImGuiKey_KeysData_OFFSET) index.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">D</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Y</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">X</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Q</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">E</span></p><p class="empty_member_description">No description available</p>
@@ -2563,16 +2572,7 @@ Forward declared enum type ImGuiKey.<p>
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">J</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Tab</span></p><p class="member_description">== ImGuiKey_NamedKey_BEGIN.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Y</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">X</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Q</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">D</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -2587,7 +2587,7 @@ User code may request backend to display given cursor by calling SetMouseCursor(
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">COUNT</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Arrow</span></p><p class="empty_member_description">No description available</p>
@@ -2617,7 +2617,7 @@ User code may request backend to display given cursor by calling SetMouseCursor(
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NotAllowed</span></p><p class="member_description">When hovering something with disallowed interaction. Usually a crossed circle.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">COUNT</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -2630,18 +2630,6 @@ User code may request backend to display given cursor by calling SetMouseCursor(
 <p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoFocusOnAppearing</span></p><p class="member_description">Platform Window: Don't take focus when created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoDecoration</span></p><p class="member_description">Platform Window: Disable platform decorations: title bar, borders, etc. (generally set all windows, but if ImGuiConfigFlags_ViewportsDecoration is set we only set this on popups/tooltips)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoInputs</span></p><p class="member_description">Platform Window: Make mouse pass through so we can drag this window while peaking behind it.</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">IsPlatformWindow</span></p><p class="member_description">Represent a Platform Window.</p>
 </div>
@@ -2675,6 +2663,18 @@ User code may request backend to display given cursor by calling SetMouseCursor(
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">IsFocused</span></p><p class="member_description">Platform Window: Window is focused (last call to Platform_GetWindowFocus() returned true)</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoFocusOnAppearing</span></p><p class="member_description">Platform Window: Don't take focus when created.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoDecoration</span></p><p class="member_description">Platform Window: Disable platform decorations: title bar, borders, etc. (generally set all windows, but if ImGuiConfigFlags_ViewportsDecoration is set we only set this on popups/tooltips)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoInputs</span></p><p class="member_description">Platform Window: Make mouse pass through so we can drag this window while peaking behind it.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -2686,9 +2686,6 @@ User code may request backend to display given cursor by calling SetMouseCursor(
 <p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ChildWindows</span></p><p class="member_description">Return true if any children of the window is focused.</p>
 </div>
@@ -2707,6 +2704,9 @@ User code may request backend to display given cursor by calling SetMouseCursor(
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RootAndChildWindows</span></p><p class="empty_member_description">No description available</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -2720,9 +2720,6 @@ Note: windows with the ImGuiWindowFlags_NoInputs flag are ignored by IsWindowHov
 <p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="member_description">Return true if directly over the item/window, not obstructed by another window, not obstructed by an active popup or modal blocking inputs under them.</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ChildWindows</span></p><p class="member_description">IsWindowHovered() only: Return true if any children of the window is hovered.</p>
 </div>
@@ -2783,6 +2780,9 @@ Note: windows with the ImGuiWindowFlags_NoInputs flag are ignored by IsWindowHov
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoSharedDelay</span></p><p class="member_description">IsItemHovered() only: Disable shared delay system where moving from one item to the next keeps the previous timer for a short time (standard for tooltips with long delays)</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="member_description">Return true if directly over the item/window, not obstructed by another window, not obstructed by an active popup or modal blocking inputs under them.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -2796,12 +2796,6 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <p>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoResize</span></p><p class="member_description">Saved  Disable resizing node using the splitter/separators. Useful with programmatically setup dockspaces.</p>
-</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">KeepAliveOnly</span></p><p class="member_description">Don't display the dockspace node but keep it alive. Windows docked into this dockspace node won't be undocked.</p>
 </div>
@@ -2819,6 +2813,12 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoUndocking</span></p><p class="member_description">Disable undocking this node.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoResize</span></p><p class="member_description">Saved  Disable resizing node using the splitter/separators. Useful with programmatically setup dockspaces.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -2852,16 +2852,16 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">desiredSize</span>()</p>
-<p class="member_description">Read-write desired size, based on user's mouse position. Write to this field to restrain resizing.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">currentSize</span>()</p>
 <p class="member_description">Read-only current window size.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getPos</span>()</p>
 <p class="member_description">Read-only window position, for reference.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">desiredSize</span>()</p>
+<p class="member_description">Read-write desired size, based on user's mouse position. Write to this field to restrain resizing.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">desiredSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> desired_size)</p>
@@ -3124,6 +3124,528 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 </ul></div>
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginMenuBar</span>()</p>
+<p class="member_description">Append to menu-bar of current window (requires ImGuiWindowFlags_MenuBar flag set on parent window)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endMenuBar</span>()</p>
+<p class="member_description">Only call EndMenuBar() if BeginMenuBar() returns true!</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginMainMenuBar</span>()</p>
+<p class="member_description">Create and append to a full screen menu-bar.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endMainMenuBar</span>()</p>
+<p class="member_description">Only call EndMainMenuBar() if BeginMainMenuBar() returns true!</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginMenu</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label)</p>
+<p class="member_description">Implied enabled = true.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginMenu</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_primitive">int</span> enabled)</p>
+<p class="member_description">Create a sub-menu entry. only call EndMenu() if this returns true!</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endMenu</span>()</p>
+<p class="member_description">Only call EndMenu() if BeginMenu() returns true!</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">menuItem</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label)</p>
+<p class="member_description">Implied shortcut = NULL, selected = false, enabled = true.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">menuItem</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">string</span> shortcut, <span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_selected, <span class="ckdoc_typename ckdoc_type_primitive">int</span> enabled)</p>
+<p class="member_description">Return true when activated + toggle (*p_selected) if p_selected != NULL.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginTooltip</span>()</p>
+<p class="member_description">Begin/append a tooltip window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endTooltip</span>()</p>
+<p class="member_description">Only call EndTooltip() if BeginTooltip()/BeginItemTooltip() returns true!</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tooltip</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
+<p class="member_description">Set a text-only tooltip. Often used after a ImGui::IsItemHovered() check. Override any previous call to SetTooltip().
+SetTooltip() is more or less a shortcut for the 'if (BeginTooltip()) { Text(...); EndTooltip(); }' idiom (with a subtlety that it discard any previously submitted tooltip)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">itemTooltip</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
+<p class="member_description">Set a text-only tooltip if preceding item was hovered. override any previous call to SetTooltip().
+itemTooltip() is a shortcut for the 'if (IsItemHovered(ImGuiHoveredFlags_ForTooltip)) { SetTooltip(...); }' idiom.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopup</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_description">Return true if the popup is open, and you can start outputting to it. `flags` is an enum of type UI_WindowFlags
+beginPopup(): query popup state, if open start appending into the window. Call endPopup() afterwards if returned true. UI_WindowFlags are forwarded to the window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupModal</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> name, <span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_description">Return true if the modal is open, and you can start outputting to it. `flags` is an enum of type UI_WindowFlags
+beginPopupModal(): block every interaction behind the window, cannot be closed by user, add a dimming background, has a title bar.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endPopup</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">openPopup</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> popup_flags)</p>
+<p class="member_description">Call to mark popup as open (don't call every frame!). `popup_flags` is an enum of type UI_PopupFlags.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">openPopupOnItemClick</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> popup_flags)</p>
+<p class="member_description">Helper to open popup when clicked on last item. Default to UI_PopupFlags.MouseButtonRight == 1. (note: actually triggers on the mouse _released_ event to be consistent with popup behaviors)
+`popup_flags` is an enum of type UI_PopupFlags.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">closeCurrentPopup</span>()</p>
+<p class="member_description">Manually close the popup we have begin-ed into.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupContextItem</span>()</p>
+<p class="member_description">Implied str_id = NULL, popup_flags = 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupContextItem</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> popup_flags)</p>
+<p class="member_description">Open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupContextWindow</span>()</p>
+<p class="member_description">Implied str_id = NULL, popup_flags = 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupContextWindow</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> popup_flags)</p>
+<p class="member_description">Open+begin popup when clicked on current window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupContextVoid</span>()</p>
+<p class="member_description">Implied str_id = NULL, popup_flags = 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupContextVoid</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> popup_flags)</p>
+<p class="member_description">Open+begin popup when clicked in void (where there are no windows).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isPopupOpen</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_description">Return true if the popup is open. `flags` is an enum of type UI_PopupFlags.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginTable</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> column, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_description">Implied outer_size = ImVec2(0.0f, 0.0f), inner_width = 0.0f
+`flags` is an enum of type UI_TableFlags.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginTable</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> column, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> outer_size, <span class="ckdoc_typename ckdoc_type_primitive">float</span> inner_width)</p>
+<p class="member_description">`flags` is an enum of type UI_TableFlags.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endTable</span>()</p>
+<p class="member_description">Only call EndTable() if BeginTable() returns true!</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableNextRow</span>()</p>
+<p class="member_description">Implied row_flags = 0, min_row_height = 0.0f.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableNextRow</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> row_flags, <span class="ckdoc_typename ckdoc_type_primitive">float</span> min_row_height)</p>
+<p class="member_description">Append into the first cell of a new row.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tableNextColumn</span>()</p>
+<p class="member_description">Append into the next column (or first column of next row if currently in last column). Return true when column is visible.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tableSetColumnIndex</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> column_n)</p>
+<p class="member_description">Append into the specified column. Return true when column is visible.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableSetupColumn</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_description">Implied init_width_or_weight = 0.0f, user_id = 0
+`flags` is an enum of type UI_TableColumnFlags.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableSetupColumn</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags, <span class="ckdoc_typename ckdoc_type_primitive">float</span> init_width_or_weight, <span class="ckdoc_typename ckdoc_type_primitive">int</span> user_id)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableSetupScrollFreeze</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> cols, <span class="ckdoc_typename ckdoc_type_primitive">int</span> rows)</p>
+<p class="member_description">Lock columns/rows so they stay visible when scrolled.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableHeader</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label)</p>
+<p class="member_description">Submit one header cell manually (rarely used)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableHeadersRow</span>()</p>
+<p class="member_description">Submit a row with headers cells based on data provided to TableSetupColumn() + submit context menu.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableAngledHeadersRow</span>()</p>
+<p class="member_description">Submit a row with angled headers for every column with the ImGuiTableColumnFlags_AngledHeader flag. MUST BE FIRST ROW.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tableGetColumnCount</span>()</p>
+<p class="member_description">Return number of columns (value passed to BeginTable)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tableGetColumnIndex</span>()</p>
+<p class="member_description">Return current column index.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tableGetRowIndex</span>()</p>
+<p class="member_description">Return current row index.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">tableGetColumnName</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> column_n)</p>
+<p class="member_description">Return "" if column didn't have a name declared by TableSetupColumn(). Pass -1 to use current column.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tableGetColumnFlags</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> column_n)</p>
+<p class="member_description">Return column flags so you can query their Enabled/Visible/Sorted/Hovered status flags. Pass -1 to use current column.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableSetColumnEnabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> column_n, <span class="ckdoc_typename ckdoc_type_primitive">int</span> v)</p>
+<p class="member_description">Change user accessible enabled/disabled state of a column. Set to false to hide the column. User can use the context menu to change this themselves (right-click in headers, or right-click in columns body with UI_TableFlags.ContextMenuInBody)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableSetBgColor</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> ui_table_bg_target_flag, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> color, <span class="ckdoc_typename ckdoc_type_primitive">int</span> column_n)</p>
+<p class="member_description">Change the color of a cell, row, or column. UI_TableBgTarget flags for details.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginTabBar</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_description">`flags` is an enum of type UI_TabBarFlags
+create and append into a TabBar.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endTabBar</span>()</p>
+<p class="member_description">Only call EndTabBar() if BeginTabBar() returns true!</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginTabItem</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_description">Create a Tab. Returns true if the Tab is selected.
+`flags` is an enum of type UI_TabItemFlags.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endTabItem</span>()</p>
+<p class="member_description">Only call EndTabItem() if BeginTabItem() returns true!</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tabItemButton</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_description">Create a Tab behaving like a button. Returns true when clicked.
+cannot be selected in the tab bar.
+`flags` is an enum of type UI_TabItemFlags.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setTabItemClosed</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> tab_or_docked_window_label)</p>
+<p class="member_description">Notify TabBar or Docking system of a closed tab/window ahead (useful to reduce visual flicker on reorderable tab bars). For tab-bar: call after BeginTabBar() and before Tab submissions. Otherwise call with a window name.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">dockSpaceOverViewport</span>()</p>
+<p class="member_description">Implied dockspace_id = 0, viewport = NULL, flags = 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">beginDisabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> disabled)</p>
+<p class="member_description">Disable all user interactions and dim items visuals (applying style.DisabledAlpha over current colors)
+Those can be nested but it cannot be used to enable an already disabled section (a single BeginDisabled(true) in the stack is enough to keep everything disabled)
+BeginDisabled(false) essentially does nothing useful but is provided to facilitate use of boolean expressions. If you can avoid calling BeginDisabled(False)/EndDisabled() best to avoid it.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endDisabled</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pushClipRect</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> clip_rect_min, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> clip_rect_max, <span class="ckdoc_typename ckdoc_type_primitive">int</span> intersect_with_current_clip_rect)</p>
+<p class="member_description">Mouse hovering is affected by ImGui::PushClipRect() calls, unlike direct calls to ImDrawList::PushClipRect() which are render only.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">popClipRect</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setItemDefaultFocus</span>()</p>
+<p class="member_description">Make last item the default focused item of a window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setKeyboardFocusHere</span>()</p>
+<p class="member_description">Implied offset = 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setKeyboardFocusHere</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> offset)</p>
+<p class="member_description">Focus keyboard on the next widget. Use positive 'offset' to access sub components of a multiple component widget. Use -1 to access previous widget.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">nextItemAllowOverlap</span>()</p>
+<p class="member_description">Allow next item to be overlapped by a subsequent item. Useful with invisible buttons, selectable, treenode covering an area where subsequent items may need to be added. Note that both Selectable() and TreeNode() have dedicated flags doing this.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemHovered</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> ui_hovered_flags)</p>
+<p class="member_description">Is the last item hovered? (and usable, aka not blocked by a popup, etc.). See UI_HoveredFlags for more options.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemActive</span>()</p>
+<p class="member_description">Is the last item active? (e.g. button being held, text field being edited. This will continuously return true while holding mouse button on an item. Items that don't interact will always return false)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemFocused</span>()</p>
+<p class="member_description">Is the last item focused for keyboard/gamepad navigation?</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemClicked</span>()</p>
+<p class="member_description">Implied mouse_button = 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemClicked</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> mouse_button)</p>
+<p class="member_description">Is the last item hovered and mouse clicked on? (**)  == IsMouseClicked(mouse_button) && IsItemHovered(). Important. (**) this is NOT equivalent to the behavior of e.g. Button(). Read comments in function definition.mouse_button is an enum of type UI_MouseButton.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemVisible</span>()</p>
+<p class="member_description">Is the last item visible? (items may be out of sight because of clipping/scrolling)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemEdited</span>()</p>
+<p class="member_description">Did the last item modify its underlying value this frame? or was pressed? This is generally the same as the 'bool' return value of many widgets.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemActivated</span>()</p>
+<p class="member_description">Was the last item just made active (item was previously inactive).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemDeactivated</span>()</p>
+<p class="member_description">Was the last item just made inactive (item was previously active). Useful for Undo/Redo patterns with widgets that require continuous editing.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemDeactivatedAfterEdit</span>()</p>
+<p class="member_description">Was the last item just made inactive and made a value change when it was active? (e.g. Slider/Drag moved). Useful for Undo/Redo patterns with widgets that require continuous editing. Note that you may get false positives (some widgets such as Combo()/ListBox()/Selectable() will return true even when clicking an already selected item).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemToggledOpen</span>()</p>
+<p class="member_description">Was the last item open state toggled? set by TreeNode().</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isAnyItemHovered</span>()</p>
+<p class="member_description">Is any item hovered?</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isAnyItemActive</span>()</p>
+<p class="member_description">Is any item active?</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isAnyItemFocused</span>()</p>
+<p class="member_description">Is any item focused?</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getItemID</span>()</p>
+<p class="member_description">Get ID of last item (~~ often same ImGui::GetID(label) beforehand)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getItemRectMin</span>()</p>
+<p class="member_description">Get upper-left bounding rectangle of the last item (screen space)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getItemRectMax</span>()</p>
+<p class="member_description">Get lower-right bounding rectangle of the last item (screen space)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getItemRectSize</span>()</p>
+<p class="member_description">Get size of last item.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">UI_Viewport</span> <span class="membername">getMainViewport</span>()</p>
+<p class="member_description">Return primary/default viewport. This can never be NULL.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">calcTextSize</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
+<p class="member_description">Implied text_end = NULL, hide_text_after_double_hash = false, wrap_width = -1.0f.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">calcTextSize</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text, <span class="ckdoc_typename ckdoc_type_object">string</span> text_end, <span class="ckdoc_typename ckdoc_type_primitive">int</span> hide_text_after_double_hash, <span class="ckdoc_typename ckdoc_type_primitive">float</span> wrap_width)</p>
+<p class="member_description">Default hide_text_after_double_hash = false, wrap_width = -1.0f.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">convertRGBtoHSV</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> rgb)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">convertHSVtoRGB</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> hsv)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isKeyDown</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key)</p>
+<p class="member_description">Is key being held. `key` is an enum of type UI_Key.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isKeyPressed</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key)</p>
+<p class="member_description">Implied repeat = true. `key` is an enum of type UI_Key.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isKeyPressed</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key, <span class="ckdoc_typename ckdoc_type_primitive">int</span> repeat)</p>
+<p class="member_description">Was key pressed (went from !Down to Down)? if repeat=true, uses io.KeyRepeatDelay / KeyRepeatRate. `key` is an enum of type UI_Key.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isKeyReleased</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key)</p>
+<p class="member_description">Was key released (went from Down to !Down)? `key` is an enum of type UI_Key.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isKeyChordPressed</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key_chord)</p>
+<p class="member_description">Was key chord (UI_Key.Mod* + UI_Key) pressed, e.g. you can pass 'UI_Key.Mod_Ctrl | UI_Key.S' as a key-chord. This doesn't do any routing or focus check, please consider using Shortcut() function instead.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">keyPressedAmount</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key, <span class="ckdoc_typename ckdoc_type_primitive">float</span> repeat_delay, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rate)</p>
+<p class="member_description">Uses provided repeat rate/delay. return a count, most often 0 or 1 but might be >1 if RepeatRate is small enough that DeltaTime > RepeatRate. `key` is an enum of type UI_Key.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">keyName</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key)</p>
+<p class="member_description">Returns English name of the key. Those names a provided for debugging purpose and are not meant to be saved persistently not compared.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setNextFrameWantCaptureKeyboard</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> want_capture_keyboard)</p>
+<p class="member_description">Override io.WantCaptureKeyboard flag next frame (said flag is left for your application to handle, typically when true it instructs your app to ignore inputs). e.g. force capture keyboard when your widget is being hovered. This is equivalent to setting "io.WantCaptureKeyboard = want_capture_keyboard"; after the next NewFrame() call.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseDown</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button)</p>
+<p class="member_description">Is mouse button held. `button` is an enum of type UI_MouseButton.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseClicked</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button)</p>
+<p class="member_description">Implied repeat = false. `button` is an enum of type UI_MouseButton.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseClicked</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button, <span class="ckdoc_typename ckdoc_type_primitive">int</span> repeat)</p>
+<p class="member_description">Did mouse button clicked? (went from !Down to Down). Same as GetMouseClickedCount() == 1. `button` is an enum of type UI_MouseButton.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseReleased</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button)</p>
+<p class="member_description">Did mouse button released? (went from Down to !Down). `button` is an enum of type UI_MouseButton.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseDoubleClicked</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button)</p>
+<p class="member_description">Did mouse button double-clicked? Same as GetMouseClickedCount() == 2. `button` is an enum of type UI_MouseButton.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getMouseClickedCount</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button)</p>
+<p class="member_description">Return the number of successive mouse-clicks at the time where a click happen (otherwise 0). `button` is an enum of type UI_MouseButton.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseHoveringRect</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> r_min, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> r_max)</p>
+<p class="member_description">Implied clip = true.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseHoveringRect</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> r_min, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> r_max, <span class="ckdoc_typename ckdoc_type_primitive">int</span> clip)</p>
+<p class="member_description">Is mouse hovering given bounding rect (in screen space). clipped by current clipping settings, but disregarding of other consideration of focus/window ordering/popup-block.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMousePosValid</span>()</p>
+<p class="member_description">By convention we use (-FLT_MAX,-FLT_MAX) to denote that there is no mouse available.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getMousePos</span>()</p>
+<p class="member_description">Shortcut to ImGui::GetIO().MousePos provided by user, to be consistent with other calls.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getMousePosOnOpeningCurrentPopup</span>()</p>
+<p class="member_description">Retrieve mouse position at the time of opening popup we have BeginPopup() into (helper to avoid user backing that value themselves)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseDragging</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button, <span class="ckdoc_typename ckdoc_type_primitive">float</span> lock_threshold)</p>
+<p class="member_description">Is mouse dragging? (uses io.MouseDraggingThreshold if lock_threshold < 0.0f). `button` is an enum of type UI_MouseButton.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getMouseDragDelta</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button, <span class="ckdoc_typename ckdoc_type_primitive">float</span> lock_threshold)</p>
+<p class="member_description">Return the delta from the initial clicking position while the mouse button is pressed or was just released. This is locked and return 0.0f until the mouse moves past a distance threshold at least once (uses io.MouseDraggingThreshold if lock_threshold < 0.0f)
+`button` is an enum of type UI_MouseButton.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">resetMouseDragDelta</span>()</p>
+<p class="member_description">Implied button = 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">resetMouseDragDelta</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button)</p>
+<p class="member_description">`button` is an enum of type UI_MouseButton.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mouseCursor</span>()</p>
+<p class="member_description">Get desired mouse cursor shape. Important: reset in ImGui::NewFrame(), this is updated during the frame. valid before Render(). If you use software rendering by setting io.MouseDrawCursor ImGui will render those for you.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setMouseCursor</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> cursor_type)</p>
+<p class="member_description">Set desired mouse cursor shape. `cursor_type` is an enum of type UI_MouseCursor.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setNextFrameWantCaptureMouse</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> want_capture_mouse)</p>
+<p class="member_description">Override io.WantCaptureMouse flag next frame (said flag is left for your application to handle, typical when true it instucts your app to ignore inputs). This is equivalent to setting "io.WantCaptureMouse = want_capture_mouse;" after the next NewFrame() call.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">clipboardText</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clipboardText</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">styleColorsDark</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">styleColorsLight</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">styleColorsClassic</span>()</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">disabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> disabled)</p>
+<p class="member_description">Set whether imgui is disabled (does not call call new frame, does not submit UI draw lists to renderer)Do this if your application does not render UI and needs the extra performance from skipping UI overhead. Saves ~2ms on the render thread.While UI.disabled == true, DO NOT call any other UI functions. Doing so results in undefined behavior.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scenegraph</span>(<span class="ckdoc_typename ckdoc_type_object">GGen</span> root)</p>
+<p class="member_description">Scene tree widget. View data about a given GGen and all its children. A simple version of a typical Editor Scenegraph.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">wantCaptureMouse</span>()</p>
+<p class="member_description">When wantCaptureMouse=true, the mouse is interacting with UI widgets, so you know to discard/hide the mouse inputs from your underlying application.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">wantCaptureKeyboard</span>()</p>
+<p class="member_description">When wantCaptureKeyboard=true, the keyboard is interacting with UI widgets, so you know to discard/hide the keyboard inputs from your underlying application.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">UI_Style</span> <span class="membername">getStyle</span>()</p>
+<p class="member_description">Access the Style structure (colors, sizes). Always use PushStyleColor(), PushStyleVar() to modify style mid-frame!</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">showDemoWindow</span>(<span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open)</p>
+<p class="member_description">Create Demo window. demonstrate most ImGui features. call this to learn about the library! try to make it always available in your application!</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">showMetricsWindow</span>(<span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open)</p>
+<p class="member_description">Create Metrics/Debugger window. display Dear ImGui internals: windows, draw commands, various internal state, etc.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">showDebugLogWindow</span>(<span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open)</p>
+<p class="member_description">Create Debug Log window. display a simplified log of important dear imgui events.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">showStyleEditor</span>()</p>
+<p class="member_description">Add style selector block (not a window), essentially a combo listing the default styles.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">showIDStackToolWindow</span>(<span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open)</p>
+<p class="member_description">Create Stack Tool window. hover items with mouse to query information about the source of their unique ID.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">showAboutWindow</span>(<span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open)</p>
+<p class="member_description">Create About window. display Dear ImGui version, credits and build/system information.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">showStyleSelector</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label)</p>
+<p class="member_description">Add style selector block (not a window), essentially a combo listing the default styles.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">showFontSelector</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label)</p>
 <p class="member_description">Add font selector block (not a window), essentially a combo listing the loaded fonts.</p>
@@ -3956,528 +4478,6 @@ Choose frame height:  size.y > 0.0f: custom  /  size.y < 0.0f or -FLT_MIN: botto
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">plotHistogram</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> values, <span class="ckdoc_typename ckdoc_type_primitive">int</span> values_offset, <span class="ckdoc_typename ckdoc_type_object">string</span> overlay_text, <span class="ckdoc_typename ckdoc_type_primitive">float</span> scale_min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> scale_max, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> graph_size)</p>
 <p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginMenuBar</span>()</p>
-<p class="member_description">Append to menu-bar of current window (requires ImGuiWindowFlags_MenuBar flag set on parent window)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endMenuBar</span>()</p>
-<p class="member_description">Only call EndMenuBar() if BeginMenuBar() returns true!</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginMainMenuBar</span>()</p>
-<p class="member_description">Create and append to a full screen menu-bar.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endMainMenuBar</span>()</p>
-<p class="member_description">Only call EndMainMenuBar() if BeginMainMenuBar() returns true!</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginMenu</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label)</p>
-<p class="member_description">Implied enabled = true.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginMenu</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_primitive">int</span> enabled)</p>
-<p class="member_description">Create a sub-menu entry. only call EndMenu() if this returns true!</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endMenu</span>()</p>
-<p class="member_description">Only call EndMenu() if BeginMenu() returns true!</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">menuItem</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label)</p>
-<p class="member_description">Implied shortcut = NULL, selected = false, enabled = true.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">menuItem</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">string</span> shortcut, <span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_selected, <span class="ckdoc_typename ckdoc_type_primitive">int</span> enabled)</p>
-<p class="member_description">Return true when activated + toggle (*p_selected) if p_selected != NULL.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginTooltip</span>()</p>
-<p class="member_description">Begin/append a tooltip window.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endTooltip</span>()</p>
-<p class="member_description">Only call EndTooltip() if BeginTooltip()/BeginItemTooltip() returns true!</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tooltip</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
-<p class="member_description">Set a text-only tooltip. Often used after a ImGui::IsItemHovered() check. Override any previous call to SetTooltip().
-SetTooltip() is more or less a shortcut for the 'if (BeginTooltip()) { Text(...); EndTooltip(); }' idiom (with a subtlety that it discard any previously submitted tooltip)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">itemTooltip</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
-<p class="member_description">Set a text-only tooltip if preceding item was hovered. override any previous call to SetTooltip().
-itemTooltip() is a shortcut for the 'if (IsItemHovered(ImGuiHoveredFlags_ForTooltip)) { SetTooltip(...); }' idiom.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopup</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="member_description">Return true if the popup is open, and you can start outputting to it. `flags` is an enum of type UI_WindowFlags
-beginPopup(): query popup state, if open start appending into the window. Call endPopup() afterwards if returned true. UI_WindowFlags are forwarded to the window.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupModal</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> name, <span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="member_description">Return true if the modal is open, and you can start outputting to it. `flags` is an enum of type UI_WindowFlags
-beginPopupModal(): block every interaction behind the window, cannot be closed by user, add a dimming background, has a title bar.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endPopup</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">openPopup</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> popup_flags)</p>
-<p class="member_description">Call to mark popup as open (don't call every frame!). `popup_flags` is an enum of type UI_PopupFlags.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">openPopupOnItemClick</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> popup_flags)</p>
-<p class="member_description">Helper to open popup when clicked on last item. Default to UI_PopupFlags.MouseButtonRight == 1. (note: actually triggers on the mouse _released_ event to be consistent with popup behaviors)
-`popup_flags` is an enum of type UI_PopupFlags.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">closeCurrentPopup</span>()</p>
-<p class="member_description">Manually close the popup we have begin-ed into.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupContextItem</span>()</p>
-<p class="member_description">Implied str_id = NULL, popup_flags = 1.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupContextItem</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> popup_flags)</p>
-<p class="member_description">Open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupContextWindow</span>()</p>
-<p class="member_description">Implied str_id = NULL, popup_flags = 1.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupContextWindow</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> popup_flags)</p>
-<p class="member_description">Open+begin popup when clicked on current window.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupContextVoid</span>()</p>
-<p class="member_description">Implied str_id = NULL, popup_flags = 1.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginPopupContextVoid</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> popup_flags)</p>
-<p class="member_description">Open+begin popup when clicked in void (where there are no windows).</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isPopupOpen</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="member_description">Return true if the popup is open. `flags` is an enum of type UI_PopupFlags.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginTable</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> column, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="member_description">Implied outer_size = ImVec2(0.0f, 0.0f), inner_width = 0.0f
-`flags` is an enum of type UI_TableFlags.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginTable</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> column, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> outer_size, <span class="ckdoc_typename ckdoc_type_primitive">float</span> inner_width)</p>
-<p class="member_description">`flags` is an enum of type UI_TableFlags.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endTable</span>()</p>
-<p class="member_description">Only call EndTable() if BeginTable() returns true!</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableNextRow</span>()</p>
-<p class="member_description">Implied row_flags = 0, min_row_height = 0.0f.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableNextRow</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> row_flags, <span class="ckdoc_typename ckdoc_type_primitive">float</span> min_row_height)</p>
-<p class="member_description">Append into the first cell of a new row.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tableNextColumn</span>()</p>
-<p class="member_description">Append into the next column (or first column of next row if currently in last column). Return true when column is visible.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tableSetColumnIndex</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> column_n)</p>
-<p class="member_description">Append into the specified column. Return true when column is visible.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableSetupColumn</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="member_description">Implied init_width_or_weight = 0.0f, user_id = 0
-`flags` is an enum of type UI_TableColumnFlags.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableSetupColumn</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags, <span class="ckdoc_typename ckdoc_type_primitive">float</span> init_width_or_weight, <span class="ckdoc_typename ckdoc_type_primitive">int</span> user_id)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableSetupScrollFreeze</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> cols, <span class="ckdoc_typename ckdoc_type_primitive">int</span> rows)</p>
-<p class="member_description">Lock columns/rows so they stay visible when scrolled.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableHeader</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label)</p>
-<p class="member_description">Submit one header cell manually (rarely used)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableHeadersRow</span>()</p>
-<p class="member_description">Submit a row with headers cells based on data provided to TableSetupColumn() + submit context menu.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableAngledHeadersRow</span>()</p>
-<p class="member_description">Submit a row with angled headers for every column with the ImGuiTableColumnFlags_AngledHeader flag. MUST BE FIRST ROW.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tableGetColumnCount</span>()</p>
-<p class="member_description">Return number of columns (value passed to BeginTable)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tableGetColumnIndex</span>()</p>
-<p class="member_description">Return current column index.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tableGetRowIndex</span>()</p>
-<p class="member_description">Return current row index.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">tableGetColumnName</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> column_n)</p>
-<p class="member_description">Return "" if column didn't have a name declared by TableSetupColumn(). Pass -1 to use current column.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tableGetColumnFlags</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> column_n)</p>
-<p class="member_description">Return column flags so you can query their Enabled/Visible/Sorted/Hovered status flags. Pass -1 to use current column.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableSetColumnEnabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> column_n, <span class="ckdoc_typename ckdoc_type_primitive">int</span> v)</p>
-<p class="member_description">Change user accessible enabled/disabled state of a column. Set to false to hide the column. User can use the context menu to change this themselves (right-click in headers, or right-click in columns body with UI_TableFlags.ContextMenuInBody)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tableSetBgColor</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> ui_table_bg_target_flag, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> color, <span class="ckdoc_typename ckdoc_type_primitive">int</span> column_n)</p>
-<p class="member_description">Change the color of a cell, row, or column. UI_TableBgTarget flags for details.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginTabBar</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> str_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="member_description">`flags` is an enum of type UI_TabBarFlags
-create and append into a TabBar.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endTabBar</span>()</p>
-<p class="member_description">Only call EndTabBar() if BeginTabBar() returns true!</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginTabItem</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="member_description">Create a Tab. Returns true if the Tab is selected.
-`flags` is an enum of type UI_TabItemFlags.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endTabItem</span>()</p>
-<p class="member_description">Only call EndTabItem() if BeginTabItem() returns true!</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">tabItemButton</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="member_description">Create a Tab behaving like a button. Returns true when clicked.
-cannot be selected in the tab bar.
-`flags` is an enum of type UI_TabItemFlags.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setTabItemClosed</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> tab_or_docked_window_label)</p>
-<p class="member_description">Notify TabBar or Docking system of a closed tab/window ahead (useful to reduce visual flicker on reorderable tab bars). For tab-bar: call after BeginTabBar() and before Tab submissions. Otherwise call with a window name.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">dockSpaceOverViewport</span>()</p>
-<p class="member_description">Implied dockspace_id = 0, viewport = NULL, flags = 0.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">beginDisabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> disabled)</p>
-<p class="member_description">Disable all user interactions and dim items visuals (applying style.DisabledAlpha over current colors)
-Those can be nested but it cannot be used to enable an already disabled section (a single BeginDisabled(true) in the stack is enough to keep everything disabled)
-BeginDisabled(false) essentially does nothing useful but is provided to facilitate use of boolean expressions. If you can avoid calling BeginDisabled(False)/EndDisabled() best to avoid it.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">endDisabled</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pushClipRect</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> clip_rect_min, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> clip_rect_max, <span class="ckdoc_typename ckdoc_type_primitive">int</span> intersect_with_current_clip_rect)</p>
-<p class="member_description">Mouse hovering is affected by ImGui::PushClipRect() calls, unlike direct calls to ImDrawList::PushClipRect() which are render only.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">popClipRect</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setItemDefaultFocus</span>()</p>
-<p class="member_description">Make last item the default focused item of a window.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setKeyboardFocusHere</span>()</p>
-<p class="member_description">Implied offset = 0.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setKeyboardFocusHere</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> offset)</p>
-<p class="member_description">Focus keyboard on the next widget. Use positive 'offset' to access sub components of a multiple component widget. Use -1 to access previous widget.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">nextItemAllowOverlap</span>()</p>
-<p class="member_description">Allow next item to be overlapped by a subsequent item. Useful with invisible buttons, selectable, treenode covering an area where subsequent items may need to be added. Note that both Selectable() and TreeNode() have dedicated flags doing this.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemHovered</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> ui_hovered_flags)</p>
-<p class="member_description">Is the last item hovered? (and usable, aka not blocked by a popup, etc.). See UI_HoveredFlags for more options.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemActive</span>()</p>
-<p class="member_description">Is the last item active? (e.g. button being held, text field being edited. This will continuously return true while holding mouse button on an item. Items that don't interact will always return false)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemFocused</span>()</p>
-<p class="member_description">Is the last item focused for keyboard/gamepad navigation?</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemClicked</span>()</p>
-<p class="member_description">Implied mouse_button = 0.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemClicked</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> mouse_button)</p>
-<p class="member_description">Is the last item hovered and mouse clicked on? (**)  == IsMouseClicked(mouse_button) && IsItemHovered(). Important. (**) this is NOT equivalent to the behavior of e.g. Button(). Read comments in function definition.mouse_button is an enum of type UI_MouseButton.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemVisible</span>()</p>
-<p class="member_description">Is the last item visible? (items may be out of sight because of clipping/scrolling)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemEdited</span>()</p>
-<p class="member_description">Did the last item modify its underlying value this frame? or was pressed? This is generally the same as the 'bool' return value of many widgets.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemActivated</span>()</p>
-<p class="member_description">Was the last item just made active (item was previously inactive).</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemDeactivated</span>()</p>
-<p class="member_description">Was the last item just made inactive (item was previously active). Useful for Undo/Redo patterns with widgets that require continuous editing.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemDeactivatedAfterEdit</span>()</p>
-<p class="member_description">Was the last item just made inactive and made a value change when it was active? (e.g. Slider/Drag moved). Useful for Undo/Redo patterns with widgets that require continuous editing. Note that you may get false positives (some widgets such as Combo()/ListBox()/Selectable() will return true even when clicking an already selected item).</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isItemToggledOpen</span>()</p>
-<p class="member_description">Was the last item open state toggled? set by TreeNode().</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isAnyItemHovered</span>()</p>
-<p class="member_description">Is any item hovered?</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isAnyItemActive</span>()</p>
-<p class="member_description">Is any item active?</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isAnyItemFocused</span>()</p>
-<p class="member_description">Is any item focused?</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getItemID</span>()</p>
-<p class="member_description">Get ID of last item (~~ often same ImGui::GetID(label) beforehand)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getItemRectMin</span>()</p>
-<p class="member_description">Get upper-left bounding rectangle of the last item (screen space)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getItemRectMax</span>()</p>
-<p class="member_description">Get lower-right bounding rectangle of the last item (screen space)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getItemRectSize</span>()</p>
-<p class="member_description">Get size of last item.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">UI_Viewport</span> <span class="membername">getMainViewport</span>()</p>
-<p class="member_description">Return primary/default viewport. This can never be NULL.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">calcTextSize</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
-<p class="member_description">Implied text_end = NULL, hide_text_after_double_hash = false, wrap_width = -1.0f.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">calcTextSize</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text, <span class="ckdoc_typename ckdoc_type_object">string</span> text_end, <span class="ckdoc_typename ckdoc_type_primitive">int</span> hide_text_after_double_hash, <span class="ckdoc_typename ckdoc_type_primitive">float</span> wrap_width)</p>
-<p class="member_description">Default hide_text_after_double_hash = false, wrap_width = -1.0f.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">convertRGBtoHSV</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> rgb)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">convertHSVtoRGB</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> hsv)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isKeyDown</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key)</p>
-<p class="member_description">Is key being held. `key` is an enum of type UI_Key.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isKeyPressed</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key)</p>
-<p class="member_description">Implied repeat = true. `key` is an enum of type UI_Key.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isKeyPressed</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key, <span class="ckdoc_typename ckdoc_type_primitive">int</span> repeat)</p>
-<p class="member_description">Was key pressed (went from !Down to Down)? if repeat=true, uses io.KeyRepeatDelay / KeyRepeatRate. `key` is an enum of type UI_Key.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isKeyReleased</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key)</p>
-<p class="member_description">Was key released (went from Down to !Down)? `key` is an enum of type UI_Key.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isKeyChordPressed</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key_chord)</p>
-<p class="member_description">Was key chord (UI_Key.Mod* + UI_Key) pressed, e.g. you can pass 'UI_Key.Mod_Ctrl | UI_Key.S' as a key-chord. This doesn't do any routing or focus check, please consider using Shortcut() function instead.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">keyPressedAmount</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key, <span class="ckdoc_typename ckdoc_type_primitive">float</span> repeat_delay, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rate)</p>
-<p class="member_description">Uses provided repeat rate/delay. return a count, most often 0 or 1 but might be >1 if RepeatRate is small enough that DeltaTime > RepeatRate. `key` is an enum of type UI_Key.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">keyName</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> key)</p>
-<p class="member_description">Returns English name of the key. Those names a provided for debugging purpose and are not meant to be saved persistently not compared.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setNextFrameWantCaptureKeyboard</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> want_capture_keyboard)</p>
-<p class="member_description">Override io.WantCaptureKeyboard flag next frame (said flag is left for your application to handle, typically when true it instructs your app to ignore inputs). e.g. force capture keyboard when your widget is being hovered. This is equivalent to setting "io.WantCaptureKeyboard = want_capture_keyboard"; after the next NewFrame() call.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseDown</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button)</p>
-<p class="member_description">Is mouse button held. `button` is an enum of type UI_MouseButton.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseClicked</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button)</p>
-<p class="member_description">Implied repeat = false. `button` is an enum of type UI_MouseButton.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseClicked</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button, <span class="ckdoc_typename ckdoc_type_primitive">int</span> repeat)</p>
-<p class="member_description">Did mouse button clicked? (went from !Down to Down). Same as GetMouseClickedCount() == 1. `button` is an enum of type UI_MouseButton.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseReleased</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button)</p>
-<p class="member_description">Did mouse button released? (went from Down to !Down). `button` is an enum of type UI_MouseButton.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseDoubleClicked</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button)</p>
-<p class="member_description">Did mouse button double-clicked? Same as GetMouseClickedCount() == 2. `button` is an enum of type UI_MouseButton.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">getMouseClickedCount</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button)</p>
-<p class="member_description">Return the number of successive mouse-clicks at the time where a click happen (otherwise 0). `button` is an enum of type UI_MouseButton.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseHoveringRect</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> r_min, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> r_max)</p>
-<p class="member_description">Implied clip = true.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseHoveringRect</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> r_min, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> r_max, <span class="ckdoc_typename ckdoc_type_primitive">int</span> clip)</p>
-<p class="member_description">Is mouse hovering given bounding rect (in screen space). clipped by current clipping settings, but disregarding of other consideration of focus/window ordering/popup-block.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMousePosValid</span>()</p>
-<p class="member_description">By convention we use (-FLT_MAX,-FLT_MAX) to denote that there is no mouse available.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getMousePos</span>()</p>
-<p class="member_description">Shortcut to ImGui::GetIO().MousePos provided by user, to be consistent with other calls.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getMousePosOnOpeningCurrentPopup</span>()</p>
-<p class="member_description">Retrieve mouse position at the time of opening popup we have BeginPopup() into (helper to avoid user backing that value themselves)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isMouseDragging</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button, <span class="ckdoc_typename ckdoc_type_primitive">float</span> lock_threshold)</p>
-<p class="member_description">Is mouse dragging? (uses io.MouseDraggingThreshold if lock_threshold < 0.0f). `button` is an enum of type UI_MouseButton.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getMouseDragDelta</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button, <span class="ckdoc_typename ckdoc_type_primitive">float</span> lock_threshold)</p>
-<p class="member_description">Return the delta from the initial clicking position while the mouse button is pressed or was just released. This is locked and return 0.0f until the mouse moves past a distance threshold at least once (uses io.MouseDraggingThreshold if lock_threshold < 0.0f)
-`button` is an enum of type UI_MouseButton.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">resetMouseDragDelta</span>()</p>
-<p class="member_description">Implied button = 0.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">resetMouseDragDelta</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> button)</p>
-<p class="member_description">`button` is an enum of type UI_MouseButton.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mouseCursor</span>()</p>
-<p class="member_description">Get desired mouse cursor shape. Important: reset in ImGui::NewFrame(), this is updated during the frame. valid before Render(). If you use software rendering by setting io.MouseDrawCursor ImGui will render those for you.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setMouseCursor</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> cursor_type)</p>
-<p class="member_description">Set desired mouse cursor shape. `cursor_type` is an enum of type UI_MouseCursor.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setNextFrameWantCaptureMouse</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> want_capture_mouse)</p>
-<p class="member_description">Override io.WantCaptureMouse flag next frame (said flag is left for your application to handle, typical when true it instucts your app to ignore inputs). This is equivalent to setting "io.WantCaptureMouse = want_capture_mouse;" after the next NewFrame() call.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">clipboardText</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clipboardText</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">styleColorsDark</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">styleColorsLight</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">styleColorsClassic</span>()</p>
-<p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">disabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> disabled)</p>
-<p class="member_description">Set whether imgui is disabled (does not call call new frame, does not submit UI draw lists to renderer)Do this if your application does not render UI and needs the extra performance from skipping UI overhead. Saves ~2ms on the render thread.While UI.disabled == true, DO NOT call any other UI functions. Doing so results in undefined behavior.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scenegraph</span>(<span class="ckdoc_typename ckdoc_type_object">GGen</span> root)</p>
-<p class="member_description">Scene tree widget. View data about a given GGen and all its children. A simple version of a typical Editor Scenegraph.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">wantCaptureMouse</span>()</p>
-<p class="member_description">When wantCaptureMouse=true, the mouse is interacting with UI widgets, so you know to discard/hide the mouse inputs from your underlying application.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">wantCaptureKeyboard</span>()</p>
-<p class="member_description">When wantCaptureKeyboard=true, the keyboard is interacting with UI widgets, so you know to discard/hide the keyboard inputs from your underlying application.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">UI_Style</span> <span class="membername">getStyle</span>()</p>
-<p class="member_description">Access the Style structure (colors, sizes). Always use PushStyleColor(), PushStyleVar() to modify style mid-frame!</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">showDemoWindow</span>(<span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open)</p>
-<p class="member_description">Create Demo window. demonstrate most ImGui features. call this to learn about the library! try to make it always available in your application!</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">showMetricsWindow</span>(<span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open)</p>
-<p class="member_description">Create Metrics/Debugger window. display Dear ImGui internals: windows, draw commands, various internal state, etc.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">showDebugLogWindow</span>(<span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open)</p>
-<p class="member_description">Create Debug Log window. display a simplified log of important dear imgui events.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">showStyleEditor</span>()</p>
-<p class="member_description">Add style selector block (not a window), essentially a combo listing the default styles.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">showIDStackToolWindow</span>(<span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open)</p>
-<p class="member_description">Create Stack Tool window. hover items with mouse to query information about the source of their unique ID.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">showAboutWindow</span>(<span class="ckdoc_typename ckdoc_type_object">UI_Bool</span> p_open)</p>
-<p class="member_description">Create About window. display Dear ImGui version, credits and build/system information.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">showStyleSelector</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label)</p>
-<p class="member_description">Add style selector block (not a window), essentially a combo listing the default styles.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

@@ -20,24 +20,18 @@ GMesh mesh --> GG.scene();
     new TorusGeometry,
     new CylinderGeometry,
     new KnotGeometry,
+    new PolygonGeometry,
 ] @=> Geometry geometries[];
 
 UI_Int geometry_index;
-[
-    "None",
-    "PlaneGeometry",
-    "SuzanneGeometry",
-    "SphereGeometry",
-    "CubeGeometry",
-    "CircleGeometry",
-    "TorusGeometry",
-    "CylinderGeometry",
-    "KnotGeometry",
-] @=> string builtin_geometries[];
+[ "None" ] @=> string builtin_geometries[];
+for (1 => int i; i < geometries.size(); i++) {
+    builtin_geometries << Type.of(geometries[i]).name();
+}
 
 UVMaterial uv_material;
 NormalMaterial normal_material;
-TangentMaterial tangent_material;
+WireframeMaterial wireframe_material;
 FlatMaterial flat_material;
 PhongMaterial phong_material;
 PBRMaterial pbr_material;
@@ -46,7 +40,7 @@ PBRMaterial pbr_material;
     null,
     uv_material,
     normal_material,
-    tangent_material,
+    wireframe_material,
     flat_material,
     phong_material,
     pbr_material,
@@ -67,6 +61,11 @@ UI_Int material_topology_index(3); // default to triangle list
     "TriangleList",
     "TriangleStrip",
 ] @=> string material_topologies[];
+
+// Wireframe material params
+UI_Float wireframe_thickness(wireframe_material.thickness());
+UI_Float wireframe_alpha_cutoff(wireframe_material.alphaCutoff());
+UI_Float3 wireframe_color(wireframe_material.color());
 
 // Normal material params
 UI_Bool normal_material_worldspace(normal_material.worldspaceNormals());
@@ -255,6 +254,22 @@ fun void ui() {
 
                 if (UI.checkbox("worldspace normals", normal_material_worldspace)) {
                     normal_material.worldspaceNormals(normal_material_worldspace.val());
+                }
+            }
+
+            if (mesh.material() == wireframe_material) {
+                UI.separatorText("Wireframe Material Params");
+
+                if (UI.slider("thickness", wireframe_thickness, 0, 5)) {
+                    wireframe_thickness.val() => wireframe_material.thickness;
+                }
+
+                if (UI.slider("alpha cutoff", wireframe_alpha_cutoff, 0, 1)) {
+                    wireframe_alpha_cutoff.val() => wireframe_material.alphaCutoff;
+                }
+
+                if (UI.colorEdit("color", wireframe_color, 0)) {
+                    wireframe_color.val() => wireframe_material.color;
                 }
             }
 
