@@ -2,17 +2,108 @@
 ChucK VERSIONS log
 ------------------
 
+1.5.4.2 (November 2024)
+=======
+new ChuGL v0.2.4 (see ChuGL release notes below)
+=======
+(updated) --chugin-path:<path> no longer auto-loads chugins found in the 
+    specified paths; instead the specified paths are added to the import 
+    system user paths, and the .chug and .ck files within the specified 
+    paths can be @imported.
+(updated) improved internal garbage collection mechanism for all UGens; 
+    now UGens are garbage collected and disconnected from all its UGen 
+    connections, as soon as it is now longer referenced from code (previously,
+    this was deferred until the end of origin shred the UGen was created on,
+    which poses potentially significant memory build-up if a shred repeatedly
+    instantiated/connected UGens without exiting). Overall, this internal
+    update should result in improved CPU performance and memory behavior in 
+    various scenarios.
+(fixed) long-standing SndBuf issue, especially prevalent on macOS:
+    "System error : Too many open files." this was due a combination of 
+(fixed) memory leak involving string operations (e.g., string + string);
+    internally, string operations now are appropriately handled by the
+    operator overloading mechanism
+(fixed) < <= > >= operators for strings
+(fixed) an issue chugin system auto-load and --chugin-probe was skipping
+    over the first element when scanning directories 
+(fixed) vec2/vec3/vec4 implicit cast logic for +=> and -=> operations
+    (previously, this would cause a crash in some cases)
+(fixed) vec2/vec3/vec4 function call from literal (non-variable) value
+    (e.g., @(1,0).magnitude(); previously this yielded a compiler error)
+(added) new `MouseCursor` class for quickly accessing mouse cursor:
+        // absolute screen coordinate of cursor
+        vec2 MouseCursor.xy();
+        // scaled coordinates in range [0,1]
+        vec2 MouseCursor.scaled();
+    (see API reference for more information)
+    https://chuck.stanford.edu/doc/reference/io.html#MouseCursor
+(added) new `Mousor` class; `Mousor` is functionally equivalent to `MouseCursor`,
+    purely made for those prefer slightly less typing and slightly more chaos!
+(added) examples/hid/mouse-cursor.ck
+        examples/stk/tubebell-algo5.ck
+(added) vector dot product methods for vec2, vec3, and vec4
+        float vec2.dot( vec2 rhs )
+        float vec3.dot( vec3 rhs )
+        float vec4.dot( vec4 rhs )
+(added) vector cross product method for vec3 and vec4 (as 3D shorthand)
+    NOTE: this is the same as vec3*vec3 or vec4*vec4
+    NOTE: 4D cross product is mathematically undefined; vec4 cross product
+        ignores the `w` components and computes a 3D cross product;
+        `w` is also set to zero in the resulting vec4
+        vec3 vec3.cross( vec3 rhs )
+        vec4 vec4.cross( vec4 rhs )
+(added) Type.of( vec2 ) function to get the associate Type
+(added) --auto-load-chugin-path:<path> flag -- this behaves as 
+    --chugin-path previously did: chugins in the specified path(s) are 
+    auto-loaded; .ck files can be @imported
+(fixed) --chugin:<name> and --chugin-path:<path> now correctly auto-expand
+    paths
+(updated) Shred(.parent(), .ancester(), .childMemSize(), .childRegSize())
+    now will operate with respect to the shred reference rather than always
+    w.r.t. the calling shred (e.g., shred that is running when these functions
+    are called)
+(added) Shred.pc(), .regSP(), .memSP() -- for debugging, info, amusement
+=======
+ChuGL 0.2.4 Release Notes
+=======
+New Features:
+- Should now support both X11 and Wayland on Linux
+- PolygonGeometry: provides (decently) robust/performant triangulation, useful for animating or 
+drawing deformable 2d shapes
+- WireframeMaterial: renders a mesh as a wireframe
+- Texture.copy(...): can now copy data between textures
+- Texture.read(...): read back texture data from GPU --> CPU
+~~~
+Improvements:
+- Significantly reduced startup time from loading large OBJ models or building geometry with 
+many vertices (tangent frame calculation has been moved from the CPU --> GPU)
+- Optimized webcam implementation (now consumes less memory and requires fewer memory transfers)
+~~~
+New examples
+- deep/ray_triangle_intersection.ck: 3d ray-triangle intersection testing. Thanks Shenran!!
+- deep/fish.ck: procedurally animating a fish, showcases PolygonGeometry
+- deep/webcam_echo.ck: webcam delay effect via texture copying
+- basic/triangulate.ck: polygon triangulation with PolygonGeometry
+- basic/texture_read.ck: showcases reading texture data from GPU into chuck
+~~~
+Bug Fixes:
+- Crash when using Video textures
+- Fix race condition in Webcam destructor
+- GText now supports empty strings, and can properly disconnect from the scenegraph
+- AssLoader will take model ambient color (Ka) into account
+=======
+
 
 1.5.4.1 (November 2024)
 =======
 (patch release)
 - (fixed, linux) a crash when the OTF handles an OTF command (add or replace)
 - (added) support for crawling subdirectories for importing for packages
-     to be managed by the upcoming ChuMP (ChucK Manager of Packages)
+    to be managed by the upcoming ChuMP (ChucK Manager of Packages)
 - (updated) --chugin-probe now prints .ck files in the import search paths
-     NOTE: as of 1.5.4.1 chuck auto-loads ONLY chugins in the system search
-     paths; all other chugins and all chuck files in the import search paths
-     must be @imported in order to be used.
+    NOTE: as of 1.5.4.1 chuck auto-loads ONLY chugins in the system search
+    paths; all other chugins and all chuck files in the import search paths
+    must be @imported in order to be used.
 
 
 1.5.4.0 (November 2024)

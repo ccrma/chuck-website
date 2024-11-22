@@ -127,6 +127,10 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Shred</span> <span class="membername">ancestor</span>()</p>
+<p class="member_description">Get the calling shred's "ancestor" shred (i.e., the top-level shred). Returns itself if the calling shred is the top-level shred. (Related: see Shred.parent())</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">arg</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index)</p>
 <p class="member_description">Get the Shred argument at the specified index.</p>
 </div>
@@ -171,8 +175,24 @@
 <p class="member_description">Get the unique numeric id of the Shred.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">memSP</span>()</p>
+<p class="member_description">Get the calling shred's current memory/call stack pointer; useful for debugging, general information, or amusement.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Shred</span> <span class="membername">parent</span>()</p>
+<p class="member_description">Get the calling shred's parent shred (i.e., the shred that sporked the calling shred). Returns null if there is no parent Shred. (Related: see Shred.ancestor())</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">path</span>()</p>
 <p class="member_description">Get the path of the source file from which this Shred's code is derived (same as .sourcePath()).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">pc</span>()</p>
+<p class="member_description">Get the calling shred's current program counter (CP); useful for debugging, general information, or amusement.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">regSP</span>()</p>
+<p class="member_description">Get the calling shred's current register/operand stack pointer; useful for debugging, general information, or amusement.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">running</span>()</p>
@@ -194,16 +214,8 @@
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Shred</span> <span class="membername">ancestor</span>()</p>
-<p class="member_description">Get the calling shred's "ancestor" shred (i.e., the top-level shred). Returns itself if the calling shred is the top-level shred. (Related: see Shred.parent())</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Shred</span> <span class="membername">fromId</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> id)</p>
 <p class="member_description">Get Shred corresponding to a Shred ID.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Shred</span> <span class="membername">parent</span>()</p>
-<p class="member_description">Get the calling shred's parent shred (i.e., the shred that sporked the calling shred). Returns null if there is no parent Shred. (Related: see Shred.ancestor())</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
