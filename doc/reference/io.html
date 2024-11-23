@@ -20,8 +20,6 @@
 <p class="toc_class"><a href="#OscMsg" class="ckdoc_typename ckdoc_type_object">OscMsg</a></p>
 <p class="toc_class"><a href="#Hid" class="ckdoc_typename ckdoc_type_object">Hid</a></p>
 <p class="toc_class"><a href="#HidMsg" class="ckdoc_typename ckdoc_type_object">HidMsg</a></p>
-<p class="toc_class"><a href="#MouseCursor" class="ckdoc_typename ckdoc_type_object">MouseCursor</a></p>
-<p class="toc_class"><a href="#Mousor" class="ckdoc_typename ckdoc_type_object">Mousor</a></p>
 <p class="toc_class"><a href="#KBHit" class="ckdoc_typename ckdoc_type_object">KBHit</a></p>
 <p class="toc_class"><a href="#SerialIO" class="ckdoc_typename ckdoc_type_object">SerialIO</a></p>
 <p class="toc_class"><a href="#MidiIn" class="ckdoc_typename ckdoc_type_object">MidiIn</a></p>
@@ -811,60 +809,6 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">z</span></p><p class="member_description">Change in Z-axis of pointing device.</p>
-</div>
-</div>
-<p class="top_link">[ <a href="#top">top</a> ]</p>
-</div>
-<hr />
-<a name="MouseCursor" /><div class="class">
-<h2 class="class_title" name="MouseCursor">MouseCursor</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Mouse cursor position tracking. (For full access to mouse input, see the Hid class.)<p>
-<h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/hid/mouse-cursor.ck">hid/mouse-cursor.ck</a></li>
-</ul></div>
-<h3 class="class_section_header">constructors</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="membername">MouseCursor</span>()</p>
-<p class="member_description">Default constructor for MouseCursor.</p>
-</div>
-</div>
-<h3 class="class_section_header">static member functions</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">abs</span>()</p>
-<p class="member_description">Get the current X and Y absolute coordinates of the mouse cursor; dependent on screen resolution; could yield positive and negative values in a multi-monitor setup; same as .xy()</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">scaled</span>()</p>
-<p class="member_description">Get the current X and Y normalized positions of the mouse cursor relative to its containing monitor; yields X and Y values in the range [0.0,1.0].</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">x</span>()</p>
-<p class="member_description">Get the current X absolute coordinate of the mouse cursor; dependent on screen resolution; could yield positive and negative values in a multi-monitor setup.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">xy</span>()</p>
-<p class="member_description">Get the current X and Y absolute coordinates of the mouse cursor; dependent on screen resolution; could yield positive and negative values in a multi-monitor setup; same as .abs()</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">y</span>()</p>
-<p class="member_description">Get the current Y absolute coordinate of the mouse cursor; dependent on screen resolution; could yield positive and negative values in a multi-monitor setup.</p>
-</div>
-</div>
-<p class="top_link">[ <a href="#top">top</a> ]</p>
-</div>
-<hr />
-<a name="Mousor" /><div class="class">
-<h2 class="class_title" name="Mousor">Mousor</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="io.html#MouseCursor" class="ckdoc_typename ckdoc_type_object">MouseCursor</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Same as MouseCursor; for those who prefer less typing and more chaos. (For full access to mouse input, see the Hid class.)<p>
-<h3 class="class_section_header">constructors</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="membername">Mousor</span>()</p>
-<p class="member_description">Default constructor for Mousor.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
