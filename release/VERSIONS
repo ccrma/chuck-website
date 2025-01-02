@@ -2,6 +2,56 @@
 ChucK VERSIONS log
 ------------------
 
+1.5.4.4 (January 2025)
+=======
+(added) basic @doc functionality for language-defined classes to add inline
+    CKDoc documentation for class definitions and function defintions.
+(added) function to retrive CKDoc descriptions for classes and functions:
+    string CKDoc.describe( Object target );
+    ----------------------------------------
+    class Foo
+    {
+        // add inline documenation (processed at compile-time)
+        @doc "this is a description for the class Foo"
+
+        fun void bar()
+        {
+            // add inline documenation (processed at compile-time)
+            @doc "a function in Foo, bar() likes calling his friends"
+        }
+    }
+    // print class description
+    CKDoc.describe( Foo );
+    // with an instance, can also get info about instanced functions
+    Foo f;
+    <<< CKDoc.describe( f ) >>>;
+    <<< CKDoc.describe( f.bar ) >>>;
+    ----------------------------------------
+(fixed) proper emission of classes by name, e.g., `<<< SinOsc >>>;`
+(fixed) attempts to assign to a constant right-hand-side variable
+    e.g., `null @=> SinOsc;` now results in a compiler error
+    NOTE: in the above example, SinOsc is a variable of type 'Type'
+    and is created alongside the SinOsc class/type; such Type variables
+    associated with class definitions are automatically marked as constant
+(fixed) crash due to functions / classes references a local variable defined
+    at file-scope; code emission is now internally re-ordered to compile
+    file-scope code segments -> function definitions -> class definitions
+(fixed) foreach `auto` variable typing for multi-dimenion array, e.g.,
+    --------
+    // two dim array
+    for( auto x : [[1,2],[3,4]] ) {
+        for( auto y : x ) {
+            // print
+            <<< y >>>;
+        }
+    }
+    --------
+=======
+(fixed) miniAudicle export and record functionalities; these resulted in
+    empty WAV file (in 1.5.4.2 and 1.5.4.3), due to updates to garbage collection
+    policy for UGens. exporting and recording should now work, once again
+
+
 1.5.4.3 (December 2024)
 =======
 new ChuGL v0.2.5 (see ChuGL release notes below)
@@ -72,7 +122,7 @@ ChuGL v0.2.5 Release Notes
     GWindow.keysUp()
 (added) new RenderPass methods to set the output resolution, msaa sample 
     count,target scene and target camera for rendering
-(added) HUD pass to ChuGL's default rendergraph. Can now easily add 2d HUD
+garbage collection mechanism for all UGens(added) HUD pass to ChuGL's default rendergraph. Can now easily add 2d HUD
     overlay to 3D scenes by grucking ggens to GG.hud()
 (added) examples/basic/hud.ck
 (fixed) crash caused by ShaderDesc and other internal reference counting
