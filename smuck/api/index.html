@@ -1,0 +1,249 @@
+<html>
+<head>
+<title>SmucK [alpha] API Reference (v0.2.0)</title>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
+<meta charset="utf-8">
+<meta name="keywords" content="ChucK, strongly-timed,audio, programming language, computer music, Artful Design, Stanford University, CCRMA, Princeton University, SoundLab, Ge Wang, Perry Cook, design, art, computer, music, technology, engineering, education" />
+<meta property="og:url" content="https://ccrma.stanford.edu/software/chuck/doc/reference/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="ChucK | Class Library Reference" />
+<meta property="og:description" content="ChucK programming language core class library reference, including base types, unit generators, unit analyzers, standard libraries, and more." />
+<meta name="author" content="ChucK Team">
+<meta property="og:image" content="https://ccrma.stanford.edu/software/chuck/doc/images/chuck-logo2023w.png" />
+<meta property="fb:app_id" content="966242223397117" /> <!--default app id-->
+<link rel="canonical" href="http://chuck.stanford.edu/doc/reference" />
+</head>
+<body>
+<div id="title">
+<div class="titleL">
+<div style="display: flex; align-items: center;"><div class="inline titlelogo"><a href="https://chuck.stanford.edu/" target="_blank"><img src="https://chuck.stanford.edu/doc/images/chuck-logo2023w.png" /> </div><div class="inline"><h1>SmucK [alpha] API Reference (v0.2.0)</h1></div>
+</div>
+</div>
+</div>
+<div id="body">
+<div class="index_group">
+<div class="index_group_title">
+<h2><a href="chugl-basic.html">Basic Classes</a></h2>
+<p class="index_group_desc">Basic classes for ChuGL: strongly-timed audiovisual programming in ChucK.</p>
+</div>
+<div class="index_group_classes">
+<p>
+<a href="chugl-basic.html#GG" class="ckdoc_typename ckdoc_type_object">GG</a>
+<a href="chugl-basic.html#GWindow" class="ckdoc_typename ckdoc_type_object">GWindow</a>
+<a href="chugl-basic.html#NextFrameEvent" class="ckdoc_typename ckdoc_type_object">NextFrameEvent</a>
+<a href="chugl-basic.html#WindowResizeEvent" class="ckdoc_typename ckdoc_type_object">WindowResizeEvent</a>
+<a href="chugl-basic.html#WindowResizeEvent" class="ckdoc_typename ckdoc_type_object">WindowResizeEvent</a>
+<a href="chugl-basic.html#WindowCloseEvent" class="ckdoc_typename ckdoc_type_object">WindowCloseEvent</a>
+<a href="chugl-basic.html#ContentScaleChangedEvent" class="ckdoc_typename ckdoc_type_object">ContentScaleChangedEvent</a>
+<a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a>
+<a href="chugl-basic.html#Color" class="ckdoc_typename ckdoc_type_object">Color</a>
+<a href="chugl-basic.html#AssLoader" class="ckdoc_typename ckdoc_type_object">AssLoader</a>
+</p>
+</div>
+<div class="clear"></div>
+</div>
+<div class="index_group">
+<div class="index_group_title">
+<h2><a href="chugl-ggens.html">Graphics Generators</a></h2>
+<p class="index_group_desc">Graphics generators (GGens) that can be composed together in a scene graph.</p>
+</div>
+<div class="index_group_classes">
+<p>
+<a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a>
+<a href="chugl-ggens.html#GScene" class="ckdoc_typename ckdoc_type_object">GScene</a>
+<a href="chugl-ggens.html#GPoints" class="ckdoc_typename ckdoc_type_object">GPoints</a>
+<a href="chugl-ggens.html#GLines" class="ckdoc_typename ckdoc_type_object">GLines</a>
+<a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a>
+<a href="chugl-ggens.html#GCircle" class="ckdoc_typename ckdoc_type_object">GCircle</a>
+<a href="chugl-ggens.html#GPlane" class="ckdoc_typename ckdoc_type_object">GPlane</a>
+<a href="chugl-ggens.html#GCube" class="ckdoc_typename ckdoc_type_object">GCube</a>
+<a href="chugl-ggens.html#GSphere" class="ckdoc_typename ckdoc_type_object">GSphere</a>
+<a href="chugl-ggens.html#GTorus" class="ckdoc_typename ckdoc_type_object">GTorus</a>
+<a href="chugl-ggens.html#GCylinder" class="ckdoc_typename ckdoc_type_object">GCylinder</a>
+<a href="chugl-ggens.html#GKnot" class="ckdoc_typename ckdoc_type_object">GKnot</a>
+<a href="chugl-ggens.html#GSuzanne" class="ckdoc_typename ckdoc_type_object">GSuzanne</a>
+<a href="chugl-ggens.html#GLight" class="ckdoc_typename ckdoc_type_object">GLight</a>
+<a href="chugl-ggens.html#GPointLight" class="ckdoc_typename ckdoc_type_object">GPointLight</a>
+<a href="chugl-ggens.html#GDirLight" class="ckdoc_typename ckdoc_type_object">GDirLight</a>
+<a href="chugl-ggens.html#GCamera" class="ckdoc_typename ckdoc_type_object">GCamera</a>
+<a href="chugl-ggens.html#GOrbitCamera" class="ckdoc_typename ckdoc_type_object">GOrbitCamera</a>
+<a href="chugl-ggens.html#GFlyCamera" class="ckdoc_typename ckdoc_type_object">GFlyCamera</a>
+<a href="chugl-ggens.html#GText" class="ckdoc_typename ckdoc_type_object">GText</a>
+</p>
+</div>
+<div class="clear"></div>
+</div>
+<div class="index_group">
+<div class="index_group_title">
+<h2><a href="chugl-geo.html">ChuGL Geometries</a></h2>
+<p class="index_group_desc">ChuGL geometries for assigning vertex data such as positions, normals, UV coordinates, and tangents to a GMesh.</p>
+</div>
+<div class="index_group_classes">
+<p>
+<a href="chugl-geo.html#Geometry" class="ckdoc_typename ckdoc_type_object">Geometry</a>
+<a href="chugl-geo.html#CubeGeometry" class="ckdoc_typename ckdoc_type_object">CubeGeometry</a>
+<a href="chugl-geo.html#SphereGeometry" class="ckdoc_typename ckdoc_type_object">SphereGeometry</a>
+<a href="chugl-geo.html#CircleGeometry" class="ckdoc_typename ckdoc_type_object">CircleGeometry</a>
+<a href="chugl-geo.html#PlaneGeometry" class="ckdoc_typename ckdoc_type_object">PlaneGeometry</a>
+<a href="chugl-geo.html#TorusGeometry" class="ckdoc_typename ckdoc_type_object">TorusGeometry</a>
+<a href="chugl-geo.html#CylinderGeometry" class="ckdoc_typename ckdoc_type_object">CylinderGeometry</a>
+<a href="chugl-geo.html#KnotGeometry" class="ckdoc_typename ckdoc_type_object">KnotGeometry</a>
+<a href="chugl-geo.html#SuzanneGeometry" class="ckdoc_typename ckdoc_type_object">SuzanneGeometry</a>
+<a href="chugl-geo.html#LinesGeometry" class="ckdoc_typename ckdoc_type_object">LinesGeometry</a>
+<a href="chugl-geo.html#PolygonGeometry" class="ckdoc_typename ckdoc_type_object">PolygonGeometry</a>
+</p>
+</div>
+<div class="clear"></div>
+</div>
+<div class="index_group">
+<div class="index_group_title">
+<h2><a href="chugl-shader.html">ChuGL Shaders</a></h2>
+<p class="index_group_desc">ChuGL classes for creating shaders via shader source code and layout descriptions.</p>
+</div>
+<div class="index_group_classes">
+<p>
+<a href="chugl-shader.html#VertexFormat" class="ckdoc_typename ckdoc_type_object">VertexFormat</a>
+<a href="chugl-shader.html#ShaderDesc" class="ckdoc_typename ckdoc_type_object">ShaderDesc</a>
+<a href="chugl-shader.html#Shader" class="ckdoc_typename ckdoc_type_object">Shader</a>
+</p>
+</div>
+<div class="clear"></div>
+</div>
+<div class="index_group">
+<div class="index_group_title">
+<h2><a href="chugl-mat.html">ChuGL Materials</a></h2>
+<p class="index_group_desc">ChuGL materials wrap and supply parameters to a ChuGL shader, describing the appearance of geometries.</p>
+</div>
+<div class="index_group_classes">
+<p>
+<a href="chugl-mat.html#Material" class="ckdoc_typename ckdoc_type_object">Material</a>
+<a href="chugl-mat.html#NormalMaterial" class="ckdoc_typename ckdoc_type_object">NormalMaterial</a>
+<a href="chugl-mat.html#WireframeMaterial" class="ckdoc_typename ckdoc_type_object">WireframeMaterial</a>
+<a href="chugl-mat.html#FlatMaterial" class="ckdoc_typename ckdoc_type_object">FlatMaterial</a>
+<a href="chugl-mat.html#PhongMaterial" class="ckdoc_typename ckdoc_type_object">PhongMaterial</a>
+<a href="chugl-mat.html#LinesMaterial" class="ckdoc_typename ckdoc_type_object">LinesMaterial</a>
+<a href="chugl-mat.html#UVMaterial" class="ckdoc_typename ckdoc_type_object">UVMaterial</a>
+<a href="chugl-mat.html#PBRMaterial" class="ckdoc_typename ckdoc_type_object">PBRMaterial</a>
+</p>
+</div>
+<div class="clear"></div>
+</div>
+<div class="index_group">
+<div class="index_group_title">
+<h2><a href="chugl-pass.html">ChuGL Passes</a></h2>
+<p class="index_group_desc">Render/Compute pass abstraction for creating custom render graphs</p>
+</div>
+<div class="index_group_classes">
+<p>
+<a href="chugl-pass.html#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a>
+<a href="chugl-pass.html#RenderPass" class="ckdoc_typename ckdoc_type_object">RenderPass</a>
+<a href="chugl-pass.html#ScreenPass" class="ckdoc_typename ckdoc_type_object">ScreenPass</a>
+<a href="chugl-pass.html#OutputPass" class="ckdoc_typename ckdoc_type_object">OutputPass</a>
+<a href="chugl-pass.html#ComputePass" class="ckdoc_typename ckdoc_type_object">ComputePass</a>
+<a href="chugl-pass.html#BloomPass" class="ckdoc_typename ckdoc_type_object">BloomPass</a>
+</p>
+</div>
+<div class="clear"></div>
+</div>
+<div class="index_group">
+<div class="index_group_title">
+<h2><a href="chugl-tex.html">ChuGL Textures</a></h2>
+<p class="index_group_desc">Textures can be loaded from file, created dynamically from data; they are passed into materials and mapped onto 2D and 3D surfaces.</p>
+</div>
+<div class="index_group_classes">
+<p>
+<a href="chugl-tex.html#Texture" class="ckdoc_typename ckdoc_type_object">Texture</a>
+<a href="chugl-tex.html#TextureSampler" class="ckdoc_typename ckdoc_type_object">TextureSampler</a>
+<a href="chugl-tex.html#TextureDesc" class="ckdoc_typename ckdoc_type_object">TextureDesc</a>
+<a href="chugl-tex.html#TextureWriteDesc" class="ckdoc_typename ckdoc_type_object">TextureWriteDesc</a>
+<a href="chugl-tex.html#TextureLoadDesc" class="ckdoc_typename ckdoc_type_object">TextureLoadDesc</a>
+</p>
+</div>
+<div class="clear"></div>
+</div>
+<div class="index_group">
+<div class="index_group_title">
+<h2><a href="chugl-ui.html">ChuGL UI</a></h2>
+<p class="index_group_desc">API methods for creating widgets such as buttons, sliders, dropdowns, etc.
+    Use widgets to control parameter values during runtime. Great for experimentation
+    and fine-tuning values. Also usable for building application user-interfaces.</p>
+</div>
+<div class="index_group_classes">
+<p>
+<a href="chugl-ui.html#UI_Bool" class="ckdoc_typename ckdoc_type_object">UI_Bool</a>
+<a href="chugl-ui.html#UI_String" class="ckdoc_typename ckdoc_type_object">UI_String</a>
+<a href="chugl-ui.html#UI_Int" class="ckdoc_typename ckdoc_type_object">UI_Int</a>
+<a href="chugl-ui.html#UI_Int2" class="ckdoc_typename ckdoc_type_object">UI_Int2</a>
+<a href="chugl-ui.html#UI_Int3" class="ckdoc_typename ckdoc_type_object">UI_Int3</a>
+<a href="chugl-ui.html#UI_Int4" class="ckdoc_typename ckdoc_type_object">UI_Int4</a>
+<a href="chugl-ui.html#UI_Float" class="ckdoc_typename ckdoc_type_object">UI_Float</a>
+<a href="chugl-ui.html#UI_Float2" class="ckdoc_typename ckdoc_type_object">UI_Float2</a>
+<a href="chugl-ui.html#UI_Float3" class="ckdoc_typename ckdoc_type_object">UI_Float3</a>
+<a href="chugl-ui.html#UI_Float4" class="ckdoc_typename ckdoc_type_object">UI_Float4</a>
+<a href="chugl-ui.html#UI_Viewport" class="ckdoc_typename ckdoc_type_object">UI_Viewport</a>
+<a href="chugl-ui.html#UI_Style" class="ckdoc_typename ckdoc_type_object">UI_Style</a>
+<a href="chugl-ui.html#UI_WindowFlags" class="ckdoc_typename ckdoc_type_object">UI_WindowFlags</a>
+<a href="chugl-ui.html#UI_ChildFlags" class="ckdoc_typename ckdoc_type_object">UI_ChildFlags</a>
+<a href="chugl-ui.html#UI_Cond" class="ckdoc_typename ckdoc_type_object">UI_Cond</a>
+<a href="chugl-ui.html#UI_Color" class="ckdoc_typename ckdoc_type_object">UI_Color</a>
+<a href="chugl-ui.html#UI_StyleVar" class="ckdoc_typename ckdoc_type_object">UI_StyleVar</a>
+<a href="chugl-ui.html#UI_ButtonFlags" class="ckdoc_typename ckdoc_type_object">UI_ButtonFlags</a>
+<a href="chugl-ui.html#UI_Direction" class="ckdoc_typename ckdoc_type_object">UI_Direction</a>
+<a href="chugl-ui.html#UI_ComboFlags" class="ckdoc_typename ckdoc_type_object">UI_ComboFlags</a>
+<a href="chugl-ui.html#UI_SliderFlags" class="ckdoc_typename ckdoc_type_object">UI_SliderFlags</a>
+<a href="chugl-ui.html#UI_InputTextFlags" class="ckdoc_typename ckdoc_type_object">UI_InputTextFlags</a>
+<a href="chugl-ui.html#UI_ColorEditFlags" class="ckdoc_typename ckdoc_type_object">UI_ColorEditFlags</a>
+<a href="chugl-ui.html#UI_TreeNodeFlags" class="ckdoc_typename ckdoc_type_object">UI_TreeNodeFlags</a>
+<a href="chugl-ui.html#UI_SelectableFlags" class="ckdoc_typename ckdoc_type_object">UI_SelectableFlags</a>
+<a href="chugl-ui.html#UI_PopupFlags" class="ckdoc_typename ckdoc_type_object">UI_PopupFlags</a>
+<a href="chugl-ui.html#UI_TableFlags" class="ckdoc_typename ckdoc_type_object">UI_TableFlags</a>
+<a href="chugl-ui.html#UI_TableRowFlags" class="ckdoc_typename ckdoc_type_object">UI_TableRowFlags</a>
+<a href="chugl-ui.html#UI_TableColumnFlags" class="ckdoc_typename ckdoc_type_object">UI_TableColumnFlags</a>
+<a href="chugl-ui.html#UI_TableBgTarget" class="ckdoc_typename ckdoc_type_object">UI_TableBgTarget</a>
+<a href="chugl-ui.html#UI_TabBarFlags" class="ckdoc_typename ckdoc_type_object">UI_TabBarFlags</a>
+<a href="chugl-ui.html#UI_MouseButton" class="ckdoc_typename ckdoc_type_object">UI_MouseButton</a>
+<a href="chugl-ui.html#UI_Key" class="ckdoc_typename ckdoc_type_object">UI_Key</a>
+<a href="chugl-ui.html#UI_MouseCursor" class="ckdoc_typename ckdoc_type_object">UI_MouseCursor</a>
+<a href="chugl-ui.html#UI_ViewportFlags" class="ckdoc_typename ckdoc_type_object">UI_ViewportFlags</a>
+<a href="chugl-ui.html#UI_FocusedFlags" class="ckdoc_typename ckdoc_type_object">UI_FocusedFlags</a>
+<a href="chugl-ui.html#UI_HoveredFlags" class="ckdoc_typename ckdoc_type_object">UI_HoveredFlags</a>
+<a href="chugl-ui.html#UI_DockNodeFlags" class="ckdoc_typename ckdoc_type_object">UI_DockNodeFlags</a>
+<a href="chugl-ui.html#UI_Callback" class="ckdoc_typename ckdoc_type_object">UI_Callback</a>
+<a href="chugl-ui.html#UI_SizeCallbackData" class="ckdoc_typename ckdoc_type_object">UI_SizeCallbackData</a>
+<a href="chugl-ui.html#UI_SizeCallback" class="ckdoc_typename ckdoc_type_object">UI_SizeCallback</a>
+<a href="chugl-ui.html#UI_ComboCallback" class="ckdoc_typename ckdoc_type_object">UI_ComboCallback</a>
+<a href="chugl-ui.html#UI_DrawList" class="ckdoc_typename ckdoc_type_object">UI_DrawList</a>
+<a href="chugl-ui.html#UI" class="ckdoc_typename ckdoc_type_object">UI</a>
+</p>
+</div>
+<div class="clear"></div>
+</div>
+<div class="index_group">
+<div class="index_group_title">
+<h2><a href="chugl-video.html">ChuGL Video Objects</a></h2>
+<p class="index_group_desc">Video and webcam access</p>
+</div>
+<div class="index_group_classes">
+<p>
+<a href="chugl-video.html#Video" class="ckdoc_typename ckdoc_type_ugen">Video</a>
+<a href="chugl-video.html#Webcam" class="ckdoc_typename ckdoc_type_object">Webcam</a>
+</p>
+</div>
+<div class="clear"></div>
+</div>
+<div class="index_group">
+<div class="index_group_title">
+<h2><a href="chugl-buffers.html">GPU Buffers</a></h2>
+<p class="index_group_desc">GPU Buffer wrappers for ChuGL</p>
+</div>
+<div class="index_group_classes">
+<p>
+<a href="chugl-buffers.html#StorageBuffer" class="ckdoc_typename ckdoc_type_object">StorageBuffer</a>
+</p>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+</body>
+</html>
