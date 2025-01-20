@@ -1,0 +1,110 @@
+<html>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
+<title>SMucKish Parsing</title>
+<body>
+<a name="top"/>
+<div id="title">
+    <div class="titleL">
+        <div style="display: flex; align-items: center;">
+            <div class="inline titlelogo"><a href="https://chuck.stanford.edu/" target="_blank"><img src="https://chuck.stanford.edu/doc/images/chuck-logo2023w.png" /> </div>
+            <div class="inline"><h1><a href="./">ChucK Class Library Reference</a></h1></div>
+            <div class="inline gray"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;SMucKish Parsing</h1></div>
+        </div>
+    </div>
+</div>
+<div id="body">
+<div class="toc"><a id="toc"/>
+    <p class="toc_class"><a href="#smuckish" class="ckdoc_typename ckdoc_type_object">smuckish</a></p>
+    <p class="toc_class"><a href="#smUtils" class="ckdoc_typename ckdoc_type_object">smUtils</a></p>
+</div>
+<div class="classes">
+    <p class="group_desc">SMucKish parsing tools to convert symbolic notation into ChucK data structures.</p>
+    
+<a name="smuckish" />
+    <div class="class">
+        <h2 class="class_title" name="smuckish">smuckish</h2><h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+        <p class="class_description">Set of static methods for parsing strings representing pitches, rhythms, velocities, chords, and scales into arrays of ints/floats.</p>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span>[][] <span class="membername">set_pitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Parse a SMucKish string representing pitches into a 2D array of MIDI note numbers. Indexed first by position in sequence, second by polyphonic voice. A monophonic sequence will always have a second dimension size of 1.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span>[] <span class="membername">set_rhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Parse a SMucKish string representing rhythms into an array of beat values (i.e. 1.0 = quarter note, 2.0 = half note, etc.). Indexed by position in sequence.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span>[] <span class="membername">set_velocities</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Parse a SMucKish string representing velocities into an array of MIDI velocity values (0-127). Indexed by position in sequence.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span>[] <span class="membername">chord</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Parse a chord symbol (e.g. "Gbmaj7#11") into an array of MIDI note numbers. Assumes octave of 0.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span>[] <span class="membername">chord</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_primitive">int</span> octave)</p>
+        <p class="member_description">Parse a chord symbol (e.g. "Gbmaj7#11") into an array of MIDI note numbers. Uses the given octave.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span>[] <span class="membername">scale</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Parse a scale name (e.g. "major") into an array of MIDI note numbers. Assumes root of C0. See <a href="https://en.wikipedia.org/wiki/Scale_(music)" target="_blank">here</a> for full list of valid scale types.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span>[] <span class="membername">scale</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_primitive">int</span> root)</p>
+        <p class="member_description">Parse a scale name (e.g. "major") into an array of MIDI note numbers. Root note is assumed to be a MIDI note number. See <a href="https://en.wikipedia.org/wiki/Scale_(music)" target="_blank">here</a> for full list of valid scale types.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span>[] <span class="membername">scale</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_object">string</span> rootName)</p>
+        <p class="member_description">Parse a scale name (e.g. "major") into an array of MIDI note numbers. Root note is given as a note name (e.g. "Gb5"). See <a href="https://en.wikipedia.org/wiki/Scale_(music)" target="_blank">here</a> for full list of valid scale types.</p>
+    </div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+
+<a name="smUtils" />
+    <div class="class">
+        <h2 class="class_title" name="smUtils">smUtils</h2><h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+        <p class="class_description">A variety of utility functions for working with SMucKish. Has some useful string handling functions applicable outside of SMucK.</p>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">mid2str</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> note)</p>
+        <p class="member_description">Convert a MIDI note number (e.g. 60) to a note name (e.g. "C4").</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">str2mid</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> note)</p>
+        <p class="member_description">Convert a note name (e.g. "C4") to a MIDI note number (e.g. 60).</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span>[] <span class="membername">split</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Split a string into an array of strings, using whitespace as the delimiter.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span>[] <span class="membername">split</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_object">string</span> delimiter)</p>
+        <p class="member_description">Split a string into an array of strings, using the given delimiter.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">count_substrings</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_object">string</span> target)</p>
+        <p class="member_description">Count the number of times a target substring appears in a string.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">findInt</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Find the leftmost integer in a string. Returns index or -1 if none found.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">find_int_from_index</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_primitive">int</span> index)</p>
+        <p class="member_description">Get the longest sequence of valid integer characters in a string starting at a given index.</p>
+    </div>
+</div>
+
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr/>
+
+</div>
+</div>
+</body>
+</html>
