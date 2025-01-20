@@ -53,7 +53,7 @@ ___
     ```txt
     git clone https://github.com/ccrma/smuck.git
     ```
-2. Copy the contents of one `src` to one of the following directories:
+2. Copy the contents of `src` to one of the following directories:
     ```txt
     C:\Windows\system32\ChucK
     C:\Program Files\ChucK\chugins
@@ -81,3 +81,4 @@ Congrats, you now have SMucK properly installed!
 - [Walkthrough](./doc/walkthru.html)
 - [SMucKish Rosetta Stone](./doc/smuckish.html)
 - SMucK Tutorial (coming soon)
+
