@@ -4,14 +4,14 @@
 
 <img src="images/smuck-logo.svg" width="100%"></img>
 
-<h2>SMucK =&gt; Symbolic Music in ChucK</h2>
+<h2>SMucK ~&gt; Symbolic Music in ChucK</h2>
 
 </div> <!-- end center -->
 
 
 <p align="justify">
 
-<b>SMucK</b> is a framework for writing symbolic music in ChucK.
+<b>SMucK</b> is a framework for writing music in ChucK with symbolic music notation.
 
 
 SMucK was created by <a href="https://ccrma.stanford.edu/~alexhan/">Alex Han</a>,
@@ -23,51 +23,51 @@ with support from the <a href="../doc/authors.html">ChucK Team</a>.
 
 ---
 
-**ChuGL v0.1.5** (alpha) — [**SMucK API Reference**](./api/)
+**SMucK v0.0.0** (pre-alpha) — [**SMucK API Reference**](./api/)
 • [**Examples**](./examples/)
-• [**Cheatsheet (coming soon)**](./doc/cheatsheet.html)
-• [**Walkthrough (coming soon)**](./doc/walkthru.html)
-• [**Tutorial (coming soon)**](./doc/tutorial.html)
-• [**Paper (coming soon)**](https://mcd.stanford.edu/publish/files/2024-nime-chugl.pdf)
+• [**Walkthrough**](./doc/walkthru.html)
+• [**SMucKish Rosetta Stone**](./doc/smuckish.html)
+• **Cheatsheet (coming soon)**
+• **Tutorial (coming soon)**
+• **Paper (coming soon)**
 ___
 
 ## Installation
 
 ### macOS / Linux
 1. Clone the SmucK repository
-    ```
-    git clone https://github.com/smuck/smuck.git
+    ```txt
+    git clone https://github.com/ccrma/smuck.git
     ```
 2. Copy the contents of `src` to `~/.chuck/lib` with the following command:
-    ```
+    ```txt
     cp -r smuck/src/* ~/.chuck/lib
     ```
     If you get the error `cp: ~/.chuck/lib is not a directory`, try the following command instead:
-    ```
+    ```txt
     sudo cp -r smuck/src/* /usr/local/lib/chuck
     ```
 
 ### Windows
 1. Clone the SmucK repository
+    ```txt
+    git clone https://github.com/ccrma/smuck.git
     ```
-    git clone https://github.com/smuck/smuck.git
-    ```
-2. Copy the contents of `src` to `~/.chuck/lib` with the following command:
-    ```
-    cp -r smuck/src/* ~/.chuck/lib
-    ```
-    If you get the error `cp: ~/.chuck/lib is not a directory`, try the following command instead:
-    ```
-    sudo cp -r smuck/src/* /usr/local/lib/chuck
+2. Copy the contents of one `src` to one of the following directories:
+    ```txt
+    C:\Windows\system32\ChucK
+    C:\Program Files\ChucK\chugins
+    C:\Program Files (x86)\ChucK\chugins
+    C:\Users\%USERNAME%\Documents\ChucK\chugins
     ```
 
 ## Running
 
 ### Minimal Example
 
-If the SMucK library is properly loaded, the following example will run without errors.
+If the SMucK library is properly loaded, the following example will run without errors:
 
-```cpp
+```
 // example.ck
 @import "smuck"
 ```
@@ -78,5 +78,6 @@ Congrats, you now have SMucK properly installed!
 
 - [API Reference](./api/)
 - [Examples](./examples/)
-- [ChuGL Cheatsheet](./doc/cheatsheet.html)
-- [ChuGL Tutorial](./doc/tutorial.html)
+- [Walkthrough](./doc/walkthru.html)
+- [SMucKish Rosetta Stone](./doc/smuckish.html)
+- SMucK Tutorial (coming soon)
