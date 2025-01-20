@@ -98,39 +98,26 @@
 </div>
 <hr />
 
-<a name="smUtils" />
+<a name="ezInstrument" />
     <div class="class">
-        <h2 class="class_title" name="smUtils">smUtils</h2><h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-        <p class="class_description">A variety of utility functions for working with SMucKish. Has some useful string handling functions applicable outside of SMucK.</p>
-<h3 class="class_section_header">static member functions</h3>
+        <h2 class="class_title" name="ezInstrument">ezInstrument</h2><h4><span class="class_inherits">inherits</span> : <a href="https://chuck.stanford.edu/doc/reference/ugens-basic.html#Chugraph" class="ckdoc_typename ckdoc_type_object">Chugraph</a> : <a href="https://chuck.stanford.edu/doc/reference/ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_object">UGen</a> : <a href="https://chuck.stanford.edu/doc/reference/base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a></h4>
+        <p class="class_description">Base class for user-defined instruments to be used for playback in ezScorePlayer.</p>
+<h3 class="class_section_header">member variables</h3>
 <div class="members">
     <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">mid2str</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> note)</p>
-        <p class="member_description">Convert a MIDI note number (e.g. 60) to a note name (e.g. "C4").</p>
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">int</span> <span class="membername">n_voices</span>()</p>
+        <p class="member_description">The number of voices in the instrument.</p>
+    </div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+        <p class="member_description">This function defines behavior that will be executed when a note is played by the ezScorePlayer. Typically, this would include setting frequency, gain, calling .keyOn(), etc. by referencing variables of theNote. The base class function is empty, and should be overridden by the user.</p>
     </div>
     <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">str2mid</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> note)</p>
-        <p class="member_description">Convert a note name (e.g. "C4") to a MIDI note number (e.g. 60).</p>
-    </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span>[] <span class="membername">split</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
-        <p class="member_description">Split a string into an array of strings, using whitespace as the delimiter.</p>
-    </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span>[] <span class="membername">split</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_object">string</span> delimiter)</p>
-        <p class="member_description">Split a string into an array of strings, using the given delimiter.</p>
-    </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">count_substrings</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_object">string</span> target)</p>
-        <p class="member_description">Count the number of times a target substring appears in a string.</p>
-    </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">findInt</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
-        <p class="member_description">Find the leftmost integer in a string. Returns index or -1 if none found.</p>
-    </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">find_int_from_index</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_primitive">int</span> index)</p>
-        <p class="member_description">Get the longest sequence of valid integer characters in a string starting at a given index.</p>
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+        <p class="member_description">This function defines behavior that will be executed when a note is released by the ezScorePlayer. This could include calling .keyOff(), etc. or referencing variables of theNote. The base class function is empty, and should be overridden by the user.</p>
     </div>
 </div>
 
