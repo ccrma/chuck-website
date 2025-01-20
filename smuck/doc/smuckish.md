@@ -1,4 +1,4 @@
-# SMucKish Cheatsheet
+# SMucKish: The input language of SMucK
 
 - ["Interleaved" Input]
 - ["Multi-stage" Input]

@@ -2,7 +2,8 @@
 <!-- Add ChuGL logo -->
 <!-- <img align="left" style="width:260px" src="https://github.com/raysan5/raylib/blob/master/logo/raylib_logo_animation.gif" width="288px"> -->
 
-![logo](images/smuck-logo.png)
+<img src="images/smuck-logo.svg" width="100%"></img>
+
 <h2>SMucK =&gt; Symbolic Music in ChucK</h2>
 
 </div> <!-- end center -->
@@ -22,51 +23,56 @@ with support from the <a href="../doc/authors.html">ChucK Team</a>.
 
 ---
 
-**ChuGL v0.1.5** (alpha) — [**ChuGL API Reference**](./api/)
+**ChuGL v0.1.5** (alpha) — [**SMucK API Reference**](./api/)
 • [**Examples**](./examples/)
-• [**Cheatsheet**](./doc/cheatsheet.html)
-• [**Walkthrough**](./doc/walkthru.html)
-• [**Tutorial**](./doc/tutorial.html)
-• [**Paper (NIME 2024)**](https://mcd.stanford.edu/publish/files/2024-nime-chugl.pdf)
-<br>
-**Videos** [SoundBulb Audiovisualizer](https://www.youtube.com/watch?v=wnSmS_y9-Cs) (code: 
-[soundbulb.ck](examples/deep/soundbulb.ck) | [sndpeek.ck](examples/deep/sndpeek.ck))
-| [Selected Student Projects](https://vimeo.com/909845445)
+• [**Cheatsheet (coming soon)**](./doc/cheatsheet.html)
+• [**Walkthrough (coming soon)**](./doc/walkthru.html)
+• [**Tutorial (coming soon)**](./doc/tutorial.html)
+• [**Paper (coming soon)**](https://mcd.stanford.edu/publish/files/2024-nime-chugl.pdf)
 ___
 
 ## Installation
 
-### macOS and Windows
+### macOS / Linux
+1. Clone the SmucK repository
+    ```
+    git clone https://github.com/smuck/smuck.git
+    ```
+2. Copy the contents of `src` to `~/.chuck/lib` with the following command:
+    ```
+    cp -r smuck/src/* ~/.chuck/lib
+    ```
+    If you get the error `cp: ~/.chuck/lib is not a directory`, try the following command instead:
+    ```
+    sudo cp -r smuck/src/* /usr/local/lib/chuck
+    ```
 
-As of ChucK 1.5.2.1, ChuGL (alpha) is part of the [**standard ChucK 
-distribution**](https://chuck.stanford.edu/release/) on macOS and Windows. ChucK 1.5.2.5 contains 
-the latest and last OpenGL-based ChuGL v0.1.5 (alpha). ChucK 1.5.3.0 introduces ChuGL v0.2.0 
-(alpha) featuring a significant re-write and transition from OpenGL to WebGPU as the underlying 
-graphics library.
-
-
-### Linux
-
-Build ChuGL from source; see <a target="_blank" href="https://github.com/ccrma/chugl#building-chugl">instructions</a>.
+### Windows
+1. Clone the SmucK repository
+    ```
+    git clone https://github.com/smuck/smuck.git
+    ```
+2. Copy the contents of `src` to `~/.chuck/lib` with the following command:
+    ```
+    cp -r smuck/src/* ~/.chuck/lib
+    ```
+    If you get the error `cp: ~/.chuck/lib is not a directory`, try the following command instead:
+    ```
+    sudo cp -r smuck/src/* /usr/local/lib/chuck
+    ```
 
 ## Running
 
-**Note:** currently ChuGL only supports command-line chuck. MiniAudicle support to come soon. 
-To run any ChuGL program (e.g., example.ck) on the terminal / command line prompt:
-```
-> chuck example.ck
-```
-
 ### Minimal Example
 
-If the chugin is properly loaded, running the following example via commandline chuck will 
-open a blank window. Press `esc` to exit.
+If the SMucK library is properly loaded, the following example will run without errors.
 
 ```cpp
-while (true) { GG.nextFrame() => now; }
+// example.ck
+@import "smuck"
 ```
 
-Congrats, you now have ChuGL properly installed!
+Congrats, you now have SMucK properly installed!
 
 ## Learning Resouces
 
