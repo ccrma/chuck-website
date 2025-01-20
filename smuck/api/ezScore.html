@@ -9,7 +9,7 @@
         <div style="display: flex; align-items: center;">
             <div class="inline titlelogo"><a href="https://chuck.stanford.edu/" target="_blank"><img src="https://chuck.stanford.edu/doc/images/chuck-logo2023w.png" /> </div>
             <div class="inline"><h1><a href="./">ChucK Class Library Reference</a></h1></div>
-            <div class="inline gray"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;Basic Classes</h1></div>
+            <div class="inline gray"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;ezScore Classes</h1></div>
         </div>
     </div>
 </div>
@@ -98,10 +98,6 @@
         <p class="member_declaration"><span class="membername">ezMeasure</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
         <p class="member_description">Create an ezMeasure from a SMucKish input string.</p>
     </div>
-    <div class="member">
-        <p class="member_declaration"><span class="membername">ezMeasure</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_primitive">int</span> fill_mode)</p>
-        <p class="member_description">Create an ezMeasure from a SMucKish input string. The fill_mode parameter is used to specify how ezNote parameters are inferred. 0 = when a parameter is not specified, it is assigned a default value. 1 = when a parameter is not specified, it is assigned a value from the previously parsed note.</p>
-    </div>
 </div>
 <h3 class="class_section_header">member variables</h3>
 <div class="members">
@@ -130,24 +126,12 @@
         <p class="member_description">Set the pitches of the notes in the measure using a SMucKish input string.</p>
     </div>
     <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_pitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_primitive">int</span> fill_mode)</p>
-        <p class="member_description">Set the pitches of the notes in the measure using a SMucKish input string. The fill_mode parameter is used to specify how ezNote parameters are inferred (e.g. if number of provided rhythms is different than number of provided pitches). 0 = when a parameter is not specified, it is assigned a default value. 1 = when a parameter is not specified, it is assigned a value from the previously parsed note.</p>
-    </div>
-    <div class="member">
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_rhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
         <p class="member_description">Set the rhythms of the notes in the measure using a SMucKish input string.</p>
     </div>
     <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_rhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_primitive">int</span> fill_mode)</p>
-        <p class="member_description">Set the rhythms of the notes in the measure using a SMucKish input string. The fill_mode parameter is used to specify how ezNote parameters are inferred (e.g. if number of provided rhythms is different than number of provided pitches). 0 = when a parameter is not specified, it is assigned a default value. 1 = when a parameter is not specified, it is assigned a value from the previously parsed note.</p>
-    </div>
-    <div class="member">
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_velocities</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
         <p class="member_description">Set the velocities of the notes in the measure using a SMucKish input string.</p>
-    </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_velocities</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_primitive">int</span> fill_mode)</p>
-        <p class="member_description">Set the velocities of the notes in the measure using a SMucKish input string. The fill_mode parameter is used to specify how ezNote parameters are inferred (e.g. if number of provided rhythms is different than number of provided pitches). 0 = when a parameter is not specified, it is assigned a default value. 1 = when a parameter is not specified, it is assigned a value from the previously parsed note.</p>
     </div>
     <div class="member">
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">print_notes</span>()</p>
