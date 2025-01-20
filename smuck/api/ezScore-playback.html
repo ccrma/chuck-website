@@ -1,0 +1,144 @@
+<html>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
+<title>ezScore Playback</title>
+<body>
+<a name="top"/>
+<div id="title">
+    <div class="titleL">
+        <div style="display: flex; align-items: center;">
+            <div class="inline titlelogo"><a href="https://chuck.stanford.edu/" target="_blank"><img src="https://chuck.stanford.edu/doc/images/chuck-logo2023w.png" /> </div>
+            <div class="inline"><h1><a href="./">ChucK Class Library Reference</a></h1></div>
+            <div class="inline gray"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;ezScore Playback</h1></div>
+        </div>
+    </div>
+</div>
+<div id="body">
+<div class="toc"><a id="toc"/>
+    <p class="toc_class"><a href="#ezScorePlayer" class="ckdoc_typename ckdoc_type_object">ezScorePlayer</a></p>
+    <p class="toc_class"><a href="#ezInstrument" class="ckdoc_typename ckdoc_type_object">ezInstrument</a></p>
+</div>
+<div class="classes">
+    <p class="group_desc">Objects used to play back ezScore score data.</p>
+    
+<a name="ezScorePlayer" />
+    <div class="class">
+        <h2 class="class_title" name="ezScorePlayer">ezScorePlayer</h2><h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+        <p class="class_description">Object used to play back ezScore objects using ezInstrument objects. Initialize an ezScorePlayer with an ezScore object and then assign ezInstruments to individual parts.</p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+    <div class="member">
+        <p class="member_declaration"><span class="membername">ezScorePlayer</span>()</p>
+        <p class="member_description">Default constructor for ezScorePlayer. Creates empty score player.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="membername">ezScorePlayer</span>(<span class="ckdoc_typename ckdoc_type_object">ezScore</span> score)</p>
+        <p class="member_description">Construct an ezScorePlayer with the given ezScore object.</p>
+    </div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezScore</span> <span class="membername">score</span>()</p>
+        <p class="member_description">The ezScore object to be played back.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezParts</span>[] <span class="membername">parts</span>()</p>
+        <p class="member_description">The ezPart objects associated with the score. Set automatically if player is initialized with an ezScore.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezInstruments</span>[] <span class="membername">instruments</span>()</p>
+        <p class="member_description">The ezInstruments to be used in playback. Need to set manually for each part.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">loop</span>()</p>
+        <p class="member_description">Whether to loop playback upon reaching end of score. Default value of 0 (false).</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
+        <p class="member_description">The playback rate. Default value of 1.0. Used to speed up or slow down playback. Negative values play the score in reverse.</p>
+    </div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setScore</span>(<span class="ckdoc_typename ckdoc_type_object">ezScore</span> score)</p>
+        <p class="member_description">Set the ezScore object to be played back.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setInstruments</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> partIndex, <span class="ckdoc_typename ckdoc_type_object">ezInstruments</span> @ instrument)</p>
+        <p class="member_description">Set the ezInstrument to be used in playback for a given part.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setInstruments</span>(<span class="ckdoc_typename ckdoc_type_object">ezInstruments</span> @ instruments[])</p>
+        <p class="member_description">Set the ezInstruments to be used in playback for all parts.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">play</span>()</p>
+        <p class="member_description">Start playback.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pause</span>()</p>
+        <p class="member_description">Pause playback.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">stop</span>()</p>
+        <p class="member_description">Stop playback.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> timePosition)</p>
+        <p class="member_description">Move the playhead to the given position in time.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> beatPosition)</p>
+        <p class="member_description">Move the playhead to the given position in beats.</p>
+    </div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+
+<a name="smUtils" />
+    <div class="class">
+        <h2 class="class_title" name="smUtils">smUtils</h2><h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+        <p class="class_description">A variety of utility functions for working with SMucKish. Has some useful string handling functions applicable outside of SMucK.</p>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">mid2str</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> note)</p>
+        <p class="member_description">Convert a MIDI note number (e.g. 60) to a note name (e.g. "C4").</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">str2mid</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> note)</p>
+        <p class="member_description">Convert a note name (e.g. "C4") to a MIDI note number (e.g. 60).</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span>[] <span class="membername">split</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Split a string into an array of strings, using whitespace as the delimiter.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span>[] <span class="membername">split</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_object">string</span> delimiter)</p>
+        <p class="member_description">Split a string into an array of strings, using the given delimiter.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">count_substrings</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_object">string</span> target)</p>
+        <p class="member_description">Count the number of times a target substring appears in a string.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">findInt</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Find the leftmost integer in a string. Returns index or -1 if none found.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">find_int_from_index</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input, <span class="ckdoc_typename ckdoc_type_primitive">int</span> index)</p>
+        <p class="member_description">Get the longest sequence of valid integer characters in a string starting at a given index.</p>
+    </div>
+</div>
+
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr/>
+
+</div>
+</div>
+</body>
+</html>
