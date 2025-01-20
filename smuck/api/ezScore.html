@@ -87,7 +87,7 @@
 <a name="ezMeasure" />
     <div class="class">
         <h2 class="class_title" name="ezMeasure">ezMeasure</h2><h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-        <p class="class_description">SMucK measure object. A measure is a collection of ezNotes. Contents can be set using the SMucKish input syntax. Multiple measures can be combined into an ezPart.</p>
+        <p class="class_description">SMucK measure object. An ezMeasure object contains one or more ezNotes. Note contents can be set using the SMucKish input syntax.</p>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
     <div class="member">
@@ -140,7 +140,143 @@
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
-<hr />
+<hr/>
+
+<a name="ezPart" />
+    <div class="class">
+        <h2 class="class_title" name="ezPart">ezPart</h2><h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+        <p class="class_description">SMucK part object. An ezPart object contains one or more ezMeasures. Measure contentscan be set using the SMucKish input syntax, or when importing a MIDI file into an ezScore object.</p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+    <div class="member">
+        <p class="member_declaration"><span class="membername">ezPart</span>()</p>
+        <p class="member_description">Default constructor for ezPart. Creates empty part.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="membername">ezPart</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Create an ezPart from a SMucKish input string. Puts contents into a single ezMeasure.</p>
+    </div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezMeasure[]</span> <span class="membername">measures</span>()</p>
+        <p class="member_description">The ezMeasure objects in the part.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">maxPolyphony</span>()</p>
+        <p class="member_description">The maximum number of simultaneous notes in the part. Used to allocate number of voices needed for playback.</p>
+    </div>
+</div>
+
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add_measure</span>(<span class="ckdoc_typename ckdoc_type_object">ezMeasure</span> note)</p>
+        <p class="member_description">Add an ezMeasure to the part. Updates the onset of the measure to be relative to start of the part.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_pitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Set the pitches of the notes using a SMucKish input string. Puts contents into a single ezMeasure.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_rhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Set the rhythms of the notes using a SMucKish input string. Puts contents into a single ezMeasure.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_velocities</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Set the velocities of the notes using a SMucKish input string. Puts contents into a single ezMeasure.</p>
+    </div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr/>
+
+<a name="ezScore" />
+    <div class="class">
+        <h2 class="class_title" name="ezScore">ezScore</h2><h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+        <p class="class_description">SMucK score object. An ezScore object contains one or more ezParts. Score contents can be set using the SMucKish input syntax, or by importing a MIDI file. ezScore objects can be passed to an ezScorePlayer object for playback.</p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+    <div class="member">
+        <p class="member_declaration"><span class="membername">ezScore</span>()</p>
+        <p class="member_description">Default constructor for ezScore. Creates empty score.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="membername">ezPart</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Create an ezScore from a SMucKish input string. Puts contents into a single ezPart with a single ezMeasure. If given a MIDI filepath (ending in '.mid'), creates the score from the provided MIDI file.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="membername">ezPart</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename, <span class="ckdoc_typename ckdoc_type_primitive">float</span> bpm)</p>
+        <p class="member_description">Create an ezScore from a MIDI file (ending in '.mid'), with a given tempo in beats per minute.</p>
+    </div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bpm</span>()</p>
+        <p class="member_description">The tempo of the score in beats per minute. Default value of 120.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">time_sig_numerator</span>()</p>
+        <p class="member_description">The numerator of the time signature. Default value of 4. Used mostly with MIDI files to infer measure boundaries.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">time_sig_denominator</span>()</p>
+        <p class="member_description">The denominator of the time signature. Default value of 4. Used mostly with MIDI files to infer measure boundaries.</p>
+    </div>
+</div>
+
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setTempo</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> bpm)</p>
+        <p class="member_description">Set the tempo of the score in beats per minute.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setTimeSig</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> numerator, <span class="ckdoc_typename ckdoc_type_primitive">int</span> denominator)</p>
+        <p class="member_description">Set the time signature of the score.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">numParts</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> num)</p>
+        <p class="member_description">Get the number of parts in the score.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addPart</span>(<span class="ckdoc_typename ckdoc_type_object">ezPart</span> part)</p>
+        <p class="member_description">Add an ezPart to the score.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">getScoreEnd</span>()</p>
+        <p class="member_description">Get the end time of the score in beats (the last note's release point).</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">getScoreDuration</span>()</p>
+        <p class="member_description">Get the duration of the score in ms.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">getMaxPolyphony</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> part)</p>
+        <p class="member_description">Get the maximum number of simultaneous notes the given part number.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_pitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Set the pitches of the notes using a SMucKish input string. Puts contents into a single ezPart with a single ezMeasure.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_rhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Set the rhythms of the notes using a SMucKish input string. Puts contents into a single ezPart with a single ezMeasure.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_velocities</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+        <p class="member_description">Set the velocities of the notes using a SMucKish input string. Puts contents into a single ezPart with a single ezMeasure.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">importMIDI</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+        <p class="member_description">Import a MIDI file. Each track in the MIDI file is added as a separate ezPart with a single ezMeasure.</p>
+    </div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr/>
 
 </div>
 </div>
