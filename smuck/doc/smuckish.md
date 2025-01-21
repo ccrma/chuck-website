@@ -1,5 +1,6 @@
 # SMucKish: The input language of SMucK
 
+### Table of Contents
 - [Pitch](#pitch)
     - [Construction of a Pitch](#construction-of-a-pitch)
     - [Proximity and Octaves](#proximity-and-octaves)
@@ -20,6 +21,7 @@
     - [Sequences](#sequences)
 - [Multi-stage Input](#multi-stage-input)
 - [Interleaved Input](#interleaved-input)
+- [Using SMucKish](#using-smuckish)
 
 # Overview
 SMucKish is a symbolic music notation system for ChucK. It uses a custom syntax that is designed to encode musical information in a compact and high-level format. SMucKish is designed to provide a streamlined way to represent musical structures such as pitches, rhythms, dynamics, and more. Users can write SMucKish code as a string and parse it using a number of different functions and objects in the SMucK library. 
@@ -368,5 +370,6 @@ The ezScore family of objects are data structures designed to hold and manipulat
 - `ezMeasure.set_rhythms(string smuckish_string)` : Sets the rhythms of the measure.
 - `ezMeasure.set_velocities(string smuckish_string)` : Sets the dynamics of the measure.
 
-The methods for `ezPart` and `ezScore` are identical--you can use either a constructor or the `set_pitches()`, `set_rhythms()`, and `set_velocities()` methods.
+In these methods, the SMucKish string is translated into a sequence of `ezNote` objects. Each `ezNote` object contains a `pitch`, `beat` (rhythmic duration), `onset` (in beats, relative to the start of the measure), and `velocity`. Each `ezMeasure` object contains a `notes` array of `ezNote` objects.
 
+The methods for `ezPart` and `ezScore` are identical--you can use either a constructor or the `set_pitches()`, `set_rhythms()`, and `set_velocities()` methods. For an `ezPart`, using these methods results in a part with a single `ezMeasure`. For an `ezScore`, using these methods results in a score with a single `ezPart` with a single `ezMeasure`.
