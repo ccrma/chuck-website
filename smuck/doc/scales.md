@@ -1,7 +1,12 @@
 # SMucK Scale Dictionary
 
 - [SMucK Scale Input](#smuck-scale-input)
-- [Basic scales](#basic)
+- [Major/Minor](#majorminor)
+- [Pentatonic/Hexatonic](#pentatonichexatonic)
+- [Symmetric](#symmetric)
+- [Greek Modes](#greek-modes)
+- [Altered Modes](#altered-modes)
+- ["Exotic" Scales](#exotic-scales)
 
 ## SMucK Scale Input
 The `smuckish` class has the method `.scale()` which allows for easy conversion of scale names to MIDI note numbers. It optionally takes an additional argument to specify the root note of the scale. Example usage:
