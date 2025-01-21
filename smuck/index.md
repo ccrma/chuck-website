@@ -27,9 +27,6 @@ with support from the <a href="../doc/authors.html">ChucK Team</a>.
 • [**Examples**](./examples/)
 • [**Walkthrough**](./doc/walkthru.html)
 • [**SMucKish Rosetta Stone**](./doc/smuckish.html)
-• **Cheatsheet (coming soon)**
-• **Tutorial (coming soon)**
-• **Paper (coming soon)**
 ___
 
 ## Installation
@@ -80,5 +77,4 @@ Congrats, you now have SMucK properly installed!
 - [Examples](./examples/)
 - [Walkthrough](./doc/walkthru.html)
 - [SMucKish Rosetta Stone](./doc/smuckish.html)
-- SMucK Tutorial (coming soon)
 
