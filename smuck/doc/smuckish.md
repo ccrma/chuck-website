@@ -167,7 +167,7 @@ smuckish.pitches("c3:e:g c3:e:g c3:e:g");
 ```
 ![pitch chords](../images/smuckish/pitch_chord_oct_same.svg)
 
-There is also a function `smuckish.chords()` that translates chord names directly into `int` arrays. For more information, see [**Chord Tool**](./doc/chords.html).
+There is also a function `smuckish.chords()` that translates chord names directly into `int` arrays. For more information, see the [**SMucKChord Input Tool**](./chords.html) page.
 
 
 ### Rests
