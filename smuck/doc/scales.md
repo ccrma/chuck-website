@@ -1,5 +1,6 @@
 # SMucK Scale Dictionary
 
+**Table of Contents**
 - [SMucK Scale Input](#smuck-scale-input)
 - [Major/Minor](#majorminor)
 - [Pentatonic/Hexatonic](#pentatonichexatonic)
