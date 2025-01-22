@@ -27,6 +27,7 @@ with support from the <a href="../doc/authors.html">ChucK Team</a>.
 • [**Examples**](./examples/)
 • [**Walkthrough**](./doc/walkthru.html)
 • [**SMucKish Rosetta Stone**](./doc/smuckish.html)
+• [**SMucK "How Do I..." Cheatsheet**](./doc/cheatsheet.html)
 ___
 
 ## Installation
