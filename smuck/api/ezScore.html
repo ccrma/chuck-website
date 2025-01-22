@@ -56,10 +56,6 @@
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">velocity</span>()</p>
         <p class="member_description">The velocity of the note, as a MIDI velocity value (0-127). Default value of 100</p>
     </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int[]</span> <span class="membername">CC</span>()</p>
-        <p class="member_description">MIDI CC values (CURRENTLY NOT IMPLEMENTED).</p>
-    </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -122,6 +118,10 @@
         <p class="member_description">Add a note to the measure.</p>
     </div>
     <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">print_notes</span>()</p>
+        <p class="member_description">Print all note contents in the measure.</p>
+    </div>
+    <div class="member">
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_pitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
         <p class="member_description">Set the pitches of the notes in the measure using a SMucKish input string.</p>
     </div>
@@ -156,10 +156,6 @@
     <div class="member">
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_velocities</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> input[])</p>
         <p class="member_description">Set the velocities of the notes in the measure directly using an array of int values.</p>
-    </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">print_notes</span>()</p>
-        <p class="member_description">Print all note contents in the measure.</p>
     </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -278,18 +274,6 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
     <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setTempo</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> bpm)</p>
-        <p class="member_description">Set the tempo of the score in beats per minute.</p>
-    </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setTimeSig</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> numerator, <span class="ckdoc_typename ckdoc_type_primitive">int</span> denominator)</p>
-        <p class="member_description">Set the time signature of the score.</p>
-    </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">numParts</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> num)</p>
-        <p class="member_description">Get the number of parts in the score.</p>
-    </div>
-    <div class="member">
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addPart</span>(<span class="ckdoc_typename ckdoc_type_object">ezPart</span> part)</p>
         <p class="member_description">Add an ezPart to the score.</p>
     </div>
@@ -304,6 +288,14 @@
     <div class="member">
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">getMaxPolyphony</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> part)</p>
         <p class="member_description">Get the maximum number of simultaneous notes the given part number.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">importMIDI</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+        <p class="member_description">Import a MIDI file. Each track in the MIDI file is added as a separate ezPart with a single ezMeasure.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">numParts</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> num)</p>
+        <p class="member_description">Get the number of parts in the score.</p>
     </div>
     <div class="member">
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">set_pitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
@@ -342,8 +334,12 @@
         <p class="member_description">Set the velocities of the notes directly using an array of int values. Puts contents into a single ezPart with a single ezMeasure.</p>
     </div>
     <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">importMIDI</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
-        <p class="member_description">Import a MIDI file. Each track in the MIDI file is added as a separate ezPart with a single ezMeasure.</p>
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setTempo</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> bpm)</p>
+        <p class="member_description">Set the tempo of the score in beats per minute.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setTimeSig</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> numerator, <span class="ckdoc_typename ckdoc_type_primitive">int</span> denominator)</p>
+        <p class="member_description">Set the time signature of the score.</p>
     </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

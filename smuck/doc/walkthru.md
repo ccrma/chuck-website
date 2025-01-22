@@ -1,4 +1,4 @@
-# SMucK Walkthrough
+# Basic Playback with SMucK
 - [Overview](#overview)
 - [Background: Class Heirarchy](#background-class-heirarchy)
 - [Creating an ezScore      (1)](#creating-an-ezscore-1)

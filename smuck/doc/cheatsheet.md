@@ -1,7 +1,7 @@
 # SMucK "How Do I..." Cheatsheet
 
 
-### [**Get started with SMucK?**](./walkthru.html)
+### [**Play a score with SMucK?**](./walkthru.html)
 
 ### [**Use the SMucKish syntax to write music?**](./smuckish.html)
 

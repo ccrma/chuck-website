@@ -39,14 +39,6 @@
 <h3 class="class_section_header">member variables</h3>
 <div class="members">
     <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezScore</span> <span class="membername">score</span>()</p>
-        <p class="member_description">The ezScore object to be played back.</p>
-    </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezParts</span>[] <span class="membername">parts</span>()</p>
-        <p class="member_description">The ezPart objects associated with the score. Set automatically if player is initialized with an ezScore.</p>
-    </div>
-    <div class="member">
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezInstruments</span>[] <span class="membername">instruments</span>()</p>
         <p class="member_description">The ezInstruments to be used in playback. Need to set manually for each part.</p>
     </div>
@@ -55,35 +47,27 @@
         <p class="member_description">Whether to loop playback upon reaching end of score. Default value of 0 (false).</p>
     </div>
     <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezParts</span>[] <span class="membername">parts</span>()</p>
+        <p class="member_description">The ezPart objects associated with the score. Set automatically if player is initialized with an ezScore.</p>
+    </div>
+    <div class="member">
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
         <p class="member_description">The playback rate. Default value of 1.0. Used to speed up or slow down playback. Negative values play the score in reverse.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezScore</span> <span class="membername">score</span>()</p>
+        <p class="member_description">The ezScore object to be played back.</p>
     </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
     <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setScore</span>(<span class="ckdoc_typename ckdoc_type_object">ezScore</span> score)</p>
-        <p class="member_description">Set the ezScore object to be played back.</p>
-    </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setInstruments</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> partIndex, <span class="ckdoc_typename ckdoc_type_object">ezInstruments</span> @ instrument)</p>
-        <p class="member_description">Set the ezInstrument to be used in playback for a given part.</p>
-    </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setInstruments</span>(<span class="ckdoc_typename ckdoc_type_object">ezInstruments</span> @ instruments[])</p>
-        <p class="member_description">Set the ezInstruments to be used in playback for all parts.</p>
-    </div>
-    <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">play</span>()</p>
-        <p class="member_description">Start playback.</p>
-    </div>
-    <div class="member">
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pause</span>()</p>
         <p class="member_description">Pause playback.</p>
     </div>
     <div class="member">
-        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">stop</span>()</p>
-        <p class="member_description">Stop playback.</p>
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">play</span>()</p>
+        <p class="member_description">Start playback.</p>
     </div>
     <div class="member">
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> timePosition)</p>
@@ -97,6 +81,23 @@
         <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">preview</span>()</p>
         <p class="member_description">Preview the score. Plays the score back with a default "preview instrument" using SinOscs.</p>
     </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setInstruments</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> partIndex, <span class="ckdoc_typename ckdoc_type_object">ezInstruments</span> @ instrument)</p>
+        <p class="member_description">Set the ezInstrument to be used in playback for a given part.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setInstruments</span>(<span class="ckdoc_typename ckdoc_type_object">ezInstruments</span> @ instruments[])</p>
+        <p class="member_description">Set the ezInstruments to be used in playback for all parts.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setScore</span>(<span class="ckdoc_typename ckdoc_type_object">ezScore</span> score)</p>
+        <p class="member_description">Set the ezScore object to be played back.</p>
+    </div>
+    <div class="member">
+        <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">stop</span>()</p>
+        <p class="member_description">Stop playback.</p>
+    </div>
+
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>

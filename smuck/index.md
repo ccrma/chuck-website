@@ -24,10 +24,10 @@ with support from the <a href="../doc/authors.html">ChucK Team</a>.
 ---
 
 **SMucK v0.0.0** (pre-alpha) — [**SMucK API Reference**](./api/)
-• [**Examples**](./examples/)
-• [**Walkthrough**](./doc/walkthru.html)
+• [**SMucK Cheatsheet**](./doc/cheatsheet.html)
 • [**SMucKish Rosetta Stone**](./doc/smuckish.html)
-• [**SMucK "How Do I..." Cheatsheet**](./doc/cheatsheet.html)
+• [**Basic Playback**](./doc/walkthru.html)
+• [**Examples**](./examples/)
 ___
 
 ## Installation
@@ -75,7 +75,7 @@ Congrats, you now have SMucK properly installed!
 ## Learning Resouces
 
 - [API Reference](./api/)
-- [Examples](./examples/)
-- [Walkthrough](./doc/walkthru.html)
+- [SMucK Cheatsheet](./doc/cheatsheet.html)
 - [SMucKish Rosetta Stone](./doc/smuckish.html)
-
+- [Basic Playback](./doc/walkthru.html)
+- [Examples](./examples/)
