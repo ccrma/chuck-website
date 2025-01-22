@@ -1,15 +1,29 @@
 # SMucK Walkthrough
 - [Overview](#overview)
 - [Background: Class Heirarchy](#background-class-heirarchy)
-- [1. Creating an ezScore](#1-creating-an-ezscore)
-- [2. Creating an ezInstrument](#2-creating-an-ezinstrument)
-- [3. Playing an ezScore](#3-playing-an-ezscore)
+- [Creating an ezScore      (1)](#creating-an-ezscore-1)
+- [Creating an ezInstrument (2)](#creating-an-ezinstrument-2)
+- [Playing an ezScore       (3)](#playing-an-ezscore-3)
+- [Full Example](#full-example)
 
 # Overview
 Playing a score with SMucK is as easy as 1, 2, 3!
-1. Create an `ezScore` object
-2. Make your own instruments (extending `ezInstrument`)
-3. Create an `ezScorePlayer`, choose it's score/instruments, and play!
+
+(1) Create an `ezScore` object
+
+(2) Make your own instruments (extending `ezInstrument`)
+
+(3) Create an `ezScorePlayer`, choose it's score/instruments, and play!
+
+### Minimal Example
+```
+// example.ck - creation and playback of a new score with SMucK!
+@import "smuck"
+ezScore score("a b c d");
+ezScorePlayer player(score);
+player.preview();             // play with built in preview instrument! (skip step (2))
+eon => now;
+```
 
 <br>
 
@@ -33,7 +47,7 @@ score.parts[0].measures[0].notes[0]
 
 <br>
 
-# 1. Creating an `ezScore`
+# Creating an `ezScore` (1)
 
 ### Method 1: SMucKish 🎶
 
@@ -93,13 +107,13 @@ For example, if part 1 starts at 0:00, and part 2 starts at 0:15, then part 2 sh
 
 <br>
 
-# 2. Creating an `ezInstrument`
+# Creating an `ezInstrument` (2)
 Before you can play back an `ezScore`, you need to create your own `ezInstrument`'s for each part of the score.
 These instruments will be used to play back the score.
 ### Requirements
-- `ezInstrument` is an abstract class, so you must extend it to create your own instrument.
+- `ezInstrument` is an abstract class, so you must extend it to create your own custom instrument.
 - `ezInstrument` has two required functions: `noteOn` and `noteOff`.
-- `ezInstrument` also has a required `n_voices` variable that describes how many voices the instrument has.
+- `ezInstrument` also has a required `n_voices` variable that describes how many voices the instrument has for polyphony.
 
 ### Basic Example
 ```
@@ -134,7 +148,7 @@ that describes which "voice" of the instrument to turn on or off.
 
 <br>
 
-# 3. Playing an `ezScore` 
+# Playing an `ezScore` (3)
 For the examples below, we'll assume that we have an `ezScore` object `score`, and a custom instrument class `myInstrument`.
 The score has two parts, each of which will be played by one of our instruments.
 
@@ -200,6 +214,29 @@ player.play();
 ```
 
 <br>
+
+# Full Example
+```
+@import "smuck";
+@import "myInstrument";   // the instrument we created in step (2)
+
+// 1. Create the score
+ezPart part0("a b c d");
+ezPart part1("c d e f");
+ezScore score;
+score.addPart(part0);
+score.addPart(part1);
+
+// 2. Create our instruments
+myInstrument inst1 => dac;
+myInstrument inst2 => dac;
+
+// 3. Play the score
+ezScorePlayer player(score);
+player.setInstrument(@[inst1, inst2]);
+player.play();
+10::second => now;
+```
 
 Congratulations! You can now write and play music with SMucK!
 
