@@ -167,7 +167,7 @@ smuckish.pitches("c3:e:g c3:e:g c3:e:g");
 ```
 ![pitch chords](../images/smuckish/pitch_chord_oct_same.svg)
 
-There is also a function `smuckish.chords()` that translates chord names directly into `int` arrays. For more information, see <a href="">this page</a> [PROVIDE DOCUMENTATION LINK].
+There is also a function `smuckish.chords()` that translates chord names directly into `int` arrays. For more information, see [**Chord Tool**](./doc/chords.html).
 
 
 ### Rests
@@ -373,3 +373,5 @@ The ezScore family of objects are data structures designed to hold and manipulat
 In these methods, the SMucKish string is translated into a sequence of `ezNote` objects. Each `ezNote` object contains a `pitch`, `beat` (rhythmic duration), `onset` (in beats, relative to the start of the measure), and `velocity`. Each `ezMeasure` object contains a `notes` array of `ezNote` objects.
 
 The methods for `ezPart` and `ezScore` are identical--you can use either a constructor or the `set_pitches()`, `set_rhythms()`, and `set_velocities()` methods. For an `ezPart`, using these methods results in a part with a single `ezMeasure`. For an `ezScore`, using these methods results in a score with a single `ezPart` with a single `ezMeasure`.
+
+For more information about the usage of these objects and their functions, see the [**SMucK API Reference**](../api/)
