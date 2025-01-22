@@ -123,10 +123,12 @@ public class myInstrument extends ezInstrument
     // how many voices our instrument has (for polyphony)
     10 => n_voices;
     SinOsc oscs[n_voices];
+    Gain g => outlet;     // outlet lets us connect to any output! (e.g. myInstrument inst => Nrev rev => dac)
+    g.gain(0.1);
     for (0 => int i; i < n_voices; i++)
     {
-        // outlet lets us connect our instrument to any output we want for playback!
-        oscs[i] => outlet;        
+        oscs[i].gain(0);  // we want each osc to be silent before a note is played
+        oscs[i] => g;
     }
     
     // what our instrument does when a note is played
@@ -176,7 +178,7 @@ player.setInstrument(1, instrument2);   // use instrument2 for part 1 of the sco
 ```
 OR
 ```
-player.setInstruments(@[instrument1, instrument2]);
+player.setInstrument(@[instrument1, instrument2]);
 ```
 
 <br>
