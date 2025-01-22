@@ -32,26 +32,27 @@ ___
 
 ## Installation
 
+First, download the pre-alpha release of SMucK here:
+
+[Download SMucK Source](./smuck-220b.zip)
+
+This is a pre-alpha release made specially for use in Music 220B. In the future, SMucK will be included in the official ChucK distribution.
+
 ### macOS / Linux
-1. Clone the SmucK repository
+
+1. Un-zip the file and get the filepath (for instance, `~/Downloads/smuck-220b`)
+2. Copy the contents to `~/.chuck/lib` with the following command, replacing `[YOUR_FILEPATH]` with the filepath you got from step 1:
+
     ```txt
-    git clone https://github.com/ccrma/smuck.git
-    ```
-2. Copy the contents of `src` to `~/.chuck/lib` with the following command:
-    ```txt
-    cp -r smuck/src/* ~/.chuck/lib
+    cp -r [YOUR_FILEPATH]/* ~/.chuck/lib
     ```
     If you get the error `cp: ~/.chuck/lib is not a directory`, try the following command instead:
     ```txt
-    sudo cp -r smuck/src/* /usr/local/lib/chuck
+    sudo cp -r [YOUR_FILEPATH]/* /usr/local/lib/chuck
     ```
 
 ### Windows
-1. Clone the SmucK repository
-    ```txt
-    git clone https://github.com/ccrma/smuck.git
-    ```
-2. Copy the contents of `src` to one of the following directories:
+1. Un-zip and copy the contents of `smuck-220b.zip` to one of the following directories:
     ```txt
     C:\Windows\system32\ChucK
     C:\Program Files\ChucK\chugins
@@ -67,7 +68,7 @@ If the SMucK library is properly loaded, the following example will run without 
 
 ```
 // example.ck
-@import "smuck"
+@import "smuck-220b"
 ```
 
 Congrats, you now have SMucK properly installed!
