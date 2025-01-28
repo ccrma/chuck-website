@@ -1,0 +1,624 @@
+<html>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
+<title>Playback</title>
+<body>
+<a name="top"/>
+<div id="title">
+<div class="titleL">
+<div style="display: flex; align-items: center;"><div class="inline titlelogo"><a href="https://chuck.stanford.edu/" target="_blank"><img src="https://chuck.stanford.edu/doc/images/chuck-logo2023w.png" /> </div><div class="inline"><h1><a href="./">ChucK Class Library Reference</a></h1></div>
+<div class="inline gray"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;Playback</h1></div>
+</div>
+</div>
+</div>
+<div id="body">
+<div class="toc"><a id="toc"/>
+<p class="toc_class"><a href="#ezScorePlayer" class="ckdoc_typename ckdoc_type_object">ezScorePlayer</a></p>
+<p class="toc_class"><a href="#ezInstrument" class="ckdoc_typename ckdoc_type_ugen">ezInstrument</a></p>
+<p class="toc_class"><a href="#ezDefaultInst" class="ckdoc_typename ckdoc_type_ugen">ezDefaultInst</a></p>
+<p class="toc_class"><a href="#ezMidiInst" class="ckdoc_typename ckdoc_type_ugen">ezMidiInst</a></p>
+<p class="toc_class"><a href="#ezOscInst" class="ckdoc_typename ckdoc_type_ugen">ezOscInst</a></p>
+<p class="toc_class"><a href="#ezExternalInst" class="ckdoc_typename ckdoc_type_ugen">ezExternalInst</a></p>
+<p class="toc_class"><a href="#ezFluidInst" class="ckdoc_typename ckdoc_type_ugen">ezFluidInst</a></p>
+</div>
+<div class="classes">
+<p class="group_desc">Objects used to play back ezScore score data.</p>
+<a name="ezScorePlayer" /><div class="class">
+<h2 class="class_title" name="ezScorePlayer">ezScorePlayer</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ezScorePlayer</span>()</p>
+<p class="member_description">Default constructor, creates an empty ezScorePlayer.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ezScorePlayer</span>(<span class="ckdoc_typename ckdoc_type_object">ezScore</span> s)</p>
+<p class="member_description">Create an ezScorePlayer from an ezScore object.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">bpm</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set the tempo for the ezScorePlayer in BPM (beats per minute). Can be changed dynamically during playback.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bpm</span>()</p>
+<p class="member_description">Get the tempo for the ezScorePlayer in BPM (beats per minute). Can be changed dynamically during playback.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">flushNotes</span>()</p>
+<p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">getNotesAtPlayhead</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> partIndex)</p>
+<p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isPlaying</span>()</p>
+<p class="member_description">Get the current playback state for the ezScorePlayer. If true, the player is currently playing.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logPlayback</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_description">Toggle on/off logging of playback events. If true, current note events are logged to the console as they are played.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">loop</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> loop)</p>
+<p class="member_description">Set the loop mode. If true, the player will loop back to the start of the score when it reaches the end.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">loop</span>()</p>
+<p class="member_description">Get the loop mode. If true, the player will loop back to the start of the score when it reaches the end.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pause</span>()</p>
+<p class="member_description">Pause playback of the score.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">play</span>()</p>
+<p class="member_description">Start playback of the score.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">playNote</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> partIndex, <span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote)</p>
+<p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">playhead</span>()</p>
+<p class="member_description">Get the current playhead position for the ezScorePlayer. This represents the current position in the score in ms.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">playheadPassedTime</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> timestamp)</p>
+<p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> timePosition)</p>
+<p class="member_description">Set the playhead position by absolute time in ms.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> beatPosition)</p>
+<p class="member_description">Set the playhead position by beat position.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> measures, <span class="ckdoc_typename ckdoc_type_primitive">float</span> beats)</p>
+<p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">preview</span>()</p>
+<p class="member_description">Preview the score by playing back using default instruments. Can be used to quickly preview the score without having to set instruments for each part.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set the playback rate for the ezScorePlayer. Defalut value of 1.0. Used to speed up or slow down playback. Negative values play the score in reverse.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
+<p class="member_description">Get the playback rate for the ezScorePlayer. Defalut value of 1.0. Used to speed up or slow down playback. Negative values play the score in reverse.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setEnd</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> beat)</p>
+<p class="member_description">Set the end position of the score in beats. If the end position is set to -1, the end position will automatically be set to the score's end position.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setInstrument</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> partIndex, <span class="ckdoc_typename ckdoc_type_ugen">ezInstrument</span> instrument)</p>
+<p class="member_description">Set the ezInstrument object to be used for a given part.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setInstrument</span>(<span class="ckdoc_typename ckdoc_type_object">ezInstrument</span><span class="typename">[]</span> insts)</p>
+<p class="member_description">Set the ezInstrument objects to be used for all parts. The array must be the same size as the number of parts in the score.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setScore</span>(<span class="ckdoc_typename ckdoc_type_object">ezScore</span> s)</p>
+<p class="member_description">Set the ezScore object to be played back. If the player is currently playing, it will be stopped first.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">stop</span>()</p>
+<p class="member_description">Stop playback of the score.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">stop_listener</span>()</p>
+<p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tick</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_description">Set the tick duration for the ezScorePlayer. This represents the update rate of the player's internal clock.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">tick</span>()</p>
+<p class="member_description">Get the tick update rate for the ezScorePlayer. This represents the update rate of the player's internal clock.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tickDriver</span>()</p>
+<p class="member_description">(hidden)</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">_bpm</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_logPlayback</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_loop</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">_playhead</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_playing</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">_rate</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">_tick</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">end_of_score</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezInstrument</span><span class="typename">[]</span> <span class="membername">instruments</span></p><p class="member_description">The ezInstrument objects to be used in playback. Need to set manually for each part.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezPart</span><span class="typename">[]</span> <span class="membername">parts</span></p><p class="member_description">The ezPart objects in the score. Set automatically when a score is set for the player.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">Gain</span> <span class="membername">previewGain</span></p><p class="member_description">Gain object to control volume of the playback in preview mode.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezDefaultInst</span><span class="typename">[]</span> <span class="membername">previewInsts</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">previous_playhead</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezScore</span> <span class="membername">score</span></p><p class="member_description">The ezScore object to be played back.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">start_of_score</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">tatum</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Event</span> <span class="membername">tick_driver_end</span></p><p class="member_description">(hidden)</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ezInstrument" /><div class="class">
+<h2 class="class_title" name="ezInstrument">ezInstrument</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">Chugraph</a> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Base class for user-defined instruments to be used for playback in ezScorePlayer. Users should extend this base class to create their own instruments. Users define the behavior of their instrument by overriding the noteOn and noteOff functions.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ezInstrument</span>()</p>
+<p class="member_description">Default constructor for ezInstrument.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">allocate_voice</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote)</p>
+<p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">get_free_voice</span>()</p>
+<p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice_index)</p>
+<p class="member_description">This function defines behavior that will be executed when a note is released by the ezScorePlayer. This could include calling .keyOff(), etc. or referencing variables of theNote. The base class function is empty, and should be overridden by the user.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice_index)</p>
+<p class="member_description">This function defines behavior that will be executed when a note is played by the ezScorePlayer. Typically, this would include setting frequency, gain, calling .keyOn(), etc. by referencing variables of theNote. The base class function is empty, and should be overridden by the user.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">release_voice</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> voice_index)</p>
+<p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVoices</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> n_voices)</p>
+<p class="member_description">Set the number of voices for the instrument if using user-defined signal chain. This tells the ezScorePlayer how many voices to allocate for the instrument. E.g. if you set up 5 SinOscs, you should call setVoices(5) inside your class definition. See ezDefaultInst.ck for an example.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">steal_voice</span>()</p>
+<p class="member_description">(hidden)</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_numVoices</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">voice_in_use</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezNote</span><span class="typename">[]</span> <span class="membername">voice_to_note</span></p><p class="member_description">(hidden)</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ezDefaultInst" /><div class="class">
+<h2 class="class_title" name="ezDefaultInst">ezDefaultInst</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="smuck-playback.html#ezInstrument" class="ckdoc_typename ckdoc_type_ugen">ezInstrument</a> : <a href="" class="ckdoc_typename ckdoc_type_ugen">Chugraph</a> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Default ezInstrument that uses a simple signal chain of sine oscillators and envelopes. Used as the instrument for ezScorePlayer's .preview() function. Handles up to 128 simultaneous voices. Signal chain is: SinOsc[128] => ADSR[128] => Gain => NRev => dac. Feel free to copy this and modify it for your own use! See full class definition at https://github.com/smuck/smuck/blob/main/src/smuck/ezDefaultInst.ck.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ezDefaultInst</span>()</p>
+<p class="member_description">Default constructor for ezDefaultInst.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote, <span class="ckdoc_typename ckdoc_type_primitive">int</span> which)</p>
+<p class="member_description">This noteOff() function calls .keyOff() on the envelope. The variable 'which' determines which oscillator/envelope to use and is passed in by the ezScorePlayer.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote, <span class="ckdoc_typename ckdoc_type_primitive">int</span> which)</p>
+<p class="member_description">This noteOn() function uses theNote.pitch() to set the frequency of the oscillator and theNote.velocity() to set the gain. It also calls .keyOn() on the envelope. The variable 'which' determines which oscillator/envelope to use and is passed in by the ezScorePlayer.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">Gain</span> <span class="membername">bus</span></p><p class="member_description">Post-envelope bus for gain control of all voices. Gain set to .1 by default.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ADSR</span><span class="typename">[]</span> <span class="membername">envs</span></p><p class="member_description">Array of ADSR amplitude envelopes. Envelopes are set to attack = 4ms, decay = 7000ms, sustain = 0.0, release = 200ms by default.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">n_voices</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">SinOsc</span><span class="typename">[]</span> <span class="membername">oscs</span></p><p class="member_description">Array of sine oscillators.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">NRev</span> <span class="membername">reverb</span></p><p class="member_description">Reverb at end of signal chain. Mix set to .01 by default.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ezMidiInst" /><div class="class">
+<h2 class="class_title" name="ezMidiInst">ezMidiInst</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="smuck-playback.html#ezInstrument" class="ckdoc_typename ckdoc_type_ugen">ezInstrument</a> : <a href="" class="ckdoc_typename ckdoc_type_ugen">Chugraph</a> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">EzInstrument that uses the MidiOut class to send ezNote data as MIDI messages. See full class definition at https://github.com/smuck/smuck/blob/main/src/smuck/ezMidiInst.ck.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ezMidiInst</span>()</p>
+<p class="member_description">Default constructor. Opens MIDI device 0 and sets channel to 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ezMidiInst</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> device)</p>
+<p class="member_description">Constructor that opens a given MIDI device.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">channel</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel)</p>
+<p class="member_description">Set the MIDI channel to use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">channel</span>()</p>
+<p class="member_description">Get the MIDI channel currently in use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">device</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> device)</p>
+<p class="member_description">Set the MIDI device to use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">device</span>()</p>
+<p class="member_description">Get the MIDI device currently in use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">flushMIDI</span>()</p>
+<p class="member_description">Flush the MIDI device by sending a noteOn and noteOff message for each MIDI channel and note.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logOutput</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> log)</p>
+<p class="member_description">Set whether to log outgoing note data to the console.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">This noteOff() function sends a MIDI noteOff message carrying pitch data from incoming ezNotes. Note that here, 'voice' is passed by ezScorePlayer, but is not necessary for this kind of instrument.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">This noteOn() function sends a MIDI noteOn message carrying pitch and velocity data from incoming ezNotes. Note that here, 'voice' is passed by ezScorePlayer, but is not necessary for this kind of instrument.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_channel</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_device</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_logOutput</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">MidiOut</span> <span class="membername">mout</span></p><p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ezOscInst" /><div class="class">
+<h2 class="class_title" name="ezOscInst">ezOscInst</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="smuck-playback.html#ezInstrument" class="ckdoc_typename ckdoc_type_ugen">ezInstrument</a> : <a href="" class="ckdoc_typename ckdoc_type_ugen">Chugraph</a> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">EzInstrument that uses the OscOut class to send ezNote data as OSC messages. See full class definition at https://github.com/smuck/smuck/blob/main/src/smuck/ezOscInst.ck.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ezOscInst</span>()</p>
+<p class="member_description">Default constructor. Opens an OSC connection to localhost on port 8888.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ezOscInst</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> hostname, <span class="ckdoc_typename ckdoc_type_primitive">int</span> port)</p>
+<p class="member_description">Constructor that opens an OSC connection to a given hostname and port.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hostname</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> hostname)</p>
+<p class="member_description">Set the hostname to use for outgoing OSC messages.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">hostname</span>()</p>
+<p class="member_description">Get the hostname currently in use for outgoing OSC messages.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logOutput</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> log)</p>
+<p class="member_description">Set whether to log outgoing note data to the console.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">This noteOff() function sends an OSC message carrying pitch data from incoming ezNotes. This function uses the OSC start address '/smuck/noteOff' and adds the pitch data to the message as an 'int' value. Note that here, 'voice' is passed by ezScorePlayer, but is not necessary for this kind of instrument.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">This noteOn() function sends an OSC message carrying pitch and velocity data from incoming ezNotes. This function uses the OSC start address '/smuck/noteOn' and adds the pitch and velocity data to the message as 'int' values. Note that here, 'voice' is passed by ezScorePlayer, but is not necessary for this kind of instrument.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">port</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> port)</p>
+<p class="member_description">Set the port to use for outgoing OSC messages.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">port</span>()</p>
+<p class="member_description">Get the port currently in use for outgoing OSC messages.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">_hostname</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_logOutput</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_port</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">OscOut</span> <span class="membername">xmit</span></p><p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ezExternalInst" /><div class="class">
+<h2 class="class_title" name="ezExternalInst">ezExternalInst</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="smuck-playback.html#ezInstrument" class="ckdoc_typename ckdoc_type_ugen">ezInstrument</a> : <a href="" class="ckdoc_typename ckdoc_type_ugen">Chugraph</a> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">EzInstrument that sends note data to an external MIDI and/or OSC device. Meant for sending data to external devices/software.See full class definition at https://github.com/smuck/smuck/blob/main/src/smuck/ezExternalInst.ck.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ezExternalInst</span>()</p>
+<p class="member_description">Default constructor for ezExternalInst.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">channel</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel)</p>
+<p class="member_description">Set the MIDI channel to use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">channel</span>()</p>
+<p class="member_description">Get the MIDI channel currently in use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">device</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> device)</p>
+<p class="member_description">Set the MIDI device to use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">device</span>()</p>
+<p class="member_description">Get the MIDI device currently in use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">flushMIDI</span>()</p>
+<p class="member_description">Flush the MIDI device by sending a noteOn and noteOff message for each MIDI channel and note.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hostname</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> hostname)</p>
+<p class="member_description">Set the OSC hostname to use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">hostname</span>()</p>
+<p class="member_description">Get the OSC hostname currently in use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logOutput</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> log)</p>
+<p class="member_description">Set whether to log outgoing note data to the console.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">Send a noteOff message via MIDI and/or OSC.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">Send a noteOn message via MIDI and/or OSC.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">port</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> port)</p>
+<p class="member_description">Set the OSC port to use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">port</span>()</p>
+<p class="member_description">Get the OSC port currently in use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sendMIDI</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> device)</p>
+<p class="member_description">Set the MIDI device to use and enable MIDI output.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sendOSC</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> hostname, <span class="ckdoc_typename ckdoc_type_primitive">int</span> port)</p>
+<p class="member_description">Set the OSC hostname and port to use and enable OSC output.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">useMIDI</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> toggle)</p>
+<p class="member_description">Set whether to send note data via MIDI.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">useOSC</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> toggle)</p>
+<p class="member_description">Set whether to send note data via OSC.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_channel</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_device</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">_hostname</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_logOutput</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_port</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_useMIDI</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_useOSC</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">MidiOut</span> <span class="membername">mout</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">OscOut</span> <span class="membername">xmit</span></p><p class="member_description">(hidden)</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ezFluidInst" /><div class="class">
+<h2 class="class_title" name="ezFluidInst">ezFluidInst</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="smuck-playback.html#ezInstrument" class="ckdoc_typename ckdoc_type_ugen">ezInstrument</a> : <a href="" class="ckdoc_typename ckdoc_type_ugen">Chugraph</a> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">EzInstrument that uses the FluidSynth chugin to play back ezScore data with FluidSynth SoundFont files. By default, uses the 'TimGM6mb.sf2' file which ships with SMucK. Note: using this instrument requires the FluidSynth chugin to be installed. See full class definition at https://github.com/smuck/smuck/blob/main/src/smuck/ezFluidInst.ck.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ezFluidInst</span>()</p>
+<p class="member_description">Create a new ezFluidInst. By default, uses the 'TimGM6mb.sf2' SoundFont file (which ships with SMucK) and program 0 (Acoustic Grand Piano).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ezFluidInst</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> instrument)</p>
+<p class="member_description">Create a new ezFluidInst with a specific instrument program number.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ezFluidInst</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+<p class="member_description">Create a new ezFluidInst with a specific SoundFont file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ezFluidInst</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename, <span class="ckdoc_typename ckdoc_type_primitive">int</span> instrument)</p>
+<p class="member_description">Create a new ezFluidInst with a specific SoundFont file and instrument program number.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">filename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+<p class="member_description">Set the SoundFont file to use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">filename</span>()</p>
+<p class="member_description">Get the SoundFont file currently in use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">instrument</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> instrument)</p>
+<p class="member_description">Set the instrument program number to use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">instrument</span>()</p>
+<p class="member_description">Get the instrument program number currently in use.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">Send a noteOff message to the FluidSynth instrument.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">Send a noteOn message to the FluidSynth instrument.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">_filename</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_instrument</span></p><p class="member_description">(hidden)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">FluidSynth</span> <span class="membername">fs</span></p><p class="member_description">(hidden)</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+</div>
+</div>
+</body>
+</html>

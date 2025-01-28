@@ -219,7 +219,9 @@ h1 a:hover
 }
 
 .class_section_header
-{}
+{
+    font-family: Menlo, Monaco, Courier;
+}
 
 .class_description
 {
