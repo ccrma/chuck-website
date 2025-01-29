@@ -122,6 +122,7 @@ public class myInstrument extends ezInstrument
 {
     // how many voices our instrument has (for polyphony)
     10 => n_voices;
+    setVoices(n_voices); // This sets important class variables that are used by the ezScorePlayer, so make sure to call it with however many voices you want to allocate!
     SinOsc oscs[n_voices];
     Gain g => outlet;     // outlet lets us connect to any output! (e.g. myInstrument inst => Nrev rev => dac)
     g.gain(0.1);
@@ -131,11 +132,12 @@ public class myInstrument extends ezInstrument
         oscs[i] => g;
     }
     
+
     // what our instrument does when a note is played
     fun void noteOn(ezNote note, int voice)
     {
-        Std.mtof(note.pitch) => oscs[voice].freq;
-        note.velocity / 127.0 => oscs[voice].gain;
+        Std.mtof(note.pitch()) => oscs[voice].freq;
+        note.velocity() / 127.0 => oscs[voice].gain;
     }
 
     // what our instrument does when a note is released
