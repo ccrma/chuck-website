@@ -32,11 +32,18 @@ ___
 
 ## Installation
 
-First, download the pre-alpha release of SMucK here:
+First, download the latest release of SMucK here (this is a pre-alpha release made specially for use in Music 220B):
 
-[Download SMucK Source](./smuck-220b.zip)
+<!-- *Original release*[Download SMucK Source](./smuck-220b.zip) -->
 
-This is a pre-alpha release made specially for use in Music 220B. In the future, SMucK will be included in the official ChucK distribution.
+*01/29/2025 Update:* 
+<br>
+
+*fixed some playback bugs, reworked API naming conventions (see API Reference), added several ezInstrument extended classes for MIDI/OSC handling*
+
+[Download SMucK Source](./smuck-220b_01292025.zip)
+
+<br>
 
 ### macOS / Linux
 
