@@ -41,7 +41,7 @@ First, download the latest release of SMucK here (this is a pre-alpha release ma
 
 *fixed some playback bugs, reworked API naming conventions (see API Reference), added several ezInstrument extended classes for MIDI/OSC handling*
 
-[Download SMucK Source](./smuck-220b_01292025.zip)
+[Download SMucK Source](./smuck-220b_012925.zip)
 
 <br>
 
