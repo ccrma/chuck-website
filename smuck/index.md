@@ -36,12 +36,10 @@ First, download the latest release of SMucK here (this is a pre-alpha release ma
 
 <!-- *Original release*[Download SMucK Source](./smuck-220b.zip) -->
 
-*01/29/2025 Update:* 
+*02/21/2025 Update: Major playback bug fixes* 
 <br>
 
-*fixed some playback bugs, reworked API naming conventions (see API Reference), added several ezInstrument extended classes for MIDI/OSC handling*
-
-[Download SMucK Source](./smuck-220b_012925.zip)
+[Download SMucK Source](./smuck-220b_022125.zip)
 
 <br>
 
