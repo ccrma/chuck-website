@@ -23,49 +23,32 @@ with support from the <a href="../doc/authors.html">ChucK Team</a>.
 
 ---
 
-**SMucK v0.0.0** (pre-alpha) — [**SMucK API Reference**](./api/)
+**SMucK v0.1.0** (alpha) — [**SMucK API Reference**](./api/)
 • [**SMucK Cheatsheet**](./doc/cheatsheet.html)
 • [**SMucKish Rosetta Stone**](./doc/smuckish.html)
 • [**Basic Playback**](./doc/walkthru.html)
 • [**Examples**](./examples/)
 ___
 
-## Installation
+## Installing SMucK
 
-First, download the latest release of SMucK here (this is a pre-alpha release made specially for use in Music 220B):
+1. Download ChucK version 1.5.5.0 or later. You can get the latest version [here](https://chuck.stanford.edu/release/).
 
-<!-- *Original release*[Download SMucK Source](./smuck-220b.zip) -->
+2. To install SMucK, run the following command (which uses ChucK's new package manager, [ChuMP](https://chuck.stanford.edu/chump)):
+```txt
+chump install smuck
+```
 
-*02/21/2025 Update: Major playback bug fixes* 
-<br>
+## Updating SMucK
 
-[Download SMucK Source](./smuck-220b_022125.zip)
+To update to the latest version of SMucK, run the following command:
 
-<br>
+```txt
+chump update smuck
+```
 
-### macOS / Linux
 
-1. Un-zip the file and get the filepath (for instance, `~/Downloads/smuck-220b`)
-2. Copy the contents to `~/.chuck/lib` with the following command, replacing `[YOUR_FILEPATH]` with the filepath you got from step 1:
-
-    ```txt
-    cp -r [YOUR_FILEPATH]/* ~/.chuck/lib
-    ```
-    If you get the error `cp: ~/.chuck/lib is not a directory`, try the following command instead:
-    ```txt
-    sudo cp -r [YOUR_FILEPATH]/* /usr/local/lib/chuck
-    ```
-
-### Windows
-1. Un-zip and copy the contents of `smuck-220b.zip` to one of the following directories:
-    ```txt
-    C:\Windows\system32\ChucK
-    C:\Program Files\ChucK\chugins
-    C:\Program Files (x86)\ChucK\chugins
-    C:\Users\%USERNAME%\Documents\ChucK\chugins
-    ```
-
-## Running
+## Running SMucK
 
 ### Minimal Example
 
@@ -73,15 +56,17 @@ If the SMucK library is properly loaded, the following example will run without 
 
 ```
 // example.ck
-@import "smuck-220b"
+@import "smuck"
 ```
 
 Congrats, you now have SMucK properly installed!
 
-## Learning Resouces
+## Learning SMucK
+- To get started with SMucK, you can check out the [Basic Playback](./doc/walkthru.html) tutorial.
+- For learning to speak SMucKish, the musical input syntax of SMucK, check out the [SMucKish Rosetta Stone](./doc/smuckish.html).
+- For an overview of SMucK's classes and their methods, check out the [API Reference](./api/).
+- Check out the [Examples](./examples/) and [Cheatsheet](./doc/cheatsheet.html) to learn more ways to use SMucK.
 
-- [API Reference](./api/)
-- [SMucK Cheatsheet](./doc/cheatsheet.html)
-- [SMucKish Rosetta Stone](./doc/smuckish.html)
-- [Basic Playback](./doc/walkthru.html)
-- [Examples](./examples/)
+Happy SMucKing!
+
+
