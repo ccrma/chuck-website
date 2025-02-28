@@ -141,7 +141,7 @@ public class myInstrument extends ezInstrument
     }
 
     // what our instrument does when a note is released
-    fun void noteOff(int voice)
+    fun void noteOff(ezNote note, int voice)
     {
         0 => oscs[voice].gain;
     }
@@ -180,7 +180,7 @@ player.setInstrument(1, instrument2);   // use instrument2 for part 1 of the sco
 ```
 OR
 ```
-player.setInstrument(@[instrument1, instrument2]);
+player.setInstrument([instrument1, instrument2]);
 ```
 
 <br>
@@ -232,12 +232,12 @@ score.addPart(part0);
 score.addPart(part1);
 
 // 2. Create our instruments
-myInstrument inst1 => dac;
-myInstrument inst2 => dac;
+myInstrument instrument1 => dac;
+myInstrument instrument2 => dac;
 
 // 3. Play the score
 ezScorePlayer player(score);
-player.setInstrument(@[inst1, inst2]);
+player.setInstrument([instrument1, instrument2]);
 player.play();
 10::second => now;
 ```
