@@ -157,12 +157,12 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice_index)</p>
-<p class="member_description">This function defines behavior that will be executed when a note is released by the ezScorePlayer. This could include calling .keyOff(), etc. or referencing variables of theNote. The base class function is empty, and should be overridden by the user.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">This function defines behavior that will be executed when a note is released by the ezScorePlayer. This could include calling .keyOff(), etc. or referencing variables of the ezNote. The base class function is empty, and should be overridden by the user.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice_index)</p>
-<p class="member_description">This function defines behavior that will be executed when a note is played by the ezScorePlayer. Typically, this would include setting frequency, gain, calling .keyOn(), etc. by referencing variables of theNote. The base class function is empty, and should be overridden by the user.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">This function defines behavior that will be executed when a note is played by the ezScorePlayer. Typically, this would include setting frequency, gain, calling .keyOn(), etc. by referencing variables of the ezNote. The base class function is empty, and should be overridden by the user.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVoices</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> n_voices)</p>
@@ -186,12 +186,12 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote, <span class="ckdoc_typename ckdoc_type_primitive">int</span> which)</p>
-<p class="member_description">This noteOff() function calls .keyOff() on the envelope. The variable 'which' determines which oscillator/envelope to use and is passed in by the ezScorePlayer.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">This noteOff() function calls .keyOff() on the envelope. The variable 'voice' determines which oscillator/envelope to use and is passed in by the ezScorePlayer.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote, <span class="ckdoc_typename ckdoc_type_primitive">int</span> which)</p>
-<p class="member_description">This noteOn() function uses theNote.pitch() to set the frequency of the oscillator and theNote.velocity() to set the gain. It also calls .keyOn() on the envelope. The variable 'which' determines which oscillator/envelope to use and is passed in by the ezScorePlayer.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_description">This noteOn() function uses note.pitch() to set the frequency of the oscillator and note.velocity() to set the gain. It also calls .keyOn() on the envelope. The variable 'voice' determines which oscillator/envelope to use and is passed in by the ezScorePlayer.</p>
 </div>
 </div>
 <h3 class="class_section_header">member variables</h3>
@@ -256,7 +256,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
-<p class="member_description">This noteOn() function sends a MIDI noteOn message carrying pitch and velocity data from incoming ezNotes. Note that here, 'voice' is passed by ezScorePlayer, but is not necessary for this kind of instrument.</p>
+<p class="member_description">This noteOn() function sends a MIDI noteOn message carrying pitch and velocity data from incoming ezNotes. Velocity values are scaled from 0.0-1.0 to 0-127. Note that here, 'voice' is passed by ezScorePlayer, but is not necessary for this kind of instrument.</p>
 </div>
 </div>
 <h3 class="class_section_header">member variables</h3>
@@ -448,11 +448,11 @@
 <p class="member_description">Get the SoundFont file currently in use.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
 <p class="member_description">Send a noteOff message to the FluidSynth instrument.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> theNote, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOn</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
 <p class="member_description">Send a noteOn message to the FluidSynth instrument.</p>
 </div>
 <div class="member">

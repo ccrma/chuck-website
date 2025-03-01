@@ -28,10 +28,10 @@
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="membername">ezNote</span>()</p>
-<p class="member_description">Default constructor, creates a note with onset 0, duration 1, pitch 60, and velocity 100.</p>
+<p class="member_description">Default constructor, creates a note with onset 0, duration 1, pitch 60, and velocity 1.0.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="membername">ezNote</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> onset, <span class="ckdoc_typename ckdoc_type_primitive">float</span> beats, <span class="ckdoc_typename ckdoc_type_primitive">int</span> pitch, <span class="ckdoc_typename ckdoc_type_primitive">int</span> velocity)</p>
+<p class="member_declaration"><span class="membername">ezNote</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> onset, <span class="ckdoc_typename ckdoc_type_primitive">float</span> beats, <span class="ckdoc_typename ckdoc_type_primitive">float</span> pitch, <span class="ckdoc_typename ckdoc_type_primitive">float</span> velocity)</p>
 <p class="member_description">Constructor for ezNote specifying onset, beats, pitch, and velocity.</p>
 </div>
 </div>
@@ -54,20 +54,20 @@
 <p class="member_description">Set the onset of the note in beats, relative to the start of the measure.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">pitch</span>()</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pitch</span>()</p>
 <p class="member_description">Get the pitch of the note as a MIDI note number.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pitch</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pitch</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
 <p class="member_description">Set the pitch of the note as a MIDI note number.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">velocity</span>()</p>
-<p class="member_description">Get the velocity of the note, value between 0 and 127.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">velocity</span>()</p>
+<p class="member_description">Get the velocity of the note.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">velocity</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
-<p class="member_description">Set the velocity of the note, value between 0 and 127.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">velocity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set the velocity of the note.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -123,8 +123,8 @@
 <p class="member_description">Set the pitches of the notes in the measure, using an array of SMucKish string tokens.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[][]</span> input)</p>
-<p class="member_description">Set the pitches of the notes in the measure directly from a 2D array of ints.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> input)</p>
+<p class="member_description">Set the pitches of the notes in the measure directly from a 2D array of MIDI note numbers.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setRhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
@@ -147,8 +147,8 @@
 <p class="member_description">Set the velocities of the notes in the measure, using an array of SMucKish string tokens.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> input)</p>
-<p class="member_description">Set the velocities of the notes in the measure directly from an array of ints.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
+<p class="member_description">Set the velocities of the notes in the measure directly from an array of floats.</p>
 </div>
 </div>
 <h3 class="class_section_header">member variables</h3>
@@ -190,8 +190,8 @@
 <p class="member_description">Set the pitches of the notes in the last measure, using an array of SMucKish string tokens. If the part contains no measures, a new measure is created.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[][]</span> input)</p>
-<p class="member_description">Set the pitches of the notes in the last measure, using a 2D array of ints. If the part contains no measures, a new measure is created.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> input)</p>
+<p class="member_description">Set the pitches of the notes in the last measure, using a 2D array of MIDI note numbers. If the part contains no measures, a new measure is created.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setRhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
@@ -214,7 +214,7 @@
 <p class="member_description">Set the velocities of the notes in the last measure, using an array of SMucKish string tokens. If the part contains no measures, a new measure is created.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> input)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
 <p class="member_description">Set the velocities of the notes in the last measure, using an array of ints. If the part contains no measures, a new measure is created.</p>
 </div>
 </div>
@@ -293,8 +293,8 @@
 <p class="member_description">Set the pitches of the notes in the last part, using an array of SMucKish string tokens. If the score contains no parts, a new part is created.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[][]</span> input)</p>
-<p class="member_description">Set the pitches of the notes in the last part, using a 2D array of ints. If the score contains no parts, a new part is created.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> input)</p>
+<p class="member_description">Set the pitches of the notes in the last part, using a 2D array of MIDI note numbers (floats). If the score contains no parts, a new part is created.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setRhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
@@ -321,8 +321,8 @@
 <p class="member_description">Set the velocities of the notes in the last part, using an array of SMucKish string tokens. If the score contains no parts, a new part is created.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> input)</p>
-<p class="member_description">Set the velocities of the notes in the last part, using an array of ints. If the score contains no parts, a new part is created.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
+<p class="member_description">Set the velocities of the notes in the last part, using an array of floats. If the score contains no parts, a new part is created.</p>
 </div>
 </div>
 <h3 class="class_section_header">member variables</h3>
