@@ -9,25 +9,25 @@
 
 ## SMucK Chord Input Tool
 
-The `smuckish` class has the method `.chord()` which allows for quick parsing of chord symbols into `int` arrays of MIDI note numbers. This tool is able to handle chord symbols typically used in jazz/popular music (i.e. "Cmaj7", "G#m7", "Bbdim", "F#sus4", etc). Certain kinds of chord naming conventions are not supported (yet), like inversions,"slash" chords, and some complex altered extensions. This page outlines the supported chord symbols, their definitions, and examples of usage. 
+The `Smuckish` class has the method `.chord()` which allows for quick parsing of chord symbols into `int` arrays of MIDI note numbers. This tool is able to handle chord symbols typically used in jazz/popular music (i.e. "Cmaj7", "G#m7", "Bbdim", "F#sus4", etc). Certain kinds of chord naming conventions are not supported (yet), like inversions,"slash" chords, and some complex altered extensions. This page outlines the supported chord symbols, their definitions, and examples of usage. 
 
-It is also important to note that arbitrary chords can be constructed using SMucKish syntax by connecting multiple pitches with the `:` symbol. The `smuckish.chord()` method is meant as a standalone tool for parsing chord symbols into MIDI note numbers. 
+It is also important to note that arbitrary chords can be constructed using SMucKish syntax by connecting multiple pitches with the `:` symbol. The `Smuckish.chord()` method is meant as a standalone tool for parsing chord symbols into MIDI note numbers. 
 
 ## Basic Usage
 
-Here is a basic example of how to use the `smuckish.chord()` method:
+Here is a basic example of how to use the `Smuckish.chord()` method:
 
 ```
 // Basic usage
-smuckish.chord("C"); // This returns [0, 4, 7]
+Smuckish.chord("C"); // This returns [0, 4, 7]
 
-smuckish.chord("Ebmin"); // This returns [3, 6, 10]
+Smuckish.chord("Ebmin"); // This returns [3, 6, 10]
 
 // Specify the octave
-smuckish.chord("Ebmin", 4) // This returns [63, 66, 70]
+Smuckish.chord("Ebmin", 4) // This returns [63, 66, 70]
 ```
 
-The format for chord symbols read by the `smuckish.chord()` method is a single string with the following structure:
+The format for chord symbols read by the `Smuckish.chord()` method is a single string with the following structure:
 
 ```
 [ROOT][TRIAD][EXTENSION]
@@ -37,7 +37,7 @@ The format for chord symbols read by the `smuckish.chord()` method is a single s
 - `TRIAD` is 3 characters long and represents the chord's basic triad (e.g. `maj`, `min`). If omitted, the chord is considered to contain a major triad. A full list of accepted triad types can be found below.
 - `EXTENSION` can be arbitrarily long and represents the extended chord tones beyond the triad (e.g. `7`, `9`). These extensions are optional and can also be altered with accidentals (e.g. `b9`, `#11`).
 
-Passing the resulting string to the `smuckish.chord()` method will return the MIDI note numbers for the chord, in octave 0. To specify a different octave, pass the octave number as an `int` in the second argument.
+Passing the resulting string to the `Smuckish.chord()` method will return the MIDI note numbers for the chord, in octave 0. To specify a different octave, pass the octave number as an `int` in the second argument.
 
 ## Triads
 

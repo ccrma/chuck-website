@@ -10,19 +10,19 @@
 - ["Exotic" Scales](#exotic-scales)
 
 ## SMucK Scale Input
-The `smuckish` class has the method `.scale()` which allows for easy conversion of scale names to MIDI note numbers. It optionally takes an additional argument to specify the root note of the scale. Example usage:
+The `Smuckish` class has the method `.scale()` which allows for easy conversion of scale names to MIDI note numbers. It optionally takes an additional argument to specify the root note of the scale. Example usage:
 
 ```
 // Basic usage
-smuckish.scale("major") @=> int my_scale[]; 
+Smuckish.scale("major") @=> int my_scale[]; 
 // my_scale is now an array of MIDI note numbers [0, 2, 4, 5, 7, 9, 11]
 
 // Specify root note as int
-smuckish.scale("major", 60) @=> int my_scale[]; 
+Smuckish.scale("major", 60) @=> int my_scale[]; 
 // my_scale is now an array of MIDI note numbers [60, 62, 64, 65, 67, 69, 71]
 
 // Specify root note as string
-smuckish.scale("major", "c5") @=> int my_scale[]; 
+Smuckish.scale("major", "c5") @=> int my_scale[]; 
 // my_scale is now an array of MIDI note numbers [72, 74, 76, 77, 79, 81, 83]
 ```
 

@@ -137,7 +137,7 @@ public class myInstrument extends ezInstrument
     fun void noteOn(ezNote note, int voice)
     {
         Std.mtof(note.pitch()) => oscs[voice].freq;
-        note.velocity() / 127.0 => oscs[voice].gain;
+        note.velocity() => oscs[voice].gain; // ezNote velocities are float values 0.0-1.0 !
     }
 
     // what our instrument does when a note is released
