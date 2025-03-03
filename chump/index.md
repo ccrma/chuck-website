@@ -52,9 +52,16 @@ To list all installed packages:
 chump list -i
 ```
 
+To get detailed information about a package:
+
+```txt
+chump info WarpBuf
+```
+
+
 To display ChuMP's help page:
 ```txt
 chump help
 ```
 
-For a more in-depth explanation, see [**How to use ChuMP**](). 
+For a more in-depth explanation, see [**How to use ChuMP**](./how_to_use).
