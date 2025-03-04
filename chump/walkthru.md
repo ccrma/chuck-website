@@ -11,12 +11,15 @@
 Want to make your own ChuMP package? Here's how!
 
 ---
----
+
+
 [**ChuMP v0.0.1**](./index.html) (alpha) — [**Browse Packages**](../release/chump/)
 • [**Building for Linux**](./linux-build.html)
 • [**Using ChuMP**](./usage.html)
 • [**Defining a New Package**](./walkthru.html)
+
 ---
+
 
 **What is a Package?**
 
