@@ -14,7 +14,7 @@ ChuMP was created by <a href="https://nicholasshaheed.com/">Nick Shaheed</a> wit
 
 ---
 
-**ChuMP v0.0.1** (alpha) — [**Browse Packages**](../release/chump/)
+[**ChuMP v0.0.1**](./index.html) (alpha) — [**Browse Packages**](../release/chump/)
 • [**Building for Linux**](./linux-build.html)
 • [**Using ChuMP**](./usage.html)
 • [**Defining a New Package**](./walkthru.html)

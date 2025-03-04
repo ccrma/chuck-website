@@ -8,7 +8,16 @@
 
 <p align="justify">
 
-ChuMP is bundled with the ChucK installer since `1.5.5.0` and is available as the command `chump` in your terminal. If you are on Linux, see [**Building for Linux**](../building_for_linux).
+**ChuMP** is bundled with the ChucK installer since `1.5.5.0` and is available as the command `chump` in your terminal. If you are on Linux, see [**Building for Linux**](../building_for_linux).
+
+---
+
+---
+
+[**ChuMP v0.0.1**](./index.html) (alpha) — [**Browse Packages**](../release/chump/)
+• [**Building for Linux**](./linux-build.html)
+• [**Using ChuMP**](./usage.html)
+• [**Defining a New Package**](./walkthru.html)
 
 ---
 
@@ -46,6 +55,12 @@ chump uninstall WarpBuf
 
 This will remove all package files installed on your computer. It will also remove the `PackageName` directory from the `packages` directory, unless there are files not associated with the package inside that directory. In that case, the directory, and the unassociated files, will remain.
 
+In the case that the installation is broken, it might be necessary to delete the entire directory instead of having ChuMP delete the individaul files one at a time. If this happens you can perform a force-uninstall with the `-f/--force` flag:
+
+```txt
+chump uninstall -f WarpBuf
+```
+
 ---
 
 To list available packages:
@@ -71,3 +86,10 @@ chump info WarpBuf
 
 This will include all metadata, installed files (if the package is installed), and a list of all versions of package
 
+---
+
+To get to the help page:
+
+```txt
+chump help
+```
