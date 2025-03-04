@@ -24,10 +24,13 @@ with support from the <a href="../doc/authors.html">ChucK Team</a>.
 ---
 
 **SMucK v0.1.0** (alpha) — [**SMucK API Reference**](./api/)
-• [**SMucK Cheatsheet**](./doc/cheatsheet.html)
-• [**SMucKish Rosetta Stone**](./doc/smuckish.html)
-• [**Basic Playback**](./doc/walkthru.html)
 • [**Examples**](./examples/)
+• [**Basic Playback**](./doc/walkthru.html)
+• [**SMucKish Rosetta Stone**](./doc/smuckish.html)
+• [**Chord/Scale Dictionary**](./doc/dictionary.html)
+
+<!--• [**SMucK Cheatsheet**](./doc/cheatsheet.html) -->
+
 ___
 
 ## Installing SMucK
@@ -63,9 +66,10 @@ Congrats, you now have SMucK properly installed!
 
 ## Learning SMucK
 - To get started with SMucK, you can check out the [Basic Playback](./doc/walkthru.html) tutorial.
-- For learning to speak SMucKish, the musical input syntax of SMucK, check out the [SMucKish Rosetta Stone](./doc/smuckish.html).
+- To learn how to write musical notation using the SMucKish input syntax, check out the [SMucKish Rosetta Stone](./doc/smuckish.html).
+- To learn about the SMucKish chord/scale entry rules, check out the [Chord/Scale Dictionary](./doc/dictionary.html).
 - For an overview of SMucK's classes and their methods, check out the [API Reference](./api/).
-- Check out the [Examples](./examples/) and [Cheatsheet](./doc/cheatsheet.html) to learn more ways to use SMucK.
+- Check out the [Examples](./examples/) for more ways to use SMucK.
 
 Happy SMucKing!
 
