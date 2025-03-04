@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="../images/logo.png" width="60%"></img>
+<img src="./images/logo.png" width="60%"></img>
 
-<h2>How to Use ChuMP</h2>
+<h2>Building ChuMP on Linux</h2>
 
 </div> <!-- end center -->
 
