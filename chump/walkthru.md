@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="../images/logo.png" width="35%"></img>
+<img src="images/chump-logo.png" width="35%"></img>
 
 <h2>Defining a New Package</h2>
 
@@ -11,12 +11,11 @@
 Want to make your own ChuMP package? Here's how!
 
 ---
-
+---
 [**ChuMP v0.0.1**](./index.html) (alpha) — [**Browse Packages**](../release/chump/)
 • [**Building for Linux**](./linux-build.html)
 • [**Using ChuMP**](./usage.html)
 • [**Defining a New Package**](./walkthru.html)
-
 ---
 
 **What is a Package?**

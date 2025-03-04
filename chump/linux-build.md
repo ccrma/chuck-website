@@ -11,12 +11,11 @@
 Because ChucK is not distributed as an installer on Linux, you will need to build ChuMP from source.
 
 ---
-
+---
 [**ChuMP v0.0.1**](./index.html) (alpha) — [**Browse Packages**](../release/chump/)
 • [**Building for Linux**](./linux-build.html)
 • [**Using ChuMP**](./usage.html)
 • [**Defining a New Package**](./walkthru.html)
-
 ---
 
 **Prerequisites**
