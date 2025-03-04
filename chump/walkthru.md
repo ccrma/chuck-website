@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="../images/logo.png" width="60%"></img>
+<img src="../images/logo.png" width="35%"></img>
 
 <h2>Defining a New Package</h2>
 
