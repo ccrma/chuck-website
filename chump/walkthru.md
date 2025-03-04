@@ -51,7 +51,7 @@ generates all the files needed for our package.
 
 First, we start by importing Chumpinate and defining our package metadata:
 
-```txt
+```cpp
 @import "Chumpinate"
 
 // instantiate a Chumpinate package
@@ -72,7 +72,7 @@ Package pkg("AwesomeEffect");
 
 Now that we've added all our metadata, we can generate the `package.json` file:
 
-```txt
+```cpp
 // generate a package-definition json file,
 // this will be stored in (./AwesomeEffect/package.json)
 "./" => pkg.generatePackageDefinition;
@@ -83,7 +83,7 @@ Now that we've added all our metadata, we can generate the `package.json` file:
 Next, we define a specific version of this package. This includes the packages file,
 ChucK language version bounds (i.e. what versions of ChucK will this code work on?), etc.:
 
-```txt
+```cpp
 // Now we need to define a specific PackageVersion and all the associated files and metadata
 PackageVersion ver("AwesomeEffect", "1.0.0");
 
@@ -107,7 +107,7 @@ ver.addExampleFile("AwesomeExample.ck");
 
 Now that we have defined AwesomeEffect v1.0.0, we need to generate two files: a `version.json` and a `.zip` file containing all of the version's files:
 
-```txt
+```cpp
 // zip up all our files into AwesomeEffect.zip, and tell Chumpinate what URL
 // this zip file will be located at.
 ver.generateVersion("./", "AwesomeEffect", "https://awesome.com/releases/1.0.0/AwesomeEffect.zip")
@@ -130,7 +130,7 @@ pull request for the ChucK team to review.
 
 Here is our full `build-pkg.ck`:
 
-```txt
+```cpp
 @import "Chumpinate"
 
 // instantiate a Chumpinate package
