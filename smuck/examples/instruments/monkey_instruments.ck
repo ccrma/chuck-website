@@ -10,7 +10,9 @@
 public class SawOscInst extends ezInstrument
 {
     // define sound chain
-    8 => n_voices;
+    8 => int n_voices;
+    setVoices(n_voices);
+
     SawOsc oscs[n_voices];
     ADSR envs[n_voices]; 
     Gain g => LPF lpf => outlet;
@@ -22,16 +24,16 @@ public class SawOscInst extends ezInstrument
         envs[i].set(4::ms, 7000::ms, 0.0, 50::ms);
     }
 
-    fun void noteOn(ezNote theNote, int which)
+    fun void noteOn(ezNote note, int voice)
     {
-        Std.mtof(theNote.pitch) => oscs[which].freq;
-        (theNote.velocity / 127.0) => oscs[which].gain;
-        envs[which].keyOn();
+        Std.mtof(note.pitch()) => oscs[voice].freq;
+        note.velocity() => oscs[voice].gain;
+        envs[voice].keyOn();
     }
 
-    fun void noteOff(int which)
+    fun void noteOff(int voice)
     {
-        envs[which].keyOff();
+        envs[voice].keyOff();
     }
 }
 
@@ -39,7 +41,8 @@ public class SawOscInst extends ezInstrument
 public class TriOscInst extends ezInstrument
 {
     // define sound chain
-    8 => n_voices;
+    8 => int n_voices;
+    setVoices(n_voices);
     TriOsc oscs[n_voices];
     ADSR envs[n_voices]; 
     Gain g => outlet;
@@ -50,16 +53,16 @@ public class TriOscInst extends ezInstrument
         envs[i].set(4::ms, 7000::ms, 0.0, 50::ms);
     }
 
-    fun void noteOn(ezNote theNote, int which)
+    fun void noteOn(ezNote note, int voice)
     {
-        Std.mtof(theNote.pitch) => oscs[which].freq;
-        (theNote.velocity / 127.0) / 2 => oscs[which].gain;
-        envs[which].keyOn();
+        Std.mtof(note.pitch()) => oscs[voice].freq;
+        note.velocity() => oscs[voice].gain;
+        envs[voice].keyOn();
     }
 
-    fun void noteOff(int which)
+    fun void noteOff(int voice)
     {
-        envs[which].keyOff();
+        envs[voice].keyOff();
     }
 }
 
@@ -67,7 +70,8 @@ public class TriOscInst extends ezInstrument
 public class FrencHrnInst extends ezInstrument
 {
     // define sound chain
-    8 => n_voices;
+    8 => int n_voices;
+    setVoices(n_voices);
     FrencHrn hrn[n_voices]; 
     Gain g => NRev rev => outlet;
     g.gain(.2);
@@ -77,15 +81,15 @@ public class FrencHrnInst extends ezInstrument
         hrn[i] => g;
     }
 
-    fun void noteOn(ezNote theNote, int which)
+    fun void noteOn(ezNote note, int voice)
     {
-        Std.mtof(theNote.pitch) => hrn[which].freq;
-        (theNote.velocity / 127.0) => hrn[which].noteOn;
+        Std.mtof(note.pitch()) => hrn[voice].freq;
+        note.velocity() => hrn[voice].noteOn;
     }
 
-    fun void noteOff(int which)
+    fun void noteOff(int voice)
     {
-        hrn[which].noteOff(0.5);
+        hrn[voice].noteOff(0.5);
     }
 }
 
@@ -93,7 +97,8 @@ public class FrencHrnInst extends ezInstrument
 public class DrumsInst extends ezInstrument
 {
     // define sound chain
-    6 => n_voices;
+    6 => int n_voices;
+    setVoices(n_voices);
     SndBuf bufs[n_voices];
     Gain g => outlet;
     g.gain(0.6);
@@ -111,144 +116,50 @@ public class DrumsInst extends ezInstrument
     48+12 => int KICK;
 
 
-    fun void noteOn(ezNote theNote, int which)
+    fun void noteOn(ezNote note, int voice)
     {
-        theNote.pitch => int drum_sound;
-        // theNote.velocity / 127.0 => float drum_volume;
-        1 => float drum_volume;
+        note.pitch() => int drum_sound;
+        note.velocity() => float drum_volume;
 
         // identify which drum sound
         string wav_file_name;
         if (drum_sound == HIHAT)
         {
-            "../data/samples/drum_wavs/hihat.wav" => wav_file_name;
+            "../data/audio/drum_wavs/hihat.wav" => wav_file_name;
         }
         else if (drum_sound == RIDE_BELL)
         {
-            "../data/samples/drum_wavs/ride_bell.wav" => wav_file_name;
+            "../data/audio/drum_wavs/ride_bell.wav" => wav_file_name;
         }
         else if (drum_sound == RIDE_TIP)
         {
-            "../data/samples/drum_wavs/ride_tip.wav" => wav_file_name;
+            "../data/audio/drum_wavs/ride_tip.wav" => wav_file_name;
         }
         else if (drum_sound == SNARE)
         {
-            "../data/samples/drum_wavs/snare.wav" => wav_file_name;
+            "../data/audio/drum_wavs/snare.wav" => wav_file_name;
         }
         else if (drum_sound == KICK)
         {
-            "../data/samples/drum_wavs/kick.wav" => wav_file_name;
+            "../data/audio/drum_wavs/kick.wav" => wav_file_name;
         }
         else if (drum_sound == CRASH_1_EDGE)
         {
-            "../data/samples/drum_wavs/crash_1_edge.wav" => wav_file_name;
+            "../data/audio/drum_wavs/crash_1_edge.wav" => wav_file_name;
         }
         else
         {
             <<< "DrumsVoice.ck: error, received invalid midi number for drums:", drum_sound >>>;
-            "../data/samples/drum_wavs/crash_1_edge.wav" => wav_file_name;
+            "../data/audio/drum_wavs/crash_1_edge.wav" => wav_file_name;
         }
 
         // play drum sound file
-        bufs[which].read(wav_file_name);
-        drum_volume => bufs[which].gain;
+        bufs[voice].read(wav_file_name);
+        drum_volume => bufs[voice].gain;
     }
 
-    fun void noteOff(int which)
+    fun void noteOff(int voice)
     {
-        // 0 => bufs[which].gain;
-    }
-}
-
-
-public class ChoirInst extends ezInstrument
-{
-    // define sound chain
-    4 => n_voices;
-    SndBuf bufs[n_voices];
-    Gain g => outlet;
-    g.gain(1);
-    for(int i; i < n_voices; i++)
-    {
-        bufs[i] => g;
-    }
-
-    // mapping midi numbers to drum sounds
-    55 => int G2;
-    57 => int A2;
-    58 => int Bb2;
-    59 => int B2;
-
-    62 => int D3;
-    G2+12 => int G3;
-    A2+12 => int A3;
-    Bb2+12 => int Bb3;
-    B2+12 => int B3;
-
-    D3+12 => int D4;
-
-
-    fun void noteOn(ezNote theNote, int which)
-    {
-        theNote.pitch => int pitch;
-        // theNote.velocity / 127.0 => float choir_volume;
-        1 => float choir_volume;
-
-        // identify which drum sound
-        string wav_file_name;
-        if (pitch == G2)
-        {
-            "../data/samples/choir_wavs/G2.wav" => wav_file_name;
-        }
-        else if (pitch == A2)
-        {
-            "../data/samples/choir_wavs/A2.wav" => wav_file_name;
-        }
-        else if (pitch == Bb2)
-        {
-            "../data/samples/choir_wavs/Bb2.wav" => wav_file_name;
-        }
-        else if (pitch == B2)
-        {
-            "../data/samples/choir_wavs/B2.wav" => wav_file_name;
-        }
-        else if (pitch == D3)
-        {
-            "../data/samples/choir_wavs/D3.wav" => wav_file_name;
-        }
-        else if (pitch == G3)
-        {
-            "../data/samples/choir_wavs/G3.wav" => wav_file_name;
-        }
-        else if (pitch == A3)
-        {
-            "../data/samples/choir_wavs/A3.wav" => wav_file_name;
-        }
-        else if (pitch == Bb3)
-        {
-            "../data/samples/choir_wavs/Bb3.wav" => wav_file_name;
-        }
-        else if (pitch == B3)
-        {
-            "../data/samples/choir_wavs/B3.wav" => wav_file_name;
-        }
-        else if (pitch == D4)
-        {
-            "../data/samples/choir_wavs/D4.wav" => wav_file_name;
-        }
-        else
-        {
-            <<< "ChoirVoice.ck: error, received invalid midi number for choir:", pitch >>>;
-            "../data/samples/choir_wavs/A2.wav" => wav_file_name;
-        }
-
-        // play drum sound file
-        bufs[which].read(wav_file_name);
-        choir_volume => bufs[which].gain;
-    }
-
-    fun void noteOff(int which)
-    {
-        // 0 => bufs[which].gain;
+        // Unused
     }
 }
