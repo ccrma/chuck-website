@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="../images/logo.png" width="60%"></img>
+<img src="images/chump-logo.png" width="35%"></img>
 
-<h2>How to Use ChuMP</h2>
+<h2>Building ChuMP on Linux</h2>
 
 </div> <!-- end center -->
 
@@ -11,12 +11,11 @@
 Because ChucK is not distributed as an installer on Linux, you will need to build ChuMP from source.
 
 ---
-
+---
 [**ChuMP v0.0.1**](./index.html) (alpha) — [**Browse Packages**](../release/chump/)
 • [**Building for Linux**](./linux-build.html)
 • [**Using ChuMP**](./usage.html)
 • [**Defining a New Package**](./walkthru.html)
-
 ---
 
 **Prerequisites**
