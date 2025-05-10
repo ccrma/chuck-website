@@ -38,16 +38,16 @@ You could write the following SMucKish code to represent the pitches:
 
 <br>
 
-You could use the `smuckish.pitches()` function to parse this string into an int[][] array of MIDI note numbers. (We'll see why it's a 2D array later.)
+You could use the `Smuckish.pitches()` function to parse this string into an int[][] array of MIDI note numbers. (We'll see why it's a 2D array later.)
 ```
-smuckish.pitches("k3s c5 b a b c c c b b b c e e"); // this returns [[73], [71], [69], [71], [73], [73], [73], [71], [71], [71], [73], [76], [76]]
+Smuckish.pitches("k3s c5 b a b c c c b b b c e e"); // this returns [[73], [71], [69], [71], [73], [73], [73], [71], [71], [71], [73], [76], [76]]
 ```
 
 <br>
 
-Then, you could use the `smuckish.rhythms()` function to parse this string into an float[] array of beat values.
+Then, you could use the `Smuckish.rhythms()` function to parse this string into an float[] array of beat values.
 ```
-smuckish.rhythms("e e e e e e q e e q e e q"); // this returns [.5, .5, .5, .5, .5, .5, 1.0, .5, .5, 1.0, .5, .5, 1.0]
+Smuckish.rhythms("e e e e e e q e e q e e q"); // this returns [.5, .5, .5, .5, .5, .5, 1.0, .5, .5, 1.0, .5, .5, 1.0]
 ```
 
 <br>
@@ -108,20 +108,20 @@ The octave number does not need to be explicitly set for each note. By default, 
 
 Example showing proximity-based octave handling:
 ```
-smuckish.pitches("c d c e c f c f# c g c a c b c c");
+Smuckish.pitches("c d c e c f c f# c g c a c b c c");
 ```
 
 ![pitch proximity](../images/smuckish/pitch_proximity.svg)
 
 We can also specify the octave **explicitly**. This overrides proximity-based octaves.
 ```
-smuckish.pitches("c1 c2 c3 c4 c5 c6 c7 c8");
+Smuckish.pitches("c1 c2 c3 c4 c5 c6 c7 c8");
 ```
 ![pitch octaves](../images/smuckish/pitch_octaves.svg)
 
 We can also use `u`'s and `d`'s as a **shortcut** to move up and down octaves.
 ```
-smuckish.pitches("c4 eu c ed ed fuu");
+Smuckish.pitches("c4 eu c ed ed fuu");
 ```
 ![pitch ud](../images/smuckish/pitch_ud.svg)
 
@@ -131,20 +131,20 @@ smuckish.pitches("c4 eu c ed ed fuu");
 Here we specify the key signature of A major (3 sharps).
 To set a key signature, use a 3-character token starting with `k`, followed by the number of sharps or flats, and then the accidental (`b` or `#`). Think "key 3 sharps", "key 2 flats", etc. Key signatures can be set at any point in a SMucKish string and can be set multiple times.
 ```
-smuckish.pitches("k3# a b c d e f g a")
+Smuckish.pitches("k3# a b c d e f g a")
 ```
 ![pitch keysig](../images/smuckish/pitch_keysig.svg)
 
 We can add accidentals (sharps, flats, naturals) to the notes, which override the key signature. Use `b` for flats, `#` for sharps, and `n` for naturals. While the **key signature 
 persists** across a SMucKish string, **accidentals do not** and must be specified for each note.
 ```
-smuckish.pitches("k3# a b cn c d e f gb g a");
+Smuckish.pitches("k3# a b cn c d e f gb g a");
 ```
 ![pitch accidentals](../images/smuckish/pitch_accidentals.svg)
 
 We can also specify an arbitrary number of sharps and flats. Sharps, flats, and naturals override the key signature.
 ```
-smuckish.pitches("c4 c# c## c##### cbbbbb");
+Smuckish.pitches("c4 c# c## c##### cbbbbb");
 ```
 
 ### Chords
@@ -152,7 +152,7 @@ smuckish.pitches("c4 c# c## c##### cbbbbb");
 To enter chords, use a `:` in between each note. Note: sucessive pitches still follow proximity-based octave handling, even when they are part of a chord. Therefore, this input:
 
 ```
-smuckish.pitches("c:e:g c:e:g c:e:g");
+Smuckish.pitches("c:e:g c:e:g c:e:g");
 ```
 Leads to this output:
 
@@ -163,11 +163,11 @@ because the second `c` uses the previous note `g` to determine proximity.
 Therefore, best practice for chords is to specify the octave for the leading note to eliminate any ambiguity:
 
 ```
-smuckish.pitches("c3:e:g c3:e:g c3:e:g");
+Smuckish.pitches("c3:e:g c3:e:g c3:e:g");
 ```
 ![pitch chords](../images/smuckish/pitch_chord_oct_same.svg)
 
-There is also a function `smuckish.chords()` that translates chord names directly into `int` arrays. For more information, see the [**SMucKChord Input Tool**](./chords.html) page.
+There is also a function `Smuckish.chords()` that translates chord names directly into `int` arrays. For more information, see the [**SMucKChord Input Tool**](./chords.html) page.
 
 
 ### Rests
@@ -181,7 +181,7 @@ To enter a rest, simply use the `r` character in the pitch string. This is usefu
 Rhythmic values are parsed floats representing beat value (NOT absolute durations). Basic subdivisions can be specified using `w` for whole notes, `h` for half notes, `q` for quarter notes, `e` for eighth notes, and `s` for sixteenth notes.
 
 ```
-smuckish.rhythms("w h q e s"); // This returns [4.0, 2.0, 1.0, 0.5, 0.25]
+Smuckish.rhythms("w h q e s"); // This returns [4.0, 2.0, 1.0, 0.5, 0.25]
 ```
 
 ![rhythm basic](../images/smuckish/rhythm_basic.svg)
@@ -190,7 +190,7 @@ smuckish.rhythms("w h q e s"); // This returns [4.0, 2.0, 1.0, 0.5, 0.25]
 
 Dotted rhythms are specified by adding a `.` after the rhythmic value. An arbitrary number of dots can be added.
 ```
-smuckish.rhythms("q q. q.. q... q...."); // This returns [1.0, 1.5, 1.75, 1.875, 1.9375]
+Smuckish.rhythms("q q. q.. q... q...."); // This returns [1.0, 1.5, 1.75, 1.875, 1.9375]
 ```
 
 ![rhythm dots](../images/smuckish/rhythm_dots.svg)
@@ -199,20 +199,20 @@ smuckish.rhythms("q q. q.. q... q...."); // This returns [1.0, 1.5, 1.75, 1.875,
 
 Basic triplets can be specified by adding a `t` before the rhythmic value.
 ```
-smuckish.rhythms("tq tq tq te te te")
+Smuckish.rhythms("tq tq tq te te te")
 ```
 ![rhythm triplets](../images/smuckish/rhythm_triplets.svg)
 
 Tuplets of other values can be specified by adding a `/` after the rhythmic value, followed by the tuplet division number. This performs a straightforward division of the rhythmic value, so `q/5` is 1 beat divided by 5, or .2 beats.
 ```
-smuckish.rhythms("q/5 q/7 q/13 q/23") // This returns [0.2, 0.14285714285714285, 0.07692307692307693, 0.043478260869565216]
+Smuckish.rhythms("q/5 q/7 q/13 q/23") // This returns [0.2, 0.14285714285714285, 0.07692307692307693, 0.043478260869565216]
 ```
 
 ### Arbitrary Values
 
 Arbitrary float values can also be specified and are parsed as-is.
 ```
-smuckish.rhythms("q q 1.7 5.6 19.78") // This returns [1.0, 1.0, 1.7, 5.6, 19.78]
+Smuckish.rhythms("q q 1.7 5.6 19.78") // This returns [1.0, 1.0, 1.7, 5.6, 19.78]
 ```
 
 ### Ties
@@ -220,7 +220,7 @@ smuckish.rhythms("q q 1.7 5.6 19.78") // This returns [1.0, 1.0, 1.7, 5.6, 19.78
 Ties can be specified by adding a `_` at the start of the rhythmic value. For instance, the token `_q` will be tied to the previous note. The corresponding pitch will be dropped, so the previous note will have a rhythm that is the sum of the two tied notes's rhythms. This may lead to some unpredictable results depending on how the corresponding pitches are entered, so use with caution.
 
 ```
-smuckish.rhythms("q _q q") // This returns [2.0, 1.0]
+Smuckish.rhythms("q _q q") // This returns [2.0, 1.0]
 ```
 
 ![rhythm ties](../images/smuckish/rhythm_ties.svg)
@@ -234,7 +234,7 @@ Dynamics/velocity values are parsed as `int` values that range from 0 to 127, si
 Velocities can be explicitly specified by adding a `v` before an integer value.
 
 ```
-smuckish.velocities("v127 v100 v75 v50 v25") // This returns [127, 100, 75, 50, 25]
+Smuckish.velocities("v127 v100 v75 v50 v25") // This returns [127, 100, 75, 50, 25]
 ```
 
 ### Dynamic Markings
@@ -243,7 +243,7 @@ Dynamic markings from standard notation can be used ranging from `pppp` to `ffff
 The mapping is a little strange. From `ppp` to `fff` the velocity value increases in increments of 16. However, `pppp` and `ffff` map to the lowest and highest non-zero velocities, respectively:
 
 ```
-smuckish.velocities("pppp ppp pp p pp mp mf f ff fff ffff") // This returns [1, 8, 24, 40, 56, 72, 88, 104, 120, 127]
+Smuckish.velocities("pppp ppp pp p pp mp mf f ff fff ffff") // This returns [1, 8, 24, 40, 56, 72, 88, 104, 120, 127]
 ```
 
 # Repeated tokens and sequences
@@ -253,7 +253,7 @@ One particularly useful feature of SMucKish is the ability to repeat individual 
 To repeat a token, simply add a `x` immediately after the token (with no space), followed by the number of times to repeat the token.
 
 ```
-smuckish.rhythms("qx3 ex5") // This returns [1.0, 1.0, 1.0, 0.5, 0.5, 0.5, 0.5, 0.5]
+Smuckish.rhythms("qx3 ex5") // This returns [1.0, 1.0, 1.0, 0.5, 0.5, 0.5, 0.5, 0.5]
 ```
 
 ![repeated tokens](../images/smuckish/repeat_tokens.svg)
@@ -261,7 +261,7 @@ smuckish.rhythms("qx3 ex5") // This returns [1.0, 1.0, 1.0, 0.5, 0.5, 0.5, 0.5, 
 To repeat a sequence of tokens, enclose the sequence in brackets `[` and `]`, followed by the number of times to repeat the sequence.
 
 ```
-smuckish.rhythms("[q ex2]x3") // This returns [1.0, 0.5, 0.5, 1.0, 0.5, 0.5, 1.0, 0.5, 0.5]
+Smuckish.rhythms("[q ex2]x3") // This returns [1.0, 0.5, 0.5, 1.0, 0.5, 0.5, 1.0, 0.5, 0.5]
 ```
 
 ![repeated sequences](../images/smuckish/repeat_sequence.svg)
@@ -353,13 +353,13 @@ Produces the following output:
 
 There are two main ways to use SMucKish:
 
-### 1. Directly parsing individual layers using `smuckish` static functions
+### 1. Directly parsing individual layers using `Smuckish` static functions
 
-The `smuckish` class contains a number of static functions that can be used to parse SMucKish strings into different data types. These functions are:
+The `Smuckish` class contains a number of static functions that can be used to parse SMucKish strings into different data types. These functions are:
 
-- `smuckish.pitches()` : Parses a SMucKish string into an int[][] array of MIDI note numbers. Because SMucKish pitch sequences can be polyphonic, the output is a 2D array, indexed first by position in sequence, then by voice. 
-- `smuckish.rhythms()` : Parses a SMucKish string into a float[] array of beat values.
-- `smuckish.velocities()` : Parses a SMucKish string into an int[] array of velocity values.
+- `Smuckish.pitches()` : Parses a SMucKish string into an int[][] array of MIDI note numbers. Because SMucKish pitch sequences can be polyphonic, the output is a 2D array, indexed first by position in sequence, then by voice. 
+- `Smuckish.rhythms()` : Parses a SMucKish string into a float[] array of beat values.
+- `Smuckish.velocities()` : Parses a SMucKish string into an int[] array of velocity values.
 
 ### 2. Using ezScore objects
 

@@ -48,11 +48,11 @@ A full list of the supported scale names and their definitions can be found belo
 </div>
 <div style="text-align: center;">
   <img src="../images/scales/minor-melodic.svg" alt="Alt text" width="60%">
-  <p style="font-style: italic;">Melodic minor scale: <code>"melodicminor"</code></p>
+  <p style="font-style: italic;">Melodic minor scale: <code>"melodic_minor"</code></p>
 </div>
 <div style="text-align: center;">
   <img src="../images/scales/minor-harmonic.svg" alt="Alt text" width="60%">
-  <p style="font-style: italic;">Harmonic minor scale: <code>"harmonicminor"</code></p>
+  <p style="font-style: italic;">Harmonic minor scale: <code>"harmonic_minor"</code></p>
 </div>
 
 ## Pentatonic/Hexatonic
