@@ -39,7 +39,9 @@ Philip Davidson.
 <br>
 **Videos** [SoundBulb Audiovisualizer](https://www.youtube.com/watch?v=wnSmS_y9-Cs) (code: 
 [soundbulb.ck](examples/deep/soundbulb.ck) | [sndpeek.ck](examples/deep/sndpeek.ck))
-| [Selected Student Projects](https://vimeo.com/909845445)
+| [Selected Student Projects](https://www.youtube.com/watch?v=ut1YISb2FCE)
+<br>
+**2025 Summer Workshop** [Audio-Centric Game Design in ChucK+ChuGL](workshop/)
 ___
 
 ## Installation
