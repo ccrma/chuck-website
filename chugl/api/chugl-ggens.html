@@ -29,6 +29,7 @@
 <p class="toc_class"><a href="#GLight" class="ckdoc_typename ckdoc_type_object">GLight</a></p>
 <p class="toc_class"><a href="#GPointLight" class="ckdoc_typename ckdoc_type_object">GPointLight</a></p>
 <p class="toc_class"><a href="#GDirLight" class="ckdoc_typename ckdoc_type_object">GDirLight</a></p>
+<p class="toc_class"><a href="#GSpotLight" class="ckdoc_typename ckdoc_type_object">GSpotLight</a></p>
 <p class="toc_class"><a href="#GCamera" class="ckdoc_typename ckdoc_type_object">GCamera</a></p>
 <p class="toc_class"><a href="#GOrbitCamera" class="ckdoc_typename ckdoc_type_object">GOrbitCamera</a></p>
 <p class="toc_class"><a href="#GFlyCamera" class="ckdoc_typename ckdoc_type_object">GFlyCamera</a></p>
@@ -79,7 +80,11 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">lookAt</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> pos)</p>
-<p class="member_description">Look at the given position in world space.</p>
+<p class="member_description">Rotate this GGen to look at the given position in world space. Uses a default UP vector of @(0,1,0). Be careful that the forward vector (GGen.posWorld() - pos) and this up vector are not collinear.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">lookAt</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> pos, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> up)</p>
+<p class="member_description">Rotate this GGen to look at the given position in world space.Be careful that the forward vector (GGen.posWorld() - pos) and this up vector are not collinear.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numChildren</span>()</p>
@@ -98,7 +103,15 @@
 <p class="member_description">Set object position in local space.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> x, <span class="ckdoc_typename ckdoc_type_primitive">float</span> y, <span class="ckdoc_typename ckdoc_type_primitive">float</span> z)</p>
+<p class="member_description">Set object position in local space.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> pos)</p>
+<p class="member_description">Set object XY position in local space. Z is preserved.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> x, <span class="ckdoc_typename ckdoc_type_primitive">float</span> y)</p>
 <p class="member_description">Set object XY position in local space. Z is preserved.</p>
 </div>
 <div class="member">
@@ -214,12 +227,20 @@
 <p class="member_description">Set object scale in local space uniformly across all axes.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">sca</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> scale_xy)</p>
+<p class="member_description">Sets object x and y scale (useful for 2d)</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">scaWorld</span>()</p>
 <p class="member_description">Get object scale in world space.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">scaWorld</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> scale)</p>
 <p class="member_description">Set object scale in world space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">scaWorld</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> scale)</p>
+<p class="member_description">Set object scale in world space uniformly across all axes.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">scaX</span>()</p>
@@ -248,6 +269,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">scene</span>()</p>
 <p class="member_description">Get the scene this GGen is attached to. Returns null if not attached.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shadowed</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> receive_shadows, <span class="ckdoc_typename ckdoc_type_primitive">int</span> apply_to_subgraph)</p>
+<p class="member_description">Set whether this GGen and all children can receive shadows. See GMesh.shadowed(int) for more details on how this flag works.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">translate</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> translation)</p>
@@ -525,6 +550,14 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">mesh</span>(<span class="ckdoc_typename ckdoc_type_object">Geometry</span> geometry, <span class="ckdoc_typename ckdoc_type_object">Material</span> material)</p>
 <p class="member_description">Set the geometry and material of this GMesh.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">shadowed</span>()</p>
+<p class="member_description">Return whether this mesh can receive shadows.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shadowed</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> receives_shadow)</p>
+<p class="member_description">Set whether this mesh can receive shadows. Note: setting this flag alone will not cause the mesh to be shadowed. This will only pass a flag to the shader of mesh.material(), and it is up to the shader to apply shadowing effects. To set an entire subgraph, see GGen.shadowed(int, int)</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -545,6 +578,14 @@
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alpha</span>()</p>
+<p class="member_description">Get the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>
+<p class="member_description">Set the alpha channel of the diffuse color of the material.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
 <p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
@@ -688,6 +729,14 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alpha</span>()</p>
+<p class="member_description">Get the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>
+<p class="member_description">Set the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
 <p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
 </div>
@@ -828,6 +877,14 @@
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alpha</span>()</p>
+<p class="member_description">Get the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>
+<p class="member_description">Set the alpha channel of the diffuse color of the material.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
 <p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
@@ -970,6 +1027,14 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alpha</span>()</p>
+<p class="member_description">Get the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>
+<p class="member_description">Set the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
 <p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
 </div>
@@ -1109,6 +1174,14 @@
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alpha</span>()</p>
+<p class="member_description">Get the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>
+<p class="member_description">Set the alpha channel of the diffuse color of the material.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
 <p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
@@ -1250,6 +1323,14 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alpha</span>()</p>
+<p class="member_description">Get the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>
+<p class="member_description">Set the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
 <p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
 </div>
@@ -1389,6 +1470,14 @@
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alpha</span>()</p>
+<p class="member_description">Get the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>
+<p class="member_description">Set the alpha channel of the diffuse color of the material.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
 <p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
@@ -1530,6 +1619,14 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alpha</span>()</p>
+<p class="member_description">Get the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>
+<p class="member_description">Set the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
 <p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
 </div>
@@ -1660,16 +1757,17 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/light.ck">basic/light.ck</a></li>
 <li><a target="_blank" href="../examples/basic/pbr.ck">basic/pbr.ck</a></li>
+<li><a target="_blank" href="../examples/deep/shadows.ck">deep/shadows.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="membername">GLight</span>()</p>
-<p class="member_description">Default constructor for GLight.</p>
+<p class="member_description">By default initializes a GDirLight.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="membername">GLight</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> type)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Initialize a specific light type (GLight.Directional, GLight.Point, GLight.Spot). Prefer using the child classes instead, GDirLight, GPointLight, etc.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -1691,12 +1789,36 @@
 <p class="member_description">Get the light intensity.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">mode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> mode)</p>
-<p class="member_description">Set the light type. Use GLight.Directional or GLight.Point.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">mode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> type)</p>
+<p class="member_description">Set the light type. Use GLight.Directional, GLight.Point, or GLight.Spot.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mode</span>()</p>
-<p class="member_description">Get the light type. Returns either GLight.Directional or GLight.Point.</p>
+<p class="member_description">Get the light type. Returns a light enum: GLight.Directional, GLight.Point, or GLight.Spot.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shadow</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> generate_shadows)</p>
+<p class="member_description">Set whether or not this light source generates shadows.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">shadow</span>()</p>
+<p class="member_description">Get whether or not this light source generates shadows.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shadowAdd</span>(<span class="ckdoc_typename ckdoc_type_object">GGen</span> mesh, <span class="ckdoc_typename ckdoc_type_primitive">int</span> add_children)</p>
+<p class="member_description">Add shadow casters, i.e. meshes that will be rendered into this light source's shadow map. These meshes will cast a shadow onto other meshes with .shadowed() == true.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shadowBias</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> bias)</p>
+<p class="member_description">Shadow map bias, how much to add or subtract from the normalized depth when deciding whether a surface is in shadow. The default is 0.0001. Very tiny adjustments here (in the order of 0.00005) may help reduce artifacts in shadows.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shadowBias</span>()</p>
+<p class="member_description">Get the bias for shadow maps generated by this light source.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shadowRemove</span>(<span class="ckdoc_typename ckdoc_type_object">GGen</span> mesh, <span class="ckdoc_typename ckdoc_type_primitive">int</span> add_children)</p>
+<p class="member_description">Remove shadow casters, i.e. remove meshes from the list of what will be rendered into this light source's shadow map.</p>
 </div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
@@ -1706,6 +1828,9 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Point</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Spot</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -1747,12 +1872,80 @@
 <a name="GDirLight" /><div class="class">
 <h2 class="class_title" name="GDirLight">GDirLight</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GLight" class="ckdoc_typename ckdoc_type_object">GLight</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Directional light component.<p>
+<p class="class_description">Directional light component. Rotate with the GGen rotation methods.<p>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="membername">GDirLight</span>()</p>
 <p class="member_description">Default constructor for GDirLight.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shadowBounds</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> size, <span class="ckdoc_typename ckdoc_type_primitive">float</span> depth)</p>
+<p class="member_description">Sets the size and depth of the orthographic projection used during shadow mapping. Larger values of `size` increase the amount of area covered by this directional light, but decrease overall shadow resolution. Ideally you want the size to be the minimal amount that still covers all necessary geometry in the scene. `depth` is used to near and far clipping planes. near = -depth/2, far = depth/2.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">shadowBounds</span>()</p>
+<p class="member_description">Returns the dimensions of the orthographic view frustrum used during shadow mapping. .x and .y are the width/height, .z is the depth. During rendering, the near plane is -z/2, and the far plane is z/2.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="GSpotLight" /><div class="class">
+<h2 class="class_title" name="GSpotLight">GSpotLight</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GLight" class="ckdoc_typename ckdoc_type_object">GLight</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Spotlight component. Rotate with the GGen rotation methods.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GSpotLight</span>()</p>
+<p class="member_description">Default constructor for GSpotLight.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">angleMax</span>()</p>
+<p class="member_description">Get the maximum angle (in radians) of the spotlight.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">angleMax</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
+<p class="member_description">Set the maximum angle (in radians) of the spotlight. At this angle the spotlights intensity will reach 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">angleMin</span>()</p>
+<p class="member_description">Get the angle (in radians) of the spotlight at which attenuation will begin.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">angleMin</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radians)</p>
+<p class="member_description">Set the angle (in radians) of the spotlight at which attenuation will begin. Should be less than angleMax.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">angularFalloff</span>()</p>
+<p class="member_description">Get the rate at which light intensity falls off from angleMin to angleMax. Default 2.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">angularFalloff</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> exponent)</p>
+<p class="member_description">Set the rate at which light intensity falls off from angleMin to angleMax. Default 2.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">falloff</span>()</p>
+<p class="member_description">Get the light falloff exponent.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">falloff</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> falloff)</p>
+<p class="member_description">Set the light falloff exponent, i.e. how quickly the light intensity ramps down to 0 with distance. A value of 1.0 means linear, 2.0 means quadratic. Default is 2.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">range</span>()</p>
+<p class="member_description">Get the light range.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">range</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> range)</p>
+<p class="member_description">Set the light range. i.e. the distance at which intensity reaches 0.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -1942,12 +2135,32 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>
+<p class="member_description">Set the alpha channel of the text color.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alpha</span>()</p>
+<p class="member_description">Get the alpha channel of the text color.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">antialias</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> window_size)</p>
+<p class="member_description">Set the size of the window (in pixels) used for text anti-aliasing.  0 - no anti-aliasing.  1 - normal anti-aliasing. >=2 - exaggerated effect. Defaults to 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">antialias</span>()</p>
+<p class="member_description">Get the size of the window (in pixels) used for text anti-aliasing.  0 - no anti-aliasing.  1 - normal anti-aliasing. >=2 - exaggerated effect. Defaults to 1.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> color)</p>
 <p class="member_description">Set text color.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">color</span>()</p>
 <p class="member_description">Get text color.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Set text color, leaving alpha untouched.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">controlPoints</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> control_points)</p>

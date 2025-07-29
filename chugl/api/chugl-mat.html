@@ -30,6 +30,7 @@
 <p class="class_description">Chugl material types. Represents uniforms/textures/buffers that are passed into a given shader.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/geo_and_mat.ck">basic/geo_and_mat.ck</a></li>
+<li><a target="_blank" href="../examples/basic/transparency.ck">basic/transparency.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -77,6 +78,14 @@
 <p class="member_description">Bind the given array data as a storage buffer at the given location.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">storageBuffer</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> storageBuffer)</p>
+<p class="member_description">Bind the given array data as a storage buffer at the given location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">storageBuffer</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> storageBuffer)</p>
+<p class="member_description">Bind the given array data as a storage buffer at the given location.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">storageBuffer</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span><span class="typename">[]</span> storageBuffer)</p>
 <p class="member_description">Bind the given array data as a storage buffer at the given location.</p>
 </div>
@@ -107,6 +116,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">topology</span>()</p>
 <p class="member_description">Get the primitive topology of the material. Material.Topology_PointList, Material.Topology_LineList, Material.Topology_LineStrip, Material.Topology_TriangleList, or Material.Topology_TriangleStrip.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">transparent</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> is_transparent)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">transparent</span>()</p>
+<p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> uniform_value)</p>
@@ -286,12 +303,24 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alpha</span>()</p>
+<p class="member_description">Get the alpha-channel of the material's color.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>
+<p class="member_description">Set the alpha-channel of the material's color.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
-<p class="member_description">Get the color of the material.</p>
+<p class="member_description">Get the rgba color of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
 <p class="member_description">Set material color uniform as an rgb. Alpha set to 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> color)</p>
+<p class="member_description">Set rgba the material color.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
@@ -345,6 +374,14 @@
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alpha</span>()</p>
+<p class="member_description">Get the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>
+<p class="member_description">Set the alpha channel of the diffuse color of the material.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
 <p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>

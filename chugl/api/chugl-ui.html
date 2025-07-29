@@ -297,6 +297,10 @@
 <p class="member_declaration"><span class="membername">UI_Float2</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> val)</p>
 <p class="empty_member_description">No description available</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_Float2</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> x, <span class="ckdoc_typename ckdoc_type_primitive">float</span> y)</p>
+<p class="empty_member_description">No description available</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -326,6 +330,10 @@
 <p class="member_declaration"><span class="membername">UI_Float3</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> val)</p>
 <p class="empty_member_description">No description available</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_Float3</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> x, <span class="ckdoc_typename ckdoc_type_primitive">float</span> y, <span class="ckdoc_typename ckdoc_type_primitive">float</span> z)</p>
+<p class="empty_member_description">No description available</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -353,6 +361,10 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="membername">UI_Float4</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> val)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">UI_Float4</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> x, <span class="ckdoc_typename ckdoc_type_primitive">float</span> y, <span class="ckdoc_typename ckdoc_type_primitive">float</span> z, <span class="ckdoc_typename ckdoc_type_primitive">float</span> w)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 </div>
@@ -2073,16 +2085,13 @@ Those values are guaranteed to be stable and we frequently use 0/1 directly. Nam
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">COUNT</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Left</span></p><p class="member_description">UI_MouseButton.Left = 0.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Left</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Middle</span></p><p class="member_description">UI_MouseButton.Middle = 2.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Middle</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Right</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Right</span></p><p class="member_description">UI_MouseButton.Right = 1.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -3121,6 +3130,7 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <p class="empty_class_description">No description available</p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/deep/ckfxr.ck">deep/ckfxr.ck</a></li>
+<li><a target="_blank" href="../examples/deep/pokemon_cries.ck">deep/pokemon_cries.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
@@ -3163,8 +3173,16 @@ Those can be nested but it cannot be used to enable an already disabled section 
 BeginDisabled(false) essentially does nothing useful but is provided to facilitate use of boolean expressions. If you can avoid calling BeginDisabled(False)/EndDisabled() best to avoid it.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">beginDisabled</span>()</p>
+<p class="member_description">Equivalent to beginDisabled(true)</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">beginGroup</span>()</p>
 <p class="member_description">Lock horizontal starting position.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginItemTooltip</span>()</p>
+<p class="member_description">Adds a tooltip on hover for the previous UI item. Remember to call UI.endToolTip() if this returns true.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">beginListBox</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> size)</p>
@@ -3316,8 +3334,16 @@ create and append into a TabBar.</p>
 <p class="member_description">`flags` is an enum of type UI_ColorEditFlags.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">colorEdit</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float3</span> col)</p>
+<p class="member_description">Default rgb color widget.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">colorEdit</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
 <p class="member_description">`flags` is an enum of type UI_ColorEditFlags.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">colorEdit</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float4</span> col)</p>
+<p class="member_description">Default rgba color widget.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">colorPicker</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float3</span> col, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
@@ -3360,6 +3386,10 @@ create and append into a TabBar.</p>
 <p class="member_description">Implied v_speed = 1.0f, v_min = 0.0f, v_max = 0.0f, format = "%.3f", flags = 0.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drag</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float4</span> v, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_speed, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_max, <span class="ckdoc_typename ckdoc_type_object">string</span> format, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_description">If v_min >= v_max we have no bound. Parameter `flags` is an enum of type UI_SliderFlags.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drag</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float</span> v_current_min, <span class="ckdoc_typename ckdoc_type_object">UI_Float</span> v_current_max)</p>
 <p class="member_description">Implied v_speed = 1.0f, v_min = 0.0f, v_max = 0.0f, format = "%.3f", format_max = NULL, flags = 0.</p>
 </div>
@@ -3396,11 +3426,11 @@ create and append into a TabBar.</p>
 <p class="member_description">Implied v_speed = 1.0f, v_min = 0, v_max = 0, format = "%d", flags = 0.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drag</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Int4</span> v, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_speed, <span class="ckdoc_typename ckdoc_type_primitive">int</span> v_min, <span class="ckdoc_typename ckdoc_type_primitive">int</span> v_max, <span class="ckdoc_typename ckdoc_type_object">string</span> format, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drag</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float</span> v, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_speed, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_max, <span class="ckdoc_typename ckdoc_type_object">string</span> format, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
 <p class="member_description">If v_min >= v_max we have no bound. Parameter `flags` is an enum of type UI_SliderFlags.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drag</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float</span> v, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_speed, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_max, <span class="ckdoc_typename ckdoc_type_object">string</span> format, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drag</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Int4</span> v, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_speed, <span class="ckdoc_typename ckdoc_type_primitive">int</span> v_min, <span class="ckdoc_typename ckdoc_type_primitive">int</span> v_max, <span class="ckdoc_typename ckdoc_type_object">string</span> format, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
 <p class="member_description">If v_min >= v_max we have no bound. Parameter `flags` is an enum of type UI_SliderFlags.</p>
 </div>
 <div class="member">
@@ -3456,8 +3486,8 @@ create and append into a TabBar.</p>
 <p class="member_description">Implied v_speed = 1.0f, v_min = 0.0f, v_max = 0.0f, format = "%.3f", flags = 0.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drag</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float4</span> v, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_speed, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_max, <span class="ckdoc_typename ckdoc_type_object">string</span> format, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
-<p class="member_description">If v_min >= v_max we have no bound. Parameter `flags` is an enum of type UI_SliderFlags.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drag</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float4</span> v, <span class="ckdoc_typename ckdoc_type_primitive">float</span> speed)</p>
+<p class="member_description">Implied v_min = 0.0f, v_max = 0.0f, format = "%.3f", flags = 0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">dummy</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> size)</p>
@@ -3696,6 +3726,22 @@ Parameter `idx` is an enum of type UI_Color.</p>
 <p class="member_description">Get current window width (shortcut for GetWindowSize().x)</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">image</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> texture, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> size)</p>
+<p class="member_description">Render an image with the given dimensions.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">image</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> texture, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> size, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> uv0, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> uv1, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> tint_color, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> border_color)</p>
+<p class="member_description">Render an image with the given dimensions, uv coordinates, and color options. uv0 and uv1 are normalized texture coordinates where (0,0) refers to the upper left and (1,1) the bottom right of the texture. E.g. setting uv0 = (.5, .5) and uv=(1,1) will render only the bottom-right quadrant. By default, tint_color = @(1,1,1,1) and border_color = @(0,0,0,0)To learn more, visit https://github.com/ocornut/imgui/wiki/Image-Loading-and-Displaying-Examples.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">imageButton</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">Texture</span> texture, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> size)</p>
+<p class="member_description">Render a clickable image button with the given dimensions.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">imageButton</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">Texture</span> texture, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> size, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> uv0, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> uv1, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> tint_color, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> background_color)</p>
+<p class="member_description">Render a clickable image button with the given dimensions, uv coordinates, and color options. uv0 and uv1 are normalized texture coordinates where (0,0) refers to the upper left and (1,1) the bottom right of the texture. E.g. setting uv0 = (.5, .5) and uv=(1,1) will render only the bottom-right quadrant. By default, tint_color = @(1,1,1,1) and background_color = @(0,0,0,0)To learn more, visit https://github.com/ocornut/imgui/wiki/Image-Loading-and-Displaying-Examples.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">indent</span>()</p>
 <p class="member_description">Implied indent_w = 0.0f.</p>
 </div>
@@ -3909,6 +3955,22 @@ itemTooltip() is a shortcut for the 'if (IsItemHovered(ImGuiHoveredFlags_ForTool
 <p class="member_description">Uses provided repeat rate/delay. return a count, most often 0 or 1 but might be >1 if RepeatRate is small enough that DeltaTime > RepeatRate. `key` is an enum of type UI_Key.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">knob</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float</span> value, <span class="ckdoc_typename ckdoc_type_primitive">float</span> min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> max)</p>
+<p class="member_description">Knob Widget. See https://github.com/altschuler/imgui-knobs/.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">knob</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Int</span> value, <span class="ckdoc_typename ckdoc_type_primitive">int</span> min, <span class="ckdoc_typename ckdoc_type_primitive">int</span> max)</p>
+<p class="member_description">Knob Widget. See https://github.com/altschuler/imgui-knobs/.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">knob</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float</span> value, <span class="ckdoc_typename ckdoc_type_primitive">float</span> min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> max, <span class="ckdoc_typename ckdoc_type_primitive">float</span> speed, <span class="ckdoc_typename ckdoc_type_object">string</span> format, <span class="ckdoc_typename ckdoc_type_primitive">int</span> UI_KnobVariant, <span class="ckdoc_typename ckdoc_type_primitive">float</span> size, <span class="ckdoc_typename ckdoc_type_primitive">int</span> UI_KnobFlags, <span class="ckdoc_typename ckdoc_type_primitive">int</span> steps, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angle_min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angle_max)</p>
+<p class="member_description">Knob Widget. See https://github.com/altschuler/imgui-knobs/ set `speed=0` to use default sensitivity. `format` is for numerical formating, e.g. "%.1fHz". `steps` is number of ticks on knob if using UI_KnobVariant.Stepped. `angle_min` and `angle_max` are in radiams.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">knob</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Int</span> value, <span class="ckdoc_typename ckdoc_type_primitive">int</span> min, <span class="ckdoc_typename ckdoc_type_primitive">int</span> max, <span class="ckdoc_typename ckdoc_type_primitive">float</span> speed, <span class="ckdoc_typename ckdoc_type_object">string</span> format, <span class="ckdoc_typename ckdoc_type_primitive">int</span> UI_KnobVariant, <span class="ckdoc_typename ckdoc_type_primitive">float</span> size, <span class="ckdoc_typename ckdoc_type_primitive">int</span> UI_KnobFlags, <span class="ckdoc_typename ckdoc_type_primitive">int</span> steps, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angle_min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angle_max)</p>
+<p class="member_description">Knob Widget. See https://github.com/altschuler/imgui-knobs/ set `speed=0` to use default sensitivity. `format` is for numerical formating, e.g. "%.1fHz". `steps` is number of ticks on knob if using UI_KnobVariant.Stepped. `angle_min` and `angle_max` are in radiams.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">labelText</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">string</span> text)</p>
 <p class="member_description">Display text+label aligned the same way as value+label widgets.</p>
 </div>
@@ -4081,7 +4143,7 @@ itemTooltip() is a shortcut for the 'if (IsItemHovered(ImGuiHoveredFlags_ForTool
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sameLine</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> offset_from_start_x, <span class="ckdoc_typename ckdoc_type_primitive">float</span> spacing)</p>
-<p class="member_description">Call between widgets or groups to layout them horizontally. X position given in window coordinates.</p>
+<p class="member_description">Call between widgets or groups to layout them horizontally. X position given in window coordinates. offset_from_start_x == 0 : follow right after previous item. offset_from_start_x != 0 : align to specified x position (relative to window/group left). spacing < 0            : use default spacing if offset_from_start_x == 0, no spacing if offset_from_start_x != 0. spacing >= 0           : enforce spacing amount.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scenegraph</span>(<span class="ckdoc_typename ckdoc_type_object">GGen</span> root)</p>
@@ -4298,6 +4360,10 @@ itemTooltip() is a shortcut for the 'if (IsItemHovered(ImGuiHoveredFlags_ForTool
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sliderAngle</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float</span> v_rad)</p>
 <p class="member_description">Implied v_degrees_min = -360.0f, v_degrees_max = +360.0f, format = "%.0f deg", flags = 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sliderAngle</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float</span> v_rad, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_degrees_min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_degrees_max)</p>
+<p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sliderAngle</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> label, <span class="ckdoc_typename ckdoc_type_object">UI_Float</span> v_rad, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_degrees_min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> v_degrees_max, <span class="ckdoc_typename ckdoc_type_object">string</span> format, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>

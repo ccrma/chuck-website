@@ -76,14 +76,6 @@
 <p class="member_description">Shorthand for GWindow.fullscreen(). Added for backwards compatibility.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GScene</span> <span class="membername">hud</span>()</p>
-<p class="member_description">Get the HUD scene.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">RenderPass</span> <span class="membername">hudPass</span>()</p>
-<p class="member_description">Get the default HUD pass (renders UI on top of main scene.</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logLevel</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> level)</p>
 <p class="member_description">Set the log level for ChuGL's renderer and graphics thread. Levels are: GG.LogLevel_Trace, GG.LogLevel_Debug, GG.LogLevel_Info, GG.LogLevel_Warn, GG.LogLevel_Error, GG.LogLevel_Fatal. Setting a log level will allow all messages of that level and higher to be printed to the console. Default is GG.LogLevel_Error.</p>
 </div>
@@ -104,8 +96,8 @@
 <p class="member_description">Get the default output pass (renders the main scene to the screen, with default tonemapping and exposure settings.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">RenderPass</span> <span class="membername">renderPass</span>()</p>
-<p class="member_description">Get the default render pass (renders the main scene.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ScenePass</span> <span class="membername">renderPass</span>()</p>
+<p class="member_description">Identical to GG.scenePass(). Kept for backwards compat.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GPass</span> <span class="membername">rootPass</span>()</p>
@@ -118,6 +110,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GScene</span> <span class="membername">scene</span>(<span class="ckdoc_typename ckdoc_type_object">GScene</span> scene)</p>
 <p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ScenePass</span> <span class="membername">scenePass</span>()</p>
+<p class="member_description">Get the default render pass (renders the main scene)</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">unregisterShred</span>()</p>
@@ -288,6 +284,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">mouseMode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> mode)</p>
 <p class="member_description">Set the mouse mode. Possible values are: GWindow.MouseMode_Normal (0) , GWindow.MouseMode_Disabled (1), and GWindow.MouseMode_Hidden (2)Normal mode is the default mode, the cursor is visible and behaves normally.Disabled mode hides the cursor and locks it to the window, useful for first-person games.Hidden mode hides the cursor when it is focused and hovering over the window, but does not lock it to the window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mouseMode</span>()</p>
+<p class="member_description">Get the current mouse mode. Possible values are: GWindow.MouseMode_Normal (0) , GWindow.MouseMode_Disabled (1), and GWindow.MouseMode_Hidden (2)Normal mode is the default mode, the cursor is visible and behaves normally.Disabled mode hides the cursor and locks it to the window, useful for first-person games.Hidden mode hides the cursor when it is focused and hovering over the window, but does not lock it to the window.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">mousePos</span>()</p>
@@ -827,6 +827,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">grayscale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> rgb)</p>
 <p class="member_description">Convert an rgb value to grayscale, scaled according to NTSC formula based on human perception.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">hex</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> hex)</p>
+<p class="member_description">Convert a hex color e.g. 0xff4500 to a vec3 rgb.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">hsv2rgb</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> hsv)</p>

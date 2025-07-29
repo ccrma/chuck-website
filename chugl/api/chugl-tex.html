@@ -67,12 +67,20 @@
 <p class="member_description">Get the texture height (immutable)</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">heightRatio</span>()</p>
+<p class="member_description">Get the height ratio of this texture (see TextureDesc.resizable)</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mips</span>()</p>
-<p class="member_description">Get the number of mip levels (immutable). Returns the number of mip levels in the texture.</p>
+<p class="member_description">Get whether this textue has a full mip chain. Returns 1 for true, 0 for false.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Event</span> <span class="membername">read</span>()</p>
 <p class="member_description">Initializes an async readback of texture data at mip level 0 from GPU to CPU. This function returns an Event object which can be waited on until the data is ready. Access the newly acquired data via `Texture.data()`. Note that it can take several frames for the data to read back to chuck.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">resizable</span>()</p>
+<p class="member_description">Get whether this texture is auto-resizing (see TextureDesc.resizable)</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">usage</span>()</p>
@@ -83,12 +91,20 @@
 <p class="member_description">Get the texture width (immutable)</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">widthRatio</span>()</p>
+<p class="member_description">Get the width ratio of this texture (see TextureDesc.resizable)</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> pixel_data)</p>
 <p class="member_description">Convenience function for writing into a texture. Assumes pixel_data is being written into the texture origin (0,0,0) with a region equal to the full texture dimensions (width, height, depth) at mip level 0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> pixel_data, <span class="ckdoc_typename ckdoc_type_object">TextureWriteDesc</span> write_desc)</p>
 <p class="member_description">Write pixel data to an arbitrary texture region. The input float data is automatically converted based on the texture format.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">write</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> ptr)</p>
+<p class="member_description">Write pixel data to this texture by casting `ptr` to a byte pointer and reading directly from memory. DANGEROUS. This is a hacky way to get generated texture data from another chugin. Assumes `ptr` actually points to a buffer of data large enough and in the correct format for this texture.</p>
 </div>
 </div>
 <h3 class="class_section_header">static member functions</h3>
@@ -104,6 +120,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">load</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filepath)</p>
 <p class="member_description">Load a 2D texture from a file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">load</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> binary_data)</p>
+<p class="member_description">Load a 2D texture from raw data. Assumes the texture is 8bits per channel, RGBA8Unorm format. The raw data is passed as an array of chuck integers. These integers are casted to be 32-bit, and then loaded from memory as a raw byte buffer. This method is intended for including sprites in examples, e.g. so that png data can be encoded directly in the chuck file. If trying to write generated data to a texture, prefer using Texture.write(...)</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">load</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filepath, <span class="ckdoc_typename ckdoc_type_object">TextureLoadDesc</span> load_desc)</p>
@@ -161,7 +181,18 @@
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="membername">TextureSampler</span>()</p>
-<p class="member_description">Default constructor for TextureSampler.</p>
+<p class="member_description">Constructor. Defaults to a sampler with nearest filtering and repeat wrapping.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">linear</span>()</p>
+<p class="member_description">Helper for creating a TextureSampler with linear filtering and repeat wrapping.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">nearest</span>()</p>
+<p class="member_description">Helper for creating a TextureSampler with nearest filtering and repeat wrapping.</p>
 </div>
 </div>
 <h3 class="class_section_header">member variables</h3>
@@ -232,13 +263,22 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span></p><p class="member_description">Height in texels. Default is 1.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mips</span></p><p class="member_description">Number of mip levels. Default is 1.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">heightRatio</span></p><p class="member_description">See the notes for .resizable. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mips</span></p><p class="member_description">0 for false, 1 for true. Set to true to generate a full mip-chain for this texture. Default is true.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">resizable</span></p><p class="member_description">0 for false, 1 for true. Set to true to tell the renderer to dynamically resize this texture when used as a color target in a renderpass. If true, the size will be determined from .widthRatio and .heightRatio times the window dimensions. Only relevant to textures that are bound to a renderpass color output.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">usage</span></p><p class="member_description">Bit mask of texture usage flags. Valid flags are defined in the Texture.Usage_* enum. Default is Texture.Usage_All, which enables all usages.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span></p><p class="member_description">Width in texels. Default is 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">widthRatio</span></p><p class="member_description">See the notes for .resizable. Default 1.0.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

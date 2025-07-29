@@ -15,6 +15,7 @@
 <div class="toc"><a id="toc"/>
 <p class="toc_class"><a href="#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a></p>
 <p class="toc_class"><a href="#RenderPass" class="ckdoc_typename ckdoc_type_object">RenderPass</a></p>
+<p class="toc_class"><a href="#ScenePass" class="ckdoc_typename ckdoc_type_object">ScenePass</a></p>
 <p class="toc_class"><a href="#ScreenPass" class="ckdoc_typename ckdoc_type_object">ScreenPass</a></p>
 <p class="toc_class"><a href="#OutputPass" class="ckdoc_typename ckdoc_type_object">OutputPass</a></p>
 <p class="toc_class"><a href="#ComputePass" class="ckdoc_typename ckdoc_type_object">ComputePass</a></p>
@@ -46,10 +47,7 @@
 <a name="RenderPass" /><div class="class">
 <h2 class="class_title" name="RenderPass">RenderPass</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-pass.html#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Render pass for drawing a GScene. If RenderPass.scene() is not set, will default to the main scene, GG.scene() If RenderPass.colorOutput() is not set, will default to the screen.  If RenderPass.camera() is not set, will default to the scene's main camera: GG.scene().camera()<p>
-<h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/basic/hud.ck">basic/hud.ck</a></li>
-</ul></div>
+<p class="class_description">Base class containing shared methods for ScenePass and ScreenPass. Don't instantiate this directly.<p>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -60,44 +58,89 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">autoClearColor</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> clear)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clear</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> clear)</p>
 <p class="member_description">Set whether the framebuffer's color target should be cleared each frame. Default true.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">autoClearColor</span>()</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">clear</span>()</p>
 <p class="member_description">Get whether the framebuffer's color target is cleared each frame.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">camera</span>(<span class="ckdoc_typename ckdoc_type_object">GCamera</span> camera)</p>
-<p class="member_description">Set the camera to use for rendering the scene. Defaults to the main camera of the target scene. You can call .camera(null) to use the scene's main camera.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorOutput</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> color_texture)</p>
+<p class="member_description">Set the target texture to render to. Setting to null will render to the window.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorOutput</span>()</p>
+<p class="member_description">Get the target texture to render to.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scissor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> x, <span class="ckdoc_typename ckdoc_type_primitive">float</span> y, <span class="ckdoc_typename ckdoc_type_primitive">float</span> w, <span class="ckdoc_typename ckdoc_type_primitive">float</span> h)</p>
+<p class="member_description">Sets the scissor rectangle (in pixels) used during the rasterization stage. After transformation into viewport coordinates any fragments which fall outside the scissor rectangle will be discarded.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scissor</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> s)</p>
+<p class="member_description">Sets the scissor rectangle (in pixels) used during the rasterization stage. After transformation into viewport coordinates any fragments which fall outside the scissor rectangle will be discarded.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scissorNormalized</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> x, <span class="ckdoc_typename ckdoc_type_primitive">float</span> y, <span class="ckdoc_typename ckdoc_type_primitive">float</span> w, <span class="ckdoc_typename ckdoc_type_primitive">float</span> h)</p>
+<p class="member_description">Sets the scissor rectangle used during the rasterization stage. After transformation into viewport coordinates any fragments which fall outside the scissor rectangle will be discarded.All values are multiplied by the dimensions of the output render texture, e.g. .scissorNormalized(.5, .5, .5, .5) will cut out only the bottom-right quad of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scissorNormalized</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> s)</p>
+<p class="member_description">Sets the scissor rectangle used during the rasterization stage. After transformation into viewport coordinates any fragments which fall outside the scissor rectangle will be discarded.All values are multiplied by the dimensions of the output render texture, e.g. .scissorNormalized(.5, .5, .5, .5) will cut out only the bottom-right quad of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">viewport</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> x, <span class="ckdoc_typename ckdoc_type_primitive">float</span> y, <span class="ckdoc_typename ckdoc_type_primitive">float</span> w, <span class="ckdoc_typename ckdoc_type_primitive">float</span> h)</p>
+<p class="member_description">Set the viewport this pass will render to, in pixels. x,y are the starting point. w,h are the width and height of the viewport. e.g. .viewport(500, 200, 100, 100) will render a 100x100 pixel region starting at the pixel coordinates (500, 200)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">viewport</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> vp)</p>
+<p class="member_description">Set the viewport this pass will render to, in pixels. x,y are the starting point. w,h are the width and height of the viewport. e.g. .viewport(500, 200, 100, 100) will render a 100x100 pixel region starting at the pixel coordinates (500, 200)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">viewportNormalized</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> x, <span class="ckdoc_typename ckdoc_type_primitive">float</span> y, <span class="ckdoc_typename ckdoc_type_primitive">float</span> w, <span class="ckdoc_typename ckdoc_type_primitive">float</span> h)</p>
+<p class="member_description">Set the viewport this pass will render to, in normalized in coordinates. x,y are the starting point. w,h are the width and height of the viewport. All values are multiplied by the dimensions of the output render texture, e.g. .viewportNormalized(.5, .5, .5, .5) will render to the bottom-right quad of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">viewportNormalized</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> v)</p>
+<p class="member_description">Set the viewport this pass will render to, in normalized in coordinates. x,y are the starting point. w,h are the width and height of the viewport. All values are multiplied by the dimensions of the output render texture, e.g. .viewportNormalized(.5, .5, .5, .5) will render to the bottom-right quad of the texture.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ScenePass" /><div class="class">
+<h2 class="class_title" name="ScenePass">ScenePass</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-pass.html#RenderPass" class="ckdoc_typename ckdoc_type_object">RenderPass</a> : <a href="chugl-pass.html#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Pass to render a GScene from the perspective of a GCamera.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ScenePass</span>()</p>
+<p class="member_description">Default constructor for ScenePass.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ScenePass</span>(<span class="ckdoc_typename ckdoc_type_object">GScene</span> scene)</p>
+<p class="member_description">Constructor that sets the scene to render. Will render from the scene's main camera, scene.camera()</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GCamera</span> <span class="membername">camera</span>()</p>
 <p class="member_description">Get the camera used for rendering the scene. If not set, will default to the scene's main camera.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorOutput</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> color_texture)</p>
-<p class="member_description">Set the target texture to draw the scene to.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorOutput</span>()</p>
-<p class="member_description">Get the target texture to draw the scene to.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">msaa</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> sample_count)</p>
-<p class="member_description">Set the MSAA sample count for the render pass (default 4)</p>
-</div>
-<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">msaa</span>()</p>
-<p class="member_description">Get the MSAA sample count for the render pass.</p>
+<p class="member_description">Returns whether or not this scenepass has MSAA antialiasing enabled.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">resolution</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> width, <span class="ckdoc_typename ckdoc_type_primitive">int</span> height)</p>
-<p class="member_description">Set the resolution of the output framebuffer. Default 0x0. If either dimension is set to 0, will auto-resize to the window size.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">msaa</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> msaa)</p>
+<p class="member_description">Set whether this scenepass should perform MSAA antialiasing. If true will render the scene into a 4xMSAA texture and perform an MSAA resolve into the texture set with ScenePass.colorOutput(). Default false.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scene</span>(<span class="ckdoc_typename ckdoc_type_object">GScene</span> scene)</p>
-<p class="member_description">Set the scene to render. If not set, will default to the main scene, GG.scene()</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scene</span>(<span class="ckdoc_typename ckdoc_type_object">GScene</span> scene, <span class="ckdoc_typename ckdoc_type_object">GCamera</span> camera)</p>
+<p class="member_description">Set the scene and camera to render from. camera *must* be a part of the scene. Can pass `null` as the camera arg to use the scene's main camera, scene.camera()</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GScene</span> <span class="membername">scene</span>()</p>
@@ -109,7 +152,7 @@
 <hr />
 <a name="ScreenPass" /><div class="class">
 <h2 class="class_title" name="ScreenPass">ScreenPass</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-pass.html#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-pass.html#RenderPass" class="ckdoc_typename ckdoc_type_object">RenderPass</a> : <a href="chugl-pass.html#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Screen pass for applying screen shaders and visual effects to the entire screen.<p>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -125,8 +168,8 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorOutput</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> texture)</p>
-<p class="member_description">Set the color attachment output texture of this screen pass.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Material</span> <span class="membername">material</span>()</p>
+<p class="member_description">Get the internal material of this pass. Use the material to bind uniforms to the screen shader.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shader</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> shader)</p>
@@ -138,7 +181,7 @@
 <hr />
 <a name="OutputPass" /><div class="class">
 <h2 class="class_title" name="OutputPass">OutputPass</h2>
-<h4><span class="class_inherits">inherits</span> : <a href="chugl-pass.html#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-pass.html#ScreenPass" class="ckdoc_typename ckdoc_type_object">ScreenPass</a> : <a href="chugl-pass.html#RenderPass" class="ckdoc_typename ckdoc_type_object">RenderPass</a> : <a href="chugl-pass.html#GPass" class="ckdoc_typename ckdoc_type_object">GPass</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="empty_class_description">No description available</p>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -156,6 +199,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">exposure</span>()</p>
 <p class="member_description">Get the exposure value for the tonemapping algorithm.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">gamma</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> gamma)</p>
+<p class="member_description">Get whether or not the pass is applying gamma correction. Default true.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gamma</span>()</p>
+<p class="member_description">Set whether or not to apply gamma correction. Default true.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">input</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> input_texture)</p>
@@ -208,12 +259,17 @@
 <p class="class_description">Compute pass for running compute shaders. Note that unlike Materials, all Compute Pass bindings must be bound under @group(0), NOT @group(1)<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/rendergraph/boids_compute.ck">rendergraph/boids_compute.ck</a></li>
+<li><a target="_blank" href="../examples/rendergraph/slime.ck">rendergraph/slime.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="membername">ComputePass</span>()</p>
 <p class="member_description">Default constructor for ComputePass.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ComputePass</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> shader)</p>
+<p class="member_description">Create a compute pass with the given shader.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
