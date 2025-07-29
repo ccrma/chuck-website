@@ -105,7 +105,7 @@
 <p class="member_description">Set the ezInstrument object to be used for a given part.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setInstrument</span>(<span class="ckdoc_typename ckdoc_type_object">ezInstrument</span><span class="typename">[]</span> insts)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setInstruments</span>(<span class="ckdoc_typename ckdoc_type_object">ezInstrument</span><span class="typename">[]</span> insts)</p>
 <p class="member_description">Set the ezInstrument objects to be used for all parts. The array must be the same size as the number of parts in the score.</p>
 </div>
 <div class="member">
@@ -259,21 +259,6 @@
 <p class="member_description">This noteOn() function sends a MIDI noteOn message carrying pitch and velocity data from incoming ezNotes. Velocity values are scaled from 0.0-1.0 to 0-127. Note that here, 'voice' is passed by ezScorePlayer, but is not necessary for this kind of instrument.</p>
 </div>
 </div>
-<h3 class="class_section_header">member variables</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_channel</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_device</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_logOutput</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">MidiOut</span> <span class="membername">mout</span></p><p class="empty_member_description">No description available</p>
-</div>
-</div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
 <hr />
@@ -321,21 +306,6 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">port</span>()</p>
 <p class="member_description">Get the port currently in use for outgoing OSC messages.</p>
-</div>
-</div>
-<h3 class="class_section_header">member variables</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">_hostname</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_logOutput</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">_port</span></p><p class="empty_member_description">No description available</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">OscOut</span> <span class="membername">xmit</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
