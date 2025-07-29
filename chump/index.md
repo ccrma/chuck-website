@@ -25,7 +25,7 @@ Team</a>.
 ---
 
 
-[**ChuMP v0.0.1**](./index.html) (alpha) — [**Browse All Packages**](../release/chump/)
+[**ChuMP v0.0.2**](./index.html) (alpha) — [**Browse All Packages**](../release/chump/)
 • [**Building for Linux**](./linux-build.html)
 • [**Using ChuMP**](./usage.html)
 • [**Defining a New Package**](./walkthru.html)

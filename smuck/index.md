@@ -23,7 +23,7 @@ with support from the <a href="../doc/authors.html">ChucK Team</a>.
 
 ---
 
-**SMucK v0.1.0** (alpha) — [**SMucK API Reference**](./api/)
+**SMucK v0.1.2** (alpha) — [**SMucK API Reference**](./api/)
 • [**Examples**](./examples/)
 • [**Basic Playback**](./doc/walkthru.html)
 • [**SMucKish Rosetta Stone**](./doc/smuckish.html)
