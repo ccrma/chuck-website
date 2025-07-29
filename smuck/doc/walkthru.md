@@ -121,7 +121,7 @@ These instruments will be used to play back the score.
 public class myInstrument extends ezInstrument
 {
     // how many voices our instrument has (for polyphony)
-    10 => n_voices;
+    10 => int n_voices;
     setVoices(n_voices); // This sets important class variables that are used by the ezScorePlayer, so make sure to call it with however many voices you want to allocate!
     SinOsc oscs[n_voices];
     Gain g => outlet;     // outlet lets us connect to any output! (e.g. myInstrument inst => Nrev rev => dac)
@@ -180,7 +180,7 @@ player.setInstrument(1, instrument2);   // use instrument2 for part 1 of the sco
 ```
 OR
 ```
-player.setInstrument([instrument1, instrument2]);
+player.setInstruments([instrument1, instrument2]); //note setInstruments plural
 ```
 
 <br>
@@ -237,7 +237,7 @@ myInstrument instrument2 => dac;
 
 // 3. Play the score
 ezScorePlayer player(score);
-player.setInstrument([instrument1, instrument2]);
+player.setInstruments([instrument1, instrument2]);
 player.play();
 10::second => now;
 ```
