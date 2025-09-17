@@ -9,7 +9,7 @@
   - [Add Bloom?](#add-bloom)
   - [Control the camera?](#control-the-camera)
   - [Load 3D models and other assets?](#load-3d-models-and-other-assets)
-  - [Load Textures?](#load-textures)
+  - [Load Textures/Sprites?](#load-texturessprites)
   - [Write to a Texture?](#write-to-a-texture)
   - [Make my own geometries?](#make-my-own-geometries)
   - [Add a UI?](#add-a-ui)
@@ -161,12 +161,45 @@ You have a couple options here
 - Use ChucK's builtin `Hid` class, which is more complicated to use but necessary if you need sub-frame timing accuracy.
 - Use ChuGL's `GWindow` class, which is simpler but only updates mouse/keyboard state at a per-frame granularity.
 
+As an example of using `GWindow`:
+
+```java
+
+while (true) {
+    GG.nextFrame() => now;
+
+    // mouse position
+    <<< "cursor pos in windows:", GWindow.mousePos(), "delta", GWindow.mouseDeltaPos() >>>;
+
+    // mouse buttons
+    if (GWindow.mouseLeft()) <<< "left mouse button held" >>>;
+    if (GWindow.mouseRight()) <<< "right mouse button held" >>>;
+    if (GWindow.mouseLeftDown()) <<< "left mouse button pressed" >>>;
+    if (GWindow.mouseRightDown()) <<< "right mouse button pressed" >>>;
+    if (GWindow.mouseLeftUp()) <<< "left mouse button released" >>>;
+    if (GWindow.mouseRightUp()) <<< "right mouse button released" >>>;
+        
+    // scroll (e.g., two-finger scroll or mouse wheel)
+    GWindow.scroll() => vec2 scroll;
+    if( scroll.magnitude() > 0 ) <<< "scroll delta:", scroll >>>;
+
+    // keys
+    if (GWindow.key(GWindow.KEY_SPACE)) <<< "space key held" >>>;
+    if (GWindow.keyDown(GWindow.KEY_SPACE)) <<< "space key pressed" >>>;
+    if (GWindow.keyUp(GWindow.KEY_SPACE)) <<< "space key released" >>>;
+}
+
+```
+
  See the CKDoc links below for examples.
 
 ### CKdoc <!-- omit in toc -->
 
 - [Hid](https://chuck.stanford.edu/doc/reference/io.html#Hid)
 - [GWindow](https://chuck.stanford.edu/chugl/api/chugl-basic.html#GWindow)
+
+### Examples  <!-- omit in toc -->
+- [basic/gwindow.ck](https://chuck.stanford.edu/chugl/examples/basic/gwindow.ck)
 
 ___
 
@@ -193,6 +226,12 @@ cube.detach(); // disconnects cube from its parent AND all children from cube
 ___
 
 ## Add Bloom?
+
+The simplest way to add bloom to the default scene:
+```c
+GG.bloom( true ); // toggle bloom on or off
+GG.bloomPass().intensity(1.0); // set intensity
+```
 
 The `bloom.ck` example has everything you need to know.
 
@@ -241,31 +280,50 @@ ___
 
 ## Load 3D models and other assets?
 
-Use the `AssLoader` (asset loader) helper class. Currently only supports wavefront `.obj` files.
+Use `GModel`. Currently only OBJ files are supported.
+```java
+// simplest way
+GModel new_model("path/to/my/model.obj") --> GG.scene();
+
+// with options
+ModelLoadDesc desc;
+true => desc.combine; // consolidate model geometry where possible
+true => desc.flipTextures; // flip model textures along Y axis (some assets use Y-up for texture space, others Y-down)
+GModel new_model("path/to/my/model.obj", desc) --> GG.scene();
+```
+
+Previous versions of ChuGL relied on using the `AssLoader` (asset loader) helper class, which remains for backwards compatibility.
 
 ### CKdoc <!-- omit in toc -->
 
 - [AssLoader](https://chuck.stanford.edu/chugl/api/chugl-basic.html#AssLoader)
+- [GModel](https://chuck.stanford.edu/chugl/api/chugl-ggens.html#GModel)
 
 ### Examples <!-- omit in toc -->
 
 - [basic/asset_loading.ck](https://chuck.stanford.edu/chugl/examples/basic/asset_loading.ck)
   - for this to work, download the examples `data` folder as well
   - <https://chuck.stanford.edu/chugl/examples/data/>
+- [basic/gmodel.ck](https://chuck.stanford.edu/chugl/examples/basic/gmodel.ck)
 
 ___
 
-## Load Textures?
+## Load Textures/Sprites?
 
-```c
+```java
 // simple way
 Texture.load(me.dir() + "./path/to/texture" ) @=> Texture tex;
 
-// with options
+// OR with options
 TextureLoadDesc load_desc;
 true => load_desc.flip_y;  // flip the texture vertically
 true => load_desc.gen_mips; // generate mip maps automatically
 Texture.load(me.dir() + "./path/to/texture", load_desc) @=> Texture tex;
+
+// then render onto a mesh, e.g.
+FlatMaterial sprite_material;
+sprite_material.colorMap(tex); // texture
+GMesh sprite(new PlaneGeometry, sprite_material) --> GG.scene();
 ```
 
 - If your texture appears incorrect, try flipping it vertically (different asset creation tools disagree on whether the y axis points up or down)
@@ -278,6 +336,9 @@ Texture.load(me.dir() + "./path/to/texture", load_desc) @=> Texture tex;
 ### Examples <!-- omit in toc -->
 
 - [deep/snowstorm.ck](https://chuck.stanford.edu/chugl/examples/deep/snowstorm.ck)
+  - requires downloading the examples `data` folder
+  - <https://chuck.stanford.edu/chugl/examples/data/>
+- [deep/sprite_animation.ck](https://chuck.stanford.edu/chugl/examples/deep/sprite_animation.ck)
   - requires downloading the examples `data` folder
   - <https://chuck.stanford.edu/chugl/examples/data/>
 
@@ -413,7 +474,7 @@ fn vs_main(@builtin(instance_index) instance : u32) -> VertexOutput
 ### Examples <!-- omit in toc -->
 
 - [basic/custom_geo.ck](https://chuck.stanford.edu/chugl/examples/basic/custom_geo.ck)
-- [deep/boids_compute.ck](https://chuck.stanford.edu/chugl/examples/rendergraph/boids_compute.ck)
+- [deep/boids.ck](https://chuck.stanford.edu/chugl/examples/rendergraph/boids.ck)
 
 ### Further Learning Resources <!-- omit in toc -->
 
@@ -621,7 +682,7 @@ ___
 
 ### Examples <!-- omit in toc -->
 
-- [rendergraph/boids_compute.ck](https://chuck.stanford.edu/chugl/examples/rendergraph/boids_compute.ck)
+- [rendergraph/boids.ck](https://chuck.stanford.edu/chugl/examples/rendergraph/boids.ck)
 
 ### Further Learning Resources <!-- omit in toc -->
 
@@ -639,6 +700,6 @@ This part of the API is unstable, going to hold off on writing documentation. As
 (Personal TODO)
 
 - Copy the struct descriptions here.
-- Add a `ShaderIncludes` singleton class
+- Add a `ShaderIncludes` constants class
 
 ___
