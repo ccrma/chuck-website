@@ -1,29 +1,38 @@
 //-----------------------------------------------------------------------------
 // name: video.ck
-// desc: Video playback example. Currently only supports the MPEG1 video and 
-// MP2 audio.
-// To run, download and place this music video in the same directory: 
-// https://ccrma.stanford.edu/~azaday/music/bjork-all-is-full-of-love.mpg
+// desc: video playback; currently only supports the MPEG1 video and 
+//       MP2 audio
+// requires: ChuGL + chuck-1.5.5.5 or higher
+//
+// (DATA) download and place this music video in the same directory: 
+//   https://chuck.stanford.edu/chugl/examples/data/video/bjork.mpg
+//
+// find more mpeg samples here:
+//   https://filesamples.com/formats/mpeg
 //
 // authors: Andrew Zhu Aday (https://ccrma.stanford.edu/~azaday/)
-//
-// Find more mpeg samples here: https://filesamples.com/formats/mpeg
-//
-// date: Fall 2024
+//    date: Fall 2024
 //-----------------------------------------------------------------------------
 
-Video video(me.dir() + "./bjork-all-is-full-of-love.mpg") => dac; 
+// fullscreen
+GG.fullscreen();
 
-<<< "VM Samplerate: ", 1::second / 1::samp >>>;
-<<< "Framerate: ", video.framerate() >>>;
-<<< "Samplerate: ", video.samplerate() >>>;
-<<< "Duration: ", video.duration() >>>;
-<<< "Loop: ", video.loop() >>>;
-<<< "Rate: ", video.rate() >>>;
+// Video is a UGen
+Video video( me.dir() + "bjork.mpg" ) => dac; 
 
-video.texture() @=> Texture video_texture;
+// print file infomation
+<<< "VM sample rate: ", 1::second / 1::samp >>>;
+<<< "framerate: ", video.framerate() >>>;
+<<< "samplerate: ", video.samplerate() >>>;
+<<< "duration: ", video.duration() >>>;
+<<< "loop: ", video.loop() >>>;
+<<< "rate: ", video.rate() >>>;
+
+// video texture
+video.texture() @=> Texture texture;
 (video.width() $ float) / video.height() => float video_aspect;
 
+// array of geometries
 [
     new PlaneGeometry,
     new SuzanneGeometry,
@@ -35,7 +44,8 @@ video.texture() @=> Texture video_texture;
     new KnotGeometry,
 ] @=> Geometry geometries[];
 
-UI_Int geometry_index;
+// UI variable and list
+UI_Int geometry_index(3);
 [
     "PlaneGeometry",
     "SuzanneGeometry",
@@ -47,60 +57,74 @@ UI_Int geometry_index;
     "KnotGeometry",
 ] @=> string builtin_geometries[];
 
+// material
 FlatMaterial video_mat;
-video_mat.scale(@(1, -1)); // flip the y-axis
+// negative: flip the y-axis
+video_mat.scale(@(5, -5));
 
-GMesh video_mesh(geometries[0], video_mat) --> GG.scene();
+// connect video mesh to scene
+GMesh video_mesh(geometries[geometry_index.val()], video_mat) --> GG.scene();
 
-GOrbitCamera camera --> GG.scene();
+// set orbit camera as main camera
+GOrbitCamera camera => GG.scene().camera;
 camera.clip(.01, 1000);
-GG.scene().camera(camera);
 
+// set mesh scaling
 video_mesh.scaX(3 * video_aspect);
 video_mesh.scaY(3);
 video_mesh.scaZ(3);
 
-video_mat.colorMap(video_texture);
+// set color map for video texture
+video_mat.colorMap( texture );
 
+// UI variables
 UI_Float rate(1.0);
 UI_Bool loop(video.loop());
 UI_Float2 copies(video_mat.scale());
 UI_Float3 scale(video_mesh.sca());
 
-while (true) {
+// render loop
+while (true)
+{
+    // synchronize
     GG.nextFrame() => now;
 
-    if (GWindow.keyDown(GWindow.Key_Left)) {
+    // check for key input
+    if (GWindow.keyDown(GWindow.KEY_LEFT)) {
         video.seek(video.timestamp() - 10::second);
-    } else if (GWindow.keyDown(GWindow.Key_Right)) {
+    } else if (GWindow.keyDown(GWindow.KEY_RIGHT)) {
         video.seek(video.timestamp() + 10::second);
     }
 
-    if (UI.begin("")) {
-
+    // begin UI
+    if (UI.begin(""))
+    {
+        // text
         UI.textWrapped("Use the arrow keys to seek 10 seconds back or forward.");
-
+        // separator
         UI.separator();
-
+        // playback rate
         if (UI.slider("Rate", rate, -2.0, 2.0)) {
             rate.val() => video.rate;
         }
-
+        // listbox for builtin geometries
         if (UI.listBox("builtin geometries", geometry_index, builtin_geometries)) {
+            // set selected geometry into mesh
             video_mesh.geometry(geometries[geometry_index.val()]);
         }
-
-        if (UI.drag("Copies", copies)) {
+        // how many copies to draw
+        if (UI.drag("copies", copies)) {
             copies.val() => video_mat.scale;
         }
-
-        if (UI.drag("Scale", scale)) {
+        // scale of geometry
+        if (UI.drag("scale", scale)) {
             scale.val() => video_mesh.sca;
         }
-
-        if (UI.checkbox("Loop", loop)) {
+        // whether to loop
+        if (UI.checkbox("loop", loop)) {
             loop.val() => video.loop;
         }
     }
+    // end UI
     UI.end();
 }

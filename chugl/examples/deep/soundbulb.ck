@@ -1,6 +1,8 @@
 //-----------------------------------------------------------------------------
 // name: soundbulb.ck
-// desc: SoundBulb (Kunwoo's first 256a design in 2017) in ChuGL!
+// desc: SoundBulb (Kunwoo's first 256a design in 2017), now in ChuGL!
+//
+// requires: ChuGL + chuck-1.5.5.5
 // 
 // authors: Kunwoo Kim (https://ccrma.stanford.edu/~kunwoo/)
 //         Andrew Zhu Aday (https://ccrma.stanford.edu/~azaday/)
@@ -61,13 +63,16 @@ camera.orthographic();
 GG.scene().camera().posZ( 10 );
 
 // ------ BLOOM ------ //
-GG.renderPass() --> BloomPass bloom_pass --> GG.outputPass();
-bloom_pass.input( GG.renderPass().colorOutput() );
-GG.outputPass().input( bloom_pass.colorOutput() );
+// enable bloom
+GG.bloom(true);
+// GG.renderPass() --> GG.bloomPass() --> GG.outputPass();
+// GG.bloomPass().input( GG.renderPass().colorOutput() );
+// GG.outputPass().input( GG.bloomPass().colorOutput() );
 
-bloom_pass.intensity(0.71);
-bloom_pass.radius(0.68);
-bloom_pass.levels(9);
+// bloom parameters
+GG.bloomPass().intensity(0.71);
+GG.bloomPass().radius(0.68);
+GG.bloomPass().levels(9);
 
 // ---- WAVEFORM ---- //
 // waveform renderer
@@ -546,17 +551,17 @@ spork ~ switchColorMode();
 false => int fullscreen;
 fun void keyboardInput()
 {
-    if( GWindow.keyDown(GWindow.Key_1))
+    if( GWindow.keyDown(GWindow.KEY_1))
         0 => COLOR_MODE;
-    else if( GWindow.keyDown(GWindow.Key_2))
+    else if( GWindow.keyDown(GWindow.KEY_2))
         1 => COLOR_MODE;
-    else if( GWindow.keyDown(GWindow.Key_3))
+    else if( GWindow.keyDown(GWindow.KEY_3))
         2 => COLOR_MODE;
-    else if( GWindow.keyDown(GWindow.Key_4))
+    else if( GWindow.keyDown(GWindow.KEY_4))
         3 => COLOR_MODE;
-    else if( GWindow.keyDown(GWindow.Key_5))
+    else if( GWindow.keyDown(GWindow.KEY_5))
         4 => COLOR_MODE;
-    else if( GWindow.keyDown(GWindow.Key_Space)) {
+    else if( GWindow.keyDown(GWindow.KEY_SPACE)) {
         if (fullscreen) {
             false => fullscreen;
             GG.windowed();

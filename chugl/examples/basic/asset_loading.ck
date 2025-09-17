@@ -1,20 +1,25 @@
 //--------------------------------------------------------------------
 // name: asset_loading.ck
 // desc: example of loading assets (e.g., 3D models) from file
+//       and rendering as a GGen
+//
+// requires: ChuGL + chuck-1.5.5.5
 //--------------------------------------------------------------------
 
-// asset loader
-AssLoader ass_loader;
+// set an orbit camera as the main camera
+GOrbitCamera camera => GG.scene().camera;
 
-// load from file, returns a GGen as the root of a model graph
-ass_loader.loadObj( me.dir() + "../data/models/suzanne.obj" ) @=> GGen@ model;
-
-// download this asset and unzip into ../data/obj/
-// https://chuck.stanford.edu/chugl/examples/data/obj/
-// ass_loader.loadObj( me.dir() + "../data/obj/backpack/backpack.obj" ) @=> GGen@ model;
+// using asset loader, load from file, returns a GGen as the root of a model graph
+AssLoader.loadObj( me.dir() + "../data/models/suzanne.obj" ) @=> GGen model;
 
 // connect model to scene
 model --> GG.scene();
+
+// for a more extensive model, download this asset:
+//   https://chuck.stanford.edu/chugl/examples/data/models/backpack.zip
+// AssLoader.loadObj( me.dir() + "backpack/backpack.obj" ) @=> GGen model2;
+// connect model to scene
+// model2 --> GG.scene();
 
 // render loop
 while( true )

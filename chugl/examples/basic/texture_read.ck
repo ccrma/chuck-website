@@ -1,19 +1,19 @@
 //-----------------------------------------------------------------------------
 // name: texture_read.ck
-// desc: Example on how to read back texture data from the GPU to chuck
+// desc: how to read back texture data from the GPU to chuck
 //
 // authors: Andrew Zhu Aday (https://ccrma.stanford.edu/~azaday/)
-//
-// date: Fall 2024
+//    date: Fall 2024
 //-----------------------------------------------------------------------------
 
-Webcam webcam;
+// ChuGL webcam
+Webcam webcam(0, 1024, 1024, 60);
 
 // create a texture to write the webcam data we're reading
 TextureDesc desc;
 webcam.width() => desc.width;
 webcam.height() => desc.height;
-1 => desc.mips;
+false => desc.mips;
 Texture write_texture(desc);
 
 // original webcam texture
@@ -31,6 +31,7 @@ fun void read() {
     while (true) {
         // issue a read from the GPU to the CPU
         webcam.texture().read() => now;
+
         // write the newly read data into the duplicate webcam texture
         write_texture.write(webcam.texture().data());
     }

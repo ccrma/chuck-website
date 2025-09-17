@@ -1,7 +1,9 @@
 //-----------------------------------------------------------------------------
 // name: sprite_animation.ck
 // desc: animate a cat with sprite sheet textures and a simple state machine
-// Requires downloading the examples/data/textures/Cat-1 directory.
+// 
+// this example requires downloading the following assets:
+//   ../data/textures/Cat-1/
 // 
 // author: Andrew Zhu Aday (https://ccrma.stanford.edu/~azaday/)
 //   date: Fall 2024
@@ -92,12 +94,17 @@ SndBuf meow_buf => dac;
 cat_idle @=> SpriteAnimation cat_state; // initial state
 
 // animation loop ===============================================
-fun void animate(float frame_duration_secs) {
+fun void animate(float frame_duration_secs)
+{
     null @=> SpriteAnimation current_animation;
     0 => int current_frame;
-    0 => float time_since_last_frame; // accumulator to know when to flip animation frames
-
-    while (true) {
+    // accumulator to know when to flip animation frames
+    0 => float time_since_last_frame;
+    
+    // render loop
+    while (true)
+    {
+        // synchronize
         GG.nextFrame() => now;
 
         // animation transition
@@ -119,7 +126,6 @@ fun void animate(float frame_duration_secs) {
             sprite_material.offset(@(current_frame $ float / current_animation.frames, 0));
             0 => time_since_last_frame; // reset frame timer
         } 
-
         // play animation
         else if (time_since_last_frame >= frame_duration_secs) {
             // advance to next frame
@@ -166,55 +172,57 @@ fun void meow()
 }
 
 // main loop ===============================================
-while (true) {
+while (true)
+{
+    // synchronize
     GG.nextFrame() => now;
 
     // meow animation
-    if (GWindow.keyDown(GWindow.Key_Space)) {
+    if (GWindow.keyDown(GWindow.KEY_SPACE)) {
         spork ~ meow();
     }
 
     // controls + animation state machine
     if (cat_state == cat_idle) {
         // idle --> walk right
-        if (GWindow.keyDown(GWindow.Key_Right)) {
+        if (GWindow.keyDown(GWindow.KEY_RIGHT)) {
             cat_walk @=> cat_state;
             1 => sprite.scaX;
         // idle --> walk left
-        } else if (GWindow.keyDown(GWindow.Key_Left)) {
+        } else if (GWindow.keyDown(GWindow.KEY_LEFT)) {
             cat_walk @=> cat_state;
             -1 => sprite.scaX;
         // idle --> laying
-        } else if (GWindow.keyDown(GWindow.Key_Down)) {
+        } else if (GWindow.keyDown(GWindow.KEY_DOWN)) {
             cat_laying @=> cat_state;
         }
     } else if (cat_state == cat_walk) {
         // walk --> laying
-        if (GWindow.keyDown(GWindow.Key_Down)) {
+        if (GWindow.keyDown(GWindow.KEY_DOWN)) {
             cat_laying @=> cat_state;
         }
 
         // changing directions
-        else if (GWindow.key(GWindow.Key_Right)) {
+        else if (GWindow.key(GWindow.KEY_RIGHT)) {
             1 => sprite.scaX;
             sprite.translateX(GG.dt());
-        } else if (GWindow.key(GWindow.Key_Left)) {
+        } else if (GWindow.key(GWindow.KEY_LEFT)) {
             -1 => sprite.scaX;
             sprite.translateX(-GG.dt());
         }
 
         // walk --> idle
-        else if (!GWindow.key(GWindow.Key_Right) && !GWindow.key(GWindow.Key_Left)) {
+        else if (!GWindow.key(GWindow.KEY_RIGHT) && !GWindow.key(GWindow.KEY_LEFT)) {
             cat_idle @=> cat_state;
         }
     } else if (cat_state == cat_laying) {
         // laying --> walk right
-        if (GWindow.keyDown(GWindow.Key_Right)) {
+        if (GWindow.keyDown(GWindow.KEY_RIGHT)) {
             cat_walk @=> cat_state;
             1 => sprite.scaX;
         }
         // laying --> walk left
-        else if (GWindow.keyDown(GWindow.Key_Left)) {
+        else if (GWindow.keyDown(GWindow.KEY_LEFT)) {
             cat_walk @=> cat_state;
             -1 => sprite.scaX;
         }
@@ -227,8 +235,10 @@ while (true) {
         sprite.posWorld(GG.camera().NDCToWorldPos(pos_ndc));
     } 
 
+    // begin UI
     if (UI.begin("Sprite Animation")) {
         UI.textWrapped("Sprite animation example! Use arrow keys to move the cat. Press space to meow. Press down to lay down.");
     }
+    // end UI
     UI.end();
 }
