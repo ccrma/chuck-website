@@ -21,6 +21,7 @@
 <p class="toc_class"><a href="#LinesMaterial" class="ckdoc_typename ckdoc_type_object">LinesMaterial</a></p>
 <p class="toc_class"><a href="#UVMaterial" class="ckdoc_typename ckdoc_type_object">UVMaterial</a></p>
 <p class="toc_class"><a href="#PBRMaterial" class="ckdoc_typename ckdoc_type_object">PBRMaterial</a></p>
+<p class="toc_class"><a href="#SkyboxMaterial" class="ckdoc_typename ckdoc_type_object">SkyboxMaterial</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">ChuGL materials wrap and supply parameters to a ChuGL shader, describing the appearance of geometries.</p>
@@ -119,11 +120,11 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">transparent</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> is_transparent)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Mark the material as transparent. Transparent materials will be rendered after all opaque (i.e. non-transparent) objects in back-to-front order based on their GMesh's distance from the camera, and colors will be alpha-blended together. The renderer does *not* implement per-pixel sorting or OIT so you may observe artifacts/incorrectness in 3D scenes.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">transparent</span>()</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Get whether this material is treated as transparent.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uniformFloat2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> uniform_value)</p>
@@ -189,32 +190,40 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">uniformInt</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
 <p class="member_description">Get an int uniform value at the given location.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">wireframe</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> wireframe)</p>
+<p class="member_description">Mark whether this material should be rendered as a wireframe. Internally this sets the Material.Topology to a LineList and will use a special wireframe indices buffer for any geometry paired with this material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">wireframe</span>()</p>
+<p class="member_description">Get whether this material will be rendered as a wireframe.</p>
+</div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Cull_Back</span></p><p class="member_description">Cull back faces.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">CULL_BACK</span></p><p class="member_description">Cull back faces.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Cull_Front</span></p><p class="member_description">Cull front faces.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">CULL_FRONT</span></p><p class="member_description">Cull front faces.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Cull_None</span></p><p class="member_description">No culling.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">CULL_NONE</span></p><p class="member_description">No culling.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Topology_LineList</span></p><p class="member_description">Interpret each pair of vertices as a line.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TOPOLOGY_LINELIST</span></p><p class="member_description">Interpret each pair of vertices as a line.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Topology_LineStrip</span></p><p class="member_description">Each vertex after the first defines a line primitive between it and the previous vertex.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TOPOLOGY_LINESTRIP</span></p><p class="member_description">Each vertex after the first defines a line primitive between it and the previous vertex.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Topology_PointList</span></p><p class="member_description">Interpret each vertex as a point.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TOPOLOGY_POINTLIST</span></p><p class="member_description">Interpret each vertex as a point.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Topology_TriangleList</span></p><p class="member_description">Interpret each triplet of vertices as a triangle.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TOPOLOGY_TRIANGLELIST</span></p><p class="member_description">Interpret each triplet of vertices as a triangle.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Topology_TriangleStrip</span></p><p class="member_description">Each vertex after the first two defines a triangle primitive between it and the previous two vertices.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TOPOLOGY_TRIANGLESTRIP</span></p><p class="member_description">Each vertex after the first two defines a triangle primitive between it and the previous two vertices.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -248,7 +257,7 @@
 <a name="WireframeMaterial" /><div class="class">
 <h2 class="class_title" name="WireframeMaterial">WireframeMaterial</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-mat.html#Material" class="ckdoc_typename ckdoc_type_object">Material</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">View a mesh as wireframe. Uses barycentric coordinates to draw lines. WARNING: May not work with indexed geometry, rendering some or all faces incorrectly as solid. Known issues with SphereGeometry, CircleGeometry, KnotGeometry, CylinderGeometry. In those cases, set Material.topology() to Material.Topology_LineList or Material.Topology_LineStrip. You will no longer be able to set thickness, but the wireframe will render correctly.<p>
+<p class="class_description">DEPRECATED in ChuGL version 0.2.7. Use Material.wireframe(true) instead. View a mesh as wireframe. Uses barycentric coordinates to draw lines. WARNING: May not work with indexed geometry, rendering some or all faces incorrectly as solid. Known issues with SphereGeometry, CircleGeometry, KnotGeometry, CylinderGeometry. In those cases, set Material.topology() to Material.Topology_LineList or Material.Topology_LineStrip. You will no longer be able to set thickness, but the wireframe will render correctly.<p>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -298,6 +307,10 @@
 <div class="member">
 <p class="member_declaration"><span class="membername">FlatMaterial</span>()</p>
 <p class="member_description">Default constructor for FlatMaterial.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">FlatMaterial</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="empty_member_description">No description available</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -479,6 +492,14 @@
 <p class="member_description">Set the refraction ratio of the material. Only used when envmapMethod is PhongMaterial.EnvmapMethod_Refract. Default 1.0.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
+<p class="member_description">Get the texture sampler.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
+<p class="member_description">Set the texture sampler.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
 <p class="member_description">Get the log shininess exponent.</p>
 </div>
@@ -506,25 +527,25 @@
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapBlend_Add</span></p><p class="member_description">Add the environment map color to the material color.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ENVMAP_BLEND_ADD</span></p><p class="member_description">Add the environment map color to the material color.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapBlend_Mix</span></p><p class="member_description">Linearly mix the environment map color with the material color. An intensity of 0.0 will show only the material color, 1.0 will show only the environment map color.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ENVMAP_BLEND_MIX</span></p><p class="member_description">Linearly mix the environment map color with the material color. An intensity of 0.0 will show only the material color, 1.0 will show only the environment map color.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapBlend_Multiply</span></p><p class="member_description">Multiply the environment map color with the material color.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ENVMAP_BLEND_MULTIPLY</span></p><p class="member_description">Multiply the environment map color with the material color.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapBlend_None</span></p><p class="member_description">No environment map blending.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ENVMAP_BLEND_NONE</span></p><p class="member_description">No environment map blending.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapMethod_None</span></p><p class="member_description">No environment map sampling.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ENVMAP_NONE</span></p><p class="member_description">No environment map sampling.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapMethod_Reflection</span></p><p class="member_description">Sample the environment map via reflection (like chrome or a mirror)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ENVMAP_REFLECT</span></p><p class="member_description">Sample the environment map via reflection (like chrome or a mirror)</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">EnvmapMethod_Refraction</span></p><p class="member_description">Sample the environment map via refraction (like glass or water)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ENVMAP_REFRACT</span></p><p class="member_description">Sample the environment map via refraction (like glass or water)</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -680,6 +701,20 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">roughness</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> roughness)</p>
 <p class="member_description">Set the roughness factor of the material.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="SkyboxMaterial" /><div class="class">
+<h2 class="class_title" name="SkyboxMaterial">SkyboxMaterial</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-mat.html#Material" class="ckdoc_typename ckdoc_type_object">Material</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">SkyboxMaterial</span>()</p>
+<p class="member_description">Default constructor for SkyboxMaterial.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

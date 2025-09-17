@@ -34,6 +34,8 @@
 <p class="toc_class"><a href="#GOrbitCamera" class="ckdoc_typename ckdoc_type_object">GOrbitCamera</a></p>
 <p class="toc_class"><a href="#GFlyCamera" class="ckdoc_typename ckdoc_type_object">GFlyCamera</a></p>
 <p class="toc_class"><a href="#GText" class="ckdoc_typename ckdoc_type_object">GText</a></p>
+<p class="toc_class"><a href="#GModel" class="ckdoc_typename ckdoc_type_object">GModel</a></p>
+<p class="toc_class"><a href="#GPolyhedron" class="ckdoc_typename ckdoc_type_object">GPolyhedron</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">Graphics generators (GGens) that can be composed together in a scene graph.</p>
@@ -321,6 +323,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">ambient</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
 <p class="member_description">Set the ambient lighting of the scene. Sets material visibility even when no light is present.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">ambient</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> c)</p>
+<p class="member_description">Shorthand for setting the ambient lighting of the scene to @(c, c, c)</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">ambient</span>()</p>
@@ -683,6 +689,14 @@
 <p class="member_description">Set the refraction ratio of the material. Only used when envmapMethod is PhongMaterial.EnvmapMethod_Refract. Default 1.0.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
+<p class="member_description">Get the texture sampler.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
+<p class="member_description">Set the texture sampler.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
 <p class="member_description">Get the log shininess exponent.</p>
 </div>
@@ -831,6 +845,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">refractionRatio</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> ratio)</p>
 <p class="member_description">Set the refraction ratio of the material. Only used when envmapMethod is PhongMaterial.EnvmapMethod_Refract. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
+<p class="member_description">Get the texture sampler.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
+<p class="member_description">Set the texture sampler.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
@@ -982,6 +1004,14 @@
 <p class="member_description">Set the refraction ratio of the material. Only used when envmapMethod is PhongMaterial.EnvmapMethod_Refract. Default 1.0.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
+<p class="member_description">Get the texture sampler.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
+<p class="member_description">Set the texture sampler.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
 <p class="member_description">Get the log shininess exponent.</p>
 </div>
@@ -1129,6 +1159,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">refractionRatio</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> ratio)</p>
 <p class="member_description">Set the refraction ratio of the material. Only used when envmapMethod is PhongMaterial.EnvmapMethod_Refract. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
+<p class="member_description">Get the texture sampler.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
+<p class="member_description">Set the texture sampler.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
@@ -1279,6 +1317,14 @@
 <p class="member_description">Set the refraction ratio of the material. Only used when envmapMethod is PhongMaterial.EnvmapMethod_Refract. Default 1.0.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
+<p class="member_description">Get the texture sampler.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
+<p class="member_description">Set the texture sampler.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
 <p class="member_description">Get the log shininess exponent.</p>
 </div>
@@ -1425,6 +1471,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">refractionRatio</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> ratio)</p>
 <p class="member_description">Set the refraction ratio of the material. Only used when envmapMethod is PhongMaterial.EnvmapMethod_Refract. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
+<p class="member_description">Get the texture sampler.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
+<p class="member_description">Set the texture sampler.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
@@ -1575,6 +1629,14 @@
 <p class="member_description">Set the refraction ratio of the material. Only used when envmapMethod is PhongMaterial.EnvmapMethod_Refract. Default 1.0.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
+<p class="member_description">Get the texture sampler.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
+<p class="member_description">Set the texture sampler.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
 <p class="member_description">Get the log shininess exponent.</p>
 </div>
@@ -1723,6 +1785,14 @@
 <p class="member_description">Set the refraction ratio of the material. Only used when envmapMethod is PhongMaterial.EnvmapMethod_Refract. Default 1.0.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
+<p class="member_description">Get the texture sampler.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
+<p class="member_description">Set the texture sampler.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
 <p class="member_description">Get the log shininess exponent.</p>
 </div>
@@ -1824,13 +1894,13 @@
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Directional</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DIRECTIONAL</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Point</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">POINT</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Spot</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">SPOT</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -2135,6 +2205,14 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">align</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> alignment_mode)</p>
+<p class="member_description">Set the alignment mode of the text. 0 for left, 1 for center, 2 for right. Default 0 aka left. Only in effect if a wrap width is specified, i.e. GText.width > 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">align</span>()</p>
+<p class="member_description">Get the alignment mode of the text. 0 for left, 1 for center, 2 for right. Default 0 aka left. Only in effect if a wrap width is specified, i.e. GText.width > 0.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>
 <p class="member_description">Set the alpha channel of the text color.</p>
 </div>
@@ -2151,6 +2229,14 @@
 <p class="member_description">Get the size of the window (in pixels) used for text anti-aliasing.  0 - no anti-aliasing.  1 - normal anti-aliasing. >=2 - exaggerated effect. Defaults to 1.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">characters</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> max_characters)</p>
+<p class="member_description">Set the number of characters to display for this text string. Useful for gradually revealing a block of text, like RPG dialogue boxes.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">characters</span>()</p>
+<p class="member_description">Get the number of characters to display for this text string. Defaults to 2^31-1.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> color)</p>
 <p class="member_description">Set text color.</p>
 </div>
@@ -2164,7 +2250,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">controlPoints</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> control_points)</p>
-<p class="member_description">Set control points for text. x = horizontal, y = verticalThe control point is a ratio within the text's bounding box that determines where its origin isFor example, (0.5, 0.5) will place the origin at the center the text. (0.0, 0.0) will place the origin at the bottom-left of the text. (1.0, 1.0) will place the origin at the top-right of the text.</p>
+<p class="member_description">Set control points for text. x = horizontal, y = vertical. The control point is a ratio within the text's bounding box that determines where its origin is. For example, (0.5, 0.5) will place the origin at the center the text. (0.0, 0.0) will place the origin at the bottom-left of the text. (1.0, 1.0) will place the origin at the top-right of the text.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">controlPoints</span>()</p>
@@ -2177,6 +2263,22 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">font</span>()</p>
 <p class="member_description">Get path to font file.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">maxWidth</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> width)</p>
+<p class="member_description">Set the wrap width in absolute worldspace units of this text block. If a single word exceeds this width, it will not be broken apart. Default 0.0, meaning no text wrap.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">maxWidth</span>()</p>
+<p class="member_description">Get the wrap width in absolute worldspace units of this text block. Default 0.0, meaning no text wrap.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">size</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> size)</p>
+<p class="member_description">Set the font size scale. Default 1.0. Differs from setting GText.sca() in that chaing GText.size() will restructure the text to fit within the wrapping behaviour specified by GText.width() and GText.align()</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">size</span>()</p>
+<p class="member_description">Get the font size scale. Default 1.0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">spacing</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> spacing)</p>
@@ -2208,6 +2310,217 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">defaultFont</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> default_font)</p>
 <p class="member_description">Set default font file to be used by all GText not given a font path.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="GModel" /><div class="class">
+<h2 class="class_title" name="GModel">GModel</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Class for loading models. Currently supports: OBJ.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/gmodel.ck">basic/gmodel.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GModel</span>()</p>
+<p class="member_description">Default constructor. Initializes an empty model which is functionally equivalent to a GGen. You probably want to use GModel(string path) instead.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">GModel</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filepath)</p>
+<p class="member_description">Initializes an model from the given asset file. Currently supports .obj files.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">GModel</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filepath, <span class="ckdoc_typename ckdoc_type_object">ModelLoadDesc</span> options)</p>
+<p class="member_description">Initializes an model from an asset file with the given model loading options. Currently supports .obj files.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Geometry</span><span class="typename">[]</span> <span class="membername">geometries</span></p><p class="member_description">TODO.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Material</span><span class="typename">[]</span> <span class="membername">materials</span></p><p class="member_description">TODO.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">max</span></p><p class="member_description">Get the max position of this model's bounding box. NOT scale-adjusted, multiply by GModel.scaWorld() to get scaled bounding box.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GMesh</span><span class="typename">[]</span> <span class="membername">meshes</span></p><p class="member_description">TODO.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">min</span></p><p class="member_description">Get the min position of this model's bounding box. NOT scale-adjusted, multiply by GModel.scaWorld() to get scaled bounding box.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="GPolyhedron" /><div class="class">
+<h2 class="class_title" name="GPolyhedron">GPolyhedron</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GMesh" class="ckdoc_typename ckdoc_type_object">GMesh</a> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Convenience class for creating a GMesh(PolyehedronGeometry, PhongMaterial)<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/geo_and_mat.ck">basic/geo_and_mat.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GPolyhedron</span>()</p>
+<p class="member_description">Default constructor for GPolyhedron.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">GPolyhedron</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> type)</p>
+<p class="member_description">Specify the polyhedron type: PolyhedronGeometry.TETRAHEDRON, PolyhedronGeometry.CUBE, PolyhedronGeometry.OCTAHEDRON, PolyhedronGeometry.DODECAHEDRON, or PolyhedronGeometry.ICOSAHEDRON.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">alpha</span>()</p>
+<p class="member_description">Get the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>
+<p class="member_description">Set the alpha channel of the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aoFactor</span>()</p>
+<p class="member_description">Get the ambient occlusion factor of the material. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> aoFactor)</p>
+<p class="member_description">Set the ambient occlusion factor of the material. Default 1.0. 0 disables AO. Set between 0 and 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">aoMap</span>()</p>
+<p class="member_description">Get the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aoMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> aoTexture)</p>
+<p class="member_description">Set the ambient occlusion texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">color</span>()</p>
+<p class="member_description">Get the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> diffuse)</p>
+<p class="member_description">Set the diffuse color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">colorMap</span>()</p>
+<p class="member_description">Get the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> albedoTexture)</p>
+<p class="member_description">Set the diffuse texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">emission</span>()</p>
+<p class="member_description">Get the emission color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emission</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> emission)</p>
+<p class="member_description">Set the emission color of the material. Default black.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">emissiveMap</span>()</p>
+<p class="member_description">Get the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emissiveMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> emissiveTexture)</p>
+<p class="member_description">Set the emissive texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">envmapBlend</span>()</p>
+<p class="member_description">Get the blend mode of the environment map. One of PhongMaterial.EnvmapBlend_None, PhongMaterial.EnvmapBlend_Mix, PhongMaterial.EnvmapBlend_Add, PhongMaterial.EnvmapBlend_Multiply. Default EnvmapBlend_None.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">envmapBlend</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> blendMode)</p>
+<p class="member_description">Set the blend mode of the environment map. One of PhongMaterial.EnvmapBlend_None, PhongMaterial.EnvmapBlend_Mix, PhongMaterial.EnvmapBlend_Add, PhongMaterial.EnvmapBlend_Multiply. Set to EnvmapBlend_None to disable environment lighting.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">envmapIntensity</span>()</p>
+<p class="member_description">Get the intensity of the environment map lighting. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">envmapIntensity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> intensity)</p>
+<p class="member_description">Set the intensity of the environment map lighting. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">envmapMethod</span>()</p>
+<p class="member_description">Get the environment map sampling method. One of PhongMaterial.EnvmapMethod_None, PhongMaterial.EnvmapMethod_Reflect, PhongMaterial.EnvmapMethod_Refract. Set the environment map via GScene.envMap(Texture). Default EnvmapMethod_Reflect.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">envmapMethod</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> envmapMethod)</p>
+<p class="member_description">Set the environment map sampling method. One of PhongMaterial.EnvmapMethod_None, PhongMaterial.EnvmapMethod_Reflect, PhongMaterial.EnvmapMethod_Refract. Default EnvmapMethod_Reflect.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">normalFactor</span>()</p>
+<p class="member_description">Get the normal factor of the material. Scales effect of normal map. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalFactor</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> normalFactor)</p>
+<p class="member_description">Set the normal factor of the material. Scales effect of normal map.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalMap</span>()</p>
+<p class="member_description">Get the normal texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> normalTexture)</p>
+<p class="member_description">Set the normal texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">refractionRatio</span>()</p>
+<p class="member_description">Get the refraction ratio of the material. Only used when envmapMethod is PhongMaterial.EnvmapMethod_Refract. Default 0.5.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">refractionRatio</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> ratio)</p>
+<p class="member_description">Set the refraction ratio of the material. Only used when envmapMethod is PhongMaterial.EnvmapMethod_Refract. Default 1.0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> <span class="membername">sampler</span>()</p>
+<p class="member_description">Get the texture sampler.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
+<p class="member_description">Set the texture sampler.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shape</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> polyhedron_type)</p>
+<p class="member_description">Specify the polyhedron type: PolyhedronGeometry.TETRAHEDRON, PolyhedronGeometry.CUBE, PolyhedronGeometry.OCTAHEDRON, PolyhedronGeometry.DODECAHEDRON, or PolyhedronGeometry.ICOSAHEDRON.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">shape</span>()</p>
+<p class="member_description">Get the current polyhedron type: PolyhedronGeometry.TETRAHEDRON, PolyhedronGeometry.CUBE, PolyhedronGeometry.OCTAHEDRON, PolyhedronGeometry.DODECAHEDRON, or PolyhedronGeometry.ICOSAHEDRON.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">shine</span>()</p>
+<p class="member_description">Get the log shininess exponent.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shine</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> shine)</p>
+<p class="member_description">Set the log shininess exponent. default 5.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">specular</span>()</p>
+<p class="member_description">Get the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specular</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> specular)</p>
+<p class="member_description">Set the specular color of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">specularMap</span>()</p>
+<p class="member_description">Get the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
+<p class="member_description">Set the specular texture of the material.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

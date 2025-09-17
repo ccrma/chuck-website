@@ -24,6 +24,7 @@
 <p class="toc_class"><a href="#SuzanneGeometry" class="ckdoc_typename ckdoc_type_object">SuzanneGeometry</a></p>
 <p class="toc_class"><a href="#LinesGeometry" class="ckdoc_typename ckdoc_type_object">LinesGeometry</a></p>
 <p class="toc_class"><a href="#PolygonGeometry" class="ckdoc_typename ckdoc_type_object">PolygonGeometry</a></p>
+<p class="toc_class"><a href="#PolyhedronGeometry" class="ckdoc_typename ckdoc_type_object">PolyhedronGeometry</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">ChuGL geometries for assigning vertex data such as positions, normals, UV coordinates, and tangents to a GMesh.</p>
@@ -44,6 +45,14 @@
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">indexCount</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> count)</p>
+<p class="member_description">If this geometry uses indexed drawing, i.e. Geometry.indices() is set, set the number of indices to be drawn of this geometry by the rendererDefault is -1, which means all indices are drawn. Values will be clamped to the actual number of indices in the geometry.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">indexCount</span>()</p>
+<p class="member_description">Get the number of indices to be drawn. Default is -1, which means all.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">indices</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> indices)</p>
 <p class="member_description">Set the indices for a geometry.</p>
@@ -106,23 +115,23 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">vertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> numComponents, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> attributeData)</p>
-<p class="member_description">Set the vertex attribute data for a geometry. location must be between 0 and AttributeLocation_Max.</p>
+<p class="member_description">Set the vertex attribute data for a geometry. location must be between 0 and ATTRIBUTE_MAX.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">vertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> attributeData)</p>
-<p class="member_description">Set the vertex attribute data for a geometry. location must be between 0 and AttributeLocation_Max. Assumes attribute has 2 float components.</p>
+<p class="member_description">Set the vertex attribute data for a geometry. location must be between 0 and ATTRIBUTE_MAX. Assumes attribute has 2 float components.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">vertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> attributeData)</p>
-<p class="member_description">Set the vertex attribute data for a geometry. location must be between 0 and AttributeLocation_Max. Assumes attribute has 3 float components.</p>
+<p class="member_description">Set the vertex attribute data for a geometry. location must be between 0 and ATTRIBUTE_MAX. Assumes attribute has 3 float components.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">vertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span><span class="typename">[]</span> attributeData)</p>
-<p class="member_description">Set the vertex attribute data for a geometry. location must be between 0 and AttributeLocation_Max. Assumes attribute has 4 float components.</p>
+<p class="member_description">Set the vertex attribute data for a geometry. location must be between 0 and ATTRIBUTE_MAX. Assumes attribute has 4 float components.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">vertexAttribute</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">int</span> numComponents, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> attributeData)</p>
-<p class="member_description">Set the vertex attribute data for a geometry. location must be between 0 and Geometry.AttributeLocation_Count.</p>
+<p class="member_description">Set the vertex attribute data for a geometry. location must be between 0 and Geometry.ATTRIBUTE_MAX.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">vertexAttributeData</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
@@ -140,20 +149,24 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">vertexCount</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> count)</p>
 <p class="member_description">If this geometry uses vertex pulling or non-indexed drawing, Set the number of vertices to be drawn of this geometry by the rendererDefault is -1, which means all vertices are drawn. Values will be clamped to the actual number of vertices in the geometry.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">vertexCount</span>()</p>
+<p class="member_description">Get the number of vertices to be drawn. Default is -1, which means all.</p>
+</div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AttributeLocation_Count</span></p><p class="member_description">Maximum number of vertex attributes.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ATTRIBUTE_MAX</span></p><p class="member_description">Maximum number of vertex attributes.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AttributeLocation_Normal</span></p><p class="member_description">Normal attribute location used by builtin renderer.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ATTRIBUTE_NORMAL</span></p><p class="member_description">Normal attribute location used by builtin renderer.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AttributeLocation_Position</span></p><p class="member_description">Position attribute location used by builtin renderer.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ATTRIBUTE_POSITION</span></p><p class="member_description">Position attribute location used by builtin renderer.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AttributeLocation_UV</span></p><p class="member_description">UV attribute location used by builtin renderer.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ATTRIBUTE_UV</span></p><p class="member_description">UV attribute location used by builtin renderer.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -558,6 +571,52 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">build</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> points, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> holes, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> hole_counts)</p>
 <p class="member_description">Construct a polygon (with holes) from the given points and holes. `points` forms the closed shape. Any winding order is supported. The points and holes are automatically closed. `hole_counts` specifies the number of points in each hole. E.g. build([@(0,0), @(1,0), @(1,1), @(0,1)], [@(0.25,0.25), @(0.5, 0.75), @(0.75, 0.25)], [3]) will create a square with a triangular hole in the center.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="PolyhedronGeometry" /><div class="class">
+<h2 class="class_title" name="PolyhedronGeometry">PolyhedronGeometry</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="chugl-geo.html#Geometry" class="ckdoc_typename ckdoc_type_object">Geometry</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Geometry for constructing platonic solids: tetrahedron, cube, icosahedron, octahedron, dodecahedron.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/geo_and_mat.ck">basic/geo_and_mat.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">PolyhedronGeometry</span>()</p>
+<p class="member_description">This default constructor initializes a tetrahedron.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">PolyhedronGeometry</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> type)</p>
+<p class="member_description">Initialize the polyhedron with a given type: PolyhedronGeometry.TETRAHEDRON, PolyhedronGeometry.CUBE, PolyhedronGeometry.OCTAHEDRON, PolyhedronGeometry.DODECAHEDRON, or PolyhedronGeometry.ICOSAHEDRON.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">build</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> type)</p>
+<p class="member_description">Change the polyhedron to the given type: PolyhedronGeometry.TETRAHEDRON, PolyhedronGeometry.CUBE, PolyhedronGeometry.OCTAHEDRON, PolyhedronGeometry.DODECAHEDRON, or PolyhedronGeometry.ICOSAHEDRON.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">CUBE</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DODECAHEDRON</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ICOSAHEDRON</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">OCTAHEDRON</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">TETRAHEDRON</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

@@ -18,6 +18,8 @@
 <p class="toc_class"><a href="#TextureDesc" class="ckdoc_typename ckdoc_type_object">TextureDesc</a></p>
 <p class="toc_class"><a href="#TextureWriteDesc" class="ckdoc_typename ckdoc_type_object">TextureWriteDesc</a></p>
 <p class="toc_class"><a href="#TextureLoadDesc" class="ckdoc_typename ckdoc_type_object">TextureLoadDesc</a></p>
+<p class="toc_class"><a href="#TextureLocation" class="ckdoc_typename ckdoc_type_object">TextureLocation</a></p>
+<p class="toc_class"><a href="#TextureSaveEvent" class="ckdoc_typename ckdoc_type_object">TextureSaveEvent</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">Textures can be loaded from file, created dynamically from data; they are passed into materials and mapped onto 2D and 3D surfaces.</p>
@@ -83,6 +85,10 @@
 <p class="member_description">Get whether this texture is auto-resizing (see TextureDesc.resizable)</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">TextureSaveEvent</span> <span class="membername">save</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> fp)</p>
+<p class="member_description">Saves the texture as a .png to the given filepath. If fp is null, returns null and does nothing. Otherwise you can wait on the TextureSaveEvent returned by this method, which will be broadcast when the texture data is finished saving.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">usage</span>()</p>
 <p class="member_description">Get the texture usage flags (immutable). Returns a bitmask of usage flgas from the Texture.Usage_XXXXX enum e.g. Texture.Usage_TextureBinding | Texture.Usage_RenderAttachment. By default, textures are created with ALL usages enabled.</p>
 </div>
@@ -137,37 +143,37 @@
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Dimension_2D</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DIMENSION_2D</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Format_R32Float</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FORMAT_R32FLOAT</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Format_RGBA16Float</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FORMAT_RGBA16FLOAT</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Format_RGBA32Float</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FORMAT_RGBA32FLOAT</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Format_RGBA8Unorm</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FORMAT_RGBA8UNORM</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_All</span></p><p class="member_description">Texture usage flag: all usages enabled.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">USAGE_ALL</span></p><p class="member_description">Texture usage flag: all usages enabled.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_CopyDst</span></p><p class="member_description">Texture usage flag: can be used destination for copy/write operations.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">USAGE_COPY_DST</span></p><p class="member_description">Texture usage flag: can be used destination for copy/write operations.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_CopySrc</span></p><p class="member_description">Texture usage flag: can be used as a source for copy/write operations.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">USAGE_COPY_SRC</span></p><p class="member_description">Texture usage flag: can be used as a source for copy/write operations.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_RenderAttachment</span></p><p class="member_description">Texture usage flag: texture can be used as a render attachment, i.e. written to by a render pass.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">USAGE_RENDER_ATTACHMENT</span></p><p class="member_description">Texture usage flag: texture can be used as a render attachment, i.e. written to by a render pass.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_StorageBinding</span></p><p class="member_description">Texture usage flag: texture can be bound as a storage texture to a shader.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">USAGE_STORAGE_BINDING</span></p><p class="member_description">Texture usage flag: texture can be bound as a storage texture to a shader.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Usage_TextureBinding</span></p><p class="member_description">Texture usage flag: texture can be bound to a shader.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">USAGE_TEXTURE_BINDING</span></p><p class="member_description">Texture usage flag: texture can be bound to a shader.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -219,19 +225,19 @@
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Filter_Linear</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FILTER_LINEAR</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Filter_Nearest</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FILTER_NEAREST</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Wrap_Clamp</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">WRAP_CLAMP</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Wrap_Mirror</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">WRAP_MIRROR</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Wrap_Repeat</span></p><p class="empty_member_description">No description available</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">WRAP_REPEAT</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -340,6 +346,55 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gen_mips</span></p><p class="member_description">Generate mipmaps for the texture. Default true.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="TextureLocation" /><div class="class">
+<h2 class="class_title" name="TextureLocation">TextureLocation</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Describes a specific location/offset into a texture. Used for copying to/from textures.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">TextureLocation</span>()</p>
+<p class="member_description">Default constructor for TextureLocation.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mip</span></p><p class="member_description">Mip level of the texture location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">x</span></p><p class="member_description">X offset of the location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">y</span></p><p class="member_description">Y offset of the location.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">z</span></p><p class="member_description">Z offset of the location.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="TextureSaveEvent" /><div class="class">
+<h2 class="class_title" name="TextureSaveEvent">TextureSaveEvent</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Event</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Event returned by Texture.save(), which is triggered by ChuGL when the save operation is finished.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">TextureSaveEvent</span>()</p>
+<p class="member_description">Default constructor for TextureSaveEvent.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">error</span></p><p class="member_description">0 if save was successful, nonzero on failure.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

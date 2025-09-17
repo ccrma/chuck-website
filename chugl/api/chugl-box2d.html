@@ -1,0 +1,1364 @@
+<html>
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
+<title>Box2D</title>
+<body>
+<a name="top"/>
+<div id="title">
+<div class="titleL">
+<div style="display: flex; align-items: center;"><div class="inline titlelogo"><a href="https://chuck.stanford.edu/" target="_blank"><img src="https://chuck.stanford.edu/doc/images/chuck-logo2023w.png" /> </div><div class="inline"><h1><a href="./">ChucK Class Library Reference</a></h1></div>
+<div class="inline gray"><h1>&nbsp;&nbsp;<span style="color:black">/</span>&nbsp;&nbsp;Box2D</h1></div>
+</div>
+</div>
+</div>
+<div id="body">
+<div class="toc"><a id="toc"/>
+<p class="toc_class"><a href="#b2" class="ckdoc_typename ckdoc_type_object">b2</a></p>
+<p class="toc_class"><a href="#b2World" class="ckdoc_typename ckdoc_type_object">b2World</a></p>
+<p class="toc_class"><a href="#b2BodyType" class="ckdoc_typename ckdoc_type_object">b2BodyType</a></p>
+<p class="toc_class"><a href="#b2ShapeType" class="ckdoc_typename ckdoc_type_object">b2ShapeType</a></p>
+<p class="toc_class"><a href="#b2BodyDef" class="ckdoc_typename ckdoc_type_object">b2BodyDef</a></p>
+<p class="toc_class"><a href="#b2CastOutput" class="ckdoc_typename ckdoc_type_object">b2CastOutput</a></p>
+<p class="toc_class"><a href="#b2Polygon" class="ckdoc_typename ckdoc_type_object">b2Polygon</a></p>
+<p class="toc_class"><a href="#b2Circle" class="ckdoc_typename ckdoc_type_object">b2Circle</a></p>
+<p class="toc_class"><a href="#b2Capsule" class="ckdoc_typename ckdoc_type_object">b2Capsule</a></p>
+<p class="toc_class"><a href="#b2Segment" class="ckdoc_typename ckdoc_type_object">b2Segment</a></p>
+<p class="toc_class"><a href="#b2Filter" class="ckdoc_typename ckdoc_type_object">b2Filter</a></p>
+<p class="toc_class"><a href="#b2MassData" class="ckdoc_typename ckdoc_type_object">b2MassData</a></p>
+<p class="toc_class"><a href="#b2RayCastInput" class="ckdoc_typename ckdoc_type_object">b2RayCastInput</a></p>
+<p class="toc_class"><a href="#b2ShapeCastInput" class="ckdoc_typename ckdoc_type_object">b2ShapeCastInput</a></p>
+<p class="toc_class"><a href="#b2SegmentDistanceResult" class="ckdoc_typename ckdoc_type_object">b2SegmentDistanceResult</a></p>
+<p class="toc_class"><a href="#b2QueryFilter" class="ckdoc_typename ckdoc_type_object">b2QueryFilter</a></p>
+<p class="toc_class"><a href="#b2RayResult" class="ckdoc_typename ckdoc_type_object">b2RayResult</a></p>
+<p class="toc_class"><a href="#b2ShapeDef" class="ckdoc_typename ckdoc_type_object">b2ShapeDef</a></p>
+<p class="toc_class"><a href="#b2WorldDef" class="ckdoc_typename ckdoc_type_object">b2WorldDef</a></p>
+<p class="toc_class"><a href="#b2BodyMoveEvent" class="ckdoc_typename ckdoc_type_object">b2BodyMoveEvent</a></p>
+<p class="toc_class"><a href="#b2ContactHitEvent" class="ckdoc_typename ckdoc_type_object">b2ContactHitEvent</a></p>
+<p class="toc_class"><a href="#b2Body" class="ckdoc_typename ckdoc_type_object">b2Body</a></p>
+<p class="toc_class"><a href="#b2Shape" class="ckdoc_typename ckdoc_type_object">b2Shape</a></p>
+<p class="toc_class"><a href="#b2DebugDraw" class="ckdoc_typename ckdoc_type_object">b2DebugDraw</a></p>
+</div>
+<div class="classes">
+<p class="group_desc">Box2D physics engine</p>
+<a name="b2" /><div class="class">
+<h2 class="class_title" name="b2">b2</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Documentation: https://box2d.org/.<p>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">computeCapsuleAABB</span>(<span class="ckdoc_typename ckdoc_type_object">b2Capsule</span> shape, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angle_radians)</p>
+<p class="member_description">Compute the bounding box of a transformed capsule. Bounds are in the form @(minX, minY, maxX, maxY)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2MassData</span> <span class="membername">computeCapsuleMass</span>(<span class="ckdoc_typename ckdoc_type_object">b2Capsule</span> shape, <span class="ckdoc_typename ckdoc_type_primitive">float</span> density)</p>
+<p class="member_description">Compute mass properties of a capsule.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">computeCircleAABB</span>(<span class="ckdoc_typename ckdoc_type_object">b2Circle</span> shape, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angle_radians)</p>
+<p class="member_description">Compute the bounding box of a transformed circle. Bounds are in the form @(minX, minY, maxX, maxY)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2MassData</span> <span class="membername">computeCircleMass</span>(<span class="ckdoc_typename ckdoc_type_object">b2Circle</span> shape, <span class="ckdoc_typename ckdoc_type_primitive">float</span> density)</p>
+<p class="member_description">Compute mass properties of a circle.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">computePolygonAABB</span>(<span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> shape, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angle_radians)</p>
+<p class="member_description">Compute the bounding box of a transformed polygon. Bounds are in the form @(minX, minY, maxX, maxY)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2MassData</span> <span class="membername">computePolygonMass</span>(<span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> shape, <span class="ckdoc_typename ckdoc_type_primitive">float</span> density)</p>
+<p class="member_description">Compute mass properties of a polygon.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">computeSegmentAABB</span>(<span class="ckdoc_typename ckdoc_type_object">b2Segment</span> shape, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angle_radians)</p>
+<p class="member_description">Compute the bounding box of a transformed line segment. Bounds are in the form @(minX, minY, maxX, maxY)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">createBody</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_object">b2BodyDef</span> def)</p>
+<p class="member_description">Create a rigid body given a definition. No reference to the definition is retained. So you can create the definition on the stack and pass it as a pointer.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">createCapsuleShape</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> body_id, <span class="ckdoc_typename ckdoc_type_object">b2ShapeDef</span> def, <span class="ckdoc_typename ckdoc_type_object">b2Capsule</span> capsule)</p>
+<p class="member_description">Create a capsule shape and attach it to a body. The shape definition and geometry are fully cloned. Contacts are not created until the next time step. @return the shape id for accessing the shape.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">createCircleShape</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> body_id, <span class="ckdoc_typename ckdoc_type_object">b2ShapeDef</span> def, <span class="ckdoc_typename ckdoc_type_object">b2Circle</span> circle)</p>
+<p class="member_description">Create a circle shape and attach it to a body. The shape definition and geometry are fully cloned. Contacts are not created until the next time step.@return the shape id for accessing the shape.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">createPolygonShape</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> body_id, <span class="ckdoc_typename ckdoc_type_object">b2ShapeDef</span> def, <span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> polygon)</p>
+<p class="member_description">Create a polygon shape and attach it to a body. The shape definition and geometry are fully cloned. Contacts are not created until the next time step.  @return the shape id for accessing the shape.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">createSegmentShape</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> body_id, <span class="ckdoc_typename ckdoc_type_object">b2ShapeDef</span> def, <span class="ckdoc_typename ckdoc_type_object">b2Segment</span> segment)</p>
+<p class="member_description">Create a line segment shape and attach it to a body. The shape definition and geometry are fully cloned. Contacts are not created until the next time step.@return the shape id for accessing the shape.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">createWorld</span>(<span class="ckdoc_typename ckdoc_type_object">b2WorldDef</span> def)</p>
+<p class="member_description">Create a world for rigid body simulation. A world contains bodies, shapes, and constraints. You make create up to 128 worlds. Each world is completely independent and may be simulated in parallel.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">destroyBody</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> body_id)</p>
+<p class="member_description">Destroy a rigid body given an id. This destroys all shapes and joints attached to the body. Do not keep references to the associated shapes and joints.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">destroyShape</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Destroy a shape.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">destroyWorld</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id)</p>
+<p class="member_description">Destroy a world and all its contents. This will free all memory associated with the world, including bodies, shapes, and joints.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> <span class="membername">makeBox</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> width, <span class="ckdoc_typename ckdoc_type_primitive">float</span> height)</p>
+<p class="member_description">Make a box (rectangle) polygon, bypassing the need for a convex hull.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> <span class="membername">makeOffsetBox</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> width, <span class="ckdoc_typename ckdoc_type_primitive">float</span> height, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angle)</p>
+<p class="member_description">Make an offset box.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> <span class="membername">makeOffsetPolygon</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> vertices, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angle_radians)</p>
+<p class="member_description">Make a convex polygon from a list of vertices. The vertices must be ordered in CCW order. The polygon must be convex. The radius is used to round the polygon's corners. You can pass at most 8 vertices.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> <span class="membername">makePolygon</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> vertices, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius)</p>
+<p class="member_description">Make a convex polygon from a list of vertices. The vertices must be ordered in CCW order. The polygon must be convex. The radius is used to round the polygon's corners. You can pass at most 8 vertices.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> <span class="membername">makeRoundedBox</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> width, <span class="ckdoc_typename ckdoc_type_primitive">float</span> height, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius)</p>
+<p class="member_description">Make a rounded box.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> <span class="membername">makeSquare</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> length)</p>
+<p class="member_description">Make a square polygon.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">pointInCapsule</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> point, <span class="ckdoc_typename ckdoc_type_object">b2Capsule</span> shape)</p>
+<p class="member_description">Test a point for overlap with a capsule in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">pointInCircle</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> point, <span class="ckdoc_typename ckdoc_type_object">b2Circle</span> shape)</p>
+<p class="member_description">Test a point for overlap with a circle in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">pointInPolygon</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> point, <span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> shape)</p>
+<p class="member_description">Test a point for overlap with a convex polygon in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> rate)</p>
+<p class="member_description">Set the rate modifier at which the physics simulation runs. Default 1.0. E.g. A rate of 2.0 will run the simulation at twice the speed.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2CastOutput</span> <span class="membername">rayCastPolygon</span>(<span class="ckdoc_typename ckdoc_type_object">b2RayCastInput</span> input, <span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> shape)</p>
+<p class="member_description">Ray cast versus polygon in shape local space. Initial overlap is treated as a miss.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2CastOutput</span> <span class="membername">rayCastSegment</span>(<span class="ckdoc_typename ckdoc_type_object">b2RayCastInput</span> input, <span class="ckdoc_typename ckdoc_type_object">b2Segment</span> shape, <span class="ckdoc_typename ckdoc_type_primitive">int</span> oneSided)</p>
+<p class="member_description">Ray cast versus segment in shape local space. Optionally treat the segment as one-sided with hits from the left side being treated as a miss.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2SegmentDistanceResult</span> <span class="membername">segmentDistance</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p1, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> q1, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p2, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> q2)</p>
+<p class="member_description">Compute the distance between two line segments. The closest points are returned along with the barycentric coordinates. Clamps at end points if needed.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2CastOutput</span> <span class="membername">shapeCastCapsule</span>(<span class="ckdoc_typename ckdoc_type_object">b2ShapeCastInput</span> input, <span class="ckdoc_typename ckdoc_type_object">b2Capsule</span> shape)</p>
+<p class="member_description">Shape cast versus a capsule. Initial overlap is treated as a miss.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2CastOutput</span> <span class="membername">shapeCastCircle</span>(<span class="ckdoc_typename ckdoc_type_object">b2ShapeCastInput</span> input, <span class="ckdoc_typename ckdoc_type_object">b2Circle</span> shape)</p>
+<p class="member_description">Shape cast versus a circle. Initial overlap is treated as a miss.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2CastOutput</span> <span class="membername">shapeCastPolygon</span>(<span class="ckdoc_typename ckdoc_type_object">b2ShapeCastInput</span> input, <span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> shape)</p>
+<p class="member_description">Shape cast versus a convex polygon. Initial overlap is treated as a miss.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2CastOutput</span> <span class="membername">shapeCastSegment</span>(<span class="ckdoc_typename ckdoc_type_object">b2ShapeCastInput</span> input, <span class="ckdoc_typename ckdoc_type_object">b2Segment</span> shape)</p>
+<p class="member_description">Shape cast versus a line segment. Initial overlap is treated as a miss.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">substeps</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> substeps)</p>
+<p class="member_description">Set the number of substeps for the physics simulation. Increasing the substep count can increase accuracy. Default 4.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> <span class="membername">transformPolygon</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angle_radians, <span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> polygon)</p>
+<p class="member_description">Transform a polygon. Does not modify the given polygon, instead creating a new one at the new transform. This is useful for transferring a shape from one body to another.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">world</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world)</p>
+<p class="member_description">Set the active physics world for simulation.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2World" /><div class="class">
+<h2 class="class_title" name="b2World">b2World</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">bodyEvents</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_object">b2BodyMoveEvent</span><span class="typename">[]</span> body_events)</p>
+<p class="member_description">Get the body events for the current time step.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2RayResult</span> <span class="membername">castCapsuleClosest</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_object">b2Capsule</span> capsule, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> capsule_origin, <span class="ckdoc_typename ckdoc_type_primitive">float</span> capsule_rotation_radians, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> cast_direction, <span class="ckdoc_typename ckdoc_type_object">b2QueryFilter</span> filter)</p>
+<p class="member_description">Cast a capsule through the world and return the closest hit shape_id. Similar to a cast ray except that a capsule is cast instead of a point.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2RayResult</span> <span class="membername">castCircleClosest</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_object">b2Circle</span> circle, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> circle_origin, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> cast_direction, <span class="ckdoc_typename ckdoc_type_object">b2QueryFilter</span> filter)</p>
+<p class="member_description">Cast a circle through the world and return the closest hit shape_id. Similar to a cast ray except that a circle is cast instead of a point.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2RayResult</span> <span class="membername">castPolygonClosest</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> polygon, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> polygon_origin, <span class="ckdoc_typename ckdoc_type_primitive">float</span> polygon_rotation_radians, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> cast_direction, <span class="ckdoc_typename ckdoc_type_object">b2QueryFilter</span> filter)</p>
+<p class="member_description">Cast a polygon through the world and return the closest hit shape_id. Similar to a cast ray except that a polygon is cast instead of a point.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2RayResult</span> <span class="membername">castRayClosest</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> ray_origin, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> ray_direction, <span class="ckdoc_typename ckdoc_type_object">b2QueryFilter</span> filter)</p>
+<p class="member_description">Cast a ray and return the closest hit. The ray is defined by a start point and a direction vector.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">contactEvents</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> begin_contact_events_shape_ids, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> end_contact_events_shape_ids, <span class="ckdoc_typename ckdoc_type_object">b2ContactHitEvent</span><span class="typename">[]</span> contact_hit_events)</p>
+<p class="member_description">Https://box2d.org/documentation/group__world.html#ga67e9e2ecf3897d4c7254196395be65caUnlike the original box2D implementation, this function returns the ContactBeginTouchEvents and ContactEndTouchEvents in two separate flat arraysof b2ShapeIds (int), stored in order. E.g. begin_contact_events[i] and begin_contact_events[i+1] are the ids of the two shapes that began contact.The contact_hit_events array is used to store the contact hit events of the last frame.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">draw</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_object">b2DebugDraw</span> draw)</p>
+<p class="member_description">Call this to have the given b2DebugDraw be called with shapes and other debug draw data for the given world. Note: you will need to extend b2DebugDraw and implement your own drawing functions.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">enableContinuous</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flag)</p>
+<p class="member_description">Enable/disable continuous collision between dynamic and static bodies.Generally you should keep continuous collision enabled to prevent fastmoving objects from going through static objects. The performance gain fromdisabling continuous collision is minor.@see b2WorldDef.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">enableSleeping</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flag)</p>
+<p class="member_description">Enable/disable sleep. If your application does not need sleeping, you can gain some performance by disabling sleep completely at the world level.@see b2WorldDef.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">explode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">float</span> impulse)</p>
+<p class="member_description">Apply a radial explosion.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">getGravity</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id)</p>
+<p class="member_description">Get the gravity vector.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isValid</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id)</p>
+<p class="member_description">World id validation. Provides validation for up to 64K allocations.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">overlapAABB</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> aabb, <span class="ckdoc_typename ckdoc_type_object">b2QueryFilter</span> filter)</p>
+<p class="member_description">Returns the b2ShapeId for all shapes that overlap the provided AABB. The AABB is in the form of @(lowerBound.x, lowerBound.y, upperBound.x, upperBound.y)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">overlapCapsule</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_object">b2Circle</span> circle, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> circle_position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> circle_rotation_radians, <span class="ckdoc_typename ckdoc_type_object">b2QueryFilter</span> filter)</p>
+<p class="member_description">Returns the b2ShapeId for all shapes that overlap the provided circle.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">overlapCapsule</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_object">b2Capsule</span> capsule, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> capsule_position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> capsule_rotation_radians, <span class="ckdoc_typename ckdoc_type_object">b2QueryFilter</span> filter)</p>
+<p class="member_description">Returns the b2ShapeId for all shapes that overlap the provided capsule.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">overlapPolygon</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> polygon, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> polygon_position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> polygon_rotation_radians, <span class="ckdoc_typename ckdoc_type_object">b2QueryFilter</span> filter)</p>
+<p class="member_description">Returns the b2ShapeId for all shapes that overlap the provided polygon.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sensorEvents</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> begin_sensor_events, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> end_sensor_events)</p>
+<p class="member_description">Original box2D documentation: https://box2d.org/documentation/group__events.html#structb2_sensor_events This implementation is different and optimized for cache performance. The two input arrays,begin_sensor_events and end_sensor_events, are used to store the sensor events of the last frame,which are a pair of b2ShapeIds (int), stored in order. E.g. begin_sensor_events[i] is the id of thesensor shape, and begin_sensor_events[i+1] is the id of the dynamic shape that began contact with the sensor.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setContactTuning</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> hertz, <span class="ckdoc_typename ckdoc_type_primitive">float</span> dampingRatio, <span class="ckdoc_typename ckdoc_type_primitive">float</span> pushVelocity)</p>
+<p class="member_description">Adjust contact tuning parameters. Advanced feature. `hertz` is contact stiffness, `dampingRatio` is contact bounciness with 1 being critical damping (non-dimensional), `pushVelocity` is the maximum contact constraint push out velocity in m/s. Advanced feature.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setGravity</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> gravity)</p>
+<p class="member_description">Set the gravity vector for the entire world. Box2D has no concept of an up direction and this is left as a decision for the application. Typically in m/s^2.@see b2WorldDef.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setHitEventThreshold</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Adjust the hit event threshold. This controls the collision velocity needed to generate a b2ContactHitEvent. Typically in meters per second.@see b2WorldDef.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setRestitutionThreshold</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> world_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Adjust the restitution threshold. It is recommended not to make this value very small because it will prevent bodies from sleeping. Typically in meters per second.@see b2WorldDef.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2BodyType" /><div class="class">
+<h2 class="class_title" name="b2BodyType">b2BodyType</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">dynamicBody</span></p><p class="member_description">Positive mass, velocity determined by forces, moved by solver.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">kinematicBody</span></p><p class="member_description">Zero mass, velocity set by user, moved by solver.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">staticBody</span></p><p class="member_description">Zero mass, zero velocity, may be manually moved.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2ShapeType" /><div class="class">
+<h2 class="class_title" name="b2ShapeType">b2ShapeType</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">capsuleShape</span></p><p class="member_description">A capsule is an extruded circle.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">circleShape</span></p><p class="member_description">A circle with an offset.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">polygonShape</span></p><p class="member_description">A convex polygon.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">segmentShape</span></p><p class="member_description">A line segment.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">smoothSegmentShape</span></p><p class="member_description">A smooth segment owned by a chain shape.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2BodyDef" /><div class="class">
+<h2 class="class_title" name="b2BodyDef">b2BodyDef</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Https://box2d.org/documentation/group__body.html#structb2Body_def.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2BodyDef</span>()</p>
+<p class="member_description">Default constructor for b2BodyDef.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">allowFastRotation</span></p><p class="member_description">This allows this body to bypass rotational speed limits. Should only be used for circular objects, like wheels.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">angularDamping</span></p><p class="member_description">Angular damping is use to reduce the angular velocity. The damping parameter can be larger than 1.0f but the damping effect becomes sensitive to the time step when the damping parameter is large. Angular damping can be use slow down rotating bodies.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">angularVelocity</span></p><p class="member_description">The initial angular velocity of the body. Radians per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">automaticMass</span></p><p class="member_description">Automatically compute mass and related properties on this body from shapes. Triggers whenever a shape is add/removed/changed. Default is true.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">enableSleep</span></p><p class="member_description">Set this flag to false if this body should never fall asleep.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">fixedRotation</span></p><p class="member_description">Should this body be prevented from rotating? Useful for characters.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">gravityScale</span></p><p class="member_description">Scale the gravity applied to this body. Non-dimensional.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isAwake</span></p><p class="member_description">Is this body initially awake or sleeping?</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isBullet</span></p><p class="member_description">Treat this body as high speed object that performs continuous collision detection against dynamic and kinematic bodies, but not other bullet bodies. Warning Bullets should be used sparingly. They are not a solution for general dynamic-versus-dynamic continuous collision. They may interfere with joint constraints.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isEnabled</span></p><p class="member_description">Used to disable a body. A disabled body does not move or collide.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">linearDamping</span></p><p class="member_description">Linear damping is use to reduce the linear velocity. The damping parameter can be larger than 1 but the damping effect becomes sensitive to the time step when the damping parameter is large. Generally linear damping is undesirable because it makes objects move slowly as if they are floating.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">linearVelocity</span></p><p class="member_description">The initial linear velocity of the body's origin. Typically in meters per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">position</span></p><p class="member_description">The initial world position of the body. Bodies should be created with the desired position. note Creating bodies at the origin and then moving them nearly doubles the cost of body creation, especially if the body is moved after shapes have been added.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">rotation</span></p><p class="member_description">The initial world rotation of the body. Use b2MakeRot() if you have an angle.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sleepThreshold</span></p><p class="member_description">Sleep velocity threshold, default is 0.05 meter per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">type</span></p><p class="member_description">The body type: static, kinematic, or dynamic. Pass a b2BodyType enum, e.g. b2BodyType.dynamicBody.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2CastOutput" /><div class="class">
+<h2 class="class_title" name="b2CastOutput">b2CastOutput</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Https://box2d.org/documentation/group__geometry.html#structb2_cast_output.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2CastOutput</span>()</p>
+<p class="member_description">Default constructor for b2CastOutput.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fraction</span></p><p class="member_description">The fraction of the input translation at collision.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">hit</span></p><p class="member_description">Did the cast hit?</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">iterations</span></p><p class="member_description">The number of iterations used.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">normal</span></p><p class="member_description">The surface normal at the hit point.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">point</span></p><p class="member_description">The surface hit point.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2Polygon" /><div class="class">
+<h2 class="class_title" name="b2Polygon">b2Polygon</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Don't instantiate directly. Use helpers b2.make* instead. https://box2d.org/documentation/group__geometry.html#structb2PolygonA solid convex polygon. It is assumed that the interior of the polygonis to the left of each edge.Polygons have a maximum number of vertices equal to b2_maxPolygonVertices.In most cases you should not need many vertices for a convex polygon.@warning DO NOT fill this out manually, instead use a helper function like b2.makePolygon or b2.makeBox.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2Polygon</span>()</p>
+<p class="member_description">Default constructor for b2Polygon.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">centroid</span>()</p>
+<p class="member_description">Get the centroid of the polygon.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> <span class="membername">normals</span>()</p>
+<p class="member_description">Get the outward normal vectors of the polygon sides.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span>()</p>
+<p class="member_description">Get the external radius for rounded polygons.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> <span class="membername">vertices</span>()</p>
+<p class="member_description">Get the vertices of the polygon.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2Circle" /><div class="class">
+<h2 class="class_title" name="b2Circle">b2Circle</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Https://box2d.org/documentation/group__geometry.html#structb2Circle.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2Circle</span>()</p>
+<p class="member_description">Default constructor for b2Circle.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">b2Circle</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> radius)</p>
+<p class="member_description">Assumes circle is centered at @(0,0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">b2Circle</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">center</span></p><p class="member_description">The local center (relative to the body's origin)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span></p><p class="member_description">The radius.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2Capsule" /><div class="class">
+<h2 class="class_title" name="b2Capsule">b2Capsule</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Https://box2d.org/documentation/group__geometry.html#structb2Capsule.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2Capsule</span>()</p>
+<p class="member_description">Default constructor for b2Capsule.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">b2Capsule</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center1, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center2, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">center1</span></p><p class="member_description">Local center of the first semicircle.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">center2</span></p><p class="member_description">Local center of the second semicircle.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span></p><p class="member_description">The radius of the semicircles.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2Segment" /><div class="class">
+<h2 class="class_title" name="b2Segment">b2Segment</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Https://box2d.org/documentation/group__geometry.html#structb2Segment.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2Segment</span>()</p>
+<p class="member_description">Default constructor for b2Segment.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">b2Segment</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> point1, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> point2)</p>
+<p class="empty_member_description">No description available</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">point1</span></p><p class="member_description">The first point.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">point2</span></p><p class="member_description">The second point.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2Filter" /><div class="class">
+<h2 class="class_title" name="b2Filter">b2Filter</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Https://box2d.org/documentation/group__shape.html#structb2Filter Defaults to .categoryBits = 0x01, .maskBits = 0xFFFFFFFF, .groupIndex = 0.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2Filter</span>()</p>
+<p class="member_description">Default constructor for b2Filter.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">categoryBits</span></p><p class="member_description">The collision category bits. Normally you would just set one bit. The category bits should represent your application object types. E.g. player is category 0x001, enemy is category 0x002, projectile is category 0x004.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">groupIndex</span></p><p class="member_description">Collision groups allow a certain group of objects to never collide (negative) or always collide (positive). A group index of zero has no effect. Non-zero group filtering always wins against the mask bits.  For example, you may want ragdolls to collide with other ragdolls but you don't want ragdoll self-collision. In this case you would give each ragdoll a unique negative group index and apply that group index to all shapes on the ragdoll.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">maskBits</span></p><p class="member_description">The collision mask bits. This states the categories that this shape would accept for collision.  For example, you may want your player to only collide with static objects and other players. Then `maskbits = static | player`.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2MassData" /><div class="class">
+<h2 class="class_title" name="b2MassData">b2MassData</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Holds the mass data computed for a shape. https://box2d.org/documentation/group__geometry.html#structb2_mass_data.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2MassData</span>()</p>
+<p class="member_description">Default constructor for b2MassData.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">center</span></p><p class="member_description">The position of the shape's centroid relative to the shape's origin.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mass</span></p><p class="member_description">The mass of the shape, usually in kilograms.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rotationalInertia</span></p><p class="member_description">The rotational inertia of the shape about the local origin.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2RayCastInput" /><div class="class">
+<h2 class="class_title" name="b2RayCastInput">b2RayCastInput</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Low level ray-cast input data. https://box2d.org/documentation/group__geometry.html#structb2_ray_cast_input.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2RayCastInput</span>()</p>
+<p class="member_description">Default constructor for b2RayCastInput.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">maxFraction</span></p><p class="member_description">The maximum fraction of the translation to consider, typically 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">origin</span></p><p class="member_description">Start point of the ray cast.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">translation</span></p><p class="member_description">Translation of the ray cast.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2ShapeCastInput" /><div class="class">
+<h2 class="class_title" name="b2ShapeCastInput">b2ShapeCastInput</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Low level shape cast input in generic form. This allows casting an arbitrary point cloud wrap with a radius. For example, a circle is a single point with a non-zero radius.  A capsule is two points with a non-zero radius. A box is four points with a zero radius. https://box2d.org/documentation/group__geometry.html#structb2_shape_cast_input.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2ShapeCastInput</span>()</p>
+<p class="member_description">Default constructor for b2ShapeCastInput.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">maxFraction</span></p><p class="member_description">The maximum fraction of the translation to consider, typically 1.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> <span class="membername">points</span></p><p class="member_description">A point cloud to cast. Accepts at most 8 points.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">radius</span></p><p class="member_description">The radius around the point cloud.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">translation</span></p><p class="member_description">The translation of the shape cast.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2SegmentDistanceResult" /><div class="class">
+<h2 class="class_title" name="b2SegmentDistanceResult">b2SegmentDistanceResult</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Result of computing the distance between two line segments. https://box2d.org/documentation/group__distance.html#structb2_segment_distance_result.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2SegmentDistanceResult</span>()</p>
+<p class="member_description">Default constructor for b2SegmentDistanceResult.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">closest1</span></p><p class="member_description">The closest point on the first segment.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">closest2</span></p><p class="member_description">The closest point on the second segment.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">distanceSquared</span></p><p class="member_description">The squared distance between the closest points.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fraction1</span></p><p class="member_description">The barycentric coordinate on the first segment.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fraction2</span></p><p class="member_description">The barycentric coordinate on the second segment.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2QueryFilter" /><div class="class">
+<h2 class="class_title" name="b2QueryFilter">b2QueryFilter</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Https://box2d.org/documentation/group__shape.html#structb2_query_filter and https://box2d.org/documentation/md_simulation.html#autotoc_md112. The query filter is used to filter collisions between queries and shapes. For example, you may want a ray-cast representing a projectile to hit players and the static environment but not debris.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2QueryFilter</span>()</p>
+<p class="member_description">Default constructor for b2QueryFilter.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">categoryBits</span></p><p class="member_description">The collision category bits of this query. Normally you would just set one bit.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">maskBits</span></p><p class="member_description">The collision mask bits. This states the shape categories that this query would accept for collision.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2RayResult" /><div class="class">
+<h2 class="class_title" name="b2RayResult">b2RayResult</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Result from raycast queries.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2RayResult</span>()</p>
+<p class="member_description">Default constructor for b2RayResult.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fraction</span></p><p class="member_description">The fraction along the ray at the point of intersection.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">normal</span></p><p class="member_description">The normal vector at the point of intersection.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">point</span></p><p class="member_description">The point of initial intersection.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">shape</span></p><p class="member_description">The shape id hit by the ray.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2ShapeDef" /><div class="class">
+<h2 class="class_title" name="b2ShapeDef">b2ShapeDef</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Https://box2d.org/documentation/group__shape.html#structb2Shape_def.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2ShapeDef</span>()</p>
+<p class="member_description">Default constructor for b2ShapeDef.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">density</span></p><p class="member_description">The density, usually in kg/m^2.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">enableContactEvents</span></p><p class="member_description">Enable contact events for this shape. Only applies to kinematic and dynamic bodies. Ignored for sensors.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">enableHitEvents</span></p><p class="member_description">Enable hit events for this shape. Only applies to kinematic and dynamic bodies. Ignored for sensors.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">enablePreSolveEvents</span></p><p class="member_description">Enable pre-solve contact events for this shape. Only applies to dynamic bodies. These are expensive and must be carefully handled due to threading. Ignored for sensors.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">enableSensorEvents</span></p><p class="member_description">Enable sensor events for this shape. Only applies to kinematic and dynamic bodies. Ignored for sensors.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2Filter</span> <span class="membername">filter</span></p><p class="member_description">Collision filtering data.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">forceContactCreation</span></p><p class="member_description">Normally shapes on static bodies don't invoke contact creation when they are added to the world. This overrides that behavior and causes contact creation. This significantly slows down static body creation which can be important when there are many static shapes.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">friction</span></p><p class="member_description">The Coulomb (dry) friction coefficient, usually in the range [0,1].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isSensor</span></p><p class="member_description">A sensor shape generates overlap events but never generates a collision response.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">restitution</span></p><p class="member_description">The restitution (bounce) usually in the range [0,1].</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2WorldDef" /><div class="class">
+<h2 class="class_title" name="b2WorldDef">b2WorldDef</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">World definition used to create a simulation world.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2WorldDef</span>()</p>
+<p class="member_description">Default constructor for b2WorldDef.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">contactDampingRatio</span></p><p class="member_description">Contact bounciness. Non-dimensional.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">contactHertz</span></p><p class="member_description">Contact stiffness. Cycles per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">contactPushoutVelocity</span></p><p class="member_description">This parameter controls how fast overlap is resolved and has units of meters per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">enableContinuous</span></p><p class="member_description">Enable continuous collision.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">enableSleep</span></p><p class="member_description">Can bodies go to sleep to improve performance.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">gravity</span></p><p class="member_description">Gravity vector. Box2D has no up-vector defined.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">hitEventThreshold</span></p><p class="member_description">Threshold velocity for hit events. Usually meters per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">jointDampingRatio</span></p><p class="member_description">Joint bounciness. Non-dimensional.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">jointHertz</span></p><p class="member_description">Joint stiffness. Cycles per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">maximumLinearVelocity</span></p><p class="member_description">Maximum linear velocity.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">restitutionThreshold</span></p><p class="member_description">Restitution velocity threshold, usually in m/s. Collisions above this speed have restitution applied (will bounce).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">workerCount</span></p><p class="member_description">Number of workers to use with the provided task system. Box2D performs best when using only performance cores and accessing a single L2 cache. Efficiency cores and hyper-threading provide little benefit and may even harm performance.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2BodyMoveEvent" /><div class="class">
+<h2 class="class_title" name="b2BodyMoveEvent">b2BodyMoveEvent</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Https://box2d.org/documentation/group__events.html#structb2Body_move_eventBody move events triggered when a body moves. Triggered when a body moves due to simulation. Not reported for bodies moved by the user. This also has a flag to indicate that the body went to sleep so the application can also sleep that actor/entity/object associated with the body. On the other hand if the flag does not indicate the body went to sleep then the application can treat the actor/entity/object associated with the body as awake. This is an efficient way for an application to update game object transforms rather than calling functions such as b2Body_GetTransform() because this data is delivered as a contiguous array and it is only populated with bodies that have moved. @note If sleeping is disabled all dynamic and kinematic bodies will trigger move events.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2BodyMoveEvent</span>()</p>
+<p class="member_description">Default constructor for b2BodyMoveEvent.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">bodyId</span></p><p class="member_description">Id of the b2body.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">fellAsleep</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">pos</span></p><p class="member_description">2d position.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rot</span></p><p class="member_description">Rotation in radians around the z-axis.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2ContactHitEvent" /><div class="class">
+<h2 class="class_title" name="b2ContactHitEvent">b2ContactHitEvent</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Https://box2d.org/documentation/group__events.html#structb2_contact_hit_eventDon't instantiate directly. Use b2World.contactEvents() instead.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2ContactHitEvent</span>()</p>
+<p class="member_description">Default constructor for b2ContactHitEvent.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">approachSpeed</span></p><p class="member_description">The speed the shapes are approaching. Always positive. Typically in meters per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">normal</span></p><p class="member_description">Normal vector pointing from shape A to shape B.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">point</span></p><p class="member_description">Point where the shapes hit.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">shapeIdA</span></p><p class="member_description">Id of the first shape.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">shapeIdB</span></p><p class="member_description">Id of the second shape.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2Body" /><div class="class">
+<h2 class="class_title" name="b2Body">b2Body</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Don't create bodies directly. Use b2World.createBody instead. https://box2d.org/documentation/group__body.html.<p>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">angle</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the body angle in radians in the range [-pi, pi].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">angle</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angle_radians)</p>
+<p class="member_description">Set the world rotation of a body. This acts as a teleport and is fairly expensive.@note Generally you should create a body with the intended transform. @see b2BodyDef.position.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">angularDamping</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angularDamping)</p>
+<p class="member_description">Adjust the angular damping. Normally this is set in b2BodyDef before creation.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">angularDamping</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the current angular damping.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">angularVelocity</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the angular velocity of a body in radians per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">angularVelocity</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angularVelocity)</p>
+<p class="member_description">Set the angular velocity of a body in radians per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">applyMassFromShapes</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">This update the mass properties to the sum of the mass properties of the shapes. This normally does not need to be called unless you called .massData(b2_MassData) to override the mass and you later want to reset the mass.You may also use this when automatic mass computation has been disabled.You should call this regardless of body type.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">automaticMass</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> automaticMass)</p>
+<p class="member_description">Set the automatic mass setting. Normally this is set in b2BodyDef before creation.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">automaticMass</span>()</p>
+<p class="member_description">Get the automatic mass setting.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">awake</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> awake)</p>
+<p class="member_description">Wake a body from sleep. This wakes the entire island the body is touching.@warning Putting a body to sleep will put the entire island of bodiestouching this body to sleep, which can be expensive and possibly unintuitive.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">bullet</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flag)</p>
+<p class="member_description">Set this body to be a bullet. A bullet does continuous collision detection against dynamic bodies (but not other bullets).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">computeAABB</span>()</p>
+<p class="member_description">Get the current world AABB that contains all the attached shapes. Note that this may not encompass the body origin.If there are no shapes attached then the returned AABB is empty and centered on the body origin.The aabb is in the form of (lowerBound.x, lowerBound.y, upperBound.x, upperBound.y.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">disable</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Disable a body by removing it completely from the simulation. This is expensive.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">enable</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Enable a body by adding it to the simulation. This is expensive.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">enableHitEvents</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> enableHitEvents)</p>
+<p class="member_description">Enable/disable hit events on all shapes@see b2ShapeDef::enableHitEvents.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">enableSleep</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> enableSleep)</p>
+<p class="member_description">Enable or disable sleeping for this body. If sleeping is disabled the body will wake.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">fixedRotation</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flag)</p>
+<p class="member_description">Set this body to have fixed rotation. This causes the mass to be reset in all cases.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">force</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> force, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> point, <span class="ckdoc_typename ckdoc_type_primitive">int</span> wake)</p>
+<p class="member_description">Apply a force at a world point. If the force is not applied at the center of mass, it will generate a torque and affect the angular velocity. This optionally wakes up the body.The force is ignored if the body is not awake.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">force</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> force, <span class="ckdoc_typename ckdoc_type_primitive">int</span> wake)</p>
+<p class="member_description">Apply a force to the center of mass. This optionally wakes up the body. The force is ignored if the body is not awake.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">gravityScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> gravityScale)</p>
+<p class="member_description">Adjust the gravity scale. Normally this is set in b2BodyDef before creation.@see b2BodyDef::gravityScale.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">gravityScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the current gravity scale.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">impulse</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> impulse, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> point, <span class="ckdoc_typename ckdoc_type_primitive">int</span> wake)</p>
+<p class="member_description">Apply an impulse at a point. This immediately modifies the velocity.It also modifies the angular velocity if the point of application is not at the center of mass. This optionally wakes the body.The impulse is ignored if the body is not awake.@warning This should be used for one-shot impulses. If you need a steady force,use a force instead, which will work better with the sub-stepping solver.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">impulse</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> impulse, <span class="ckdoc_typename ckdoc_type_primitive">int</span> wake)</p>
+<p class="member_description">Apply an impulse to the center of mass. This immediately modifies the velocity.The impulse is ignored if the body is not awake. This optionally wakes the body.@warning This should be used for one-shot impulses. If you need a steady force,use a force instead, which will work better with the sub-stepping solver.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">impulse</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> impulse, <span class="ckdoc_typename ckdoc_type_primitive">int</span> wake)</p>
+<p class="member_description">Apply an angular impulse. The impulse is ignored if the body is not awake. This optionally wakes the body.@warning This should be used for one-shot impulses. If you need a steadyforce, use a force instead, which will work better with the sub-stepping solver.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">inertia</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the inertia tensor of the body, typically in kg*m^2.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isAwake</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Returns true if this body is awake.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isBullet</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Is this body a bullet?</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isEnabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Returns true if this body is enabled.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isFixedRotation</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Does this body have fixed rotation?</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isSleepEnabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Returns true if sleeping is enabled for this body.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isValid</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Check if a body id is valid.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">linearDamping</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> linearDamping)</p>
+<p class="member_description">Adjust the linear damping. Normally this is set in b2BodyDef before creation.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">linearDamping</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the current linear damping.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">linearVelocity</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the linear velocity of a body's center of mass. Typically in meters per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">linearVelocity</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> linearVelocity)</p>
+<p class="member_description">Set the linear velocity of a body. Typically in meters per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">localCenterOfMass</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the center of mass position of the body in local space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">localPoint</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> worldPoint)</p>
+<p class="member_description">Get a local point on a body given a world point.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">localVector</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> worldVector)</p>
+<p class="member_description">Get a local vector on a body given a world vector.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">mass</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the mass of the body, typically in kilograms.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2MassData</span> <span class="membername">massData</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the mass data for a body.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">massData</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_object">b2MassData</span> massData)</p>
+<p class="member_description">Override the body's mass properties. Normally this is computed automatically using the shape geometry and density.This information is lost if a shape is added or removed or if the body type changes.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">position</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the world position of a body. This is the location of the body origin.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">position</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> position)</p>
+<p class="member_description">Set the world position of a body. This acts as a teleport and is fairly expensive. @note Generally you should create a body with the intended transform. @see b2BodyDef.position.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">complex</span> <span class="membername">rotation</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the world rotation of a body as a cosine/sine pair (complex number)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">shapeCount</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the number of shapes on this body.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">shapes</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> shape_id_array)</p>
+<p class="member_description">Get the shape ids for all shapes on this body.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sleepThreshold</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> sleepThreshold)</p>
+<p class="member_description">Set the sleep threshold, typically in meters per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">sleepThreshold</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the sleep threshold, typically in meters per second.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">torque</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> torque, <span class="ckdoc_typename ckdoc_type_primitive">int</span> wake)</p>
+<p class="member_description">Apply a torque. This affects the angular velocity without affecting the linear velocity.This optionally wakes the body. The torque is ignored if the body is not awake.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">transform</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> angle_radians)</p>
+<p class="member_description">Set the world transform of a body. This acts as a teleport and is fairly expensive. @note Generally you should create a body with the intended transform. @see b2BodyDef.position. Angle is a rotation in radians and will be converted to a b2Rot rotation.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">type</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the body type: static, kinematic, or dynamic.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">type</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> b2BodyType)</p>
+<p class="member_description">Change the body type. This is an expensive operation. This automatically updates the mass properties regardless of the automatic mass setting.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">worldCenterOfMass</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id)</p>
+<p class="member_description">Get the center of mass position of the body in world space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">worldPoint</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> localPoint)</p>
+<p class="member_description">Get a world point on a body given a local point.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">worldVector</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> b2Body_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> localVector)</p>
+<p class="member_description">Get a world vector on a body given a local vector.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2Shape" /><div class="class">
+<h2 class="class_title" name="b2Shape">b2Shape</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Https://box2d.org/documentation/group__shape.htmlDon't instantiate directly. Use b2Shape.createXXXShape() functions instead.<p>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">AABB</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Get the current world AABB. Returns (lowerBound.x, lowerBound.y, upperBound.x, upperBound.y)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">areContactEventsEnabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Returns true if contact events are enabled.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">areHitEventsEnabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Returns true if hit events are enabled.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">arePreSolveEventsEnabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Returns true if pre-solve events are enabled.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">areSensorEventsEnabled</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Returns true if sensor events are enabled.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">body</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Get the body id that a shape is attached to.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2Capsule</span> <span class="membername">capsule</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Get a copy of the shape's capsule. Asserts the type is correct.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">capsule</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_object">b2Capsule</span> capsule)</p>
+<p class="member_description">Allows you to change a shape to be a capsule or update the current capsule.This does not modify the mass properties.@see b2Body_ApplyMassFromShapes.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2Circle</span> <span class="membername">circle</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Get a copy of the shape's circle. Asserts the type is correct.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">circle</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_object">b2Circle</span> circle)</p>
+<p class="member_description">Allows you to change a shape to be a circle or update the current circle.This does not modify the mass properties.@see b2Body_ApplyMassFromShapes.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">closestPoint</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> target)</p>
+<p class="member_description">Get the closest point on a shape to a target point. Target and result are in world space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">density</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> density)</p>
+<p class="member_description">Set the mass density of a shape, typically in kg/m^2. This will not update the mass properties on the parent body.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">density</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Get the density of a shape, typically in kg/m^2.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">enableContactEvents</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flag)</p>
+<p class="member_description">Enable contact events for this shape. Only applies to kinematic and dynamic bodies. Ignored for sensors. @see b2ShapeDef::enableContactEvents.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">enableHitEvents</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flag)</p>
+<p class="member_description">Enable contact hit events for this shape. Ignored for sensors. @see b2WorldDef::hitEventThreshold.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">enablePreSolveEvents</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flag)</p>
+<p class="member_description">Enable pre-solve contact events for this shape. Only applies to dynamic bodies. These are expensive and must be carefully handled due to multithreading. Ignored for sensors. @see b2PreSolveFcn.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">enableSensorEvents</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> flag)</p>
+<p class="member_description">Enable sensor events for this shape. Only applies to kinematic and dynamic bodies. Ignored for sensors. @see b2ShapeDef::isSensor.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">filter</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_object">b2Filter</span> filter)</p>
+<p class="member_description">Set the current filter. This is almost as expensive as recreating the shape. @see b2ShapeDef::filter.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2Filter</span> <span class="membername">filter</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Get the shape filter.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">friction</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> friction)</p>
+<p class="member_description">Set the friction on a shape.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">friction</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Get the friction of a shape.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isSensor</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Returns true If the shape is a sensor.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isValid</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Check if a shape id is valid.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> <span class="membername">polygon</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Get a copy of the shape's convex polygon. Asserts the type is correct.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">polygon</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_object">b2Polygon</span> polygon)</p>
+<p class="member_description">Allows you to change a shape to be a polygon or update the current polygon.This does not modify the mass properties.@see b2Body_ApplyMassFromShapes.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rayCast</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> origin, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> translation, <span class="ckdoc_typename ckdoc_type_object">b2CastOutput</span> output)</p>
+<p class="member_description">Ray cast a shape directly. Copies the output to the provided output object.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">restitution</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_primitive">float</span> restitution)</p>
+<p class="member_description">Set the shape restitution (bounciness)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">restitution</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Get the shape restitution.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">b2Segment</span> <span class="membername">segment</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Get a copy of the shape's line segment. Asserts the type is correct.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">segment</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_object">b2Segment</span> segment)</p>
+<p class="member_description">Allows you to change a shape to be a segment or update the current segment.This does not modify the mass properties.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">testPoint</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> point)</p>
+<p class="member_description">Test a point for overlap with a shape.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">type</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> shape_id)</p>
+<p class="member_description">Get the type of a shape. Returns b2ShapeType.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="b2DebugDraw" /><div class="class">
+<h2 class="class_title" name="b2DebugDraw">b2DebugDraw</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">This class holds callbacks you can override to draw a Box2D world. https://box2d.org/documentation/group__world.html#structb2_debug_draw.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">b2DebugDraw</span>()</p>
+<p class="member_description">Default constructor for b2DebugDraw.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">drawCircle</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Draw a circle outline.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">drawPoint</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> size, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Draw a point.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">drawPolygon</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> vertices, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Draw a closed polygon provided in CCW order.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">drawSegment</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p1, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p2, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Draw a line segment.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">drawSolidCapsule</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p1, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p2, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Draw a solid capsule.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">drawSolidCircle</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rotation_radians, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Draw a solid circle.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">drawSolidPolygon</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rotation_radians, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span><span class="typename">[]</span> vertices, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
+<p class="member_description">Draw a solid closed polygon provided in CCW order.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">drawTransform</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> position, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rotation_radians)</p>
+<p class="member_description">Draw a transform. Choose your own length scale.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drawAABBs</span></p><p class="member_description">Option to draw the bounding boxes for shapes.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drawContactImpulses</span></p><p class="member_description">Option to draw contact normal impulses.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drawContactNormals</span></p><p class="member_description">Option to draw contact normals.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drawContacts</span></p><p class="member_description">Option to draw contact points.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drawFrictionImpulses</span></p><p class="member_description">Option to draw contact friction impulses.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drawGraphColors</span></p><p class="member_description">Option to visualize the graph coloring used for contacts and joints.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">drawingBounds</span></p><p class="member_description">Bounds to use if restricting drawing to a rectangular region. The AABB is in the form of @(lowerBound.x, lowerBound.y, upperBound.x, upperBound.y)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drawJointExtras</span></p><p class="member_description">Option to draw additional information for joints.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drawJoints</span></p><p class="member_description">Option to draw joints.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drawMass</span></p><p class="member_description">Option to draw the mass and center of mass of dynamic bodies.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">drawShapes</span></p><p class="member_description">Option to draw shapes.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">useDrawingBounds</span></p><p class="member_description">Option to restrict drawing to a rectangular region. May suffer from unstable depth sorting.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+</div>
+</div>
+</body>
+</html>
