@@ -301,7 +301,7 @@ Previous versions of ChuGL relied on using the `AssLoader` (asset loader) helper
 
 ### Examples <!-- omit in toc -->
 
-- [basic/asset_loading.ck](https://chuck.stanford.edu/chugl/examples/basic/asset_loading.ck)
+- [basic/asset-loading.ck](https://chuck.stanford.edu/chugl/examples/basic/asset-loading.ck)
   - for this to work, download the examples `data` folder as well
   - <https://chuck.stanford.edu/chugl/examples/data/>
 - [basic/gmodel.ck](https://chuck.stanford.edu/chugl/examples/basic/gmodel.ck)
@@ -338,7 +338,7 @@ GMesh sprite(new PlaneGeometry, sprite_material) --> GG.scene();
 - [deep/snowstorm.ck](https://chuck.stanford.edu/chugl/examples/deep/snowstorm.ck)
   - requires downloading the examples `data` folder
   - <https://chuck.stanford.edu/chugl/examples/data/>
-- [deep/sprite_animation.ck](https://chuck.stanford.edu/chugl/examples/deep/sprite_animation.ck)
+- [deep/sprite-animation.ck](https://chuck.stanford.edu/chugl/examples/deep/sprite-animation.ck)
   - requires downloading the examples `data` folder
   - <https://chuck.stanford.edu/chugl/examples/data/>
 
@@ -373,8 +373,8 @@ tex.write(pixel_data, write_desc);  // writes to 50x50 subregion
 
 ### Examples <!-- omit in toc -->
 
-- [deep/audio_donut.ck](https://chuck.stanford.edu/chugl/examples/deep/audio_donut.ck)
-- [deep/game_of_life.ck](https://chuck.stanford.edu/chugl/examples/deep/game_of_life.ck)
+- [deep/audio-donut.ck](https://chuck.stanford.edu/chugl/examples/deep/audio-donut.ck)
+- [deep/game-of-life.ck](https://chuck.stanford.edu/chugl/examples/deep/game-of-life.ck)
 
 ___
 
@@ -473,7 +473,7 @@ fn vs_main(@builtin(instance_index) instance : u32) -> VertexOutput
 
 ### Examples <!-- omit in toc -->
 
-- [basic/custom_geo.ck](https://chuck.stanford.edu/chugl/examples/basic/custom_geo.ck)
+- [basic/custom-geo.ck](https://chuck.stanford.edu/chugl/examples/basic/custom-geo.ck)
 - [deep/boids.ck](https://chuck.stanford.edu/chugl/examples/rendergraph/boids.ck)
 
 ### Further Learning Resources <!-- omit in toc -->
@@ -642,7 +642,7 @@ isHovered(aabb, mouse_world_pos); // perform isection test
 ### Examples <!-- omit in toc -->
 
 - [basic/mousepick.ck](https://chuck.stanford.edu/chugl/examples/basic/mousepick.ck)
-- [sequencers/drum_machine.ck](https://chuck.stanford.edu/chugl/examples/sequencers/drum_machine.ck)
+- [sequencers/drum-machine.ck](https://chuck.stanford.edu/chugl/examples/sequencers/drum-machine.ck)
   - showcases aabb intersection testing
 
 ### Further Learning Resources <!-- omit in toc -->
