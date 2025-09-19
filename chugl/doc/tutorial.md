@@ -23,15 +23,12 @@
     - [One Last Remark](#one-last-remark)
   - [ChuGL Shader Programming](#chugl-shader-programming)
     - [Word of Caution](#word-of-caution)
-    - [Shaders in ChuGL](#shaders-in-chugl)
-      - [Creating a Custom Fragment Shader](#creating-a-custom-fragment-shader)
-      - [Creating a Custom Vertex Shader](#creating-a-custom-vertex-shader)
 
 ## The Gameloop
 
 The heartbeat of any realtime graphics system is its *gameloop* function, which is computed once per frame. In class Ge showed everyone *audio buffer callbacks*, i.e. some function in the inner loop which computes the upcoming audio buffer on-demand so that it may be sent to the audio driver and then eventually be played back as sound. UGens (ChucK's sound generators), for example, all implement a `tick()` function which is called at *audio rate* (typically 44.1khz or 48khz) to compute a sample of sound at that particular moment in time.
 
-In ChuGL we can think of the gameloop as exactly analagous, but instead of computing values which ultimately determine the displacement of a speaker cone over time, we are computing values which determine the color of pixels on your screen in space. Also, the gameloop function is called at *framerate* not audio rate (typically 60-120hz, depending on the refresh rate of your monitor), and rather than computing multiple samples for a single *audio buffer* (ChucK defaults to a buffsize of 256 samps),  we are computing typically millions of colors values for a single *frame buffer*. I know that's a lot of terminology and abstraction, but the key point is that what's happening in audio and in graphics really aren't so different; and because ChuGL is a unified audiovisual programming environment, understanding these parallels will make using this tool all the more intuitive.
+In ChuGL we can think of the gameloop as exactly analagous, but instead of computing values which ultimately determine the displacement of a speaker cone over time, we are computing values which determine the color of pixels on your screen in space. Also, the gameloop function is called at *framerate* not audio rate (typically 60-120hz, depending on the refresh rate of your monitor), and rather than computing multiple samples for a single *audio buffer* (ChucK defaults to a buffsize of 256 samps), we are computing typically millions of colors values for a single *frame buffer*. I know that's a lot of terminology and abstraction, but the key point is that what's happening in audio and in graphics really aren't so different; and because ChuGL is a unified audiovisual programming environment, understanding these parallels will make using this tool all the more intuitive.
 
 So the gameloop decides what's drawn on screen each frame, but what's actually happening inside? How will it know to draw all the mesmerizing patterns you envision for your next audio visualizer?
 
@@ -71,7 +68,7 @@ fun void update() {
   // your update logic here...
   // e.g. let's change the background color!
   GG.scene().backgroundColor(
-    (.5 * Math.sin(now/second) + .5) * @(1,1,1) // white
+    (.5 * Math.sin(now/second) + .5) * Color.WHITE // white
   );
 }
 
@@ -82,8 +79,8 @@ while (true) {
 ```
 
 - Now we've introduced an actual update function which oscillates the color of the window between black and white.
-- Waiting on `GG.nextFrame()` introduces a timing mechanism that ensures update() will only be called once per frame
-- Having more updates or trying to draw more complex scenes will lower the framerate, and therefore decrease the rate that `update()` is called on chuck-side
+- Waiting on `GG.nextFrame()` introduces a timing mechanism that ensures `update()` will only be called once per frame
+- By default ChuGL clamps the framerate to 60fps, meaning your update function will be called 60 times per second. This can be changed via `GG.fps(int fps)`.
 
 All the details aside, hopefully these minimal code examples are clear. You can just shove all your update logic in the `while(true)` loop itself, and call `GG.nextFrame()` when you're done.
 
@@ -197,7 +194,7 @@ But what about things that don't change so frequently, or are one-off **discrete
 fun void bgColorer(dur qt_note) {
   while (true) {
     Math.random2f(0,1) => float intensity;
-    intensity * @(1, 1, 1) => GG.scene().backgroundColor;
+    intensity * Color.WHITE => GG.scene().backgroundColor;
     qt_note => now;
   }
 } spork  ~ bgColorer();
@@ -230,7 +227,7 @@ GCube cube --> GG.scene();
 (1.0/60.0) => float dt;
 while (true) {
   dt => cube.rotY;  // animate something, anything
-  dt => now;  // wait 1/60th of a second
+  dt::second => now;  // wait 1/60th of a second
 }
 ```
 
@@ -315,7 +312,7 @@ By default, the `GScene` comes with 2 children:
 1. the main camera, `GG.camera()`
 2. a default directional light, `GG.light()`
 
-In addition, the scene GGen stores state regarding global, scene-wide visual information like background color or fog information.
+In addition, the scene GGen stores state regarding global, scene-wide visual information like background color, skybox, and lighting.
 
 ### Further Reading
 
@@ -383,12 +380,11 @@ GMesh is simply a container for 2 other ChuGL data types: `Geometry` and `Materi
 
 `Geometry` classes describe the geometry, i.e. vertex, data for a GMesh. The `BoxGeometry`, for example, contains vertex data for the 8 points that make a cube. This vertex data is comprised of:
 
-- positions (3 floats xyz per vert)
-- colors (4 floats rgba)
-- UVs (2 floats for texcoords U and V)
+- Positions (3 floats xyz per vert)
 - Normals (3 floats for a normalized xyz directional vector)
+- UVs (2 floats for texcoords U and V)
 
-`Material` classes meanwhile describe how a shape described by `Geometry` actually looks on screen. I.e. what color are the pixels that make up the surfaces described by the geometry? Different materials have different logic for picking pixel color. E.g. `PhongMaterial` uses a basic diffuse/specular lighting model to decide, whereas `MangoUVMaterial` just inserts texture coordinates into the red and green channels. On the renderer side, a `Material` represents a combination of vertex shader, fragment shader, and shader uniforms (don't worry if you don't know what those are!)
+`Material` classes meanwhile describe how a shape described by `Geometry` actually looks on screen. I.e. what color are the pixels that make up the surfaces described by the geometry? Different materials have different logic for picking pixel color. E.g. `PhongMaterial` uses a basic diffuse/specular lighting model to decide, whereas `UVMaterial` just inserts texture coordinates into the red and green channels. On the renderer side, a `Material` represents a combination of vertex shader, fragment shader, and shader uniforms (don't worry if you don't know what those are!)
 
 A `GMesh` then is simply a pairing of `Geometry` + `Material`, combined with it's own transform of position/rotation/scale so that the renderer knows where to draw this mesh in the world. To reiterate, a GMesh contains these 3 pieces of info needed for the GPU to draw a 3D object on screen:
 
@@ -414,12 +410,12 @@ GSphere s1;
 GMesh s2;
 SphereGeometry sphereGeo;
 PhongMaterial phongMat;
-s2.set(sphereGeo, phongMat);
+s2.mesh(sphereGeo, phongMat);
 ```
 
 Using `GSphere` just saves you the effort of manually creating the appropriate material / geometry for what you want. Likewise `GCircle` initializes its mesh with `CircleGeometry`, `GTorus` with `TorusGeometry` etc.
 
-This becomes a performance problem however when the number of spheres grows large. 512 `GSpheres` will also instantiate 512 different `SphereGeometries` and 512 `PhongMaterials`, and each of these then needs to be copied to the render thread, processed, and eventually loaded onto the GPU. Compiling/linking 512 shader programs, in particular, is going to take a lot of time. And assuming all you want to do is change each sphere's transform, this duplication is totally unnecessary! *All the spheres can share the same 1 geometry and material instance*. That looks something like:
+This becomes a performance problem however when the number of spheres grows large. 512 `GSpheres` will also instantiate 512 different `SphereGeometries` and 512 `PhongMaterials`, and each of these then needs to be copied to the render thread, processed, and eventually loaded onto the GPU. Assuming all you want to do is change each sphere's transform, this duplication is totally unnecessary! *All the spheres can share the same 1 geometry and material instance*. That looks something like:
 
 ```cpp
 SphereGeometry sphereGeo;
@@ -428,7 +424,7 @@ GMesh spheres[512];
 
 // have all sphere meshes share the same geometry and material
 for (auto s : spheres) {
-  s.set(sphereGeo, phongMat);
+  s.mesh(sphereGeo, phongMat);
   s --> GG.scene();
 }
 
@@ -437,30 +433,28 @@ while (true) { GG.nextFrame(); }
 
 Run this code and you'll see how much faster it is than creating 512 `GSpheres` directly.
 
+> Note, the current version of ChuGL (0.2.7) has significant performance improvements from when this tutorial was first written (most relevant here is ChuGL now caches shaders), so there is no longer such a notiecable difference between loading 512 separate GSpheres vs instancing them from a shared Geometry/Material.
+
 **Takeaway:** when you have lots of the same ggen, see if all those instances can share resources like geometry or material.
 
 ### Pre-loading Resources
 
 By "resources" I mean pretty much anything in ChuGL that's *not* a GGen, but is used by GGens to determine appearance. This includes types like `Geometry`, `Material`, and `Texture`. Each of these resource types has an initialization process that involves setting up state in the GPU, and can therefore spike render times!
 
-Say you have a complex geometry that has millions of vertices. If you instantiate it during the gameloop, you'll probably get a sudden FPS drop because the renderer now has to send all that data to the GPU. A better practice is to push any initialization work to program start.
+Say you have a complex geometry that has millions of vertices. If you instantiate it during the gameloop, you'll probably get a sudden FPS drop because the renderer now has to send all that data to the GPU every frame. A better practice is to push any initialization work to program start.
 
-The `FileTexture` class in particular is slow because it requires IO to read data from a given filepath. If you want to switch between 2 textures say, every second, it's much faster to preload *both* textures separately at start-time, and switch which texture you're using, rather than just have 1 texture that constantly reloads either filepath.
+For example, creating textures via `Texture.load(string filepath)` is particularly slow because this requires IO to read data from a given filepath. If you want to switch between 2 textures say, every second, it's much faster to preload *both* textures separately at start-time, and switch which texture you're using, rather than just constantly loading textures from either filepath.
 
 The slow way:
 
 ```cpp
 GPlane plane --> GG.scene();
-FileTexture tex;
-
-// assign texture to the plane material
-plane.mat().diffuseMap(tex);
 
 fun void textureSwapper() {
   while (true) {
-    tex.path("logo1.png");  // fps drop
+    plane.colorMap(Texture.load("logo1.png"));  // fps drop
     1::second => now;
-    tex.path("logo2.png");  // fps drop
+    plane.colorMap(Texture.load("logo2.png"));  // fps drop
     1::second => now;
   }
 } ~ spork textureSwapper();
@@ -470,18 +464,17 @@ The fast way:
 
 ```cpp
 GPlane plane --> GG.scene();
-FileTexture tex1, tex2;
 
 // all IO happens here, at program start
-tex1.path("logo1.png");
-tex2.path("logo2.png");
+Texture.load("logo1.png") @=> Texture tex1;
+Texture.load("logo2.png") @=> Texture tex2;
 
 // no fps dips! 
 fun void textureSwapper() {
   while (true) {
-    plane.mat().diffuseMap(tex1)
+    plane.colorMap(tex1);
     1::second => now;
-    plane.mat().diffuseMap(tex2)
+    plane.colorMap(tex2);
     1::second => now;
   }
 } ~ spork textureSwapper();
@@ -495,15 +488,15 @@ The amount of work the renderer and GPU have to do scales according to the amoun
 
 So a simple way to measure the complexity of the scene is by counting how many triangles are on the screen at once. A mesh made up of more triangles can be said to be *high-poly* or *high-resolution* whereas a mesh simplified down to only a few triangles is *low-poly* or *low-resolution*. If your rendering is slow despite your update logic being simple, one possibility is that you just have too many triangles on the screen! Of course one solution is to only spawn 500 GSpheres instead of 10,000, but where's the fun in that?
 
-It turns out every Geometry has a `.set()` function which lets you reconstruct its vertex data on the fly, according to some *build parameters* which you pass in. These build parameters let you determine not only the shape and dimensions, but also the polycount/resolution of the mesh. By decreasing the resolution, we can reduce the triangle count of our scene while still keeping the same number of GGens. Here's an example:
+It turns out every builtin Geometry has a `.build()` function which lets you reconstruct its vertex data on the fly, according to some *build parameters* which you pass in. These build parameters let you determine not only the shape and dimensions, but also the polycount/resolution of the mesh. By decreasing the resolution, we can reduce the triangle count of our scene while still keeping the same number of GGens. Here's an example:
 
 ```cpp
 SphereGeometry sphereGeo;  // a single geo to be shared by all meshes
-NormalsMaterial normMat;   // a single material
+NormalMaterial normMat;   // a single material
 GMesh spheres[1024];
 
 // reduce the triangle count of the sphere geometry
-sphereGeo.set(
+sphereGeo.build(
   1.0,        // radius
   16,         // # segments along width of sphere (default 32)
   8,          // # segments along vertical arc of sphere (default 16)
@@ -511,12 +504,11 @@ sphereGeo.set(
   Math.PI * 2 // phiLength   (phi in spherical coordinates)
   0,          // thetaStart
   Math.PI     // thetaLength (theta in spherical coordinates)
-
-)
+);
 
 // have all sphere meshes share the same geometry and material
 for (auto s : spheres) {
-  s.set(sphereGeo, phongMat);
+  s.mesh(sphereGeo, phongMat);
   s --> GG.scene();
 }
 
@@ -525,17 +517,31 @@ while (true) { GG.nextFrame(); }
 
 The params that matter here are #2 and #3, which determine the triangle resolution of our sphere along verticle and horizontal axis. By going from 32 --> 16 segments along the width and 16-->8 segments along the height we've reduced our triangle count to 1/4th what it was before! The spheres will look less smooth / more blocky as a result, but if most the spheres are far away you might not be able to tell anyways. Visual quality vs performance has always been a tradeoff, and that's something you'll have to evaluate for yourself in your own projects.
 
-See the [basic/polygon-modes.ck](https://chuck.stanford.edu/chugl/examples/basic/polygon-modes.ck) for how to reconstruct vertices for other geometries.
+See the [basic/geo-and-mat.ck](https://chuck.stanford.edu/chugl/examples/basic/geo-and-mat.ck) for how to reconstruct vertices for other geometries.
 
 ### Reducing Draw Calls
 
 The renderer tells the GPU to draw things via issuing commands called **draw calls**. Basically for each GGen in the scene, the ChuGL renderer will prepare all the necessary vertex data / shader uniforms / etc. associated with that GGen on the GPU, and then tell the GPU to draw what's currently loaded. It turns out issuing a draw call is itself rather expensive. Even if you're drawing the simplest thing, say a single plane, you'll only be able to issue a few thousand draw calls per frame before you start dropping FPS. One way to optimize is to *batch* the data of multiple GGens together, and then draw them all at once with a single draw call. Performance benefits can be massive, on the order of 100x or more depending on the scene. This optimization is called **Batch Rendering** and is on the roadmap for the ChuGL renderer.
 
-For now, you the programmer can apply this idea of batching to 2 GGen types: `GPoints` and `GLines`. Rather than create a separate `GPoints` or `GLines` instance for each point or line you want to draw, just create 1 instance and stick the vertex data for ALL your lines or points in that single instance. If you have 1,000,000 points, this reduces the number of draw calls from 1,000,000 --> 1, and improves your program from crashing to running at >100fps.  
+2 GGen types do this already: `GPoints` and `GLines`. Rather than create a separate `GPoints` or `GLines` instance for each point or line you want to draw, just create 1 instance and stick the vertex data for ALL your lines or points in that single instance. If you have 1,000,000 points, this reduces the number of draw calls from 1,000,000 --> 1, and improves your program from crashing to running at >100fps.
 
-See [basic/points.ck](https://chuck.stanford.edu/chugl/examples/basic/points.ck) for an example of how to draw 1000000 points using this method.
+> See [basic/points.ck](https://chuck.stanford.edu/chugl/examples/basic/points.ck) for an example of how to draw 1000000 points using this method.
 
-See [sndpeek](https://chuck.stanford.edu/chugl/examples/sndpeek/) for an example of how to draw millions of lines using this method
+> See [sndpeek](https://chuck.stanford.edu/chugl/examples/deep/sndpeek.ck) for an example of how to draw millions of lines using this method
+
+Another way to get the benefits of batching is one we have already mentioned--sharing `Geometry`/`Material` instances where possible! The ChuGL renderer will group all GGens which share the same `Geometry` and `Material` instance into a single draw call. The downside here is that because all these instances must share the same components, they can only differ in terms of their transform, i.e. position, rotation, and scale. E.g.
+
+```c
+// takes 512 draw calls to render
+GSphere spheres[512];
+
+// takes 1 draw call to render
+SphereGeometry geo;
+PhongMaterial mat;
+GMesh instanced_spheres(geo, mat)[512]; 
+```
+
+> In other graphics engines/frameworks this last method is often called "instanced rendering" or "GPU instancing"
 
 ### One Last Remark
 
@@ -549,10 +555,11 @@ ___
 
 A **Shader** is simply a program that is compiled and run on the GPU. After sending geometry/material data to the GPU and issuing a draw call, all this data gets processed through the [3D Rendering Pipeline](https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview) before appearing on-screen. The image above illustrates the OpenGL Render pipeline (which ChuGL currently runs on). At each of the 6 depicted stages, it runs shaders to perform important graphics operations. These stages do everything necessary to transform a virtual 3D world into colored pixels on your computer screen.
 
-Modern graphics APIs are all **Programmable Pipeline**, meaning certain stages can be loaded with custom shaders that you write yourself! These are the colored blue boxes in the diagram above, and the two which ChuGL exposes via `ShaderMaterial` are:
+Modern graphics APIs are all **Programmable Pipeline**, meaning certain stages can be loaded with custom shaders that you write yourself! These are the colored blue boxes in the diagram above, and the types which ChuGL exposes via the `Shader` class are:
 
 1. **Vertex Shader:** runs on each vertex of a geometry. Typically used to transform vertex positions from local space into clip space, can also be used to distort geometry by displacing vertices
 2. **Fragment Shader**: runs on each pixel contained within a geometry, e.g. all the pixels within a triangle. (Technically pixels and fragments are not the same thing, but that's unimportant for now) Typically used to perform lighting calculations and calculate the correct color for a given pixel.
+3. **Compute Shader**: These are actually not part of the graphics pipeline pictured above, but are part of a separate *compute pipeline*. This is the most "general-purpose" shader, meant for utilizing the GPU as a massively parallel machine and are often used for simulation, image processing, etc. Once ChuGL's API around compute shaders has stabilized, these will get their own tutorial section. 
 
 Teaching the modern rendering pipeline is well outside the scope of this course, as is teaching how to do shader programming, which really is an art in of itself. If you want to learn how to do the former, take [CS248A](https://gfxcourses.stanford.edu/cs248a/winter23), aptly nick-named "Death Graphics".
 
@@ -565,120 +572,17 @@ For learning the latter i.e. Shader programming, here are some useful resources:
 - [ShaderToy Tutorial](https://inspirnathan.com/posts/47-shadertoy-tutorial-part-1): gets straight to drawing 3D Ray-marched scenes
 - [Setting up a ShaderToy scene in three.js](https://threejs.org/manual/?q=shader#en/shadertoy): can use this as a reference for how to setup a shadertoy scene in ChuGL
 
-[And here's an example of creating an audiovisualizer using a custom fragment shader in ChuGL](https://chuck.stanford.edu/chugl/examples/audioshader/)
+To learn how to use custom shaders in ChuGL, take a look at these examples:
+- [deep/audio-donut.ck](https://chuck.stanford.edu/chugl/examples/deep/audio-donut.ck): showcases using a custom vertex shader to visualize FFT data by displacing mesh vertices
+- [deep/game-of-life.ck](https://chuck.stanford.edu/chugl/examples/deep/game-of-life.ck): simulating conways game of life in a fragment shader, as well as sending waveform data as a shader parameter via storage buffers
+- [rendergraph/boids.ck](https://chuck.stanford.edu/chugl/examples/rendergraph/boids.ck): simulating thousands of boids in a compute shader, and batch drawing them with all in a custom vertex/fragment shader
+- [rendergraph/slime.ck](https://chuck.stanford.edu/chugl/examples/rendergraph/slime.ck): slime mold simulation in a compute shader
 
 ### Word of Caution
 
 Creating procedural graphics entirely within shaders, especially if they are 3D, can be both **impractical** and **difficult**. This stems both from performance issues and the amount of background knowledge required. The featured shaders in ShaderToy, while visually stunning, are basically like the graphics-equivalent of code golf or CTF challenges. Anyone who is new to graphics programming and interested in writing custom shaders for their project is **strongly encouraged to speak with the course advisors**, so we can talk about your ideas and set you off on the right path.
 
 That said, there are cases where writing custom shaders really is the best/only option, and we don't want to deter anyone from exploring this powerful tool!
-
-### Shaders in ChuGL
-
-![Audio Shaders in ChuGL](images/audio-frag.png)
-
-Above is a screenshot from the [audioshader](https://chuck.stanford.edu/chugl/examples/audioshader/) ChuGL example.
-
-To use custom shaders, all you need to do is create a `ShaderMaterial` and assign it to a `GMesh`
-
-```cpp
-GPlane plane --> GG.scene();  // connect plane to scene
-ShaderMaterial shaderMat;     // instantiate a custom shader material
-shaderMat.shaders(
-  "myVert.glsl",   // path to your custom vertex shader
-  "myFrag.glsl"    // path to your custom fragment shader
-);
-plane.mat(shaderMat);  // now the plane will be rendered using your custom shaders
-```
-
-#### Creating a Custom Fragment Shader
-
-If all you want to do is in the fragment shader, in your ShaderMaterial only set the fragment path. This will preserve the default ChuGL vertex shader, which does the typical transformation to clip space, passes interpolated normals, UVs, etc.
-
-```cpp
-ShaderMaterial shaderMat;     // instantiate a custom shader material
-shaderMat.fragShader(  // Only changes the fragment shader, not vertex
-  "myFrag.glsl"    // path to your custom fragment shader
-);
-
-```
-
-Use this template for custom fragment shaders:
-
-```glsl
-#version 330 core
-
-// varying interpolated and passed from the default ChuGL vert shader
-in vec3 v_Pos;          // world space fragment position
-in vec4 v_EyePos;       // camera space fragment position
-in vec3 v_Normal;       // world space normal
-in vec3 v_LocalNormal;  // local space normal
-in vec4 v_Color;        // interpolated color
-in vec2 v_TexCoord;     // UV coords
-
-// output color (this is the final color that will be drawn on screen!)
-out vec4 FragColor;
-
-void main()
-{
-  // your amazing shader code here
- // output final color
- FragColor = vec4(1.0);
-}
- 
-```
-
-#### Creating a Custom Vertex Shader
-
-Similarly, you can choose to only set a vertex shader, which will preserve the default fragment shader (at time of writting this is the `NormalsMaterial`)
-
-```cpp
-ShaderMaterial shaderMat;     // instantiate a custom shader material
-shaderMat.vertSbader(  // Only changes the vertex shader
-  "myVert.glsl"    // path to your custom vertex shader
-);
-
-```
-
-Use this template for your custom vertex shader to correctly receive uniforms / vertex attribute data from the ChuGL renderer:
-
-```glsl
-// uniforms passed by renderer
-uniform mat4 u_Model;       // model matrix for the GGen this material belongs to
-uniform mat4 u_View;        // camera view matrix
-uniform mat4 u_Projection;  // camera projection matrix
-uniform mat4 u_Normal;      // normal matrix
-uniform vec3 u_ViewPos;     // camera worldspace position
-uniform vec4 u_Color;       // overall material color
-
-
-// attributes, i.e. geometry data for each vertex
-layout (location = 0) in vec3 a_Pos;       // local position
-layout (location = 1) in vec3 a_Normal;    // local normal
-layout (location = 2) in vec4 a_Color;     // vertex color
-layout (location = 3) in vec2 a_TexCoord;  // vertex UV
-
-// varyings (assign these values to pass to frag shader)
-out vec3 v_Pos;
-out vec4 v_EyePos;
-out vec3 v_Normal;       // world space normal
-out vec3 v_LocalNormal;  // local space normal
-out vec4 v_Color;
-out vec2 v_TexCoord;
-
-void main()
-{
-  v_TexCoord = a_TexCoord; // UV coords
-  v_LocalNormal = a_Normal; // normals
-  v_Normal = vec3(u_Normal * vec4(a_Normal, 0.0)); // worldspace normal
-  v_Color = a_Color * u_Color; // vertex color
-
-  v_Pos = vec3(u_Model * vec4(a_Pos, 1.0)); // world space position
-  v_EyePos = u_View * u_Model * vec4(a_Pos, 1.0); // eye space position
-  gl_Position = u_Projection * v_EyePos; // clip space position
-}
-
-```
 
 ___
 
