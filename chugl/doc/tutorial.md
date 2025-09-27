@@ -134,11 +134,11 @@ Breakdown:
 
 #### Extending GGens
 
-You can already go a long way with the previous approach but wait, `Player` and `Enemy` in the code above sound a lot like classes, and ChucK supports object-oriented programming, right? Wouldn't it be "cleaner" if we could define classes with their own `Update()` functions (like how Unity does it?) and not have to worry about calling `nextFrame()` or sporking or any of that?
+> Note: in the time since writing this tutorial and implementing the first versions of  ChuGL, my thinking and approach to programming have shifted considerably. I'm now convinced that OOP does far more harm than good (the ChuGL codebase itself avoids classes entirely). See for example, [this video](https://www.youtube.com/watch?v=tD5NrevFtbU). In contrast to objects/inheritance/polymorphism/etc, it generally is simpler, clearer, and more performant to just write functions that loop over arrays and structs. Especially in the context of short-term projects like in 256a, one ideally spends less time worrying about organization (which is all OOP is) and more time writing code that *actually does the thing.* The indie game dev community seems to understand this intuitively, but I'm also noticing a shift in programming culture as a whole away from the (toxic) OOP / clean-code mindset, largely thanks to a [small group](https://bettersoftwareconference.com/) of passionate, visionary, and tremendously-skilled programmers. We're keeping this section here for backwards compatibility and to respect all approaches to programming. That said, if you're new to this and OOP doesn't mean anything to you, I *strongly* encourage you to avoid that  pitfall entirely and **skip to the next section of this tutorial!** 
 
-Thanks to some serious VM hackery by Ge you can do just that! Every GGen has an `update()` member function that by default does nothing, but which you can override by creating your own class which extends GGen!
+Like the rest of ChucK, ChuGL also supports object-oriented programming. Thanks to some serious VM hackery by Ge, things like `Player` and `Enemy`, can be turned into classes with their own `update()` functions (like how Unity does it). More specifically, every GGen has an `update(float dt)` member function that by default does nothing, but which you can override by creating your own class which extends GGen!
 
-Using this OOP approach, the above code could look something like:
+Using the OOP approach, the above code could look something like:
 
 ```cpp
 class Player extends GGen 
