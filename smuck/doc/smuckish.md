@@ -227,23 +227,23 @@ Smuckish.rhythms("q _q q") // This returns [2.0, 1.0]
 
 # Dynamics
 
-Dynamics/velocity values are parsed as `int` values that range from 0 to 127, similar to MIDI velocity values.
+Dynamics/velocity values are parsed as `float` values that range from 0.0 to 1.0, NOT as MIDI velocity values.
 
 ### Velocities
 
 Velocities can be explicitly specified by adding a `v` before an integer value.
 
 ```
-Smuckish.velocities("v127 v100 v75 v50 v25") // This returns [127, 100, 75, 50, 25]
+Smuckish.velocities("v1.0 v.8 v.6 v.5 v.25") // This returns [1.0, .8, .6, .5, .25]
 ```
 
 ### Dynamic Markings
 
-Dynamic markings from standard notation can be used ranging from `pppp` to `ffff`.
-The mapping is a little strange. From `ppp` to `fff` the velocity value increases in increments of 16. However, `pppp` and `ffff` map to the lowest and highest non-zero velocities, respectively:
+Dynamic markings from standard notation can be used ranging from `pppp` to `ffff`. Markings are mapped to float values between .1 and 1.0 as follows:
+![dynamic mapping](../images/smuckish/dynamics_scale_lg.png)
 
 ```
-Smuckish.velocities("pppp ppp pp p pp mp mf f ff fff ffff") // This returns [1, 8, 24, 40, 56, 72, 88, 104, 120, 127]
+Smuckish.velocities("pppp ppp pp p pp mp mf f ff fff ffff") // This returns [.1, .2, .3, .4, .5, .6, .7, .8, .9, 1.0]
 ```
 
 # Repeated tokens and sequences
@@ -288,11 +288,11 @@ This gives us a measure with all the layers "glued together" into `ezNote` objec
 
 ```
 There are 5 notes in this measure:
-Note 0: onset = 0, beats = 0.666667, pitch = C4, velocity = 72
-Note 1: onset = 0.666667, beats = 0.666667, pitch = D4, velocity = 72
-Note 2: onset = 1.33333, beats = 0.666667, pitch = E4, velocity = 72
-Note 3: onset = 2, beats = 0.5, pitch = F4, velocity = 72
-Note 4: onset = 2.5, beats = 0.5, pitch = G4, velocity = 72
+Note 0: onset = 0, beats = 0.666667, pitch = C4, velocity = .6
+Note 1: onset = 0.666667, beats = 0.666667, pitch = D4, velocity = .6
+Note 2: onset = 1.33333, beats = 0.666667, pitch = E4, velocity = .6
+Note 3: onset = 2, beats = 0.5, pitch = F4, velocity = .6
+Note 4: onset = 2.5, beats = 0.5, pitch = G4, velocity = .6
 ```
 ![multi-stage 1](../images/smuckish/multi-stage_1.svg)
 
@@ -359,7 +359,7 @@ The `Smuckish` class contains a number of static functions that can be used to p
 
 - `Smuckish.pitches()` : Parses a SMucKish string into an int[][] array of MIDI note numbers. Because SMucKish pitch sequences can be polyphonic, the output is a 2D array, indexed first by position in sequence, then by voice. 
 - `Smuckish.rhythms()` : Parses a SMucKish string into a float[] array of beat values.
-- `Smuckish.velocities()` : Parses a SMucKish string into an int[] array of velocity values.
+- `Smuckish.velocities()` : Parses a SMucKish string into an float[] array of velocity values.
 
 ### 2. Using ezScore objects
 

@@ -107,6 +107,7 @@ For example, if part 1 starts at 0:00, and part 2 starts at 0:15, then part 2 sh
 
 <br>
 
+
 # Creating an `ezInstrument` (2)
 Before you can play back an `ezScore`, you need to create your own `ezInstrument`'s for each part of the score.
 These instruments will be used to play back the score.
