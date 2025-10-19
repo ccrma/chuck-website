@@ -39,12 +39,6 @@ ezScore
 ```
 Please refer to the [SMucK API Reference](../api/) for more details about each class.
 
-### Minimal Example
-To access the first note of the first measure of the first part of an ezScore object `score`, you would write:
-```
-score.parts[0].measures[0].notes[0]
-```
-
 <br>
 
 # Creating an `ezScore` (1)
@@ -67,8 +61,7 @@ For multi-part scores, create `ezPart` objects and add them to the `ezScore` obj
   ezPart part2("f g a b")
 
   ezScore score;
-  score.addPart(part1);
-  score.addPart(part2);
+  score.add([part1, part2]);
   ```
   
 <br>
@@ -79,11 +72,10 @@ For multiple measures, create `ezMeasure` objects and add them to the `ezPart` o
   ezMeasure measure2("f g a b")
 
   ezPart part;
-  part.addMeasure(measure1);
-  part.addMeasure(measure2);
+  part.add([measure1, measure2]);
 
   ezScore score;
-  score.addPart(part);
+  score.add(part);
   ```
 
 <br>
@@ -114,7 +106,7 @@ These instruments will be used to play back the score.
 ### Requirements
 - `ezInstrument` is an abstract class, so you must extend it to create your own custom instrument.
 - `ezInstrument` has two required functions: `noteOn` and `noteOff`.
-- `ezInstrument` also has a required `n_voices` variable that describes how many voices the instrument has for polyphony.
+- `ezInstrument` should call `numVoices()` to set the number of voices the instrument has for polyphony.
 
 ### Basic Example
 ```
@@ -123,7 +115,7 @@ public class myInstrument extends ezInstrument
 {
     // how many voices our instrument has (for polyphony)
     10 => int n_voices;
-    setVoices(n_voices); // This sets important class variables that are used by the ezScorePlayer, so make sure to call it with however many voices you want to allocate!
+    numVoices(n_voices); // This sets important class variables that are used by the ezScorePlayer, so make sure to call it with however many voices you want to allocate!
     SinOsc oscs[n_voices];
     Gain g => outlet;     // outlet lets us connect to any output! (e.g. myInstrument inst => Nrev rev => dac)
     g.gain(0.1);
@@ -176,12 +168,12 @@ myInstrument instrument2 => g;
 
 ii. Set the player's instruments.
 ```
-player.setInstrument(0, instrument1);   // use instrument1 for part 0 of the score
-player.setInstrument(1, instrument2);   // use instrument2 for part 1 of the score
+player.instruments(0, instrument1);   // use instrument1 for part 0 of the score
+player.instruments(1, instrument2);   // use instrument2 for part 1 of the score
 ```
 OR
 ```
-player.setInstruments([instrument1, instrument2]); //note setInstruments plural
+player.instruments([instrument1, instrument2]); 
 ```
 
 <br>
@@ -208,7 +200,7 @@ player.stop();
 
 <br>
 
-You can even enable looping and change playback rate!
+You can also enable looping and change playback rate:
 ```
 true => player.loop;
 1.5 => player.rate;
@@ -229,8 +221,7 @@ player.play();
 ezPart part0("a b c d");
 ezPart part1("c d e f");
 ezScore score;
-score.addPart(part0);
-score.addPart(part1);
+score.add([part0, part1]);
 
 // 2. Create our instruments
 myInstrument instrument1 => dac;
@@ -238,7 +229,7 @@ myInstrument instrument2 => dac;
 
 // 3. Play the score
 ezScorePlayer player(score);
-player.setInstruments([instrument1, instrument2]);
+player.instruments([instrument1, instrument2]);
 player.play();
 10::second => now;
 ```
