@@ -23,12 +23,12 @@ with support from the <a href="../doc/authors.html">ChucK Team</a>.
 
 ---
 
-**SMucK v0.1.2** (alpha) — [**SMucK API Reference**](./api/)
+**SMucK v0.1.3** (alpha) — [**SMucK API Reference**](./api/)
 • [**Examples**](./examples/)
 • [**Basic Playback**](./doc/walkthru.html)
 • [**SMucKish Rosetta Stone**](./doc/smuckish.html)
 • [**Chord/Scale Dictionary**](./doc/dictionary.html)
-
+• [**Version History**](./VERSIONS.html)
 <!--• [**SMucK Cheatsheet**](./doc/cheatsheet.html) -->
 
 ___

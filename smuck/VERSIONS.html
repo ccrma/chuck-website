@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta name="color-scheme" content="light dark">
+</head>
+<body>
+<pre style="word-wrap: break-word; white-space: pre-wrap;">
+------------------
+SMucK VERSIONS log
+------------------
+
+0.1.3 (October 2025)
+=======
+Inaugural SMucK Version Log! Major updates to all classes
+============
+(updated) examples:
+  - (added) `playback-pos.ck` demonstrates playback position manipulation
+  - (added) `playback-rate.ck` demonstrates playback rate manipulation
+  - (added) `note-data.ck` shows how to use the `data()` and `text()` parameters of ezNote
+  - (added) `score-edit.ck` for score editing functions
+  - (updated) `score-set.ck` shows how to build up a score from the measure level up
+  - (updated) updated old examples and ezInstruments to reflect latest changes
+(updated) ezNote
+  -(added) new constructor using SMucKish string
+  -(added) `data()` new parameter for holding arbitrary user data (float[])
+  -(added) `text()` new parameter for holding text annotation (string)
+  -(updated) `print()` now shows pitch as both MIDI number and string 
+(updated) ezMeasure
+  -(added) `notes()` get/set for the ezNotes in the measure
+  -(added) `add()` add ezNote(s) to measure
+  -(added) `sort()` sorts notes (in-place) by onset time, implemented with quicksort
+  -(updated) `clearMeasure()` is now `rest()`, turns all notes into rests (not deletion)
+(updated) ezPart
+  -(added) `measures()` get/set for the ezMeasures in the part
+  -(reworked) `addMeasure()`, `addMeasures()` are now a unified `add()` function
+  -(reworked) `insertMeasure()`, `insertMeasures()` are now a unified `insert()` function
+  -(reworked) `replaceMeasure()`, `replaceMeasures()` are now a unified `replace()` function
+  -(reworked) `duplicateMeasure()`, `duplicateMeasures()` are now a unified `duplicate()` function
+  -(reworked) `deleteMeasure()`, `deleteMeasures()` are now a unified `erase()` function
+  -(reworked) `clear()` is now `rest()`, turns all notes into rests (not deletion)
+  -(removed) `setPitches()`, `setRhythms()`, `setVelocities()` methods
+(updated) ezScore
+  -(added) `parts()` get/set for the ezParts in the score
+  -(added) `add()` add ezPart(s) to score
+  -(reworked) `scoreDuration()` is now `duration()`, get the duration of the score as dur
+  -(reworked) `scoreEnd()` is now `beats()`, get the end of the score in beats (float)
+  -(removed) `setPitches()`, `setRhythms()`, `setVelocities()` methods
+  -(removed) `setPart()`, `setParts()` methods because they're redundant with `add()`
+(updated) ezScorePlayer
+  -(added) new constructor to initialize with score and instruments together
+  -(added) `startPos()` set the playback start position in beats or dur
+  -(added) `endPos()` set the playback end position in beats or dur
+  -(updated) `pos()` set the playback position in beats or dur
+  -(removed) `playhead()` method, replaced with getter for `pos()`
+  -(reworked) `setInstrument()`/`setInstruments()` are now a unified `instruments()` get/set function
+  -(reworked) preview instruments get automatically cleaned up/disconnected from dac when new instruments are set
+  -(reworked) internal tick function works differently now: `_tatum` is now a float value representing a fractional beat value, instead of a dur.
+(updated) ezInstrument
+  -(reworked) `setVoices()` is now `numVoices()`, get/set the number of voices are allocated for the instrument
+  -ezMidiInst, ezOscInst, ezExternalInst, ezDefaultInst all updated to reflect new changes
+
+</pre>
+</body>
+</html>
