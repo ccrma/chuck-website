@@ -7,16 +7,15 @@
 // author: Alex Han (https://ccrma.stanford.edu/~alexhan/)
 //-----------------------------------------------------------------------------
 
-@import "/Users/alexhan/Desktop/ChucK/smuck/src/smuck.ck"
+@import "smuck"
 
 // This ezInstrument repitches one-shot audio samples and applies a flanger effect using comb filtering
 public class flangerInst extends ezInstrument
 {
     // Signal Chain
     // ---------------------------------------
-    8 => int _n_voices;
-    setVoices(_n_voices);
-    SndBuf bufs[_n_voices] => Gain dry => outlet;
+    numVoices(8);
+    SndBuf bufs[numVoices()] => Gain dry => outlet;
     SinOsc lfo => blackhole;
 
     bufs => DelayL del => Gain wet => outlet;

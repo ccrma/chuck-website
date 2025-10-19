@@ -11,7 +11,7 @@ public class SawOscInst extends ezInstrument
 {
     // define sound chain
     8 => int n_voices;
-    setVoices(n_voices);
+    numVoices(n_voices);
 
     SawOsc oscs[n_voices];
     ADSR envs[n_voices]; 
@@ -42,7 +42,7 @@ public class TriOscInst extends ezInstrument
 {
     // define sound chain
     8 => int n_voices;
-    setVoices(n_voices);
+    numVoices(n_voices);
     TriOsc oscs[n_voices];
     ADSR envs[n_voices]; 
     Gain g => outlet;
@@ -71,7 +71,7 @@ public class FrencHrnInst extends ezInstrument
 {
     // define sound chain
     8 => int n_voices;
-    setVoices(n_voices);
+    numVoices(n_voices);
     FrencHrn hrn[n_voices]; 
     Gain g => NRev rev => outlet;
     g.gain(.2);
@@ -98,7 +98,7 @@ public class DrumsInst extends ezInstrument
 {
     // define sound chain
     6 => int n_voices;
-    setVoices(n_voices);
+    numVoices(n_voices);
     SndBuf bufs[n_voices];
     Gain g => outlet;
     g.gain(0.6);

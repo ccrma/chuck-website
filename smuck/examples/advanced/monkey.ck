@@ -5,8 +5,7 @@
 
 // create score and import MIDI
 ezScore score;
-score.setTempo(166);
-score.setTimeSig(4, 4);
+score.bpm(166);
 score.importMIDI("../data/midi/monkey.mid");
 
 // create score player
@@ -28,7 +27,7 @@ DrumsInst drums => Gain g6 => dac;
 0.5 => g6.gain;
 
 // set instruments and play
-player.setInstrument([treble, treble2, accent, bass, choir, drums]);
+player.instruments([treble, treble2, accent, bass, choir, drums]);
 player.play();
 
 
