@@ -34,6 +34,10 @@
 <p class="member_declaration"><span class="membername">ezNote</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> onset, <span class="ckdoc_typename ckdoc_type_primitive">float</span> beats, <span class="ckdoc_typename ckdoc_type_primitive">float</span> pitch, <span class="ckdoc_typename ckdoc_type_primitive">float</span> velocity)</p>
 <p class="member_description">Constructor for ezNote specifying onset, beats, pitch, and velocity.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ezNote</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> sm_input)</p>
+<p class="member_description">Constructor for ezNote using a SMucKish input string.</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -42,7 +46,7 @@
 <p class="member_description">Get the duration of the note in beats.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">beats</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">beats</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
 <p class="member_description">Set the duration of the note in beats.</p>
 </div>
 <div class="member">
@@ -54,7 +58,7 @@
 <p class="member_description">Get the user-defined data associated with the note.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">data</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">data</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> value)</p>
 <p class="member_description">Set the user-defined data associated with the note, using a float array.</p>
 </div>
 <div class="member">
@@ -62,7 +66,7 @@
 <p class="member_description">Get the user-defined data associated with the note, using an index.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">data</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">data</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
 <p class="member_description">Set the user-defined data associated with the note, using an index.</p>
 </div>
 <div class="member">
@@ -70,7 +74,7 @@
 <p class="member_description">Return whether the note is a rest.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">isRest</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isRest</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
 <p class="member_description">Set whether the note is a rest.</p>
 </div>
 <div class="member">
@@ -78,7 +82,7 @@
 <p class="member_description">Get the onset of the note in beats, relative to the start of the measure.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">onset</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">onset</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
 <p class="member_description">Set the onset of the note in beats, relative to the start of the measure.</p>
 </div>
 <div class="member">
@@ -86,7 +90,7 @@
 <p class="member_description">Get the pitch of the note as a MIDI note number.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pitch</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pitch</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
 <p class="member_description">Set the pitch of the note as a MIDI note number.</p>
 </div>
 <div class="member">
@@ -98,7 +102,7 @@
 <p class="member_description">Get the text annotation associated with the note.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">text</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
 <p class="member_description">Set the text annotation associated with the note.</p>
 </div>
 <div class="member">
@@ -106,7 +110,7 @@
 <p class="member_description">Get the velocity of the note.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">velocity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">velocity</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
 <p class="member_description">Set the velocity of the note.</p>
 </div>
 </div>
@@ -131,66 +135,88 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addNote</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note)</p>
 <p class="member_description">Add an ezNote to the measure.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clear</span>()</p>
-<p class="member_description">Clear the measure, setting all notes to rests.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span><span class="typename">[]</span> notes)</p>
+<p class="member_description">Add an array of ezNotes to the measure.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">beats</span>()</p>
+<p class="member_description">Get the length of the measure in beats.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezMeasure</span> <span class="membername">copy</span>()</p>
 <p class="member_description">Return a copy of the ezMeasure.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">length</span>()</p>
-<p class="member_description">Get the length of the measure in beats.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezNote</span><span class="typename">[]</span> <span class="membername">notes</span>()</p>
+<p class="member_description">Get the notes in the measure as an ezNote array.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezNote</span><span class="typename">[]</span> <span class="membername">notes</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span><span class="typename">[]</span> notes)</p>
+<p class="member_description">Set the notes of the measure using an ezNote array.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> <span class="membername">pitches</span>()</p>
+<p class="member_description">Get the pitches of the notes in the measure as a 2D array of MIDI note numbers.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> <span class="membername">pitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+<p class="member_description">Set the pitches of the notes in the measure, using a SMucKish input string.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> <span class="membername">pitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> input)</p>
+<p class="member_description">Set the pitches of the notes in the measure, using an array of SMucKish string tokens.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> <span class="membername">pitches</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> input)</p>
+<p class="member_description">Set the pitches of the notes in the measure directly from a 2D array of MIDI note numbers.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">print</span>()</p>
 <p class="member_description">Print the parameters for each note in the measure.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
-<p class="member_description">Set the pitches of the notes in the measure, using a SMucKish input string.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rest</span>()</p>
+<p class="member_description">Set all notes to rests.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> input)</p>
-<p class="member_description">Set the pitches of the notes in the measure, using an array of SMucKish string tokens.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">rhythms</span>()</p>
+<p class="member_description">Get the rhythms of the notes in the measure as an array of floats.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> input)</p>
-<p class="member_description">Set the pitches of the notes in the measure directly from a 2D array of MIDI note numbers.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setRhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">rhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
 <p class="member_description">Set the rhythms of the notes in the measure, using a SMucKish input string.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setRhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> input)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">rhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> input)</p>
 <p class="member_description">Set the rhythms of the notes in the measure, using an array of SMucKish string tokens.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setRhythms</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">rhythms</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
 <p class="member_description">Set the rhythms of the notes in the measure directly from an array of floats.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sort</span>()</p>
+<p class="member_description">Sort the notes array in place by onset time.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">velocities</span>()</p>
+<p class="member_description">Get the velocities of the notes in the measure as an array of floats.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">velocities</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
 <p class="member_description">Set the velocities of the notes in the measure, using a SMucKish input string.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> input)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">velocities</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> input)</p>
 <p class="member_description">Set the velocities of the notes in the measure, using an array of SMucKish string tokens.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">velocities</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
 <p class="member_description">Set the velocities of the notes in the measure directly from an array of floats.</p>
-</div>
-</div>
-<h3 class="class_section_header">member variables</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezNote</span><span class="typename">[]</span> <span class="membername">notes</span></p><p class="member_description">The ezNote objects in the measure.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -222,130 +248,96 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addMeasure</span>(<span class="ckdoc_typename ckdoc_type_object">ezMeasure</span> measure)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_object">ezMeasure</span> measure)</p>
 <p class="member_description">Add an ezMeasure to the part.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addMeasures</span>(<span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> measures)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> new_measures)</p>
 <p class="member_description">Add an array of ezMeasures to the part.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clearMeasure</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index)</p>
-<p class="member_description">Clear a measure at a given index.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clearMeasures</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length)</p>
-<p class="member_description">Clear a range of measures.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezPart</span> <span class="membername">copy</span>()</p>
 <p class="member_description">Return a copy of the ezPart.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">deleteMeasure</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index)</p>
-<p class="member_description">Delete an ezMeasure from the part at a given index.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezPart</span> <span class="membername">copy</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length)</p>
+<p class="member_description">Return a copy of the ezPart that has a subset of the measures.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">deleteMeasures</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length)</p>
-<p class="member_description">Delete a range of ezMeasures from the part.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">duplicateMeasure</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> n)</p>
-<p class="member_description">Duplicate a measure n times.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">duplicateMeasures</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length, <span class="ckdoc_typename ckdoc_type_primitive">int</span> n)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">duplicate</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length, <span class="ckdoc_typename ckdoc_type_primitive">int</span> n)</p>
 <p class="member_description">Duplicate a range of measures n times.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> <span class="membername">getMeasures</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length)</p>
-<p class="member_description">Return a copy of a range of measures.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">duplicate</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> n)</p>
+<p class="member_description">Duplicate a measure n times.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">insertMeasure</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">ezMeasure</span> new_measure)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">erase</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index)</p>
+<p class="member_description">Erase an ezMeasure from the part at a given index.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">erase</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length)</p>
+<p class="member_description">Erase a range of ezMeasures from the part.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">insert</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">ezMeasure</span> new_measure)</p>
 <p class="member_description">Insert an ezMeasure into the part at a given index.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">insertMeasure</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">insert</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
 <p class="member_description">Insert an ezMeasure into the part at a given index, using a SMucKish input string.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">insertMeasures</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> new_measures)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">insert</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> new_measures)</p>
 <p class="member_description">Insert an array of ezMeasures into the part at a given index.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">insertMeasures</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> inputs)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">insert</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> inputs)</p>
 <p class="member_description">Insert an array of ezMeasures into the part at a given index, using an array of SMucKish input strings.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> <span class="membername">measures</span>()</p>
+<p class="member_description">Get the measures in the part, as an ezMeasure array.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> <span class="membername">measures</span>(<span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> measures)</p>
+<p class="member_description">Set the measures in the part, using an ezMeasure array.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">print</span>()</p>
 <p class="member_description">Print the part.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replaceMeasure</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">ezMeasure</span> new_measure)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replace</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">ezMeasure</span> new_measure)</p>
 <p class="member_description">Replace an ezMeasure in the part at a given index with a new ezMeasure.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replaceMeasure</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replace</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
 <p class="member_description">Replace an ezMeasure in the part at a given index with a new ezMeasure, using a SMucKish input string.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replaceMeasures</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> new_measures)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replace</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> new_measures)</p>
 <p class="member_description">Replace a range of ezMeasures in the part with an array of new ezMeasures.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replaceMeasures</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length, <span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> new_measures)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replace</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length, <span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> new_measures)</p>
 <p class="member_description">Replace a range of ezMeasures in the part with an array of new ezMeasures.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replaceMeasures</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length, <span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> inputs)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replace</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length, <span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> inputs)</p>
 <p class="member_description">Replace a range of ezMeasures in the part with new ezMeasures, using an array of SMucKish input strings.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replaceMeasures</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> inputs)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">replace</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> inputs)</p>
 <p class="member_description">Replace a range of ezMeasures in the part with new ezMeasures, using an array of SMucKish input strings.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
-<p class="member_description">Set the pitches of the notes in the last measure, using a SMucKish input string. If the part contains no measures, a new measure is created.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rest</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index)</p>
+<p class="member_description">Turn all notes in a measure at a given index into rests.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> input)</p>
-<p class="member_description">Set the pitches of the notes in the last measure, using an array of SMucKish string tokens. If the part contains no measures, a new measure is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> input)</p>
-<p class="member_description">Set the pitches of the notes in the last measure, using a 2D array of MIDI note numbers. If the part contains no measures, a new measure is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setRhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
-<p class="member_description">Set the rhythms of the notes in the last measure, using a SMucKish input string. If the part contains no measures, a new measure is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setRhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> input)</p>
-<p class="member_description">Set the rhythms of the notes in the last measure, using an array of SMucKish string tokens. If the part contains no measures, a new measure is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setRhythms</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
-<p class="member_description">Set the rhythms of the notes in the last measure, using an array of floats. If the part contains no measures, a new measure is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
-<p class="member_description">Set the velocities of the notes in the last measure, using a SMucKish input string. If the part contains no measures, a new measure is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> input)</p>
-<p class="member_description">Set the velocities of the notes in the last measure, using an array of SMucKish string tokens. If the part contains no measures, a new measure is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
-<p class="member_description">Set the velocities of the notes in the last measure, using an array of ints. If the part contains no measures, a new measure is created.</p>
-</div>
-</div>
-<h3 class="class_section_header">member variables</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> <span class="membername">measures</span></p><p class="member_description">The ezMeasure objects in the part.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rest</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length)</p>
+<p class="member_description">Turn all notes in a range of measures into rests.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -371,21 +363,33 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="membername">ezScore</span>(<span class="ckdoc_typename ckdoc_type_object">ezPart</span><span class="typename">[]</span> new_parts)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">Create an ezScore from an array of ezPart objects.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addPart</span>(<span class="ckdoc_typename ckdoc_type_object">ezPart</span> part)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_object">ezPart</span> part)</p>
 <p class="member_description">Add an ezPart to the score.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addPart</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
 <p class="member_description">Add an ezPart to the score, using a SMucKish input string.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">bpm</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_object">ezPart</span><span class="typename">[]</span> new_parts)</p>
+<p class="member_description">Add multiple ezParts to the score, using an array of ezParts.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> inputs)</p>
+<p class="member_description">Add multiple ezParts to the score, using an array of SMucKish strings.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">beats</span>()</p>
+<p class="member_description">Get the end of the score in beats (the last note's release point)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bpm</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
 <p class="member_description">Set the tempo in BPM (beats per minute) for the score.</p>
 </div>
 <div class="member">
@@ -393,70 +397,24 @@
 <p class="member_description">Get the tempo in BPM (beats per minute) for the score.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">importMIDI</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
-<p class="member_description">Read a MIDI file into the ezScore object.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">duration</span>()</p>
+<p class="member_description">Get the duration of the score in milliseconds.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">maxPolyphony</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> part)</p>
 <p class="member_description">Get the maximum polyphony for a given part.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numParts</span>()</p>
-<p class="member_description">Get the number of parts in the score.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezPart</span><span class="typename">[]</span> <span class="membername">parts</span>()</p>
+<p class="member_description">Get the parts for the score as an ezPart array.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">scoreDuration</span>()</p>
-<p class="member_description">Get the duration of the score in milliseconds.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezPart</span><span class="typename">[]</span> <span class="membername">parts</span>(<span class="ckdoc_typename ckdoc_type_object">ezPart</span><span class="typename">[]</span> parts)</p>
+<p class="member_description">Set the parts for the score, using an ezPart array.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">scoreEnd</span>()</p>
-<p class="member_description">Get the end of the score in beats (the last note's release point)</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
-<p class="member_description">Set the pitches of the notes in the last part, using a SMucKish input string. If the score contains no parts, a new part is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> input)</p>
-<p class="member_description">Set the pitches of the notes in the last part, using an array of SMucKish string tokens. If the score contains no parts, a new part is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setPitches</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> input)</p>
-<p class="member_description">Set the pitches of the notes in the last part, using a 2D array of MIDI note numbers (floats). If the score contains no parts, a new part is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setRhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
-<p class="member_description">Set the rhythms of the notes in the last part, using a SMucKish input string. If the score contains no parts, a new part is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setRhythms</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> input)</p>
-<p class="member_description">Set the rhythms of the notes in the last part, using an array of SMucKish string tokens. If the score contains no parts, a new part is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setRhythms</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
-<p class="member_description">Set the rhythms of the notes in the last part, using an array of floats. If the score contains no parts, a new part is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setTimeSig</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> numerator, <span class="ckdoc_typename ckdoc_type_primitive">int</span> denominator)</p>
-<p class="member_description">Set the time signature for the score.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
-<p class="member_description">Set the velocities of the notes in the last part, using a SMucKish input string. If the score contains no parts, a new part is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> input)</p>
-<p class="member_description">Set the velocities of the notes in the last part, using an array of SMucKish string tokens. If the score contains no parts, a new part is created.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVelocities</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> input)</p>
-<p class="member_description">Set the velocities of the notes in the last part, using an array of floats. If the score contains no parts, a new part is created.</p>
-</div>
-</div>
-<h3 class="class_section_header">member variables</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezPart</span><span class="typename">[]</span> <span class="membername">parts</span></p><p class="member_description">The ezPart objects in the score.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">read</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+<p class="member_description">Read a MIDI file into the ezScore object.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

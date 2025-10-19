@@ -37,11 +37,15 @@
 <p class="member_declaration"><span class="membername">ezScorePlayer</span>(<span class="ckdoc_typename ckdoc_type_object">ezScore</span> s)</p>
 <p class="member_description">Create an ezScorePlayer from an ezScore object.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ezScorePlayer</span>(<span class="ckdoc_typename ckdoc_type_object">ezScore</span> s, <span class="ckdoc_typename ckdoc_type_object">ezInstrument</span><span class="typename">[]</span> insts)</p>
+<p class="member_description">Create an ezScorePlayer from an ezScore object and an ezInstrument array.</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">bpm</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">bpm</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
 <p class="member_description">Set the tempo for the ezScorePlayer in BPM (beats per minute). Can be changed dynamically during playback.</p>
 </div>
 <div class="member">
@@ -49,15 +53,39 @@
 <p class="member_description">Get the tempo for the ezScorePlayer in BPM (beats per minute). Can be changed dynamically during playback.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">endPos</span>()</p>
+<p class="member_description">Get the end position of the score in beats.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">endPos</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> beat)</p>
+<p class="member_description">Set the end position of the score in beats. If the end position is set to -1, the end position will automatically be set to the score's end position.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">endPos</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> timePosition)</p>
+<p class="member_description">Set the end position of the score in absolute time.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezInstrument</span><span class="typename">[]</span> <span class="membername">instruments</span>()</p>
+<p class="member_description">Get the ezInstrument objects associated with this ezScorePlayer, as an ezInstrument array.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezInstrument</span><span class="typename">[]</span> <span class="membername">instruments</span>(<span class="ckdoc_typename ckdoc_type_object">ezInstrument</span><span class="typename">[]</span> insts)</p>
+<p class="member_description">Set the ezInstrument objects to be used for all parts, using an ezInstrument array. The array must be the same size as the number of parts in the score.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">ezInstrument</span> <span class="membername">instruments</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> partIndex, <span class="ckdoc_typename ckdoc_type_ugen">ezInstrument</span> instrument)</p>
+<p class="member_description">Set the ezInstrument object to be used for a given part.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isPlaying</span>()</p>
 <p class="member_description">Get the current playback state for the ezScorePlayer. If true, the player is currently playing.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logPlayback</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">logPlayback</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> value)</p>
 <p class="member_description">Toggle on/off logging of playback events. If true, current note events are logged to the console as they are played.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">loop</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> loop)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">loop</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> loop)</p>
 <p class="member_description">Set the loop mode. If true, the player will loop back to the start of the score when it reaches the end.</p>
 </div>
 <div class="member">
@@ -73,23 +101,23 @@
 <p class="member_description">Start playback of the score.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">playhead</span>()</p>
-<p class="member_description">Get the current playhead position for the ezScorePlayer. This represents the current position in the score in ms.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pos</span>()</p>
+<p class="member_description">Get the playhead position in beats.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> timePosition)</p>
-<p class="member_description">Set the playhead position by absolute time in ms.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> beatPosition)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> beatPosition)</p>
 <p class="member_description">Set the playhead position by beat position.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">pos</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> timePosition)</p>
+<p class="member_description">Set the playhead position by absolute time.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">preview</span>()</p>
 <p class="member_description">Preview the score by playing back using default instruments. Can be used to quickly preview the score without having to set instruments for each part.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
 <p class="member_description">Set the playback rate for the ezScorePlayer. Defalut value of 1.0. Used to speed up or slow down playback. Negative values play the score in reverse.</p>
 </div>
 <div class="member">
@@ -97,47 +125,36 @@
 <p class="member_description">Get the playback rate for the ezScorePlayer. Defalut value of 1.0. Used to speed up or slow down playback. Negative values play the score in reverse.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setEnd</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> beat)</p>
-<p class="member_description">Set the end position of the score in beats. If the end position is set to -1, the end position will automatically be set to the score's end position.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setInstrument</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> partIndex, <span class="ckdoc_typename ckdoc_type_ugen">ezInstrument</span> instrument)</p>
-<p class="member_description">Set the ezInstrument object to be used for a given part.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setInstruments</span>(<span class="ckdoc_typename ckdoc_type_object">ezInstrument</span><span class="typename">[]</span> insts)</p>
-<p class="member_description">Set the ezInstrument objects to be used for all parts. The array must be the same size as the number of parts in the score.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setScore</span>(<span class="ckdoc_typename ckdoc_type_object">ezScore</span> s)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezScore</span> <span class="membername">score</span>(<span class="ckdoc_typename ckdoc_type_object">ezScore</span> s)</p>
 <p class="member_description">Set the ezScore object to be played back. If the player is currently playing, it will be stopped first.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezScore</span> <span class="membername">score</span>()</p>
+<p class="member_description">Get the ezScore object associated with this ezScorePlayer.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">startPos</span>()</p>
+<p class="member_description">Get the start position of the score in beats.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">startPos</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> beat)</p>
+<p class="member_description">Set the start position of the score in beats.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">startPos</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> timePosition)</p>
+<p class="member_description">Set the start position of the score in absolute time.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">stop</span>()</p>
 <p class="member_description">Stop playback of the score.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">tick</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">tick</span>(<span class="ckdoc_typename ckdoc_type_primitive">dur</span> value)</p>
 <p class="member_description">Set the tick duration for the ezScorePlayer. This represents the update rate of the player's internal clock.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">tick</span>()</p>
 <p class="member_description">Get the tick update rate for the ezScorePlayer. This represents the update rate of the player's internal clock.</p>
-</div>
-</div>
-<h3 class="class_section_header">member variables</h3>
-<div class="members">
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezInstrument</span><span class="typename">[]</span> <span class="membername">instruments</span></p><p class="member_description">The ezInstrument objects to be used in playback. Need to set manually for each part.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezPart</span><span class="typename">[]</span> <span class="membername">parts</span></p><p class="member_description">The ezPart objects in the score. Set automatically when a score is set for the player.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">Gain</span> <span class="membername">previewGain</span></p><p class="member_description">Gain object to control volume of the playback in preview mode.</p>
-</div>
-<div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezScore</span> <span class="membername">score</span></p><p class="member_description">The ezScore object to be played back.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -165,8 +182,12 @@
 <p class="member_description">This function defines behavior that will be executed when a note is played by the ezScorePlayer. Typically, this would include setting frequency, gain, calling .keyOn(), etc. by referencing variables of the ezNote. The base class function is empty, and should be overridden by the user.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">setVoices</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> n_voices)</p>
-<p class="member_description">Set the number of voices for the instrument if using user-defined signal chain. This tells the ezScorePlayer how many voices to allocate for the instrument. E.g. if you set up 5 SinOscs, you should call setVoices(5) inside your class definition. See ezDefaultInst.ck for an example.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numVoices</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> n_voices)</p>
+<p class="member_description">Set the number of voices for the instrument if using user-defined signal chain. This tells the ezScorePlayer how many voices to allocate for the instrument. E.g. if you set up 5 SinOscs, you should call numVoices(5) inside your class definition. See ezDefaultInst.ck for an example.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">numVoices</span>()</p>
+<p class="member_description">Returns the number of voices allocated for the instrument.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -197,7 +218,7 @@
 <h3 class="class_section_header">member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">Gain</span> <span class="membername">bus</span></p><p class="member_description">Post-envelope bus for gain control of all voices. Gain set to .1 by default.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_ugen">Gain</span> <span class="membername">bus</span></p><p class="member_description">Post-envelope bus for gain control of all voices. Gain set to .25 by default.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ADSR</span><span class="typename">[]</span> <span class="membername">envs</span></p><p class="member_description">Array of ADSR amplitude envelopes. Envelopes are set to attack = 4ms, decay = 7000ms, sustain = 0.0, release = 200ms by default.</p>
@@ -227,7 +248,7 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">channel</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">channel</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel)</p>
 <p class="member_description">Set the MIDI channel to use.</p>
 </div>
 <div class="member">
@@ -235,7 +256,7 @@
 <p class="member_description">Get the MIDI channel currently in use.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">device</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> device)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">device</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> device)</p>
 <p class="member_description">Set the MIDI device to use.</p>
 </div>
 <div class="member">
@@ -247,8 +268,12 @@
 <p class="member_description">Flush the MIDI device by sending a noteOn and noteOff message for each MIDI channel and note.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logOutput</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> log)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">logOutput</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> log)</p>
 <p class="member_description">Set whether to log outgoing note data to the console.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">logOutput</span>()</p>
+<p class="member_description">Returns true if logging is enabled, false otherwise.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
@@ -280,16 +305,20 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hostname</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> hostname)</p>
-<p class="member_description">Set the hostname to use for outgoing OSC messages.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">hostname</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> hostname)</p>
+<p class="member_description">Set the hostname to use for outgoing OSC messages. Default value is 'localhost'.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">hostname</span>()</p>
-<p class="member_description">Get the hostname currently in use for outgoing OSC messages.</p>
+<p class="member_description">Returns the hostname currently in use for outgoing OSC messages. Default value is 'localhost'.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logOutput</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> log)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">logOutput</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> log)</p>
 <p class="member_description">Set whether to log outgoing note data to the console.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">logOutput</span>()</p>
+<p class="member_description">Returns true if logging is enabled, false otherwise.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
@@ -300,12 +329,12 @@
 <p class="member_description">This noteOn() function sends an OSC message carrying pitch and velocity data from incoming ezNotes. This function uses the OSC start address '/smuck/noteOn' and adds the pitch and velocity data to the message as 'int' values. Note that here, 'voice' is passed by ezScorePlayer, but is not necessary for this kind of instrument.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">port</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> port)</p>
-<p class="member_description">Set the port to use for outgoing OSC messages.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">port</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> port)</p>
+<p class="member_description">Set the port to use for outgoing OSC messages. Default value is 8888.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">port</span>()</p>
-<p class="member_description">Get the port currently in use for outgoing OSC messages.</p>
+<p class="member_description">Returns the port currently in use for outgoing OSC messages. Default value is 8888.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -325,7 +354,7 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">channel</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">channel</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel)</p>
 <p class="member_description">Set the MIDI channel to use.</p>
 </div>
 <div class="member">
@@ -333,7 +362,7 @@
 <p class="member_description">Get the MIDI channel currently in use.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">device</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> device)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">device</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> device)</p>
 <p class="member_description">Set the MIDI device to use.</p>
 </div>
 <div class="member">
@@ -345,15 +374,15 @@
 <p class="member_description">Flush the MIDI device by sending a noteOn and noteOff message for each MIDI channel and note.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">hostname</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> hostname)</p>
-<p class="member_description">Set the OSC hostname to use.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">hostname</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> hostname)</p>
+<p class="member_description">Set the OSC hostname to use. Default value is 'localhost'.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">hostname</span>()</p>
-<p class="member_description">Get the OSC hostname currently in use.</p>
+<p class="member_description">Returns the OSC hostname currently in use. Default value is 'localhost'.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logOutput</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> log)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">logOutput</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> log)</p>
 <p class="member_description">Set whether to log outgoing note data to the console.</p>
 </div>
 <div class="member">
@@ -365,12 +394,12 @@
 <p class="member_description">Send a noteOn message via MIDI and/or OSC.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">port</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> port)</p>
-<p class="member_description">Set the OSC port to use.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">port</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> port)</p>
+<p class="member_description">Set the OSC port to use. Default value is 8888.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">port</span>()</p>
-<p class="member_description">Get the OSC port currently in use.</p>
+<p class="member_description">Returns the OSC port currently in use. Default value is 8888.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sendMIDI</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> device)</p>
@@ -381,11 +410,19 @@
 <p class="member_description">Set the OSC hostname and port to use and enable OSC output.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">useMIDI</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> toggle)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">useMIDI</span>()</p>
+<p class="member_description">Returns true if MIDI is enabled, false otherwise.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">useMIDI</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> toggle)</p>
 <p class="member_description">Set whether to send note data via MIDI.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">useOSC</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> toggle)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">useOSC</span>()</p>
+<p class="member_description">Returns true if OSC is enabled, false otherwise.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">useOSC</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> toggle)</p>
 <p class="member_description">Set whether to send note data via OSC.</p>
 </div>
 </div>
@@ -426,7 +463,7 @@
 <p class="member_description">Send a noteOn message to the FluidSynth instrument.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">open</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">open</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
 <p class="member_description">Load a SoundFont file to use.</p>
 </div>
 <div class="member">
