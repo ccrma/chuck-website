@@ -76,6 +76,10 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="member_declaration"><span class="membername">JCRev</span>()</p>
 <p class="member_description">Default constructor for JCRev.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">JCRev</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> mix)</p>
+<p class="member_description">Construct a JCRev with specified mix level.</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -108,6 +112,10 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="member_declaration"><span class="membername">NRev</span>()</p>
 <p class="member_description">Default constructor for NRev.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">NRev</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> mix)</p>
+<p class="member_description">Construct an NRev with specified mix level.</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -138,6 +146,10 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="member_declaration"><span class="membername">PRCRev</span>()</p>
 <p class="member_description">Default constructor for PRCRev.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">PRCRev</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> mix)</p>
+<p class="member_description">Construct a PRCRev with specified mix level.</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -167,6 +179,18 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <div class="member">
 <p class="member_declaration"><span class="membername">Chorus</span>()</p>
 <p class="member_description">Default constructor for Chorus.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Chorus</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> modFreq)</p>
+<p class="member_description">Construct a Chorus with specified modulation frequency.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Chorus</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> modFreq, <span class="ckdoc_typename ckdoc_type_primitive">float</span> modDepth)</p>
+<p class="member_description">Construct a Chorus with specified modulation frequency and modulation depth.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Chorus</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> modFreq, <span class="ckdoc_typename ckdoc_type_primitive">float</span> modDepth, <span class="ckdoc_typename ckdoc_type_primitive">float</span> mix)</p>
+<p class="member_description">Construct a Chorus with specified modulation frequency, modulation depth, and effect mix.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -226,6 +250,18 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <p class="member_declaration"><span class="membername">Modulate</span>()</p>
 <p class="member_description">Default constructor for Modulate.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Modulate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> vibratoRate)</p>
+<p class="member_description">Construct a Modulate with specified vibrato rate.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Modulate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> vibratoRate, <span class="ckdoc_typename ckdoc_type_primitive">float</span> vibratoGain)</p>
+<p class="member_description">Construct a Modulate with specified vibrato rate and vibrato gain.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">Modulate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> vibratoRate, <span class="ckdoc_typename ckdoc_type_primitive">float</span> vibratoGain, <span class="ckdoc_typename ckdoc_type_primitive">float</span> randomGain)</p>
+<p class="member_description">Construct a Modulate with specified vibrato rate, vibrato gain, and random contribution gain.</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
@@ -271,6 +307,14 @@ by Perry R. Cook and Gary P. Scavone, 1995 - 2002.<p>
 <div class="member">
 <p class="member_declaration"><span class="membername">PitShift</span>()</p>
 <p class="member_description">Default constructor for PitShift.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">PitShift</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> shift)</p>
+<p class="member_description">Construct a PitShift with specified degree of pitch shifting.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">PitShift</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> shift, <span class="ckdoc_typename ckdoc_type_primitive">float</span> mix)</p>
+<p class="member_description">Construct a PitShift with specified degree of pitch shifting and effect mix.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>

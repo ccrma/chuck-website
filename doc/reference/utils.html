@@ -277,7 +277,7 @@
 <a name="StringTokenizer" /><div class="class">
 <h2 class="class_title" name="StringTokenizer">StringTokenizer</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Break a string into tokens. This uses whitespace as the delimiter.<p>
+<p class="class_description">Break a string into tokens, using (by default) whitespace characters as delimiters. Use the overloaded constructors StringTokenizer(string line) or StringTokenizer( string line, string delims ) to initialize with specific line and delimiters.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/string/token.ck">string/token.ck</a></li>
 <li><a target="_blank" href="../examples/string/readline.ck">string/readline.ck</a></li>
@@ -291,9 +291,25 @@
 <p class="member_declaration"><span class="membername">StringTokenizer</span>()</p>
 <p class="member_description">Default constructor for StringTokenizer.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="membername">StringTokenizer</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> line)</p>
+<p class="member_description">Construct a StringTokenizer with a string to tokenize; this will use the default whitespace delimiters.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">StringTokenizer</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> line, <span class="ckdoc_typename ckdoc_type_object">string</span> delimiters)</p>
+<p class="member_description">Construct a StringTokenizer with a string to tokenize, as well as custom delimiters; if the latter is empty string, default whitespace characters will be used.</p>
+</div>
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">delims</span>()</p>
+<p class="member_description">Returns the string delimination characters.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">delims</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> delimiters)</p>
+<p class="member_description">Sets the delimination characters as a string. If the argument is an empty string, default whitespace characters " \f\n\r\t\v" will be used. Also, calling this method resets the state for the token retrieval loop (e.g., .more() and .next())</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">get</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index)</p>
 <p class="member_description">Return the i-th token in the set string.</p>

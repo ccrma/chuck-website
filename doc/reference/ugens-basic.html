@@ -15,6 +15,7 @@
 <div class="toc"><a id="toc"/>
 <p class="toc_class"><a href="#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a></p>
 <p class="toc_class"><a href="#Gain" class="ckdoc_typename ckdoc_type_ugen">Gain</a></p>
+<p class="toc_class"><a href="#GainDB" class="ckdoc_typename ckdoc_type_ugen">GainDB</a></p>
 <p class="toc_class"><a href="#Impulse" class="ckdoc_typename ckdoc_type_ugen">Impulse</a></p>
 <p class="toc_class"><a href="#Step" class="ckdoc_typename ckdoc_type_ugen">Step</a></p>
 <p class="toc_class"><a href="#SndBuf" class="ckdoc_typename ckdoc_type_ugen">SndBuf</a></p>
@@ -111,6 +112,7 @@
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">A gain control unit generator. (All unit generators can already change their own gain; this is an explicit way to add multiple outputs together and scale them.)<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/gain.ck">basic/gain.ck</a></li>
 <li><a target="_blank" href="../examples/basic/i-robot.ck">basic/i-robot.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
@@ -122,6 +124,38 @@
 <div class="member">
 <p class="member_declaration"><span class="membername">Gain</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> gain)</p>
 <p class="member_description">Construct a Gain with default value.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">db</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> db)</p>
+<p class="member_description">Set gain (in dB)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">db</span>()</p>
+<p class="member_description">Get gain (in dB)</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="GainDB" /><div class="class">
+<h2 class="class_title" name="GainDB">GainDB</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#Gain" class="ckdoc_typename ckdoc_type_ugen">Gain</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">The same as the Gain UGen, but the constructor sets the gain in deciBels rather than linear scaling.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/gain.ck">basic/gain.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">GainDB</span>()</p>
+<p class="member_description">Default constructor for GainDB.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">GainDB</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> db)</p>
+<p class="member_description">Construct a GainDB with default value (in deciBels).</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -322,6 +356,10 @@
 <p class="member_description">Query whether the SndBuf is ready for use (e.g., sound file successfully loaded).</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">sampleRate</span>()</p>
+<p class="member_description">Get sample rate of the source audio.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">samples</span>()</p>
 <p class="member_description">Get total number of sample frames in the file; same as .frames().</p>
 </div>
@@ -346,6 +384,18 @@
 <div class="member">
 <p class="member_declaration"><span class="membername">SndBuf2</span>()</p>
 <p class="member_description">Default constructor for SndBuf2.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">SndBuf2</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path)</p>
+<p class="member_description">Construct a SndBuf2 with the 'path' to a sound file to read.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">SndBuf2</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rate)</p>
+<p class="member_description">Construct a SndBuf2 with the 'path' to a sound file to read, and a default playback 'rate' (1.0 is normal rate)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">SndBuf2</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> path, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rate, <span class="ckdoc_typename ckdoc_type_primitive">int</span> pos)</p>
+<p class="member_description">Construct a SndBuf2 with the 'path' to a sound file to read, a default playback 'rate' (1.0 is normal rate), and starting at sample position 'pos'</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
