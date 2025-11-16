@@ -30,7 +30,7 @@ Philip Davidson.
 
 ---
 
-**ChuGL v0.2.7** (alpha) — [**ChuGL API Reference**](./api/)
+**ChuGL v0.2.8** (alpha) — [**ChuGL API Reference**](./api/)
 • [**Examples**](./examples/)
 • [**Cheatsheet**](./doc/cheatsheet.html)
 • [**Walkthrough**](./doc/walkthru.html)
