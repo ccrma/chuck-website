@@ -15,6 +15,7 @@
 <div class="toc"><a id="toc"/>
 <p class="toc_class"><a href="#GG" class="ckdoc_typename ckdoc_type_object">GG</a></p>
 <p class="toc_class"><a href="#GWindow" class="ckdoc_typename ckdoc_type_object">GWindow</a></p>
+<p class="toc_class"><a href="#Gamepad" class="ckdoc_typename ckdoc_type_object">Gamepad</a></p>
 <p class="toc_class"><a href="#NextFrameEvent" class="ckdoc_typename ckdoc_type_object">NextFrameEvent</a></p>
 <p class="toc_class"><a href="#WindowResizeEvent" class="ckdoc_typename ckdoc_type_object">WindowResizeEvent</a></p>
 <p class="toc_class"><a href="#WindowResizeEvent" class="ckdoc_typename ckdoc_type_object">WindowResizeEvent</a></p>
@@ -359,6 +360,10 @@
 <p class="member_description">Set the window size limits, including min/max size and aspect ratio.To disable a limit, pass 0 for the corresponding argument, or @(0, 0)to disable fixed aspect ratio.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">snooze</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> bool_should_wait, <span class="ckdoc_typename ckdoc_type_primitive">float</span> timeout)</p>
+<p class="member_description">If set `bool_should_wait` is set to true, the ChuGL window will only refresh and broadcast GG.nextFrame() upon receiving user input. If `timeout` is > 0, the window will wait at most `timeout` seconds before refreshing. if `timeout` == 0, the window will wait indefinitely. Useful for editing tools or other apps that are mostly static.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">title</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> title)</p>
 <p class="member_description">Set the window title.</p>
 </div>
@@ -565,6 +570,9 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">KEY_L</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">KEY_LAST</span></p><p class="member_description">Integer value of the highest key enum.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">KEY_LEFT</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -749,6 +757,119 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MOUSE_NORMAL</span></p><p class="member_description">Normal mouse mode, the cursor is visible and behaves normally. Set via GWindow.mouseMode()</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="Gamepad" /><div class="class">
+<h2 class="class_title" name="Gamepad">Gamepad</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Static class for reading gamepad input. Gamepad state is updated per graphics frame, so these functions will only work as expected if GG.nextFrame() is being called in a renderloop. Supports up to 16 controllers.<p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/basic/gamepad.ck">basic/gamepad.ck</a></li>
+</ul></div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">available</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> gamepad_id)</p>
+<p class="member_description">Returns true if there is a connected gamepad assigned to `gamepad_id`. Generally speaking, the first connected gamepad will be assigned id 0, the second id 1, etc. If a controller is *disconnected*, other controllers will NOT be reassigned. E.g. 4 controllers are connected, corresponding to ids 0, 1, 2, and 3. If controller 2 disconnects, the other controllers will remain assigned to IDs 0, 1, and 3. Reconnecting the controller will reassign it to id 2.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">available</span>()</p>
+<p class="member_description">Returns an array of the ids of all connected gamepads. IDs are integers between 0 and 15, inclusive. These ids can be used to query the state of that specific gamepad, e.g. Gamepad.button(2, Gamepad.BUTTON_A). This list is sorted from low to high.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">axis</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> gamepad_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> axis_id)</p>
+<p class="member_description">Get the position of a given gamepad axis. Returns a value in range [-1, 1]. See the Gamepad.AXIS_ enums for valid options, e.g. Gamepad.AXIS_LEFT_TRIGGER.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">button</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> gamepad_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> button_id)</p>
+<p class="member_description">Returns true for every frame that a given button is being held. See the Gamepad.BUTTON_ enums for valid options, e.g. Gamepad.BUTTON_DPAD_UP.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">buttonDown</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> gamepad_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> button_id)</p>
+<p class="member_description">Returns true on the frame that a given button is first pressed. See the Gamepad.BUTTON_ enums for valid options, e.g. Gamepad.BUTTON_DPAD_UP.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">buttonUp</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> gamepad_id, <span class="ckdoc_typename ckdoc_type_primitive">int</span> button_id)</p>
+<p class="member_description">Returns true on the frame that a given button is released. See the Gamepad.BUTTON_ enums for valid options, e.g. Gamepad.BUTTON_DPAD_UP.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">name</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> gamepad_id)</p>
+<p class="member_description">Get the name of a gamepad. The id is an integer between 0 and 15, inclusive.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AXIS_LEFT_TRIGGER</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AXIS_LEFT_X</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AXIS_LEFT_Y</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AXIS_RIGHT_TRIGGER</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AXIS_RIGHT_X</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AXIS_RIGHT_Y</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_A</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_B</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_BACK</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_DPAD_DOWN</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_DPAD_LEFT</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_DPAD_RIGHT</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_DPAD_UP</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_GUIDE</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_LEFT_BUMPER</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_LEFT_THUMB</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_RIGHT_BUMPER</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_RIGHT_THUMB</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_START</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_X</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BUTTON_Y</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">CONTROLLERS_MAX</span></p><p class="member_description">Equal to 16, the maximum number of controllers that can be supported at once.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ID_MAX</span></p><p class="member_description">The maximum assignable gamepad id. Equal to 15, the maximum number of simultaneous supported controllers minus 1.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

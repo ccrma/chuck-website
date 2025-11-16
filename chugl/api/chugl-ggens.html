@@ -307,7 +307,7 @@
 <a name="GScene" /><div class="class">
 <h2 class="class_title" name="GScene">GScene</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-ggens.html#GGen" class="ckdoc_typename ckdoc_type_object">GGen</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">Scene class. Static--all instances point to the same underlying ChuGL main scene. GGens must be added to a scene to be rendered.<p>
+<p class="class_description">Scene class.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/skybox.ck">basic/skybox.ck</a></li>
 </ul></div>
@@ -2039,7 +2039,23 @@
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">NDCToWorldPos</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> clip_pos)</p>
-<p class="member_description">Convert a point in clip space to world space. Clip space x and y should be in range [-1, 1], and z in the range [0, 1]. For x and y, 0 is the center of the screen. For z, 0 is the near clip plane and 1 is the far clip plane.</p>
+<p class="member_description">Convert a point in clip space to world space. Clip space x and y should be in range [-1, 1], and z in the range [0, 1]. For x and y, 0 is the center of the screen. For z, 0 is the near clip plane and 1 is the far clip plane.NOTE: if this camera is rendering to a fixed-resolution color target, you need to explicitly set GCamera.aspect(float) to the aspect ratio of that target for this method to be accurate.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">aspect</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> aspect)</p>
+<p class="member_description">Set a fixed aspect ratio for this camera. This also sets .autoUpdateAspect() to false.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">aspect</span>()</p>
+<p class="member_description">Get the current aspect ratio of this camera. If .autoUpdateAspect() is set to true, this will match the aspect ratio of the graphics window.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">autoUpdateAspect</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> auto_update)</p>
+<p class="member_description">Default true. Set whether the aspect ratio of this camera is automatically updated to match the aspect ratio of the GWindow.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">autoUpdateAspect</span>()</p>
+<p class="member_description">Default true. Get whether the aspect ratio of this camera is automatically updated to match the aspect ratio of the GWindow.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">clip</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> near, <span class="ckdoc_typename ckdoc_type_primitive">float</span> far)</p>
@@ -2075,7 +2091,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">screenCoordToWorldPos</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> screen_pos, <span class="ckdoc_typename ckdoc_type_primitive">float</span> distance)</p>
-<p class="member_description">Returns the world position of a point in screen space at a given distance from the camera. Useful in combination with GWindow.mousePos() for mouse picking.</p>
+<p class="member_description">Returns the world position of a point in screen space at a given distance from the camera. Useful in combination with GWindow.mousePos() for mouse picking. NOTE: if this camera is rendering to a fixed-resolution color target, you need to explicitly set GCamera.aspect(float) to the aspect ratio of that target for this method to be accurate.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">viewSize</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> size)</p>
@@ -2087,11 +2103,11 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">worldPosToNDC</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> world_pos)</p>
-<p class="member_description">Convert a point in world space to this camera's clip space.</p>
+<p class="member_description">Convert a point in world space to this camera's clip space. NOTE: if this camera is rendering to a fixed-resolution color target, you need to explicitly set GCamera.aspect(float) to the aspect ratio of that target for this method to be accurate.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">worldPosToScreenCoord</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> world_pos)</p>
-<p class="member_description">Get a screen coordinate from a world position by casting a ray from worldPos back to the camera and finding the intersection with the near clipping planeworld_pos is a vec3 representing a world position.Returns a vec2 screen coordinate.Remember, screen coordinates have origin at the top-left corner of the window.</p>
+<p class="member_description">Get a screen coordinate from a world position by casting a ray from worldPos back to the camera and finding the intersection with the near clipping planeworld_pos is a vec3 representing a world position.Returns a vec2 screen coordinate.Remember, screen coordinates have origin at the top-left corner of the windowNOTE: if this camera is rendering to a fixed-resolution color target, you need to explicitly set GCamera.aspect(float) to the aspect ratio of that target for this method to be accurate.</p>
 </div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
@@ -2206,11 +2222,11 @@
 <div class="members">
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">align</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> alignment_mode)</p>
-<p class="member_description">Set the alignment mode of the text. 0 for left, 1 for center, 2 for right. Default 0 aka left. Only in effect if a wrap width is specified, i.e. GText.width > 0.</p>
+<p class="member_description">Set the alignment mode of the text. 0 for left, 1 for center, 2 for right. Default 0 aka left. Only in effect if a wrap width is specified, i.e. GText.maxWidth > 0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">align</span>()</p>
-<p class="member_description">Get the alignment mode of the text. 0 for left, 1 for center, 2 for right. Default 0 aka left. Only in effect if a wrap width is specified, i.e. GText.width > 0.</p>
+<p class="member_description">Get the alignment mode of the text. 0 for left, 1 for center, 2 for right. Default 0 aka left. Only in effect if a wrap width is specified, i.e. GText.maxWidth > 0.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">alpha</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> alpha)</p>

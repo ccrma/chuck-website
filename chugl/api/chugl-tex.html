@@ -149,6 +149,9 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FORMAT_R32FLOAT</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FORMAT_R32UINT</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FORMAT_RGBA16FLOAT</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -304,16 +307,16 @@
 <h3 class="class_section_header">member variables</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">depth</span></p><p class="member_description">Depth of write region. Default 0.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">depth</span></p><p class="member_description">Depth of write region. Default 1.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span></p><p class="member_description">Height of write region. Default 0.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">height</span></p><p class="member_description">Height of write region. Default 1.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mip</span></p><p class="member_description">Which mip level to write to. Default is 0 (base level)</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span></p><p class="member_description">Width of write region. Default 0.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span></p><p class="member_description">Width of write region. Default 1.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">x</span></p><p class="member_description">X offset of write region. Default 0.</p>
@@ -346,6 +349,9 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gen_mips</span></p><p class="member_description">Generate mipmaps for the texture. Default true.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">read</span></p><p class="member_description">When loading, also write the texture data to a chuck array, accessible via Texture.data(). Default false, due to the steep performance cost.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

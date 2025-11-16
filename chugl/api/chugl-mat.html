@@ -32,6 +32,10 @@
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/geo-and-mat.ck">basic/geo-and-mat.ck</a></li>
 <li><a target="_blank" href="../examples/basic/transparency.ck">basic/transparency.ck</a></li>
+<li><a target="_blank" href="../examples/basic/blend.ck">basic/blend.ck</a></li>
+<li><a target="_blank" href="../examples/deep/lines3d.ck">deep/lines3d.ck</a></li>
+<li><a target="_blank" href="../examples/deep/custom-material.ck">deep/custom-material.ck</a></li>
+<li><a target="_blank" href="../examples/deep/particles.ck">deep/particles.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -49,6 +53,42 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span><span class="typename">[]</span> <span class="membername">activeUniformLocations</span>()</p>
 <p class="member_description">Get list of active uniform locations, i.e. uniform locations that have been set (bind group entry locations)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">blend</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> blend_mode)</p>
+<p class="member_description">Set the blend mode to one of the builtin Material.BlendMode_XXX enums. Under the hood this will call Material.blend(...) with the appropriate blend factors and operations.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">blend</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> src_factor, <span class="ckdoc_typename ckdoc_type_primitive">int</span> dst_factor, <span class="ckdoc_typename ckdoc_type_primitive">int</span> op, <span class="ckdoc_typename ckdoc_type_primitive">int</span> src_factor_alpha, <span class="ckdoc_typename ckdoc_type_primitive">int</span> dst_factor_alpha, <span class="ckdoc_typename ckdoc_type_primitive">int</span> op_alpha)</p>
+<p class="member_description">Set the blending equation used by this material. When writing a pixel of color SRC to a texture position with color DST, the resultant color is SRC × src_factor (op) DST × dst_factor.Where src_factor and dst_factor are enums of type Material.BlendFactor_XXX and (op) is an enum of type Material.BlendOp_XXX.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">blend</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> src_factor, <span class="ckdoc_typename ckdoc_type_primitive">int</span> dst_factor, <span class="ckdoc_typename ckdoc_type_primitive">int</span> op)</p>
+<p class="member_description">Set the blend components. src_factor and dst_factor should be a Material.BlendFactor_XXX enum, and `op` should be a Material.BlendOp_XXX enum. These components are applied to both rgb color and alpha channels identically.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">blendDst</span>()</p>
+<p class="member_description">Get the blending dst factor.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">blendDstAlpha</span>()</p>
+<p class="member_description">Get the blending dst alpha factor.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">blendOp</span>()</p>
+<p class="member_description">Get the blending operator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">blendOpAlpha</span>()</p>
+<p class="member_description">Get the blending alpha operator.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">blendSrc</span>()</p>
+<p class="member_description">Get the blending src factor.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">blendSrcAlpha</span>()</p>
+<p class="member_description">Get the blending src alpha factor.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">cullMode</span>()</p>
@@ -202,6 +242,90 @@
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BLEND_MODE_ADD</span></p><p class="member_description">Equals 2. Additive blending. Equivalent to blend(One, One)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BLEND_MODE_ALPHA</span></p><p class="member_description">Equals 0. Normal alpha blending. The default for Materials. Equivalent to blend(SrcAlpha, OneMinusSrcAlpha)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BLEND_MODE_MULTIPLY</span></p><p class="member_description">Equals 4. Multiplicative blending. Darkens. Equivalent to blend(Dst, OneMinusSrcAlpha)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BLEND_MODE_REPLACE</span></p><p class="member_description">Equals 1. Ignore alpha channel. Equivalent to blend(One, Zero)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BLEND_MODE_SCREEN</span></p><p class="member_description">Equals 5. Screen blending. Opposite of multiply. Lightens. Equivalent to blend(One, OneMinusSrc)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BLEND_MODE_SUBTRACT</span></p><p class="member_description">Equals 3. Subtractive blending. Equivalent to blend(One, One, BlendOp_Subtract)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendFactor_Dst</span></p><p class="member_description">(R_dst, G_dst, B_dst, A_dst)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendFactor_DstAlpha</span></p><p class="member_description">(A_dst, A_dst, A_dst, A_dst)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendFactor_One</span></p><p class="member_description">(1, 1, 1, 1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendFactor_OneMinusDst</span></p><p class="member_description">(1 - R_dst, 1 - G_dst, 1 - B_dst, 1 - A_dst)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendFactor_OneMinusDstAlpha</span></p><p class="member_description">(1 - A_dst, 1 - A_dst, 1 - A_dst, 1 - A_dst)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendFactor_OneMinusSrc</span></p><p class="member_description">(1 - R_src, 1 - G_src, 1 - B_src, 1 - A_src)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendFactor_OneMinusSrcAlpha</span></p><p class="member_description">(1 - A_src, 1 - A_src, 1 - A_src, 1 - A_src)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendFactor_Src</span></p><p class="member_description">(R_src, G_src, B_src, A_src)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendFactor_SrcAlpha</span></p><p class="member_description">(A_src, A_src, A_src, A_src)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendFactor_SrcAlphaSaturated</span></p><p class="member_description">(min(A_src, 1 - A_dst), min(A_src, 1 - A_dst), min(A_src, 1 - A_dst), 1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendFactor_Zero</span></p><p class="member_description">(0, 0, 0, 0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendMode_Add</span></p><p class="member_description">Equals 2. Additive blending. Equivalent to blend(One, One)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendMode_Alpha</span></p><p class="member_description">Equals 0. Normal alpha blending. The default for Materials. Equivalent to blend(SrcAlpha, OneMinusSrcAlpha)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendMode_Multiply</span></p><p class="member_description">Equals 4. Multiplicative blending. Darkens. Equivalent to blend(Dst, OneMinusSrcAlpha)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendMode_Replace</span></p><p class="member_description">Equals 1. Ignore alpha channel. Equivalent to blend(One, Zero)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendMode_Screen</span></p><p class="member_description">Equals 5. Screen blending. Opposite of multiply. Lightens. Equivalent to blend(One, OneMinusSrc)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendMode_Subtract</span></p><p class="member_description">Equals 3. Subtractive blending. Equivalent to blend(One, One, BlendOp_Subtract)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendOp_Add</span></p><p class="member_description">RGBAsrc × RGBAsrcFactor + RGBAdst × RGBAdstFactor.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendOp_Max</span></p><p class="member_description">Max(RGBAsrc, RGBAdst)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendOp_Min</span></p><p class="member_description">Min(RGBAsrc, RGBAdst)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendOp_ReverseSubtract</span></p><p class="member_description">RGBAdst × RGBAdstFactor - RGBAsrc × RGBAsrcFactor.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">BlendOp_Subtract</span></p><p class="member_description">RGBAsrc × RGBAsrcFactor - RGBAdst × RGBAdstFactor.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">CULL_BACK</span></p><p class="member_description">Cull back faces.</p>
 </div>
 <div class="member">
@@ -342,6 +466,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">colorMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> colorMap)</p>
 <p class="member_description">Set the color map of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">emissive</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> color)</p>
+<p class="member_description">Set the emissive color of the material. This will be added to the final color.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec4</span> <span class="membername">emissive</span>()</p>
+<p class="member_description">Get the emissive color of the material.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">offset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>

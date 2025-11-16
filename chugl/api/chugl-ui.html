@@ -56,6 +56,7 @@
 <p class="toc_class"><a href="#UI_SizeCallback" class="ckdoc_typename ckdoc_type_object">UI_SizeCallback</a></p>
 <p class="toc_class"><a href="#UI_ComboCallback" class="ckdoc_typename ckdoc_type_object">UI_ComboCallback</a></p>
 <p class="toc_class"><a href="#UI_DrawList" class="ckdoc_typename ckdoc_type_object">UI_DrawList</a></p>
+<p class="toc_class"><a href="#UI_DrawFlags" class="ckdoc_typename ckdoc_type_object">UI_DrawFlags</a></p>
 <p class="toc_class"><a href="#UI" class="ckdoc_typename ckdoc_type_object">UI</a></p>
 </div>
 <div class="classes">
@@ -2945,7 +2946,7 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addCircleEx</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">int</span> num_segments, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addCircle</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">int</span> num_segments, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -2965,7 +2966,7 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addEllipseEx</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rot, <span class="ckdoc_typename ckdoc_type_primitive">int</span> num_segments, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addEllipse</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rot, <span class="ckdoc_typename ckdoc_type_primitive">int</span> num_segments, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -2973,7 +2974,7 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addEllipseFilledEx</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rot, <span class="ckdoc_typename ckdoc_type_primitive">int</span> num_segments)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addEllipseFilled</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rot, <span class="ckdoc_typename ckdoc_type_primitive">int</span> num_segments)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -2981,7 +2982,7 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addLineEx</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p1, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p2, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addLine</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p1, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p2, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -2989,7 +2990,7 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addNgonEx</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">int</span> num_segments, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addNgon</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">int</span> num_segments, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -3005,7 +3006,7 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addQuadEx</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p1, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p2, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p3, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p4, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addQuad</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p1, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p2, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p3, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p4, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -3017,7 +3018,7 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addRectEx</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p_min, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p_max, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rounding, <span class="ckdoc_typename ckdoc_type_primitive">int</span> UI_DrawFlags, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addRect</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p_min, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p_max, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rounding, <span class="ckdoc_typename ckdoc_type_primitive">int</span> UI_DrawFlags, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
 <p class="member_description">A: upper-left, b: lower-right (== upper-left + size)</p>
 </div>
 <div class="member">
@@ -3025,7 +3026,7 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addRectFilledEx</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p_min, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p_max, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rounding, <span class="ckdoc_typename ckdoc_type_primitive">int</span> UI_DrawFlags)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addRectFilled</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p_min, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p_max, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rounding, <span class="ckdoc_typename ckdoc_type_primitive">int</span> UI_DrawFlags)</p>
 <p class="member_description">A: upper-left, b: lower-right (== upper-left + size)</p>
 </div>
 <div class="member">
@@ -3037,7 +3038,7 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addTextEx</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> pos, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_object">string</span> text_begin, <span class="ckdoc_typename ckdoc_type_object">string</span> text_end)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addText</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> pos, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_object">string</span> text_begin, <span class="ckdoc_typename ckdoc_type_object">string</span> text_end)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -3045,7 +3046,7 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addTriangleEx</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p1, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p2, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p3, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">addTriangle</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p1, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p2, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> p3, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span> col, <span class="ckdoc_typename ckdoc_type_primitive">float</span> thickness)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -3062,7 +3063,7 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pathArcTo</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">float</span> a_min, <span class="ckdoc_typename ckdoc_type_primitive">float</span> a_max, <span class="ckdoc_typename ckdoc_type_primitive">int</span> num_segments)</p>
-<p class="empty_member_description">No description available</p>
+<p class="member_description">A_min and a_max are start and end angles, in radians, of the circular arc. pass num_segments = 0 to auto-calculate the number of segments to use.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pathArcToFast</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">float</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">int</span> a_min_of_12, <span class="ckdoc_typename ckdoc_type_primitive">int</span> a_max_of_12)</p>
@@ -3085,7 +3086,7 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pathEllipticalArcToEx</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rot, <span class="ckdoc_typename ckdoc_type_primitive">int</span> a_min, <span class="ckdoc_typename ckdoc_type_primitive">int</span> a_max, <span class="ckdoc_typename ckdoc_type_primitive">int</span> num_segments)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pathEllipticalArcTo</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> center, <span class="ckdoc_typename ckdoc_type_primitive">vec2</span> radius, <span class="ckdoc_typename ckdoc_type_primitive">float</span> rot, <span class="ckdoc_typename ckdoc_type_primitive">int</span> a_min, <span class="ckdoc_typename ckdoc_type_primitive">int</span> a_max, <span class="ckdoc_typename ckdoc_type_primitive">int</span> num_segments)</p>
 <p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
@@ -3123,6 +3124,52 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">pushClipRectFullScreen</span>()</p>
 <p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_DrawFlags" /><div class="class">
+<h2 class="class_title" name="UI_DrawFlags">UI_DrawFlags</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Flags for UI_DrawList functions.<p>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Closed</span></p><p class="member_description">PathStroke(), AddPolyline(): specify that shape should be closed (Important: this is always == 1 for legacy reason)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="member_description">Equals 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RoundCornersAll</span></p><p class="member_description">Equals RoundCornersTopLeft | RoundCornersTopRight | RoundCornersBottomLeft | RoundCornersBottomRight.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RoundCornersBottom</span></p><p class="member_description">Equals RoundCornersBottomLeft | RoundCornersBottomRight.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RoundCornersBottomLeft</span></p><p class="member_description">AddRect(), AddRectFilled(), PathRect(): enable rounding bottom-left corner only (when rounding > 0.0f, we default to all corners). Was 0x04.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RoundCornersBottomRight</span></p><p class="member_description">AddRect(), AddRectFilled(), PathRect(): enable rounding bottom-right corner only (when rounding > 0.0f, we default to all corners). Wax 0x08.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RoundCornersLeft</span></p><p class="member_description">Equals RoundCornersTopLeft | RoundCornersBottomLeft.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RoundCornersNone</span></p><p class="member_description">AddRect(), AddRectFilled(), PathRect(): disable rounding on all corners (when rounding > 0.0f). This is NOT zero, NOT an implicit flag!</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RoundCornersRight</span></p><p class="member_description">Equals RoundCornersTopRight | RoundCornersBottomRight.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RoundCornersTop</span></p><p class="member_description">Equals RoundCornersTopLeft | RoundCornersTopRight.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RoundCornersTopLeft</span></p><p class="member_description">AddRect(), AddRectFilled(), PathRect(): enable rounding top-left corner only (when rounding > 0.0f, we default to all corners). Was 0x01.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RoundCornersTopRight</span></p><p class="member_description">AddRect(), AddRectFilled(), PathRect(): enable rounding top-right corner only (when rounding > 0.0f, we default to all corners). Was 0x02.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
