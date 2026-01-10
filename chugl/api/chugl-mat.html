@@ -124,7 +124,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">storageBuffer</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec3</span><span class="typename">[]</span> storageBuffer)</p>
-<p class="member_description">Bind the given array data as a storage buffer at the given location.</p>
+<p class="member_description">Bind the given array data as a storage buffer at the given location.WARNING: if you're binding in the wgsl shader is type vec3f, i.e. you are binding to a location of type `var<storage> : array<vec3f>`, note that due to GPU byte alignment constraints, vec3f actually has 4 bytes of padding, making it the same size as a vec4f. The vec3 arrays in chugl however have 0 extra padding, and so the copy will not align leading most likely to very strange visual bugs. To work around this: change the type in your shader to array<f32>, which has no extra padding and will align nicely. Or change it to array<vec4f> and on the chuck side copy an array of vec4 instead, with the .w value being unused.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">storageBuffer</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_primitive">vec4</span><span class="typename">[]</span> storageBuffer)</p>
