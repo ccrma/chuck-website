@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="images/chump-logo.png" width="35%"></img>
+<img src="img/chump-logo.png" width="35%"></img>
 
 <h2>Defining a New Package</h2>
 

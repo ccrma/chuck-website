@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="images/chump-logo.png" width="60%"></img>
+<img src="img/chump-logo.png" width="60%"></img>
 
 <h2>ChuMP: The ChucK Manager of Packages</h2>
 

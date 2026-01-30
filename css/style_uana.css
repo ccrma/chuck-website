@@ -3,7 +3,7 @@ body, div, p, th, td, li, dd {
 }
 
 body { 
-	background : #ffffff url(doc/images/upchuckula.jpg) top center no-repeat;
+	background : #ffffff url(../doc/img/upchuckula.jpg) top center no-repeat;
 	color: #000000; 
 	font-family: verdana, helvetica, sans-serif;
 }
