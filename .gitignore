@@ -1,3 +1,4 @@
 .DS_Store
 imgui.ini
 redirect_analyze.py
+.vscode/settings.json
