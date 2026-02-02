@@ -4,3 +4,5 @@ redirect_analyze.py
 .vscode/settings.json
 content_audit_notes.rtf
 webchuck
+test.ck
+*.txt

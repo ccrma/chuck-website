@@ -1,6 +1,6 @@
-<div align="center"><img src="../../../doc/img/downchuck-logo2025c.png" width="25%"></img>
+<div align="center"><img src="/doc/img/downchuck-logo2025c.png" width="25%"></img>
 <h2><a href="../">ChucK Package</a></h2>
-(require <a target="_blank" href="../../">chuck 1.5.5.0 or higher</a>)
+(require <a target="_blank" href="/release">chuck 1.5.5.0 or higher</a>)
 </div>
 
 # **Rec**
