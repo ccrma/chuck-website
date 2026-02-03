@@ -3,9 +3,13 @@ body, div, p, th, td, li, dd {
 }
 
 body { 
-	background : #ffffff url(../doc/img/chuckula_blood.jpg) top center no-repeat;
+	background : #ffffff url(/doc/img/chuckula_blood.jpg) top center no-repeat;
 	color: #000000; 
 	font-family: verdana, helvetica, sans-serif;
+}
+
+tbody, tr, td, th, div, span, {
+	background-color: #333333;
 }
 
 
@@ -32,6 +36,10 @@ h1 {
 h2 { 
 	font-size: 125%; 
 	font-weight: 300;
+}
+
+h3 { 
+	font-size: 110%; 
 }
 
 #chuck_header { 
@@ -102,6 +110,10 @@ pre {
 	font-family : courier, monospaced;
 }
 
+.mono2 { 
+	font-family : courier new, monospaced;
+}
+
 #topic_body { 
 }
 
@@ -122,3 +134,13 @@ pre {
 	padding: 0.2em;
 	margin-bottom: 0.33em;
 }
+
+.tutorialimg {
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+}
+
+.bold {
+    font-weight: bold;
+}
+
