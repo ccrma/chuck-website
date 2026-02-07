@@ -54,7 +54,7 @@
 * [Héloïse Garry](https://www.heloisegarry.com/)
 * [Luna Valentin](https://music.stanford.edu/people/luna-valentin)
 
-<b>Documentation, Outreach, Education ([DOE](../../doe/))</b>
+<b>The ChucK Department of Education ([DOE](../../doe/))</b>
 * [Primrose Ohling](https://primroseohling.com/) (SEC-DOE)
 * [Nancy Rico-Mineros](https://ccrma.stanford.edu/~nancy/heynancyhey/) (DEP-SEC)
 * [Ge Wang](https://ccrma.stanford.edu/~ge/)

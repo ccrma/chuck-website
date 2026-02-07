@@ -4,7 +4,7 @@
   <title>ChucK - [Language Specification : UAna]</title>
 
 
-  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/style.css" />
   <style>
       body {
             background : #ffffff url(/doc/img/upchuckula.jpg) top center no-repeat;
@@ -508,7 +508,7 @@ so be careful.<br />
 for synchronizing feature extraction is the <font face="courier"><b>FeatureCollector</b></font>. Calling
       <font face="courier"><b>upchuck()</b></font> on a <font face="courier"><b>FeatureCollector</b></font> triggers computation of all upstream
 UAnae, and it concatenates their output blob data into a feature vector that can be used as input to a classifier, for example using 
-<a target="_blank" href="/chai">ChAI</a> (chuck for AI) or its predecessor, <a target="_blank" href="http://smirk.cs.princeton.edu/">smirk</a>. <br />
+<a target="_blank" href="../../chai">ChAI</a> (chuck for AI) or its predecessor, <a target="_blank" href="http://smirk.cs.princeton.edu/">smirk</a>. <br />
 
       <pre> adc =&gt; FFT fft =^ Flux flux =^ FeatureCollector fc =&gt; blackhole;<br /> fft =^ Centroid centroid =^ fc;<br /> // could add abitrarily many more UAnae that connect to fc via =^<br /><br /> while (true) {<br /> 100::ms =&gt; now;<br />	// forces computation of both centroid and flux (and therefore fft, too)<br />	// an vectorBlob's fvals and cvals will be a concatenation of the feature values<br />	fc.upchuck() @=&gt; UAnaBlob vectorBlob; <br /> }</pre>
       </div>
@@ -585,7 +585,7 @@ unit analyzers! )</p>
       <td>
       <div id="chuck_footer">
       <center>
-      <hr width="15%" /><a href="/">chuck</a>
+      <hr width="15%" /><a href="../../">chuck</a>
 | <a href="http://soundlab.cs.princeton.edu/">soundlab</a>
 | <a href="http://www.cs.princeton.edu/">cs</a> | <a href="http://www.music.princeton.edu/">music</a> | <a href="http://ccrma.stanford.edu/">ccrma</a></center>
 
