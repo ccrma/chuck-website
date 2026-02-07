@@ -1,176 +1,262 @@
 <html>
+
 <head>
+    <!-- character set -->
+    <meta charset="utf-8">
+    <!-- meta properties -->
+    <meta name="keywords" content="ChucK, strongly-timed,audio, programming language, computer music, Artful Design, 
+    Stanford University, CCRMA, Princeton University, SoundLab, Ge Wang, Perry Cook, design, art, computer, music,
+    technology, engineering, education" />
+    <meta property="og:url" content="http://chuck.stanford.edu/doc/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ChucK | Documentation" />
+    <meta property="og:description"
+        content="Documentation home for ChucK, a programming language for real-time sound synthesis and music creation." />
+    <meta name="author" content="ChucK Team">
+    <meta property="og:image" content="https://ccrma.stanford.edu/software/chuck/doc/images/chuck-logo2023w.png" />
+    <meta property="fb:app_id" content="966242223397117" /> <!--default app id-->
+    <link rel="canonical" href="http://chuck.stanford.edu/doc/" />
+    <!--<link rel="canonical" href="http://chuck.cs.princeton.edu/" />-->
+    <!--<link rel="canonical" href="https://ccrma.stanford.edu/software/chuck/" />-->
 
-<!-- character set -->
-<meta charset="utf-8">
-<!-- meta properties -->
-<meta name="keywords" content="ChucK, strongly-timed,audio, programming language, computer music, Artful Design, 
-Stanford University, CCRMA, Princeton University, SoundLab, Ge Wang, Perry Cook, design, art, computer, music,
-technology, engineering, education" />
-<meta property="og:url" content="http://chuck.stanford.edu/doc/" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="ChucK | Documentation" />
-<meta property="og:description" content="Documentation home for ChucK, a programming language for real-time sound synthesis and music creation." />
-<meta name="author" content="ChucK Team">
-<meta property="og:image" content="https://ccrma.stanford.edu/software/chuck/doc/images/chuck-logo2023w.png" />
-<meta property="fb:app_id" content="966242223397117" /> <!--default app id-->
-<link rel="canonical" href="http://chuck.stanford.edu/doc/" />
-<!--<link rel="canonical" href="http://chuck.cs.princeton.edu/" />-->
-<!--<link rel="canonical" href="https://ccrma.stanford.edu/software/chuck/" />-->
-
-<title>ChucK | Documentation</title>
+    <title>ChucK | Documentation</title>
 </head>
-<body bgcolor="#ffffff" text="#000000">
-<font face="verdana, sans-serif" size="2">
 
-<br />
-<center>
-<table border="0" width="640">
-<tr><td>
-<font face="verdana, sans-serif" size="2">
-<center>
-<font size="3">
-<b>ChucK</b> | Documentation
-</font>
-<br />
-<br />
+<body bgcolor="#ffffff" text="#000000" style="font-family: Verdana, sans-serif; size: 2; text-align: center;"><br />
+    <center>
+    <table border="0" width="640" style="text-align: center;">
+        <tr>
+            <td>
+                <center>
+                    <p><b>ChucK</b> | Documentation</p>
+                    <table bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0">
+                        <tr>
+                            <td>
+                                <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
+                                    <tr>
+                                        <td align="right">
+                                            <font face="verdana, sans-serif" size="2">
+                                                version:
+                                        </td>
+                                        <td>
+                                            <font face="verdana, sans-serif" size="2">
+                                                1.5.x.x (chai)
+                                                <br />
 
-  <table bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
-  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
-  <tr>
-  <td align="right"><font face="verdana, sans-serif" size="2">
-  version:</td><td><font face="verdana, sans-serif" size="2">
-  1.5.x.x (chai)
-  <br />
-  
-  </font></td>
-  </tr>
-  </table></td></tr>
-  </table>
+                                            </font>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
 
-<img border="0" width="200" src="img/chuck-logo2023w.png" alt="ChucK programming language logo" title="ChucK"/>
-<br />
+                    <img border="0" width="200" src="img/chuck-logo2023w.png" alt="ChucK programming language logo"
+                        title="ChucK" />
+                    <br />
 
-<table width="300" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
-<table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="12" cellspacing="2">
-<tr><td>
-<font face="verdana, sans-serif" size="2">
-<center>
+                    <table width="300" bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0">
+                        <tr>
+                            <td>
+                                <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="12" cellspacing="2">
+                                    <tr>
+                                        <td>
+                                            <font face="verdana, sans-serif" size="2">
+                                                <center>
 
-<b>Language Documentation</b>
-<br />
-<table border="0" width="300">
-<tr><td><font face="verdana, sans-serif" size="2">
-<li><a target="_blank" href="reference/">API reference</a> — <font size=1 color="999933"><b>new!!</b></font><br />
-<font size="1"> &nbsp;&nbsp; (class libraries and more)<br /></font>
-<li><a target="_blank" href="language/">language specification</a><br />
-<font size="1"> &nbsp;&nbsp; (all about the language)</font>
-<li><a target="_blank" href="examples/">examples</a>
-<br /><font size="1"> &nbsp;&nbsp; (grouped by category)</font>
-<!--<li>unit <a target="_blank" href="program/ugen.html">generators</a> and <a target="_blank" href="program/uana.html">analyzers</a><br>
-<font size="1"> &nbsp;&nbsp; (building blocks for audio processing)<br /></font>-->
-<!--<li>download <a target="_blank" href="../release/files/chuck_manual.pdf">chuck manual</a><br />
-<font size="1"> &nbsp;&nbsp; (pdf format)</font>
--->
-<li>github: <a target="_blank" href="https://github.com/ccrma/chuck">chuck</a> |  <a target="_blank" href="https://github.com/ccrma/chugins">chugins</a> <br />
-<font size="1"> &nbsp;&nbsp; (source repositories for developers)</font>
-</tr></td>
-</table>
+                                                    <b>Language Documentation</b>
+                                                    <br />
+                                                    <table border="0" width="300">
+                                                        <tr>
+                                                            <td>
+                                                                <font face="verdana, sans-serif" size="2">
+                                                                    <li><a target="_blank" href="start/">Quick
+                                                                        Start</a> — <font size=1 color="999933">
+                                                                            <b>Coming Soon!!</b>
+                                                                        </font><br />
+                                                                        <!-- <font size="1"> &nbsp;&nbsp; (class
+                                                                            libraries and more)<br /></font> --><br>
+                                                                    <li><a target="_blank" href="tutorials/">Tutorials
+                                                                        </a> — <font size=1 color="999933">
+                                                                            <b>Coming Soon!!</b>
+                                                                        </font><br />
+                                                                        <!-- <font size="1"> &nbsp;&nbsp; (class
+                                                                            libraries and more)<br /></font> --><br>
+                                                                    <li><a target="_blank" href="examples/">Examples</a>
+                                                                        <br />
+                                                                        <font size="1"> &nbsp;&nbsp;
+                                                                            (grouped by category)</font>
+                                                                        <!--<li>unit <a target="_blank" href="program/ugen.html">generators</a> and <a target="_blank" href="program/uana.html">analyzers</a><br><font size="1"> &nbsp;&nbsp; (building blocks for audio processing)<br /></font>-->
+                                                                        <!--<li>download <a target="_blank" href="../release/files/chuck_manual.pdf">chuck manual</a><br /><font size="1"> &nbsp;&nbsp; (pdf format)</font>-->
+                                                                    <li><a target="_blank" href="language/">Language
+                                                                            Specification</a><br />
+                                                                        <font size="1"> &nbsp;&nbsp; (all
+                                                                            about the language)</font>
+                                                                    <li><a target="_blank" href="reference/">API
+                                                                            Reference</a> — <font size=1 color="999933">
+                                                                            <b>new!!</b>
+                                                                        </font><br />
+                                                                        <font size="1"> &nbsp;&nbsp; (class
+                                                                            libraries and more)<br /></font>
+                                                                    <!-- <li>github: <a target="_blank"
+                                                                            href="https://github.com/ccrma/chuck">chuck</a>
+                                                                        | <a target="_blank"
+                                                                            href="https://github.com/ccrma/chugins">chugins</a>
+                                                                        <br />
+                                                                        <font size="1"> &nbsp;&nbsp; (source
+                                                                            repositories for developers)
+                                                                        </font> -->
+                                                        </tr>
+                                        </td>
+                                </table>
 
-<font size="1"><br /><br /></font>
-<b>Learn ChucK <font face="courier new" size="3" color="#cc6633">now</font></b>
-<br />
-<table border="0" width="300">
-<tr><td><font face="verdana, sans-serif" size="2">
-<li><a target="_blank" href="https://www.youtube.com/watch?v=toFvb6uqiDc&list=PL-9SSIBe1phI_r3JsylOZXZyAXuEKRJOS">"Creating Electronic Music with Chuck"</a>
-<br /><font size="1"> &nbsp;&nbsp; (video tutorial series by Clint Hoagland)</font> — <font size=1 color="999933"><b>new!!</b></font>
-<li><a target="_blank" href="learn/">tutorials &amp; resources</a>
-<br /><font size="1"> &nbsp;&nbsp; (includes <a target="_blank" href="build/"> install or build</a> + <a target="_blank" href="program/options.html">command-line options</a>)</font>
-<br />
-<li>a <a target="_blank" href="https://www.classcentral.com/course/kadenze-introduction-to-real-time-audio-programming-in-chuck-3749">mooc</a> and a <a target="_blank" href="https://www.amazon.com/Programming-Musicians-Digital-Artists-Creating/dp/1617291706/">book</a> on ChucK
-    <br /><font size="1"> &nbsp;&nbsp; (learning is fun!)</font>
-<li><a target="_blank" href="http://artful.design/"><i>Artful Design</i></a> | <a target="_blank" href="https://artful.design/stuff/samples/chuck.pdf">excerpt</a>
-    <br /><font size="1"> &nbsp;&nbsp; (the design philosophy of tools like ChucK)</font>
-<li>read <a target="_blank" href="https://ccrma.stanford.edu/~ge/publish/files/2015-cmj-chuck.pdf">ChucK article</a> | <a target="_blank" href="http://www.cs.princeton.edu/~gewang/thesis.html">
-thesis</a><br />
-<font size="1"> &nbsp;&nbsp; (design, impl, applications)</font>
-<!--
-<li><a target="_blank" href="../uana/">audio analysis</a>
-<br /><font size="1"> &nbsp;&nbsp; (learning about analysis in ChucK)</font>
- -->
-<!--
-<br />
-<li><a target="_blank" href="examples/topic_index.html">examples (set B)</a>
-<br /><font size="1"> &nbsp;&nbsp; (sorted by language feature )</font></a>
--->
-</tr></td>
-</table>
-
-
-<font size="1"><br /><br /></font>
-<b>More Ways to ChucK</b>
-<table border="0" width="300">
-<tr><td><font face="verdana, sans-serif" size="2">
-
-<!--<font size=1 color="999933"><b>new!!</b></font>-->
-<li><a target="_blank" href="../webchuck/">WebChucK</a> | <a target="_blank" href="../ide/">IDE</a> — <font size=1 color="999933"><b>new!!</b></font>
-<br /><font size="1"> &nbsp;&nbsp; (ChucK running natively in browsers)</font>
-<li><a target="_blank" href="../chai/">ChAI</a> (ChucK for AI) — <font size=1 color="999933"><b>new!!</b></font>
-<br /><font size="1"> &nbsp;&nbsp; (AI tools for interactive systems)</font>
-<li><a target="_blank" href="../uana/">Unit Analyzers</a>
-<br /><font size="1"> &nbsp;&nbsp; (audio analysis tools)</font>
-<li><a target="_blank" href="../chunity/">Chunity</a> (ChucK in Unity)
-<br /><font size="1"> &nbsp;&nbsp; (audiovisual programming)</font>
-<li><a target="_blank" href="https://ccrma.stanford.edu/~rmichon/fauck/">FaucK</a> (FAUST in ChucK)
-<br /><font size="1"> &nbsp;&nbsp; (hybriding the best of two worlds)</font>
-<li><a target="_blank" href="https://github.com/DBraun/ChucKDesigner">ChucKDesigner</a> (ChucK in TouchDesigner)
-<br /><font size="1"> &nbsp;&nbsp; (strongly-time audio =&gt; visual programming)</font>
-<li>chuck~ (in <a target="_blank" href="https://github.com/shakfu/pd-chuck">PD</a> &amp; <a target="_blank" href="https://github.com/shakfu/chuck-max">Max/MSP</a>)
-<br /><font size="1"> &nbsp;&nbsp; (text-based + graphic patching; early development)</font>
-<li><a target="_blank" href="https://github.com/ccrma/chunreal">Chunreal</a> (early development)
-<br /><font size="1"> &nbsp;&nbsp; (ChucK in Unreal Engine)</font>
-
-</tr></td>
-</table>
-
-<font size="1"><br /><br /></font>
-<b>More Stuff</b>
-<br />
-<table border="0" width="300">
-<tr><td><font face="verdana, sans-serif" size="2">
-<li><a href="thanks.html">ThanKs to...</a><br />
-<li><a href="publish/">publications</a> <font size="1">(and more)</font><br />
-<li><a href="../release/">download page</a><br />
-<li><a href="bugs.html">bugs</a> <font size="1">(report or request)</font>
-</td></tr>
-</table>
-<br />
-</td>
-</tr>
-</table>
-</td></tr>
-</table>
-
-<br />
-</font>
-</td></tr>
-</table>
+                                <font size="1"><br /><br /></font>
+                                <b>Learn ChucK <font face="courier new" size="3" color="#cc6633">now</font>
+                                </b>
+                                <br />
+                                <table border="0" width="300">
+                                    <tr>
+                                        <td>
+                                            <font face="verdana, sans-serif" size="2">
+                                                <li><a target="_blank"
+                                                        href="https://www.youtube.com/watch?v=toFvb6uqiDc&list=PL-9SSIBe1phI_r3JsylOZXZyAXuEKRJOS">"Creating
+                                                        Electronic Music with Chuck"</a>
+                                                    <br />
+                                                    <font size="1"> &nbsp;&nbsp; (video tutorial series by
+                                                        Clint Hoagland)</font> — <font size=1 color="999933">
+                                                        <b>new!!</b>
+                                                    </font>
+                                                <li><a target="_blank" href="learn/">tutorials &amp;
+                                                        resources</a>
+                                                    <br />
+                                                    <font size="1"> &nbsp;&nbsp; (includes <a target="_blank"
+                                                            href="build/"> install or
+                                                            build</a> + <a target="_blank"
+                                                            href="program/options.html">command-line
+                                                            options</a>)</font>
+                                                    <br />
+                                                <li>a <a target="_blank"
+                                                        href="https://www.classcentral.com/course/kadenze-introduction-to-real-time-audio-programming-in-chuck-3749">mooc</a>
+                                                    and a <a target="_blank"
+                                                        href="https://www.amazon.com/Programming-Musicians-Digital-Artists-Creating/dp/1617291706/">book</a>
+                                                    on ChucK
+                                                    <br />
+                                                    <font size="1"> &nbsp;&nbsp; (learning is fun!)</font>
+                                                <li><a target="_blank" href="http://artful.design/"><i>Artful
+                                                            Design</i></a> | <a target="_blank"
+                                                        href="https://artful.design/stuff/samples/chuck.pdf">excerpt</a>
+                                                    <br />
+                                                    <font size="1"> &nbsp;&nbsp; (the design philosophy of
+                                                        tools like ChucK)</font>
+                                                <li>read <a target="_blank"
+                                                        href="https://ccrma.stanford.edu/~ge/publish/files/2015-cmj-chuck.pdf">ChucK
+                                                        article</a> | <a target="_blank"
+                                                        href="http://www.cs.princeton.edu/~gewang/thesis.html">
+                                                        thesis</a><br />
+                                                    <font size="1"> &nbsp;&nbsp; (design, impl,
+                                                        applications)</font>
+                                                    <!--<li><a target="_blank" href="../uana/">audio analysis</a><br /><font size="1"> &nbsp;&nbsp; (learning about analysis in ChucK)</font>-->
+                                                    <!--<br /><li><a target="_blank" href="examples/topic_index.html">examples (set B)</a><br /><font size="1"> &nbsp;&nbsp; (sorted by language feature )</font></a>-->
+                                    </tr>
+                            </td>
+                    </table>
 
 
-<font size="1">
-<hr width="15%" />
-<a href="../">chuck</a> |
-<a href="http://ccrma.stanford.edu/">ccrma</a> |
-<a href="http://soundlab.cs.princeton.edu/">soundlab</a>
-<br />
-<br />
-</font>
-<script src="http://www.google-analytics.com/urchin.js" 
-type="text/javascript">
-</script>
-<script type="text/javascript">
-_uacct = "UA-3927297-1";
-urchinTracker();
-</script>
+                    <font size="1"><br /><br /></font>
+                    <b>More Ways to ChucK</b>
+                    <table border="0" width="300">
+                        <tr>
+                            <td>
+                                <font face="verdana, sans-serif" size="2">
+
+                                    <!--<font size=1 color="999933"><b>new!!</b></font>-->
+                                    <li><a target="_blank" href="../webchuck/">WebChucK</a> | <a target="_blank"
+                                            href="../ide/">IDE</a> — <font size=1 color="999933"><b>new!!</b></font>
+                                        <br />
+                                        <font size="1"> &nbsp;&nbsp; (ChucK running natively in browsers)
+                                        </font>
+                                    <li><a target="_blank" href="../chai/">ChAI</a> (ChucK for AI) — <font size=1
+                                            color="999933"><b>new!!</b></font>
+                                        <br />
+                                        <font size="1"> &nbsp;&nbsp; (AI tools for interactive systems)
+                                        </font>
+                                    <li><a target="_blank" href="../uana/">Unit Analyzers</a>
+                                        <br />
+                                        <font size="1"> &nbsp;&nbsp; (audio analysis tools)</font>
+                                    <li><a target="_blank" href="../chunity/">Chunity</a> (ChucK in Unity)
+                                        <br />
+                                        <font size="1"> &nbsp;&nbsp; (audiovisual programming)</font>
+                                    <li><a target="_blank" href="https://ccrma.stanford.edu/~rmichon/fauck/">FaucK</a>
+                                        (FAUST in ChucK)
+                                        <br />
+                                        <font size="1"> &nbsp;&nbsp; (hybriding the best of two worlds)
+                                        </font>
+                                    <li><a target="_blank"
+                                            href="https://github.com/DBraun/ChucKDesigner">ChucKDesigner</a>
+                                        (ChucK in TouchDesigner)
+                                        <br />
+                                        <font size="1"> &nbsp;&nbsp; (strongly-time audio =&gt; visual
+                                            programming)</font>
+                                    <li>chuck~ (in <a target="_blank" href="https://github.com/shakfu/pd-chuck">PD</a>
+                                        &amp; <a target="_blank" href="https://github.com/shakfu/chuck-max">Max/MSP</a>)
+                                        <br />
+                                        <font size="1"> &nbsp;&nbsp; (text-based + graphic patching; early
+                                            development)</font>
+                                    <li><a target="_blank" href="https://github.com/ccrma/chunreal">Chunreal</a>
+                                        (early
+                                        development)
+                                        <br />
+                                        <font size="1"> &nbsp;&nbsp; (ChucK in Unreal Engine)</font>
+
+                        </tr>
+            </td>
+    </table>
+
+    <font size="1"><br /><br /></font>
+    <b>More Stuff</b>
+    <br />
+    <table border="0" width="300">
+        <tr>
+            <td>
+                <font face="verdana, sans-serif" size="2">
+                    <li><a href="thanks.html">ThanKs to...</a><br />
+                    <li><a href="publish/">publications</a>
+                        <font size="1">(and more)</font><br />
+                    <li><a href="../release/">download page</a><br />
+                    <li><a href="bugs.html">bugs</a>
+                        <font size="1">(report or request)</font>
+            </td>
+        </tr>
+    </table>
+    <br />
+    </td>
+    </tr>
+    </table>
+    </td>
+    </tr>
+    </table>
+
+    <br />
+    </font>
+    </td>
+    </tr>
+    </table>
+
+
+    <font size="1">
+        <hr width="15%" />
+        <a href="../">chuck</a> |
+        <a href="http://ccrma.stanford.edu/">ccrma</a> |
+        <a href="http://soundlab.cs.princeton.edu/">soundlab</a>
+        <br />
+        <br />
+    </font>
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        _uacct = "UA-3927297-1";
+        urchinTracker();
+    </script>
 </body>
+
 </html>

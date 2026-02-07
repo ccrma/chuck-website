@@ -3,8 +3,8 @@ body, div, p, th, td, li, dd {
 }
 
 body { 
-	background : #ffffff url(/doc/img/chuckula_blood.jpg) top center no-repeat;
-	color: #000000; 
+	background : #FFFFFF url(/doc/img/chuckula_blood.jpg) top center no-repeat;
+	color: #000000;
 	font-family: verdana, helvetica, sans-serif;
 }
 
@@ -17,15 +17,15 @@ a {
 }
 
 a:link { 
-	color: #2222ff;
+	color: var(--link-color);
 }
 
 a:active { 
-	color: #000088;
+	color: var(--link-active-color);
 }
 
 a:visited { 
-	color: #5050cc;
+	color: var(--link-visited-color);
 }
 
 h1 { 
