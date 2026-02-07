@@ -21,7 +21,6 @@ The Department of Documentation, Outreach, and Education (DOE) serves the ChucK 
 * Ensure consistency and coherence across all documentation
 * Represent the department at ChucK-A-ThonS
 * **Deliver State of Documentation Addresses**
-#### Key Activities
 
 ### Deputy Secretary of Documentation, Outreach, and Education (DEPSEC)
 
@@ -31,7 +30,6 @@ The Department of Documentation, Outreach, and Education (DOE) serves the ChucK 
 * Implement documentation standards
 * Write and update documentation for new features as they're released
 * **Provide input and recommendations to SECDOE on strategic decisions**
-#### Key Activities
 
 ### Collaboration
 SECDOE holds final decision-making authority on department matters, but both roles involve hands-on documentation work. Role distinctions are primarily about focus areas and strategic responsibility. Regular coordination ensures infrastructure supports content needs and that decisions are informed by on-the-ground experience.
@@ -49,16 +47,46 @@ Subject matter experts brought in for specific projects or documentation areas r
 ## Documentation Standards
 
 ### Style Guide Principles
-* **Tone:**
-* **Code Formatting:**
-* **Structure:**
+* **Tone:** Technical but **approachable**; matches ChucK's creative, expressive personality.
+* **Code Formatting:** Include header, Indent using 4 spaces, camelCase for naming is highly encouraged, SCREAMING_SNAKE_CASE for constants, Classes should be capitalized, Allman style brackets are recommended
+```
+//---------------------------------------------------------------------
+// name: example.ck
+// desc: An example of formatting for ChucK examples
+//       ** A short description **
+//
+// ** More description if required ** 
+// Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
+// do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+//
+// author: Primrose Ohling
+//         Lorem ipsum dolor sit amet
+// date: Winter 2026
+//---------------------------------------------------------------------
+
+// code begins here, an empty line helps to separate header and code
+// free range after the header
+// consider exploring best practices like @import for classes 
+
+// capitalize classes
+class Foo
+{
+    fun void myFunction()
+    {
+        <<<"Hello, ChucK!">>>;
+    }
+}
+// names should follow camelCase
+Foo bar;
+bar.myFunction();
+```
 
 ### Documentation Categories
-* **Quick Start:**
-* **Tutorials:**
-* **Examples:**
-* **Language Specification:**
-* **API Reference:**
+* **Quick Start**
+* **Tutorials**
+* **Examples**
+* **Language Specification**
+* **API Reference**
 
 <!-- Traditions and Procedure -->
 ## Traditions and Procedure
@@ -77,9 +105,10 @@ Subject matter experts brought in for specific projects or documentation areas r
 **II. Current State Assessment**  
 **III. Priorities for Coming Quarter**  
 **IV. Call to Action**  
-**Public Facing Summary?**  
-**Documentation Review Cycles?**  
+**Public Facing Summary**   
 **Contributor Recognition**  
+
+<!-- **Documentation Review Cycles**  -->
 
 <!-- Decision-Making Authority -->
 ## Decision-Making Authority
