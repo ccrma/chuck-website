@@ -61,7 +61,7 @@ First, we start by importing Chumpinate and defining our package metadata:
 Package pkg("AwesomeEffect");
 
 // add our metadata here
-"James P. Awesome" => pkg.author;
+"James P. Awesome" => pkg.authors;
 
 "https://awesome.com" => pkg.homepage;
 "https://github.com/awe/some" => pkg.repository;
@@ -140,7 +140,7 @@ Here is our full `build-pkg.ck`:
 Package pkg("AwesomeEffect");
 
 // add our metadata here
-"James P. Awesome" => pkg.author;
+"James P. Awesome" => pkg.authors;
 
 "https://awesome.com" => pkg.homepage;
 "https://github.com/awe/some" => pkg.repository;
