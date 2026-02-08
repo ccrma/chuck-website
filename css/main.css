@@ -118,13 +118,12 @@ h3
 
 .link-table
 {
-    border: 0;
-    /* text-align: left; */
     text-align: left;
-    margin-left: 2rem;
 }
 
-
+td {
+    vertical-align: top;
+}
 
 
 /* ----------------- Utility ------------------- */

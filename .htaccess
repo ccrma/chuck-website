@@ -1,0 +1,35 @@
+# so we can change to relevant pages later
+# will not be able to use /learn/ later at least easily
+
+RedirectMatch 301 ^/stuff/community\.html/?$ https://chuck.stanford.edu/community/
+RedirectMatch 301 ^/doc/learn/index_v1\.html/?$ https://chuck.stanford.edu/doc/
+RedirectMatch 301 ^/extend/index-draft\.html/?$ https://chuck.stanford.edu/extend/
+RedirectMatch 301 ^/index-old\.html/?$ https://chuck.stanford.edu/
+RedirectMatch 301 ^/doc/program/keywords\.html/?$ https://chuck.stanford.edu/doc/language/overview.html#reserve
+# RedirectMatch 301 ^/doc/program/gluck\.html/?$ https://chuck.stanford.edu/chugl/
+# RedirectMatch 301 ^/doc/learn/index\.html/?$ https://chuck.stanford.edu/doc/
+# RedirectMatch 301 ^/doc/learn/?$ https://chuck.stanford.edu/doc/
+RedirectMatch 301 ^/doc/program/stdlib\.html/?$ https://chuck.stanford.edu/doc/reference/
+RedirectMatch 301 ^/doc/program/ugen_full\.html/?$ https://chuck.stanford.edu/doc/reference/ugens-basic.html
+RedirectMatch 301 ^/doc/program/ugen_osc\.html/?$ https://chuck.stanford.edu/doc/reference/ugens-basic.html
+RedirectMatch 301 ^/doc/program/ugen_stk\.html/?$ https://chuck.stanford.edu/doc/reference/ugens-stk.html
+RedirectMatch 301 ^/doc/program/ugen_stk_auto\.html/?$ https://chuck.stanford.edu/doc/reference/ugens-stk.html
+RedirectMatch 301 ^/doc/program/ugen_xxx\.html/?$ https://chuck.stanford.edu/doc/reference/
+RedirectMatch 301 ^/doc/program/ugen\.html/?$ https://chuck.stanford.edu/doc/reference/
+RedirectMatch 301 ^/doc/program/ugen2old\.html/?$ https://chuck.stanford.edu/doc/reference/
+RedirectMatch 301 ^/doc/program/ulib_net\.html/?$ https://chuck.stanford.edu/doc/reference/base.html
+RedirectMatch 301 ^/doc/program/uana\.html/?$ https://chuck.stanford.edu/doc/reference/uanae.html
+RedirectMatch 301 ^/doc/program/uana_full\.html/?$ https://chuck.stanford.edu/doc/reference/uanae.html
+
+# so we can change to relevant pages later
+
+# RedirectMatch 302 ^/doc/develop/index\.html/?$ https://chuck.stanford.edu/extend/
+RedirectMatch 302 ^/uana/more\.html/?$ https://chuck.stanford.edu/doc/reference/uanae.html
+RedirectMatch 302 ^/doc/program/index\.html/?$ https://chuck.stanford.edu/doc/
+# RedirectMatch 302 ^/stuff/events/ffmup-2004\.10\.12\.html/?$ https://chuck.stanford.edu/community/
+# RedirectMatch 302 ^/stuff/events/share-2004\.10\.17\.html/?$ https://chuck.stanford.edu/community/
+RedirectMatch 302 ^/doc/program/shell\.html/?$ https://chuck.stanford.edu/doc/program/options.html
+# RedirectMatch 302 ^/doc/learn/tutorial\.html/?$ https://chuck.stanford.edu/doc/
+RedirectMatch 302 ^/release/new\.html/?$ https://chuck.stanford.edu/release/VERSIONS
+RedirectMatch 302 ^/release/soon\.html/?$ https://chuck.stanford.edu/release/VERSIONS
+RedirectMatch 302 ^/release/sorry\.html/?$ https://chuck.stanford.edu/release/VERSIONS

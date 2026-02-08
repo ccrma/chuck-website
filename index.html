@@ -29,10 +29,10 @@
     <!--<link rel="canonical" href="http://chuck.cs.princeton.edu/" />-->
     <!--<link rel="canonical" href="https://ccrma.stanford.edu/software/chuck/" />-->
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
 
     <!-- title -->
     <title>ChucK =&gt; A Strongly-Timed Music Programming Language</title>
@@ -42,7 +42,7 @@
       -->
     <meta name="description" content="ChucK is a strongly-timed programming language for interactive sound synthesis and music creation.">
     <!-- styles -->
-    <link rel="stylesheet" href="main.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
   </head>
 
   <body>
@@ -50,30 +50,29 @@
 
       <h1><b>ChucK</b></h1>
       <h2>Music Programming Language</h2>
-      <h2 class="green">strongly-timed | concurrent | on-the-fly | audiovisual</h2>
+      <h2 class="green">Strongly-Timed | Concurrent | On-the-Fly | Audiovisual</h2>
 
       <font size="1"><br></font>
 
-      <table class="outlineTable" style="width: 310px;" cellpadding="1" cellspacing="0">
+      <table class="outlineTable" style="width: 350px;" cellpadding="1" cellspacing="0">
         <tr>
           <td>
             <!--<small>-->
               <table id="headerTable" class="innerTable" cellpadding="2" cellspacing="2">
+                
                 <tr>
-                  <td class="left">authors:</td>
-                  <td class="right"><a href="doc/authors.html">chuck team</a></td>
+                  <!-- <td class="left">Authors:</td> -->
+                  <td style="text-align: center;"  colspan="2"><a href="doc/authors.html">ChucK Team</a> | 2003 =&gt; now</td>
                 </tr>
                 <tr>
-                  <td class="left">date:</td>
-                  <td class="right">2003 - present</td>
+                  <td style="text-align: center;"  colspan="2">latest version: <a href="release/">1.5.5.7</a> (chai)</td>
                 </tr>
+                <!-- <tr>
+                  <td class="left">Date:</td>
+                  
+                </tr> -->
                 <tr>
-                  <td class="left">version:</td>
-                  <td class="right"><a href="release/">1.5.5.7</a> (chai)
-                  <font size=1 color="999933"> — <b>new!!</b></font></td>
-                </tr>
-                <tr>
-                  <td style="text-align: center;" class="small-text" colspan="2">(<a href="release/VERSIONS">what's new?</a>)
+                  <td style="text-align: center;" class="small-text" colspan="2">(<a href="release/VERSIONS">What's new?</a>)
                   </td>
                 </tr>
               </table>
@@ -104,7 +103,7 @@
             <!--<small>-->
               <table id="headerTable" class="innerTable" cellpadding="2" cellspacing="2">
                 <tr>
-                  <td class="center"><b>chuck</b> <i>verb.</i> to throw carelessly.</td>
+                  <td class="center"><b>chuck</b> <i>verb,</i> to throw carelessly.</td>
                 </tr>
               </table>
             <!--</small>-->
@@ -114,80 +113,77 @@
       <br>
 
       <p class="description">
-        <!--<span class="green"><b>what is it?</b></span> :-->
+        <!-- <span class="green"><b>what is it?</b></span> : -->
         <b>ChucK</b> is a programming language for real-time sound synthesis and music
         creation. ChucK offers a unique <b>time-based, concurrent
-          programming model</b> that is precise and expressive (we call this
+        programming model</b> that is precise and expressive (we call this
         <b>strongly-timed</b>), dynamic control rates,
         and the ability to add and modify code <b>on-the-fly</b>.
-        In addition, ChucK supports MIDI, OpenSoundControl, HID device, and multi-channel
-        audio. It is open-source and freely available on macOS, Windows, and Linux.
-        It's fun and easy to learn, and offers composers, researchers, and performers
+        ChucK supports MIDI, OpenSoundControl, HID device, multi-channel
+        audio, and more! It is open-source and freely available on macOS, Windows, and Linux.
+        It's fun, easy to learn, and offers composers, researchers, and performers
         a powerful programming tool for building and experimenting with complex audio
         synthesis/analysis programs, and real-time interactive music.
       </p>
-
-      <h2 class="green bold">Welcome to ChucK!</h2>
       <br>
+      <h2 class="green bold">Welcome to ChucK!</h2>
 
       <div class="link-table-container">
         <table class="link-table" cellspacing="0" cellpadding="0">
           <tr>
-            <td>
-              <img width="24px" src="doc/images/chuck_logo2023_72.png" />&nbsp;&nbsp;
-            </td>
+            <td><img width="24px" src="doc/images/chuck_logo2023_72.png" />&nbsp;&nbsp;</td>
             <td>
               <span class="big-text">
-                <b><a href="release/">download ChucK</a></b> |
-                <b><a target="_blank" href="ide/">try WebChucK IDE!</a></b> <font size=1 
-color="999933"><b>new!!</b></font>
+                <b><a href="release/">Download ChucK</a></b> |
+                <b><a target="_blank" href="ide/">Try WebChucK IDE!</a></b>
               </span>
             </td>
           </tr>
-            <tr>
-              <td><img width="24px" src="doc/images/chuck_logo2023_72.png" />&nbsp;&nbsp;
-              </td>
-              <td>
-                <span class="big-text">
-                  <a href="doc/">documentation</a> |
-                  <span class="bold">
-                    <a href="doc/reference/">API Reference</a> <font size=1 color="999933"><b>new!!</b></font>
-                  </span>
-                    | <a href="doc/examples/">examples</a>
-                    | <a href="doc/language/">language</a>
-              </td>
-            </tr>
+          <tr>
+            <td><img width="24px" src="doc/images/chuck_logo2023_72.png" />&nbsp;&nbsp;
+            </td>
+            <td>
+              <span class="big-text">
+                <b><a href="doc/">Documentation</a></b> | 
+                <b><a href="doc/reference/">API Reference</a></b>
+                | <b><a href="doc/examples/">Examples</a></b>
+                | <b><a href="doc/language/">Language</a></b>
+              </span>
+            </td>
+          </tr>
 
-            <tr>
-              <td><img width="24px" src="doc/images/chuck_logo2023_72.png" />&nbsp;&nbsp;
-              </td>
-              <td>
-                <a href="community/">chuck community</a> | <font color="#666666"><b>github</b> =&gt; </font>
-                <a target="_blank" href="https://github.com/ccrma/chuck">chuck</a> | 
-                <a target="_blank" href="https://github.com/ccrma/chugins">chugins</a> |
-                <a target="_blank" href="https://github.com/ccrma/webchuck">webchuck</a> |
-                <a href="community/">more</a>
-              </td>
-            </tr>
+          <tr>
+            <td><img width="24px" src="doc/images/chuck_logo2023_72.png" />&nbsp;&nbsp;
+            </td>
+            <td>
+              <span class="big-text">
+                <a href="community/">ChucK Community</a> | 
+                <a href="./doe/">ChucK Department of Education</a>
+              </span>
+            </td>
+          </tr>
 
-            <tr>
-              <td><img width="24px" src="doc/images/chuck_logo2023_72.png" />&nbsp;&nbsp;
-              </td>
-              <td>
-                <a href="https://www.youtube.com/watch?v=toFvb6uqiDc&list=PL-9SSIBe1phI_r3JsylOZXZyAXuEKRJOS"><b>video tutorials</b></a> <font size=1 color="999933"><b>new!!</b></font>
-                <span class="small-text">(by Clint Hoagland)</span> |
+          <tr>
+            <td><img width="24px" src="doc/images/chuck_logo2023_72.png" />&nbsp;&nbsp;
+            </td>
+            <td>
+              <span class="big-text">
+                <a href="https://www.youtube.com/watch?v=toFvb6uqiDc&list=PL-9SSIBe1phI_r3JsylOZXZyAXuEKRJOS">Video Tutorials</a>
+                <span class="small-text">(Clint Hoagland)</span> |
                 <!--"https://discord.gg/ENr3nurrx8"-->
-                <a target="_blank" href="https://discord.gg/Np5Z7ReesD"><b>discord server</b></a> <font size=1 color="999933"><b>new!!</b></font> <span class="small-text">(come hang!)</span>
-              </td>
-            </tr>
-
-          </table>
+                <a target="_blank" href="https://discord.gg/Np5Z7ReesD">Discord Server</a> <span class="small-text"></span> | 
+                <a target="_blank" href="https://github.com/ccrma/chuck?tab=readme-ov-file#contributing-to-chuck">Github</a> <span class="small-text">(open source)</span>
+              </span>
+            </td>
+          </tr>
+        </table>
+        
       </div>
-
-<br>
+      <br>
       <hr width="300">
+    </div> <!-- end main container -->
 
-      <h2 class="green bold">More ChucK!</h2>
+    <!-- <h2 class="green bold">More ChucK!</h2> -->
       <br>
 
       <div class="container">
@@ -221,8 +217,8 @@ color="999933"><b>new!!</b></font>
               </span>
               <br>
               excerpt from <a target="_blank" href="https://artful.design/">
-                <i>Artful Design: Technology in Search of the Sublime</i></a><br>
-              (a comic book on design—and why we design)
+                <i>Artful Design</i></a><br>
+                (a comic book on design—and why we design)
             </small>
           </p>
 
@@ -262,9 +258,7 @@ color="999933"><b>new!!</b></font>
           </div>
         </div>
       </div>
-
-    </div> <!-- end main container -->
-
+    </div>
     <br>
 
     <table class="outlineTable" width="400" cellpadding="1" cellspacing="0">
@@ -273,40 +267,48 @@ color="999933"><b>new!!</b></font>
           <table class="innerTable" width="100%" cellpadding="6" cellspacing="6">
             <tr>
               <td>
+                <br>
                 <div class="mid-text">
 
-                  <b><a href="chugl/">ChuGL</a></b> (alpha): Graphics in ChucK<font size=1 
-color="999933"> — <b>new!!</b></font><br>
+                  <p><b>New Ways to ChucK</b></p>
+
+
+                  <b><a href="chugl/">ChuGL</a></b> (alpha): Graphics in ChucK<br>
                   <small>strongly-timed real-time 2D/3D graphics programming</small><br>
-                  <a target="_blank" href="chugl/workshop/">2025 Summer Workshop!</a>
+                  <a target="_blank" href="chugl/workshop/">2026 Summer Workshop!</a>
 
                   <br><br>
                   <b><a href="webchuck/">WebChucK</a></b>: ChucK in browsers<br>
                   <small>
-                    embedding ChucK in your web projects<br>or code with <a target="_blank" href="ide/">WebChucK IDE</a><font size=1 color="999933"> — <b>new!!</b></font>
+                    embedding ChucK in your web projects<br>or code with <a target="_blank" href="ide/">WebChucK IDE</a>
                   </small>
 
                   <br><br>
-                  <b><a href="smuck/">SMucK</a></b>: Symbolic Music in ChucK<font size=1 color="999933"> — <b>new!!</b></font><br>
-                  <small>symbolic music notation and playback!</small>
-
-                  <br><br>
-                  <b><a href="chai/">ChAI</a></b>: ChucK for AI<font size=1 color="999933"> — <b>new!!</b></font><br>
-                  <small>tools for building interactive AI musical systems</small>
-
-                  <br><br>
-                  <b><a href="chump/">ChuMP: A Package Manager</a></b><font size=1 
-color="999933"> — <b>new!!</b></font><br>
+                  <b><a href="./chump/">ChuMP:</a></b> A Package Manager<br>
                   <small>
-                    <span>install, update, manage chuck packages!</span>
+                    <span>install, update, manage <a href="./release/chump">chuck packages!</a></span>
                   </small>
-        
+
+                  <br><br>
+                  <b><a href="./smuck/">SmucK:</a></b> Symbolic Music in ChucK<br>
+                  <small>
+                    <span>symbolic music notation and playback!</span>
+                  </small>
+
+                  <br><br>
+                  <b><a href="chai/">ChAI</a></b>: ChucK for AI<br>
+                  <small>tools for building interactive AI musical systems</small>
+                
+
+
+
+                  <!-- Extending ChucK
                   <br><br>
                   <b><a href="extend/">Extending ChucK</a></b><br>
                   <small>
                     <span>chugins, chugens, chugraphs!</span><br>
                     <a target="_blank" href="https://github.com/ccrma/chugins">chugins on github</a>
-                  </small>
+                  </small> -->
 
                   <br><br>
                   <b><a href="chunity/">Chunity</a></b> (ChucK for Unity)<br>
@@ -321,18 +323,20 @@ color="999933"> — <b>new!!</b></font><br>
                   <br /><font size="1"> &nbsp;&nbsp; strongly-time audio =&gt; visual programming</font>
 
                   <br>
-                  <b>chuck~</b> (in <a target="_blank" href="https://github.com/shakfu/pd-chuck"><b>Pure Data</b></a> &amp; <a target="_blank" href="https://github.com/shakfu/chuck-max"><b>Max/MSP</b></a>)
-                  <br /><font size="1"> &nbsp;&nbsp; early in development; text-based + graphic patching</font>
-
-                  <br>
                   <a target="_blank" href="https://github.com/ccrma/chunreal"><b>Chunreal</b></a> (ChucK in Unreal Engine)
                   <br /><font size="1"> &nbsp;&nbsp; early in development</font>
 
+                  Chuck~
+                  <br>
+                  <b>ChucK~</b> (in <a target="_blank" href="https://github.com/shakfu/pd-chuck"><b>Pure Data</b></a> &amp; <a target="_blank" href="https://github.com/shakfu/chuck-max"><b>Max/MSP</b></a>)
+                  <br /><font size="1"> &nbsp;&nbsp; early in development; text-based + graphic patching</font>
+
                   <br><br>
+                  <p><b>Extras</b></p>
                   ChucK powers <a target="_blank" href="http://plork.cs.princeton.edu/"><b>PLOrk</b></a>
                   and <a target="_blank" href="http://slork.stanford.edu/"><b>SLOrk</b></a>
     
-                  <br><br>
+                  <br>
                   <a target="_blank" href="http://ccrma.stanford.edu/~ge/publish/files/2015-cmj-chuck.pdf"><b>CMJ ChucK article</b></a> (2015)
                   <br>
                   <a target="_blank" href="https://artful.design/stuff/samples/chuck.pdf"><b>ChucK excerpt</b></a> from <a target="_blank" href="https://artful.design/">
@@ -343,82 +347,40 @@ color="999933"> — <b>new!!</b></font><br>
                   <small>
                     (and check out Perry's <a target="_blank" href="http://www.cs.princeton.edu/~prc/HackChuck.html">chuck anthem</a>!)
                     <br>
-                    more <a target="_blank" href="http://ccrma.stanford.edu/~ge/publish/">ChucK + related publications</a>
+                    more <a target="_blank" href="./doc/publish/">ChucK + related publications</a>
                   </small>
     
-                  <br><br>
-                  check out
-                  <span style="line-height: 30px;">
+                  <br>
+                  Check out
+                  <span>
                     <a target="_blank" href="http://www.ted.com/talks/ge_wang_the_diy_orchestra_of_the_future">Ge's
                       <img src="doc/images/ted.png" width="30px"> talk</a>
                   </span>
-                  <br>
-                  <small>on ChucK, laptop orchestra,<br>ocarina, and social music</small>
     
+                  <!-- Community Link
                   <br><br>
                   <a target="_blank" href="community/"><b>ChucK community</b></a><br>
                   github repos, discord, forums, mailing lists<br>  
-                  <small>join the community!</small>
+                  <small>join the community!</small> -->
                   <br>
-    
-    
+                  <br>
                 </div>
-                <!--
-    <br><br>
-    chuck awards<br>
-    <font size="1">
-    <i>2003 ICMA Best Presentation Award</i><br>
-    <i>2004 ICMA Best Presentation Award</i><br>
-    <i>2004 ACM Multimedia Open-source Software</i>
-    -->
-                <!--
-    <br><br>
-    read the 
-    <a target="_blank" href="http://soundlab.cs.princeton.edu/publications/uana_icmc2007.pdf">
-    UAna paper</a> <font color="#999933" size="1"><b>new!!</b></font><br>
-    <font size="1">(presented at ICMC 2007 in Copenhagen,<br>
-    and check out them <a target="_blank" href="uana/">unit anlyzers</a>!!)</font>
-    <br><br>
-    read the 
-    <a href="http://soundlab.cs.princeton.edu/publications/chuck_icmc2003.pdf">
-    original paper</a><br>
-    <font size="1">(<i>winner: 2003 ICMA Best Presentation Award</i>,
-    <br>
-    presented at ICMC 2003 in Singapore,
-    <br> slides : <a href="chuck.talk.icmc.2003.ppt">ppt</a> | <a 
-    href="chuck.talk.icmc.2003.pdf">pdf</a> )</font>
-    <br><br>
-    <a href="http://on-the-fly.cs.princeton.edu/">on-the-fly programming</a>
-    <br>
-    <font size="1">writing code at runtime using ChucK<br>
-    (follow-up NIME 2004
-    <a href="http://soundlab.cs.princeton.edu/publications/on-the-fly_nime2004.pdf">paper</a>)</font>
-    <br>
-    <br><a href="http://audicle.cs.princeton.edu/">The Audicle</a> 
-    | <a href="http://audicle.cs.princeton.edu/mini/">miniAudicle</a>
-    <br>
-    <font size="1">
-    (<i>winner: 2004 ICMA Best Presentation Award</i>,<br>
-    presented at ICMC 2004 in Miami)<br></font>
-    
-    <br>
-    <a href="http://soundlab.cs.princeton.edu/publications/chuck_sigmm2004.pdf">ACM multimedia paper</a><br>
-    <font size="1">(<i>winner: 2004 ACM Multimedia Open Source Software 
-    Competition</i>, presented at MM 2004)</font>
-    -->
-    
               </td>
             </tr>
           </table>
         </td>
       </tr>
     </table>
+    <br>
+    <div>
+
+      
 
     <br>
 
     <hr width="20%" />
     <p class="mid-text">
-      <a target="_blank" href="https://ccrma.stanford.edu/">ccrma</a> |
+      <a target="_blank" href="https://ccrma.stanford.edu/">CCRMA</a> |
       <a target="_blank" href="https://soundlab.cs.princeton.edu/">soundlab</a> |
       <a target="_blank" href="https://mcd.stanford.edu/">MCD</a>
 

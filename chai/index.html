@@ -27,8 +27,30 @@ ChAI (ChucK => AI)
     <link rel="manifest" href="./favicon_io/site.webmanifest">
     -->
     <!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
-	<link rel="stylesheet" type="text/css" href="./css/prism.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+    <!-- A few overwrites for now basically just background and text color. Dark Mode! -->
+    <style>
+        body {
+            background : #333333;
+            color: #ffffff; 
+        }
+        #chuck_body { 
+            margin-top: 0px;
+        }
+        #lang_topic_body { 
+            margin-bottom: 30px;
+        }
+        a:link { 
+            color: #0096FF;
+        }
+        a:active { 
+            color: #ccccff;
+        }
+        a:visited { 
+            color: #0096FF;
+        }
+    </style>
 </head>
 
 
@@ -175,8 +197,5 @@ Music Conference</i>.
 </tbody></table>
 
 </center>
-
-<script src="./js/prism.js"></script>
-
 </body>
 </html>

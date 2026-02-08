@@ -3,9 +3,13 @@ body, div, p, th, td, li, dd {
 }
 
 body { 
-	background : #ffffff url(../images/chuckula.jpg) top center no-repeat;
-	color: #000000; 
+	background : #FFFFFF url(/doc/images/chuckula_blood.jpg) top center no-repeat;
+	color: #000000;
 	font-family: verdana, helvetica, sans-serif;
+}
+
+tbody, tr, td, th, div, span, {
+	background-color: #333333;
 }
 
 
@@ -13,15 +17,15 @@ a {
 }
 
 a:link { 
-	color: #2222ff;
+	color: var(--link-color);
 }
 
 a:active { 
-	color: #000088;
+	color: var(--link-active-color);
 }
 
 a:visited { 
-	color: #5050cc;
+	color: var(--link-visited-color);
 }
 
 h1 { 
@@ -32,6 +36,10 @@ h1 {
 h2 { 
 	font-size: 125%; 
 	font-weight: 300;
+}
+
+h3 { 
+	font-size: 110%; 
 }
 
 #chuck_header { 
@@ -130,5 +138,9 @@ pre {
 .tutorialimg {
     margin-bottom: 10px;
     border: 1px solid #eee;
+}
+
+.bold {
+    font-weight: bold;
 }
 
