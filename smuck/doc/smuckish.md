@@ -28,7 +28,7 @@ SMucKish is a symbolic music notation system for ChucK. It uses a custom syntax 
 
 For example, if you wanted to encode this:
 
-![interleaved 1](../img/smuckish/intro_mary.svg)
+![interleaved 1](../images/smuckish/intro_mary.svg)
 
 
 You could write the following SMucKish code to represent the pitches:
@@ -111,19 +111,19 @@ Example showing proximity-based octave handling:
 Smuckish.pitches("c d c e c f c f# c g c a c b c c");
 ```
 
-![pitch proximity](../img/smuckish/pitch_proximity.svg)
+![pitch proximity](../images/smuckish/pitch_proximity.svg)
 
 We can also specify the octave **explicitly**. This overrides proximity-based octaves.
 ```
 Smuckish.pitches("c1 c2 c3 c4 c5 c6 c7 c8");
 ```
-![pitch octaves](../img/smuckish/pitch_octaves.svg)
+![pitch octaves](../images/smuckish/pitch_octaves.svg)
 
 We can also use `u`'s and `d`'s as a **shortcut** to move up and down octaves.
 ```
 Smuckish.pitches("c4 eu c ed ed fuu");
 ```
-![pitch ud](../img/smuckish/pitch_ud.svg)
+![pitch ud](../images/smuckish/pitch_ud.svg)
 
 
 ### Key Signatures and Accidentals
@@ -133,14 +133,14 @@ To set a key signature, use a 3-character token starting with `k`, followed by t
 ```
 Smuckish.pitches("k3# a b c d e f g a")
 ```
-![pitch keysig](../img/smuckish/pitch_keysig.svg)
+![pitch keysig](../images/smuckish/pitch_keysig.svg)
 
 We can add accidentals (sharps, flats, naturals) to the notes, which override the key signature. Use `b` for flats, `#` for sharps, and `n` for naturals. While the **key signature 
 persists** across a SMucKish string, **accidentals do not** and must be specified for each note.
 ```
 Smuckish.pitches("k3# a b cn c d e f gb g a");
 ```
-![pitch accidentals](../img/smuckish/pitch_accidentals.svg)
+![pitch accidentals](../images/smuckish/pitch_accidentals.svg)
 
 We can also specify an arbitrary number of sharps and flats. Sharps, flats, and naturals override the key signature.
 ```
@@ -156,7 +156,7 @@ Smuckish.pitches("c:e:g c:e:g c:e:g");
 ```
 Leads to this output:
 
-![pitch chords](../img/smuckish/pitch_chord_oct.svg)
+![pitch chords](../images/smuckish/pitch_chord_oct.svg)
 
 because the second `c` uses the previous note `g` to determine proximity. 
 
@@ -165,7 +165,7 @@ Therefore, best practice for chords is to specify the octave for the leading not
 ```
 Smuckish.pitches("c3:e:g c3:e:g c3:e:g");
 ```
-![pitch chords](../img/smuckish/pitch_chord_oct_same.svg)
+![pitch chords](../images/smuckish/pitch_chord_oct_same.svg)
 
 There is also a function `Smuckish.chords()` that translates chord names directly into `int` arrays. For more information, see the [**SMucKChord Input Tool**](./chords.html) page.
 
@@ -184,7 +184,7 @@ Rhythmic values are parsed floats representing beat value (NOT absolute duration
 Smuckish.rhythms("w h q e s"); // This returns [4.0, 2.0, 1.0, 0.5, 0.25]
 ```
 
-![rhythm basic](../img/smuckish/rhythm_basic.svg)
+![rhythm basic](../images/smuckish/rhythm_basic.svg)
 
 ### Dotted Rhythms
 
@@ -193,7 +193,7 @@ Dotted rhythms are specified by adding a `.` after the rhythmic value. An arbitr
 Smuckish.rhythms("q q. q.. q... q...."); // This returns [1.0, 1.5, 1.75, 1.875, 1.9375]
 ```
 
-![rhythm dots](../img/smuckish/rhythm_dots.svg)
+![rhythm dots](../images/smuckish/rhythm_dots.svg)
 
 ### Tuplets
 
@@ -201,7 +201,7 @@ Basic triplets can be specified by adding a `t` before the rhythmic value.
 ```
 Smuckish.rhythms("tq tq tq te te te")
 ```
-![rhythm triplets](../img/smuckish/rhythm_triplets.svg)
+![rhythm triplets](../images/smuckish/rhythm_triplets.svg)
 
 Tuplets of other values can be specified by adding a `/` after the rhythmic value, followed by the tuplet division number. This performs a straightforward division of the rhythmic value, so `q/5` is 1 beat divided by 5, or .2 beats.
 ```
@@ -223,7 +223,7 @@ Ties can be specified by adding a `_` at the start of the rhythmic value. For in
 Smuckish.rhythms("q _q q") // This returns [2.0, 1.0]
 ```
 
-![rhythm ties](../img/smuckish/rhythm_ties.svg)
+![rhythm ties](../images/smuckish/rhythm_ties.svg)
 
 # Dynamics
 
@@ -240,7 +240,7 @@ Smuckish.velocities("v1.0 v.8 v.6 v.5 v.25") // This returns [1.0, .8, .6, .5, .
 ### Dynamic Markings
 
 Dynamic markings from standard notation can be used ranging from `pppp` to `ffff`. Markings are mapped to float values between .1 and 1.0 as follows:
-![dynamic mapping](../img/smuckish/dynamics_scale_lg.png)
+![dynamic mapping](../images/smuckish/dynamics_scale_lg.png)
 
 ```
 Smuckish.velocities("pppp ppp pp p pp mp mf f ff fff ffff") // This returns [.1, .2, .3, .4, .5, .6, .7, .8, .9, 1.0]
@@ -256,7 +256,7 @@ To repeat a token, simply add a `x` immediately after the token (with no space),
 Smuckish.rhythms("qx3 ex5") // This returns [1.0, 1.0, 1.0, 0.5, 0.5, 0.5, 0.5, 0.5]
 ```
 
-![repeated tokens](../img/smuckish/repeat_tokens.svg)
+![repeated tokens](../images/smuckish/repeat_tokens.svg)
 
 To repeat a sequence of tokens, enclose the sequence in brackets `[` and `]`, followed by the number of times to repeat the sequence.
 
@@ -264,7 +264,7 @@ To repeat a sequence of tokens, enclose the sequence in brackets `[` and `]`, fo
 Smuckish.rhythms("[q ex2]x3") // This returns [1.0, 0.5, 0.5, 1.0, 0.5, 0.5, 1.0, 0.5, 0.5]
 ```
 
-![repeated sequences](../img/smuckish/repeat_sequence.svg)
+![repeated sequences](../images/smuckish/repeat_sequence.svg)
 
 # Multi-stage Input
 
@@ -294,7 +294,7 @@ Note 2: onset = 1.33333, beats = 0.666667, pitch = E4, velocity = .6
 Note 3: onset = 2, beats = 0.5, pitch = F4, velocity = .6
 Note 4: onset = 2.5, beats = 0.5, pitch = G4, velocity = .6
 ```
-![multi-stage 1](../img/smuckish/multi-stage_1.svg)
+![multi-stage 1](../images/smuckish/multi-stage_1.svg)
 
 You don't need to set all the layers. For example, if you only set the pitches, the rhythms and dynamics will be set to default values. Rhythms have a default value of 1.0 beats, and dynamics have a default value of 100. Pitches have a default value of 60 (MIDI note C4). You can also set the layers in any order.
 
@@ -309,7 +309,7 @@ m1.set_pitches("a b c d e");
 
 This creates a measure with 5 notes, each with a default rhythm of 1.0 beats and a default velocity of 100.
 
-![multi-stage 2](../img/smuckish/multi-stage_2.svg)
+![multi-stage 2](../images/smuckish/multi-stage_2.svg)
 
 If we then set the rhythms to a sequence of 8 values:
 
@@ -319,7 +319,7 @@ m1.set_rhythms("q e e q. e s s e");
 
 The measure will fill out to have 8 notes, with the last 3 notes having pitches of `e`, since that was the last pitch set.
 
-![multi-stage 3](../img/smuckish/multi-stage_3.svg)
+![multi-stage 3](../images/smuckish/multi-stage_3.svg)
 
 If we then set the dynamics to a sequence of 3 values:
 
@@ -329,7 +329,7 @@ m1.set_velocities("f mf p");
 
 The measure will still have 8 notes, with the last 5 notes having dynamics of `p`, since that was the last dynamics set.
 
-![multi-stage 4](../img/smuckish/multi-stage_4.svg)
+![multi-stage 4](../images/smuckish/multi-stage_4.svg)
 
 
 # Interleaved Input
@@ -346,7 +346,7 @@ ezMeasure measure("ks1 c4|q|mf d e f g|e|mp a b c");
 ```
 
 Produces the following output:
-![interleaved 1](../img/smuckish/interleaved_1.svg)
+![interleaved 1](../images/smuckish/interleaved_1.svg)
 
 
 # Using SMucKish

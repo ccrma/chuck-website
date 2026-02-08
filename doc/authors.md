@@ -1,5 +1,5 @@
 
-![logo](./img/chuck-team-2024b.jpg)
+![logo](./images/chuck-team-2024b.jpg)
 
 <h1>ChucK Team</h1>
 
@@ -88,5 +88,5 @@
 
 <br>
 <center>
-<img src="./img/chuck-team-2024c.jpg" alt="ChucK Team 2024 (lab)" width="75%" />
+<img src="./images/chuck-team-2024c.jpg" alt="ChucK Team 2024 (lab)" width="75%" />
 </center>

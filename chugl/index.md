@@ -2,7 +2,7 @@
 <!-- Add ChuGL logo -->
 <!-- <img align="left" style="width:260px" src="https://github.com/raysan5/raylib/blob/master/logo/raylib_logo_animation.gif" width="288px"> -->
 
-![logo](img/chugl-glogo2023t.png)
+![logo](images/chugl-glogo2023t.png)
 <h2>ChuGL =&gt; ChucK Graphics Library</h2>
 
 </div> <!-- end center -->
@@ -26,7 +26,7 @@ benefitted from prior prototypes of ChuGL and GLucK by Spencer Salazar and
 Philip Davidson.
 </p>
 
-![logo](img/chugl-banner.jpg)
+![logo](images/chugl-banner.jpg)
 
 ---
 

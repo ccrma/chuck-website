@@ -246,7 +246,7 @@ ___
 
 ## The Scene Graph
 
-![](img/threejs-scenegraph.svg)
+![](images/threejs-scenegraph.svg)
 
 The above image shows an example scenegraph for [three.js](https://threejs.org/manual/#en/fundamentals), a 3D graphics library for the web.
 
@@ -551,7 +551,7 @@ ___
 
 ## ChuGL Shader Programming
 
-![OpenGL Render Pipeline](img/render-pipeline.png)
+![OpenGL Render Pipeline](images/render-pipeline.png)
 
 A **Shader** is simply a program that is compiled and run on the GPU. After sending geometry/material data to the GPU and issuing a draw call, all this data gets processed through the [3D Rendering Pipeline](https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview) before appearing on-screen. The image above illustrates the OpenGL Render pipeline (which ChuGL currently runs on). At each of the 6 depicted stages, it runs shaders to perform important graphics operations. These stages do everything necessary to transform a virtual 3D world into colored pixels on your computer screen.
 

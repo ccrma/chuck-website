@@ -109,30 +109,30 @@ method of using ChucK in Unity is documented <a href="../tutorials">here</a>.</p
 <p>Next, we'll set up the <span class="mono2">Audio Mixer</span> that will hold our ChucK plugins.</p>
 
 <p>First, create a new Audio Mixer in the Project pane.</p>
-<img class="tutorialimg" src="./img/tutorial1/4.png" width=200 />
+<img class="tutorialimg" src="./images/tutorial1/4.png" width=200 />
 
 <p>Give it a name. Mine is called MyAudioMixer.</p>
-<img class="tutorialimg" src="./img/tutorial1/5.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial1/5.png" width=300 />
 
 <p>Next, we'll need to connect at least one <span class="mono2">Audio Source</span> 
    to this mixer so that Unity will enable audio from the mixer.</p>
 <p>Create a new Audio Source component on any Unity object.
 I'll put mine on the <span class="mono2">Player</span> object.</p>
 
-<img class="tutorialimg" src="./img/tutorial1/6.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial1/6.png" width=300 />
 
 <p>Connect the Audio Mixer's <span class="mono2">Master</span> Group
    to the Audio Source's <span class="mono2">Output</span> Group slot.
    (In Unity, "Group" is the name for a channel strip of an audio mixer.)</p> 
-<img class="tutorialimg" src="./img/tutorial1/7.png" width=500 />
+<img class="tutorialimg" src="./images/tutorial1/7.png" width=500 />
 
 <p>When you've done that, the Audio Source will look like this. It doesn't need
    to have an audio file attached to the <span class="mono2">AudioClip</span> field
    for the connection to work properly.</p>
-<img class="tutorialimg" src="./img/tutorial1/8.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial1/8.png" width=300 />
 
 <p>Finally, restart Unity so that the AudioPluginChucK file will be loaded properly.</p>
-<img class="tutorialimg" src="./img/tutorial1/9.png" width=500 />
+<img class="tutorialimg" src="./images/tutorial1/9.png" width=500 />
 <p>Now, you've finished adding ChucK and an Audio Mixer to your project!<br /><br /><br /></p>
 
 </li>
@@ -143,14 +143,14 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
    Drag the new pane that opens as a result to somewhere that's convenient.
    It should look like this when it is open.
    </p>
-<img class="tutorialimg" src="./img/tutorial1/10.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial1/10.png" width=600 />
 
 <p>Let's create a new <span class="mono2">Group</span> (channel strip)
    to hold our ChucK plugin. Create the new group by using the + button next to 
    the Groups category. Since it's possible to have multiple ChucK
    plugins in one project, and each will probably have its own Group,
    I named my new Group <span class="mono2">Chuck 1</span>.</p>
-<img class="tutorialimg" src="./img/tutorial1/11.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial1/11.png" width=300 />
 
 <p>When you've created the new Group, it should look like the leftmost picture.
    <br />
@@ -162,10 +162,10 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
    Then, move the new ChucK plugin above the Attenuation plugin by dragging it up.
    This way, the volume slider on this Group will affect the volume of your
    ChucK scripts.</p>
-<img class="tutorialimg" src="./img/tutorial1/12.png" width=180 /> <img class="tutorialimg" src="./img/tutorial1/13.png" width=180 /> <img class="tutorialimg" src="./img/tutorial1/14.png" width=180 />
+<img class="tutorialimg" src="./images/tutorial1/12.png" width=180 /> <img class="tutorialimg" src="./images/tutorial1/13.png" width=180 /> <img class="tutorialimg" src="./images/tutorial1/14.png" width=180 />
 
 <p>When you've finished, your new channel strip will look like this.</p>
-<img class="tutorialimg" src="./img/tutorial1/15.png" width=200 />
+<img class="tutorialimg" src="./images/tutorial1/15.png" width=200 />
 <p><br /></p>
 </li>
 
@@ -176,26 +176,26 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
 <p>With your Group selected, look at the Inspector pane.</p>
 <p>Right click on the <span class="mono2">ChucK ID</span> field name of the 
    new ChucK plugin.</p>
-<img class="tutorialimg" src="./img/tutorial1/16.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial1/16.png" width=400 />
 
 <p>From the menu that appears, choose the <span class="mono2">Expose ... to script</span>
    option.</p>
-<img class="tutorialimg" src="./img/tutorial1/17.png" width=500 />
+<img class="tutorialimg" src="./images/tutorial1/17.png" width=500 />
 
 <p>Now, look back at the Audio Mixer pane.</p>
 <p>Select the <span class="mono2">Exposed Parameters</span> dropdown menu in the upper-right-hand corner.</p>
-<img class="tutorialimg" src="./img/tutorial1/18.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial1/18.png" width=600 />
 
 <p>You should see an exposed parameter with the name <span class="mono2">MyExposedParam</span>.
    This is the parameter you just exposed by right-clicking on <span class="mono2">ChucK ID</span> a moment ago.</p>
-<img class="tutorialimg" src="./img/tutorial1/19.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial1/19.png" width=400 />
 
 <p>Double-click this exposed parameter's name to give it a new name.<br />
    <strong>You will use this name later to send ChucK code to the plugin you just added.</strong></p>
-<img class="tutorialimg" src="./img/tutorial1/20.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial1/20.png" width=400 />
 
 <p>Press the Enter key to confirm the new name.</p>
-<img class="tutorialimg" src="./img/tutorial1/21.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial1/21.png" width=400 />
 
 <p>Now, you've finished creating your first ChucK plugin!<br /><br /><br /></p>
 </li>
@@ -205,10 +205,10 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
 
 <p>Since I am adding ChucK to my Roll a Ball project (<a target="_blank" href="https://unity3d.com/learn/tutorials/projects/roll-ball-tutorial">&#10144;Official Unity Tutorial</a>),
    I'll add ChucK to my PlayerController script.</p>
-<img class="tutorialimg" src="./img/tutorial1/22.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial1/22.png" width=300 />
 
 <p>First, add the <span class="mono2">UnityEngine.Audio</span> import to the script.</p>
-<img class="tutorialimg" src="./img/tutorial1/23.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial1/23.png" width=300 />
 
 <p>To access any ChucK plugin, you will need two things:</p>
 <ul>
@@ -217,22 +217,22 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
 </ul>
 <p>Add a public variable to hold an <span class="mono2">AudioMixer</span> and a private variable
    to hold the string name of your plugin.</p>
-<img class="tutorialimg" src="./img/tutorial1/24.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial1/24.png" width=400 />
 
 <p>Initialize the string name inside of your class's <span class="mono2">Start()</span> function
    by storing a string with the <strong>exact</strong> name you used in the 
    <span class="mono2">Expose Parameter</span> step.</p>
-<img class="tutorialimg" src="./img/tutorial1/25.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial1/25.png" width=300 />
 
 <p>The AudioMixer variable is a public variable, so it is initialized by dragging
    something into a slot on the Script component in the Inspector pane.</p>
 <p>Open the Player object in the Inspector pane (since this is where the Player Controller script is).
    Then, drag your AudioMixer from the Project pane into the new public variable slot on your
    Player Controller script.</p>
-<img class="tutorialimg" src="./img/tutorial1/26.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial1/26.png" width=600 />
 
 <p>When you've done that, the Player Controller script component will look like this.</p>
-<img class="tutorialimg" src="./img/tutorial1/27.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial1/27.png" width=300 />
 
 <p>Now that both your string name and your AudioMixer variables have been initialized, it's time to 
    <span class="mono2">Initialize</span> the ChucK plugin. This should be done once per plugin, 
@@ -241,7 +241,7 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
 <p>Call <span class="mono2">Chuck.Manager.Initialize</span> with the AudioMixer and string name arguments.
    (You can access <span class="mono2">Chuck.Manager</span> because you added <span class="mono2">Chuck.cs</span>
    to your scripts folder!)</p>
-<img class="tutorialimg" src="./img/tutorial1/28.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial1/28.png" width=400 />
 <p>Great! Now you've fully set up your ChucK plugin for use in this script and you can write ChucK code
    in this script that gets sent to the ChucK plugin!<br /><br /><br /></p>
 </li>
@@ -255,16 +255,16 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
 <p>This particular ChucK script connects a sine wave to the output,
    then sets its frequency randomly between 300 Hz and 1000 Hz every 100 ms, forever.</p>
 <p>(Note: <span class="mono2">@""</span> denotes a multi-line string.)</p>
-<img class="tutorialimg" src="./img/tutorial1/29.png" width=500 />
+<img class="tutorialimg" src="./images/tutorial1/29.png" width=500 />
 
 <p>Let's test it! Enter play mode.</p>
-<img class="tutorialimg" src="./img/tutorial1/30.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial1/30.png" width=600 />
 
 <p>And you can hear audio! (Check the Audio Mixer pane to see volume levels for each Group while the game is in play mode.)</p>
-<img class="tutorialimg" src="./img/tutorial1/31.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial1/31.png" width=600 />
 
 <p>There's just one problem &#8212; the audio doesn't stop playing when we exit play mode! Whoops!</p> 
-<img class="tutorialimg" src="./img/tutorial1/32.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial1/32.png" width=600 />
 
 <p>All ChucK plugins are reset whenever you enter play mode, but it can be kind of annoying to have
    them keep playing when you exit play mode. </p>
@@ -272,13 +272,13 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
    to add a call to <span class="mono2">Chuck.Manager.Quit()</span> inside any <span class="mono2">MonoBehaviour</span>'s 
    <span class="mono2">OnApplicationQuit()</span> function. I added this function to my <span class="mono2">PlayerController</span>
    script.</p>
-<img class="tutorialimg" src="./img/tutorial1/33.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial1/33.png" width=300 />
 
 <p>Now let's test it again by entering play mode...</p>
-<img class="tutorialimg" src="./img/tutorial1/34.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial1/34.png" width=600 />
 
 <p>And when we exit play mode, the audio shuts off!</p>
-<img class="tutorialimg" src="./img/tutorial1/35.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial1/35.png" width=600 />
 
 <p><strong>Congratulations!</strong> You now have ChucK working inside of a Unity project!!</p>
 
@@ -300,14 +300,14 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
 <p>Now, I want to write a script that plays every time our Player object
    picks up a Pick Up object. This will go in the <span class="mono2">OnTriggerEnter</span>
    function, where we detect collisions with trigger objects.</p>
-<img class="tutorialimg" src="./img/tutorial2/1.png" width=450 />
+<img class="tutorialimg" src="./images/tutorial2/1.png" width=450 />
 
 <p>Here, I've added a new ChucK script in that function. It runs directly after
    we increment the count of how many pickup objects have been picked up so far.
    It's very similar to the first script, but only plays 5 different frequencies
    instead of running forever. ( <span class="mono2">repeat( 5 )</span> instead
    of <span class="mono2">while( true )</span> ).</p>
-<img class="tutorialimg" src="./img/tutorial2/2.png" width=500 />
+<img class="tutorialimg" src="./images/tutorial2/2.png" width=500 />
 
 <p>This is a good start, but it's not very interesting. How about we make it repeat
    a number of times according to the current <span class="mono2">count</span>?</p>
@@ -326,7 +326,7 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
    <span class="mono2">{{</span> and <span class="mono2">}}</span>, then wrap the
    code string in a call to <span class="mono2">string.Format()</span> and include
    <span class="mono2">count</span> as the second argument.</p>
-<img class="tutorialimg" src="./img/tutorial2/3.png" width=500 />
+<img class="tutorialimg" src="./images/tutorial2/3.png" width=500 />
 
 <p>It's that simple to write and launch ChucK code that responds to a Unity event
    and uses values from current Unity variables!</p>
@@ -362,35 +362,35 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
    both our original ChucK plugin and our new spatialized ChucK plugin will
    both be summed together at the Master Group, but will otherwise not interfere
    with or feed into each other.</p>
-<img class="tutorialimg" src="./img/tutorial3/1.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial3/1.png" width=600 />
 
 <p>I'm calling my new Group Spatial ChucK. Click the Add button to add a
    ChucK plugin onto this new Group.</p>
-<img class="tutorialimg" src="./img/tutorial3/2.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial3/2.png" width=600 />
 
 <p>Select ChucK from the dropdown menu and drag the new ChucK plugin above the 
    Attenuation plugin so that the volume fader on the ChucK Spatial Group will 
    be applied to the new ChucK plugin.</p>
-<img class="tutorialimg" src="./img/tutorial3/3.png" width=180 /> <img class="tutorialimg" src="./img/tutorial3/4.png" width=150 />
+<img class="tutorialimg" src="./images/tutorial3/3.png" width=180 /> <img class="tutorialimg" src="./images/tutorial3/4.png" width=150 />
 
 <p>When you're done, the new Group should look like this. Make sure it's selected.</p>
-<img class="tutorialimg" src="./img/tutorial3/5.png" width=150 />
+<img class="tutorialimg" src="./images/tutorial3/5.png" width=150 />
 
 <p>With the new Group selected, look at the Inspector pane. Right click on the 
    ChucK ID property of your newly-created ChucK plugin.</p>
-<img class="tutorialimg" src="./img/tutorial3/6.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial3/6.png" width=400 />
 
 <p>From the dropdown, choose the <span class="mono2">Expose... to script</span> option.</p>
-<img class="tutorialimg" src="./img/tutorial3/7.png" width=500 />
+<img class="tutorialimg" src="./images/tutorial3/7.png" width=500 />
 
 <p>Now, return to the Audio Mixer pane. Open the <span class="mono2">Exposed Parameters</span> dropdown tab
    and find the parameter you just exposed, called MyExposedParam.</p>
-<img class="tutorialimg" src="./img/tutorial3/8.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial3/8.png" width=600 />
 
 <p>Rename this exposed parameter by double clicking it, typing a new name, and pressing enter.
    This name will be the one you use to send ChucK code to this ChucK plugin.
    I called mine <span class="mono2">spatial_chuck</span>.</p>
-<img class="tutorialimg" src="./img/tutorial3/9.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial3/9.png" width=600 />
 <p>Now, this new ChucK plugin is set up to receive ChucK code from any Unity script!<br /><br /><br /></p>
 </li>
 
@@ -421,33 +421,33 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
 
 <p>I'd like for one of my Pick Up objects to create spatialized sound, so I'll select
    one of these objects from the Hierarchy pane.</p>
-<img class="tutorialimg" src="./img/tutorial3/10.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial3/10.png" width=600 />
 
 <p>To hold the special audio file, add an Audio Source component to this Pick Up object.</p>
-<img class="tutorialimg" src="./img/tutorial3/11.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial3/11.png" width=300 />
 
 <p>Next, add a suitable pre-spatialization audio file (like <a href="./files/1.wav" download>1.wav</a>)
    to a new folder in your Project pane called <span class="mono2">Audio</span>.</p>
-<img class="tutorialimg" src="./img/tutorial3/12.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial3/12.png" width=300 />
 
 <p>Set this file to be the AudioClip for your new Audio Source component. Then, set
    the Audio Source's Output to be the new Group we created to hold our <span class="mono2">spatial_chuck</span> plugin.</p>
-<img class="tutorialimg" src="./img/tutorial3/13.png" width=700 />
+<img class="tutorialimg" src="./images/tutorial3/13.png" width=700 />
 
 <p>Check the boxes for "Play on Awake" and "Loop". This will ensure that the 
    DC offset signal is always coming out of the Audio Source while your game
    scene is active.</p>
-<img class="tutorialimg" src="./img/tutorial3/15.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial3/15.png" width=300 />
 
 <p>Next, set "Spatial Blend" all the way to "3D". This way, Unity will apply
    its spatializer to the fullest.</p>
-<img class="tutorialimg" src="./img/tutorial3/16.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial3/16.png" width=300 />
 
 <p>Finally, set the "Max Distance" parameter to something that makes sense
    for the scale of your project. For my project, I changed this value from
    <span class="mono2">500</span> to <span class="mono2">40</span>. You could
    also play around with some of the other settings.</p>
-<img class="tutorialimg" src="./img/tutorial3/17.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial3/17.png" width=400 />
 <p><br /></p>
 </li>
 
@@ -459,10 +459,10 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
    depending on your particular game.</p>
 <p>Each scene can only have one Audio Listener active at a time. First, uncheck 
    the Audio Listener from the Main Camera object.</p> 
-<img class="tutorialimg" src="./img/tutorial3/18.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial3/18.png" width=600 />
 
 <p>Next, add a new Audio Listener component to the Player object.</p>
-<img class="tutorialimg" src="./img/tutorial3/19.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial3/19.png" width=600 />
 <p>Now your scene is set up to send and receive spatial audio! <br /><br /><br /></p>
 </li>
 
@@ -472,7 +472,7 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
    spatialized audio!</p>
 <p>First, create a new script using the Add Component button on the object you 
    want to spatialize. I'll call my script Spatializer.</p>
-<img class="tutorialimg" src="./img/tutorial3/20.png" width=200 /> <img class="tutorialimg" src="./img/tutorial3/21.png" width=200 />
+<img class="tutorialimg" src="./images/tutorial3/20.png" width=200 /> <img class="tutorialimg" src="./images/tutorial3/21.png" width=200 />
 
 <p>In the script, initialize the new ChucK plugin. Do this by adding the import
    statement for <span class="mono2">UnityEngine.Audio</span>, the public variable
@@ -480,19 +480,19 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
    to store the ChucK plugin's string name (chosen by you in the Expose Parameter step).</p>
 <p>Initialize the string name with the name of the ChucK plugin, and initialize the
    ChucK plugin with a call to <span class="mono2">Chuck.Manager.Initialize()</span>.</p>
-<img class="tutorialimg" src="./img/tutorial3/22.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial3/22.png" width=600 />
 
 <p>Don't forget to initialize the public <span class="mono2">AudioMixer</span> variable!
    Do this by dragging your project's Audio Mixer into the new slot created on your
    script component.</p>
-<img class="tutorialimg" src="./img/tutorial3/23.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial3/23.png" width=600 />
 
 <p>After you complete those steps, the component will look like this, and the 
    ChucK plugin should be initialized and ready to use in a script.</p>
-<img class="tutorialimg" src="./img/tutorial3/24.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial3/24.png" width=300 />
 
 <p>Now, let's write some ChucK code that uses the spatial audio data!</p>
-<img class="tutorialimg" src="./img/tutorial3/25.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial3/25.png" width=600 />
 <p>This is a bit complex, so let's go over the spatialization setup in more detail.</p>
 
 <p><span class="mono2">adc</span> and <span class="mono2">dac</span> are the keywords
@@ -504,19 +504,19 @@ I'll put mine on the <span class="mono2">Player</span> object.</p>
 <pre>adc.chan(0) => Gain leftChannel => dac.chan(0)
 adc.chan(1) => Gain rightChannel => dac.chan(1)</pre>
 <p>After these two lines, the audio signal flow looks like this:</p>
-<img class="tutorialimg" src="./img/tutorial3/signalFlow1.svg" width=400 />
+<img class="tutorialimg" src="./images/tutorial3/signalFlow1.svg" width=400 />
 
 <p>Next, we create our sound source and hook it up into the Gain nodes we created.</p>
 <pre>TriOsc oscToSpatialize;
 oscToSpatialize => leftChannel;
 oscToSpatialize => rightChannel;</pre>
-<img class="tutorialimg" src="./img/tutorial3/signalFlow2.svg" width=475 />
+<img class="tutorialimg" src="./images/tutorial3/signalFlow2.svg" width=475 />
 <p>This is almost what we want. But, the spatialization data is getting added to
    our sound. What we want instead is to set the amplitude of our sound by the spatialization
    data. We can achieve this by multiplying our sound by the spatialization data instead.</p>
 <pre>3 => leftChannel.op;
 3 => rightChannel.op;</pre>
-<img class="tutorialimg" src="./img/tutorial3/signalFlow3.svg" width=475 />
+<img class="tutorialimg" src="./images/tutorial3/signalFlow3.svg" width=475 />
 <p>Now, we have a single triangle wave oscillator connected to both the left
    and right channels of the output, with each channel's amplitude multiplied by
    the incoming spatial data!</p>
@@ -530,11 +530,11 @@ oscToSpatialize => rightChannel;</pre>
 <p>When my Audio Listener (the player) is close to the Audio Source, with the Audio Source
    on the left side of the Audio Listener, then the spatialized audio output from
    ChucK is loud, with the left channel louder than the right.</p>
-<img class="tutorialimg" src="./img/tutorial3/26.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial3/26.png" width=600 />
 
 <p>And, when my Audio Listener is far from the Audio Source, the spatialized audio
    output from ChucK is quieter, with a negligible difference in volume between the two channels.</p>
-<img class="tutorialimg" src="./img/tutorial3/27.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial3/27.png" width=600 />
 <p>Congratulations! You've just set up your first spatial audio script in Unity using ChucK!<br /><br /><br /></p>
 </li>
 
@@ -545,28 +545,28 @@ oscToSpatialize => rightChannel;</pre>
 <p>I'll start by making the spatialized Pick Up a different color.</p>
 <p>Highlight the Pick Up material in the Project pane.
    This material is what gives the Pick Ups their yellow color.</p>
-<img class="tutorialimg" src="./img/tutorial3/28.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial3/28.png" width=300 />
 
 <p>Duplicate it using CTRL-D (Windows) or CMD-D (OS X).</p>
-<img class="tutorialimg" src="./img/tutorial3/29.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial3/29.png" width=300 />
 
 <p>Give the duplicated material a new name. I'll call mine Spatial Pick Up.</p>
-<img class="tutorialimg" src="./img/tutorial3/30.png" width=250 />
+<img class="tutorialimg" src="./images/tutorial3/30.png" width=250 />
 
 <p>Next, I'll change the color of my new material by editing the Albedo property.</p>
-<img class="tutorialimg" src="./img/tutorial3/31.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial3/31.png" width=400 />
 
 <p>There! Now, any object using the Spatial Pick Up material will be colored green.</p>
-<img class="tutorialimg" src="./img/tutorial3/32.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial3/32.png" width=400 />
 
 <p>Apply the new material to the Pick Up we added spatialization to by dragging
    the material from the Project pane onto the Pick Up in the Hierarchy pane.</p>
-<img class="tutorialimg" src="./img/tutorial3/33.png" width=250 />
+<img class="tutorialimg" src="./images/tutorial3/33.png" width=250 />
 
 <p>Now, the Pick Up looks different! But, I still don't think that its visual
    appearance corresponds very well with the sound of a triangle wave oscillator
    with a rapidly-changing frequency...</p>
-<img class="tutorialimg" src="./img/tutorial3/34.png" width=700 />
+<img class="tutorialimg" src="./images/tutorial3/34.png" width=700 />
 
 <p>Let's change this by adding a rapid movement to the spatial Pick Up!</p>
 <p>We'll do this by modifying the existing <span class="mono2">Rotator</span>
@@ -574,7 +574,7 @@ oscToSpatialize => rightChannel;</pre>
 <p>Since we want to create a behavior that is turned on only for some
    Pick Ups, we'll add a new public boolean that controls whether the behavior
    is turned on or off.</p>
-<img class="tutorialimg" src="./img/tutorial3/35.png" width=500 />
+<img class="tutorialimg" src="./images/tutorial3/35.png" width=500 />
 
 <p>Next, we'll add a new <span class="mono2">Vector3</span> local variable to 
    the <span class="mono2">Update()</span> function. If the <span class="mono2">rotateRandomly</span>
@@ -586,19 +586,19 @@ oscToSpatialize => rightChannel;</pre>
    started modifying this script.
    Finally, we'll modify the call to <span class="mono2">transform.Rotate</span>
    to take our new <span class="mono2">rotateAmount</span> variable.</p>
-<img class="tutorialimg" src="./img/tutorial3/36.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial3/36.png" width=400 />
 
 <p>The last thing to do is to set the new Rotate Randomly boolean to be checked on
    for the Pick Up we spatialized earlier.</p>
-<img class="tutorialimg" src="./img/tutorial3/37.png" width=500 />
+<img class="tutorialimg" src="./images/tutorial3/37.png" width=500 />
 
 <p>When you've done that, it will look like this for the spatial Pick Up, but will
    remain unchecked for the rest of the Pick Ups.</p>
-<img class="tutorialimg" src="./img/tutorial3/38.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial3/38.png" width=400 />
 
 <p>Now, the spatial Pick Up looks really visually distinct, and its movement aligns
    well with the audio it is emitting!</p>
-<img class="tutorialimg" src="./img/tutorial3/39.png" width=700 />
+<img class="tutorialimg" src="./images/tutorial3/39.png" width=700 />
 <p>Congratulations! You've finished integrating spatial audio into a ChucK project! </p>
 </li>
 </ol>
@@ -614,26 +614,26 @@ oscToSpatialize => rightChannel;</pre>
    during runtime, it must be located inside of a special folder called <span class="mono2">StreamingAssets</span>.
    Create this folder in your Project pane and put an audio file you'd like to
    use inside it. My audio file is called <span class="mono2">impact.wav</span>.</p>
-<img class="tutorialimg" src="./img/tutorial4/1.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial4/1.png" width=300 />
 
 <p>Since I'd like to play this file when the Player collides with another game object,
    I'll add an <span class="mono2">OnCollisionEnter()</span> method to my Player class.</p>
-<img class="tutorialimg" src="./img/tutorial4/2.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial4/2.png" width=400 />
 
 <p>To determine what range of possible values the collision's velocity magnitude 
    can take on, I'll use Unity's Debug Log to print out the value, enter play
    mode, and cause collisions with the game walls at a variety of velocities.</p>
-<img class="tutorialimg" src="./img/tutorial4/3.png" width=500 />
+<img class="tutorialimg" src="./images/tutorial4/3.png" width=500 />
 
 <p>Based on this experiment, it looks like the relevant range of my <span class="mono2">intensity</span>
    variable will be roughly <span class="mono2">[0, 16]</span>.</p>
-<img class="tutorialimg" src="./img/tutorial4/4.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial4/4.png" width=600 />
 
 <p>I'll scale the intensity down to roughly <span class="mono2">[0, 1]</span> by dividing it by 
    <span class="mono2">16</span>, then clamp it to exactly <span class="mono2">[0, 1]</span>.
    Finally, I'll square this value so that the sound changes quadratically with an increase in velocity,
    rather than linearly. This will help especially fast collisions to stand out more.</p>
-<img class="tutorialimg" src="./img/tutorial4/5.png" width=650 />
+<img class="tutorialimg" src="./images/tutorial4/5.png" width=650 />
 
 <p>Finally, I'll add my ChucK code. The intensity parameter is inserted just as in the
    <a href="#unityvariables1">Using Unity Variables(1)</a> tutorial. Note that when
@@ -643,7 +643,7 @@ oscToSpatialize => rightChannel;</pre>
    <span class="mono2">me.dir()</span> ChucK expression refers automatically to the 
    <span class="mono2">StreamingAssets</span> folder for code that is run using 
    <span class="mono2">Chuck.Manager.RunCode()</span>.</p>
-<img class="tutorialimg" src="./img/tutorial4/6.png" width=675 />
+<img class="tutorialimg" src="./images/tutorial4/6.png" width=675 />
 <p>It's that simple to write ChucK scripts that use audio files in Unity! Just add your
    audio files to the <span class="mono2">StreamingAssets</span> folder and access their
    filenames in ChucK using <span class="mono2">me.dir()</span>.</p>
@@ -658,9 +658,9 @@ oscToSpatialize => rightChannel;</pre>
    automatically appear in the Unity console.</p>
 <p>For example, this ChucK script computes a value with a random error added to it,
    then prints the resulting value to the console.</p>
-<img class="tutorialimg" src="./img/tutorial5/1.png" width=650 />
+<img class="tutorialimg" src="./images/tutorial5/1.png" width=650 />
 <p></p>
-<img class="tutorialimg" src="./img/tutorial5/2.png" width=400 />
+<img class="tutorialimg" src="./images/tutorial5/2.png" width=400 />
 
 </div>
 
@@ -677,7 +677,7 @@ oscToSpatialize => rightChannel;</pre>
    tutorial. This ChucK script plays an audio file and exits immediately afterward. The script
    is compiled and run every time the Player object has a collision.</p>
 
-<img class="tutorialimg" src="./img/tutorial6/1.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial6/1.png" width=600 />
 
 <p>In this tutorial, I will translate this script into one that is compiled and run once when
    the scene is opened. The new version of the script will trigger the audio file as a result
@@ -685,12 +685,12 @@ oscToSpatialize => rightChannel;</pre>
 
 <p>The first thing to do is move the script from <span class="mono2">OnCollisionEnter()</span>
    to <span class="mono2">Start()</span>.</p>
-<img class="tutorialimg" src="./img/tutorial6/2.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial6/2.png" width=600 />
 
 <p>Next, remove the call to <span class="mono2">string.Format</span> and replace all
    of the format locations in the string with a new variable, <span class="mono2">intensity</span>.
    Wrap the entire script into a function called <span class="mono2">playImpact(&nbsp;float&nbsp;intensity&nbsp;)</span>.</p>
-<img class="tutorialimg" src="./img/tutorial6/3.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial6/3.png" width=600 />
 
 <p>Now, let's add the global variables we will use to signal when this function should be called.
    We will set the value of an <span class="mono2">global float</span> from Unity, and then we
@@ -699,7 +699,7 @@ oscToSpatialize => rightChannel;</pre>
 <p>These variables are specified just like regular variables, but with the <span class="mono2">global</span>
    keyword. Note that only global variables can be <span class="mono2">global</span>, and currently the
    only variable types supported are int, float, and Event.</p>
-<img class="tutorialimg" src="./img/tutorial6/4.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial6/4.png" width=600 />
 
 <p>Let's write the code that uses these variables. To wait for an Event to fire,
    we simply chuck the event to <span class="mono2">now</span>. To call the <span class="mono2">playImpact</span>
@@ -708,14 +708,14 @@ oscToSpatialize => rightChannel;</pre>
 <p>So, forever (&nbsp;<span class="mono2">while(&nbsp;true&nbsp;)</span>&nbsp;), we will wait for an 
    <span class="mono2">impactHappened</span> event, and then call <span class="mono2">playImpact</span>
    with the value stored in <span class="mono2">impactIntensity</span>.</p>
-<img class="tutorialimg" src="./img/tutorial6/5.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial6/5.png" width=300 />
 
 <p>Finally, in the <span class="mono2">OnCollisionEnter</span> function, after we compute 
    the collision's intensity, we first set the value of the float <span class="mono2">impactIntensity</span>
    and then broadcast the event <span class="mono2">impactHappened</span>. These functions take the string
    name of the ChucK plugin as the first argument and the name of the global variable as the second argument,
    since each ChucK plugin has its own namespace of global variables.</p>
-<img class="tutorialimg" src="./img/tutorial6/6.png" width=600 />
+<img class="tutorialimg" src="./images/tutorial6/6.png" width=600 />
 <p>Congratulations! You've written a script using global variables. This practice allows you to write
    slightly more efficient code, since you won't need to send a new script to the ChucK compiler every time you want
    to generate sound.</p>
@@ -735,27 +735,27 @@ oscToSpatialize => rightChannel;</pre>
    process all audio in ChucK.</p>
 <p>For example, if I add the <span class="mono2">Bitcrusher.chug</span> ChuGin to
    my StreamingAssets folder...</p>
-<img class="tutorialimg" src="./img/tutorial7/1.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial7/1.png" width=300 />
 
 <p>... and restart Unity...</p>
-<img class="tutorialimg" src="./img/tutorial7/2.png" width=450 />
+<img class="tutorialimg" src="./images/tutorial7/2.png" width=450 />
 <p>... then, I can write ChucK scripts using the Bitcrusher UGen!</p>
 <p>Here, I've modified the <a href="#audiofiles">Audio File</a> impact script
    to process my audio file through a Bitcrusher. To do this, I just added
    the Bitcrusher to the signal flow, set its settings, and allowed some extra
    time at the end of the audio file to wait for the Bitcrusher's tail of audio
    to finish playing.</p>
-<img class="tutorialimg" src="./img/tutorial7/3.png" width=650 />
+<img class="tutorialimg" src="./images/tutorial7/3.png" width=650 />
 
 <p>ChuGins have been used to extend ChucK in pretty fantastic ways. For example,
    you can write <a target="_blank" href="http://faust.grame.fr/">Faust</a> signal processing code 
    in ChucK using the Faust ChuGin!</p>
 <p>Just add the Faust.chug Chugin to your StreamingAssets folder...</p>
-<img class="tutorialimg" src="./img/tutorial7/4.png" width=300 />
+<img class="tutorialimg" src="./images/tutorial7/4.png" width=300 />
 <p>... restart Unity...</p>
-<img class="tutorialimg" src="./img/tutorial7/5.png" width=450 />
+<img class="tutorialimg" src="./images/tutorial7/5.png" width=450 />
 <p>... and then, you can write Faust code inside your ChucK code inside your Unity code!</p>
-<img class="tutorialimg" src="./img/tutorial7/6.png" width=500 />
+<img class="tutorialimg" src="./images/tutorial7/6.png" width=500 />
 <p>Wow! That's Fausttastic!</p>
 <p>Thanks for following these tutorials. Good luck ChucKing in Unity!</p>
 </div>

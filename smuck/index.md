@@ -2,7 +2,7 @@
 <!-- Add ChuGL logo -->
 <!-- <img align="left" style="width:260px" src="https://github.com/raysan5/raylib/blob/master/logo/raylib_logo_animation.gif" width="288px"> -->
 
-<img src="img/smuck-logo.svg" width="100%"></img>
+<img src="images/smuck-logo.svg" width="100%"></img>
 
 <h2>SMucK ~&gt; Symbolic Music in ChucK</h2>
 
@@ -19,7 +19,7 @@ SMucK was created by <a href="https://ccrma.stanford.edu/~alexhan/">Alex Han</a>
 with support from the <a href="../doc/authors.html">ChucK Team</a>.
 </p>
 
-<!-- ![logo](img/chugl-banner.jpg) -->
+<!-- ![logo](images/chugl-banner.jpg) -->
 
 ---
 

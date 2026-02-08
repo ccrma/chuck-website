@@ -127,7 +127,7 @@ Now run this program from command-line like so
 
 You should see a black window pop up like the following, which displays an FPS counter in the title.
 
-![gameloop](img/walkthrough/gameloop.png)
+![gameloop](images/walkthrough/gameloop.png)
 
 What's going on here? `GG.nextFrame()` is a very important function that serves 2 purposes
 
@@ -156,7 +156,7 @@ while (true) {
 
 Running the program again, you should see:
 
-![suzanne](img/walkthrough/suzanne.png)
+![suzanne](images/walkthrough/suzanne.png)
 
 Let's try to understand this new line of code by comparing with something we're already familiar with: audio in chuck!
 
@@ -199,7 +199,7 @@ while (true) {
 
 Now when you run the program, you'll see a UI window with a "scenegraph" dropdown. Click and expand it to view everything in the current scene.
 
-![scenegraph](img/walkthrough/scenegraph.png)
+![scenegraph](images/walkthrough/scenegraph.png)
 
 - By default, ChuGL initializes the scene with a directional light (`GDirLight`) and a camera (`GCamera`)
 - Suzanne is under the `GMesh` section, which you can expand to view transform and material properties
@@ -208,7 +208,7 @@ Now when you run the program, you'll see a UI window with a "scenegraph" dropdow
 
 Expanding the `GMesh` dropdown shows something like this:
 
-![gmesh](img/walkthrough/gmesh.png)
+![gmesh](images/walkthrough/gmesh.png)
 
 The **Transform** section contains info regarding Suzanne's position, rotation, and scale in 3D space. Try changing these values yourself by clicking and dragging!
 
@@ -361,7 +361,7 @@ Adding to the same place in code:
 
 Running the code, you'll see that Suzanne's color is now being driven by the volume.
 
-![fade](img/walkthrough/fade.png)
+![fade](images/walkthrough/fade.png)
 
 You might notice a flash of white when first starting the app--that is because Suzanne's default color is white, and we set it to black after the first frame. Let's fix that by changing the default to black like so:
 
@@ -491,7 +491,7 @@ while (true) {
 
 Running this code, you'll now see:
 
-![refactor](img/walkthrough/refactor.png)
+![refactor](images/walkthrough/refactor.png)
 
 Now let's add more voices!  Below where we sporked the current voice, add a few more of your own choosing. E.g.
 
@@ -547,7 +547,7 @@ fun void addGraphics(Envelope env, float midi) {
 
 Assuming you sporked the same midi note values for your voices, running the program now looks like
 
-![remap](img/walkthrough/remap.png)
+![remap](images/walkthrough/remap.png)
 
 And, while we're at it, let's run our voices through some reverb...
 
@@ -609,7 +609,7 @@ spork ~ addVoice(61, 9.2::second, 31.8::second, 1::second + 15.0::second); // Db
 
 Sit back, watch, listen, and enjoy!
 
-![final](img/walkthrough/final.png)
+![final](images/walkthrough/final.png)
 
 The final walkthrough code:
 
