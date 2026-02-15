@@ -1,7 +1,6 @@
 <img src="/../doe-seal.png" width="250" height="250" style="align-items: center; display: flex;"></img>
 
 # ChucK Department of Education (DOE)
-**ChucK Programming Language**  
 *Established 2026*
 
 ## Getting Started
