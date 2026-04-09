@@ -18,9 +18,11 @@ distribution**](../release/) since `1.5.5.0`, and is available as the
 command `chump` in your terminal. If you are on Linux, see [**Building for 
 Linux**](./linux-build.html).
 
-ChuMP was created by <a href="https://nicholasshaheed.com/">Nick 
+ChuMP was created by <a target="_blank" href="https://nicholasshaheed.com/">Nick 
 Shaheed</a> with support from the <a href="../doc/authors.html">ChucK 
-Team</a>.
+Team</a>. Read more about the origin myth of ChuMP:
+
+&nbsp;&nbsp;&nbsp;&nbsp;Shaheed, N. and G. Wang. 2025. "<a target="_blank" href="https://mcd.stanford.edu/publish/files/2025-nime-chump.pdf">ChuMP and the Zen of Package Management</a>." <i>New Interfaces for Musical Expression.</i>
 
 ---
 
