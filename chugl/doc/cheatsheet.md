@@ -606,7 +606,7 @@ GG.camera().screenCordToWorldPos(GWindow.mousePos(), 1) => vec3 ray;
 For 2D scenes and simple shapes like axis-aligned bounding boxes (AABB), you can get the world-space xy coordinate of your mouse and compare it with with the extents of your bounding box:
 
 ```c
-GG.camera().orthographi(); // 2d scene, set camera to orthographic
+GG.camera().orthographic(); // 2d scene, set camera to orthographic
 
 GPlane aabb --> GG.scene(); // the aabb we want to intersection test
 
@@ -631,7 +631,7 @@ fun int isHovered(GPlane plane, vec3 mouse_pos) {
  return false;
 }
 
-GG.camera().screenCordToWorldPos(GWindow.mousePos(), 1) => vec3 mouse_world_pos; // get mouse world position
+GG.camera().screenCoordToWorldPos(GWindow.mousePos(), 1) => vec3 mouse_world_pos; // get mouse world position
 isHovered(aabb, mouse_world_pos); // perform isection test
 ```
 
