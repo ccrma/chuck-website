@@ -17,15 +17,11 @@ a {
 }
 
 a:link { 
-	color: var(--link-color);
+	color: #0000ee
 }
 
 a:active { 
-	color: var(--link-active-color);
-}
-
-a:visited { 
-	color: var(--link-visited-color);
+	color: #000088;
 }
 
 h1 { 

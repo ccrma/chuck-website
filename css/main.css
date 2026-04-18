@@ -152,8 +152,12 @@ td {
 {
     text-align: left;
 }
-/* unsure on link styling
-a {
-    text-decoration: underline;
+
+a { 
+    /* text-decoration: underline; */
 } 
-*/
+
+a:link { 
+	color: #007bff;
+}
+
