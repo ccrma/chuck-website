@@ -2,6 +2,107 @@
 ChucK VERSIONS log
 ------------------
 
+1.5.5.8 (April 2026)
+=======
+=> This release contains major update to ChuGL as well as a number
+   of minor language enhancements. There is one potentially "breaking"
+   change: `!` is no longer overloadable; to "make up" for this, `~` is
+   now overloadable as a unary prefix operator (see below); also
+   Nick and Ge unearthed and fixed a boolean logic issue (!!!) with
+   the logical AND and OR operators
+=============
+ChuGL v.0.3.0
+=============
+- (added) `TextureLoadDesc.srgb` for loading image data into srgb textures
+- (added) YCrCb video decoding mode to `Video`
+- (updated) cmake to build on linux. (thanks Lejun)
+- (added) new operator overloads `GGen[] --> GGen` and `GGen[] --< GGen` 
+  for grucking / ungrucking arrays of GGens all at once (thanks Brendan)
+- (added) `Color.srgb(vec3)` and `Color.linear(vec3)` for converting 
+  between linear and srgb color spaces
+- (added) `PhongMaterial.uvOffset()` and `PhongMaterial.uvScale()` for 
+  repeating/scrolling textures
+- (added) `Webcam` now has linux support! 
+- (added) `int GWindow.minimized()` to detect if the window is currently 
+  minimized (thanks to Nick for the misunderstanding)
+- (added) examples
+  - `deep/video-ycrcb.ck`: demonstrating the YCrCb decoding mode on 
+    `Video` UGen
+  - `deep/skybox-shader.ck`: procedural sky rendering via custom skybox 
+    shader
+(bug fixes)
+- (fixed) bug of FlatMaterial.emissive not being properly set
+- (fixed) crash caused by using a Material with no Shader
+- (fixed) bug where main camera (`GG.camera()`) was being incorrectly 
+  replaced upon instantiating a new `GScene`
+- (fixed) segfault caused by setting a null texture to 
+  `Material.texture(int, Texture)`
+- (fixed) `GGen.detach()` and `GGen.detachChildren()` now correctly set the 
+  `.parent()` pointers of all detached children to null
+- (fixed) `GVideo.rate()` now properly returns a float
+- (fixed) segfault caused by GText on Linux
+- (fixed) rare race condition on startup caused by the graphics thread 
+  broadcasting WindowResizeEvent
+- (fixed) segfault caused by walking scenegraph and calling 
+  `update(float dt)` during GG.autoUpdate()
+(general improvements)
+- (added) warning when setting RenderPass.clear(false) on a GScene that has 
+  a skybox
+- (updated) setting `FlatMaterial.color()` and `PhongMaterial.color()` no 
+  longer override the alpha value to be 1
+- (updated) improved performance of default skybox material shader
+- (updated) Material uniform updates are now batch-written to the GPU, 
+  improving renderer performance
+=============
+ChucK 1.5.5.8
+=============
+(modified) the `!` unary prefix operator is no longer overloadable by the
+   programmer; the reason is to support the ability to quickly test for null
+   references in if/while/until/for and other logic conditionals:
+   ----
+   e.g., `if( obj != null )` can now also be written as `if(obj)`
+   and `if( obj == null ) can now also be written as `if(!obj)`
+   ----
+(added) abiility to overload `~` as a unary operator:
+   ----
+   // define unary operator overload for '~'
+   fun int @operator ~( Foo foo ) { return !foo.num; }
+   ----
+   NOTE: it is recommended that if you are overloading `!` in your code, 
+   please consider using `~` instead.
+(note) the examples in examples/oper pertaining to operator overloading 
+   have been updated to use `~` instead of `!`
+(updated) can now directly test for null for Object references in 
+   if/while/for/until
+   ----
+   Foo foo;
+   if( foo ) { ... }
+   // same effect as
+   if( foo != null ) { ... }
+   ---
+   if( !foo ) { ... }
+   // same effect as
+   if( foo == null ) { ... }
+(fixed) logical AND and OR now always evaluates to 0 or 1 (previously,
+   astonishingly, depending on the lhs and rhs, it could evaluate to
+   the actual value of rhs (which in practice is "correct", but also
+   potentially violates the very definition of logical AND and OR in 
+   ChucK...) (nick,ge)
+(added) @example statement for associating one or more example ChucK files
+   with class definitions; this will enable CKDoc to generate documention
+   with links to examples (e.g., https://chuck.stanford.edu/smuck/api/)
+(added) spherical harmonic calculator designed for ChucK's math library 
+   (@everettcarpenter)
+   `Math.sh( int order, float azimuth, float zenith )`
+   Returns an array of size (N+1)^2, containing ACN ordered spherical 
+   harmonics.
+(updated) duplicate-name chugins (regardless of path) are no longer
+   loaded; (previously such chugins are loaded and duplicate API queries
+   are ignored). This fixes potential issues if the duplicate chugin
+   persist state (e.g., registering shred watchers from ChuGL.chug)
+(added) examples/basic/noise-machine.ck (a toddler noise machine)
+
+
 1.5.5.7 (January 2026)
 =======
 => This release contains minor but important updates to arrays,
