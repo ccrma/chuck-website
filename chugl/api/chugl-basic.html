@@ -1,5 +1,6 @@
 <html>
-<link rel="stylesheet" type="text/css" href="../../css/ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
 <title>Basic Classes</title>
 <body>
 <a name="top"/>
@@ -107,6 +108,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ScenePass</span> <span class="membername">renderPass</span>()</p>
 <p class="member_description">Identical to GG.scenePass(). Kept for backwards compat.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">reset</span>()</p>
+<p class="member_description">Reset the scenegraph to the default startup state.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GPass</span> <span class="membername">rootPass</span>()</p>
@@ -277,6 +282,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">maximize</span>()</p>
 <p class="member_description">Set the window to windowed fullscreen mode.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">minimized</span>()</p>
+<p class="member_description">Get whether the window is currently minimized/iconified.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">mouseDeltaPos</span>()</p>
@@ -974,12 +983,20 @@
 <p class="member_description">Convert from hsv colorspace to rgb.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">linear</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> srgb_space_color)</p>
+<p class="member_description">Convert a color in srgb space to linear space. Input color values should be in range [0,1].</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">random</span>()</p>
 <p class="member_description">Generate a random rgb color.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">rgb2hsv</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> rgb)</p>
-<p class="member_description">Convert from rgb colorspace to hsvhsv stands for hue, saturation, value, and is a more human-friendly color formathue takes on a value between 0 and 360, and represents the color itselfsaturation takes on a value between 0 and 1, and represents the amount of colorvalue takes on a value between 0 and 1, and represents the brightness of the color.</p>
+<p class="member_description">Convert from rgb colorspace to hsv. hsv stands for hue, saturation, value, and is a more human-friendly color format. hue takes on a value between 0 and 360, and represents the color itself. saturation takes on a value between 0 and 1, and represents the amount of color. value takes on a value between 0 and 1, and represents the brightness of the color.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">srgb</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> linear_space_color)</p>
+<p class="member_description">Convert a color in linear space to srgb space. Input color values should be in range [0,1].</p>
 </div>
 </div>
 <h3 class="class_section_header">static member variables</h3>

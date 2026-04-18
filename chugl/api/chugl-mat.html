@@ -1,5 +1,6 @@
 <html>
-<link rel="stylesheet" type="text/css" href="../../css/ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
 <title>ChuGL Materials</title>
 <body>
 <a name="top"/>
@@ -35,6 +36,7 @@
 <li><a target="_blank" href="../examples/deep/lines3d.ck">deep/lines3d.ck</a></li>
 <li><a target="_blank" href="../examples/deep/custom-material.ck">deep/custom-material.ck</a></li>
 <li><a target="_blank" href="../examples/deep/particles.ck">deep/particles.ck</a></li>
+<li><a target="_blank" href="../examples/deep/meshlines.ck">deep/meshlines.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -452,7 +454,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> color)</p>
-<p class="member_description">Set material color uniform as an rgb. Alpha set to 1.0.</p>
+<p class="member_description">Set material color uniform as an rgb.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">color</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec4</span> color)</p>
@@ -654,6 +656,22 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
 <p class="member_description">Set the specular texture of the material.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvOffset</span>()</p>
+<p class="member_description">Get the texture sampler offset of the material. Default @(0,0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvOffset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
+<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvScale</span>()</p>
+<p class="member_description">Get the texture sampler scale of the material. Default @(1,1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> scale)</p>
+<p class="member_description">Set the texture sampler scale of the material. Default (1, 1). Useful for scaling textures or sampling a subregion of a texture atlas. E.g. A scale of (0.5, 0.5) will sample 1/4 of the texture.</p>
+</div>
 </div>
 <h3 class="class_section_header">static member variables</h3>
 <div class="members">
@@ -841,6 +859,9 @@
 <h2 class="class_title" name="SkyboxMaterial">SkyboxMaterial</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-mat.html#Material" class="ckdoc_typename ckdoc_type_object">Material</a> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">examples</h3><div class="examples"><ul>
+<li><a target="_blank" href="../examples/deep/skybox-shader.ck">deep/skybox-shader.ck</a></li>
+</ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">

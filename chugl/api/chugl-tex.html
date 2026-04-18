@@ -1,5 +1,6 @@
 <html>
-<link rel="stylesheet" type="text/css" href="../../css/ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
 <title>ChuGL Textures</title>
 <body>
 <a name="top"/>
@@ -149,6 +150,9 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FORMAT_R32UINT</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FORMAT_R8UNORM</span></p><p class="empty_member_description">No description available</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">FORMAT_RGBA16FLOAT</span></p><p class="empty_member_description">No description available</p>
@@ -351,6 +355,9 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">read</span></p><p class="member_description">When loading, also write the texture data to a chuck array, accessible via Texture.data(). Default false, due to the steep performance cost.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">srgb</span></p><p class="member_description">If true, creates an sRGB texture variant. When sampled in a shader, the value from this texture will be convered from srgb-space to linear-space.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

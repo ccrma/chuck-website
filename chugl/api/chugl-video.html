@@ -1,5 +1,6 @@
 <html>
-<link rel="stylesheet" type="text/css" href="../../css/ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
 <title>ChuGL Video Objects</title>
 <body>
 <a name="top"/>
@@ -23,6 +24,7 @@
 <p class="class_description">ChuGL Video object. Currently supports decoding MPEG1 Video and MP2 Audio. Wraps the plmpeg library, which you can find here for more documentation: https://github.com/phoboslab/pl_mpeg/ (see link for an example on how to encode videos into a supported format with ffmpeg). This is a hybrid graphics/audio object. Video is a stereo UGen which may be connected dac for audio output. The video texture may be accessed with the `texture()` member function, which will be updated synchronously with audio. For sample-accurate audio manipulation, we recommend controlling the audio data separately with SndBuf. You can convert videos to the MPEG format with the following command-line ffmpeg command: `ffmpeg -i input.mp4 -c:v mpeg1video -q:v 0 -c:a mp2 -format mpeg output.mpg`.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
 <li><a target="_blank" href="../examples/basic/video.ck">basic/video.ck</a></li>
+<li><a target="_blank" href="../examples/basic/video-ycrcb.ck">basic/video-ycrcb.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -62,11 +64,19 @@
 <p class="member_description">Set whether the video should loop. Default false.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mode</span>()</p>
+<p class="member_description">Get the texture conversion mode for this video.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">mode</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> mode)</p>
+<p class="member_description">Set the texture conversion mode for this video. Valid values are Video.MODE_RGBA and Video.MODE_YCRCB. Defaults to Video.MODE_RGBA,which converts the decoded video YCrCb planes into into rgba format and writes them to the rgba texture, accessible via Video.texture(). However, this YCrCb-->RGBA conversion is very costly (taking as much time as all the other video decodings steps combined). Setting Video.MODE_YCRCB will skip this costly conversion steps and write the individual planes to their own textures, Video.textureY(), Video.textureCr(), Video.textureCb(), where they may be sampled and converted in parallel on a shader. See examples/deep/video-ycrcb.ck for an demonstration of how to do so.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> rate)</p>
 <p class="member_description">Set the playback rate of the video. 1.0 is normal speed. Due to limitations in the MPEG encoding format, rate cannot be set to less than 0.0. Reverse playback is NOT supported. Negative rates will be clamped to 0.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rate</span>()</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">rate</span>()</p>
 <p class="member_description">Get the playback rate of the video. 1.0 is normal speed. Negative rates are not supported and will be clamped to 0.</p>
 </div>
 <div class="member">
@@ -79,7 +89,19 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">texture</span>()</p>
-<p class="member_description">Get the RGBA texture of the video.</p>
+<p class="member_description">Get the RGBA texture of the video. Only updated if Video.mode() == Video.MODE_RGBA.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">textureCb</span>()</p>
+<p class="member_description">Get the decoded Cb chroma plane of the video. Only updated if Video.mode() == Video.MODE_YCRCB.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">textureCr</span>()</p>
+<p class="member_description">Get the decoded Cr chroma plane of the video. Only updated if Video.mode() == Video.MODE_YCRCB.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">textureY</span>()</p>
+<p class="member_description">Get the decoded Luma plane of the video. Only updated if Video.mode() == Video.MODE_YCRCB.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">dur</span> <span class="membername">timestamp</span>()</p>
@@ -88,6 +110,15 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">width</span>()</p>
 <p class="member_description">Get the width of the video in texels.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MODE_RGBA</span></p><p class="member_description">The default mode. Equals 0. The raw YCrCb video data is converted to RGBA on the CPU.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">MODE_YCRCB</span></p><p class="member_description">Equals 1. Copies the raw YCrCb video data directly to the video textures. Significantly reduces CPU overhead, but conversion must happen in a shader.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

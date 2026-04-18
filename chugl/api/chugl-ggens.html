@@ -1,5 +1,6 @@
 <html>
-<link rel="stylesheet" type="text/css" href="../../css/ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
 <title>Graphics Generators</title>
 <body>
 <a name="top"/>
@@ -719,6 +720,22 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
 <p class="member_description">Set the specular texture of the material.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvOffset</span>()</p>
+<p class="member_description">Get the texture sampler offset of the material. Default @(0,0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvOffset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
+<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvScale</span>()</p>
+<p class="member_description">Get the texture sampler scale of the material. Default @(1,1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> scale)</p>
+<p class="member_description">Set the texture sampler scale of the material. Default (1, 1). Useful for scaling textures or sampling a subregion of a texture atlas. E.g. A scale of (0.5, 0.5) will sample 1/4 of the texture.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -877,6 +894,22 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
 <p class="member_description">Set the specular texture of the material.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvOffset</span>()</p>
+<p class="member_description">Get the texture sampler offset of the material. Default @(0,0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvOffset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
+<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvScale</span>()</p>
+<p class="member_description">Get the texture sampler scale of the material. Default @(1,1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> scale)</p>
+<p class="member_description">Set the texture sampler scale of the material. Default (1, 1). Useful for scaling textures or sampling a subregion of a texture atlas. E.g. A scale of (0.5, 0.5) will sample 1/4 of the texture.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -1033,6 +1066,22 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
 <p class="member_description">Set the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvOffset</span>()</p>
+<p class="member_description">Get the texture sampler offset of the material. Default @(0,0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvOffset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
+<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvScale</span>()</p>
+<p class="member_description">Get the texture sampler scale of the material. Default @(1,1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> scale)</p>
+<p class="member_description">Set the texture sampler scale of the material. Default (1, 1). Useful for scaling textures or sampling a subregion of a texture atlas. E.g. A scale of (0.5, 0.5) will sample 1/4 of the texture.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -1191,6 +1240,22 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
 <p class="member_description">Set the specular texture of the material.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvOffset</span>()</p>
+<p class="member_description">Get the texture sampler offset of the material. Default @(0,0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvOffset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
+<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvScale</span>()</p>
+<p class="member_description">Get the texture sampler scale of the material. Default @(1,1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> scale)</p>
+<p class="member_description">Set the texture sampler scale of the material. Default (1, 1). Useful for scaling textures or sampling a subregion of a texture atlas. E.g. A scale of (0.5, 0.5) will sample 1/4 of the texture.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -1346,6 +1411,22 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
 <p class="member_description">Set the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvOffset</span>()</p>
+<p class="member_description">Get the texture sampler offset of the material. Default @(0,0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvOffset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
+<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvScale</span>()</p>
+<p class="member_description">Get the texture sampler scale of the material. Default @(1,1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> scale)</p>
+<p class="member_description">Set the texture sampler scale of the material. Default (1, 1). Useful for scaling textures or sampling a subregion of a texture atlas. E.g. A scale of (0.5, 0.5) will sample 1/4 of the texture.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -1503,6 +1584,22 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
 <p class="member_description">Set the specular texture of the material.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvOffset</span>()</p>
+<p class="member_description">Get the texture sampler offset of the material. Default @(0,0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvOffset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
+<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvScale</span>()</p>
+<p class="member_description">Get the texture sampler scale of the material. Default @(1,1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> scale)</p>
+<p class="member_description">Set the texture sampler scale of the material. Default (1, 1). Useful for scaling textures or sampling a subregion of a texture atlas. E.g. A scale of (0.5, 0.5) will sample 1/4 of the texture.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -1659,6 +1756,22 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
 <p class="member_description">Set the specular texture of the material.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvOffset</span>()</p>
+<p class="member_description">Get the texture sampler offset of the material. Default @(0,0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvOffset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
+<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvScale</span>()</p>
+<p class="member_description">Get the texture sampler scale of the material. Default @(1,1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> scale)</p>
+<p class="member_description">Set the texture sampler scale of the material. Default (1, 1). Useful for scaling textures or sampling a subregion of a texture atlas. E.g. A scale of (0.5, 0.5) will sample 1/4 of the texture.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -1814,6 +1927,22 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
 <p class="member_description">Set the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvOffset</span>()</p>
+<p class="member_description">Get the texture sampler offset of the material. Default @(0,0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvOffset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
+<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvScale</span>()</p>
+<p class="member_description">Get the texture sampler scale of the material. Default @(1,1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> scale)</p>
+<p class="member_description">Set the texture sampler scale of the material. Default (1, 1). Useful for scaling textures or sampling a subregion of a texture atlas. E.g. A scale of (0.5, 0.5) will sample 1/4 of the texture.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
@@ -2540,6 +2669,22 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">specularMap</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> specularTexture)</p>
 <p class="member_description">Set the specular texture of the material.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvOffset</span>()</p>
+<p class="member_description">Get the texture sampler offset of the material. Default @(0,0)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvOffset</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> offset)</p>
+<p class="member_description">Set the texture sampler offset of the material. Default (0, 0). Useful for scrolling textures or sampling a subregion of a texture atlas. E.g. An offset of (0.5, 0.5) will begin sampling from the center of the texture.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">uvScale</span>()</p>
+<p class="member_description">Get the texture sampler scale of the material. Default @(1,1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">uvScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec2</span> scale)</p>
+<p class="member_description">Set the texture sampler scale of the material. Default (1, 1). Useful for scaling textures or sampling a subregion of a texture atlas. E.g. A scale of (0.5, 0.5) will sample 1/4 of the texture.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
