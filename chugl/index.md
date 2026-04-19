@@ -26,11 +26,20 @@ benefitted from prior prototypes of ChuGL and GLucK by Spencer Salazar and
 Philip Davidson.
 </p>
 
-![logo](images/chugl-banner.jpg)
+   <iframe 
+      width="75%" 
+      height="300" 
+      src="https://www.youtube.com/embed/R143lRtSGT8?si=iMf1AJwK6EP8s08k" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+
 
 ---
 
-**ChuGL v0.2.9** (alpha) — [**ChuGL API Reference**](./api/)
+**ChuGL v0.3.0** (alpha) — [**ChuGL API Reference**](./api/)
 • [**Examples**](./examples/)
 • [**Cheatsheet**](./doc/cheatsheet.html)
 • [**Walkthrough**](./doc/walkthru.html)
@@ -84,3 +93,5 @@ Congrats, you now have ChuGL properly installed!
 - [Examples](./examples/)
 - [ChuGL Cheatsheet](./doc/cheatsheet.html)
 - [ChuGL Tutorial](./doc/tutorial.html)
+
+![logo](images/chugl-banner.jpg)
