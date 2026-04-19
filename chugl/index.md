@@ -27,8 +27,8 @@ Philip Davidson.
 </p>
 
    <iframe 
-      width="75%" 
-      height="300" 
+      width="100%" 
+      height="450" 
       src="https://www.youtube.com/embed/R143lRtSGT8?si=iMf1AJwK6EP8s08k" 
       title="YouTube video player" 
       frameborder="0" 
@@ -93,5 +93,6 @@ Congrats, you now have ChuGL properly installed!
 - [Examples](./examples/)
 - [ChuGL Cheatsheet](./doc/cheatsheet.html)
 - [ChuGL Tutorial](./doc/tutorial.html)
+___ 
 
 ![logo](images/chugl-banner.jpg)
