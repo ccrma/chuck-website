@@ -8,6 +8,57 @@
 SMucK VERSIONS log
 ------------------
 
+0.1.5 (April 2026)
+=======
+Documentation updates
+=======
+(updated) internal ckDoc scripts for API reference generation
+
+0.1.4 (March 2026)
+=======
+New classes, updates to existing classes, and new examples.
+Score read/write to JSON files, CC events, and performance improvements.
+=======
+(added) ezCC: new class for MIDI control messages (CC, aftertouch, channel pressure, pitch bend), can be imported from MIDI or manually created
+  -(added) static factory methods: `cc()`, `volume()`, `modulation()`, `expression()`, `pan()`, `pitchBend()`, `channelPressure()`, `aftertouch()`
+(added) smIO: new class for reading/writing ezScore to/from JSON files (requires HashMap chugin)
+  -(added) `scoreToJson()`, `jsonToScore()` (requires HashMap chugin)
+(updated) ezMeasure
+  -(added) `add(ezCC)`, `add(ezCC[])` to add CCs to measure
+  -(added) `ccs()` get/set for ezCC array
+  -(added) `onset()` get/set for measure start time in beats (within part)
+  -(added) `text()` get/set for text annotation
+  -(added) `polyphony()` returns max concurrent voices in measure
+  -(added) `split()` splits measure by bar length, returns array of ezMeasure
+  -(added) constructor `ezMeasure(ezNote notes[])`
+  -(updated) `sort()` now sorts both notes and CCs by onset
+(updated) ezPart
+  -(added) `polyphony()` returns max concurrent voices for the part
+  -(added) `text()` get/set for text annotation
+  -(added) `beats()` returns part length in beats
+  -(added) `meter()` impose bar lengths or time signatures (fixed length, array of lengths, time-sig string/array)
+  -(added) `splitMeasure()` split a single measure by bar lengths
+  -(added) `normalizeNegativeOnsets()` fix misplaced notes (e.g. after import)
+  -(updated) `measures()` setter now recomputes onsets for contiguous timeline
+(updated) ezScore
+  -(added) `text()` get/set for text annotation
+  -(added) `meter()` impose bar lengths or time signatures on all parts
+  -(reworked) `maxPolyphony(part)` is now `polyphony(part)`
+  -(updated) `read()` MIDI import now includes CC, aftertouch, channel pressure, pitch bend
+(updated) ezInstrument
+  -(added) `cc(ezCC)` override to handle CC events during playback (base implementation is no-op)
+(updated) ezDefaultInst
+  -(added) `cc(ezCC)` prints CC events to console
+(updated) ezMidiInst
+  -(added) `cc(ezCC)` sends CC, aftertouch, pitch bend as MIDI
+(updated) ezScorePlayer
+  -(added) CC playback: routes ezCC from measures to instrument `cc()` during tick
+(updated) examples:
+  - (added) `ezcc-basic.ck` demonstrates manual CC creation and `instrument.cc()` override
+  - (added) `smio-json.ck` demonstrates `scoreToJson` and `jsonToScore`
+  - (added) `meter-split.ck` demonstrates all `meter()` overloads
+  - (added) `meter-midi.ck` demonstrates MIDI import with meter splitting for performance
+
 0.1.3 (October 2025)
 =======
 Inaugural SMucK Version Log! Major updates to all classes

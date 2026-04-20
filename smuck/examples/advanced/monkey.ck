@@ -6,7 +6,7 @@
 // create score and import MIDI
 ezScore score;
 score.bpm(166);
-score.importMIDI("../data/midi/monkey.mid");
+score.read(me.dir() + "/../data/midi/monkey.mid");
 
 // create score player
 ezScorePlayer player(score);

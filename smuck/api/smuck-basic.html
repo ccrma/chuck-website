@@ -1,5 +1,6 @@
 <html>
-<link rel="stylesheet" type="text/css" href="../../css/ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
 <title>Basic Classes</title>
 <body>
 <a name="top"/>
@@ -16,6 +17,7 @@
 <p class="toc_class"><a href="#ezMeasure" class="ckdoc_typename ckdoc_type_object">ezMeasure</a></p>
 <p class="toc_class"><a href="#ezPart" class="ckdoc_typename ckdoc_type_object">ezPart</a></p>
 <p class="toc_class"><a href="#ezScore" class="ckdoc_typename ckdoc_type_object">ezScore</a></p>
+<p class="toc_class"><a href="#ezCC" class="ckdoc_typename ckdoc_type_object">ezCC</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">Basic data structures for holding symbolic music information.</p>
@@ -119,7 +121,7 @@
 <a name="ezMeasure" /><div class="class">
 <h2 class="class_title" name="ezMeasure">ezMeasure</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">SMucK measure object. An ezMeasure object contains one or more ezNotes. Note contents can be set using the SMucKish input syntax.<p>
+<p class="class_description">SMucK measure object. An ezMeasure object contains one or more ezNotes, and may contain ezCCs (MIDI control messages). Note contents can be set using the SMucKish input syntax.<p>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -129,6 +131,10 @@
 <div class="member">
 <p class="member_declaration"><span class="membername">ezMeasure</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> input)</p>
 <p class="member_description">Create an ezMeasure from a SMucKish input string.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ezMeasure</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span><span class="typename">[]</span> notes)</p>
+<p class="member_description">Create an ezMeasure from an array of ezNote objects.</p>
 </div>
 </div>
 <h3 class="class_section_header">member functions</h3>
@@ -142,8 +148,24 @@
 <p class="member_description">Add an array of ezNotes to the measure.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_object">ezCC</span> cc)</p>
+<p class="member_description">Add an ezCC to the measure.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">add</span>(<span class="ckdoc_typename ckdoc_type_object">ezCC</span><span class="typename">[]</span> ccs)</p>
+<p class="member_description">Add an array of ezCCs to the measure.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">beats</span>()</p>
 <p class="member_description">Get the length of the measure in beats.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezCC</span><span class="typename">[]</span> <span class="membername">ccs</span>()</p>
+<p class="member_description">Get the CCs in the measure as an ezCC array.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezCC</span><span class="typename">[]</span> <span class="membername">ccs</span>(<span class="ckdoc_typename ckdoc_type_object">ezCC</span><span class="typename">[]</span> ccs)</p>
+<p class="member_description">Set the CCs of the measure using an ezCC array.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezMeasure</span> <span class="membername">copy</span>()</p>
@@ -156,6 +178,14 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezNote</span><span class="typename">[]</span> <span class="membername">notes</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span><span class="typename">[]</span> notes)</p>
 <p class="member_description">Set the notes of the measure using an ezNote array.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">onset</span>()</p>
+<p class="member_description">Get the onset of the measure in beats (start time within the part)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">onset</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> value)</p>
+<p class="member_description">Set the onset of the measure in beats (start time within the part)</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> <span class="membername">pitches</span>()</p>
@@ -172,6 +202,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> <span class="membername">pitches</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> input)</p>
 <p class="member_description">Set the pitches of the notes in the measure directly from a 2D array of MIDI note numbers.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">polyphony</span>()</p>
+<p class="member_description">Get the max number of concurrent (sounding) voices in the measure. Rest notes are not counted.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">print</span>()</p>
@@ -199,7 +233,23 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sort</span>()</p>
-<p class="member_description">Sort the notes array in place by onset time.</p>
+<p class="member_description">Sort the notes and CCs arrays in place by onset time.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> <span class="membername">split</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> constantLength)</p>
+<p class="member_description">Split the measure into multiple measures by constant bar length. Returns an array of ezMeasure. Each resulting measure contains notes whose onset falls in that window; note onsets are relative to the new measure. Remainder at end becomes a shorter final measure. Empty windows create an empty measure.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> <span class="membername">split</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> lengths)</p>
+<p class="member_description">Split the measure into multiple measures by a list of bar lengths. Uses list in order; if list is exhausted, uses the last element for remainder. If list is longer than material, creates only as many measures as needed. Empty windows create an empty measure.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>()</p>
+<p class="member_description">Get the text annotation of the measure.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_description">Set the text annotation of the measure.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> <span class="membername">velocities</span>()</p>
@@ -255,6 +305,10 @@
 <p class="member_description">Add an array of ezMeasures to the part.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">beats</span>()</p>
+<p class="member_description">Get the length of the part in beats (sum of all measure lengths)</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezPart</span> <span class="membername">copy</span>()</p>
 <p class="member_description">Return a copy of the ezPart.</p>
 </div>
@@ -300,7 +354,39 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> <span class="membername">measures</span>(<span class="ckdoc_typename ckdoc_type_object">ezMeasure</span><span class="typename">[]</span> measures)</p>
-<p class="member_description">Set the measures in the part, using an ezMeasure array.</p>
+<p class="member_description">Set the measures in the part, using an ezMeasure array. Onsets are recomputed so the timeline stays contiguous.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">meter</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> barLength)</p>
+<p class="member_description">Impose constant bar length on all measures in the part. Skips empty measures. Bar length is in beats (quarter = 1). Constant barLength may not align to musical barlines in mixed-meter parts. For large MIDI imports, calling meter() after import improves playback performance by splitting long measures.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">meter</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> lengths)</p>
+<p class="member_description">Impose a list of bar lengths on the part. Skips empty measures. Uses lengths in order; when exhausted, repeats last.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">meter</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> num, <span class="ckdoc_typename ckdoc_type_primitive">float</span> denom)</p>
+<p class="member_description">Impose time signature on all measures. num/denom; denominator is note value (4=quarter, 8=eighth).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">meter</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> timeSigs)</p>
+<p class="member_description">Impose variable time signatures on all measures. Each element is [num, denom].</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">meter</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> sig)</p>
+<p class="member_description">Impose time signature from string (e.g. 4/4, 12/8) on all measures.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">meter</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> sigs)</p>
+<p class="member_description">Impose variable time signatures from strings (e.g. [4/4, 3/4]) on all measures.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">normalizeNegativeOnsets</span>()</p>
+<p class="member_description">Correct misplaced notes: move each note with onset < 0 to the measure that contains its absolute start time, or clamp to 0 in the first measure. Preserves absolute time; measure lengths and onsets are recomputed. Use only when notes were incorrectly placed (e.g. after import or manual mistakes). Do NOT call on parts that use negative onset intentionally for notes tied over the barline (continuation in the next measure); calling this would move those notes and change measure boundaries.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">polyphony</span>()</p>
+<p class="member_description">Get the max polyphony needed for the whole part (max over all measures' polyphony).</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">print</span>()</p>
@@ -338,6 +424,22 @@
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">rest</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> index, <span class="ckdoc_typename ckdoc_type_primitive">int</span> length)</p>
 <p class="member_description">Turn all notes in a range of measures into rests.</p>
 </div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">splitMeasure</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> measureIndex, <span class="ckdoc_typename ckdoc_type_primitive">float</span> constantLength)</p>
+<p class="member_description">Split the measure at the given index into multiple measures by constant bar length. Replaces that measure with the result of measure.split(constantLength). Onsets are set to split-window starts (0, L, 2*L, ...) so bars align every constantLength beats. Skips empty measures. Errors if barLength <= 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">splitMeasure</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> measureIndex, <span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> lengths)</p>
+<p class="member_description">Split the measure at the given index into multiple measures by a list of bar lengths. Replaces that measure with the result of measure.split(lengths). Onsets are set to split-window starts so bars align to the given lengths. Skips empty measures. Errors if lengths array is empty.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>()</p>
+<p class="member_description">Get the text annotation of the part.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_description">Set the text annotation of the part.</p>
+</div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
 </div>
@@ -345,7 +447,7 @@
 <a name="ezScore" /><div class="class">
 <h2 class="class_title" name="ezScore">ezScore</h2>
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
-<p class="class_description">SMucK score object. An ezScore object contains one or more ezParts. Score contents can be set using the SMucKish input syntax, or by importing a MIDI file. ezScore objects can be passed to an ezScorePlayer object for playback.<p>
+<p class="class_description">SMucK score object. An ezScore object contains one or more ezParts. Score contents can be set using the SMucKish input syntax, or by importing a MIDI file (notes, CC data). ezScore objects can be passed to an ezScorePlayer object for playback.<p>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
 <div class="member">
@@ -400,8 +502,28 @@
 <p class="member_description">Get the duration of the score in milliseconds.</p>
 </div>
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">maxPolyphony</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> part)</p>
-<p class="member_description">Get the maximum polyphony for a given part.</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">meter</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> barLength)</p>
+<p class="member_description">Impose constant bar length on all measures in all parts. Skips empty measures. Bar length is in beats (quarter = 1). Constant barLength may not align to musical barlines in mixed-meter parts. Errors if barLength <= 0. For large MIDI imports, calling meter() after import improves playback performance by splitting long measures.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">meter</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[]</span> lengths)</p>
+<p class="member_description">Impose variable bar lengths on all measures in all parts. Skips empty measures. Errors if lengths array is empty.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">meter</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> num, <span class="ckdoc_typename ckdoc_type_primitive">float</span> denom)</p>
+<p class="member_description">Impose time signature on all measures in all parts. num/denom; denominator is note value (4=quarter, 8=eighth). Errors if denom <= 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">meter</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span><span class="typename">[][]</span> timeSigs)</p>
+<p class="member_description">Impose variable time signatures on all measures in all parts. Each element is [num, denom]. Errors if array empty or any denom <= 0.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">meter</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> sig)</p>
+<p class="member_description">Impose time signature from string (e.g. 4/4, 12/8) on all measures in all parts.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">meter</span>(<span class="ckdoc_typename ckdoc_type_object">string</span><span class="typename">[]</span> sigs)</p>
+<p class="member_description">Impose variable time signatures from strings (e.g. [4/4, 3/4]) on all measures in all parts.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezPart</span><span class="typename">[]</span> <span class="membername">parts</span>()</p>
@@ -412,8 +534,140 @@
 <p class="member_description">Set the parts for the score, using an ezPart array.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">polyphony</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> part)</p>
+<p class="member_description">Get the maximum polyphony for a given part.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">read</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
-<p class="member_description">Read a MIDI file into the ezScore object.</p>
+<p class="member_description">Read a MIDI file into the ezScore object. Imports notes and CC events. For large files, call meter() after import to improve playback performance.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>()</p>
+<p class="member_description">Get the text annotation of the score.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">text</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> value)</p>
+<p class="member_description">Set the text annotation of the score.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ezCC" /><div class="class">
+<h2 class="class_title" name="ezCC">ezCC</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">MIDI control message (CC, Aftertouch, Pitch Bend) with onset time. Used in scores and playback alongside ezNote.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ezCC</span>()</p>
+<p class="member_description">Default constructor for ezCC.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="membername">ezCC</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> command, <span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> data1, <span class="ckdoc_typename ckdoc_type_primitive">int</span> data2, <span class="ckdoc_typename ckdoc_type_primitive">float</span> onset)</p>
+<p class="member_description">Create ezCC. command: 11 = CC, 10 = aftertouch, 13 = channel pressure, 14 = pitch bend. channel: 0-15. data1, data2: 0-127.</p>
+</div>
+</div>
+<h3 class="class_section_header">member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">channel</span>()</p>
+<p class="member_description">Return the channel: 0-15.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">channel</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel)</p>
+<p class="member_description">Set the channel: 0-15.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">command</span>()</p>
+<p class="member_description">Return the command byte: 11=CC, 10=aftertouch, 13=channel pressure, 14=pitch bend.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">command</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> command)</p>
+<p class="member_description">Set the command byte: 11=CC, 10=aftertouch, 13=channel pressure, 14=pitch bend.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezCC</span> <span class="membername">copy</span>()</p>
+<p class="member_description">Return a copy of the ezCC.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">data1</span>()</p>
+<p class="member_description">Return the first data byte: 0-127.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">data1</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> data1)</p>
+<p class="member_description">Set the first data byte: 0-127.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">data2</span>()</p>
+<p class="member_description">Return the second data byte: 0-127.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">data2</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> data2)</p>
+<p class="member_description">Set the second data byte: 0-127.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isAftertouch</span>()</p>
+<p class="member_description">True if command is Polyphonic Aftertouch (10).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isCC</span>()</p>
+<p class="member_description">True if command is Control Change (11).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isChannelPressure</span>()</p>
+<p class="member_description">True if command is Channel Pressure (13).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isPitchBend</span>()</p>
+<p class="member_description">True if command is Pitch Bend (14).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">normalize2Byte</span>()</p>
+<p class="member_description">Return 14-bit value from data1 (LSB) and data2 (MSB): (data2 << 7) | data1. Useful for pitch bend (0-16383).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">onset</span>()</p>
+<p class="member_description">Return the onset time in beats.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">onset</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> onset)</p>
+<p class="member_description">Set the onset time in beats.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezCC</span> <span class="membername">aftertouch</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> noteNumber, <span class="ckdoc_typename ckdoc_type_primitive">int</span> pressure, <span class="ckdoc_typename ckdoc_type_primitive">float</span> onset)</p>
+<p class="member_description">Static factory method for creating a polyphonic aftertouch ezCC object. Set channel: 0-15, noteNumber: 0-127, pressure: 0-127, onset: time in beats.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezCC</span> <span class="membername">cc</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> controllerNum, <span class="ckdoc_typename ckdoc_type_primitive">int</span> value, <span class="ckdoc_typename ckdoc_type_primitive">float</span> onset)</p>
+<p class="member_description">Static factory method for creating a control change ezCC object. Set channel: 0-15, controllerNum: 0-127, value: 0-127, onset: time in beats.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezCC</span> <span class="membername">channelPressure</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> pressure, <span class="ckdoc_typename ckdoc_type_primitive">float</span> onset)</p>
+<p class="member_description">Static factory method for creating a channel pressure ezCC object. Set channel: 0-15, pressure: 0-127, onset: time in beats.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezCC</span> <span class="membername">expression</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> value, <span class="ckdoc_typename ckdoc_type_primitive">float</span> onset)</p>
+<p class="member_description">Static factory method for creating a expression ezCC object. Set channel: 0-15, value: 0-127, onset: time in beats.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezCC</span> <span class="membername">modulation</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> value, <span class="ckdoc_typename ckdoc_type_primitive">float</span> onset)</p>
+<p class="member_description">Static factory method for creating a modulation wheel ezCC object. Set channel: 0-15, value: 0-127, onset: time in beats.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezCC</span> <span class="membername">pan</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> value, <span class="ckdoc_typename ckdoc_type_primitive">float</span> onset)</p>
+<p class="member_description">Static factory method for creating a pan ezCC object. Set channel: 0-15, value: 0-127 (64=center), onset: time in beats.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezCC</span> <span class="membername">pitchBend</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> value, <span class="ckdoc_typename ckdoc_type_primitive">float</span> onset)</p>
+<p class="member_description">Static factory method for creating a pitch bend ezCC object. Set channel: 0-15, value: 0-16383 (14-bit, 8192=center), onset: time in beats. Converts to data1 LSB, data2 MSB.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezCC</span> <span class="membername">volume</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel, <span class="ckdoc_typename ckdoc_type_primitive">int</span> value, <span class="ckdoc_typename ckdoc_type_primitive">float</span> onset)</p>
+<p class="member_description">Static factory method for creating a channel volume ezCC object. Set channel: 0-15, value: 0-127, onset: time in beats.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

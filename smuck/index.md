@@ -1,45 +1,37 @@
 <div align="center">
-<!-- Add ChuGL logo -->
-<!-- <img align="left" style="width:260px" src="https://github.com/raysan5/raylib/blob/master/logo/raylib_logo_animation.gif" width="288px"> -->
 
 <img src="images/smuck-logo.svg" width="100%"></img>
 
 <h2>SMucK ~&gt; Symbolic Music in ChucK</h2>
 
-</div> <!-- end center -->
+</div>
 
+**SMucK** is a framework for writing music in ChucK with symbolic music notation.
 
-<p align="justify">
-
-<b>SMucK</b> is a framework for writing music in ChucK with symbolic music notation.
-
-
-SMucK was created by <a href="https://ccrma.stanford.edu/~alexhan/">Alex Han</a>,
-<a href="https://kiranvbhat.com/">Kiran Bhat</a>, and <a href="https://ccrma.stanford.edu/~ge/">Ge Wang</a>, 
-with support from the <a href="../doc/authors.html">ChucK Team</a>.
-</p>
-
-<!-- ![logo](images/chugl-banner.jpg) -->
+SMucK was created by [Alex Han](https://ccrma.stanford.edu/~alexhan/),
+[Kiran Bhat](https://kiranvbhat.com/), and [Ge Wang](https://ccrma.stanford.edu/~ge/), 
+with support from the [ChucK Team](../doc/authors.html).
 
 ---
 
-**SMucK v0.1.3** (alpha) — [**SMucK API Reference**](./api/)
-• [**Examples**](./examples/)
-• [**Basic Playback**](./doc/walkthru.html)
-• [**SMucKish Rosetta Stone**](./doc/smuckish.html)
-• [**Chord/Scale Dictionary**](./doc/dictionary.html)
-• [**Version History**](./VERSIONS.html)
-<!--• [**SMucK Cheatsheet**](./doc/cheatsheet.html) -->
+**SMucK v0.1.5** (alpha) — **[Documentation](./doc/docs.html)** • **[API Reference](./api/)** • **[Examples](./examples/)** • **[Version History](./VERSIONS.html)**
 
-___
+---
 
 ## Installing SMucK
 
 1. Download ChucK version 1.5.5.0 or later. You can get the latest version [here](https://chuck.stanford.edu/release/).
+2. To install SMucK, run the following command (which uses ChucK's package manager, [ChuMP](https://chuck.stanford.edu/chump)):
 
-2. To install SMucK, run the following command (which uses ChucK's new package manager, [ChuMP](https://chuck.stanford.edu/chump)):
 ```txt
 chump install smuck
+```
+
+1. Some parts of SMucK rely on other chugins. We highly recommend installing these as well:
+
+```txt
+chump install HashMap
+chump install FluidSynth
 ```
 
 ## Updating SMucK
@@ -50,27 +42,28 @@ To update to the latest version of SMucK, run the following command:
 chump update smuck
 ```
 
-
-## Running SMucK
-
-### Minimal Example
+## Importing SMucK
 
 If the SMucK library is properly loaded, the following example will run without errors:
 
 ```
-// example.ck
 @import "smuck"
 ```
 
 Congrats, you now have SMucK properly installed!
 
+SMucK classes that rely on external chugins (e.g. HashMap, FluidSynth) must be imported explicitly:
+
+```
+@import "smuck/ezFluidInst.ck"
+@import "smuck/smIO.ck"
+```
+
 ## Learning SMucK
-- To get started with SMucK, you can check out the [Basic Playback](./doc/walkthru.html) tutorial.
-- To learn how to write musical notation using the SMucKish input syntax, check out the [SMucKish Rosetta Stone](./doc/smuckish.html).
-- To learn about the SMucKish chord/scale entry rules, check out the [Chord/Scale Dictionary](./doc/dictionary.html).
-- For an overview of SMucK's classes and their methods, check out the [API Reference](./api/).
-- Check out the [Examples](./examples/) for more ways to use SMucK.
+
+- **[Documentation](./doc/docs.html)** — Hub for all guides: getting started, SMucKish, building/editing scores, MIDI import, ezInstrument, score I/O, chord dictionary.
+- **[Basic Playback](./doc/walkthru.html)** — Minimal overview: create a score, attach instruments, play.
+- **[API Reference](./api/)** — Class and method reference.
+- **[Examples](./examples/)** — Example scripts.
 
 Happy SMucKing!
-
-

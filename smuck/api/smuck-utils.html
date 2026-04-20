@@ -1,5 +1,6 @@
 <html>
-<link rel="stylesheet" type="text/css" href="../../css/ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
 <title>Utilities</title>
 <body>
 <a name="top"/>
@@ -13,6 +14,7 @@
 <div id="body">
 <div class="toc"><a id="toc"/>
 <p class="toc_class"><a href="#Smuck" class="ckdoc_typename ckdoc_type_object">Smuck</a></p>
+<p class="toc_class"><a href="#smIO" class="ckdoc_typename ckdoc_type_object">smIO</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">SMucK-related tools, including utilities for converting SMucKish symbolic notation into ChucK data structures.</p>
@@ -30,7 +32,7 @@
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
-<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">mid2str</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> note)</p>
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">mid2str</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> note)</p>
 <p class="member_description">Convert a MIDI note number to a pitch name.</p>
 </div>
 <div class="member">
@@ -40,6 +42,39 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">version</span>()</p>
 <p class="member_description">Retrieve smuck version as a string.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="smIO" /><div class="class">
+<h2 class="class_title" name="smIO">smIO</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Class for reading/writing ezScore objects to/from JSON files. Requires HashMap chugin.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">smIO</span>()</p>
+<p class="member_description">Default constructor for smIO.</p>
+</div>
+</div>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezScore</span> <span class="membername">jsonToScore</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filepath)</p>
+<p class="member_description">Load an ezScore object from a JSON file, specifying the filepath. Requires HashMap chugin. Returns empty ezScore if file not found or malformed.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ezScore</span> <span class="membername">jsonToScore</span>()</p>
+<p class="member_description">Load an ezScore object from a JSON file, opening a file dialog to select the filepath.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scoreToJson</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filepath, <span class="ckdoc_typename ckdoc_type_object">ezScore</span> score)</p>
+<p class="member_description">Save an ezScore object to a JSON file, specifying the filepath. Requires HashMap chugin.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scoreToJson</span>(<span class="ckdoc_typename ckdoc_type_object">ezScore</span> score)</p>
+<p class="member_description">Save an ezScore object to a JSON file, opening a file dialog to select the filepath.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
