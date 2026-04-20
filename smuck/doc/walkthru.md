@@ -85,11 +85,12 @@ You can read a MIDI file into an ezScore object with the constructor
 ```
 ezScore score("PATH/TO/MIDI/file.mid");
 ```
-or the `importMIDI` method
+or the `read()` method
 ```
 ezScore score;
-score.importMIDI("PATH/TO/MIDI/file.mid");
+score.read("PATH/TO/MIDI/file.mid");
 ```
+For large MIDI files, see [MIDI import](./midi-import.html) for tips on using `meter()` to improve playback performance.
 
 <br>
 

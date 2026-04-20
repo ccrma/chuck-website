@@ -1,5 +1,6 @@
 <html>
-<link rel="stylesheet" type="text/css" href="../../css/ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="ckdoc.css" />
+<link rel="stylesheet" type="text/css" href="class.css" />
 <title>Playback</title>
 <body>
 <a name="top"/>
@@ -173,6 +174,10 @@
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">cc</span>(<span class="ckdoc_typename ckdoc_type_object">ezCC</span> cc)</p>
+<p class="member_description">This function defines behavior that will be executed when a CC (control change, aftertouch, or pitch bend) is triggered by the ezScorePlayer. The base class function is empty, and can be overridden by the user.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
 <p class="member_description">This function defines behavior that will be executed when a note is released by the ezScorePlayer. This could include calling .keyOff(), etc. or referencing variables of the ezNote. The base class function is empty, and should be overridden by the user.</p>
 </div>
@@ -205,6 +210,10 @@
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">cc</span>(<span class="ckdoc_typename ckdoc_type_object">ezCC</span> cc)</p>
+<p class="member_description">This cc() function just prints CC events to console.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">noteOff</span>(<span class="ckdoc_typename ckdoc_type_object">ezNote</span> note, <span class="ckdoc_typename ckdoc_type_primitive">int</span> voice)</p>
 <p class="member_description">This noteOff() function calls .keyOff() on the envelope. The variable 'voice' determines which oscillator/envelope to use and is passed in by the ezScorePlayer.</p>
@@ -246,6 +255,10 @@
 </div>
 <h3 class="class_section_header">member functions</h3>
 <div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">cc</span>(<span class="ckdoc_typename ckdoc_type_object">ezCC</span> cc)</p>
+<p class="member_description">Sends CC, aftertouch, or pitch bend from ezScorePlayer as MIDI. Status byte is built from cc.command() and cc.channel(); data1/data2 sent as MIDI data bytes.</p>
+</div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">channel</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> channel)</p>
 <p class="member_description">Set the MIDI channel to use.</p>
