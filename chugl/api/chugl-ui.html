@@ -57,6 +57,12 @@
 <p class="toc_class"><a href="#UI_ComboCallback" class="ckdoc_typename ckdoc_type_object">UI_ComboCallback</a></p>
 <p class="toc_class"><a href="#UI_DrawList" class="ckdoc_typename ckdoc_type_object">UI_DrawList</a></p>
 <p class="toc_class"><a href="#UI_DrawFlags" class="ckdoc_typename ckdoc_type_object">UI_DrawFlags</a></p>
+<p class="toc_class"><a href="#UI_KnobFlags" class="ckdoc_typename ckdoc_type_object">UI_KnobFlags</a></p>
+<p class="toc_class"><a href="#UI_KnobVariant" class="ckdoc_typename ckdoc_type_object">UI_KnobVariant</a></p>
+<p class="toc_class"><a href="#UI_ConfigFlags" class="ckdoc_typename ckdoc_type_object">UI_ConfigFlags</a></p>
+<p class="toc_class"><a href="#UI_BackendFlags" class="ckdoc_typename ckdoc_type_object">UI_BackendFlags</a></p>
+<p class="toc_class"><a href="#UI_DrawListFlags" class="ckdoc_typename ckdoc_type_object">UI_DrawListFlags</a></p>
+<p class="toc_class"><a href="#UI_IO" class="ckdoc_typename ckdoc_type_object">UI_IO</a></p>
 <p class="toc_class"><a href="#UI" class="ckdoc_typename ckdoc_type_object">UI</a></p>
 </div>
 <div class="classes">
@@ -737,6 +743,10 @@ You may modify the ImGui::GetStyle() main instance during initialization and bef
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">popupRounding</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> popupRounding)</p>
 <p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">scaleAllSizes</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> scale_factor)</p>
+<p class="member_description">Scales styling metrics to the desired scale factor.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">scrollbarRounding</span>()</p>
@@ -3170,6 +3180,246 @@ FIXME-DOCK: Also see ImGuiDockNodeFlagsPrivate_ which may involve using the WIP 
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RoundCornersTopRight</span></p><p class="member_description">AddRect(), AddRectFilled(), PathRect(): enable rounding top-right corner only (when rounding > 0.0f, we default to all corners). Was 0x02.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_KnobFlags" /><div class="class">
+<h2 class="class_title" name="UI_KnobFlags">UI_KnobFlags</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Knob behavior flags. See https://github.com/altschuler/imgui-knobs/ for more info.<p>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AlwaysClamp</span></p><p class="member_description">Use logarithmic scale for the knob (otherwise linear).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DragHorizontal</span></p><p class="member_description">Use horizontal dragging only (default is bi-directional).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DragVertical</span></p><p class="member_description">Use vertical dragging only (default is bi-directional).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Logarithmic</span></p><p class="member_description">Clamp input values that the user types into the input field. If not set, it's possible to override the min/max range via the input field.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoInput</span></p><p class="member_description">Hide the bottom drag input.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoTitle</span></p><p class="member_description">Hide the top title.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ValueTooltip</span></p><p class="member_description">Show a tooltip with the current value on hover.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_KnobVariant" /><div class="class">
+<h2 class="class_title" name="UI_KnobVariant">UI_KnobVariant</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">These flags determine the visual look of the knob. See https://github.com/altschuler/imgui-knobs/ for more info.<p>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Dot</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Space</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Stepped</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Tick</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">Wiper</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">WiperDot</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">WiperOnly</span></p><p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_ConfigFlags" /><div class="class">
+<h2 class="class_title" name="UI_ConfigFlags">UI_ConfigFlags</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Configuration flags stored in io.ConfigFlags. Set by user/application..
+<p>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DockingEnable</span></p><p class="member_description">Docking enable flags.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DpiEnableScaleFonts</span></p><p class="member_description">[BETA: Don't use] FIXME-DPI: Request bitmap-scaled fonts to match DpiScale. This is a very low-quality workaround. The correct way to handle DPI is _currently_ to replace the atlas and/or fonts in the Platform_OnChangedViewport callback, but this is all early work in progress.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">DpiEnableScaleViewports</span></p><p class="member_description">[BETA: Don't use] FIXME-DPI: Reposition and resize imgui windows when the DpiScale of a viewport changed (mostly useful for the main viewport hosting other window). Note that resizing the main window itself is up to your application.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">IsSRGB</span></p><p class="member_description">Application is SRGB-aware.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">IsTouchScreen</span></p><p class="member_description">Application is using a touch screen instead of a mouse.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NavEnableGamepad</span></p><p class="member_description">Master gamepad navigation enable flag. Backend also needs to set ImGuiBackendFlags_HasGamepad.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NavEnableKeyboard</span></p><p class="member_description">Master keyboard navigation enable flag. Enable full Tabbing + directional arrows + space/enter to activate.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NavEnableSetMousePos</span></p><p class="member_description">Instruct navigation to move the mouse cursor. May be useful on TV/console systems where moving a virtual mouse is awkward. Will update io.MousePos and set io.WantSetMousePos=true. If enabled you MUST honor io.WantSetMousePos requests in your backend, otherwise ImGui will react as if the mouse is jumping around back and forth.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NavNoCaptureKeyboard</span></p><p class="member_description">Instruct navigation to not set the io.WantCaptureKeyboard flag when io.NavActive is set.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoMouse</span></p><p class="member_description">Instruct imgui to clear mouse position/buttons in NewFrame(). This allows ignoring the mouse information set by the backend.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">NoMouseCursorChange</span></p><p class="member_description">Instruct backend to not alter mouse cursor shape and visibility. Use if the backend cursor changes are interfering with yours and you don't want to use SetMouseCursor() to change mouse cursor. You may want to honor requests from imgui by reading GetMouseCursor() yourself instead.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ViewportsEnable</span></p><p class="member_description">Viewport enable flags (require both ImGuiBackendFlags_PlatformHasViewports + ImGuiBackendFlags_RendererHasViewports set by the respective backends)</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_BackendFlags" /><div class="class">
+<h2 class="class_title" name="UI_BackendFlags">UI_BackendFlags</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Backend capabilities flags stored in io.BackendFlags. Set by imgui_impl_xxx or custom backend..
+<p>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">HasGamepad</span></p><p class="member_description">Backend Platform supports gamepad and currently has one connected.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">HasMouseCursors</span></p><p class="member_description">Backend Platform supports honoring GetMouseCursor() value to change the OS cursor shape.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">HasMouseHoveredViewport</span></p><p class="member_description">Backend Platform supports calling io.AddMouseViewportEvent() with the viewport under the mouse. IF POSSIBLE, ignore viewports with the ImGuiViewportFlags_NoInputs flag (Win32 backend, GLFW 3.30+ backend can do this, SDL backend cannot). If this cannot be done, Dear ImGui needs to use a flawed heuristic to find the viewport under.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">HasSetMousePos</span></p><p class="member_description">Backend Platform supports io.WantSetMousePos requests to reposition the OS mouse position (only used if ImGuiConfigFlags_NavEnableSetMousePos is set).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">PlatformHasViewports</span></p><p class="member_description">Backend Platform supports multiple viewports.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RendererHasViewports</span></p><p class="member_description">Backend Renderer supports multiple viewports.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">RendererHasVtxOffset</span></p><p class="member_description">Backend Renderer supports ImDrawCmd::VtxOffset. This enables output of large meshes (64K+ vertices) while still using 16-bit indices.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_DrawListFlags" /><div class="class">
+<h2 class="class_title" name="UI_DrawListFlags">UI_DrawListFlags</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Flags for ImDrawList instance. Those are set automatically by ImGui:: functions from ImGuiIO settings, and generally not manipulated directly..
+It is however possible to temporarily alter flags between calls to ImDrawList:: functions..
+<p>
+<h3 class="class_section_header">static member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AllowVtxOffset</span></p><p class="member_description">Can emit 'VtxOffset > 0' to allow large meshes. Set when 'ImGuiBackendFlags_RendererHasVtxOffset' is enabled.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AntiAliasedFill</span></p><p class="member_description">Enable anti-aliased edge around filled shapes (rounded rectangles, circles).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AntiAliasedLines</span></p><p class="member_description">Enable anti-aliased lines/borders (*2 the number of triangles for 1.0f wide line or lines thin enough to be drawn using textures, otherwise *3 the number of triangles)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">AntiAliasedLinesUseTex</span></p><p class="member_description">Enable anti-aliased lines/borders using textures when possible. Require backend to render with bilinear filtering (NOT point/nearest filtering).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">None</span></p><p class="empty_member_description">No description available</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="UI_IO" /><div class="class">
+<h2 class="class_title" name="UI_IO">UI_IO</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="empty_class_description">No description available</p>
+<h3 class="class_section_header">static member functions</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">backendFlags</span>()</p>
+<p class="member_description">See UI_BackendFlags enum. Set by backend (imgui_impl_xxx files or custom backend) to communicate features supported by the backend.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">backendFlags</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> flags)</p>
+<p class="member_description">See UI_BackendFlags enum. Set by backend (imgui_impl_xxx files or custom backend) to communicate features supported by the backend.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">configFlags</span>()</p>
+<p class="member_description">Default = 0. See UI_ConfigFlags enum. Set by user/application. Gamepad/keyboard navigation options, etc.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">configFlags</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> config_flags)</p>
+<p class="member_description">See UI_ConfigFlags enum.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">deltaTime</span>()</p>
+<p class="member_description">Time elapsed since last frame, in seconds. May change every frame.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec2</span> <span class="membername">displaySize</span>()</p>
+<p class="member_description">Main display size, in pixels (generally == GetMainViewport()->Size). May change every frame.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">fontGlobalScale</span>()</p>
+<p class="member_description">Default 1.0f. Get global scale of all fonts.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">fontGlobalScale</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> scale)</p>
+<p class="member_description">Default 1.0f. Set global scale of all fonts.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">iniFilename</span>()</p>
+<p class="member_description">Get path to .ini file (important: default "imgui.ini" is relative to current working dir!). Set NULL to disable automatic .ini loading/saving or if you want to manually call LoadIniSettingsXXX() / SaveIniSettingsXXX() functions.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">iniFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+<p class="member_description">Set path to .ini file (important: default "imgui.ini" is relative to current working dir!). Set NULL to disable automatic .ini loading/saving or if you want to manually call LoadIniSettingsXXX() / SaveIniSettingsXXX() functions.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">float</span> <span class="membername">iniSavingRate</span>()</p>
+<p class="member_description">Default 5.0f. Get minimum time between saving positions/sizes to .ini file, in seconds.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">iniSavingRate</span>(<span class="ckdoc_typename ckdoc_type_primitive">float</span> rate)</p>
+<p class="member_description">Default 5.0f. Set minimum time between saving positions/sizes to .ini file, in seconds.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">string</span> <span class="membername">logFilename</span>()</p>
+<p class="member_description">Default "imgui_log.txt". Get path to .log file (default parameter to ImGui::LogToFile when no file is specified).</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">logFilename</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> filename)</p>
+<p class="member_description">Default "imgui_log.txt" Set path to .log file (default parameter to ImGui::LogToFile when no file is specified).</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

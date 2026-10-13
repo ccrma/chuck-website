@@ -25,6 +25,7 @@
 <p class="toc_class"><a href="#Color" class="ckdoc_typename ckdoc_type_object">Color</a></p>
 <p class="toc_class"><a href="#AssLoader" class="ckdoc_typename ckdoc_type_object">AssLoader</a></p>
 <p class="toc_class"><a href="#ModelLoadDesc" class="ckdoc_typename ckdoc_type_object">ModelLoadDesc</a></p>
+<p class="toc_class"><a href="#ChuGL_Stats" class="ckdoc_typename ckdoc_type_object">ChuGL_Stats</a></p>
 </div>
 <div class="classes">
 <p class="group_desc">Basic classes for ChuGL: strongly-timed audiovisual programming in ChucK.</p>
@@ -128,6 +129,10 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ScenePass</span> <span class="membername">scenePass</span>()</p>
 <p class="member_description">Get the default render pass (renders the main scene)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">ChuGL_Stats</span> <span class="membername">stats</span>()</p>
+<p class="member_description">Get stats on memory usage / etc about chugl since startup.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">unregisterShred</span>()</p>
@@ -1119,6 +1124,104 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">flipTextures</span></p><p class="member_description">Default false. If true, will flip all model textures along the y-axis. This is a quick fix to account for differences in Y-axis convention across different asset creation tools.</p>
+</div>
+</div>
+<p class="top_link">[ <a href="#top">top</a> ]</p>
+</div>
+<hr />
+<a name="ChuGL_Stats" /><div class="class">
+<h2 class="class_title" name="ChuGL_Stats">ChuGL_Stats</h2>
+<h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
+<p class="class_description">Returned by GG.stats(). Contains stats about the memory usage and other under-the-hood metrics of ChuGL since startup.<p>
+<h3 class="class_section_header">constructors</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="membername">ChuGL_Stats</span>()</p>
+<p class="member_description">Default constructor for ChuGL_Stats.</p>
+</div>
+</div>
+<h3 class="class_section_header">member variables</h3>
+<div class="members">
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">buffer_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">buffer_free_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gcamera_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gcamera_free_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">geometry_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">geometry_free_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ggen_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">ggen_free_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">glight_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">glight_free_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gmodel_free_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gpass_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gpass_free_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gscene_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">gscene_free_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">material_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">material_free_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mesh_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">mesh_free_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">shader_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">shader_free_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">texture_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">texture_free_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">video_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">video_free_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">webcam_count</span></p><p class="empty_member_description">No description available</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">webcam_free_count</span></p><p class="empty_member_description">No description available</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>

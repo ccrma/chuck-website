@@ -116,6 +116,10 @@
 <h3 class="class_section_header">static member functions</h3>
 <div class="members">
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">blackPixel</span>()</p>
+<p class="member_description">Get the builtin 1x1 black-pixel texture. Useful as a defaults for e.g. PhongMaterial emissiveMap.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">copy</span>(<span class="ckdoc_typename ckdoc_type_object">Texture</span> dst_texture, <span class="ckdoc_typename ckdoc_type_object">Texture</span> src_texture)</p>
 <p class="member_description">Copy the entire src texture to the dst texture at mip level 0.</p>
 </div>
@@ -138,6 +142,18 @@
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">load</span>(<span class="ckdoc_typename ckdoc_type_object">string</span> right, <span class="ckdoc_typename ckdoc_type_object">string</span> left, <span class="ckdoc_typename ckdoc_type_object">string</span> top, <span class="ckdoc_typename ckdoc_type_object">string</span> bottom, <span class="ckdoc_typename ckdoc_type_object">string</span> back, <span class="ckdoc_typename ckdoc_type_object">string</span> front)</p>
 <p class="member_description">Load a cubemap texture from 6 filepaths, one for each face.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">magentaPixel</span>()</p>
+<p class="member_description">Get the builtin 1x1 magenta-pixel texture. Has value @(1, 0, 1, 1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">normalPixel</span>()</p>
+<p class="member_description">Get the builtin 1x1 normal-pixel texture, which represents 0 perturbation in tangent space. Used as the default normalmap for builtin lit materials. Has value @(.5, .5, 1, 1)</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">Texture</span> <span class="membername">whitePixel</span>()</p>
+<p class="member_description">Get the builtin 1x1 white-pixel texture. Useful as a defaults for e.g. FlatMaterial and PhongMaterial colormaps.</p>
 </div>
 </div>
 <h3 class="class_section_header">static member variables</h3>

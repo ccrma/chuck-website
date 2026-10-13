@@ -100,6 +100,10 @@
 <p class="member_description">Set the cull mode of the material. valid options: Material.Cull_None, Material.Cull_Front, or Material.Cull_Back.</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">removeUniform</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location)</p>
+<p class="member_description">Removes the current uniform/texture/sampler/storageBuffer set at `int location` on the material. Useful for reusing the same material with a new shader that has a different bindgroup layout.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">sampler</span>(<span class="ckdoc_typename ckdoc_type_primitive">int</span> location, <span class="ckdoc_typename ckdoc_type_object">TextureSampler</span> sampler)</p>
 <p class="member_description">Bind a sampler at the given location.</p>
 </div>
