@@ -598,7 +598,7 @@ ChuGL currently does not support color picking, so you'll have to roll your own 
 To get a ray from the camera to mouse position:
 
 ```c
-GG.camera().screenCordToWorldPos(GWindow.mousePos(), 1) => vec3 ray;
+GG.camera().screenCoordToWorldPos(GWindow.mousePos(), 1) => vec3 ray;
 ```
 
 - you can then use this ray to do intersection testing with the objects in your scene to determine which one is being clicked
