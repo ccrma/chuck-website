@@ -615,7 +615,7 @@ fun int isHovered(GPlane plane, vec3 mouse_pos) {
  plane.scaWorld() => vec3 worldScale;  // get dimensions
  worldScale.x / 2.0 => float halfWidth;
  worldScale.y / 2.0 => float halfHeight;
- pad.posWorld() => vec3 worldPos;   // get position
+ plane.posWorld() => vec3 worldPos;   // get position
 
  if (
   mouse_pos.x > worldPos.x - halfWidth 
