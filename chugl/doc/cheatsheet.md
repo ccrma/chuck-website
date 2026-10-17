@@ -411,9 +411,6 @@ geo.uvs(vec2[] uvs)
 
 // Set the tangents for a geometry. Equivalent to vertexAttribute(3, 4, tangents)
 geo.tangents(vec4[] tangents)
-
-// OR you can auto-generate the tangents via:
-geo.generateTangents(); // must be called AFTER supplying position, normal, and uv data. Will write tangents to vertex attribute location 4.
 ```
 
 Alternatively, if you want to make custom geometries to work with custom shaders:
