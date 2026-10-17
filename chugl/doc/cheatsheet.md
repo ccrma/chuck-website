@@ -27,7 +27,7 @@ The position, rotation, and scale of an object is called its **Transform**. Tran
 
 ```c
 GCube cube --> GG.scene(); // connect a cube to the scene
-cube.pos(@(1,2,3)); // set cube's position to xyz coordinate (1,2,3)
+cube.pos(@(1,0,0)); // set cube's position to xyz coordinate (1,0,0)
 cube.scaX(2); // double the cube's width along the x axis
 
 while (true) {
