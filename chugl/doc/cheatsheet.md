@@ -126,7 +126,7 @@ ___
 ChuGL currently supports 2 dynamic lighting types: point lights (`GPointLight`) and directional lights `GDirLight`. The default ChuGL scene comes with a directional light angled slightly downward, which you can access as follows:
 
 ```c
-// get the default light
+// get the default directional light
 GG.scene().light() @=> GLight light; 
 
 // lights are GGens, so we can manipulate them using the same methods
@@ -137,6 +137,14 @@ light.rotateZ(Math.PI); // rotate the light downwards by PI radians
 
 // change light color
 Color.YELLOW => light.color;
+
+GCube cube --> GG.scene(); // connect a cube to the scene
+
+cube.rotX(Math.PI / 4); // rotate the cube by PI/4 radians
+
+while (true) {
+    GG.nextFrame() => now; // wait for the next frame
+}
 ```
 
 See the API reference for more.
