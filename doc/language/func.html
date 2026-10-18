@@ -1,69 +1,39 @@
-<!DOCTYPE html PUBLIC 
-"-//W3C//DTD XHTML 1.0 Strict//EN" 
-"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<title>ChucK - [Language Specification : Functions]</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChucK - [Language Specification : Functions]</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/prism.css" />
 
 </head>
-<body bgcolor="#ffffff" text="#000000">
-<center>
 
-<!-- all in a big fat table-->
+<body class="type-page">
+    <header id="chuck_header">
+        <h2>ChucK : Language Specification &gt; Functions</h2>
+        <div class="outlineDiv" style="background-color: white; margin-top: 1rem">
+            version: 1.5.x.x (numchucks)
+        </div>
 
-<table id="page_layout" border="0" width="640">
+        <hr width="20%" />
 
-<!-- heading row-->
+        <!-- navigation bar -->
+        <nav class="chuck_nav" aria-label="Language specification">
+            <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="time.html">Manipulating Time</a> | (up): <a href="./">Language Specification</a> | (next): <a href="spork.html">Concurrency</a> &gt; </div>
+        </nav>
+    </header>
 
-<tr><td>
-<div id="chuck_header">
-<center>
-<h1>
-<strong>ChucK</strong> : Language Specification &gt; Functions
-</h1>
-
-<table border="0">
-<tr><td>
-  	<div id="chuck_revision">
-	version: 1.5.x.x (numchucks)
-  	</div>
-  	
-</td></tr>
-</table>
-
-<hr width="20%" />
-</center>
-</div>
-</td></tr>
-
-<!-- navigation bar -->
-
-<tr><td>
-<center>
-<div class="chuck_nav">
-
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="time.html">manipulating time</a> | (up): <a href="./">language specification</a> | (next): <a href="spork.html">concurrency</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
-
-</div>
-</center>
-</td></tr>
-<!-- lang specification section -->
-<tr><td>
-<div id="chuck_body">
-
-<div id="lang_topic_body">
+    <!-- lang specification section -->
+    <main class="leftText" id="lang_body">
+        <div id="lang_topic_body">
 
 <h1><strong>Functions</strong></h1>
 <p>
-Functions provide ways to break up code/common tasks into individual 
-units.  This helps to promote code re-usability and readability. 
+Functions provide ways to break up code/common tasks into individual
+units.  This helps to promote code re-usability and readability.
 </p>
 
 <!-- index of code exmaples -->
@@ -78,32 +48,27 @@ units.  This helps to promote code re-usability and readability.
 <a name="write"> </a>
 <h2><strong>writing</strong></h2>
 
-<p>Declare functions with the keyword <font face="courier">fun</font> (or 
-<font face="courier">function</font>) followed by the return type and 
-then the name of the function. After the name of the function parentheses 
+<p>Declare functions with the keyword fun (or
+function) followed by the return type and
+then the name of the function. After the name of the function parentheses
 must be opened to declare the types of the input arguments.</p>
 
-<pre>
-    // define function call 'funk'
-    fun void funk( int arg )
-    {
-        // insert code here
-    }
-</pre>
+<pre><code>// define function call 'funk'
+fun void funk( int arg )
+{
+    // insert code here
+}</code></pre>
 
-<p>The above function returns no values (the return type is <font 
-face="courier">void</font>).  If the function is declared to return 
-any other type of values, the function body must return a value of 
+<p>The above function returns no values (the return type is void).  If the function is declared to return
+any other type of values, the function body must return a value of
 the appropriate type.</p>
 
-<pre>
-    // define function 'addOne'
-    fun int addOne(int x)
-    {
-        // result
-	return x + 1;
-    }
-</pre>
+<pre><code>// define function 'addOne'
+fun int addOne(int x)
+{
+    // result
+    return x + 1;
+}</code></pre>
 
 </div>
 
@@ -113,36 +78,32 @@ the appropriate type.</p>
 <a name="calling"> </a>
 <h2><strong>calling</strong></h2>
 
-<p>To call a function use the name of the function with appropriate 
+<p>To call a function use the name of the function with appropriate
 arugments.</p>
 
-<pre>
-    // define 'hey'
-    fun int hey( int a, int b )
-    {
-        // do something
-	return a + b;
-    }
+<pre><code>// define 'hey'
+fun int hey( int a, int b )
+{
+    // do something
+    return a + b;
+}
 
-    // call the function; store result
-    hey( 1, 2 ) => int result;
-</pre>
+// call the function; store result
+hey( 1, 2 ) => int result;</code></pre>
 
 <p>You can also use the ChucK operator to call functions!</p>
 
-<pre>
-    // call hey
-    ( 1, 2 ) => hey => int result;
+<pre><code>// call hey
+( 1, 2 ) => hey => int result;
 
-    // same
-    hey( 1, 2 ) => int result;
+// same
+hey( 1, 2 ) => int result;
 
-    // several in a row
-    ( 10, 100 ) => Std.rand2 => Std.mtof => float foo;
+// several in a row
+( 10, 100 ) => Std.rand2 => Std.mtof => float foo;
 
-    // same
-    Std.mtof( Std.rand2( 10, 100 ) ) => float foo;
-</pre>
+// same
+Std.mtof( Std.rand2( 10, 100 ) ) => float foo;</code></pre>
 
 </div>
 
@@ -150,28 +111,26 @@ arugments.</p>
 <a name="overloading"> </a>
 <h2><strong>overloading</strong></h2>
 
-<p>Overloading a function allows functions with the same name to be 
-defined with different arguments. The function must be written in 
-separate instances to handle the input, and the return type must 
+<p>Overloading a function allows functions with the same name to be
+defined with different arguments. The function must be written in
+separate instances to handle the input, and the return type must
 agree.</p>
 
-<pre>
-    // funk( int )
-    fun int add(int x)
-    {
-	return x + x;
-    }
+<pre><code>// funk( int )
+fun int add(int x)
+{
+    return x + x;
+}
 
-    // funk( int, int )
-    fun int add(int x, int y)
-    {
-	return x + y;
-    }
+// funk( int, int )
+fun int add(int x, int y)
+{
+    return x + y;
+}
 
-    // compiler automatically choose the right one to call
-    add( 1 ) => int foo;
-    add( 1, 2 ) => int bar;
-</pre>
+// compiler automatically choose the right one to call
+add( 1 ) => int foo;
+add( 1, 2 ) => int bar;</code></pre>
 </div>
 
 
@@ -179,44 +138,47 @@ agree.</p>
 <!-- end subtopics ? -->
 
 </div>
-</div>
-</td></tr>
+    </main>
 
-<!-- navigation bar -->
+    <!-- navigation bar -->
+    <nav class="chuck_nav" aria-label="Language specification">
+        <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="time.html">Manipulating Time</a> | (up): <a href="./">Language Specification</a> | (next): <a href="spork.html">Concurrency</a> &gt; </div>
+    </nav>
 
-<tr><td>
-<center>
-<div class="chuck_nav">
+    <hr width="20%" />
 
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="time.html">manipulating time</a> | (up): <a href="./">language specification</a> | (next): <a href="spork.html">concurrency</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
+    <!-- chuck-footer -->
+    <footer>
+        <a href="../../">ChucK</a> |
+        <a href="http://soundlab.cs.princeton.edu/">Soundlab</a> |
+        <a href="http://www.cs.princeton.edu/">CS</a> |
+        <a href="http://www.music.princeton.edu/">Music</a> |
+        <a href="http://ccrma.stanford.edu/">CCRMA</a>
+    </footer>
 
-</div>
-</center>
-</td></tr>
+<script src="../../js/prism.js"></script>
+<script>
+    Prism.languages.chuck = Prism.languages.extend('clike', {
+        'keyword': /\b(abstract|continue|for|new|do|if|private|this|break|double|implements|protected|else|public|return|extends|int|try|char|final|interface|static|void|class|long|const|float|super|while|spork|fun|second|samp|ms|day|week|hour|minute|pi|e|dac|adc|blackhole|complex|polar|bar|measure)\b/g,
+        'number': /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\b\d*\.?\d+\b/gi,
+        'operator': {
+            pattern: /(^|[^\.])(?:\+=|\+\+?|-=|--?|!=?|<{1,2}=?|>{1,3}=?|==?|&=|&&?|\|=|\|\|?|\?|\*=?|\/=?|%=?|\^=?|:|~|::|=>)/gm,
+            lookbehind: true
+        }
+    });
+    document.querySelectorAll('#lang_body pre').forEach(function (codeBlock) {
+        var code = codeBlock.querySelector('code');
+        if (!code) {
+            return;
+        }
 
-<!-- chuck-footer -->
-
-<tr><td>
-<div id ="chuck_footer">
-<center>
-<hr width="15%" / >
-<a href="../../">chuck</a> |
-<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
-<a href="http://www.cs.princeton.edu/">cs</a> |
-<a href="http://www.music.princeton.edu/">music</a> |
-<a href="http://ccrma.stanford.edu/">ccrma</a>
-
-</center>
-</div>
-</td></tr>
-</table>
-
-</center>
+        codeBlock.classList.add('language-chuck');
+        code.classList.add('language-chuck');
+        code.querySelectorAll('br').forEach(function (lineBreak) {
+            lineBreak.replaceWith('\n');
+        });
+    });
+    Prism.highlightAll();
+</script>
 </body>
 </html>

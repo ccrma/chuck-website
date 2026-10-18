@@ -1,423 +1,427 @@
-<!DOCTYPE html PUBLIC 
-"-//W3C//DTD XHTML 1.0 Strict//EN" 
-"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<title>ChucK - [Language Specification : Operators & Operations]</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChucK - [Language Specification : Operators & Operations]</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/prism.css" />
 
 </head>
-<body bgcolor="#ffffff" text="#000000">
-<center>
-
-<!-- all in a big fat table-->
-
-<table id="page_layout" border="0" width="640">
-
-<!-- heading row-->
-
-<tr><td>
-<div id="chuck_header">
-<center>
-<h1>
-<strong>ChucK</strong> : Language Specification &gt; Operators
-</h1>
-
-<table border="0">
-<tr><td>
-  	<div id="chuck_revision">
-	version: 1.5.x.x (numchucks)
-  	</div>
-  	
-</td></tr>
-</table>
-
-<hr width="20%" />
-</center>
-</div>
-</td></tr>
-
-<!-- navigation bar -->
-
-<tr><td>
-<center>
-<div class="chuck_nav">
-
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="array.html">arrays</a> | (up): <a href="./">language specification</a> | (next): <a href="ctrl.html">control structures</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
-
-</div>
-</center>
-</td></tr>
-
-
-<!-- lang specification section -->
-<tr><td>
-<div id="chuck_body">
-
-<div id="lang_topic_body">
 
-<h1><strong>Operators & Operations</strong></h1>
-<p>
-Operations on data are achieved through operators.  This sections defines how operators behave on various 
-datatypes.  You may have seen many of the operators
-in other programming languages (C/Java).  Some others are native to ChucK.  We start with the family of ChucK 
-operators.
-</p>
-
-<!-- index of code exmaples -->
-<div class="lang_code_ref">
-<a href="../examples/index.html#oper">View sample code</a> for operators &amp; operations</a>
-</div>
+<body class="type-page">
+    <header id="chuck_header">
+        <h2>ChucK : Language Specification &gt; Operators</h2>
+        <div class="outlineDiv" style="background-color: white; margin-top: 1rem">
+            version: 1.5.x.x (numchucks)
+        </div>
+
+        <hr width="20%" />
+
+        <!-- navigation bar -->
+        <nav class="chuck_nav" aria-label="Language specification">
+            <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="array.html">Arrays</a>
+                | (up): <a href="./">Language Specification</a> | (next): <a href="ctrl.html">Control Structures</a>
+                &gt; </div>
+        </nav>
+    </header>
+
+    <!-- lang specification section -->
+    <main class="leftText" id="lang_body">
+        <div id="lang_topic_body">
+
+            <h1><strong>Operators & Operations</strong></h1>
+            <p>
+                Operations on data are achieved through operators. This sections defines how operators behave on various
+                datatypes. You may have seen many of the operators
+                in other programming languages (C/Java). Some others are native to ChucK. We start with the family of
+                ChucK
+                operators.
+            </p>
+
+            <!-- index of code exmaples -->
+            <div class="lang_code_ref">
+                <a href="../examples/index.html#oper">View sample code</a> for operators &amp; operations</a>
+            </div>
+
+            <!-- body of each sub topic -->
+
+            <a name="chuck"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>
+                        <strong>=&gt;</strong> (the ChucK operator)
+                    </strong></h2>
+
+                <p>The ChucK operator (=>) is a massively overloaded operator that, depending on the types involved,
+                    performs various actions.
+                    It denotes <strong>action</strong>, can be chained, and imposes and clarifies order (always goes
+                    from left to right). The ChucK operator is the means by which
+                    work is done in ChucK. Furthermore, the ChucK operator is not a single operator, but a family of
+                    operators.</p>
 
-<!-- body of each sub topic -->
+                <p>
+                    <strong>=></strong> (foundational ChucK operator)
+                <p>
+                    We start with the standard, plain-vanilla ChucK operator (=>). It is left-associative (all ChucK
+                    operators are), which allows us to specify any ordered flow of
+                    data/tasks/modules (such as unit generator connection) from left-to-right, as in written (English)
+                    text. <strong>What => does depends on the context.</strong> It always depends on
+                    the type of the entity on the left (the chucker) and the one on the right (the chuckee), and it
+                    sometimes
+                    <em>also</em> depends on the nature of the entity (such as whether it is a variable or not).
+                </p>
 
-<a name="chuck"> </a>
-<div class="lang_subtopic_body">
-<h2><strong><font face="courier new" size="5"><strong>=&gt;</strong></font> (the ChucK operator) </strong></h2>
+                <p>Some examples:</p>
 
-<p>The ChucK operator (=>) is a massively overloaded operator that, depending on the types involved, performs various actions.  
-It denotes <strong>action</strong>, can be chained, and imposes and clarifies order (always goes from left to right).  The ChucK operator is the means by which
-work is done in ChucK.  Furthermore, the ChucK operator is not a single operator, but a family of operators.</p>
+                <pre><code>// a unit generator patch - the signal flow is apparent
+// (in this case, => connects two unit generators)
+SinOsc b => Gain g => BiQuad f => dac;</code></pre>
 
-<p><font face="courier new" size="4"><strong>=></strong></font> (foundational ChucK operator)
-<p>
-We start with the standard, plain-vanilla ChucK operator (=>).  It is left-associative (all ChucK operators are), which allows us to specify any ordered flow of 
-data/tasks/modules (such as unit generator connection) from left-to-right, as in written (English) text.  <strong>What => does depends on the context.</strong>  It always depends on 
-the type of the entity on the left (the chucker) and the one on the right (the chuckee), and it sometimes 
-<em>also</em> depends on the nature of the entity (such as whether it is a variable or not).</p>
+                <pre><code>// add 4 to foo, chuck result to new 'int' variable 'bar'
+// (in this case, => assigns a value to a variable (int)
+4 + foo => int bar;</code></pre>
 
-<p>Some examples:</p>
+                <pre><code>// chuck values to a function == function call
+// (same as Math.rand2f( 30, 1000))
+( 30, 1000 ) => Math.rand2f;</code></pre>
 
-<pre>
-    // a unit generator patch - the signal flow is apparent
-    // (in this case, => connects two unit generators)
-    SinOsc b <strong>=></strong> Gain g <strong>=></strong> BiQuad f <strong>=></strong> dac;
-</pre>
+                <p>There are many other well-defined uses of the ChucK operator, depending on the context.</p>
 
-<pre>
-    // add 4 to foo, chuck result to new 'int' variable 'bar'
-    // (in this case, => assigns a value to a variable (int)
-    4 + foo => int bar;
-</pre>
+                <p>
+                    <strong>@=></strong> (explicit assignment ChucK operator)
+                </p>
 
-<pre>
-    // chuck values to a function == function call
-    // (same as Math.rand2f( 30, 1000))
-    ( 30, 1000 ) => Math.rand2f;
-</pre>
+                <p>In ChucK, there is no stardard assignment operator (=),
+                    found in many
+                    other programming languages. Assignment is carried out using
+                    ChucK operators. In the previous examples, we have used
+                        <strong>=></strong> for assignment:</p>
 
-<p>There are many other well-defined uses of the ChucK operator, depending on the context.</p>
+                <pre><code>// assign 4 to variable foo
+4 => int foo;
 
-<p><font face="courier new" size="4"><strong>@=></strong></font> (explicit assignment ChucK operator)</p>
+// assign 1.5 to variable bar
+1.5 => float bar;
 
-<p>In ChucK, there is no stardard assignment operator (<font face="courier new" size="4">=</font>), found in many 
-other programming languages.  Assignment is carried out using
-ChucK operators.  In the previous examples, we have used <font face="courier new" size="2"><strong>=></strong></font> for assignment:</p>
+// assign duration of 100 millisecond to duh
+100::ms => dur duh;
 
-<pre>
-    // assign 4 to variable foo
-    4 => int foo;
+// assign the time "5 second from now" to later
+5::second + now => time later;</code></pre>
 
-    // assign 1.5 to variable bar
-    1.5 => float bar;
+                <p>The @=> explicit assignment ChucK operator behaves exactly the same for the above types (int, float, dur, time). However, <em>the difference is
+                        that <strong>@=></strong> can also be used for reference
+                        assignments of objects (see <a href="class.html">objects and classes</a>) whereas
+                        <strong>=></strong> only does assignment on primitive types
+                    </em> (int, float, dur, time). The behavior of
+                    <strong>=></strong> on objects is completely context-dependent.
+                </p>
 
-    // assign duration of 100 millisecond to duh
-    100::ms => dur duh;
+                <pre><code>// using @=> is same as => for primitive types
+4 @=> int foo;
 
-    // assign the time "5 second from now" to later
-    5::second + now => time later;
-</pre>
+// assign 1.5 to variable bar
+1.5 @=> float bar;
 
-<p>The @=> explicit assignment ChucK operator behaves exactly the same for the above types (<font 
-face=courier>int, float, dur, time</font>).  However, <em>the difference is  
-that <font face="courier new"><strong>@=></strong></font> can also be used for reference assignments of objects (see <a href="class.html">objects and classes</a>) whereas
-<font face="courier new"><strong>=></strong></font> only does assignment on primitive types</em> (<font face="courier">int, float, dur, time</font>).  The behavior of
-<font face="courier new"><strong>=></strong></font> on objects is completely context-dependent.</p>
+// (only @=> can perform reference assignment on objects)
 
-<pre>
-    // using @=> is same as => for primitive types
-    4 @=> int foo;
+// reference assign moe to larry
+// (such that both moe and larry reference the same object)
+Object moe @=> Object @ larry;
 
-    // assign 1.5 to variable bar
-    1.5 @=> float bar;
+// array initialization
+[ 1, 2 ] @=> int ar[];
 
-    // (only @=> can perform reference assignment on objects)
+// using new
+new Object @=> moe;</code></pre>
 
-    // reference assign moe to larry
-    // (such that both moe and larry reference the same object)
-    Object moe @=> Object @ larry;
 
-    // array initialization
-    [ 1, 2 ] @=> int ar[];
+                <p>In its own screwed-up way, this is kind of nice because there is no confusion between assignment (@=>
+                    or =>) and equality (==). In fact the following is <strong>not</strong> a
+                    valid ChucK statement:</p>
 
-    // using new
-    new Object @=> moe;
-</pre>
 
+                    <pre><code>// not a valid ChucK statement!
+int foo = 4;</code></pre>
 
-<p>In its own screwed-up way, this is kind of nice because there is no confusion between assignment (@=> or =>) and equality (==).  In fact the following is <strong>not</strong> a 
-valid ChucK statement:</p>
 
-<font color="#ff0000">
-<pre>
-    <em>// not a valid ChucK statement!</em>
-    int foo = 4;
-</pre>
-</font>
+                <br />
+                <p>
 
-<br />
-<p><font face="courier new" size="4"><strong>+=>&nbsp;&nbsp;-=>&nbsp;&nbsp;*=>&nbsp;&nbsp;/=>&nbsp;&nbsp;etc.</strong></font> (arithmetic ChucK operators)</p>
+                        <strong>+=>&nbsp;&nbsp;-=>&nbsp;&nbsp;*=>&nbsp;&nbsp;/=>&nbsp;&nbsp;etc.</strong>
+                    (arithmetic ChucK operators)
+                </p>
 
-<p>These operators are used with variables (using 'int' and 'float') to perform one operation with assignment.</p>
+                <p>These operators are used with variables (using 'int' and 'float') to perform one operation with
+                    assignment.</p>
 
-<pre>
-    // add 4 to foo and assign result to foo
-    foo + 4 => foo;
+                <pre><code>// add 4 to foo and assign result to foo
+foo + 4 => foo;
 
-    // add 4 to foo and assign result to foo
-    4 +=> foo;
+// add 4 to foo and assign result to foo
+4 +=> foo;
 
-    // subtract 10 from foo and assign result to foo
-    // remember this is (foo-10), not (10-foo)
-    10 -=> foo;
+// subtract 10 from foo and assign result to foo
+// remember this is (foo-10), not (10-foo)
+10 -=> foo;
 
-    // 2 times foo assign result to foo
-    2 *=> foo;
+// 2 times foo assign result to foo
+2 *=> foo;
 
-    // divide 4 into foo and assign result to foo
-    // again remember this is (foo/4), not (4/foo)
-    4 /=> foo;
-</pre>
+// divide 4 into foo and assign result to foo
+// again remember this is (foo/4), not (4/foo)
+4 /=> foo;</code></pre>
 
-<p>It is important to note the relationship between the value and 
-variable when using -=> and /=>, since these operations are not 
-commutative.</p>
+                <p>It is important to note the relationship between the value and
+                    variable when using -=> and /=>, since these operations are not
+                    commutative.</p>
 
-<pre>
-    // mod foo by T and assign result to foo
-    T %=> foo;
+                <pre><code>// mod foo by T and assign result to foo
+T %=> foo;
 
-    // bitwise AND 0xff and bar and assign result to bar
-    0xff &=> bar;
+// bitwise AND 0xff and bar and assign result to bar
+0xff &=> bar;
 
-    // bitwise OR 0xff and bar and assign result to bar
-    0xff |=> bar;
-</pre>
+// bitwise OR 0xff and bar and assign result to bar
+0xff |=> bar;</code></pre>
 
-<p>That's probably enough operator abuse for now...</p>
+                <p>That's probably enough operator abuse for now...</p>
 
-</div>
+            </div>
 
-<!-- additional sub topic sections go here... -->
+            <!-- additional sub topic sections go here... -->
 
-<a name="arith"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>+&nbsp;&nbsp;-&nbsp;&nbsp;*&nbsp;&nbsp;/&nbsp;&nbsp;(arithmetic)</strong></h2>
+            <a name="arith"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>+&nbsp;&nbsp;-&nbsp;&nbsp;*&nbsp;&nbsp;/&nbsp;&nbsp;(arithmetic)</strong></h2>
 
-<p>Can you add, subtract, multiply and divide?  So can ChucK!</p>
-<pre>
-    // divide (and assign)
-    16 / 4 => int four;
+                <p>Can you add, subtract, multiply and divide? So can ChucK!</p>
+                <pre><code>// divide (and assign)
+16 / 4 => int four;
 
-    // multiply
-    2 * 2 => four;
+// multiply
+2 * 2 => four;
 
-    // add
-    3 + 1 => four;
+// add
+3 + 1 => four;
 
-    // subtract
-    93 - 89 => four;
-</pre>
+// subtract
+93 - 89 => four;</code></pre>
 
-<p><strong>cast</strong></p>
+                <p><strong>cast</strong></p>
 
-<p>ChucK implicitly casts <font face="courier">int</font> values to <font 
-face="courier">float</font> when <font face=courier>float</font>
-is expected, but <strong>not</strong> the other around.  The latter could 
-result in a loss of information and requires an explicit cast.</p>
+                <p>ChucK implicitly casts int values to float
+                    when float
+                    is expected, but <strong>not</strong> the other around. The latter could
+                    result in a loss of information and requires an explicit cast.</p>
 
-<pre>
-    // adding float and int produces a float
-    9.1 + 2 => float result;
+                <pre><code>// adding float and int produces a float
+9.1 + 2 => float result;
 
-    // however, going from float to int requires cast
-    4.8 $ int => int foo;  // foo == 4
+// however, going from float to int requires cast
+4.8 $ int => int foo;  // foo == 4
 
-    // this function expects two floats
-    Math.rand2f( 30.0, 1000.0 );
+// this function expects two floats
+Math.rand2f( 30.0, 1000.0 );
 
-    // this is ok because of implicit cast
-    Math.rand2f( 30, 1000 );
-</pre>
+// this is ok because of implicit cast
+Math.rand2f( 30, 1000 );</code></pre>
 
-</div>
+            </div>
 
-<a name="mod"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>% (modulo)</strong></h2>
-<p>The modulo operator <font face="courier" size=3>%</font> computes the 
-remainder after integer, floating point, duration, and time/duration 
-division.</p>
+            <a name="mod"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>% (modulo)</strong></h2>
+                <p>The modulo operator % computes the
+                    remainder after integer, floating point, duration, and time/duration
+                    division.</p>
 
-<pre>
-    // 7 mod 4 (should yield 3)
-    7 % 4 => int result;
+                <pre><code>// 7 mod 4 (should yield 3)
+7 % 4 => int result;
 
-    // 7.3 mod 3.2 floating point mod (should yield .9)
-    7.3 % 3.2 => float resultf;
+// 7.3 mod 3.2 floating point mod (should yield .9)
+7.3 % 3.2 => float resultf;
 
-    // duration mod
-    5::second % 2::second => dur foo;
+// duration mod
+5::second % 2::second => dur foo;
 
-    // time/duration mod
-    now % 5::second => dur bar;
-</pre>
+// time/duration mod
+now % 5::second => dur bar;</code></pre>
 
-<p>the latter (time/duration mod) is one of many ways to dynamically 
-synchronize timing in shreds.  the examples otf_01.ck through otf_07.ck 
-(see under <a href="../examples/#other">examples</a>) make use of this to 
-on-the-fly synchronize its various parts, no matter when each shred is 
-added to the virtual machine:</p>
+                <p>the latter (time/duration mod) is one of many ways to dynamically
+                    synchronize timing in shreds. the examples otf_01.ck through otf_07.ck
+                    (see under <a href="../examples/#other">examples</a>) make use of this to
+                    on-the-fly synchronize its various parts, no matter when each shred is
+                    added to the virtual machine:</p>
 
-<pre>
-    // define period (agreed upon by several shreds)
-    .5::second => dur T;
+                <pre><code>// define period (agreed upon by several shreds)
+.5::second => dur T;
 
-    // compute the remainder of the current period ...
-    // and advance time by that amount
-    T - (now % T) => now;
+// compute the remainder of the current period ...
+// and advance time by that amount
+T - (now % T) => now;
 
-    // when we reach this point, we are synchronized to T period boundary
-    
-    // the rest of the code
-    // ...
-</div>
+// when we reach this point, we are synchronized to T period boundary
 
-<p>This is one of many ways to compute and reason about time in 
-ChucK.  The appropriate solution(s) in each case depends on the 
-intended functionality.  Have fun!</p>
+// the rest of the code
+// ...</code></pre>
+            </div>
 
-<a name="log"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>&amp;&amp;&nbsp;&nbsp;||&nbsp;&nbsp;==&nbsp;&nbsp;!=&nbsp;&nbsp;&gt;&nbsp;&nbsp;&gt;=&nbsp;&nbsp;&lt;&nbsp;&nbsp;&lt;=&nbsp;&nbsp;(logic)</strong></h2>
+            <p>This is one of many ways to compute and reason about time in
+                ChucK. The appropriate solution(s) in each case depends on the
+                intended functionality. Have fun!</p>
 
-<p>Logical operators - each of these need two operands.  <strong>The result is an integer value of 0 or 1.</strong></p>
+            <a name="log"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>&amp;&amp;&nbsp;&nbsp;||&nbsp;&nbsp;==&nbsp;&nbsp;!=&nbsp;&nbsp;&gt;&nbsp;&nbsp;&gt;=&nbsp;&nbsp;&lt;&nbsp;&nbsp;&lt;=&nbsp;&nbsp;(logic)</strong>
+                </h2>
 
-<ul>
-<li><strong><font face="courier">&amp;&amp;</strong></font> : and
-<li><strong><font face="courier">||</strong></font> : or
-<li><strong><font face="courier">==</strong></font> : equals
-<li><strong><font face="courier">!=</strong></font> : does not equal
-<li><strong><font face="courier">&gt;</strong></font> : greater than 
-<li><strong><font face="courier">&gt;=</strong></font> : greater than or equal to
-<li><strong><font face="courier">&lt;</strong></font> : less than 
-<li><strong><font face="courier">&lt;=</strong></font> : less than or equal to
-</ul>
+                <p>Logical operators - each of these need two operands. <strong>The result is an integer value of 0 or
+                        1.</strong></p>
 
-<pre>
-    // test some universal truths
-    if( 1 <= 4 && true )
-        &lt;&lt;&lt;"horray"&gt;&gt;&gt;;
-</pre>
+                <ul>
+                    <li><strong>
+                            &amp;&amp;
+                        </strong> : and
+                    <li><strong>
+                            ||
+                        </strong> : or
+                    <li><strong>
+                            ==
+                        </strong> : equals
+                    <li><strong>
+                            !=
+                        </strong> : does not equal
+                    <li><strong>
+                            &gt;
+                        </strong> : greater than
+                    <li><strong>
+                            &gt;=
+                        </strong> : greater than or equal to
+                    <li><strong>
+                            &lt;
+                        </strong> : less than
+                    <li><strong>
+                            &lt;=
+                        </strong> : less than or equal to
+                </ul>
 
-</div>
+                <pre><code>// test some universal truths
+if( 1 <= 4 && true )
+{
+    &lt;&lt;&lt;"horray"&gt;&gt;&gt;;
+}</code></pre>
 
-<a name="bin"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>&gt;&gt;&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&amp;&nbsp;&nbsp;|&nbsp;&nbsp;^&nbsp;&nbsp;(bitwise)</strong></h2>
+            </div>
 
-<p>These are used on <font face="courier">int</font> values at the bit level, often for bit masking.</p>
-<ul>
-<li><strong><font face="courier">&gt;&gt;</strong></font> : shift bits right ( 8 >> 1 = 4 )
-<li><strong><font face="courier">&lt;&lt;</strong></font> : shift bits left ( 8 << 1 = 16 )
-<li><strong><font face="courier">&amp;</strong></font> : bitwise AND
-<li><strong><font face="courier">|</strong></font> : bitwise OR
-<li><strong><font face="courier">^</strong></font> : bitwise XOR
+            <a name="bin"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>&gt;&gt;&nbsp;&nbsp;&lt;&lt;&nbsp;&nbsp;&amp;&nbsp;&nbsp;|&nbsp;&nbsp;^&nbsp;&nbsp;(bitwise)</strong>
+                </h2>
 
-</ul>
+                <p>These are used on int values at the bit level, often for bit masking.</p>
+                <ul>
+                    <li><strong>
+                            &gt;&gt;
+                        </strong> : shift bits right ( 8 >> 1 = 4 )
+                    <li><strong>
+                            &lt;&lt;
+                        </strong> : shift bits left ( 8 << 1=16 ) <li><strong>
+                                &amp;
+                            </strong> : bitwise AND
+                    <li><strong>
+                            |
+                        </strong> : bitwise OR
+                    <li><strong>
+                            ^
+                        </strong> : bitwise XOR
 
-</div>
+                </ul>
 
-<a name="incdec"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>++&nbsp;&nbsp;--&nbsp;&nbsp;(inc / dec)</strong></h2>
+            </div>
 
-<p>Values may be incremented or decremented by appending the ++ or -- operators.</p>
-<pre>4 => int foo;
+            <a name="incdec"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>++&nbsp;&nbsp;--&nbsp;&nbsp;(inc / dec)</strong></h2>
+
+                <p>Values may be incremented or decremented by appending the ++ or -- operators.</p>
+                <pre><code>4 => int foo;
 foo++;
-foo--;</pre>
+foo--;</code></pre>
 
-</div>
+            </div>
 
-<a name="unary"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>! + - new (unary)</strong></h2>
+            <a name="unary"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>! + - new (unary)</strong></h2>
 
-<p>These operators come before one operand.</p>
+                <p>These operators come before one operand.</p>
 
-<pre>
-    // logical invert
-    if( !true == false )
-        <<<"yes">>>;
+                <pre><code>// logical invert
+if( !true == false )
+{
+    <<<"yes">>>;
+}
 
-    // negative
-    -1 => int foo;
+// negative
+-1 => int foo;
 
-    // instantiate object
-    new object @=> object @ bar;
-</pre>
+// instantiate object
+new object @=> object @ bar;</code></pre>
 
-</div>
-
+            </div>
 
 
-<!-- end subtopics ? -->
 
-</div>
-</div>
-</td></tr>
+            <!-- end subtopics ? -->
 
-<!-- navigation bar -->
+        </div>
+    </main>
 
-<tr><td>
-<center>
-<div class="chuck_nav">
+    <!-- navigation bar -->
+    <nav class="chuck_nav" aria-label="Language specification">
+        <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="array.html">Arrays</a> |
+            (up): <a href="./">Language Specification</a> | (next): <a href="ctrl.html">Control Structures</a> &gt;
+        </div>
+    </nav>
 
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="array.html">arrays</a> | (up): <a href="./">language specification</a> | (next): <a href="ctrl.html">control structures</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
+    <hr width="20%" />
 
-</div>
-</center>
-</td></tr>
+    <!-- chuck-footer -->
+    <footer>
+        <a href="../../">ChucK</a> |
+        <a href="http://soundlab.cs.princeton.edu/">Soundlab</a> |
+        <a href="http://www.cs.princeton.edu/">CS</a> |
+        <a href="http://www.music.princeton.edu/">Music</a> |
+        <a href="http://ccrma.stanford.edu/">CCRMA</a>
+    </footer>
 
-<!-- chuck-footer -->
+    <script src="../../js/prism.js"></script>
+    <script>
+        Prism.languages.chuck = Prism.languages.extend('clike', {
+            'keyword': /\b(abstract|continue|for|new|do|if|private|this|break|double|implements|protected|else|public|return|extends|int|try|char|final|interface|static|void|class|long|const|float|super|while|spork|fun|second|samp|ms|day|week|hour|minute|pi|e|dac|adc|blackhole|complex|polar|bar|measure)\b/g,
+            'number': /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\b\d*\.?\d+\b/gi,
+            'operator': {
+                pattern: /(^|[^\.])(?:\+=|\+\+?|-=|--?|!=?|<{1,2}=?|>{1,3}=?|==?|&=|&&?|\|=|\|\|?|\?|\*=?|\/=?|%=?|\^=?|:|~|::|=>)/gm,
+                lookbehind: true
+            }
+        });
+        document.querySelectorAll('#lang_body pre').forEach(function (codeBlock) {
+            var code = codeBlock.querySelector('code');
+            if (!code) {
+                return;
+            }
 
-<tr><td>
-<div id ="chuck_footer">
-<center>
-<hr width="15%" / >
-<a href="../../">chuck</a> |
-<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
-<a href="http://www.cs.princeton.edu/">cs</a> |
-<a href="http://www.music.princeton.edu/">music</a> |
-<a href="http://ccrma.stanford.edu/">ccrma</a>
-
-</center>
-</div>
-</td></tr>
-</table>
-
-</center>
+            codeBlock.classList.add('language-chuck');
+            code.classList.add('language-chuck');
+            code.querySelectorAll('br').forEach(function (lineBreak) {
+                lineBreak.replaceWith('\n');
+            });
+        });
+        Prism.highlightAll();
+    </script>
 </body>
+
 </html>

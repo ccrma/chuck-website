@@ -1,230 +1,219 @@
-<!DOCTYPE html PUBLIC 
-"-//W3C//DTD XHTML 1.0 Strict//EN" 
-"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
- <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGYR1HZBQX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGYR1HZBQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-        gtag('config', 'G-FGYR1HZBQX');
-    </script>
-<!-- character set -->
-<meta charset="utf-8">
-<!-- meta properties -->
-<meta name="keywords" content="ChucK, strongly-timed,audio, programming language, computer music, Artful Design, 
-Stanford University, CCRMA, Princeton University, SoundLab, Ge Wang, Perry Cook, design, art, computer, music,
-technology, engineering, education" />
-<meta property="og:url" content="http://chuck.stanford.edu/doc/language/" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="ChucK | Language Specification" />
-<meta property="og:description" content="Language specification for ChucK, a programming language for real-time sound synthesis and music creation." />
-<meta name="author" content="ChucK Team">
-<meta property="og:image" content="https://ccrma.stanford.edu/software/chuck/doc/images/chuck-logo2023w.png" />
-<meta property="fb:app_id" content="966242223397117" /> <!--default app id-->
-<link rel="canonical" href="http://chuck.stanford.edu/doc/language/" />
+    gtag('config', 'G-FGYR1HZBQX');
+  </script>
+  <!-- character set -->
+  <meta charset="utf-8">
+  <!-- meta properties -->
+  <meta name="keywords" content="ChucK, strongly-timed,audio, programming language, computer music, Artful Design,
+    Stanford University, CCRMA, Princeton University, SoundLab, Ge Wang, Perry Cook, design, art, computer, music,
+    technology, engineering, education" />
+  <meta property="og:url" content="http://chuck.stanford.edu/doc/language/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ChucK | Language Specification" />
+  <meta property="og:description"
+    content="Language specification for ChucK, a programming language for real-time sound synthesis and music creation." />
+  <meta name="author" content="ChucK Team">
+  <meta property="og:image" content="https://ccrma.stanford.edu/software/chuck/doc/images/chuck-logo2023w.png" />
+  <meta property="fb:app_id" content="966242223397117" /> <!--default app id-->
+  <link rel="canonical" href="http://chuck.stanford.edu/doc/language/" />
+  <title>ChucK | Language Specification</title>
+  <!-- <link rel="stylesheet" href="../../css/style.css" type="text/css"> -->
+  <link rel="stylesheet" href="../../css/main.css" type="text/css">
 
-<title>ChucK | Language Specification</title>
-<link rel="stylesheet" href="css/main.css" type="text/css">
+  <style>
+
+    a {
+      text-decoration: underline;
+    }
+
+    #lang_body { 
+      max-width: 640px;
+      margin: 1rem auto 1rem;
+    }
+  </style>
 </head>
-<body bgcolor="#ffffff" text="#000000">
-<font face="verdana, sans-serif" size="2">
 
-<br />
-<center> 
-<table border="0" width="640">
-<tr><td>
-<font face="verdana, sans-serif" size="2">
-<center>
-<font size="3">
-<strong>ChucK</strong> | Language Specification
-</font>
-<br />
-<br />
+<body class="type-page">
+  <header class="small-text" id="chuck_header">
+    <p style="font-size: 1rem;"><b>ChucK</b> | Language Specification</p>
+    <div class="outlineDiv" style="background-color: white; margin-top: 1rem">
+        version: 1.5.x.x (numchucks)
+    </div>
 
-  <table bgcolor="#d9d9d9" border="0" cellpadding="1" cellspacing="0"><tr><td>
-  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="1" cellspacing="2">
-  <tr>
-  <td align="right"><font face="verdana, sans-serif" size="2">
-  version:</td><td><font face="verdana, sans-serif" size="2">
-  1.5.x.x (numchucks)
-  <br />
-  
-  </font></td>
-  </tr>
-  </table></td></tr>
-  </table>
+    <div class="flex-container" style="margin-top: 1rem;">
+      <img src="../images/on-the-fly_50dpi.jpg" alt="ChucK on-the-fly programming" title="ChucK" />
+    </div>
+  </header>
 
-<br />
-<img src="../images/on-the-fly_50dpi.jpg" />
+  <section id="lang_body" class="description; leftText" style="margin: 2rem auto 1rem;">
+    <b>Overview:</b>
+    <p style="font-size: small;">
+      <a href="../../">ChucK</a> is a strongly-typed,
+      <strong><em>strongly-timed</em></strong>, concurrent audio
+      and multimedia programming language. It is compiled into virtual
+      instructions, which are immediately run in the ChucK Virtual Machine.
+      This guide documents the features of the Language, Compiler, and Virtual
+      Machine for a ChucK programmer.
+    </p>
+  </section>
 
-<table width="640" border="0" cellpadding="2" cellspacing="2">
-<tr><td align="justify"><font face="verdana, sans-serif" size="2">
+  <main class="outlineDiv small-text" style="margin-top: 2rem">
+    <section>
+      <div style="margin: 1rem auto"><b>Language Specification</b><br>
+        (also see <a target="_blank" href="../reference/">API Reference</a>)</div>
 
-<hr width="10%" />
+      <nav class="leftText">
+        <ul>
+          <li><strong><a href="overview.html">Overview</a></strong>
+            <ul>
+              <li><a href="overview.html#run">Running ChucK</a></li>
+              <li><a href="overview.html#comment">Comments</a></li>
+              <li><a href="overview.html#reserve">Reserved Words</a></li>
+            </ul>
+          </li>
+          <li><strong><a href="type.html">Types, Values, Variables</a></strong>
+            <ul>
+              <li><a href="type.html#prim">Primitive Types</a></li>
+              <li><a href="type.html#value">Values</a></li>
+              <li><a href="type.html#var">Variables</a></li>
+              <li><a href="type.html#ref">References</a></li>
+              <li><a href="type.html#complex">Complex Types</a></li>
+            </ul>
+          </li>
+          <li><strong><a href="array.html">Arrays</a></strong>
+            <ul>
+              <li><a href="array.html#decl">Declaring</a></li>
+              <li><a href="array.html#multi">Multi-dimensional</a></li>
+              <li><a href="array.html#use">Lookup &amp; Looping</a></li>
+              <li><a href="array.html#assoc">Associative Arrays</a></li>
+              <li><a href="array.html#assign">Assignment</a></li>
+            </ul>
+          </li>
+          <li><strong><a href="oper.html">Operators &amp; Operations</a></strong>
+            <ul>
+              <li><a href="oper.html#chuck">=&gt;</a> <small>(ChucK)</small></li>
+              <li><a href="oper.html#arith">+ - * /</a> <small>(Arithmetic)</small></li>
+              <li><a href="oper.html#mod">%</a> <small>(Modulo)</small></li>
+              <li><a href="oper.html#log">&amp;&amp; || == != &gt; &gt;= &lt; &lt;=</a> <small>(Logic)</small></li>
+              <li><a href="oper.html#bin">&amp; | ^</a> <small>(Bitwise)</small></li>
+              <li><a href="oper.html#incdec">++ --</a> <small>(Inc / Dec)</small></li>
+              <li><a href="oper.html#unary">! + - new</a> <small>(Unary)</small></li>
+            </ul>
+          </li>
+          <li><strong><a href="ctrl.html">Control Structures</a></strong>
+            <ul>
+              <li><a href="ctrl.html#if">If / Else</a></li>
+              <li><a href="ctrl.html#while">While</a></li>
+              <li><a href="ctrl.html#until">Until</a></li>
+              <li><a href="ctrl.html#for">For</a></li>
+              <li><a href="ctrl.html#foreach">For-each</a> <small class="text-warning">New!</small></li>
+              <li><a href="ctrl.html#repeat">Repeat</a></li>
+              <li><a href="ctrl.html#break">Break / Continue</a></li>
+            </ul>
+          </li>
+          <li><strong><a href="time.html">Manipulating Time</a></strong>
+            <ul>
+              <li><a href="time.html#type">Time and Duration</a></li>
+              <li><a href="time.html#oper">Operations</a> <small>(Arithmetic)</small></li>
+              <li><a href="time.html#now">The Keyword 'now'</a></li>
+              <li><a href="time.html#advance">Advancing Time</a></li>
+              <li><a href="time.html#properties">Properties</a></li>
+            </ul>
+          </li>
+          <li><strong><a href="func.html">Functions</a></strong>
+            <ul>
+              <li><a href="func.html#write">Writing</a></li>
+              <li><a href="func.html#calling">Calling</a></li>
+              <li><a href="func.html#over">Overloading</a></li>
+            </ul>
+          </li>
+          <li><strong><a href="spork.html">Concurrency, Processes, Shreds</a></strong>
+            <ul>
+              <li><a href="spork.html#spork">Sporking Shreds</a></li>
+              <li><a href="spork.html#me">The 'me' Keyword</a></li>
+              <li><a href="spork.html#add">Using Machine.add()</a></li>
+              <li><a href="spork.html#com">Inter-shred Communication</a></li>
+            </ul>
+          </li>
+          <li><strong><a href="class.html">Classes and Objects</a></strong>
+            <ul>
+              <li><a href="class.html#intro">Introduction</a></li>
+              <li><a href="class.html#base">Existing Classes</a></li>
+              <li><a href="class.html#new">Working with Objects</a></li>
+              <li><a href="class.html#create">Writing a Class</a></li>
+              <li><a href="class.html#member">Members</a> <small>(Data + Functions)</small></li>
+              <li><a href="class.html#static">Static</a> <small>(Data + Functions)</small></li>
+              <li><a href="class.html#extend">Inheritance</a></li>
+              <li><a href="class.html#overloadation">Overloadation</a> <small>(Overloading + Overriding)</small></li>
+            </ul>
+          </li>
+          <li><strong><a href="import.html">Import System</a></strong>
+            <ul>
+              <li><a href="import.html#intro">Introduction</a></li>
+              <li><a href="import.html#syntax">Syntax</a></li>
+              <li><a href="import.html#semantics">What Gets Imported?</a></li>
+              <li><a href="import.html#resolution">Filename Resolution</a></li>
+              <li><a href="import.html#public">Public Classes</a></li>
+              <li><a href="import.html#notes">Additional Usage Notes</a></li>
+            </ul>
+          </li>
+          <li><strong><a href="ugen.html">Unit Generators</a></strong>
+            <ul>
+              <li><a href="ugen.html#decl">Declaring</a></li>
+              <li><a href="ugen.html#connect">Connecting</a></li>
+              <li><a href="ugen.html#ctrl">Controlling</a> <small>(Timing Mechanism)</small></li>
+              <li><a href="ugen.html#chan">Mono + Stereo</a></li>
+              <li><a href="ugen.html#create">Creating (Custom UGens)</a></li>
+            </ul>
+          </li>
+          <li><strong><a href="uana.html">Unit Analyzers</a></strong>
+            <ul>
+              <li><a href="uana.html#declaring">Declaring</a></li>
+              <li><a href="uana.html#connecting">Connecting</a></li>
+              <li><a href="uana.html#controlling">Controlling Over Time</a></li>
+              <li><a href="uana.html#representing_metadata">Representing Metadata: the UAnaBlob</a></li>
+              <li><a href="uana.html#representing_complex">Representing Complex Data</a></li>
+              <li><a href="uana.html#performing">Performing Analysis in UAna Networks</a></li>
+              <li><a href="uana.html#using_events">Using Events</a></li>
+              <li><a href="uana.html#built-in">Built-in Unit Analyzers</a></li>
+              <li>Creating <small>(Coming Soon)</small></li>
+            </ul>
+          </li>
+          <li><strong><a href="event.html">Events</a></strong>
+            <ul>
+              <li><a href="event.html#intro">What It Is</a></li>
+              <li><a href="event.html#use">Using</a></li>
+              <li><a href="event.html#midi">The MIDI Event</a></li>
+              <li><a href="event.html#osc">The OSC Event</a></li>
+              <li><a href="event.html#extend">Creating Custom Events</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
 
-<br />
-<strong>Overview:</strong>
-<br /><p align="justify">
-<a href="../../">ChucK</a> is a strongly-typed, 
-<strong><em>strongly-timed</em></strong>, concurrent audio 
-and multimedia programming language.  It is compiled into virtual 
-instructions, which is immediately run in the ChucK Virtual Machine.  
-This guide documents the features of the Language, Compiler, and Virtual 
-Machine for a ChucK programmer.
-</p>
+  <hr width="15%" />
 
-<br />
-<center>
+  <footer class="small-text">
+    <a href="../../">ChucK</a> |
+    <a href="http://soundlab.cs.princeton.edu/">Soundlab</a> |
+    <a href="http://www.cs.princeton.edu/">CS</a> |
+    <a href="http://www.music.princeton.edu/">Music</a> |
+    <a href="http://ccrma.stanford.edu/">CCRMA</a>
+  </footer>
 
-  <table bgcolor="#d9d9d9" border="0" cellpadding="0" cellspacing="1"><tr><td>
-  <table width="100%" bgcolor="#fdfdfd" border="0" cellpadding="8" cellspacing="2">
-  <tr>
-  <td align="left"><font face="verdana, sans-serif" size="2">
 
-<a name="lang"><center><strong>language specification</strong></a><br />
-(also see <a href="../reference/">API reference</a>)
-</center>
-<br />
-<ul><li><strong><a href="overview.html">overview</a></strong>
-  <ul>
-  <li><a href="overview.html#run">running chuck</a>
-  <li><a href="overview.html#comment">comments</a>
-  <li><a href="overview.html#reserve">reserved words</a>
-  </ul><br />
-<strong><li><a href="type.html">types, values, variables</a></strong>
-  <ul>
-  <li><a href="type.html#prim">primitive types</a><br />
-  <li><a href="type.html#value">values</a><br />
-  <li><a href="type.html#var">variables</a><br />
-  <li><a href="type.html#ref">references</a><br />
-  <li><a href="type.html#complex">complex types</a><br />
-  </ul><br />
-<strong><li><a href="array.html">arrays</a></strong>
-  <ul>
-  <li><a href="array.html#decl">declaring</a>
-  <li><a href="array.html#multi">multi-dimensional</a>
-  <li><a href="array.html#use">lookup &amp; looping</a>
-  <li><a href="array.html#assoc">associative arrays</a>
-  <li><a href="array.html#assign">assignment</a>
-  </ul><br />
-<strong><li><a href="oper.html">operators + operations</a></strong>
-  <ul>
-  <li><a href="oper.html#chuck">=></a> <font size="1">(chuck)</font><br />
-  <li><a href="oper.html#arith">+ - * /</a> <font size="1">(arithmetic)</font><br />
-  <li><a href="oper.html#mod">%</a> <font size="1">(modulo)</font><br />
-  <li><a href="oper.html#log">&& || == != >= <="</a"> <font size="1">(logic)</font><br />
-  <li><a href="oper.html#bin">& | ^</a> <font size="1">(bitwise)</font><br />
-  <li><a href="oper.html#incdec">++ --</a> <font size="1">(inc / dec)</font><br />
-  <li><a href="oper.html#unary">! + - new</a> <font size="1">(unary)</font><br />
-  </ul><br />
-<strong><li><a href="ctrl.html">control structures</a></strong>
-  <ul>
-  <li><a href="ctrl.html#if">if / else</a><br />
-  <li><a href="ctrl.html#while">while</a><br />
-  <li><a href="ctrl.html#until">until</a><br />
-  <li><a href="ctrl.html#for">for</a><br />
-  <li><a href="ctrl.html#foreach">for-each</a> <font color="#999933" size="1"><b>new!!!</b></font><br />
-  <li><a href="ctrl.html#repeat">repeat</a><br />
-  <li><a href="ctrl.html#break">break / continue</a><br />
-  </ul><br />
-<strong><li><a href="time.html">manipulating time</a></strong>
-  <ul>
-  <li><a href="time.html#type">time and duration</a> <br />
-  <li><a href="time.html#oper">operations</a> <font size="1">(arithmetic)</font><br />
-  <li><a href="time.html#now">the keyword 'now'</a><br />
-  <li><a href="time.html#advance">advancing time</a><br />
-  <li><a href="time.html#properties">properties</a><br />
-  </ul><br />
-<strong><li><a href="func.html">functions</a></strong>
-  <ul>
-  <li><a href="func.html#write">writing</a>
-  <li><a href="func.html#calling">calling</a>
-  <li><a href="func.html#over">overloading</a>
-  </ul><br />
-<strong><li><a href="spork.html">concurrency, processes, shreds</a></strong>
-  <ul>
-  <li><a href="spork.html#spork">sporking shreds</a>
-  <li><a href="spork.html#me">the 'me' keyword</a>
-  <li><a href="spork.html#add">using machine.add()</a>
-  <li><a href="spork.html#com">inter-shred communication</a>
-  </ul><br />
-<strong><li><a href="class.html">classes and objects</a></strong>
-  <ul>
-  <li><a href="class.html#intro">introduction</a>
-  <li><a href="class.html#base">existing classes</a>
-  <li><a href="class.html#new">working with objects</a>
-  <li><a href="class.html#create">writing a class</a>
-  <li><a href="class.html#member">members</a> <font size="1">(data + functions)</font>
-  <li><a href="class.html#static">static</a> <font size="1">(data + functions)</font>
-  <li><a href="class.html#extend">inheritance</a>
-  <li><a href="class.html#overloadation">overloadation</a> <font size="1">(overloading + overriding)</font>
-  </ul><br />
-
-<strong><li><a href="import.html">import system</a></strong>
-  <ul>
-  <li><a href="import.html#intro">introduction</a>
-  <li><a href="import.html#syntax">syntax</a>
-  <li><a href="import.html#semantics">what gets imported?</a>
-  <li><a href="import.html#resolution">filename resolution</a>
-  <li><a href="import.html#public">public classes</a>
-  <li><a href="import.html#notes">additional usage notes</a>
-  </ul><br />
-
-<strong><li><a href="ugen.html">unit generators</a></strong>
-  <ul>
-  <li><a href="ugen.html#decl">declaring</a>
-  <li><a href="ugen.html#connect">connecting</a>
-  <li><a href="ugen.html#ctrl">controlling</a> <font size="1">(timing mechanism)</font></a>
-  <li><a href="ugen.html#chan">mono + stereo</a>
-  <li><a href="ugen.html#create">creating (custom UGens)</a>
-  </ul><br />
-
-<strong><li><a href="uana.html">unit analyzers</a></strong>
-  <ul>
-  <li><a href="uana.html#declaring">declaring</a>
-  <li><a href="uana.html#connecting">connecting</a>
-  <li><a href="uana.html#controlling">controlling over time</a>
-  <li><a href="uana.html#representing_metadata">representing metadata: the UAnaBlob</a>
-  <li><a href="uana.html#representing_complex">representing complex data</a>
-  <li><a href="uana.html#performing">performing analysis in UAna networks</a>
-  <li><a href="uana.html#using_events">using events</a>
-  <li><a href="uana.html#built-in">built-in unit analyzers</a>
-  <li>creating <font size="1">(coming soon)</font>
-  </ul><br />
-
-<strong><li><a href="event.html">events</a></strong>
-  <ul>
-  <li><a href="event.html#intro">what it is</a>
-  <li><a href="event.html#use">using</a>
-  <li><a href="event.html#midi">the MIDI event</a>
-  <li><a href="event.html#osc">the OSC event</a>
-  <li><a href="event.html#extend">creating custom events</a>
-  </ul>
-
-</ul>
-
-</td></tr></table></td></tr></table>
-</center>
-</font>
-</td></tr>
-</table>
-
-</td></tr></table>
-
-<br />
-<font size="1">
-<hr width="15%" />
-<a href="../../">chuck</a> |
-<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
-<a href="http://www.cs.princeton.edu/">cs</a> |
-<a href="http://www.music.princeton.edu/">music</a> |
-<a href="http://ccrma.stanford.edu/">ccrma</a>
-<br />
-<br />
-</font>
 </body>
+
 </html>
