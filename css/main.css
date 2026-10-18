@@ -54,6 +54,12 @@ td {
     vertical-align: top;
 }
 
+code {
+    font-size: 100%;
+    color: #e83e8c;
+    word-break: normal;
+}
+
 /* ----------------- Utility ------------------- */
 
 .flex-container

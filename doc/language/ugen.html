@@ -1,89 +1,56 @@
-<!DOCTYPE html PUBLIC 
-"-//W3C//DTD XHTML 1.0 Strict//EN" 
-"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<title>ChucK - [Language Specification]</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChucK - [Language Specification : Unit Generators]</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/prism.css" />
 
 </head>
-<body bgcolor="#ffffff" text="#000000">
-<center>
 
-<!-- all in a big fat table-->
+<body class="type-page">
+    <header id="chuck_header">
+        <h2>ChucK : Language Specification &gt; Unit Generators</h2>
+        <div class="outlineDiv" style="background-color: white; margin-top: 1rem">
+            version: 1.5.x.x (numchucks)
+        </div>
 
-<table id="page_layout" border="0" width="640">
+        <hr width="20%" />
 
-<!-- heading row-->
+        <!-- navigation bar -->
+        <nav class="chuck_nav" aria-label="Language specification">
+            <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="import.html">@import System</a> | (up): <a href="./">Language Specification</a> | (next): <a href="uana.html">Unit Analyzers</a> &gt; </div>
+        </nav>
+    </header>
 
-<tr><td>
-<div id="chuck_header">
-<center>
-<h1>
-<strong>ChucK</strong> : Language Specification &gt; Unit Generators
-</h1>
-
-<table border="0">
-<tr><td>
-  	<div id="chuck_revision">
-	version: 1.5.x.x (numchucks)
-  	</div>
-  	
-</td></tr>
-</table>
-
-<hr width="20%" />
-</center>
-</div>
-</td></tr>
-
-<!-- navigation bar -->
-
-<tr><td>
-<center>
-<div class="chuck_nav">
-
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="import.html">@import system</a> | (up): <a href="./">language specification</a>  | (next): <a href="uana.html">unit analyzers</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
-
-</div>
-</center>
-</td></tr>
-
-<!-- lang specification section -->
-<tr><td>
-<div id="chuck_body">
-
-<div id="lang_topic_body">
+    <!-- lang specification section -->
+    <main class="leftText" id="lang_body">
+        <div id="lang_topic_body">
 
 <h1><strong>Unit Generators</strong></h1>
 <p>
-Unit Generators are function generators that output signals that can be used as audio or control signals.  However, 
-in ChucK, there is <i>no fixed control rate</i>.  <b>Any unit generator may be controlled at any rate</b>.  Using 
-the timing mechanism, you can program your own control rate, and can dynamically vary the control over time.  
+Unit Generators are function generators that output signals that can be used as audio or control signals.  However,
+in ChucK, there is <i>no fixed control rate</i>.  <b>Any unit generator may be controlled at any rate</b>.  Using
+the timing mechanism, you can program your own control rate, and can dynamically vary the control over time.
 Using concurrency, it is possible to have many different parallel controls rates, each at any granularity. </p>
 
 <p>Some more quick facts about ChucK unit generators</p>
 <ul>
 <li> All ChucK unit generators are objects (not primitive types). (see <a href="class.html">objects</a>)
-<li> All ChucK unit generators inherit from the <font face="courier"><b>UGen</b></font> class.
-<li> The operation <font face="courier"><b>foo =&gt; bar</b></font>, where 
-<font 
-face="courier"><b>foo</b></font> and <font face="courier"><b>bar</b></font> are UGen's, connects <font 
-face="courier"><b>foo</b></font> to <font face="courier"><b>bar</b></font>.
+<li> All ChucK unit generators inherit from the <b>UGen</b> class.
+<li> The operation <b>foo =&gt; bar</b>, where
+<b>foo</b> and <b>bar</b> are UGen's, connects <b>foo</b> to <b>bar</b>.
 <li> Unit generators are controlled by calling/chucking to member functions over time.
-<li> All unit generators have the functions <font face="courier"><b>gain</b></font>,
-<font face="courier"><b>op</b></font>, <font face="courier"><b>channels</b></font>, 
-<font face="courier"><b>chan</b></font>, and <font face="courier"><b>last</b></font>. (see below)
-<li> Three default, global unit generators are provided.  They are <font face="courier"><b>adc</b></font>,
-<font face="courier"><b>dac</b></font>, and <font face="courier"><b>blackhole</b></font>.  (see below)
-<li> Unit generators are specially integrated into the virtual machine such that audio is computed for every sample 
-<em>as time is advanced</em>.  Via the timing mechanism, we have the ability to assert control over the audio 
+<li> All unit generators have the functions <b>gain</b>,
+<b>op</b>, <b>channels</b>,
+<b>chan</b>, and <b>last</b>. (see below)
+<li> Three default, global unit generators are provided.  They are <b>adc</b>,
+<b>dac</b>, and <b>blackhole</b>.  (see below)
+<li> Unit generators are specially integrated into the virtual machine such that audio is computed for every sample
+<em>as time is advanced</em>.  Via the timing mechanism, we have the ability to assert control over the audio
 generate process at any point in time and at any desired control rate.
 </ul>
 
@@ -103,10 +70,8 @@ generate process at any point in time and at any desired control rate.
 <p>Unit generators (UGens) are objects, and need to be instantiated before they can be used.
 We declare unit generators the same way we declare <a href="class.html#new">objects</a>.</p>
 
-<pre>
-    // instantiate a SinOsc, assign reference to variable s
-    SinOsc s;
-</pre>
+<pre><code>// instantiate a SinOsc, assign reference to variable s
+SinOsc s;</code></pre>
 </div>
 
 <!-- additional sub topic sections go here... -->
@@ -114,71 +79,60 @@ We declare unit generators the same way we declare <a href="class.html#new">obje
 <div class="lang_subtopic_body">
 <a name="connect"> </a>
 <h2><strong>connecting</strong></h2>
-<p>The ChucK operator (=&gt;) is specially overloaded for unit generators: 
+<p>The ChucK operator (=&gt;) is specially overloaded for unit generators:
 ChucKing one UGen to another connects their respective output(s) and input(s).
 
-<pre>
-    // instantiate a SinOsc, connect its output to dac's input
-    SinOsc s => dac;
-</pre>
+<pre><code>// instantiate a SinOsc, connect its output to dac's input
+SinOsc s => dac;</code></pre>
 
 <p>It is also possible to linearly chain many UGens together in a single statement.</p>
 
-<pre>
-    // connect SinOsc to Gain to reverb to dac
-    SinOsc s => Gain g => JCRev r => dac;
-</pre>
+<pre><code>// connect SinOsc to Gain to reverb to dac
+SinOsc s => Gain g => JCRev r => dac;</code></pre>
 
 <p>Furthermore, it is possible to introduce feedback in the network.</p>
 
-<pre>
-    // connect adc to Gain to delayline to dac; (feedforward)
-    adc => Gain g1 => DelayL d => dac;
+<pre><code>// connect adc to Gain to delayline to dac; (feedforward)
+adc => Gain g1 => DelayL d => dac;
 
-    // adc to Gain to dac (feedforward)
-    adc => Gain g2 => dac;
+// adc to Gain to dac (feedforward)
+adc => Gain g2 => dac;
 
-    // our delayline to Gain back to itself (feedback)
-    d => Gain g3 => d;
-</pre>
-    
-<p>UGens may be dynamically connected in this fashion into an audio synthesis network.  It is essential to note 
-that the above only connects the unit generators, but does not actually generate audio - unless time is advanced.  
+// our delayline to Gain back to itself (feedback)
+d => Gain g3 => d;</code></pre>
+
+<p>UGens may be dynamically connected in this fashion into an audio synthesis network.  It is essential to note
+that the above only connects the unit generators, but does not actually generate audio - unless time is advanced.
 (see <a href="time.html">manipulating time</a> and <a href="event.html">using events</a>)</p>
 
-<pre>
-    // connect SinOsc to dac
-    SinOsc s => dac;
-    // set initial frequency (see next section)
-    440 => s.freq;
+<pre><code>// connect SinOsc to dac
+SinOsc s => dac;
+// set initial frequency (see next section)
+440 => s.freq;
 
-    // advance time; allow audio to compute
-    1::second => now;
-</pre>
+// advance time; allow audio to compute
+1::second => now;</code></pre>
 
-<p>It is also possible to dynamically disconnect unit generators, using 
-the UnChucK operator (<font face="courier"><b>=&lt;</b></font> or <font 
-face="courier"><b>!=&gt;</b></font>):</p>
+<p>It is also possible to dynamically disconnect unit generators, using
+the UnChucK operator (<b>=&lt;</b> or <b>!=&gt;</b>):</p>
 
-<pre>
-    // connect SinOsc to dac
-    SinOsc s => dac;
+<pre><code>// connect SinOsc to dac
+SinOsc s => dac;
 
-    // let time pass for 1 second letting audio be computed for that amount of time
-    1::second => now;
+// let time pass for 1 second letting audio be computed for that amount of time
+1::second => now;
 
-    // disconnect s from the dac
-    s =< dac;
+// disconnect s from the dac
+s =< dac;
 
-    // let time pass for another second - should hear silence
-    1::second => now;
+// let time pass for another second - should hear silence
+1::second => now;
 
-    // duh, connect them again
-    s => dac;
+// duh, connect them again
+s => dac;
 
-    // let time pass...
-    1::second => now;
-</pre>
+// let time pass...
+1::second => now;</code></pre>
 
 </div>
 
@@ -186,96 +140,86 @@ face="courier"><b>!=&gt;</b></font>):</p>
 <a name="ctrl"> </a>
 <h2><strong>controlling (over time)</strong></h2>
 
-<p>In ChucK, parameters of unit generators may be controlled and altered at any point in time and at any control 
-rate.  We only have to move through time and assert the control at appropriate points in time, by setting various 
-parameters on the unit generator.  To set the a value for a parameter of a unit generator a value of the proper 
+<p>In ChucK, parameters of unit generators may be controlled and altered at any point in time and at any control
+rate.  We only have to move through time and assert the control at appropriate points in time, by setting various
+parameters on the unit generator.  To set the a value for a parameter of a unit generator a value of the proper
 type should be ChucKed to the corresponding control fucntion.</p>
 
-<pre>
-    // connect SinOsc to dac
-    SinOsc s => dac;
-    // set initial frequency to 440 hz
-    440 => s.freq;
+<pre><code>// connect SinOsc to dac
+SinOsc s => dac;
+// set initial frequency to 440 hz
+440 => s.freq;
 
-    // let time pass for 1 second
-    1::second => now;
+// let time pass for 1 second
+1::second => now;
 
-    // change the frequency to 880 hz
-    880 => s.freq;
-</pre>
+// change the frequency to 880 hz
+880 => s.freq;</code></pre>
 
-<p>Since the control functions are member functions of the unit generator, the above syntax is equilavent to 
+<p>Since the control functions are member functions of the unit generator, the above syntax is equilavent to
 calling functions.</p>
 
-<pre>
-    // connect SinOsc to dac
-    SinOsc s => dac;
+<pre><code>// connect SinOsc to dac
+SinOsc s => dac;
 
-    // set frequency to 440
-    s.freq( 440 );
+// set frequency to 440
+s.freq( 440 );
 
-    // let time pass
-    1::second => now;
-</pre>
+// let time pass
+1::second => now;</code></pre>
 
-<p>For a list of unit generators and their control methods, consult <a href="../program/ugen.html">UGen 
+<p>For a list of unit generators and their control methods, consult <a href="../program/ugen.html">UGen
 reference</a>.</p>
 
-<p>To read the current value of certain parameters (not all parameters can be read), we may call an overloaded 
+<p>To read the current value of certain parameters (not all parameters can be read), we may call an overloaded
 function of the same name.</p>
 
-<pre>
-    // connect SinOsc to dac
-    SinOsc s => dac;
+<pre><code>// connect SinOsc to dac
+SinOsc s => dac;
 
-    // store the current value of the freq
-    s.freq() => float the_freq;
-</pre>
+// store the current value of the freq
+s.freq() => float the_freq;</code></pre>
 
-<p>You can chain assignments together when you want to assign one value to multiple targets. Note that the 
+<p>You can chain assignments together when you want to assign one value to multiple targets. Note that the
 parentheses are only needed when the read function is on the very left.</p>
-<pre>
-    // SinOsc to dac
-    SinOsc foo => dac;
-    // triosc to dac
-    triosc bar => dac;
+<pre><code>// SinOsc to dac
+SinOsc foo => dac;
+// triosc to dac
+triosc bar => dac;
 
-    // set frequency of foo and then bar
-    500 => foo.freq => bar.freq;
+// set frequency of foo and then bar
+500 => foo.freq => bar.freq;
 
-    // set one freq to the other
-    foo.freq() => bar.freq;
+// set one freq to the other
+foo.freq() => bar.freq;
 
-    // the above is same as:
-    bar.freq( foo.freq() );
-</pre>
+// the above is same as:
+bar.freq( foo.freq() );</code></pre>
 
 <p>Of course, varying parameters over time is often more interesting.</p>
 
-<pre>
-    // SinOsc to dac
-    SinOsc s => dac;
+<pre><code>// SinOsc to dac
+SinOsc s => dac;
 
-    // infinite time loop
-    while( true )
+// infinite time loop
+while( true )
     {
-        // set the frequency
-	( s.freq() + 200 ) % 5000 => s.freq;
+    // set the frequency
+    ( s.freq() + 200 ) % 5000 => s.freq;
 
-        // advance time
-        100::ms => now;
-    }
-</pre>
+    // advance time
+    100::ms => now;
+}</code></pre>
 
 <p>All ugen's have at least the following three control parameters:
 <ul>
-<li><font face="courier"><b>gain(float)</b></font> (of type <font face="courier">float</font>): set/get the gain of the 
+<li><b>gain(float)</b> (of type float): set/get the gain of the
 UGen's output.
-<li><font face="courier"><b>last()</b></font> (of type <font face="courier">float</font>): get the last sample 
+<li><b>last()</b> (of type float): get the last sample
 computed by the UGen.  if UGen has more than one channel, the average of all components channels are returned.
-<li><font face="courier"><b>channels()</b></font> (of type <font face="courier">int</font>): get the number of channels in the UGen.
-<li><font face="courier"><b>chan(int)</b></font> (of type <font face="courier">UGen</font>): return reference to nth channel (or <i>null</i> if no such channel).
-<li><font face="courier"><b>op(int)</b></font> (of type <font face="courier">int</font>): set/get operation at the UGen. 
+<li><b>channels()</b> (of type int): get the number of channels in the UGen.
+<li><b>chan(int)</b> (of type UGen): return reference to nth channel (or <i>null</i> if no such channel).
+<li><b>op(int)</b> (of type int): set/get operation at the UGen.
 Values:
 <ul>
 <li> 0 : stop - always output 0 </li>
@@ -287,7 +231,7 @@ Values:
 </ul>
 
 </ul>
- 
+
 
 </div>
 
@@ -295,34 +239,30 @@ Values:
 <a name="chan"> </a>
 <h2><strong>mono + stereo</strong></h2>
 <p>ChucK supports stereo (default) and multi-channel audio (see <a href="../program/vm.html">command line options</a>
-to select interfaces and number of channels). The <font face="courier"><b>dac</b></font> and the 
-<font face="courier"><b>adc</b></font> are now multi-channel UGens.  By default, ChucKing two UGens containing 
-the same number of channels (e.g. both stereo or both mono) automatically matches the output channels with the input 
-channels (e.g. left to left, right to right for stereo).  Stereo UGens mix their output channels when 
-connecting to mono UGens.  Mono UGens split their output channels when connecting to stereo UGens.  Stereo UGens 
+to select interfaces and number of channels). The <b>dac</b> and the
+<b>adc</b> are now multi-channel UGens.  By default, ChucKing two UGens containing
+the same number of channels (e.g. both stereo or both mono) automatically matches the output channels with the input
+channels (e.g. left to left, right to right for stereo).  Stereo UGens mix their output channels when
+connecting to mono UGens.  Mono UGens split their output channels when connecting to stereo UGens.  Stereo UGens
 contain the parameters .left and .right, which allow access to the individual channels.</p>
 
-<pre>
-    // adding separate reverb to left and right channels
-    adc.left => JCRev rl => dac.left;
-    adc.right => JCRev rr => dac.right;
-</pre>
+<pre><code>// adding separate reverb to left and right channels
+adc.left => JCRev rl => dac.left;
+adc.right => JCRev rr => dac.right;</code></pre>
 
-<p>The pan2 stereo object takes a mono signal and split it to a stereo signal, with control over the panning.  The 
+<p>The pan2 stereo object takes a mono signal and split it to a stereo signal, with control over the panning.  The
 pan position may be changed with the .pan parameter (-1 (hard left) <= p <= 1 (hard right))</p>
-<pre>
-    // white noise to pan to dac
-    noise n => pan2 p => dac;
+<pre><code>// white noise to pan to dac
+noise n => pan2 p => dac;
 
-    // infinite time loop
-    while( true )
+// infinite time loop
+while( true )
     {
-        // modulate the pan
-        Math.sin( now / 1::second * 2 * pi ) => p.pan;
-        // advance time
-        10::ms => now;
-    }
-</pre>
+    // modulate the pan
+    Math.sin( now / 1::second * 2 * pi ) => p.pan;
+    // advance time
+    10::ms => now;
+}</code></pre>
 
 </div>
 
@@ -335,8 +275,8 @@ pan position may be changed with the .pan parameter (-1 (hard left) <= p <= 1 (h
 <div class="lang_subtopic_body">
 <a name="built-in"> </a>
 <h2><strong>built-in unit generators</strong></h2>
-<p>ChucK has a number of built-in UGen classes, included most of the <a 
-href="http://ccrma.stanford.edu/software/stk/">Synthesis ToolKit</a> (STK).  A list of 
+<p>ChucK has a number of built-in UGen classes, included most of the <a
+href="http://ccrma.stanford.edu/software/stk/">Synthesis ToolKit</a> (STK).  A list of
 built-in ChucK unit generators can be found in the <a target="_blank" href="../reference/">ChucK Class Library Reference</a>.</p>
 </div>
 
@@ -345,45 +285,47 @@ built-in ChucK unit generators can be found in the <a target="_blank" href="../r
 <!-- end subtopics ? -->
 
 </div>
-</div>
-</td></tr>
+    </main>
 
-<!-- navigation bar -->
+    <!-- navigation bar -->
+    <nav class="chuck_nav" aria-label="Language specification">
+        <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="import.html">@import System</a> | (up): <a href="./">Language Specification</a> | (next): <a href="uana.html">Unit Analyzers</a> &gt; </div>
+    </nav>
 
-<tr><td>
-<center>
-<div class="chuck_nav">
+    <hr width="20%" />
 
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="class.html">classes &amp; objects </a> | (up): <a href="./">language specification</a>  | (next): <a href="uana.html">unit analyzers</a> 
-&gt; 
-	</div>
-	</center>  
-	</td></tr></table>
+    <!-- chuck-footer -->
+    <footer>
+        <a href="../../">ChucK</a> |
+        <a href="http://soundlab.cs.princeton.edu/">Soundlab</a> |
+        <a href="http://www.cs.princeton.edu/">CS</a> |
+        <a href="http://www.music.princeton.edu/">Music</a> |
+        <a href="http://ccrma.stanford.edu/">CCRMA</a>
+    </footer>
 
-</div>
-</center>
-</td></tr>
+<script src="../../js/prism.js"></script>
+<script>
+    Prism.languages.chuck = Prism.languages.extend('clike', {
+        'keyword': /\b(abstract|continue|for|new|do|if|private|this|break|double|implements|protected|else|public|return|extends|int|try|char|final|interface|static|void|class|long|const|float|super|while|spork|fun|second|samp|ms|day|week|hour|minute|pi|e|dac|adc|blackhole|complex|polar|bar|measure)\b/g,
+        'number': /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\b\d*\.?\d+\b/gi,
+        'operator': {
+            pattern: /(^|[^\.])(?:\+=|\+\+?|-=|--?|!=?|<{1,2}=?|>{1,3}=?|==?|&=|&&?|\|=|\|\|?|\?|\*=?|\/=?|%=?|\^=?|:|~|::|=>)/gm,
+            lookbehind: true
+        }
+    });
+    document.querySelectorAll('#lang_body pre').forEach(function (codeBlock) {
+        var code = codeBlock.querySelector('code');
+        if (!code) {
+            return;
+        }
 
-<!-- chuck-footer -->
-
-<tr><td>
-<div id ="chuck_footer">
-<center>
-<hr width="15%" / >
-<a href="../../">chuck</a> |
-<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
-<a href="http://www.cs.princeton.edu/">cs</a> |
-<a href="http://www.music.princeton.edu/">music</a> |
-<a href="http://ccrma.stanford.edu/">ccrma</a>
-
-</center>
-</div>
-</td></tr>
-</table>
-
-</center>
+        codeBlock.classList.add('language-chuck');
+        code.classList.add('language-chuck');
+        code.querySelectorAll('br').forEach(function (lineBreak) {
+            lineBreak.replaceWith('\n');
+        });
+    });
+    Prism.highlightAll();
+</script>
 </body>
 </html>
