@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search examples</title>
+    <!-- Same site stylesheet as the example pages. Remove it if it fights the styles below. -->
+    <link rel="stylesheet" href="/css/main.css" type="text/css">
+    <style>
+        /* Neutral on purpose: colors come from the site, grays are translucent so they work on light or dark. */
+        #search-app {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        #q {
+            -webkit-appearance: revert;
+            appearance: revert;
+            outline-offset: 0px;
+
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            font-size: 1.1rem;
+            font-family: ui-monospace, Menlo, Consolas, monospace;
+        }
+
+        .options {
+            margin: 0.5rem 0;
+        }
+
+        .options label {
+            display: inline-block;
+            margin-right: 1.5rem;
+        }
+
+        #status {
+            min-height: 1.5em;
+            margin: 0.75rem 0;
+        }
+
+        .result {
+            margin: 1rem 0;
+            border: 1px solid rgba(128, 128, 128, 0.4);
+        }
+
+        .result-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.25rem 0.75rem;
+            padding: 0.4rem 0.75rem;
+            background: rgba(128, 128, 128, 0.12);
+        }
+
+        .result-head .crumb {
+            opacity: 0.65;
+            margin-right: -0.5rem;
+        }
+
+        .result-head .name {
+            font-weight: bold;
+        }
+
+        .result-head .tag,
+        .result-head .raw {
+            font-size: 0.85rem;
+        }
+
+        .result-head .tag {
+            opacity: 0.7;
+        }
+
+        .result-head .raw {
+            margin-left: auto;
+        }
+
+        .code {
+            overflow-x: auto;
+            padding: 0.35rem 0;
+            font-family: ui-monospace, Menlo, Consolas, monospace;
+            font-size: 0.85rem;
+            tab-size: 4;
+        }
+
+        .line {
+            display: flex;
+            min-width: max-content;
+            white-space: pre;
+        }
+
+        .line .ln {
+            flex: 0 0 3.5rem;
+            padding-right: 0.75rem;
+            text-align: right;
+            opacity: 0.5;
+            user-select: none;
+        }
+
+        .line .tx {
+            min-height: 1.3em;
+            padding-right: 1rem;
+        }
+
+        .line.context .tx {
+            opacity: 0.6;
+        }
+
+        .gap {
+            padding-left: 3.5rem;
+            opacity: 0.5;
+        }
+
+        mark {
+            padding: 0 1px;
+            border-radius: 2px;
+            background: #ffd54a;
+            color: #000;
+        }
+
+        .expand,
+        #more {
+            margin: 0.25rem 0.75rem 0.6rem;
+        }
+
+        #more {
+            margin-left: 0;
+        }
+
+        #search-app .error {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid rgba(128, 128, 128, 0.6);
+        }
+
+        a {
+            text-decoration: underline;
+        }
+
+        button {
+            -webkit-appearance: revert;
+            appearance: revert;
+            outline-offset: 0px;
+
+            top: auto;
+            right: 0;
+            background-color: transparent;
+            border-color: #333;
+            color: #333;
+            padding: 0.5rem 0.3rem;
+            opacity: 0.8;
+            position: relative;
+            transition: all 0.1s ease-in-out;
+
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+
+<header>
+    <!-- Version Container -->
+    <div class="outlineDiv" style="width: 333px">
+        <div><a href="/doc/authors.html">ChucK Team</a> | 2003 =&gt; now</div>
+        <div>latest version: <a href="/release/">1.5.5.8</a> (chai)</div>
+        <div class="small-text">(<a href="/release/VERSIONS">What's new?</a>)</div>
+    </div>
+
+    <!-- Logos -->
+    <div class="flex-container">
+        <a href="../">
+            <img src="/doc/images/chuck-logo2023w.png" alt="ChucK operator" title="ChucK" width="10%" />
+        </a>
+    </div>
+</header>
+
+<body>
+    <main id="search-app">
+        <h1>Search examples</h1>
+        <p>
+            Find any keyword or code snippet in the example code, such as <code>=&gt;</code> or <code>GGen</code>.
+            Spaces in your search match any amount of whitespace, so pasted code matches regardless of indentation.
+        </p>
+
+        <input id="q" type="search" placeholder="Search the example code" aria-label="Search the example code"
+            autocomplete="off" autocapitalize="off" spellcheck="false" autofocus>
+        <div class="options">
+            <label><input type="checkbox" id="case"> Match case</label>
+            <label><input type="checkbox" id="regex"> Regular expression</label>
+        </div>
+
+        <p id="status" role="status" aria-live="polite"></p>
+        <div id="results"></div>
+        <button id="more" type="button" hidden>Show more examples</button>
+        <noscript><p>Search needs JavaScript turned on.</p></noscript>
+    </main>
+
+    <hr width="20%" style="margin:2rem auto;">
+    <!-- Footer -->
+    <footer style="font-size: 0.9em;">
+        <a href="http://ccrma.stanford.edu/">CCRMA</a> |
+        <a href="https://youtube.com/@chuck2now">YouTube</a> |
+        <a href="https://mcd.stanford.edu/">MCD</a>
+    </footer>
+
+    <script>
+        (() => {
+            "use strict";
+
+            // ---- Settings ------------------------------------------------------
+            const DATA_URL = "/search/examples.json"; // where the index is, as a path from the site root
+            const BASE = "/doc/examples/"; // where the examples live, as a path from the site root (keep the trailing slash)
+            const BATCH = 40;       // examples shown at first and per "Show more examples"
+            const HITS_SHOWN = 6;   // matching lines shown per example before "Show more" (a match right beside a shown one comes along as context)
+            const CONTEXT = 1;      // lines of context shown above and below each match
+            const MAX_MATCHES = 1000; // safety cap per example
+            const MAX_QUERY = 300;  // longest search accepted
+            const INDEX_VERSION = 1; // must match build_search_index.py
+
+            // ---- Elements and state --------------------------------------------
+            const $ = (id) => document.getElementById(id);
+            const input = $("q"), caseBox = $("case"), regexBox = $("regex");
+            const statusEl = $("status"), resultsEl = $("results"), moreBtn = $("more");
+
+            let examples = [];   // prepared index entries
+            let results = [];    // results of the current search
+            let shown = 0;       // how many results are on screen
+            let ready = false;
+
+            const plural = (n, word) => `${n.toLocaleString()} ${word}${n === 1 ? "" : "s"}`;
+            const encodePath = (p) => p.split("/").map(encodeURIComponent).join("/");
+            const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+            // ---- Index ---------------------------------------------------------
+            // Precompute line start offsets so a match position maps to a line number fast.
+            function prepare(raw) {
+                const lines = raw.code.split("\n");
+                const starts = [];
+                let offset = 0;
+                for (const line of lines) {
+                    starts.push(offset);
+                    offset += line.length + 1;
+                }
+                const slash = raw.path.lastIndexOf("/");
+                return {
+                    path: raw.path,
+                    dir: slash >= 0 ? raw.path.slice(0, slash) : "",
+                    name: slash >= 0 ? raw.path.slice(slash + 1) : raw.path,
+                    page: raw.page,
+                    code: raw.code,
+                    lines,
+                    starts,
+                };
+            }
+
+            function lineAt(starts, pos) {
+                let lo = 0, hi = starts.length - 1;
+                while (lo < hi) {
+                    const mid = (lo + hi + 1) >> 1;
+                    if (starts[mid] <= pos) lo = mid; else hi = mid - 1;
+                }
+                return lo;
+            }
+
+            // ---- Searching -----------------------------------------------------
+            function buildRegex(query, isRegex, matchCase) {
+                const flags = "gm" + (matchCase ? "" : "i");
+                if (isRegex) return new RegExp(query, flags); // throws if invalid
+                // Literal: escape everything, but let any run of spaces match any whitespace
+                const source = query.trim().split(/\s+/).map(escapeRegExp).join("\\s+");
+                return new RegExp(source, flags);
+            }
+
+            // Returns Map(line index -> [[start, end], ...]) for one example
+            function findInExample(example, re) {
+                const ranges = new Map();
+                let count = 0, m;
+                re.lastIndex = 0;
+                while ((m = re.exec(example.code)) !== null) {
+                    if (m[0].length === 0) { re.lastIndex++; continue; }
+                    const start = m.index, end = start + m[0].length;
+                    const first = lineAt(example.starts, start);
+                    const last = lineAt(example.starts, end - 1);
+                    for (let l = first; l <= last; l++) { // a match can span lines
+                        const lineStart = example.starts[l];
+                        const a = Math.max(start, lineStart) - lineStart;
+                        const b = Math.min(end, lineStart + example.lines[l].length) - lineStart;
+                        if (b > a) {
+                            let list = ranges.get(l);
+                            if (!list) ranges.set(l, list = []);
+                            list.push([a, b]);
+                        }
+                    }
+                    if (++count >= MAX_MATCHES) break;
+                }
+                return ranges;
+            }
+
+            function runSearch() {
+                if (!ready) return;
+                syncUrl();
+                const query = input.value;
+                resultsEl.replaceChildren();
+                moreBtn.hidden = true;
+                results = [];
+                shown = 0;
+
+                if (!query.trim()) {
+                    statusEl.textContent = `Searching ${plural(examples.length, "example")}.`;
+                    return;
+                }
+                if (query.length > MAX_QUERY) {
+                    showError(`That search is too long. Shorten it to ${MAX_QUERY} characters or fewer.`);
+                    return;
+                }
+                let re;
+                try {
+                    re = buildRegex(query, regexBox.checked, caseBox.checked);
+                } catch (err) {
+                    showError(`That isn't a valid regular expression (${err.message}). Fix it, or turn off Regular expression to search for the text as typed.`);
+                    return;
+                }
+
+                for (const example of examples) {
+                    const ranges = findInExample(example, re);
+                    re.lastIndex = 0;
+                    const pathHit = re.test(example.path);
+                    re.lastIndex = 0;
+                    if (ranges.size || pathHit) {
+                        const hits = [...ranges.keys()].sort((a, b) => a - b);
+                        results.push({ example, ranges, hits, pathHit, expanded: false });
+                    }
+                }
+                results.sort((a, b) =>
+                    (b.pathHit - a.pathHit) || (a.example.path < b.example.path ? -1 : 1));
+
+                if (!results.length) {
+                    statusEl.textContent = `No matches in ${plural(examples.length, "example")}.`;
+                    return;
+                }
+                const lines = results.reduce((sum, r) => sum + r.hits.length, 0);
+                statusEl.textContent = `${plural(results.length, "example")}, ${plural(lines, "matching line")}.`;
+                appendMore();
+            }
+
+            function showError(message) {
+                statusEl.textContent = "";
+                const box = document.createElement("div");
+                box.className = "error";
+                box.textContent = message;
+                resultsEl.append(box);
+            }
+
+            // ---- Rendering (built with DOM calls, never innerHTML, so code can't inject markup) ----
+            function highlighted(text, ranges) {
+                const frag = document.createDocumentFragment();
+                if (!ranges || !ranges.length) { frag.append(text); return frag; }
+                ranges.sort((a, b) => a[0] - b[0]);
+                let pos = 0;
+                for (const [s, e] of ranges) {
+                    if (e <= pos) continue;
+                    const start = Math.max(s, pos);
+                    if (start > pos) frag.append(text.slice(pos, start));
+                    const mark = document.createElement("mark");
+                    mark.textContent = text.slice(start, e);
+                    frag.append(mark);
+                    pos = e;
+                }
+                if (pos < text.length) frag.append(text.slice(pos));
+                return frag;
+            }
+
+            function fillBody(body, r) {
+                body.replaceChildren();
+                const ex = r.example;
+                const hits = r.expanded ? r.hits : r.hits.slice(0, HITS_SHOWN);
+
+                const want = new Set();
+                for (const h of hits) {
+                    const from = Math.max(0, h - CONTEXT), to = Math.min(ex.lines.length - 1, h + CONTEXT);
+                    for (let i = from; i <= to; i++) want.add(i);
+                }
+
+                const code = document.createElement("div");
+                code.className = "code";
+                let prev = -1;
+                for (const i of [...want].sort((a, b) => a - b)) {
+                    if (prev >= 0 && i > prev + 1) {
+                        const gap = document.createElement("div");
+                        gap.className = "gap";
+                        gap.textContent = "…";
+                        code.append(gap);
+                    }
+                    const ranges = r.ranges.get(i);
+                    const row = document.createElement("div");
+                    row.className = "line" + (ranges ? "" : " context");
+                    const ln = document.createElement("span");
+                    ln.className = "ln";
+                    ln.textContent = i + 1;
+                    const tx = document.createElement("span");
+                    tx.className = "tx";
+                    tx.append(highlighted(ex.lines[i], ranges));
+                    row.append(ln, tx);
+                    code.append(row);
+                    prev = i;
+                }
+                body.append(code);
+
+                const hidden = r.hits.filter((h) => !want.has(h)).length;
+                if (hidden > 0 || (r.expanded && r.hits.length > HITS_SHOWN)) {
+                    const btn = document.createElement("button");
+                    btn.type = "button";
+                    btn.className = "expand";
+                    btn.textContent = hidden > 0
+                        ? `Show ${plural(hidden, "more matching line")}`
+                        : "Show fewer lines";
+                    btn.addEventListener("click", () => { r.expanded = !r.expanded; fillBody(body, r); });
+                    body.append(btn);
+                }
+            }
+
+            function renderResult(r) {
+                const ex = r.example;
+                const card = document.createElement("div");
+                card.className = "result";
+
+                const head = document.createElement("div");
+                head.className = "result-head";
+                if (ex.dir) {
+                    const crumb = document.createElement("span");
+                    crumb.className = "crumb";
+                    crumb.textContent = ex.dir + "/";
+                    head.append(crumb);
+                }
+                const link = document.createElement("a");
+                link.className = "name";
+                link.href = BASE + encodePath(ex.page ? ex.path.replace(/\.ck$/i, ".html") : ex.path);
+                link.textContent = ex.name;
+                head.append(link);
+                if (r.pathHit) {
+                    const tag = document.createElement("span");
+                    tag.className = "tag";
+                    tag.textContent = "name matches";
+                    head.append(tag);
+                }
+                if (ex.page) {
+                    const raw = document.createElement("a");
+                    raw.className = "raw";
+                    raw.href = BASE + encodePath(ex.path);
+                    raw.textContent = "Open .ck file";
+                    head.append(raw);
+                }
+                card.append(head);
+
+                if (r.hits.length) {
+                    const body = document.createElement("div");
+                    body.className = "result-body";
+                    fillBody(body, r);
+                    card.append(body);
+                }
+                return card;
+            }
+
+            function appendMore() {
+                const batch = results.slice(shown, shown + BATCH);
+                for (const r of batch) resultsEl.append(renderResult(r));
+                shown += batch.length;
+                moreBtn.hidden = shown >= results.length;
+                moreBtn.textContent = `Show more examples (${(results.length - shown).toLocaleString()} left)`;
+            }
+
+            // ---- URL: searches can be bookmarked and linked (?q=...&case=1&regex=1) ----
+            function syncUrl() {
+                const p = new URLSearchParams();
+                if (input.value) p.set("q", input.value);
+                if (caseBox.checked) p.set("case", "1");
+                if (regexBox.checked) p.set("regex", "1");
+                const qs = p.toString();
+                try { history.replaceState(null, "", qs ? "?" + qs : location.pathname); } catch (e) { /* e.g. file:// */ }
+            }
+
+            function applyUrl() {
+                const p = new URLSearchParams(location.search);
+                input.value = p.get("q") || "";
+                caseBox.checked = p.get("case") === "1";
+                regexBox.checked = p.get("regex") === "1";
+            }
+
+            // ---- Start ---------------------------------------------------------
+            let timer;
+            input.addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(runSearch, 120); });
+            caseBox.addEventListener("change", runSearch);
+            regexBox.addEventListener("change", runSearch);
+            moreBtn.addEventListener("click", appendMore);
+
+            // Pasting a multi-line snippet: browsers disagree on what a single-line field does with line breaks,
+            // so turn them into spaces ourselves (spaces match any whitespace, including line breaks).
+            input.addEventListener("paste", (event) => {
+                const text = event.clipboardData && event.clipboardData.getData("text");
+                if (!text || !/[\r\n]/.test(text)) return;
+                event.preventDefault();
+                input.setRangeText(text.trim().replace(/\s*[\r\n]+\s*/g, " "), input.selectionStart, input.selectionEnd, "end");
+                input.dispatchEvent(new Event("input", { bubbles: true }));
+            });
+
+            async function init() {
+                applyUrl();
+                statusEl.textContent = "Loading the search index…";
+                try {
+                    const res = await fetch(DATA_URL, { cache: "no-cache" }); // revalidate, so a rebuilt index shows up
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    const data = await res.json();
+                    if (data.version !== INDEX_VERSION) throw new Error("the index is a different version than this page expects");
+                    examples = data.examples.map(prepare);
+                } catch (err) {
+                    statusEl.textContent = "";
+                    showError(`Couldn't load ${DATA_URL} (${err.message}). Check that the index file is uploaded to that address. ` +
+                        "Opening this page straight from disk won't work; serve the site folder instead, for example with python3 -m http.server.");
+                    return;
+                }
+                ready = true;
+                runSearch();
+            }
+            init();
+        })();
+    </script>
+</body>
+
+</html>

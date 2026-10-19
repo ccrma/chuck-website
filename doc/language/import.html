@@ -162,7 +162,7 @@ public class Bar
     Blarg blarg(5);
 }</code></pre>
 
-As a somewhat more practical example, <a target="_blank" href="../examples/deep/ks-chord.ck">ks-chord.ck</a> (a four-voice Karplus Strong chord filter) defines a public <b>KSChord</b> class, which in turns makes use of a non-public <b>KS</b> class. A host file that <b>@import "ks-chord.ck"</b> would be able to instantiate <b>KSChord</b> objects&mdash;but <i>not</i> <b>KS</b> objects.
+As a somewhat more practical example, <a target="_blank" href="../examples/deep/ks-chord.html">ks-chord.ck</a> (a four-voice Karplus Strong chord filter) defines a public <b>KSChord</b> class, which in turns makes use of a non-public <b>KS</b> class. A host file that <b>@import "ks-chord.ck"</b> would be able to instantiate <b>KSChord</b> objects&mdash;but <i>not</i> <b>KS</b> objects.
 <br><br>
 <b>CAVEATS</b>: public classes cannot access local variables (i.e., file-scope variables defined outside of class definitions). In general, non-public classes can access local variable&mdash;as long as the containing file is not being imported. This restriction is necessary because imported files have no file-level environment of their own. For example:
 <br><br>
