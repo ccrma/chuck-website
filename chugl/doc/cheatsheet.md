@@ -27,7 +27,7 @@ The position, rotation, and scale of an object is called its **Transform**. Tran
 
 ```c
 GCube cube --> GG.scene(); // connect a cube to the scene
-cube.pos(@(1,2,3)); // set cube's position to xyz coordinate (1,2,3)
+cube.pos(@(1,0,0)); // set cube's position to xyz coordinate (1,0,0)
 cube.scaX(2); // double the cube's width along the x axis
 
 while (true) {
@@ -137,6 +137,14 @@ light.rotateZ(Math.PI); // rotate the light downwards by PI radians
 
 // change light color
 Color.YELLOW => light.color;
+
+GCube cube --> GG.scene(); // connect a cube to the scene
+
+cube.rotX(Math.PI / 4); // rotate the cube by PI/4 radians
+
+while (true) {
+    GG.nextFrame() => now; // wait for the next frame
+}
 ```
 
 See the API reference for more.
@@ -403,9 +411,6 @@ geo.uvs(vec2[] uvs)
 
 // Set the tangents for a geometry. Equivalent to vertexAttribute(3, 4, tangents)
 geo.tangents(vec4[] tangents)
-
-// OR you can auto-generate the tangents via:
-geo.generateTangents(); // must be called AFTER supplying position, normal, and uv data. Will write tangents to vertex attribute location 4.
 ```
 
 Alternatively, if you want to make custom geometries to work with custom shaders:
