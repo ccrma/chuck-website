@@ -48,7 +48,7 @@
         <nav class="chuck_nav" aria-label="Language specification">
             <div class="chuck_nav_bar outlineDiv" style="max-width: none"> &lt; (up): <a href="./">Language
                     Specification</a> | (next): <a href="type.html">Types, Values,
-                &amp; Variables</a> &gt; </div>
+                    &amp; Variables</a> &gt; </div>
         </nav>
     </header>
 
@@ -77,50 +77,55 @@
         <ul>
             <li>Command-Line Application: <code style="font-family: courier;"><b>chuck</b></code> (runs in a terminal
                 program)<br>
-            <li><b>miniAudicle</b>: an integrate development environment
+            <li><b>miniAudicle</b>: an integrated development environment
             <li><b><a target="_blank" href="../../ide/">WebChucK IDE</a></b>: write and run ChucK in a web browser
         </ul>
 
         <p>To run a ChucK file, <span style="font-family: courier;">foo.ck</span>
             for example, simply type <code style="font-family: courier;"><b>chuck</b></code>
-            and the name of a .ck file into your command-line interface:</p>
+            and which .ck file to run:</p>
         <pre class="terminal"><code>chuck foo.ck</code></pre>
 
-        <p>To run multiple files concurrently (or the same one
-            multiple times) type:</p>
+        <p>To run multiple files at once (or the same one
+            concurrently with itself) type:</p>
         <pre class="terminal"><code>chuck foo.ck bar.ck bar.ck boo.ck</code></pre>
 
-        <p>There are several flags you can specify to control how ChucK operates,
-            or to find out about the system. For example,the following probes the
-            audio system and prints out all available audio devices and MIDI devices.
+        <p>Flags specify how ChucK operates, or return information about the virtual machine.
+            The following example uses <code>--probe</code> to print information
+            on all available audio devices, MIDI devices, and human interface devices (HIDs).
             You may then refer to them (by number usually) from the command line or
             from your program (see <a href="../program/vm.html">VM
                 Options</a> for a complete list).</p>
 
         <pre class="terminal"><code>chuck --probe</code></pre>
+        <pre><code>[chuck]: [CoreAudio] driver found 7 audio device(s)...
+[chuck]: 
+[chuck]: ------( audio device: 1 )------
+[chuck]: device name = "External Headphones"</code></pre>
+        <p>Now we can specify an output device using <code>--dac:N</code>, where N is the audio device number.</p>
+        <pre class="terminal"><code>chuck --dac:1</code></pre>
 
-        <p>ChucK can be run in a different terminal as a host/listener that patches may be sent to. The
-            server should invoke the
-            --loop flag to specify that the virtual machine should not halt automatically (when the current
-            programs
-            exit).</p>
+        <p>ChucK can run as a host/server that can receive code from a client. The
+            server invokes the <code style="white-space: nowrap;">--loop</code> flag to
+            specify that the virtual machine shouldn't halt automatically when the current
+            programs exit.</p>
 
         <pre class="terminal"><code>chuck --loop</code></pre>
 
         <p>
             (See the guide to <a href="../program/otfp.html">On-the-fly Programming</a> for more
-            information</a>)
+            information)
         </p>
 
-        <p>If a ChucK listener is running, we can (from a second terminal) send a program/patch to to the
-            listener by using the + command
+        <p>If a ChucK host is running, we can send a program to the
+            listener by using the <code>+</code> command
             line option:</p>
 
         <pre class="terminal"><code>chuck + foo.ck</code></pre>
 
-        <p>Similarly, you can use <code>-</code> and <code>=</code> to
-            remove/replace a patch in the listener, and
-            use <code>^</code> to find out the status. Again,
+        <p>Similarly, we can use <code>-</code> to remove and <code>=</code> to
+            replace a program on the host. We can
+            use <code>^</code> to find out the status of the host's virtual machine. Again,
             see <a href="../program/otfp.html">On-the-fly Programming</a> for more
             information.</p>
 
@@ -132,40 +137,37 @@
 
         <div class="lang_subtopic_body">
             <a name="comment"> </a>
-            <h2><strong>comments</strong></h2>
+            <h2><strong>Comments</strong></h2>
 
-            <p>Comments are sections of code that are ignored by a compiler. These
-                help other programmers (and yourself) interpret your code. Double slashes
+            <p>
+                Comments are sections of code that are ignored. They
+                help you and other programmers interpret your code. Double slashes
                 indicate to the compiler to skip the rest of the line. /* and */
-                denotes block commenting - the compiler ignores the text in between.
-                (Note: block comments cannot be nested)
+                denotes block commenting - the compiler ignores the text in between
+                (Note: block comments cannot be nested).
+            </p>
 
             <pre><code>// this is a comment
-int foo; // another comment
+int foo; // this is also a comment
 
 /* 
 this is a block comment
-still going...
+SinOsc bar => dac; this line is ignored
 */</code></pre>
         </div>
 
 
         <div class="lang_subtopic_body">
             <a name="debugprint"> </a>
-            <h2><strong>debug print</strong></h2>
+            <h2><strong>Printing</strong></h2>
 
             <p>
-                For the time being, <code>stdout</code> and <code>chout</code>
-                have been temporarily disabled for the
-                present release. In their place we have provided a debug print syntax:
-            <pre><code>// prints out value of <em>expression</em>
-<b>&lt;&lt;&lt;</b> <em>expression</em> <b>&gt;&gt;&gt;</b>;</code></pre>
-
-            <p>This will print the values and types of any expressions placed within
-                them. This debug print construction may be placed around any
-                non-declaration expression ( non l-value ) and will not affect the
-                execution of the code. Expressions which represent an object will print
-                the value of that object's reference address:</p>
+                The debug print syntax <code>&lt;&lt;&lt; &gt;&gt;&gt;</code> is used to display the value and type of any expression placed within
+                it in the console. This syntax may be placed around, 
+                and will not affect the execution of, any non-declarative expression ( non l-value ). 
+                The value to be printed can also be passed through by using the chuck operator. 
+                Expressions which represent an object will print the value of that object's reference address.<br>
+            </p>
 
             <pre><code>// assign 5 to a newly declared variable 
 5 =&gt; int i;
@@ -173,13 +175,15 @@ still going...
 &lt;&lt;&lt;i&gt;&gt;&gt;;
 
 // prints "hello! : (string)"
-&lt;&lt;&lt;"hello!"&gt;&gt;&gt;; //prints "hello! : (string)"
+&lt;&lt;&lt;"hello!"&gt;&gt;&gt;;
 
 // prints "3.5 : (float)"
-&lt;&lt;&lt;1.0 + 2.5 &gt;&gt;&gt;=> float x;</code></pre>
+&lt;&lt;&lt;1.0 + 2.5 &gt;&gt;&gt; => float x;
+// prints "3.5 : (float)" again
+&lt;&lt;&lt;x&gt;&gt;&gt;;</code></pre>
 
-            <p>For more formatted data output, a comma-separated list of expressions
-                will print only their respective values (with one space between):</p>
+            <p>To format and print data, use a comma-separated list of expressions.
+                This will print their respective values with one space between:</p>
 
             <pre><code>// prints "the value of x is 3.5" (x from above)
 &lt;&lt;&lt;"the value of x is" , x &gt;&gt;&gt;;
@@ -187,11 +191,24 @@ still going...
 // prints "4 + 5 is 9"
 &lt;&lt;&lt;"4 + 5 is", 4 + 5&gt;&gt;&gt;;
 
-// prints "here are 3 random numbers ? ? ?"
+// prints "here are 3 random numbers 6 8 2" or similar
 &lt;&lt;&lt;"here are 3 random numbers", 
     Std.rand2(0,9), 
     Std.rand2(0,9),
     Std.rand2(0,9) &gt;&gt;&gt;; 
+</code></pre>
+
+<p>
+    There are also standard output and error objects <code>chout</code> and <code>cherr</code>.
+</p>
+
+<pre><code>chout &lt;= "Hello World!";
+chout &lt;= IO.newline();
+cherr &lt;= "Goodbye";
+
+// prints
+// "Hello World!"
+// "Goodbye"
 </code></pre>
 
 
@@ -199,7 +216,7 @@ still going...
 
         <div class="lang_subtopic_body">
             <a name="reserve"> </a>
-            <h2><strong>reserved words</strong></h2>
+            <h2><strong>Reserved Words</strong></h2>
             <ul>
                 <li><em>(primitive types)</em>
                     <ul>
@@ -391,7 +408,7 @@ still going...
     <nav class="chuck_nav" aria-label="Language specification">
         <div class="chuck_nav_bar outlineDiv" style="max-width: none"> &lt; (up): <a href="./">Language
                 Specification</a> | (next): <a href="type.html">Types, Values,
-            &amp; Variables</a> &gt; </div>
+                &amp; Variables</a> &gt; </div>
     </nav>
 
     <hr width="20%">
@@ -439,4 +456,5 @@ still going...
         Prism.highlightAll();
     </script>
 </body>
+
 </html>

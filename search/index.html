@@ -233,6 +233,7 @@
             const MODES = {
                 examples: {
                     url: "/search/examples.json", // the examples index, as a path from the site root
+                    version: 2,                   // must match build_search_index.py
                     unit: "example",
                     placeholder: "Search the example code",
                     hint: "Find any keyword or code snippet in the example code, such as => or GGen. " +
@@ -240,6 +241,7 @@
                 },
                 site: {
                     url: "/search/site.json",      // the site-content index
+                    version: 1,                    // must match build_site_index.py
                     unit: "page",
                     placeholder: "Search the site",
                     hint: "Find pages and sections across the site. Every word you type has to appear, in any order. " +
@@ -248,7 +250,6 @@
                 },
             };
             const DEFAULT_MODE = "examples"; // which one opens first; change to "site" to lead with site search
-            const BASE = "/doc/examples/";    // where the examples live, as a path from the site root (keep the trailing slash)
             const BATCH = 40;       // results shown at first and per "Show more results"
             const HITS_SHOWN = 6;   // example mode: matching lines per example before "Show more" (a match right beside a shown one comes along as context)
             const CONTEXT = 1;      // example mode: lines of context shown above and below each match
@@ -257,7 +258,6 @@
             const MAX_MATCHES = 1000; // safety cap per example
             const MAX_QUERY = 300;  // longest search accepted
             const MAX_TERMS = 12;   // most words used in a site search
-            const INDEX_VERSION = 1; // must match build_search_index.py and build_site_index.py
 
             // ---- Elements and state --------------------------------------------
             const $ = (id) => document.getElementById(id);
@@ -289,11 +289,13 @@
                     starts.push(offset);
                     offset += line.length + 1;
                 }
-                const slash = raw.path.lastIndexOf("/");
+                const full = raw.root ? raw.root + "/" + raw.path : raw.path; // from the site root, e.g. doc/examples/basic/sinosc.ck
+                const slash = full.lastIndexOf("/");
                 return {
-                    path: raw.path,
-                    dir: slash >= 0 ? raw.path.slice(0, slash) : "",
-                    name: slash >= 0 ? raw.path.slice(slash + 1) : raw.path,
+                    path: raw.path, // inside its examples folder
+                    full,
+                    dir: slash >= 0 ? full.slice(0, slash) : "",
+                    name: slash >= 0 ? full.slice(slash + 1) : full,
                     page: raw.page,
                     code: raw.code,
                     lines,
@@ -312,7 +314,7 @@
                 const res = await fetch(MODES[m].url, { cache: "no-cache" }); // revalidate, so a rebuilt index shows up
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
-                if (data.version !== INDEX_VERSION) throw new Error("the index is a different version than this page expects");
+                if (data.version !== MODES[m].version) throw new Error("the index is a different version than this page expects; rebuild it with its build script");
                 loaded[m] = m === "site" ? data.pages.map(preparePage) : data.examples.map(prepareExample);
                 return loaded[m];
             }
@@ -364,13 +366,13 @@
                 const found = [];
                 for (const example of examples) {
                     const ranges = findInExample(example, re);
-                    const pathHit = has(re, example.path);
+                    const pathHit = has(re, example.full); // the whole path, so "chugl" finds the examples in a chugl folder
                     if (ranges.size || pathHit) {
                         const hits = [...ranges.keys()].sort((a, b) => a - b);
                         found.push({ kind: "example", example, ranges, hits, pathHit, expanded: false });
                     }
                 }
-                found.sort((a, b) => (b.pathHit - a.pathHit) || (a.example.path < b.example.path ? -1 : 1));
+                found.sort((a, b) => (b.pathHit - a.pathHit) || (a.example.full < b.example.full ? -1 : 1));
                 return found;
             }
 
@@ -578,7 +580,7 @@
                 }
                 const link = document.createElement("a");
                 link.className = "name";
-                link.href = BASE + encodePath(ex.page ? ex.path.replace(/\.ck$/i, ".html") : ex.path);
+                link.href = "/" + encodePath(ex.page ? ex.full.replace(/\.ck$/i, ".html") : ex.full);
                 link.textContent = ex.name;
                 head.append(link);
                 if (r.pathHit) {
@@ -590,7 +592,7 @@
                 if (ex.page) {
                     const raw = document.createElement("a");
                     raw.className = "raw";
-                    raw.href = BASE + encodePath(ex.path);
+                    raw.href = "/" + encodePath(ex.full);
                     raw.textContent = "Open .ck file";
                     head.append(raw);
                 }

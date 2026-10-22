@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
 """
-build_search_index.py - build the examples index used by the search page.
+build_search_index.py - build the examples index used by the search page and
+the random example button.
 
-    python3 build_search_index.py /path/to/examples
+    python3 build_search_index.py [FOLDER]
 
-Reads every .ck file under the folder and writes one JSON file. By default it
-goes in ../search/examples.json, found relative to THIS SCRIPT (not to where
-you run it from), so a script kept in /doc/ writes into the site's /search/
-folder. The folder must already exist. It never goes into the examples
-folder, which ships with the software. Use --out to write somewhere else.
-Re-run it whenever you add, edit or remove an example.
+Run it at the root of the site. It looks through FOLDER (default: the whole
+site) for folders named "examples", at any depth, and reads every .ck file
+inside them. For each one it records the code and whether an .html page sits
+beside it. Everything goes into one JSON file, by default ../search/examples.json,
+found relative to THIS SCRIPT, so a script kept in /doc/ writes into the
+site's /search/ folder (which must already exist). Re-run it whenever you add,
+edit or remove an example.
+
+.ck files outside an "examples" folder are ignored. If FOLDER is itself inside
+an examples folder (for example doc/examples/basic), that still counts.
 
 The output is deterministic (no timestamps), so if nothing changed the file
 is left untouched and your uploads/commits stay quiet.
@@ -17,10 +22,11 @@ is left untouched and your uploads/commits stay quiet.
 import argparse
 import gzip
 import json
+import os
 import sys
 from pathlib import Path
 
-INDEX_VERSION = 1  # the search page checks this; bump both if the format changes
+INDEX_VERSION = 2  # the search page and random button check this; bump all three if the format changes
 
 
 def is_excluded(parts, excludes):
@@ -43,52 +49,82 @@ def read_text(path):
     return text.replace("\r\n", "\n").replace("\r", "\n")
 
 
-def mb(n):
+def size(n):
     return f"{n / 1024:.0f} KB" if n < 1024 * 1024 else f"{n / 1024 / 1024:.2f} MB"
 
 
 def main():
     ap = argparse.ArgumentParser(description="Build the examples index (examples.json) for the search page.")
-    ap.add_argument("folder", type=Path, help="examples folder to search recursively for .ck files")
+    ap.add_argument("folder", nargs="?", type=Path,
+                    help="folder to look in for examples folders (default: the whole site root)")
+    ap.add_argument("--site-root", type=Path, metavar="DIR",
+                    help="the folder your server serves as / (default: the folder above this script's folder)")
+    ap.add_argument("--folder-name", action="append", default=[], metavar="NAME",
+                    help='name of the folders that hold examples (default: examples). Repeatable')
     ap.add_argument("--out", type=Path,
                     help="output file (default: ../search/examples.json, relative to this script)")
     ap.add_argument("--exclude", action="append", default=[], metavar="DIR",
-                    help="leave a folder out of the index, by name or path such as osc/multicast (repeatable)")
+                    help="skip a folder, by name or path such as old/docs, counted from FOLDER (repeatable)")
     ap.add_argument("--dry-run", action="store_true", help="report sizes, write nothing")
     args = ap.parse_args()
 
-    root = args.folder
+    script_dir = Path(__file__).resolve().parent
+    site_root = (args.site_root or script_dir.parent).resolve()
+    root = (args.folder or site_root).resolve()
     if not root.is_dir():
         sys.exit(f"Not a folder: {root}")
-    out = args.out or Path(__file__).resolve().parent.parent / "search" / "examples.json"
+    try:
+        root.relative_to(site_root)
+    except ValueError:
+        sys.exit(f"{root} isn't inside the site root {site_root}, so example addresses can't be worked out.\n"
+                 "Pass --site-root with the folder your server serves as /.")
+
+    out = args.out or script_dir.parent / "search" / "examples.json"
     if not out.parent.is_dir():
         sys.exit(f"The folder {out.parent} doesn't exist, so there's nowhere to write the index.\n"
                  "By default the index goes in ../search/ next to this script's folder. "
                  "Create that folder, or choose a location with --out.")
 
-    examples = []
-    for p in root.rglob("*"):
-        rel = p.relative_to(root)
-        if not p.is_file() or p.suffix.lower() != ".ck":
-            continue
-        if any(part.startswith(".") for part in rel.parts) or is_excluded(rel.parts[:-1], args.exclude):
-            continue
-        examples.append({
-            "path": rel.as_posix(),                       # e.g. basic/sinosc.ck
-            "page": p.with_suffix(".html").is_file(),     # does a web page exist next to it?
-            "code": read_text(p).rstrip(),
-        })
+    names = {n.lower() for n in (args.folder_name or ["examples"])}
+    examples, per_folder = [], {}
+    for dirpath, dirnames, filenames in os.walk(root):
+        here = Path(dirpath)
+        from_root = here.relative_to(root).parts
+        dirnames[:] = sorted(d for d in dirnames
+                             if not d.startswith(".") and not is_excluded(from_root + (d,), args.exclude))
+        site_parts = here.relative_to(site_root).parts
+        found = next((i for i, part in enumerate(site_parts) if part.lower() in names), None)
+        if found is None:
+            continue                                   # not inside an examples folder
+        examples_root = "/".join(site_parts[: found + 1])  # the outermost one, e.g. doc/examples
+        inside = site_parts[found + 1:]
+        for fname in sorted(filenames):
+            if fname.startswith(".") or not fname.lower().endswith(".ck"):
+                continue
+            f = here / fname
+            examples.append({
+                "root": examples_root,                        # e.g. doc/examples
+                "path": "/".join(inside + (fname,)),          # inside it, e.g. basic/sinosc.ck
+                "page": f.with_suffix(".html").is_file(),     # does a web page exist next to it?
+                "code": read_text(f).rstrip(),
+            })
+            per_folder[examples_root] = per_folder.get(examples_root, 0) + 1
+
     if not examples:
-        sys.exit("No .ck files found.")
-    examples.sort(key=lambda e: (e["path"].lower(), e["path"]))
+        sys.exit(f"No .ck files found inside folders named {', '.join(sorted(names))} under {root}.\n"
+                 "Use --folder-name if your examples folders are called something else.")
+    examples.sort(key=lambda e: (e["root"].lower(), e["path"].lower(), e["root"], e["path"]))
 
     data = json.dumps({"version": INDEX_VERSION, "count": len(examples), "examples": examples},
                       ensure_ascii=False, separators=(",", ":")).encode("utf-8")
     code_bytes = sum(len(e["code"].encode("utf-8")) for e in examples)
-    no_page = [e["path"] for e in examples if not e["page"]]
+    no_page = [f"{e['root']}/{e['path']}" for e in examples if not e["page"]]
 
-    print(f"Indexed {len(examples)} examples ({mb(code_bytes)} of code).")
-    print(f"{out}: {mb(len(data))}, about {mb(len(gzip.compress(data, 6)))} gzipped.")
+    print(f"Indexed {len(examples)} examples ({size(code_bytes)} of code) from "
+          f"{len(per_folder)} examples folder{'s' if len(per_folder) != 1 else ''}:")
+    for folder, count in sorted(per_folder.items()):
+        print(f"  {folder} ({count})")
+    print(f"{out}: {size(len(data))}, about {size(len(gzip.compress(data, 6)))} gzipped.")
     if no_page:
         print(f"{len(no_page)} have no .html page, so search results link to the .ck file itself"
               + (":" if len(no_page) <= 10 else " (first 10):"))

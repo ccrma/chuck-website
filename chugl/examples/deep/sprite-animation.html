@@ -11,9 +11,24 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ccrma/webchuck-ide@main/cdn/webchuck.css">
     <link rel="stylesheet" href="/css/main.css" type="text/css">
     <style>
-        /* webchuck.css sizes the editor to the window minus 18rem; leave room for the console too */
+        /* ChuGL canvas, lined up with the editor below it. */
+        .canvas-container {
+            max-width: 960px;
+            width: 90vw;
+            aspect-ratio: 16 / 9;
+            min-height: 0;
+            overflow: hidden;
+            margin: 1rem auto;
+            background-color: #000;
+            border: 1px solid #ccc;
+        }
+
+        #canvas {
+            display: block;
+        }
+
         .editor-container {
-            height: calc(100vh - 27rem);
+            height: 24rem;
             min-height: 12rem;
         }
 
@@ -89,20 +104,19 @@
 
 
     </style>
-    <!-- define script type="chuck" -->
-    <script type="module">
-        let l, e, t = 'script', p = /(from\s+|import\s+)['"](#[\w\-]+)['"]/g, x = 'textContent', d = document, o;
-        for (o of d.querySelectorAll(t + '[type=chuck]')) o[x] = 'export default `' + o[x] + '`', o.setAttribute('type', 'inline-module');
-        for (o of d.querySelectorAll(t + '[type=inline-module]')) l = d.createElement(t), o.id ? l.id = o.id : 0, l.type = 'module', l[x] = o[x].replace(p, (u, a, z) => (e = d.querySelector(t + z + '[type=module][src]')) ? a + `/* ${z} */'${e.src}'` : u), l.src = URL.createObjectURL(new Blob([l[x]], { type: 'application/java' + t })), o.replaceWith(l);//inline
-    </script>
-    <!-- chuck code script -->
-    <script id="chuck" type="chuck">// chuck code</script>
     <!-- main javascript code -->
-    <script type="inline-module">
-      import { Chuck } from 'https://cdn.jsdelivr.net/npm/webchuck/+esm';
-      import chuckCode from '#chuck';
+    <script type="module">
+      import ChuGL from 'https://cdn.jsdelivr.net/npm/webchugl/+esm';
 
-      const editor = newChuckEditor(document.getElementById("editor"), chuckCode);
+      const CHUCK_FILE = "../deep/sprite-animation.ck";
+      const VFS_PATH = "/deep/sprite-animation.ck";
+      const ASSETS = JSON.parse('[{"url":"../data/textures/Cat-1/Cat-1-Idle.png","path":"/data/textures/Cat-1/Cat-1-Idle.png"},{"url":"../data/textures/Cat-1/Cat-1-Laying.png","path":"/data/textures/Cat-1/Cat-1-Laying.png"},{"url":"../data/textures/Cat-1/Cat-1-Walk.png","path":"/data/textures/Cat-1/Cat-1-Walk.png"},{"url":"../data/textures/Cat-1/Meow-VFX.png","path":"/data/textures/Cat-1/Meow-VFX.png"}]');
+
+      // WebChucK IDE build with WebChuGL support (opened with ?engine=webchugl below).
+      // TODO: switch to https://chuck.stanford.edu/ide/ once WebChuGL support is released upstream
+      const IDE_URL = 'https://ccrma.stanford.edu/~hoangben/webchuck-ide/';
+
+      const editor = newChuckEditor(document.getElementById("editor"), "// loading " + CHUCK_FILE + "...");
 
       const states = Object.freeze({
         playing: 0,
@@ -114,14 +128,49 @@
       const openInIDE = document.querySelector('#openInIDE');
       const downloadButton = document.querySelector('#download');
       const consoleOutput = document.querySelector('#chuck-console');
+      const canvas = document.querySelector('#canvas');
 
       let theChuck; // global variable
+      let assetsLoaded = false;
+
+      // Load the example's source into the editor
+      fetch(CHUCK_FILE)
+        .then((response) => {
+          if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+          return response.text();
+        })
+        .then((code) => editor.setValue(code, -1))
+        .catch((error) => {
+          editor.setValue(`// could not load ${CHUCK_FILE}: ${error.message}`, -1);
+        });
+
+      // WebChuGL renders with WebGPU; disable Play if the browser doesn't have it
+      if (!navigator.gpu) {
+        action.disabled = true;
+        printToConsole('WebGPU is not available in this browser, so WebChuGL cannot run. Try a recent Chrome, Edge, or Safari.');
+      }
 
       // Show ChucK's output (<<< >>>, chout, errors) in the console panel.
       // textContent, not innerHTML, so output is never interpreted as HTML.
       function printToConsole(message) {
         consoleOutput.textContent += message + '\n';
         consoleOutput.scrollTop = consoleOutput.scrollHeight;
+      }
+
+      async function loadAssets() {
+        action.innerHTML = "Loading files...";
+        const results = await Promise.allSettled(ASSETS.map(({ url, path }) => {
+          const absoluteURL = new URL(url, location.href).href;
+          return path.endsWith('.mpg')
+            ? theChuck.loadVideo(absoluteURL, path)
+            : theChuck.loadFile(absoluteURL, path);
+        }));
+        results.forEach((result, i) => {
+          if (result.status === 'rejected') {
+            printToConsole(`[webchugl] could not load ${ASSETS[i].url}: ${result.reason.message}`);
+          }
+        });
+        assetsLoaded = true;
       }
 
       // Download button: saves the original .ck file that sits next to this page
@@ -141,7 +190,16 @@
         if (theChuck === undefined) {
           action.disabled = true;
           action.innerHTML = "Loading...";
-          theChuck = await Chuck.init( [] );
+          try {
+            theChuck = await ChuGL.init({
+              canvas: canvas,
+              onProgress: (pct) => { action.innerHTML = `Loading... ${Math.round(pct)}%`; },
+            });
+          } catch (error) {
+            printToConsole('[webchugl] failed to initialize: ' + error.message);
+            action.innerHTML = "Unavailable";
+            return;
+          }
           theChuck.chuckPrint = printToConsole;
           action.disabled = false;
         }
@@ -149,7 +207,7 @@
         switch (status) {
           case states.playing:
             status = states.stopped;
-            theChuck.removeLastCode();
+            theChuck.reset(); // removes shreds and clears the ChuGL scene
             // Stop button
             action.innerHTML = `
               Play
@@ -159,9 +217,26 @@
             `;
             break;
           case states.stopped:
-            status = states.playing;
             consoleOutput.textContent = ''; // fresh console for each run
-            theChuck.runCode(editor.getValue());
+            if (!assetsLoaded) {
+              action.disabled = true;
+              await loadAssets();
+              action.disabled = false;
+            }
+            // Run the editor's code from the example's own path so me.dir() finds its files
+            theChuck.createFile(VFS_PATH, editor.getValue());
+            const result = await theChuck.runFile(VFS_PATH);
+            if (result.error) {
+              // compile error is printed via chuckPrint; stay stopped
+              action.innerHTML = `
+              Play
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+                <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+              </svg>
+            `;
+              break;
+            }
+            status = states.playing;
             // Play button
             action.innerHTML = `
               Stop
@@ -195,8 +270,9 @@
           let binary = '';
           for (const byte of bytes) binary += String.fromCharCode(byte);
 
-          const ideURL = new URL('https://chuck.stanford.edu/ide/');
+          const ideURL = new URL(IDE_URL);
           ideURL.searchParams.set('share', btoa(binary));
+          ideURL.searchParams.set('engine', 'webchugl');
           ideWindow.location.href = ideURL.toString();
         } catch (error) {
           ideWindow.close();
@@ -207,19 +283,19 @@
 
       
     </script>
-    <title>Title</title>
+    <title>sprite-animation</title>
 </head>
 
 <body>
     <header class="button-grid">
       
         <div class="leftText">
-          <h2><span id="title" style="font-weight: bold">Title</span></h2>
+          <h2><span id="title" style="font-weight: bold">sprite-animation</span></h2>
           <div id="author" style="font-style: italic;">ChucK Development Team</div>
         </div>
 
         <button id="openInIDE">=&gt; <em>to WebChucK IDE</em></button>
-        <button id="download" data-href="example.ck">Download .ck</button>
+        <button id="download" data-href="../deep/sprite-animation.ck">Download .ck</button>
 
         <button id="action">
             Play
@@ -232,6 +308,10 @@
         </button>
 
     </header>
+
+    <div class="canvas-container">
+        <canvas id="canvas" aria-hidden="true"></canvas>
+    </div>
 
     <main>
         <div class="editor-container">
