@@ -4,11 +4,13 @@ build_site_index.py - build the site-content index used by the search page.
 
     python3 build_site_index.py [FOLDER]
 
-Reads the HTML pages under FOLDER (default: the whole site), strips menus,
-headers and footers, splits each page into sections at its headings, and
-writes one JSON file. By default it goes in ../search/site.json, found
-relative to THIS SCRIPT, so a script kept in /doc/ writes into the site's
-/search/ folder (which must already exist). Re-run it whenever pages change.
+Reads the HTML pages and Markdown sources under FOLDER (default: the whole
+site), strips menus, headers and footers, splits each page into sections at
+its headings, and writes one JSON file. Markdown files with a matching .html
+page link to that page. By default the index goes in ../search/site.json,
+found relative to THIS SCRIPT, so a script kept in /doc/ writes into the
+site's /search/ folder (which must already exist). Re-run it whenever pages
+change.
 
 Left out automatically: pages made by make_example_pages.py (their code is
 covered by the examples index), the example page template, pages marked
@@ -201,7 +203,7 @@ def main():
     ap.add_argument("--split-level", type=int, default=3, metavar="N",
                     help="split pages into sections at headings h1..hN (default: 3)")
     ap.add_argument("--ext", nargs="+", default=[".html", ".htm", ".md"],
-                    help="page file extensions to read (default: .html .htm)")
+                    help="page file extensions to read (default: .html .htm .md)")
     ap.add_argument("--dry-run", action="store_true", help="report what would be indexed, write nothing")
     args = ap.parse_args()
 
@@ -259,7 +261,12 @@ def main():
         title = clean("".join(parser.title_parts))
         if not title:
             title = next((s["heading"] for s in parser.sections if s["heading"]), "") or p.stem
-        url_path = p.relative_to(site_root).as_posix()
+        url_page = p
+        if p.suffix.lower() == ".md":
+            html_page = p.with_suffix(".html")
+            if html_page.is_file():
+                url_page = html_page
+        url_path = url_page.relative_to(site_root).as_posix()
         for index_name in ("index.html", "index.htm"):
             if url_path == index_name or url_path.endswith("/" + index_name):
                 url_path = url_path[: -len(index_name)]
