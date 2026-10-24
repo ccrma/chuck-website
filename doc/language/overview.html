@@ -1,334 +1,460 @@
-<!DOCTYPE html PUBLIC 
-"-//W3C//DTD XHTML 1.0 Strict//EN" 
-"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<title>ChucK - [Language Specification : Overview]</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChucK - [Language Specification : Overview]</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/prism.css" />
 
+    <style>
+        #lang_body pre.terminal {
+            margin: 0.5em auto 1em;
+            padding: 0.75em 1em;
+            overflow-x: auto;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            background: #161b22;
+            color: #e6edf3;
+        }
+
+        #lang_body pre.terminal code {
+            display: block;
+            padding: 0;
+            color: inherit;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        }
+
+        #lang_body .terminal-prompt {
+            color: #e6edf3;
+            user-select: none;
+            margin-right: 0.5em;
+        }
+    </style>
 </head>
-<body bgcolor="#ffffff" text="#000000">
-<center>
 
-<!-- all in a big fat table-->
+<body>
+    <header>
+        <h2>ChucK : Language Specification &gt; Overview</h2>
+        <div class="outlineDiv" style="background-color: white; margin-top: 1rem">
+            version: 1.5.x.x (numchucks)
+        </div>
 
-<table id="page_layout" border="0" width="640">
+        <hr width="20%" />
 
-<!-- heading row-->
+        <!-- navigation bar -->
+        <nav class="chuck_nav" aria-label="Language specification">
+            <div class="chuck_nav_bar outlineDiv" style="max-width: none"> &lt; (up): <a href="./">Language
+                    Specification</a> | (next): <a href="type.html">Types, Values,
+                    &amp; Variables</a> &gt; </div>
+        </nav>
+    </header>
 
-<tr><td>
-<div id="chuck_header">
-<center>
-<h1>
-<strong>ChucK</strong> : Language Specification &gt; Overview
-</h1>
+    <!-- lang specification section -->
+    <main class="leftText" id="lang_body">
 
-<table border="0">
-<tr><td>
-  	<div id="chuck_revision">
-	version: 1.5.x.x (numchucks)
-  	</div>
-  	
-</td></tr>
-</table>
+        <h1>Overview</h1>
 
-<hr width="20%" />
-</center>
-</div>
-</td></tr>
+        <p>
+            ChucK is a <em>strongly-typed</em>, <b><em>strongly-timed</em></b>, <em>concurrent</em> audio
+            and multimedia programming language. It is compiled to virtual
+            instructions, which are immediately run in the ChucK Virtual Machine.
+            This guide documents the features of the Language, Compiler, and Virtual
+            Machine for the ChucK programmer.
+        </p>
 
-<!-- navigation bar -->
+        <!-- additional sub topic sections go here... -->
+        <p>
+            The latest version of <b>chuck</b> can be <a target="_blank" href="../../release">downloaded
+                here</a>.
+        </p>
 
-<tr><td>
-<center>
-<div class="chuck_nav">
+        <h2>Running ChucK</h2>
 
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  (up): <a href="./">language specification</a> | (next): <a href="type.html">types, values, &amp; variables</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
+        <p>There are many ways to ChucK:</p>
+        <ul>
+            <li>Command-Line Application: <code style="font-family: courier;"><b>chuck</b></code> (runs in a terminal
+                program)<br>
+            <li><b>miniAudicle</b>: an integrated development environment
+            <li><b><a target="_blank" href="../../ide/">WebChucK IDE</a></b>: write and run ChucK in a web browser
+        </ul>
 
-</div>
-</center>
-</td></tr>
+        <p>To run a ChucK file, <span style="font-family: courier;">foo.ck</span>
+            for example, simply type <code style="font-family: courier;"><b>chuck</b></code>
+            and which .ck file to run:</p>
+        <pre class="terminal"><code>chuck foo.ck</code></pre>
 
-<!-- lang specification section -->
-<tr><td>
-<div id="chuck_body">
+        <p>To run multiple files at once (or the same one
+            concurrently with itself) type:</p>
+        <pre class="terminal"><code>chuck foo.ck bar.ck bar.ck boo.ck</code></pre>
 
-<div id="lang_topic_body">
+        <p>Flags specify how ChucK operates, or return information about the virtual machine.
+            The following example uses <code>--probe</code> to print information
+            on all available audio devices, MIDI devices, and human interface devices (HIDs).
+            You may then refer to them (by number usually) from the command line or
+            from your program (see <a href="../program/vm.html">VM
+                Options</a> for a complete list).</p>
 
-<h1><strong>Overview</strong></h1>
+        <pre class="terminal"><code>chuck --probe</code></pre>
+        <pre><code>[chuck]: [CoreAudio] driver found 7 audio device(s)...
+[chuck]: 
+[chuck]: ------( audio device: 1 )------
+[chuck]: device name = "External Headphones"</code></pre>
+        <p>Now we can specify an output device using <code>--dac:N</code>, where N is the audio device number.</p>
+        <pre class="terminal"><code>chuck --dac:1</code></pre>
 
-<p>ChucK is a strongly-typed, <strong><em>strongly-timed</em></strong>, concurrent audio 
-and multimedia programming language.  It is compiled into virtual 
-instructions, which is immediately run in the ChucK Virtual Machine.  
-This guide documents the features of the Language, Compiler, and Virtual 
-Machine for a ChucK programmer.
-</p>
+        <p>ChucK can run as a host/server that can receive code from a client. The
+            server invokes the <code style="white-space: nowrap;">--loop</code> flag to
+            specify that the virtual machine shouldn't halt automatically when the current
+            programs exit.</p>
 
-<!-- additional sub topic sections go here... -->
+        <pre class="terminal"><code>chuck --loop</code></pre>
+
+        <p>
+            (See the guide to <a href="../program/otfp.html">On-the-fly Programming</a> for more
+            information)
+        </p>
+
+        <p>If a ChucK host is running, we can send a program to the
+            listener by using the <code>+</code> command
+            line option:</p>
+
+        <pre class="terminal"><code>chuck + foo.ck</code></pre>
+
+        <p>Similarly, we can use <code>-</code> to remove and <code>=</code> to
+            replace a program on the host. We can
+            use <code>^</code> to find out the status of the host's virtual machine. Again,
+            see <a href="../program/otfp.html">On-the-fly Programming</a> for more
+            information.</p>
+
+        <p>To run most of the code or examples in this language specification, you only need to use the
+            basic <font face="courier">chuck</font>
+            program.</p>
 
 
-<div class="lang_subtopic_body">
-<a name="run"> </a>
-<h2><strong>running ChucK</strong></h2>
 
-<p>There are many to ChucK:</p>
+        <div class="lang_subtopic_body">
+            <a name="comment"> </a>
+            <h2><strong>Comments</strong></h2>
 
-<ul>
-<li>command-line application: <b>chuck</b> (use from a terminal program)<br>
-(see <a href="../program/vm.html">VM options</a> for a guide to command-line options)
-<li><b>miniAudicle</b>, an integrate development environment
-<li>the latest <b>chuck</b> and <b>miniAudicle</b> can be <a target="_blank" href="../../release">downloaded from here</a>.
-<li>you can also write and run ChucK code on a browser with the <b><a target="_blank" href="../../ide/">WebChucK IDE</a></b>
-</ul>
+            <p>
+                Comments are sections of code that are ignored. They
+                help you and other programmers interpret your code. Double slashes
+                indicate to the compiler to skip the rest of the line. /* and */
+                denotes block commenting - the compiler ignores the text in between
+                (Note: block comments cannot be nested).
+            </p>
 
-<p>To run ChucK with a program/patch called <font 
-face="courier">foo.ck</font> simply run <font face="courier">chuck</font> 
-and then the name of the file:</p>
-<pre> %&gt; chuck foo.ck </pre>
+            <pre><code>// this is a comment
+int foo; // this is also a comment
 
-<p>To run ChucK with multiple patches concurrently (or the same one 
-multiple times):</p>
-<pre> %&gt; chuck foo.ck bar.ck bar.ck boo.ck </pre>
+/* 
+this is a block comment
+SinOsc bar => dac; this line is ignored
+*/</code></pre>
+        </div>
 
-<p>There are several flags you can specify to control how ChucK operates, 
-or to find out about the system.  For example,the following probes the 
-audio system and prints out all available audio devices and MIDI devices.  
-You may then refer to them (by number usually) from the command line or 
-from your program.  (again, see <a href="../program/vm.html">VM 
-Options</a> for a complete list)</p>
 
-<pre> %&gt; chuck --probe </pre>
+        <div class="lang_subtopic_body">
+            <a name="debugprint"> </a>
+            <h2><strong>Printing</strong></h2>
 
-<p>ChucK can be run in a different terminal as a host/listener that patches may be sent to.  The server should invoke the 
---loop flag to specify that the virtual machine should not halt automatically (when the current programs 
-exit).</p>
+            <p>
+                The debug print syntax <code>&lt;&lt;&lt; &gt;&gt;&gt;</code> is used to display the value and type of any expression placed within
+                it in the console. This syntax may be placed around, 
+                and will not affect the execution of, any non-declarative expression ( non l-value ). 
+                The value to be printed can also be passed through by using the chuck operator. 
+                Expressions which represent an object will print the value of that object's reference address.<br>
+            </p>
 
-<pre> %&gt; chuck --loop </pre>
+            <pre><code>// assign 5 to a newly declared variable 
+5 =&gt; int i;
+// prints "5 : (int)"
+&lt;&lt;&lt;i&gt;&gt;&gt;;
+
+// prints "hello! : (string)"
+&lt;&lt;&lt;"hello!"&gt;&gt;&gt;;
+
+// prints "3.5 : (float)"
+&lt;&lt;&lt;1.0 + 2.5 &gt;&gt;&gt; => float x;
+// prints "3.5 : (float)" again
+&lt;&lt;&lt;x&gt;&gt;&gt;;</code></pre>
+
+            <p>To format and print data, use a comma-separated list of expressions.
+                This will print their respective values with one space between:</p>
+
+            <pre><code>// prints "the value of x is 3.5" (x from above)
+&lt;&lt;&lt;"the value of x is" , x &gt;&gt;&gt;;
+
+// prints "4 + 5 is 9"
+&lt;&lt;&lt;"4 + 5 is", 4 + 5&gt;&gt;&gt;;
+
+// prints "here are 3 random numbers 6 8 2" or similar
+&lt;&lt;&lt;"here are 3 random numbers", 
+    Std.rand2(0,9), 
+    Std.rand2(0,9),
+    Std.rand2(0,9) &gt;&gt;&gt;; 
+</code></pre>
 
 <p>
-(See the guide to <a href="../program/otfp.html">On-the-fly Programming</a> for more information</a>)
+    There are also standard output and error objects <code>chout</code> and <code>cherr</code>.
 </p>
 
-<p>If a ChucK listener is running, we can (from a second terminal) send a program/patch to to the listener by using the + command 
-line option:</p>
+<pre><code>chout &lt;= "Hello World!";
+chout &lt;= IO.newline();
+cherr &lt;= "Goodbye";
 
-<pre> %&gt; chuck + foo.ck </pre>
-
-<p>Similarly, you can use <font face="courier">-</font> and <font 
-face="courier">=</font> to remove/replace a patch in the listener, and 
-use <font face="courier">^</font> to find out the status.  Again, 
-see <a href="../program/otfp.html">On-the-fly Programming</a> for more 
-information.</p>
-
-<p>To run most of the code or examples in this language specification, you only need to use the basic <font face="courier">chuck</font>
-program.</p>
-
-</div>
-
-<div class="lang_subtopic_body">
-<a name="comment"> </a>
-<h2><strong>comments</strong></h2>
-
-<p>Comments are sections of code that are ignored by a compiler. These 
-help other programmers (and yourself) interpret your code. Double slashes 
-indicate to the compiler to skip the rest of the line.  /* and */ 
-denotes block commenting - the compiler ignores the text in between.  
-(Note: block comments cannot be nested)
-
-<pre>
-    // this is a comment
-    int foo; // another comment
-
-    /* 
-       this is a block comment
-       still going...
-    */
-</pre>
-</div>
+// prints
+// "Hello World!"
+// "Goodbye"
+</code></pre>
 
 
-<div class="lang_subtopic_body">
-<a name="debugprint"> </a>
-<h2><strong>debug print</strong></h2>
+        </div>
 
-<p>
-For the time being, <font face="Courier">stdout</font> and <font 
-face="Courier">chout</font> have been temporarily disabled for the 
-present release.  In their place we have provided a debug print syntax:
-<pre>
-    // prints out value of <em>expression</em>
-    <b>&lt;&lt;&lt;</b> <em>expression</em> <b>&gt;&gt;&gt;</b>;
-</pre>
+        <div class="lang_subtopic_body">
+            <a name="reserve"> </a>
+            <h2><strong>Reserved Words</strong></h2>
+            <ul>
+                <li><em>(primitive types)</em>
+                    <ul>
+                        <li><strong>
+                                <code>int</code>
+                            </strong>
+                        <li><strong>
+                                <code>float</code>
+                            </strong>
+                        <li><strong>
+                                <code>time</code>
+                            </strong>
+                        <li><strong>
+                                <code>dur</code>
+                            </strong>
+                        <li><strong>
+                                <code>void</code>
+                            </strong>
+                        <li><strong>
+                                <code>same</code>
+                            </strong>
+                            <font size="1">(unimplemented)</font>
+                    </ul><br />
+                <li><em>(control structures)</em>
+                    <ul>
+                        <li><strong>
+                                <code>if</code>
+                            </strong>
+                        <li><strong>
+                                <code>else</code>
+                            </strong>
+                        <li><strong>
+                                <code>while</code>
+                            </strong>
+                        <li><strong>
+                                <code>until</code>
+                            </strong>
+                        <li><strong>
+                                <code>for</code>
+                            </strong>
+                        <li><strong>
+                                <code>repeat</code>
+                            </strong>
+                        <li><strong>
+                                <code>break</code>
+                            </strong>
+                        <li><strong>
+                                <code>continue</code>
+                            </strong>
+                        <li><strong>
+                                <code>return</code>
+                            </strong>
+                        <li><strong>
+                                <code>switch</code>
+                            </strong>
+                            <font size="1">(unimplemented)</font>
+                    </ul><br />
+                <li><em>(class keywords)</em>
+                    <ul>
+                        <li><strong>
+                                <code>class</code>
+                            </strong>
+                        <li><strong>
+                                <code>extends</code>
+                            </strong>
+                        <li><strong>
+                                <code>public</code>
+                            </strong>
+                        <li><strong>
+                                <code>static</code>
+                            </strong>
+                        <li><strong>
+                                <code>pure</code>
+                            </strong>
+                        <li><strong>
+                                <code>this</code>
+                            </strong>
+                        <li><strong>
+                                <code>super</code>
+                            </strong>
+                            <font size="1">(unimplemented)</font>
+                        <li><strong>
+                                <code>interface</code>
+                            </strong>
+                            <font size="1">(unimplemented)</font>
+                        <li><strong>
+                                <code>implements</code>
+                            </strong>
+                            <font size="1">(unimplemented)</font>
+                        <li><strong>
+                                <code>protected</code>
+                            </strong>
+                            <font size="1">(unimplemented)</font>
+                        <li><strong>
+                                <code>private</code>
+                            </strong>
+                            <font size="1">(unimplemented)</font>
+                    </ul><br />
+                <li><em>(other chuck keywords)</em>
+                    <ul>
+                        <li><strong>
+                                <code>function</code>
+                            </strong>
+                        <li><strong>
+                                <code>fun</code>
+                            </strong>
+                        <li><strong>
+                                <code>spork</code>
+                            </strong>
+                        <li><strong>
+                                <code>new</code>
+                            </strong>
+                        <li><strong>
+                                <code>const</code>
+                            </strong>
+                        <li><strong>
+                                <code>global</code>
+                            </strong>
+                    </ul><br />
+                <li><em>(special values)</em>
+                    <ul>
+                        <li><strong>
+                                <code>now</code>
+                            </strong>
+                        <li><strong>
+                                <code>true</code>
+                            </strong>
+                        <li><strong>
+                                <code>false</code>
+                            </strong>
+                        <li><strong>
+                                <code>maybe</code>
+                            </strong>
+                        <li><strong>
+                                <code>null</code>
+                            </strong>
+                        <li><strong>
+                                <code>NULL</code>
+                            </strong>
+                        <li><strong>
+                                <code>me</code>
+                            </strong>
+                        <li><strong>
+                                <code>pi</code>
+                            </strong>
+                    </ul><br />
+                <li><em>(special : default durations)</em>
+                    <ul>
+                        <li><strong>
+                                <code>samp</code>
+                            </strong>
+                        <li><strong>
+                                <code>ms</code>
+                            </strong>
+                        <li><strong>
+                                <code>second</code>
+                            </strong>
+                        <li><strong>
+                                <code>minute</code>
+                            </strong>
+                        <li><strong>
+                                <code>hour</code>
+                            </strong>
+                        <li><strong>
+                                <code>day</code>
+                            </strong>
+                        <li><strong>
+                                <code>week</code>
+                            </strong>
+                    </ul>
+                    <br />
+                <li><em>(special : global ugens)</em>
+                    <ul>
+                        <li><strong>
+                                <code>dac</code>
+                            </strong>
+                        <li><strong>
+                                <code>adc</code>
+                            </strong>
+                        <li><strong>
+                                <code>blackhole</code>
+                            </strong>
+                    </ul>
+            </ul>
+        </div>
+    </main>
 
-<p>This will print the values and types of any expressions placed within 
-them.  This debug print construction may be placed around any 
-non-declaration expression ( non l-value ) and will not affect the 
-execution of the code. Expressions which represent an object will print 
-the value of that object's reference address:</p>
+    <!-- navigation bar -->
+    <nav class="chuck_nav" aria-label="Language specification">
+        <div class="chuck_nav_bar outlineDiv" style="max-width: none"> &lt; (up): <a href="./">Language
+                Specification</a> | (next): <a href="type.html">Types, Values,
+                &amp; Variables</a> &gt; </div>
+    </nav>
 
-<pre>
-    // assign 5 to a newly declared variable
-    5 =&gt; int i;
-    // prints "5 : (int)"
-    &lt;&lt;&lt;i&gt;&gt;&gt;;
+    <hr width="20%">
 
-    // prints "hello! : (string)"
-    &lt;&lt;&lt;"hello!"&gt;&gt;&gt;; //prints "hello! : (string)"
+    <!-- chuck-footer -->
+    <footer>
+        <a href="../../">ChucK</a> |
+        <a href="http://soundlab.cs.princeton.edu/">Soundlab</a> |
+        <a href="http://www.cs.princeton.edu/">CS</a> |
+        <a href="http://www.music.princeton.edu/">Music</a> |
+        <a href="http://ccrma.stanford.edu/">CCRMA</a>
+    </footer>
+    <!-- Syntax Highlighting -->
+    <script src="../../js/prism.js"></script>
+    <script>
+        Prism.languages.chuck = Prism.languages.extend('clike', {
+            'keyword': /\b(abstract|continue|for|new|do|if|private|this|break|double|implements|protected|else|public|return|extends|int|try|char|final|interface|static|void|class|long|const|float|super|while|spork|fun|second|samp|ms|day|week|hour|minute|pi|e|dac|adc|blackhole|complex|polar|bar|measure)\b/g,
+            'number': /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\b\d*\.?\d+\b/gi,
+            'operator': {
+                pattern: /(^|[^\.])(?:\+=|\+\+?|-=|--?|!=?|<{1,2}=?|>{1,3}=?|==?|&=|&&?|\|=|\|\|?|\?|\*=?|\/=?|%=?|\^=?|:|~|::|=>)/gm,
+                lookbehind: true
+            }
 
-    // prints "3.5 : (float)"
-    &lt;&lt;&lt;1.0 + 2.5 &gt;&gt;&gt;=> float x;
-</pre>
+        });
+        document.querySelectorAll('#lang_body pre').forEach(function (codeBlock) {
+            var code = codeBlock.querySelector('code');
+            if (!code) {
+                return;
+            }
 
-<p>For more formatted data output, a comma-separated list of expressions 
-will print only their respective values (with one space between):</p> 
-
-<pre>
-    // prints "the value of x is 3.5" (x from above)
-    &lt;&lt;&lt;"the value of x is" , x &gt;&gt;&gt;;
-
-    // prints "4 + 5 is 9"
-    &lt;&lt;&lt;"4 + 5 is", 4 + 5&gt;&gt;&gt;;
-
-    // prints "here are 3 random numbers ? ? ?"
-    &lt;&lt;&lt;"here are 3 random numbers", 
-        Std.rand2(0,9), 
-        Std.rand2(0,9),
-        Std.rand2(0,9) &gt;&gt;&gt;; 
-</pre>
-
-
-</div>
-
-<div class="lang_subtopic_body">
-<a name="reserve"> </a>
-<h2><strong>reserved words</strong></h2>
-
-
-<ul>
-<li><em>(primitive types)</em>
-<ul>
-<li><strong><font face="courier">int</font></strong>
-<li><strong><font face="courier">float</font></strong>
-<li><strong><font face="courier">time</font></strong>
-<li><strong><font face="courier">dur</font></strong>
-<li><strong><font face="courier">void</font></strong>
-<li><strong><font face="courier">same</font></strong> <font size="1">(unimplemented)</font>
-</ul><br />
-<li><em>(control structures)</em>
-<ul>
-<li><strong><font face="courier">if</font></strong>
-<li><strong><font face="courier">else</font></strong>
-<li><strong><font face="courier">while</font></strong>
-<li><strong><font face="courier">until</font></strong>
-<li><strong><font face="courier">for</font></strong>
-<li><strong><font face="courier">repeat</font></strong>
-<li><strong><font face="courier">break</font></strong>
-<li><strong><font face="courier">continue</font></strong>
-<li><strong><font face="courier">return</font></strong>
-<li><strong><font face="courier">switch</font></strong> <font size="1">(unimplemented)</font>
-</ul><br />
-<li><em>(class keywords)</em>
-<ul>
-<li><strong><font face="courier">class</font></strong>
-<li><strong><font face="courier">extends</font></strong>
-<li><strong><font face="courier">public</font></strong>
-<li><strong><font face="courier">static</font></strong>
-<li><strong><font face="courier">pure</font></strong>
-<li><strong><font face="courier">this</font></strong>
-<li><strong><font face="courier">super</font></strong> <font size="1">(unimplemented)</font>
-<li><strong><font face="courier">interface</font></strong> <font size="1">(unimplemented)</font>
-<li><strong><font face="courier">implements</font></strong> <font size="1">(unimplemented)</font>
-<li><strong><font face="courier">protected</font></strong> <font size="1">(unimplemented)</font>
-<li><strong><font face="courier">private</font></strong> <font size="1">(unimplemented)</font>
-</ul><br />
-<li><em>(other chuck keywords)</em>
-<ul>
-<li><strong><font face="courier">function</font></strong>
-<li><strong><font face="courier">fun</font></strong>
-<li><strong><font face="courier">spork</font></strong>
-<li><strong><font face="courier">new</font></strong>
-<li><strong><font face="courier">const</font></strong>
-<li><strong><font face="courier">global</font></strong>
-</ul><br />
-<li><em>(special values)</em>
-<ul>
-<li><strong><font face="courier">now</font></strong>
-<li><strong><font face="courier">true</font></strong>
-<li><strong><font face="courier">false</font></strong>
-<li><strong><font face="courier">maybe</font></strong>
-<li><strong><font face="courier">null</font></strong>
-<li><strong><font face="courier">NULL</font></strong>
-<li><strong><font face="courier">me</font></strong>
-<li><strong><font face="courier">pi</font></strong>
-</ul><br />
-<li><em>(special : default durations)</em>
-<ul>
-<li><strong><font face="courier">samp</font></strong>
-<li><strong><font face="courier">ms</font></strong>
-<li><strong><font face="courier">second</font></strong>
-<li><strong><font face="courier">minute</font></strong>
-<li><strong><font face="courier">hour</font></strong>
-<li><strong><font face="courier">day</font></strong>
-<li><strong><font face="courier">week</font></strong>
-</ul><br />
-<li><em>(special : global ugens)</em>
-<ul>
-<li><strong><font face="courier">dac</font></strong>
-<li><strong><font face="courier">adc</font></strong>
-<li><strong><font face="courier">blackhole</font></strong>
-
-</ul>
-</ul>
-
-</div>
-
-<!-- end subtopics ? -->
-
-</div>
-</div>
-</td></tr>
-
-<!-- navigation bar -->
-
-<tr><td>
-<center>
-<div class="chuck_nav">
-
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  (up): <a href="./">language specification</a> | (next): <a href="type.html">types, values, &amp; variables</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
-
-</div>
-</center>
-</td></tr>
-
-<!-- chuck-footer -->
-
-<tr><td>
-<div id ="chuck_footer">
-<center>
-<hr width="15%" / >
-<a href="../../">chuck</a> |
-<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
-<a href="http://www.cs.princeton.edu/">cs</a> |
-<a href="http://www.music.princeton.edu/">music</a> |
-<a href="http://ccrma.stanford.edu/">ccrma</a>
-
-</center>
-</div>
-</td></tr>
-</table>
-
-</center>
+            if (codeBlock.classList.contains('terminal')) {
+                var prompt = document.createElement('span');
+                prompt.className = 'terminal-prompt';
+                prompt.setAttribute('aria-hidden', 'true');
+                prompt.textContent = '%>';
+                code.insertBefore(prompt, code.firstChild);
+            } else {
+                codeBlock.classList.add('language-chuck');
+                code.classList.add('language-chuck');
+            }
+            code.querySelectorAll('br').forEach(function (lineBreak) {
+                lineBreak.replaceWith('\n');
+            });
+        });
+        Prism.highlightAll();
+    </script>
 </body>
+
 </html>

@@ -13,8 +13,6 @@
     </script>
     <!-- character set -->
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- meta properties -->
     <meta property="og:url" content="https://ccrma.stanford.edu/software/chuck/" />
     <meta property="og:type" content="website" />
@@ -28,6 +26,7 @@
     <!--<link rel="canonical" href="http://chuck.cs.princeton.edu/" />-->
     <!--<link rel="canonical" href="https://ccrma.stanford.edu/software/chuck/" />-->
 
+    <meta name="viewport" content="width=device-width">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -48,12 +47,10 @@
 <body>
 
     <header>
-
         <!-- Title -->
         <h1><b>ChucK</b></h1>
         <h2>Music Programming Language</h2>
-        <h2 class="green">Strongly-Timed | Concurrent | On-the-Fly | Audiovisual</h2>
-        <br>
+        <h2 class="green" style="margin-bottom: 2rem;">Strongly-Timed | Concurrent | On-the-Fly | Audiovisual</h2>
 
         <!-- Version Container -->
         <div class="outlineDiv" style="width: 333px">
@@ -74,15 +71,176 @@
     </header>
 
     <main>
+        <style>
+            .random-example-status {
+                margin-left: 0.75rem;
+            }
 
-        <!-- Definition -->
-        <div class="outlineDiv">
-            <b>chuck</b> <i>verb,</i> to throw carelessly.
+            .button {
+                border-color: #333;
+                color: #333;
+                background-color: transparent;
+                padding: 0.25rem;
+                opacity: 0.8;
+                /* margin-left: 1.5rem; */
+                border: 1px solid #333;
+
+                width: fit-content;
+                height: fit-content;
+                margin: 0 auto auto;
+            }
+
+            .button a:hover {
+                text-decoration: none;
+            }
+            .button a{
+                color: #333;
+                /* box-sizing: border-box; */
+                display: block;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+            }
+
+            .button:hover {
+                opacity: 50%;
+            }
+        </style>
+
+        <div class="grid-container" style="align-content: start; margin-bottom: 0.5rem;">
+            <div class="outlineDiv button" style="padding: 0;">
+                <a style="padding: 4px 12px;" href="/search/">Search ChucK</a>
+            </div>
+            <!-- Definition -->
+            <div class="outlineDiv" style="margin-bottom: 1rem;">
+                <b>chuck</b> <i>verb,</i> to throw carelessly.
+            </div>
+            <div>
+                <a>
+                    <button type="button" class="button" data-random-example>Random example</button>
+                    <!-- To pick only from one folder, add data-folder with the folder's path inside the examples folder:
+                    <button type="button" data-random-example data-folder="basic">Random basic example</button> -->
+                    <span id="random-example-status" class="random-example-status" role="status"
+                        aria-live="polite"></span>
+                    <noscript><a href="/search/">Search the examples</a></noscript>
+                </a>
+            </div>
         </div>
-        <br>
+
+        <script>
+            (() => {
+                "use strict";
+ 
+                // ---- Settings ------------------------------------------------------
+                const EXAMPLES_URL = "/search/examples.json"; // the examples index, the same file the search page uses
+                const ONLY_WITH_PAGE = true;    // only pick examples that have a web page to play; false also allows .ck-only ones
+                const REMEMBER = 20;            // don't repeat any of the last this-many picks (kept per browser tab)
+                const INDEX_VERSION = 2;        // must match build_search_index.py
+                const STORAGE_KEY = "randomExampleRecent";
+ 
+                // ---- Elements and state --------------------------------------------
+                const buttons = [...document.querySelectorAll("[data-random-example]")];
+                const statusEl = document.getElementById("random-example-status");
+                const encodePath = (p) => p.split("/").map(encodeURIComponent).join("/");
+                let loading = null; // the index request, shared by all buttons and clicks
+ 
+                // The index is about the size of your example code, so it's fetched only when someone
+                // points at a button or clicks it, not for everyone who just visits the page.
+                function loadIndex() {
+                    if (!loading) {
+                        loading = fetch(EXAMPLES_URL, { cache: "no-cache" })
+                            .then((res) => {
+                                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                                return res.json();
+                            })
+                            .then((data) => {
+                                if (data.version !== INDEX_VERSION) throw new Error("the example list is a different version than this page expects");
+                                return data.examples;
+                            })
+                            .catch((err) => { loading = null; throw err; }); // so the next click can try again
+                    }
+                    return loading;
+                }
+ 
+                // An example's address from the site root, e.g. doc/examples/basic/sinosc.ck
+                const fullPath = (e) => (e.root ? e.root + "/" + e.path : e.path);
+ 
+                // ---- Choosing ------------------------------------------------------
+                function recent() {
+                    try { return JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "[]"); } catch (e) { return []; }
+                }
+ 
+                function remember(path) {
+                    try {
+                        const list = recent().filter((p) => p !== path);
+                        list.push(path);
+                        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(list.slice(-REMEMBER)));
+                    } catch (e) { /* storage unavailable: repeats are possible, nothing else breaks */ }
+                }
+ 
+                function pick(examples, folder) {
+                    folder = (folder || "").replace(/^\/+|\/+$/g, "");
+                    // data-folder can be a path from the site root (doc/examples/basic) or just the part inside
+                    // an examples folder (basic, which then matches that folder in every examples folder)
+                    let pool = examples.filter((e) =>
+                        (!ONLY_WITH_PAGE || e.page) &&
+                        (!folder || fullPath(e).startsWith(folder + "/") || e.path.startsWith(folder + "/")));
+                    if (!pool.length) return null;
+                    const seen = recent();
+                    const fresh = pool.filter((e) => !seen.includes(fullPath(e)));
+                    if (fresh.length) pool = fresh;                      // prefer ones not seen lately
+                    else if (pool.length > 1) {                          // seen them all: at least avoid the last one
+                        pool = pool.filter((e) => fullPath(e) !== seen[seen.length - 1]);
+                    }
+                    return pool[Math.floor(Math.random() * pool.length)];
+                }
+ 
+                // ---- Buttons -------------------------------------------------------
+                for (const button of buttons) {
+                    const warm = () => loadIndex().catch(() => { /* the click will report it */ });
+                    button.addEventListener("pointerenter", warm, { once: true });
+                    button.addEventListener("focus", warm, { once: true });
+ 
+                    button.addEventListener("click", async () => {
+                        button.disabled = true;
+                        statusEl.textContent = "Finding an example…";
+                        try {
+                            const examples = await loadIndex();
+                            const chosen = pick(examples, button.dataset.folder);
+                            if (!chosen) {
+                                statusEl.textContent = button.dataset.folder
+                                    ? `No examples found in ${button.dataset.folder}.`
+                                    : "No examples found.";
+                                return;
+                            }
+                            const full = fullPath(chosen);
+                            remember(full);
+                            const url = "/" + encodePath(chosen.page ? full.replace(/\.ck$/i, ".html") : full);
+                            statusEl.textContent = `Opening ${full}…`;
+                            // Pages can listen for this event and cancel it to handle the address themselves
+                            const proceed = button.dispatchEvent(new CustomEvent("random-example", {
+                                bubbles: true, cancelable: true, detail: { url, path: full },
+                            }));
+                            if (proceed) window.location.assign(url);
+                        } catch (err) {
+                            statusEl.textContent = `Couldn't load the example list (${err.message}). Try again in a moment, or use the search page.`;
+                        } finally {
+                            button.disabled = false;
+                        }
+                    });
+                }
+ 
+                // Coming back with the browser's Back button restores this page as it was: clear the old message
+                window.addEventListener("pageshow", () => { statusEl.textContent = ""; });
+            })();
+        </script>
+
+
+
+
 
         <!-- Description -->
-        <p class="description">
+        <p class="description" style="margin-bottom: 2rem;">
             <b>ChucK</b> is a programming language for real-time sound synthesis and music
             creation. ChucK offers a unique <b>time-based, concurrent
                 programming model</b> that is precise and expressive (we call this
@@ -93,8 +251,6 @@
             It's fun, easy to learn, and offers composers, researchers, and performers
             a powerful programming tool for building and experimenting with complex audio
             synthesis/analysis programs, and real-time interactive music.
-        </p>
-        <br>
 
         <section>
 
@@ -138,12 +294,11 @@
                 </div>
             </nav>
         </section>
-        <br>
-        <hr width="300">
-        <br>
+
+        <hr width="300" style="margin: 2rem auto;">
 
         <!-- Book/Course Container -->
-        <section class="grid-container" style="max-width: 1100px;">
+        <section class="grid-container" style="max-width: 1100px; margin-bottom: 2rem;">
 
             <!-- Book/Course Images -->
             <div class="image-container">
@@ -196,8 +351,6 @@
                     top 100</a> online course)
             </div>
         </section>
-        <br>
-        <br>
 
         <!-- Main Table -->
         <aside class="outlineDiv mid-text">
@@ -281,16 +434,15 @@
 
         </aside>
     </main>
-    <br>
 
+    <hr width="20%" style="margin:2rem auto;">
     <!-- Footer -->
-    <footer class="mid-text">
-        <hr width="20%" />
+    <footer style="font-size: 0.9em;">
         <a href="http://ccrma.stanford.edu/">CCRMA</a> |
         <a href="https://youtube.com/@chuck2now">YouTube</a> |
         <a href="https://mcd.stanford.edu/">MCD</a>
     </footer>
-    <br>
+
 </body>
 
 </html>

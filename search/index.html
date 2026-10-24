@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <!-- Same site stylesheet as the example pages. Remove it if it fights the styles below. -->
+    <link rel="stylesheet" href="/css/main.css" type="text/css">
+    <style>
+        /* Neutral on purpose: colors come from the site, grays are translucent so they work on light or dark. */
+        #search-app {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        #q {
+            -webkit-appearance: revert;
+            appearance: revert;
+            outline-offset: 0px;
+
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            font-size: 1.1rem;
+            font-family: ui-monospace, Menlo, Consolas, monospace;
+        }
+
+        .options {
+            margin: 0.5rem 0;
+        }
+
+        .options label {
+            display: inline-block;
+            margin-right: 1.5rem;
+        }
+
+        #status {
+            min-height: 1.5em;
+            margin: 0.75rem 0;
+        }
+
+        .result {
+            margin: 1rem 0;
+            border: 1px solid rgba(128, 128, 128, 0.4);
+        }
+
+        .result-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.25rem 0.75rem;
+            padding: 0.4rem 0.75rem;
+            background: rgba(128, 128, 128, 0.12);
+        }
+
+        .result-head .crumb {
+            opacity: 0.65;
+            margin-right: -0.5rem;
+        }
+
+        .result-head .name {
+            font-weight: bold;
+        }
+
+        .result-head .tag,
+        .result-head .raw {
+            font-size: 0.85rem;
+        }
+
+        .result-head .tag {
+            opacity: 0.7;
+        }
+
+        .result-head .raw {
+            margin-left: auto;
+        }
+
+        .code {
+            overflow-x: auto;
+            padding: 0.35rem 0;
+            font-family: ui-monospace, Menlo, Consolas, monospace;
+            font-size: 0.85rem;
+            tab-size: 4;
+        }
+
+        .line {
+            display: flex;
+            min-width: max-content;
+            white-space: pre;
+        }
+
+        .line .ln {
+            flex: 0 0 3.5rem;
+            padding-right: 0.75rem;
+            text-align: right;
+            opacity: 0.5;
+            user-select: none;
+        }
+
+        .line .tx {
+            min-height: 1.3em;
+            padding-right: 1rem;
+        }
+
+        .line.context .tx {
+            opacity: 0.6;
+        }
+
+        .gap {
+            padding-left: 3.5rem;
+            opacity: 0.5;
+        }
+
+        /* Site pages: a few matching sections per page, each with a short excerpt */
+        .result-body.pages {
+            padding: 0.4rem 0.75rem;
+        }
+
+        .section + .section {
+            margin-top: 0.75rem;
+        }
+
+        .section .sec-title {
+            font-weight: bold;
+        }
+
+        .snippet {
+            margin: 0.15rem 0 0;
+        }
+
+        .result-body.pages .expand {
+            margin-left: 0;
+        }
+
+        mark {
+            padding: 0 1px;
+            border-radius: 2px;
+            background: #ffd54a;
+            color: #000;
+        }
+
+        .expand,
+        #more {
+            margin: 0.25rem 0.75rem 0.6rem;
+        }
+
+        #more {
+            margin-left: 0;
+        }
+
+        #search-app .error {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid rgba(128, 128, 128, 0.6);
+        }
+
+        a {
+            text-decoration: underline;
+        }
+
+        button {
+            -webkit-appearance: revert;
+            appearance: revert;
+            outline-offset: 0px;
+
+            top: auto;
+            right: 0;
+            background-color: transparent;
+            border-color: #333;
+            color: #333;
+            padding: 0.5rem 0.3rem;
+            opacity: 0.8;
+            position: relative;
+            transition: all 0.1s ease-in-out;
+
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+
+<header>
+    <!-- Version Container -->
+    <div class="outlineDiv" style="width: 333px">
+        <div><a href="/doc/authors.html">ChucK Team</a> | 2003 =&gt; now</div>
+        <div>latest version: <a href="/release/">1.5.5.8</a> (chai)</div>
+        <div class="small-text">(<a href="/release/VERSIONS">What's new?</a>)</div>
+    </div>
+
+    <!-- Logos -->
+    <div class="flex-container">
+        <a href="../">
+            <img src="/doc/images/chuck-logo2023w.png" alt="ChucK operator" title="ChucK" width="10%" />
+        </a>
+    </div>
+</header>
+
+<body>
+    <main id="search-app">
+        <h1>Search</h1>
+        <p id="hint"></p>
+
+        <div class="options" role="radiogroup" aria-label="What to search">
+            <label><input type="radio" name="mode" value="examples"> Example code</label>
+            <label><input type="radio" name="mode" value="site"> Site pages</label>
+        </div>
+        <input id="q" type="search" placeholder="Search" aria-label="Search"
+            autocomplete="off" autocapitalize="off" spellcheck="false" autofocus>
+        <div class="options">
+            <label><input type="checkbox" id="case"> Match case</label>
+            <label><input type="checkbox" id="regex"> Regular expression</label>
+        </div>
+
+        <p id="status" role="status" aria-live="polite"></p>
+        <div id="results"></div>
+        <button id="more" type="button" hidden>Show more results</button>
+        <noscript><p>Search needs JavaScript turned on.</p></noscript>
+    </main>
+
+    <hr width="20%" style="margin:2rem auto;">
+    <!-- Footer -->
+    <footer style="font-size: 0.9em;">
+        <a href="http://ccrma.stanford.edu/">CCRMA</a> |
+        <a href="https://youtube.com/@chuck2now">YouTube</a> |
+        <a href="https://mcd.stanford.edu/">MCD</a>
+    </footer>
+
+    <script>
+        (() => {
+            "use strict";
+
+            // ---- Settings ------------------------------------------------------
+            const MODES = {
+                examples: {
+                    url: "/search/examples.json", // the examples index, as a path from the site root
+                    version: 2,                   // must match build_search_index.py
+                    unit: "example",
+                    placeholder: "Search the example code",
+                    hint: "Find any keyword or code snippet in the example code, such as => or GGen. " +
+                        "Spaces in your search match any amount of whitespace, so pasted code matches regardless of indentation.",
+                },
+                site: {
+                    url: "/search/site.json",      // the site-content index
+                    version: 1,                    // must match build_site_index.py
+                    unit: "page",
+                    placeholder: "Search the site",
+                    hint: "Find pages and sections across the site. Every word you type has to appear, in any order. " +
+                        "Put words in quotes to match them as a phrase, such as \"audio file\". " +
+                        "Matches inside longer words count, so osc also finds SinOsc.",
+                },
+            };
+            const DEFAULT_MODE = "examples"; // which one opens first; change to "site" to lead with site search
+            const BATCH = 40;       // results shown at first and per "Show more results"
+            const HITS_SHOWN = 6;   // example mode: matching lines per example before "Show more" (a match right beside a shown one comes along as context)
+            const CONTEXT = 1;      // example mode: lines of context shown above and below each match
+            const SECTIONS_SHOWN = 3; // site mode: matching sections shown per page before "Show more"
+            const SNIPPET_LENGTH = 220; // site mode: characters in each excerpt
+            const MAX_MATCHES = 1000; // safety cap per example
+            const MAX_QUERY = 300;  // longest search accepted
+            const MAX_TERMS = 12;   // most words used in a site search
+
+            // ---- Elements and state --------------------------------------------
+            const $ = (id) => document.getElementById(id);
+            const input = $("q"), caseBox = $("case"), regexBox = $("regex"), hintEl = $("hint");
+            const statusEl = $("status"), resultsEl = $("results"), moreBtn = $("more");
+            const modeBoxes = [...document.querySelectorAll('input[name="mode"]')];
+
+            let mode = DEFAULT_MODE;
+            const loaded = {};   // mode -> prepared index entries
+            let loadToken = 0;   // so a slow load can't overwrite a newer choice
+            let results = [];    // results of the current search
+            let terms = [];      // site mode: the matchers used, kept for excerpts
+            let shown = 0;       // how many results are on screen
+            let ready = false;
+
+            const plural = (n, word) => `${n.toLocaleString()} ${word}${n === 1 ? "" : "s"}`;
+            const encodePath = (p) => p.split("/").map(encodeURIComponent).join("/");
+            const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            // true if the (global) regex matches anywhere in text; leaves it reset
+            const has = (re, text) => { re.lastIndex = 0; const r = re.test(text); re.lastIndex = 0; return r; };
+
+            // ---- Loading the indexes -------------------------------------------
+            // Precompute line start offsets so a match position maps to a line number fast.
+            function prepareExample(raw) {
+                const lines = raw.code.split("\n");
+                const starts = [];
+                let offset = 0;
+                for (const line of lines) {
+                    starts.push(offset);
+                    offset += line.length + 1;
+                }
+                const full = raw.root ? raw.root + "/" + raw.path : raw.path; // from the site root, e.g. doc/examples/basic/sinosc.ck
+                const slash = full.lastIndexOf("/");
+                return {
+                    path: raw.path, // inside its examples folder
+                    full,
+                    dir: slash >= 0 ? full.slice(0, slash) : "",
+                    name: slash >= 0 ? full.slice(slash + 1) : full,
+                    page: raw.page,
+                    code: raw.code,
+                    lines,
+                    starts,
+                };
+            }
+
+            function preparePage(raw) {
+                const parts = raw.url.split("/").filter(Boolean);
+                parts.pop(); // the page (or its folder) is the title; what's left is the trail to it
+                return { url: raw.url, title: raw.title, crumb: parts.length ? parts.join("/") + "/" : "", sections: raw.sections };
+            }
+
+            async function loadIndex(m) {
+                if (loaded[m]) return loaded[m];
+                const res = await fetch(MODES[m].url, { cache: "no-cache" }); // revalidate, so a rebuilt index shows up
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                if (data.version !== MODES[m].version) throw new Error("the index is a different version than this page expects; rebuild it with its build script");
+                loaded[m] = m === "site" ? data.pages.map(preparePage) : data.examples.map(prepareExample);
+                return loaded[m];
+            }
+
+            function lineAt(starts, pos) {
+                let lo = 0, hi = starts.length - 1;
+                while (lo < hi) {
+                    const mid = (lo + hi + 1) >> 1;
+                    if (starts[mid] <= pos) lo = mid; else hi = mid - 1;
+                }
+                return lo;
+            }
+
+            // ---- Searching: examples (literal code search) ----------------------
+            function buildRegex(query, isRegex, matchCase) {
+                const flags = "gm" + (matchCase ? "" : "i");
+                if (isRegex) return new RegExp(query, flags); // throws if invalid
+                // Literal: escape everything, but let any run of spaces match any whitespace
+                const source = query.trim().split(/\s+/).map(escapeRegExp).join("\\s+");
+                return new RegExp(source, flags);
+            }
+
+            // Returns Map(line index -> [[start, end], ...]) for one example
+            function findInExample(example, re) {
+                const ranges = new Map();
+                let count = 0, m;
+                re.lastIndex = 0;
+                while ((m = re.exec(example.code)) !== null) {
+                    if (m[0].length === 0) { re.lastIndex++; continue; }
+                    const start = m.index, end = start + m[0].length;
+                    const first = lineAt(example.starts, start);
+                    const last = lineAt(example.starts, end - 1);
+                    for (let l = first; l <= last; l++) { // a match can span lines
+                        const lineStart = example.starts[l];
+                        const a = Math.max(start, lineStart) - lineStart;
+                        const b = Math.min(end, lineStart + example.lines[l].length) - lineStart;
+                        if (b > a) {
+                            let list = ranges.get(l);
+                            if (!list) ranges.set(l, list = []);
+                            list.push([a, b]);
+                        }
+                    }
+                    if (++count >= MAX_MATCHES) break;
+                }
+                return ranges;
+            }
+
+            function searchExamples(examples, re) {
+                const found = [];
+                for (const example of examples) {
+                    const ranges = findInExample(example, re);
+                    const pathHit = has(re, example.full); // the whole path, so "chugl" finds the examples in a chugl folder
+                    if (ranges.size || pathHit) {
+                        const hits = [...ranges.keys()].sort((a, b) => a - b);
+                        found.push({ kind: "example", example, ranges, hits, pathHit, expanded: false });
+                    }
+                }
+                found.sort((a, b) => (b.pathHit - a.pathHit) || (a.example.full < b.example.full ? -1 : 1));
+                return found;
+            }
+
+            // ---- Searching: site pages (words, any order) -----------------------
+            // "audio file" in quotes is one phrase; everything else is split on spaces.
+            function buildTerms(query, isRegex, matchCase) {
+                const flags = "g" + (matchCase ? "" : "i") + (isRegex ? "m" : "");
+                if (isRegex) return [{ re: new RegExp(query, flags) }]; // throws if invalid
+                const words = [];
+                const rx = /"([^"]+)"|(\S+)/g;
+                let m;
+                while ((m = rx.exec(query)) !== null) words.push((m[1] || m[2]).trim());
+                return words.filter(Boolean).slice(0, MAX_TERMS).map((word) => {
+                    const source = word.split(/\s+/).map(escapeRegExp).join("\\s+");
+                    let whole = null; // whole-word version, used to rank "now" above "know"
+                    try { whole = new RegExp(`(?<![\\w])${source}(?![\\w])`, flags); } catch (e) { /* older browser: no bonus */ }
+                    return { re: new RegExp(source, flags), whole };
+                });
+            }
+
+            function countMatches(re, text, cap) {
+                let n = 0, m;
+                re.lastIndex = 0;
+                while (n < cap && (m = re.exec(text)) !== null) {
+                    if (m[0].length === 0) { re.lastIndex++; continue; }
+                    n++;
+                }
+                re.lastIndex = 0;
+                return n;
+            }
+
+            // Score one section, or -1 if it doesn't contain every term
+            function scoreSection(section, matchers) {
+                let score = 0;
+                for (const t of matchers) {
+                    const inHeading = section.heading ? has(t.re, section.heading) : false;
+                    const count = countMatches(t.re, section.text, 10);
+                    if (!inHeading && !count) return -1;
+                    score += (inHeading ? 15 : 0) + count; // a heading match outweighs a word repeated in the body
+                    if (t.whole && ((section.heading && has(t.whole, section.heading)) || has(t.whole, section.text))) score += 3;
+                }
+                return score;
+            }
+
+            function searchSite(pages, matchers) {
+                const found = [];
+                for (const page of pages) {
+                    const hits = [];
+                    page.sections.forEach((section, idx) => {
+                        const score = scoreSection(section, matchers);
+                        if (score >= 0) hits.push({ section, idx, score });
+                    });
+                    const titleHit = matchers.every((t) => has(t.re, page.title));
+                    if (!hits.length && !titleHit) continue;
+                    hits.sort((a, b) => (b.score - a.score) || (a.idx - b.idx));
+                    const score = (hits.length ? hits[0].score : 0) + (titleHit ? 10 : 0) + Math.min(hits.length, 5) * 0.5;
+                    found.push({ kind: "page", page, hits, titleHit, score, expanded: false });
+                }
+                found.sort((a, b) => (b.score - a.score) || (a.page.url < b.page.url ? -1 : 1));
+                return found;
+            }
+
+            // ---- Running a search ------------------------------------------------
+            function runSearch() {
+                if (!ready) return;
+                syncUrl();
+                const query = input.value;
+                const data = loaded[mode];
+                const unit = MODES[mode].unit;
+                resultsEl.replaceChildren();
+                moreBtn.hidden = true;
+                results = [];
+                terms = [];
+                shown = 0;
+
+                if (!query.trim()) {
+                    statusEl.textContent = `Searching ${plural(data.length, unit)}.`;
+                    return;
+                }
+                if (query.length > MAX_QUERY) {
+                    showError(`That search is too long. Shorten it to ${MAX_QUERY} characters or fewer.`);
+                    return;
+                }
+                let matcher;
+                try {
+                    matcher = mode === "site"
+                        ? buildTerms(query, regexBox.checked, caseBox.checked)
+                        : buildRegex(query, regexBox.checked, caseBox.checked);
+                } catch (err) {
+                    showError(`That isn't a valid regular expression (${err.message}). Fix it, or turn off Regular expression to search for the text as typed.`);
+                    return;
+                }
+
+                if (mode === "site") {
+                    terms = matcher;
+                    results = searchSite(data, matcher);
+                } else {
+                    results = searchExamples(data, matcher);
+                }
+
+                if (!results.length) {
+                    statusEl.textContent = `No matches in ${plural(data.length, unit)}.`;
+                    return;
+                }
+                const inner = results.reduce((sum, r) => sum + r.hits.length, 0);
+                statusEl.textContent = mode === "site"
+                    ? `${plural(results.length, "page")}, ${plural(inner, "matching section")}.`
+                    : `${plural(results.length, "example")}, ${plural(inner, "matching line")}.`;
+                appendMore();
+            }
+
+            function showError(message) {
+                statusEl.textContent = "";
+                const box = document.createElement("div");
+                box.className = "error";
+                box.textContent = message;
+                resultsEl.append(box);
+            }
+
+            // ---- Rendering (built with DOM calls, never innerHTML, so content can't inject markup) ----
+            function highlighted(text, ranges) {
+                const frag = document.createDocumentFragment();
+                if (!ranges || !ranges.length) { frag.append(text); return frag; }
+                ranges.sort((a, b) => a[0] - b[0]);
+                let pos = 0;
+                for (const [s, e] of ranges) {
+                    if (e <= pos) continue;
+                    const start = Math.max(s, pos);
+                    if (start > pos) frag.append(text.slice(pos, start));
+                    const mark = document.createElement("mark");
+                    mark.textContent = text.slice(start, e);
+                    frag.append(mark);
+                    pos = e;
+                }
+                if (pos < text.length) frag.append(text.slice(pos));
+                return frag;
+            }
+
+            function expandButton(label, onClick) {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "expand";
+                btn.textContent = label;
+                btn.addEventListener("click", onClick);
+                return btn;
+            }
+
+            // -- example results --
+            function fillBody(body, r) {
+                body.replaceChildren();
+                const ex = r.example;
+                const hits = r.expanded ? r.hits : r.hits.slice(0, HITS_SHOWN);
+
+                const want = new Set();
+                for (const h of hits) {
+                    const from = Math.max(0, h - CONTEXT), to = Math.min(ex.lines.length - 1, h + CONTEXT);
+                    for (let i = from; i <= to; i++) want.add(i);
+                }
+
+                const code = document.createElement("div");
+                code.className = "code";
+                let prev = -1;
+                for (const i of [...want].sort((a, b) => a - b)) {
+                    if (prev >= 0 && i > prev + 1) {
+                        const gap = document.createElement("div");
+                        gap.className = "gap";
+                        gap.textContent = "…";
+                        code.append(gap);
+                    }
+                    const ranges = r.ranges.get(i);
+                    const row = document.createElement("div");
+                    row.className = "line" + (ranges ? "" : " context");
+                    const ln = document.createElement("span");
+                    ln.className = "ln";
+                    ln.textContent = i + 1;
+                    const tx = document.createElement("span");
+                    tx.className = "tx";
+                    tx.append(highlighted(ex.lines[i], ranges));
+                    row.append(ln, tx);
+                    code.append(row);
+                    prev = i;
+                }
+                body.append(code);
+
+                const hidden = r.hits.filter((h) => !want.has(h)).length;
+                if (hidden > 0 || (r.expanded && r.hits.length > HITS_SHOWN)) {
+                    body.append(expandButton(
+                        hidden > 0 ? `Show ${plural(hidden, "more matching line")}` : "Show fewer lines",
+                        () => { r.expanded = !r.expanded; fillBody(body, r); }));
+                }
+            }
+
+            function renderExample(r) {
+                const ex = r.example;
+                const card = document.createElement("div");
+                card.className = "result";
+
+                const head = document.createElement("div");
+                head.className = "result-head";
+                if (ex.dir) {
+                    const crumb = document.createElement("span");
+                    crumb.className = "crumb";
+                    crumb.textContent = ex.dir + "/";
+                    head.append(crumb);
+                }
+                const link = document.createElement("a");
+                link.className = "name";
+                link.href = "/" + encodePath(ex.page ? ex.full.replace(/\.ck$/i, ".html") : ex.full);
+                link.textContent = ex.name;
+                head.append(link);
+                if (r.pathHit) {
+                    const tag = document.createElement("span");
+                    tag.className = "tag";
+                    tag.textContent = "name matches";
+                    head.append(tag);
+                }
+                if (ex.page) {
+                    const raw = document.createElement("a");
+                    raw.className = "raw";
+                    raw.href = "/" + encodePath(ex.full);
+                    raw.textContent = "Open .ck file";
+                    head.append(raw);
+                }
+                card.append(head);
+
+                if (r.hits.length) {
+                    const body = document.createElement("div");
+                    body.className = "result-body";
+                    fillBody(body, r);
+                    card.append(body);
+                }
+                return card;
+            }
+
+            // -- site results --
+            function rangesIn(text, matchers) {
+                const out = [];
+                for (const t of matchers) {
+                    const re = t.re;
+                    let m, n = 0;
+                    re.lastIndex = 0;
+                    while (n < 50 && (m = re.exec(text)) !== null) {
+                        if (m[0].length === 0) { re.lastIndex++; continue; }
+                        out.push([m.index, m.index + m[0].length]);
+                        n++;
+                    }
+                    re.lastIndex = 0;
+                }
+                return out;
+            }
+
+            // A short excerpt of text, starting a little before the first match, with matches highlighted
+            function makeSnippet(text, matchers) {
+                let first = -1;
+                for (const t of matchers) {
+                    t.re.lastIndex = 0;
+                    const m = t.re.exec(text);
+                    t.re.lastIndex = 0;
+                    if (m && m[0].length && (first < 0 || m.index < first)) first = m.index;
+                }
+                let start = first > 70 ? first - 70 : 0;
+                if (start > 0) { // begin at a word boundary
+                    const space = text.indexOf(" ", start);
+                    if (space !== -1 && space < first) start = space + 1;
+                }
+                let end = Math.min(text.length, start + SNIPPET_LENGTH);
+                if (end < text.length) { // end at a word boundary without cutting the match
+                    const space = text.lastIndexOf(" ", end);
+                    if (space > start && (first < 0 || space > first)) end = space;
+                }
+                const piece = text.slice(start, end);
+                const frag = document.createDocumentFragment();
+                if (start > 0) frag.append("… ");
+                frag.append(highlighted(piece, rangesIn(piece, matchers)));
+                if (end < text.length) frag.append(" …");
+                return frag;
+            }
+
+            const pageHref = (url, id) => url + (id ? "#" + encodeURIComponent(id) : "");
+
+            function fillPageBody(body, r) {
+                body.replaceChildren();
+                const page = r.page;
+                const list = r.expanded ? r.hits : r.hits.slice(0, SECTIONS_SHOWN);
+
+                if (!list.length && page.sections[0] && page.sections[0].text) { // title match only: show how the page begins
+                    const p = document.createElement("p");
+                    p.className = "snippet";
+                    p.append(makeSnippet(page.sections[0].text, []));
+                    body.append(p);
+                }
+                for (const h of list) {
+                    const sec = document.createElement("div");
+                    sec.className = "section";
+                    // a page's top section is the page itself, so it gets no heading line of its own
+                    if (h.section.heading && !(h.idx === 0 && !h.section.id)) {
+                        const a = document.createElement("a");
+                        a.className = "sec-title";
+                        a.href = pageHref(page.url, h.section.id);
+                        a.append(highlighted(h.section.heading, rangesIn(h.section.heading, terms)));
+                        sec.append(a);
+                    }
+                    if (h.section.text) {
+                        const p = document.createElement("p");
+                        p.className = "snippet";
+                        p.append(makeSnippet(h.section.text, terms));
+                        sec.append(p);
+                    }
+                    body.append(sec);
+                }
+
+                const hidden = r.hits.length - list.length;
+                if (hidden > 0 || (r.expanded && r.hits.length > SECTIONS_SHOWN)) {
+                    body.append(expandButton(
+                        hidden > 0 ? `Show ${plural(hidden, "more matching section")}` : "Show fewer sections",
+                        () => { r.expanded = !r.expanded; fillPageBody(body, r); }));
+                }
+            }
+
+            function renderPage(r) {
+                const page = r.page;
+                const card = document.createElement("div");
+                card.className = "result";
+
+                const head = document.createElement("div");
+                head.className = "result-head";
+                if (page.crumb) {
+                    const crumb = document.createElement("span");
+                    crumb.className = "crumb";
+                    crumb.textContent = page.crumb;
+                    head.append(crumb);
+                }
+                const link = document.createElement("a");
+                link.className = "name";
+                link.href = page.url;
+                link.append(highlighted(page.title, rangesIn(page.title, terms)));
+                head.append(link);
+                if (r.titleHit) {
+                    const tag = document.createElement("span");
+                    tag.className = "tag";
+                    tag.textContent = "title matches";
+                    head.append(tag);
+                }
+                card.append(head);
+
+                const body = document.createElement("div");
+                body.className = "result-body pages";
+                fillPageBody(body, r);
+                card.append(body);
+                return card;
+            }
+
+            function appendMore() {
+                const batch = results.slice(shown, shown + BATCH);
+                for (const r of batch) resultsEl.append(r.kind === "page" ? renderPage(r) : renderExample(r));
+                shown += batch.length;
+                moreBtn.hidden = shown >= results.length;
+                moreBtn.textContent = `Show more results (${(results.length - shown).toLocaleString()} left)`;
+            }
+
+            // ---- URL: searches can be bookmarked and linked (?q=...&mode=site&case=1&regex=1) ----
+            function syncUrl() {
+                const p = new URLSearchParams();
+                if (input.value) p.set("q", input.value);
+                if (mode !== DEFAULT_MODE) p.set("mode", mode);
+                if (caseBox.checked) p.set("case", "1");
+                if (regexBox.checked) p.set("regex", "1");
+                const qs = p.toString();
+                try { history.replaceState(null, "", qs ? "?" + qs : location.pathname); } catch (e) { /* e.g. file:// */ }
+            }
+
+            function applyUrl() {
+                const p = new URLSearchParams(location.search);
+                input.value = p.get("q") || "";
+                const m = p.get("mode");
+                mode = m && MODES[m] ? m : DEFAULT_MODE;
+                caseBox.checked = p.get("case") === "1";
+                regexBox.checked = p.get("regex") === "1";
+            }
+
+            function updateModeUi() {
+                const cfg = MODES[mode];
+                hintEl.textContent = cfg.hint;
+                input.placeholder = cfg.placeholder;
+                input.setAttribute("aria-label", cfg.placeholder);
+                for (const box of modeBoxes) box.checked = box.value === mode;
+            }
+
+            // ---- Start ---------------------------------------------------------
+            async function activate() {
+                const wanted = mode, token = ++loadToken;
+                ready = false;
+                resultsEl.replaceChildren();
+                moreBtn.hidden = true;
+                if (!loaded[wanted]) statusEl.textContent = "Loading the search index…";
+                try {
+                    await loadIndex(wanted);
+                } catch (err) {
+                    if (token !== loadToken) return;
+                    statusEl.textContent = "";
+                    showError(`Couldn't load ${MODES[wanted].url} (${err.message}). Check that the index file is uploaded to that address. ` +
+                        "Opening this page straight from disk won't work; serve the site folder instead, for example with python3 -m http.server.");
+                    return;
+                }
+                if (token !== loadToken) return;
+                ready = true;
+                runSearch();
+            }
+
+            let timer;
+            input.addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(runSearch, 120); });
+            caseBox.addEventListener("change", runSearch);
+            regexBox.addEventListener("change", runSearch);
+            moreBtn.addEventListener("click", appendMore);
+            for (const box of modeBoxes) {
+                box.addEventListener("change", () => {
+                    if (!box.checked) return;
+                    mode = box.value;
+                    updateModeUi();
+                    activate();
+                });
+            }
+
+            // Pasting a multi-line snippet: browsers disagree on what a single-line field does with line breaks,
+            // so turn them into spaces ourselves (spaces match any whitespace, including line breaks).
+            input.addEventListener("paste", (event) => {
+                const text = event.clipboardData && event.clipboardData.getData("text");
+                if (!text || !/[\r\n]/.test(text)) return;
+                event.preventDefault();
+                input.setRangeText(text.trim().replace(/\s*[\r\n]+\s*/g, " "), input.selectionStart, input.selectionEnd, "end");
+                input.dispatchEvent(new Event("input", { bubbles: true }));
+            });
+
+            applyUrl();
+            updateModeUi();
+            activate();
+        })();
+    </script>
+</body>
+
+</html>

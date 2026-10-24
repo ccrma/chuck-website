@@ -1,6 +1,5 @@
 <html>
-<link rel="stylesheet" type="text/css" href="ckdoc.css" />
-<link rel="stylesheet" type="text/css" href="class.css" />
+<link rel="stylesheet" type="text/css" href="../../css/ckdoc.css" />
 <title>Chugins Library</title>
 <body>
 <a name="top"/>
@@ -45,7 +44,7 @@
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Soft clip saturating distortion, based on examples from Abel/Berners' Music 424 course at Stanford.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/effects/ABSaturator.ck">effects/ABSaturator.ck</a></li>
+<li><a target="_blank" href="../examples/effects/ABSaturator.html">effects/ABSaturator.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -81,7 +80,7 @@
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Third-order ambisonics panner (https://en.wikipedia.org/wiki/Ambisonics)<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/spatial/AmbPan3-CCRMA.ck">spatial/AmbPan3-CCRMA.ck</a></li>
+<li><a target="_blank" href="../examples/spatial/AmbPan3-CCRMA.html">spatial/AmbPan3-CCRMA.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -121,7 +120,7 @@
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Applies aliased downsampling and sample-width reduction to create a variety of distortion effects.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/effects/Bitcrusher.ck">effects/Bitcrusher.ck</a></li>
+<li><a target="_blank" href="../examples/effects/Bitcrusher.html">effects/Bitcrusher.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -168,7 +167,7 @@ The atten determines how much of the signal is attenuated outside the passband.
 Elliptic filters come with a trade-off for their steep slopes: they have a certain amount of ripple outside the passbands. A very small ripple (0.1 or 0.2 dB) produces very little ringing, whereas a large ripple (eg. 20 dB) produces a very strong harmonic ring.
 The filter design algorithm sometimes can't fulfill the design criteria -- a particular combination of cutoff frequencies, ripple, and attenuation. If that happens, the user is warned that the filter is not initialized, and the filter is bypassed. This may happen, for instance, if you ask for a very steep attenuation with very low ripple.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/filter/Elliptic-help.ck">filter/Elliptic-help.ck</a></li>
+<li><a target="_blank" href="../examples/filter/Elliptic-help.html">filter/Elliptic-help.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -224,7 +223,7 @@ The filter design algorithm sometimes can't fulfill the design criteria -- a par
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Feedback delay at exponentially changing delay times.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/effects/ExpDelay.ck">effects/ExpDelay.ck</a></li>
+<li><a target="_blank" href="../examples/effects/ExpDelay.html">effects/ExpDelay.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -301,8 +300,8 @@ SinOsc s => ExpEnv e => dac;
 Also useful for noise excitation pulse, using it like:
 Noise n => ExpEnv e => dac;.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/effects/ExpEnv.ck">effects/ExpEnv.ck</a></li>
-<li><a target="_blank" href="../examples/effects/ExpEnv-modes.ck">effects/ExpEnv-modes.ck</a></li>
+<li><a target="_blank" href="../examples/effects/ExpEnv.html">effects/ExpEnv.ck</a></li>
+<li><a target="_blank" href="../examples/effects/ExpEnv-modes.html">effects/ExpEnv-modes.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -357,9 +356,9 @@ Then specify order:
 
 N => myFilter.order;.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/filter/FIR-convolve-homer.ck">filter/FIR-convolve-homer.ck</a></li>
-<li><a target="_blank" href="../examples/filter/FIR-greyhole-down-up-decimate.ck">filter/FIR-greyhole-down-up-decimate.ck</a></li>
-<li><a target="_blank" href="../examples/filter/FIR-sinc-explicit.ck">filter/FIR-sinc-explicit.ck</a></li>
+<li><a target="_blank" href="../examples/filter/FIR-convolve-homer.html">filter/FIR-convolve-homer.ck</a></li>
+<li><a target="_blank" href="../examples/filter/FIR-greyhole-down-up-decimate.html">filter/FIR-greyhole-down-up-decimate.ck</a></li>
+<li><a target="_blank" href="../examples/filter/FIR-sinc-explicit.html">filter/FIR-sinc-explicit.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -411,8 +410,8 @@ N => myFilter.order;.<p>
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Foldback saturator that inverts a signal and multiplies it by an index as it passes a threshold.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/effects/FoldbackSaturator-index.ck">effects/FoldbackSaturator-index.ck</a></li>
-<li><a target="_blank" href="../examples/effects/FoldbackSaturator-threshold.ck">effects/FoldbackSaturator-threshold.ck</a></li>
+<li><a target="_blank" href="../examples/effects/FoldbackSaturator-index.html">effects/FoldbackSaturator-index.ck</a></li>
+<li><a target="_blank" href="../examples/effects/FoldbackSaturator-threshold.html">effects/FoldbackSaturator-threshold.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -457,7 +456,7 @@ N => myFilter.order;.<p>
 <p class="class_description">GVerb is a very smooth reverberator with the ability to produce very long reverb times.
 GVERB is based on the original "gverb/gigaverb" by Juhana Sadeharju (kouhia at nic.funet.fi). The code for this version was adapted from RTcmix (http:rtcmix.org), which in turn adapted it from the Max/MSP version by Olaf Mtthes (olaf.matthes at gmx.de).<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/effects/GVerb.ck">effects/GVerb.ck</a></li>
+<li><a target="_blank" href="../examples/effects/GVerb.html">effects/GVerb.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -536,7 +535,7 @@ The frequency of the crossfading and sampling of the input sets the cutoff. This
 In addition to the traditional modulation options waveshaping of the crossfading signal is provided. This leads to distortion at the cutoff frequency. At extreme values (and assuming no feedback is used) that makes the effect closer to traditional under-sampling.
 Linear interpolation is used on the input signal to avoid the S&Hs being quantised to ChucK's sample rate; This technique causes quite a few interesting artifacts that result from the ratio between the frequency of the input and the cutoff frequency. To emphasise those it makes sense to try to minimise artifacts induced by the digital environment itself. Thanks to Rob Hordijk for sharing his insights there.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/filter/KasFilter.ck">filter/KasFilter.ck</a></li>
+<li><a target="_blank" href="../examples/filter/KasFilter.html">filter/KasFilter.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -605,7 +604,7 @@ Linear interpolation is used on the input signal to avoid the S&Hs being quantis
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">This class implements a rectilinear, two-dimensional digital waveguide mesh structure.  For details, see Van Duyne and Smith, &quot;Physical Modeling with the 2-D Digital Waveguide Mesh,&quot; <i>Proceedings of the 1993 International Computer Music Conference</i>. <br/><br/>This is a digital waveguide model, making its use possibly subject to patents held by Stanford University, Yamaha, and others.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/special/Mesh2D.ck">special/Mesh2D.ck</a></li>
+<li><a target="_blank" href="../examples/special/Mesh2D.html">special/Mesh2D.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -673,7 +672,7 @@ Linear interpolation is used on the input signal to avoid the S&Hs being quantis
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Multiple simultaneous comb filters randomly chosen within a specified frequency range and spread across the stereo field.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/filter/Multicomb.ck">filter/Multicomb.ck</a></li>
+<li><a target="_blank" href="../examples/filter/Multicomb.html">filter/Multicomb.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -729,7 +728,7 @@ Linear interpolation is used on the input signal to avoid the S&Hs being quantis
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Four-channel equal-power panner.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/spatial/Pan4.ck">spatial/Pan4.ck</a></li>
+<li><a target="_blank" href="../examples/spatial/Pan4.html">spatial/Pan4.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -757,7 +756,7 @@ Linear interpolation is used on the input signal to avoid the S&Hs being quantis
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Eight-channel equal-power panner.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/spatial/Pan8.ck">spatial/Pan8.ck</a></li>
+<li><a target="_blank" href="../examples/spatial/Pan8.html">spatial/Pan8.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -810,8 +809,8 @@ Linear interpolation is used on the input signal to avoid the S&Hs being quantis
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">PitchTrack is a monophonic autocorrelation pitch tracker with a fast response and extremely high accuracy, even at low frequencies. It is adapted from [helmholtz~] for Pd by Katja, documented at http://www.katjaas.nl/helmholtz/helmholtz.html.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/effects/autotune.ck">effects/autotune.ck</a></li>
-<li><a target="_blank" href="../examples/analysis/PitchTrack.ck">analysis/PitchTrack.ck</a></li>
+<li><a target="_blank" href="../examples/effects/autotune.html">effects/autotune.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/PitchTrack.html">analysis/PitchTrack.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -875,8 +874,8 @@ Linear interpolation is used on the input signal to avoid the S&Hs being quantis
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#Envelope" class="ckdoc_typename ckdoc_type_ugen">Envelope</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">ADSR envelope that uses a power function to create curved envelope phases. In general, curves under 1.0 are sharp, while curves over 1.0 are soft.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/effects/PowerADSR-feedback-beatings.ck">effects/PowerADSR-feedback-beatings.ck</a></li>
-<li><a target="_blank" href="../examples/effects/PowerADSR.ck">effects/PowerADSR.ck</a></li>
+<li><a target="_blank" href="../examples/effects/PowerADSR-feedback-beatings.html">effects/PowerADSR-feedback-beatings.ck</a></li>
+<li><a target="_blank" href="../examples/effects/PowerADSR.html">effects/PowerADSR.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -1022,7 +1021,7 @@ Linear interpolation is used on the input signal to avoid the S&Hs being quantis
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Sinusoidal analysis & pitch tracking. Adapted from Miller Puckette’s sigmund~ Max object.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/analysis/Sigmund.ck">analysis/Sigmund.ck</a></li>
+<li><a target="_blank" href="../examples/analysis/Sigmund.html">analysis/Sigmund.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -1098,7 +1097,7 @@ Linear interpolation is used on the input signal to avoid the S&Hs being quantis
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">FFT-based spectral delay and EQ by John Gibson. Inspired by the totally awesome Spektral Delay plug-in by Native Instruments.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/effects/Spectacle.ck">effects/Spectacle.ck</a></li>
+<li><a target="_blank" href="../examples/effects/Spectacle.html">effects/Spectacle.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -1222,7 +1221,7 @@ Linear interpolation is used on the input signal to avoid the S&Hs being quantis
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#Envelope" class="ckdoc_typename ckdoc_type_ugen">Envelope</a> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">WinFunEnv is an Attack/Release envelope built around window functions!<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/effects/WinFuncEnv.ck">effects/WinFuncEnv.ck</a></li>
+<li><a target="_blank" href="../examples/effects/WinFuncEnv.html">effects/WinFuncEnv.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -1346,7 +1345,7 @@ Linear interpolation is used on the input signal to avoid the S&Hs being quantis
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Virtual analog low pass filter based on Will Pirkle's Diode Ladder application notes.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/filter/WPDiodeLadder.ck">filter/WPDiodeLadder.ck</a></li>
+<li><a target="_blank" href="../examples/filter/WPDiodeLadder.html">filter/WPDiodeLadder.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">
@@ -1406,7 +1405,7 @@ Linear interpolation is used on the input signal to avoid the S&Hs being quantis
 <h4><span class="class_inherits">inherits</span> : <a href="ugens-basic.html#UGen" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="base.html#Object" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">Virtual analog low pass filter based on Will Pirkle's Korg35 application notes.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/filter/WPKorg35.ck">filter/WPKorg35.ck</a></li>
+<li><a target="_blank" href="../examples/filter/WPKorg35.html">filter/WPKorg35.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">

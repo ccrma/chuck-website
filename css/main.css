@@ -54,6 +54,11 @@ td {
     vertical-align: top;
 }
 
+code {
+    font-size: 100%;
+    color: #e83e8c;
+}
+
 /* ----------------- Utility ------------------- */
 
 .flex-container
@@ -152,8 +157,12 @@ td {
 {
     text-align: left;
 }
-/* unsure on link styling
-a {
-    text-decoration: underline;
+
+a { 
+    /* text-decoration: underline; */
 } 
-*/
+
+a:link { 
+	color: #007bff;
+}
+
