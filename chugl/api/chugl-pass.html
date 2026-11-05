@@ -176,7 +176,7 @@
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">shader</span>(<span class="ckdoc_typename ckdoc_type_object">Shader</span> shader)</p>
-<p class="member_description">Set the screen shader to apply to the screen. In your screen shader be sure to #include SCREEN_PASS_VERTEX_SHADER which supplies your fragment shader with a full-screen quad.</p>
+<p class="member_description">Set the screen shader to apply to the screen. In your screen shader be sure to #include SCREEN_PASS_VERTEX_SHADER which supplies your fragment shader with a full-screen quad. Will automatically set the shader's vertex layout to null, as a ScreenPass does not operate on geometry vertex buffers.</p>
 </div>
 </div>
 <p class="top_link">[ <a href="#top">top</a> ]</p>
