@@ -232,7 +232,7 @@
             // ---- Settings ------------------------------------------------------
             const MODES = {
                 examples: {
-                    url: "/search/examples.json", // the examples index, as a path from the site root
+                    url: "examples.json", // the examples index, as a path from the site root
                     version: 2,                   // must match build_search_index.py
                     unit: "example",
                     placeholder: "Search the example code",
@@ -240,7 +240,7 @@
                         "Spaces in your search match any amount of whitespace, so pasted code matches regardless of indentation.",
                 },
                 site: {
-                    url: "/search/site.json",      // the site-content index
+                    url: "site.json",      // the site-content index
                     version: 1,                    // must match build_site_index.py
                     unit: "page",
                     placeholder: "Search the site",
@@ -258,6 +258,7 @@
             const MAX_MATCHES = 1000; // safety cap per example
             const MAX_QUERY = 300;  // longest search accepted
             const MAX_TERMS = 12;   // most words used in a site search
+            const SITE_BASE = "../";
 
             // ---- Elements and state --------------------------------------------
             const $ = (id) => document.getElementById(id);
@@ -580,7 +581,7 @@
                 }
                 const link = document.createElement("a");
                 link.className = "name";
-                link.href = "/" + encodePath(ex.page ? ex.full.replace(/\.ck$/i, ".html") : ex.full);
+                link.href = SITE_BASE + encodePath(ex.page ? ex.full.replace(/\.ck$/i, ".html") : ex.full);
                 link.textContent = ex.name;
                 head.append(link);
                 if (r.pathHit) {
@@ -592,7 +593,7 @@
                 if (ex.page) {
                     const raw = document.createElement("a");
                     raw.className = "raw";
-                    raw.href = "/" + encodePath(ex.full);
+                    raw.href = SITE_BASE + encodePath(ex.full);
                     raw.textContent = "Open .ck file";
                     head.append(raw);
                 }
@@ -651,7 +652,7 @@
                 return frag;
             }
 
-            const pageHref = (url, id) => url + (id ? "#" + encodeURIComponent(id) : "");
+            const pageHref = (url, id) => url.slice(1) + (id ? "#" + encodeURIComponent(id) : "");
 
             function fillPageBody(body, r) {
                 body.replaceChildren();
@@ -707,7 +708,7 @@
                 }
                 const link = document.createElement("a");
                 link.className = "name";
-                link.href = page.url;
+                link.href = SITE_BASE + page.url.slice(1); 
                 link.append(highlighted(page.title, rangesIn(page.title, terms)));
                 head.append(link);
                 if (r.titleHit) {
