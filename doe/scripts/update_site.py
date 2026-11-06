@@ -22,7 +22,7 @@ HERE = Path(__file__).resolve().parent
 
 STEPS = [
     ("Example pages", "make_example_pages.py", ["--prune"]),
-    ("Links to examples", "relink_examples.py", []),
+    # ("Links to examples", "relink_examples.py", []),
     ("Example search index", "build_example_index.py", []),
     ("Site search index", "build_site_index.py", []),
 ]
