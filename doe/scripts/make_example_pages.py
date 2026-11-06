@@ -88,13 +88,13 @@ def make_pages_in(folder, template, ignored, args):
 
     new, changed, left_alone, unchanged, ignored_count = [], [], [], 0, 0
     wanted_pages = set()
-    page_to_root = Path(os.path.relpath(common.SITE_ROOT, folder)).as_posix()
     for ck in ck_files:
         if ignored.matches(ck):
             ignored_count += 1
             continue
         page_file = ck.with_suffix(".html")
         wanted_pages.add(page_file)
+        page_to_root = Path(os.path.relpath(common.SITE_ROOT, page_file.parent)).as_posix()
         page = make_page(template, common.read_text(ck), ck.name, page_to_root)
         if page_file.exists():
             if not args.force and not common.is_generated(page_file):
