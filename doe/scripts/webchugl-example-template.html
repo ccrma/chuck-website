@@ -294,11 +294,11 @@
 
     <div class="leftText">
       <h2><span id="title" style="font-weight: bold">${TITLE}</span></h2>
-      <div id="author" style="font-style: italic;">ChucK Development Team</div>
+      <div id="author" style="font-style: italic; font-size:.8rem;">ChucK/ChuGL Code Example</div>
     </div>
 
-    <button id="openInIDE">=&gt; <em>to WebChucK IDE</em></button>
-    <button id="download" data-href="${FILENAME}">Download .ck</button>
+    <button id="openInIDE">=&gt; to WebChucK IDE</button>
+    <button id="download" data-href="${FILENAME}">Download .ck file</button>
 
     <button id="action">
       Play
@@ -311,11 +311,12 @@
     </button>
 
   </header>
-  <p style="margin-top: 1rem; font-size: 1rem; text-align: center;">
-    <b>Note:</b> Certain examples cannot run from this page.
-    IO like adc and Hid, as well as loading audio files, are not available.<br>
-    Please use the <strong>=> to WebChucK IDE</strong> button for full support.
-  </p>
+    <p style="margin-top: 1rem; font-size: .8rem; text-align: center;">
+      <b>NOTE:</b> Some examples cannot run directly from a webpage (due to web browser security).<br>
+      Input/output features such as <i>adc</i> (microphone) and <i>Hid</i>, as well as loading audio files, are not available here.<br>
+      Please use "<strong>=> to WebChucK IDE</strong>" button above to run in WebChucK IDE (which supports microphone input),<br>
+      or "<strong>Download .ck file</strong>" (to run natively on your computer using CLI <strong>chuck</strong>).
+    </p>
 
   <div class="canvas-container">
     <canvas id="canvas" aria-hidden="true"></canvas>
@@ -328,6 +329,16 @@
   </main>
 
   <pre id="chuck-console" role="log" aria-label="ChucK console output"></pre>
+  <hr width="35%" style="margin:.75rem auto; margin-top:2rem;">
+
+  <!-- Footer -->
+  <footer style="font-size: 0.9em;">
+      <a href="http://chuck.stanford.edu/">ChucK@Stanford</a> |
+      <a href="http://chuck.cs.princeton.edu/">ChucK@Princeton</a> |
+      <a href="https://youtube.com/@chuck2now">ChucK on YouTube</a> |
+      <a href="https://mcd.stanford.edu/">MCD</a>
+  </footer>
+
 </body>
 
 </html>
