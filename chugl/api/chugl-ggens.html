@@ -77,8 +77,32 @@
 <p class="member_description">Detach this GGen from its parent. Equivalent to ggen --< ggen.parent()</p>
 </div>
 <div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">void</span> <span class="membername">detachSubgraph</span>()</p>
+<p class="member_description">Detach the entire subgraph beginning at this GGen. All ggens will be disconnected from each other. Neccessary for freeing / garbage collecting an entire group of GGens.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">findChild</span>(<span class="ckdoc_typename ckdoc_type_object">Type</span> type, <span class="ckdoc_typename ckdoc_type_primitive">int</span> recurse)</p>
+<p class="member_description">Find the first child of type. This is *not* guaranteed to be the first child created or added to the scenegraph. If recurse=true, will recursively search children of children, breadth-first. Returns null if none found. `ggen.findChild(GMesh, false) $ GMesh @=> GMesh child_mesh;`.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span><span class="typename">[]</span> <span class="membername">findChildren</span>(<span class="ckdoc_typename ckdoc_type_object">Type</span> type, <span class="ckdoc_typename ckdoc_type_primitive">int</span> recurse)</p>
+<p class="member_description">Find all children of type. This is *not* ordered in any way. If recurse=true, will recursively search children of children, breadth-first. Returns an empty array if none found. `ggen.findChildren(GMesh, true) @=> GGen child_meshes[];`.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">findParent</span>(<span class="ckdoc_typename ckdoc_type_object">Type</span> type)</p>
+<p class="member_description">Find the first parent of type. Returns null if none found. `ggen.findParent(GMesh) $ GMesh @=> GMesh parent_mesh;`.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span><span class="typename">[]</span> <span class="membername">findParents</span>(<span class="ckdoc_typename ckdoc_type_object">Type</span> type)</p>
+<p class="member_description">Find all parents of type. The returned array is ordered from nearest-to-farthest parent relationship. If none are found, returns an empty array. `ggen.findParents(GMesh) @=> GGen parent_meshes[];`.</p>
+</div>
+<div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">vec3</span> <span class="membername">forward</span>()</p>
 <p class="member_description">Get the forward vector of this GGen in world space.</p>
+</div>
+<div class="member">
+<p class="member_declaration"><span class="ckdoc_typename ckdoc_type_primitive">int</span> <span class="membername">isa</span>(<span class="ckdoc_typename ckdoc_type_object">Type</span> type)</p>
+<p class="member_description">Get whether this GGen is a given type. E.g. `ggen.isa(GMesh) => int is_mesh;`.</p>
 </div>
 <div class="member">
 <p class="member_declaration"><span class="ckdoc_typename ckdoc_type_object">GGen</span> <span class="membername">lookAt</span>(<span class="ckdoc_typename ckdoc_type_primitive">vec3</span> pos)</p>
