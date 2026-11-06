@@ -2,8 +2,29 @@
 <html lang="en">
 
 <head>
+    <!-- character set -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- meta properties -->
+    <meta property="og:url" content="https://ccrma.stanford.edu/software/chuck/search/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Search the ChucK Website" />
+    <meta property="og:description"
+        content="Search ChucK/ChuGL code examples and documention pages across the ChucK website." />
+    <meta name="author" content="ChucK Team">
+    <meta property="og:image" content="https://ccrma.stanford.edu/software/chuck/doc/images/chuck-logo2023w.png" />
+    <meta property="fb:app_id" content="966242223397117" /> <!--default app id-->
+    <link rel="canonical" href="https://chuck.stanford.edu/search" />
+    <!--<link rel="canonical" href="http://chuck.cs.princeton.edu/" />-->
+    <!--<link rel="canonical" href="https://ccrma.stanford.edu/software/chuck/" />-->
+
+    <meta name="viewport" content="width=device-width">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+
+
     <title>Search</title>
     <!-- Same site stylesheet as the example pages. Remove it if it fights the styles below. -->
     <link rel="stylesheet" href="../css/main.css" type="text/css">
@@ -180,13 +201,6 @@
 </head>
 
 <header>
-    <!-- Version Container -->
-    <div class="outlineDiv" style="width: 333px">
-        <div><a href="../doc/authors.html">ChucK Team</a> | 2003 =&gt; now</div>
-        <div>latest version: <a href="../release/">1.5.5.9</a> (chai)</div>
-        <div class="small-text">(<a href="../release/VERSIONS">What's new?</a>)</div>
-    </div>
-
     <!-- Logos -->
     <div class="flex-container">
         <a href="../">
@@ -197,8 +211,8 @@
 
 <body>
     <main id="search-app">
-        <h1>Search</h1>
-        <p id="hint"></p>
+        <h1>Looking for Something?</h1>
+        <p style="font-size:.9em;" id="hint"></p>
 
         <div class="options" role="radiogroup" aria-label="What to search">
             <label><input type="radio" name="mode" value="examples"> Example code</label>
@@ -217,11 +231,11 @@
         <noscript><p>Search needs JavaScript turned on.</p></noscript>
     </main>
 
-    <hr width="20%" style="margin:2rem auto;">
+    <hr width="20%" style="margin:.75rem auto;">
     <!-- Footer -->
     <footer style="font-size: 0.9em;">
         <a href="http://ccrma.stanford.edu/">CCRMA</a> |
-        <a href="https://youtube.com/@chuck2now">YouTube</a> |
+        <a href="https://youtube.com/@chuck2now">ChucK on YouTube</a> |
         <a href="https://mcd.stanford.edu/">MCD</a>
     </footer>
 
@@ -236,17 +250,17 @@
                     version: 2,                   // must match build_search_index.py
                     unit: "example",
                     placeholder: "Search the example code",
-                    hint: "Find any keyword or code snippet in the example code, such as => or GGen. " +
-                        "Spaces in your search match any amount of whitespace, so pasted code matches regardless of indentation.",
+                    hint: "Search ChucK/ChuGL examples by code snippet or keyword (e.g., =>, SinOsc, GGen)." +
+                        " Spaces in search match any amount of whitespace, so pasted code matches regardless of indentation.",
                 },
                 site: {
                     url: "site.json",      // the site-content index
                     version: 1,                    // must match build_site_index.py
                     unit: "page",
                     placeholder: "Search the site",
-                    hint: "Find pages and sections across the site. Every word you type has to appear, in any order. " +
-                        "Put words in quotes to match them as a phrase, such as \"audio file\". " +
-                        "Matches inside longer words count, so osc also finds SinOsc.",
+                    hint: "Search pages and sections across this website. Every term has to appear, but can be in any order. " +
+                        "Put terms in quotes to match as a phrase (e.g., \"audio file\"). " +
+                        "It is possible to search by substring (e.g., osc also finds SinOsc.)",
                 },
             };
             const DEFAULT_MODE = "examples"; // which one opens first; change to "site" to lead with site search
