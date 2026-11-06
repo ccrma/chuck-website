@@ -69,7 +69,7 @@ Find more info in the links below.
 
 ### Examples <!-- omit in toc -->
 
-- [basic/orbits.ck](https://chuck.stanford.edu/chugl/examples/basic/orbits.html)
+- [basic/orbits.ck](../examples/basic/orbits.html)
 
 ### Further Learning Resources <!-- omit in toc -->
 
@@ -157,8 +157,8 @@ See the API reference for more.
 
 ### Examples <!-- omit in toc -->
 
-- [basic/pbr.ck](https://chuck.stanford.edu/chugl/examples/basic/pbr.html)
-- [basic/light.ck](https://chuck.stanford.edu/chugl/examples/basic/light.html)
+- [basic/pbr.ck](../examples/basic/pbr.html)
+- [basic/light.ck](../examples/basic/light.html)
 
 ___
 
@@ -207,7 +207,7 @@ while (true) {
 - [GWindow](https://chuck.stanford.edu/chugl/api/chugl-basic.html#GWindow)
 
 ### Examples  <!-- omit in toc -->
-- [basic/gwindow.ck](https://chuck.stanford.edu/chugl/examples/basic/gwindow.html)
+- [basic/gwindow.ck](../examples/basic/gwindow.html)
 
 ___
 
@@ -249,7 +249,7 @@ The `bloom.ck` example has everything you need to know.
 
 ### Examples <!-- omit in toc -->
 
-- [rendergraph/bloom.ck](https://chuck.stanford.edu/chugl/examples/rendergraph/bloom.html)
+- [rendergraph/bloom.ck](../examples/rendergraph/bloom.html)
 
 ___
 
@@ -309,10 +309,10 @@ Previous versions of ChuGL relied on using the `AssLoader` (asset loader) helper
 
 ### Examples <!-- omit in toc -->
 
-- [basic/asset-loading.ck](https://chuck.stanford.edu/chugl/examples/basic/asset-loading.html)
+- [basic/asset-loading.ck](../examples/basic/asset-loading.html)
   - for this to work, download the examples `data` folder as well
   - <https://chuck.stanford.edu/chugl/examples/data/>
-- [basic/gmodel.ck](https://chuck.stanford.edu/chugl/examples/basic/gmodel.html)
+- [basic/gmodel.ck](../examples/basic/gmodel.html)
 
 ___
 
@@ -343,10 +343,10 @@ GMesh sprite(new PlaneGeometry, sprite_material) --> GG.scene();
 
 ### Examples <!-- omit in toc -->
 
-- [deep/snowstorm.ck](https://chuck.stanford.edu/chugl/examples/deep/snowstorm.html)
+- [deep/snowstorm.ck](../examples/deep/snowstorm.html)
   - requires downloading the examples `data` folder
   - <https://chuck.stanford.edu/chugl/examples/data/>
-- [deep/sprite-animation.ck](https://chuck.stanford.edu/chugl/examples/deep/sprite-animation.html)
+- [deep/sprite-animation.ck](../examples/deep/sprite-animation.html)
   - requires downloading the examples `data` folder
   - <https://chuck.stanford.edu/chugl/examples/data/>
 
@@ -381,8 +381,8 @@ tex.write(pixel_data, write_desc);  // writes to 50x50 subregion
 
 ### Examples <!-- omit in toc -->
 
-- [deep/audio-donut.ck](https://chuck.stanford.edu/chugl/examples/deep/audio-donut.html)
-- [deep/game-of-life.ck](https://chuck.stanford.edu/chugl/examples/deep/game-of-life.html)
+- [deep/audio-donut.ck](../examples/deep/audio-donut.html)
+- [deep/game-of-life.ck](../examples/deep/game-of-life.html)
 
 ___
 
@@ -478,8 +478,8 @@ fn vs_main(@builtin(instance_index) instance : u32) -> VertexOutput
 
 ### Examples <!-- omit in toc -->
 
-- [basic/custom-geo.ck](https://chuck.stanford.edu/chugl/examples/basic/custom-geo.html)
-- [deep/boids.ck](https://chuck.stanford.edu/chugl/examples/rendergraph/boids.html)
+- [basic/custom-geo.ck](../examples/basic/custom-geo.html)
+- [deep/boids.ck](../examples/rendergraph/boids.html)
 
 ### Further Learning Resources <!-- omit in toc -->
 
@@ -501,7 +501,7 @@ For in-game UI (UI that the end user, not developer, interacts with) ChuGL does 
 
 - for 2D games:
   - Use GText and GPlane to create UI widgets.
-  - See [mousepick.ck](https://chuck.stanford.edu/chugl/examples/basic/mousepick.html) for how to get camera rays through the mouse position, which can be used for intersection testing with UI widgets.
+  - See [mousepick.ck](../examples/basic/mousepick.html) for how to get camera rays through the mouse position, which can be used for intersection testing with UI widgets.
   - Set the camera mode to orthographic, and place UI widgets at a special depth (e.g. z = 5) so that they are drawn on top of everything else
 - for 3D games:
   - Same as 2D, except draw your UI in separate `RenderPass` with an orthographic camera because the main camera for your main scene probably has to be in perspective mode.
@@ -592,7 +592,7 @@ cube.pos(pos);
 
 ### Examples <!-- omit in toc -->
 
-- [basic/mousepick.ck](https://chuck.stanford.edu/chugl/examples/basic/mousepick.html)
+- [basic/mousepick.ck](../examples/basic/mousepick.html)
   
 ___
 
@@ -646,8 +646,8 @@ isHovered(aabb, mouse_world_pos); // perform isection test
 
 ### Examples <!-- omit in toc -->
 
-- [basic/mousepick.ck](https://chuck.stanford.edu/chugl/examples/basic/mousepick.html)
-- [sequencers/drum-machine.ck](https://chuck.stanford.edu/chugl/examples/sequencers/drum-machine.html)
+- [basic/mousepick.ck](../examples/basic/mousepick.html)
+- [sequencers/drum-machine.ck](../examples/sequencers/drum-machine.html)
   - showcases aabb intersection testing
 
 ### Further Learning Resources <!-- omit in toc -->
@@ -687,7 +687,7 @@ ___
 
 ### Examples <!-- omit in toc -->
 
-- [rendergraph/boids.ck](https://chuck.stanford.edu/chugl/examples/rendergraph/boids.html)
+- [rendergraph/boids.ck](../examples/rendergraph/boids.html)
 
 ### Further Learning Resources <!-- omit in toc -->
 

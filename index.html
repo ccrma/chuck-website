@@ -132,7 +132,7 @@
                 "use strict";
  
                 // ---- Settings ------------------------------------------------------
-                const EXAMPLES_URL = "/search/examples.json"; // the examples index, the same file the search page uses
+                const EXAMPLES_URL = "./search/examples.json"; // the examples index, the same file the search page uses
                 const ONLY_WITH_PAGE = true;    // only pick examples that have a web page to play; false also allows .ck-only ones
                 const REMEMBER = 20;            // don't repeat any of the last this-many picks (kept per browser tab)
                 const INDEX_VERSION = 2;        // must match build_search_index.py
@@ -215,7 +215,7 @@
                             }
                             const full = fullPath(chosen);
                             remember(full);
-                            const url = "/" + encodePath(chosen.page ? full.replace(/\.ck$/i, ".html") : full);
+                            const url = "./" + encodePath(chosen.page ? full.replace(/\.ck$/i, ".html") : full);
                             statusEl.textContent = `Opening ${full}…`;
                             // Pages can listen for this event and cancel it to handle the address themselves
                             const proceed = button.dispatchEvent(new CustomEvent("random-example", {

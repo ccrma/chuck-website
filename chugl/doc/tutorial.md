@@ -261,7 +261,7 @@ Notice how all these components of the transform are in **local space**, which y
 - E.g. if a parent GGen has worldspace position (1,0,0) and its child has local space position (2,0,1), what would the child's world-space position be?
   - answer: (1,0,0) + (2,0,1) = (3,0,1)
 - Rotation is similarly compounded with addition, whereas scale is multiplied
-- See the ChuGL [orbits](https://chuck.stanford.edu/chugl/examples/basic/orbits.html) example for how the scenegraph can be used to control transforms.
+- See the ChuGL [orbits](../examples/basic/orbits.html) example for how the scenegraph can be used to control transforms.
 
 ### Grucking
 
@@ -517,7 +517,7 @@ while (true) { GG.nextFrame(); }
 
 The params that matter here are #2 and #3, which determine the triangle resolution of our sphere along verticle and horizontal axis. By going from 32 --> 16 segments along the width and 16-->8 segments along the height we've reduced our triangle count to 1/4th what it was before! The spheres will look less smooth / more blocky as a result, but if most the spheres are far away you might not be able to tell anyways. Visual quality vs performance has always been a tradeoff, and that's something you'll have to evaluate for yourself in your own projects.
 
-See the [basic/geo-and-mat.ck](https://chuck.stanford.edu/chugl/examples/basic/geo-and-mat.html) for how to reconstruct vertices for other geometries.
+See the [basic/geo-and-mat.ck](../examples/basic/geo-and-mat.html) for how to reconstruct vertices for other geometries.
 
 ### Reducing Draw Calls
 
@@ -525,9 +525,9 @@ The renderer tells the GPU to draw things via issuing commands called **draw cal
 
 2 GGen types do this already: `GPoints` and `GLines`. Rather than create a separate `GPoints` or `GLines` instance for each point or line you want to draw, just create 1 instance and stick the vertex data for ALL your lines or points in that single instance. If you have 1,000,000 points, this reduces the number of draw calls from 1,000,000 --> 1, and improves your program from crashing to running at >100fps.
 
-> See [basic/points.ck](https://chuck.stanford.edu/chugl/examples/basic/points.html) for an example of how to draw 1000000 points using this method.
+> See [basic/points.ck](../examples/basic/points.html) for an example of how to draw 1000000 points using this method.
 
-> See [sndpeek](https://chuck.stanford.edu/chugl/examples/deep/sndpeek.html) for an example of how to draw millions of lines using this method
+> See [sndpeek](../examples/deep/sndpeek.html) for an example of how to draw millions of lines using this method
 
 Another way to get the benefits of batching is one we have already mentioned--sharing `Geometry`/`Material` instances where possible! The ChuGL renderer will group all GGens which share the same `Geometry` and `Material` instance into a single draw call. The downside here is that because all these instances must share the same components, they can only differ in terms of their transform, i.e. position, rotation, and scale. E.g.
 
@@ -573,10 +573,10 @@ For learning the latter i.e. Shader programming, here are some useful resources:
 - [Setting up a ShaderToy scene in three.js](https://threejs.org/manual/?q=shader#en/shadertoy): can use this as a reference for how to setup a shadertoy scene in ChuGL
 
 To learn how to use custom shaders in ChuGL, take a look at these examples:
-- [deep/audio-donut.ck](https://chuck.stanford.edu/chugl/examples/deep/audio-donut.html): showcases using a custom vertex shader to visualize FFT data by displacing mesh vertices
-- [deep/game-of-life.ck](https://chuck.stanford.edu/chugl/examples/deep/game-of-life.html): simulating conways game of life in a fragment shader, as well as sending waveform data as a shader parameter via storage buffers
-- [rendergraph/boids.ck](https://chuck.stanford.edu/chugl/examples/rendergraph/boids.html): simulating thousands of boids in a compute shader, and batch drawing them with all in a custom vertex/fragment shader
-- [rendergraph/slime.ck](https://chuck.stanford.edu/chugl/examples/rendergraph/slime.html): slime mold simulation in a compute shader
+- [deep/audio-donut.ck](../examples/deep/audio-donut.html): showcases using a custom vertex shader to visualize FFT data by displacing mesh vertices
+- [deep/game-of-life.ck](../examples/deep/game-of-life.html): simulating conways game of life in a fragment shader, as well as sending waveform data as a shader parameter via storage buffers
+- [rendergraph/boids.ck](../examples/rendergraph/boids.html): simulating thousands of boids in a compute shader, and batch drawing them with all in a custom vertex/fragment shader
+- [rendergraph/slime.ck](../examples/rendergraph/slime.html): slime mold simulation in a compute shader
 
 ### Word of Caution
 

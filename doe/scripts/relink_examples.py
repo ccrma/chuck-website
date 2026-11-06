@@ -18,9 +18,11 @@ blocks and `code spans` are never touched, and neither are bare web addresses
 in the middle of a sentence.
 """
 import argparse
+import os
 import re
 import sys
 from pathlib import Path
+from urllib.parse import quote
 
 import markdown_pages
 import site_common as common
@@ -62,9 +64,12 @@ def decide(url, source_file, ignored, hosts):
         return None, ("not_example" if is_ck_link else None)        # an ordinary page
 
     wanted = ".html" if common.has_page(ck, ignored) else ".ck"
-    if wanted == "." + link.group("ext").lower():
+    relative_path = os.path.relpath(ck.with_suffix(wanted), Path(source_file).parent)
+    relative_path = Path(relative_path).as_posix()
+    new_url = quote(relative_path, safe="/:@-._~") + (link.group("tail") or "")
+    if new_url == url.strip():
         return None, None                                           # already right
-    return link.group("path") + wanted + (link.group("tail") or ""), None
+    return new_url, None
 
 
 # ---- Fixing a file -----------------------------------------------------------

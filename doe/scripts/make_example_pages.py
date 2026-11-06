@@ -17,6 +17,7 @@ import re
 import sys
 from pathlib import Path
 from urllib.parse import quote
+import os
 
 import site_common as common
 
@@ -47,6 +48,8 @@ def load_template(path):
     if not any(DOWNLOAD_HREF.search(tag[0]) for tag in DOWNLOAD_TAG.finditer(template)):
         print('note: the template has no id="download" element with href="example.ck" '
               'or data-href="example.ck", so pages get no download link.')
+    if "{{ROOT}}" not in template:
+        sys.exit(f"The template {path} needs a {{{{ROOT}}}} placeholder.")
     # Mark every page as generated, right after the doctype
     if DOCTYPE.search(template):
         return DOCTYPE.sub(lambda m: m[0] + MARKER + "\n", template, count=1)
@@ -64,9 +67,10 @@ def escape_code(code):
     return code.replace("<!--", "<\\!--")
 
 
-def make_page(template, code, ck_name):
+def make_page(template, code, ck_name, page_to_root):
     title = html.escape(Path(ck_name).stem, quote=False)
-    page = TITLE_TAG.sub(lambda m: m[1] + title + m[2], template)
+    page = template.replace("{{ROOT}}", page_to_root)
+    page = TITLE_TAG.sub(lambda m: m[1] + title + m[2], page)
     page = TITLE_ELEMENT.sub(lambda m: m[1] + title + m[3], page)
     download = quote(ck_name)
     page = DOWNLOAD_TAG.sub(
@@ -84,13 +88,14 @@ def make_pages_in(folder, template, ignored, args):
 
     new, changed, left_alone, unchanged, ignored_count = [], [], [], 0, 0
     wanted_pages = set()
+    page_to_root = Path(os.path.relpath(common.SITE_ROOT, folder)).as_posix()
     for ck in ck_files:
         if ignored.matches(ck):
             ignored_count += 1
             continue
         page_file = ck.with_suffix(".html")
         wanted_pages.add(page_file)
-        page = make_page(template, common.read_text(ck), ck.name)
+        page = make_page(template, common.read_text(ck), ck.name, page_to_root)
         if page_file.exists():
             if not args.force and not common.is_generated(page_file):
                 left_alone.append(page_file)           # hand-written: don't touch

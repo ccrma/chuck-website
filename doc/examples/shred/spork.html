@@ -3,101 +3,104 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="https://chuck.stanford.edu/doc/images/chuck-logo2023w.png" type="image/png">
-    <!-- include ACE editor and webchuck basic styles -->
-    <script src="https://cdn.jsdelivr.net/gh/ccrma/webchuck-ide@main/cdn/ace/ace.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/ccrma/webchuck-ide@main/cdn/ace/editor.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ccrma/webchuck-ide@main/cdn/webchuck.css">
-    <link rel="stylesheet" href="/css/main.css" type="text/css">
-    <style>
-        /* webchuck.css sizes the editor to the window minus 18rem; leave room for the console too */
-        .editor-container {
-            height: calc(100vh - 27rem);
-            min-height: 12rem;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="https://chuck.stanford.edu/doc/images/chuck-logo2023w.png" type="image/png">
+  <!-- include ACE editor and webchuck basic styles -->
+  <script src="https://cdn.jsdelivr.net/gh/ccrma/webchuck-ide@main/cdn/ace/ace.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/ccrma/webchuck-ide@main/cdn/ace/editor.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ccrma/webchuck-ide@main/cdn/webchuck.css">
+  <link rel="stylesheet" href="../../css/main.css" type="text/css">
+  <style>
+    /* webchuck.css sizes the editor to the window minus 18rem; leave room for the console too */
+    .editor-container {
+      height: calc(100vh - 27rem);
+      min-height: 12rem;
+    }
 
-        /* Console output, lined up with the editor above it */
-        #chuck-console {
-            box-sizing: border-box;
-            max-width: 960px;
-            width: 90vw;
-            height: 8rem;
-            margin: 0 auto 1rem auto;
-            padding: 0.5rem 1rem;
-            overflow: auto;
-            white-space: pre-wrap;
-            font-family: ui-monospace, Menlo, Consolas, monospace;
-            font-size: 0.85rem;
-            background-color: #fafafa;
-            border: 1px solid #ccc;
-            text-align: left;
-        }
+    /* Console output, lined up with the editor above it */
+    #chuck-console {
+      box-sizing: border-box;
+      max-width: 960px;
+      width: 90vw;
+      height: 8rem;
+      margin: 0 auto 1rem auto;
+      padding: 0.5rem 1rem;
+      overflow: auto;
+      white-space: pre-wrap;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 0.85rem;
+      background-color: #fafafa;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
 
-        #chuck-console:empty::before {
-            content: "Console Output Appears Here!";
-            opacity: 0.5;
-        }
+    #chuck-console:empty::before {
+      content: "Console Output Appears Here!";
+      opacity: 0.5;
+    }
 
-        button {
-          border-radius: 0;
-        }
+    button {
+      border-radius: 0;
+    }
 
-        .button-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 10px;
-          place-items: center; 
-          max-width: 960px;
-          width: 90vw;
-          margin: 1rem auto 0;
-          padding-top: 1rem;
-          border: 1px solid #ccc
-        }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      place-items: center;
+      max-width: 960px;
+      width: 90vw;
+      margin: 1rem auto 0;
+      padding-top: 1rem;
+      border: 1px solid #ccc
+    }
 
-        #openInIDE, #download {
-          top: auto;
-          right: 0;
-          background-color: transparent;
-          border-color: #333;
-          color: #333;
-          padding: 0.5rem 0.3rem;
-          opacity: 0.8;
-          position: relative;
-        }
-        #openInIDE:hover, #download:hover {
-          opacity: 0.5;
-        }
-        #openInIDE:active, #download:active {
-          opacity: 1;
-        }
+    #openInIDE,
+    #download {
+      top: auto;
+      right: 0;
+      background-color: transparent;
+      border-color: #333;
+      color: #333;
+      padding: 0.5rem 0.3rem;
+      opacity: 0.8;
+      position: relative;
+    }
 
-        /* Same look as the WebChucK IDE button (webchuck.css styles that one by id) */
-        #download {
-          border-color: #333;
-          color: #333;
-          background-color: transparent;
-          padding: 0.5rem;
-          opacity: 0.8;
-          font-size: 0.8rem;
-          margin-left: 2rem;
-        }
+    #openInIDE:hover,
+    #download:hover {
+      opacity: 0.5;
+    }
 
-        #download:hover {
-          filter: invert(.7);
-        }
+    #openInIDE:active,
+    #download:active {
+      opacity: 1;
+    }
 
+    /* Same look as the WebChucK IDE button (webchuck.css styles that one by id) */
+    #download {
+      border-color: #333;
+      color: #333;
+      background-color: transparent;
+      padding: 0.5rem;
+      opacity: 0.8;
+      font-size: 0.8rem;
+      margin-left: 2rem;
+    }
 
-    </style>
-    <!-- define script type="chuck" -->
-    <script type="module">
-        let l, e, t = 'script', p = /(from\s+|import\s+)['"](#[\w\-]+)['"]/g, x = 'textContent', d = document, o;
-        for (o of d.querySelectorAll(t + '[type=chuck]')) o[x] = 'export default `' + o[x] + '`', o.setAttribute('type', 'inline-module');
-        for (o of d.querySelectorAll(t + '[type=inline-module]')) l = d.createElement(t), o.id ? l.id = o.id : 0, l.type = 'module', l[x] = o[x].replace(p, (u, a, z) => (e = d.querySelector(t + z + '[type=module][src]')) ? a + `/* ${z} */'${e.src}'` : u), l.src = URL.createObjectURL(new Blob([l[x]], { type: 'application/java' + t })), o.replaceWith(l);//inline
-    </script>
-    <!-- chuck code script -->
-    <script id="chuck" type="chuck">// this shows how to dynamically spork shreds...
+    #download:hover {
+      filter: invert(.7);
+    }
+  </style>
+  <!-- define script type="chuck" -->
+  <script type="module">
+    let l, e, t = 'script', p = /(from\s+|import\s+)['"](#[\w\-]+)['"]/g, x = 'textContent', d = document, o;
+    for (o of d.querySelectorAll(t + '[type=chuck]')) o[x] = 'export default `' + o[x] + '`', o.setAttribute('type', 'inline-module');
+    for (o of d.querySelectorAll(t + '[type=inline-module]')) l = d.createElement(t), o.id ? l.id = o.id : 0, l.type = 'module', l[x] = o[x].replace(p, (u, a, z) => (e = d.querySelector(t + z + '[type=module][src]')) ? a + `/* ${z} */'${e.src}'` : u), l.src = URL.createObjectURL(new Blob([l[x]], { type: 'application/java' + t })), o.replaceWith(l);//inline
+  </script>
+  <!-- chuck code script -->
+  <script id="chuck" type="chuck">// this shows how to dynamically spork shreds...
 
 fun void foo( int a )
 {
@@ -116,8 +119,8 @@ spork ~ foo( 2 );
 // infinite time loop - children shreds leave with parent shred
 while( true )
     1::second => now;</script>
-    <!-- main javascript code -->
-    <script type="inline-module">
+  <!-- main javascript code -->
+  <script type="inline-module">
       import { Chuck } from 'https://cdn.jsdelivr.net/npm/webchuck/+esm';
       import chuckCode from '#chuck';
 
@@ -226,42 +229,44 @@ while( true )
 
       
     </script>
-    <title>spork</title>
+  <title>spork</title>
 </head>
 
 <body>
-    <header class="button-grid">
-      
-        <div class="leftText">
-          <h2><span id="title" style="font-weight: bold">spork</span></h2>
-          <div id="author" style="font-style: italic;">ChucK Development Team</div>
-        </div>
+  <header class="button-grid">
 
-        <button id="openInIDE">=&gt; <em>to WebChucK IDE</em></button>
-        <button id="download" data-href="spork.ck">Download .ck</button>
+    <div class="leftText">
+      <h2><span id="title" style="font-weight: bold">spork</span></h2>
+      <div id="author" style="font-style: italic;">ChucK Development Team</div>
+    </div>
 
-        <button id="action">
-            Play
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-play"
-                viewBox="0 0 16 16">
-                <path
-                    d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z">
-                </path>
-            </svg>
-        </button>
+    <button id="openInIDE">=&gt; <em>to WebChucK IDE</em></button>
+    <button id="download" data-href="spork.ck">Download .ck</button>
 
-    </header>
-    <main>
-      <div class="editor-container">
-        <div id="editor" class="ace_editor ace-chuck" style="width: 100%; height: 100%;"></div>
-      </div>
-    </main>
-    
-    <pre id="chuck-console" role="log" aria-label="ChucK console output"></pre>
-    <p class="leftText" style="margin-top: 1rem; font-size: 0.8rem;">
+    <button id="action">
+      Play
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-play"
+        viewBox="0 0 16 16">
+        <path
+          d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z">
+        </path>
+      </svg>
+    </button>
+
+  </header>
+  <main>
+    <p style="margin-top: 1rem; font-size: 1rem; text-align: center;">
       <b>Note:</b> Certain examples cannot run from this page.
-      IO like adc and Hid, as well as loading audio files, are not available.
+      IO like adc and Hid, as well as loading audio files, are not available.<br>
+      Please use the <strong>=> to WebChucK IDE</strong> button for full support.
     </p>
+    <div class="editor-container">
+      <div id="editor" class="ace_editor ace-chuck" style="width: 100%; height: 100%;"></div>
+    </div>
+  </main>
+
+  <pre id="chuck-console" role="log" aria-label="ChucK console output"></pre>
+
 </body>
 
 </html>

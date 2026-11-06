@@ -652,7 +652,7 @@
                 return frag;
             }
 
-            const pageHref = (url, id) => url.slice(1) + (id ? "#" + encodeURIComponent(id) : "");
+            const pageHref = (url, id) => SITE_BASE + url.slice(1) + (id ? "#" + encodeURIComponent(id) : "");
 
             function fillPageBody(body, r) {
                 body.replaceChildren();

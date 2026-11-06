@@ -684,7 +684,7 @@ while (true) {
 
 ## Further Resources
 
-- [music-for-airports.ck](https://chuck.stanford.edu/chugl/examples/sequencers/music-for-airports.html)
+- [music-for-airports.ck](../examples/sequencers/music-for-airports.html)
 - [ChuGL cheatsheet](https://chuck.stanford.edu/chugl/doc/cheatsheet.html)
 - [CHuGL API Reference](https://chuck.stanford.edu/chugl/api/)
 - [More examples](https://chuck.stanford.edu/chugl/examples/)
