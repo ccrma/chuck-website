@@ -290,10 +290,14 @@
 </head>
 
 <body>
-  <header class="button-grid">
 
+  <div class="canvas-container">
+    <canvas id="canvas" aria-hidden="true"></canvas>
+  </div>
+
+  <header class="button-grid">
     <div class="leftText">
-      <h2><span id="title" style="font-weight: bold">${TITLE}</span></h2>
+      <h2><span id="title" style="font-weight: bold">${TITLE}</span>.ck</h2>
       <div id="author" style="font-style: italic; font-size:.8rem;">ChucK/ChuGL Code Example</div>
     </div>
 
@@ -311,16 +315,7 @@
     </button>
 
   </header>
-    <p style="margin-top: 1rem; font-size: .8rem; text-align: center;">
-      <b>NOTE:</b> Some examples cannot run directly from a webpage (due to web browser security).<br>
-      Input/output features such as <i>adc</i> (microphone) and <i>Hid</i>, as well as loading audio files, are not available here.<br>
-      Please use "<strong>=> to WebChucK IDE</strong>" button above to run in WebChucK IDE (which supports microphone input),<br>
-      or "<strong>Download .ck file</strong>" (to run natively on your computer using CLI <strong>chuck</strong>).
-    </p>
 
-  <div class="canvas-container">
-    <canvas id="canvas" aria-hidden="true"></canvas>
-  </div>
 
   <main>
     <div class="editor-container">
@@ -329,9 +324,17 @@
   </main>
 
   <pre id="chuck-console" role="log" aria-label="ChucK console output"></pre>
-  <hr width="35%" style="margin:.75rem auto; margin-top:2rem;">
+
+  <p style="margin: 1rem auto 0; font-size: .8rem; text-align: center; max-width:926px;">
+    <b>NOTE:</b> Some examples cannot run directly from this webpage (due to web browser security).
+    Input/output features such as <i>adc</i> (microphone) and <i>Hid</i>, as well as loading audio files, may not be available here.
+    (FYI mouse/keyboard input and certain file loading <i>do</i> work with ChuGL on the web.)
+    Please use "<strong>=> to WebChucK IDE</strong>" button above to run in WebChucK IDE (which supports microphone input),
+    or "<strong>Download .ck file</strong>" (to run natively on your computer using CLI <strong>chuck</strong>).
+  </p>
 
   <!-- Footer -->
+  <hr width="35%" style="margin:.75rem auto; margin-top:2rem;">
   <footer style="font-size: 0.9em;">
       <a href="http://chuck.stanford.edu/">ChucK@Stanford</a> |
       <a href="http://chuck.cs.princeton.edu/">ChucK@Princeton</a> |
