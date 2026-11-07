@@ -23,7 +23,7 @@
 <h4><span class="class_inherits">inherits</span> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UGen_Multi</a> : <a href="" class="ckdoc_typename ckdoc_type_ugen">UGen</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">ChuGL Video object. Currently supports decoding MPEG1 Video and MP2 Audio. Wraps the plmpeg library, which you can find here for more documentation: https://github.com/phoboslab/pl_mpeg/ (see link for an example on how to encode videos into a supported format with ffmpeg). This is a hybrid graphics/audio object. Video is a stereo UGen which may be connected dac for audio output. The video texture may be accessed with the `texture()` member function, which will be updated synchronously with audio. For sample-accurate audio manipulation, we recommend controlling the audio data separately with SndBuf. You can convert videos to the MPEG format with the following command-line ffmpeg command: `ffmpeg -i input.mp4 -c:v mpeg1video -q:v 0 -c:a mp2 -format mpeg output.mpg`.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/basic/video.ck">basic/video.ck</a></li>
+<li><a target="_blank" href="../examples/basic/video.html">basic/video.ck</a></li>
 <li><a target="_blank" href="../examples/basic/video-ycrcb.ck">basic/video-ycrcb.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
@@ -129,8 +129,8 @@
 <h4><span class="class_inherits">inherits</span> : <a href="chugl-basic.html#SG_Component" class="ckdoc_typename ckdoc_type_object">SG_Component</a> : <a href="" class="ckdoc_typename ckdoc_type_object">Object</a> </h4>
 <p class="class_description">ChuGL Webcam class. Opens a webcam at any device id 0-7, and updates a texture with the webcam feed. The webcam texture may be accessed with the `.texture()` member function.<p>
 <h3 class="class_section_header">examples</h3><div class="examples"><ul>
-<li><a target="_blank" href="../examples/basic/webcam.ck">basic/webcam.ck</a></li>
-<li><a target="_blank" href="../examples/deep/webcam-echo.ck">deep/webcam-echo.ck</a></li>
+<li><a target="_blank" href="../examples/basic/webcam.html">basic/webcam.ck</a></li>
+<li><a target="_blank" href="../examples/deep/webcam-echo.html">deep/webcam-echo.ck</a></li>
 </ul></div>
 <h3 class="class_section_header">constructors</h3>
 <div class="members">

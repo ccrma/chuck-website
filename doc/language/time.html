@@ -1,77 +1,46 @@
-<!DOCTYPE html PUBLIC 
-"-//W3C//DTD XHTML 1.0 Strict//EN" 
-"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<title>ChucK - [Language Specification : Time]</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChucK - [Language Specification : Time]</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/prism.css" />
 
 </head>
-<body bgcolor="#ffffff" text="#000000">
-<center>
 
-<!-- all in a big fat table-->
+<body class="type-page">
+    <header id="chuck_header">
+        <h2>ChucK : Language Specification &gt; Manipulating Time</h2>
+        <div class="outlineDiv" style="background-color: white; margin-top: 1rem">
+            version: 1.5.x.x (numchucks)
+        </div>
 
-<table id="page_layout" border="0" width="640">
+        <hr width="20%" />
 
-<!-- heading row-->
+        <!-- navigation bar -->
+        <nav class="chuck_nav" aria-label="Language specification">
+            <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="ctrl.html">Control Structures</a> | (up): <a href="./">Language Specification</a> | (next): <a href="func.html">Functions</a> &gt; </div>
+        </nav>
+    </header>
 
-<tr><td>
-<div id="chuck_header">
-<center>
-<h1>
-<strong>ChucK</strong> : Language Specification : Time
-</h1>
-
-<table border="0">
-<tr><td>
-  	<div id="chuck_revision">
-	version: 1.5.x.x (numchucks)
-  	</div>
-  	
-</td></tr>
-</table>
-
-<hr width="20%" />
-</center>
-</div>
-</td></tr>
-
-<!-- navigation bar -->
-
-<tr><td>
-<center>
-<div class="chuck_nav">
-
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="ctrl.html">control structures</a> | (up): <a href="./">language specification</a> | (next): <a href="func.html">functions</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
-
-</div>
-</center>
-</td></tr>
-
-<!-- lang specification section -->
-<tr><td>
-<div id="chuck_body">
-
-<div id="lang_topic_body">
+    <!-- lang specification section -->
+    <main class="leftText" id="lang_body">
+        <div id="lang_topic_body">
 
 <h1><strong>Manipulating Time</strong></h1>
-<p>ChucK is a <strong>strongly-timed</strong> language, meaning that time 
-is fundamentally embedded in the language.  ChucK allows the programmer 
-to explicitly <em>reason</em> about time from the code.  This gives 
-extremely flexible and precise control over time and (therefore) sound 
+<p>ChucK is a <strong>strongly-timed</strong> language, meaning that time
+is fundamentally embedded in the language.  ChucK allows the programmer
+to explicitly <em>reason</em> about time from the code.  This gives
+extremely flexible and precise control over time and (therefore) sound
 synthesis.<br /><br />
 In ChucK:
 <ul>
 <li> time and duration are native types in the language
-<li> keyword <font face="courier new"><strong>now</strong></font> holds the current logical time
-<li> time is <em>advanced</em> (and can only be advanced) by explicitly manipulating <font face="courier new"><strong>now</strong></font>
+<li> keyword <strong>now</strong> holds the current logical time
+<li> time is <em>advanced</em> (and can only be advanced) by explicitly manipulating <strong>now</strong>
 <li> you have flexible and precise control
 </ul>
 </p>
@@ -87,58 +56,52 @@ In ChucK:
 <a name="type"> </a>
 <h2><strong>time and duration</strong></h2>
 
-<p>Time and duration are native types in ChucK.  <font face="courier"><strong>time</strong></font>
-represents an absolute point in time (from the beginning of ChucK time).  <font face="courier"><strong>dur</strong></font> represents a 
-duration (with the same logical units as <font face="courier"><strong>time</strong></font>).</p>
+<p>Time and duration are native types in ChucK.  <strong>time</strong>
+represents an absolute point in time (from the beginning of ChucK time).  <strong>dur</strong> represents a
+duration (with the same logical units as <strong>time</strong>).</p>
 
-<pre>
-    // a duration of one second
-    1::second => dur foo;
+<pre><code>// a duration of one second
+1::second => dur foo;
 
-    // a point in time (duration of foo from now)
-    now + foo => time later;
-</pre>
+// a point in time (duration of foo from now)
+now + foo => time later;</code></pre>
 
 <p>Later in this section, we outline the various arithmetic operations to perform on time and duration.</p>
 
 <p>Durations can be used to construct new durations, which then be used to inductively construct yet other durations.
 For example:</p>
 
-<pre>
-    // .5 second is a quarter
-    .5::second => dur quarter;
+<pre><code>// .5 second is a quarter
+.5::second => dur quarter;
 
-    // 4 quarters is whole
-    4::quarter => dur whole;
-</pre>
+// 4 quarters is whole
+4::quarter => dur whole;</code></pre>
 
 <p>By default, ChucK provides these preset duration values:</p>
 
 <ul>
-<li> <font face="courier"><strong>samp</strong></font> : duration of 1 sample in ChucK time
-<li> <font face="courier"><strong>ms</strong></font> : duration of 1 millisecond
-<li> <font face="courier"><strong>second</strong></font> : duration of 1 second
-<li> <font face="courier"><strong>minute</strong></font> : 1 minute
-<li> <font face="courier"><strong>hour</strong></font> : 1 hour
-<li> <font face="courier"><strong>day</strong></font> : 1 day
-<li> <font face="courier"><strong>week</strong></font> : 1 week
+<li> <strong>samp</strong> : duration of 1 sample in ChucK time
+<li> <strong>ms</strong> : duration of 1 millisecond
+<li> <strong>second</strong> : duration of 1 second
+<li> <strong>minute</strong> : 1 minute
+<li> <strong>hour</strong> : 1 hour
+<li> <strong>day</strong> : 1 day
+<li> <strong>week</strong> : 1 week
 </ul>
 
 <p>Use these to represent any duration.</p>
 
-<pre>
-    // the duration of half a sample
-    .5::samp => dur foo;
+<pre><code>// the duration of half a sample
+.5::samp => dur foo;
 
-    // 20 weeks
-    20::week => dur waithere;
+// 20 weeks
+20::week => dur waithere;
 
-    // use in combination
-    2::minute + 30::second => dur bar;
+// use in combination
+2::minute + 30::second => dur bar;
 
-    // same value as above
-    2.5::minute => dur bar;
-</pre>
+// same value as above
+2.5::minute => dur bar;</code></pre>
 
 </div>
 
@@ -148,75 +111,57 @@ For example:</p>
 <a name="oper"> </a>
 <h2><strong>operations on time and duration (arithmetic)</strong></h2>
 
-<p>In ChucK, there are well-defined arithmetic operations on values of type <font face="courier"><strong>time</strong></font> and 
-<font face="courier"><strong>dur</strong></font>.</p>
+<p>In ChucK, there are well-defined arithmetic operations on values of type <strong>time</strong> and
+<strong>dur</strong>.</p>
 
 <p>example 1 (time offset):</p>
 
-<pre>
-    // time + dur yields time
-    now + 10::second => time later;
-</pre>
+<pre><code>// time + dur yields time
+now + 10::second => time later;</code></pre>
 
 <p>example 2 (time subtraction):</p>
 
-<pre>
-    // time - time yields dur
-    later - now => dur D;
-</pre>
+<pre><code>// time - time yields dur
+later - now => dur D;</code></pre>
 
 <p>example 3 (addition):</p>
 
-<pre>
-    // dur + dur yields dur
-    10::second + 100::samp => dur foo;
-</pre>
+<pre><code>// dur + dur yields dur
+10::second + 100::samp => dur foo;</code></pre>
 
 <p>example 4 (subtraction):</p>
 
-<pre>
-    // dur - dur yields dur
-    10::second - 100::samp => dur bar;
-</pre>
+<pre><code>// dur - dur yields dur
+10::second - 100::samp => dur bar;</code></pre>
 
 <p>example 5 (division):</p>
 
-<pre>
-    // dur / dur yields number
-    10::second / 20::ms => float n;
-</pre>
+<pre><code>// dur / dur yields number
+10::second / 20::ms => float n;</code></pre>
 
 <p>example 6 (time mod):</p>
 
-<pre>
-     // time mod dur yields dur
-     now % 1::second => dur remainder;
-</pre>
+<pre><code>// time mod dur yields dur
+now % 1::second => dur remainder;</code></pre>
 
 
 <p>example 7 (synchronize to period):</p>
 
-<pre>
-    // synchronize to period of .5 second
-    .5::second => dur T;
-    T - (now % T) => now;
-</pre>
+<pre><code>// synchronize to period of .5 second
+.5::second => dur T;
+T - (now % T) => now;</code></pre>
 
 <p>example 8 (comparison on time):</p>
 
-<pre>
-    // compare time and time
-    if( t1 < t2 )
-        // do something...
-</pre>
+<pre><code>// compare time and time
+if( t1 < t2 )
+    // do something...</code></pre>
 
 <p>example 9 (comparison on duration):</p>
 
-<pre>
-    // compare dur and dur
-    if( 900::ms < 1::second )
-        <<< "yay!" >>>;
-</pre>
+<pre><code>// compare dur and dur
+if( 900::ms < 1::second )
+    <<< "yay!" >>>;</code></pre>
 
 </div>
 
@@ -225,39 +170,37 @@ For example:</p>
 <a name="now"> </a>
 <h2><strong>the keyword 'now'</strong></h2>
 
-<p>The keyword <font face="courier"><strong>now</strong></font> is the key to reasoning about and controlling time in ChucK.</p>
+<p>The keyword <strong>now</strong> is the key to reasoning about and controlling time in ChucK.</p>
 
-<p>Some properties of <font face="courier"><strong>now</strong></font> include:</p>
+<p>Some properties of <strong>now</strong> include:</p>
 
 <ul>
-<li> <font face="courier"><strong>now</strong></font> is a special variable of type <font face="courier"><strong>time</strong></font>.
-<li> <font face="courier"><strong>now</strong></font> holds the current ChucK time (when read).
-<li> modifying <font face="courier"><strong>now</strong></font> has the side effects of:
+<li> <strong>now</strong> is a special variable of type <strong>time</strong>.
+<li> <strong>now</strong> holds the current ChucK time (when read).
+<li> modifying <strong>now</strong> has the side effects of:
 <ul>
 <li> advancing time (see below);
-<li> suspending the current process (called <em>shred</em>) until the desired time is reached - allowing other shreds and audio 
+<li> suspending the current process (called <em>shred</em>) until the desired time is reached - allowing other shreds and audio
 synthesis to compute;
 </ul>
-<li> the value of <font face="courier"><strong>now</strong></font> only changes when it is explicitly modified.
+<li> the value of <strong>now</strong> only changes when it is explicitly modified.
 </ul>
 <p>(also see next section on advancing time).</p>
 
 <p>Example:</p>
 
-<pre>
-    // compute value that represents "5 seconds from now"
-    now + 5::second => time later;
+<pre><code>// compute value that represents "5 seconds from now"
+now + 5::second => time later;
 
-    // while we are not at later yet...
-    while( now < later )
+// while we are not at later yet...
+while( now < later )
     {
-        // print out value of now
-        <<< now >>>;
+    // print out value of now
+    <<< now >>>;
 
-        // advance time by 1 second
-        1::second => now;
-    }
-</pre>
+    // advance time by 1 second
+    1::second => now;
+}</code></pre>
 
 </div>
 
@@ -269,74 +212,66 @@ synthesis to compute;
 <p>Advancing time allows other shreds (processes) to run and <em>allows audio to be computed</em> in a controlled manner.
 There are three ways of advancing time in ChucK:
 <ul>
-<li> chucking (=>) a duration to <font face="courier"><strong>now</strong></font>: this will advance time by that duration.
-<li> chucking (=>) a time to <font face="courier"><strong>now</strong></font>: this will advance time to that point.  (note that the 
+<li> chucking (=>) a duration to <strong>now</strong>: this will advance time by that duration.
+<li> chucking (=>) a time to <strong>now</strong>: this will advance time to that point.  (note that the
 desired time must be later than the current time, or at least be equal to it.)
-<li> chucking (=>) an <font face="courier"><strong>Event</strong></font> to <font face="courier"><strong>now</strong></font>: time will advance until
+<li> chucking (=>) an <strong>Event</strong> to <strong>now</strong>: time will advance until
 the event is triggered.  (also see <a href="event.html">event</a>)
 </ul>
 </p>
 
 <p><strong>advancing time by duration</strong></p>
 
-<pre>
-    // advance time by 1 second
-    1::second => now;
+<pre><code>// advance time by 1 second
+1::second => now;
 
-    // advance time by 100 millisecond
-    100::ms => now;
+// advance time by 100 millisecond
+100::ms => now;
 
-    // advance time by 1 samp (every sample)
-    1::samp => now;
+// advance time by 1 samp (every sample)
+1::samp => now;
 
-    // advance time by less than 1 samp
-    .024::samp => now;
-</pre>
+// advance time by less than 1 samp
+.024::samp => now;</code></pre>
 
 <p><strong>advancing time by absolute time</strong></p>
 
-<pre>
-    // figure out when
-    now + 4::hour => time later;
+<pre><code>// figure out when
+now + 4::hour => time later;
 
-    // advance time to later
-    later => now;
-</pre>
+// advance time to later
+later => now;</code></pre>
 
-<p>A time chucked to now will have ChucK wait until the appointed time. ChucK never misses an appointment (unless it crashes)!  
+<p>A time chucked to now will have ChucK wait until the appointed time. ChucK never misses an appointment (unless it crashes)!
 Again, the time chucked to now must be greater than or equal to now, otherwise an exception is thrown.</p>
 
 <p><strong>advancing time by event</strong></p>
 
-<pre>
-    // wait on event
-    e => now;
-</pre>
+<pre><code>// wait on event
+e => now;</code></pre>
 
 <p>See <a href="event.html">events</a> for a more complete discussion of using events!</p>
 
 <p>The advancement of time can occur at any point in the code.</p>
 
-<pre>
-    // our patch: sine oscillator -> dac
-    SinOsc s => dac;
+<pre><code>// our patch: sine oscillator -> dac
+SinOsc s => dac;
 
-    // infinite time loop
-    while( true )
+// infinite time loop
+while( true )
     {
-        // randomly choose frequency from 30 to 1000
-        Std.rand2f( 30, 1000 ) => s.freq;
+    // randomly choose frequency from 30 to 1000
+    Std.rand2f( 30, 1000 ) => s.freq;
 
-        // advance time by 100 millisecond
-        100::ms => now;
-    }
-</pre>
+    // advance time by 100 millisecond
+    100::ms => now;
+}</code></pre>
 
 <p>Furthermore, there are no restrictions (other than underlying floating point precision)
 on how much time is advanced.  So it is possible to advance time by a microsecond, a samp,
 2 hours, or 10 years.  The system will behave accordingly and deterministically.</p>
 
-<p>This mechanism allows time to be controlled at any desired rate, according to any 
+<p>This mechanism allows time to be controlled at any desired rate, according to any
 programmable pattern.  With respect to sound synthesis, it is possible to control any
 unit generator at literally any rate, even sub-sample rate.</p>
 
@@ -358,44 +293,47 @@ which is discussed in <a href="spork.html">concurrency and shreds</a>.
 <!-- end subtopics ? -->
 
 </div>
-</div>
-</td></tr>
+    </main>
 
-<!-- navigation bar -->
+    <!-- navigation bar -->
+    <nav class="chuck_nav" aria-label="Language specification">
+        <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="ctrl.html">Control Structures</a> | (up): <a href="./">Language Specification</a> | (next): <a href="func.html">Functions</a> &gt; </div>
+    </nav>
 
-<tr><td>
-<center>
-<div class="chuck_nav">
+    <hr width="20%" />
 
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="ctrl.html">control structures</a> | (up): <a href="./">language specification</a> | (next): <a href="func.html">functions</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
+    <!-- chuck-footer -->
+    <footer>
+        <a href="../../">ChucK</a> |
+        <a href="http://soundlab.cs.princeton.edu/">Soundlab</a> |
+        <a href="http://www.cs.princeton.edu/">CS</a> |
+        <a href="http://www.music.princeton.edu/">Music</a> |
+        <a href="http://ccrma.stanford.edu/">CCRMA</a>
+    </footer>
 
-</div>
-</center>
-</td></tr>
+<script src="../../js/prism.js"></script>
+<script>
+    Prism.languages.chuck = Prism.languages.extend('clike', {
+        'keyword': /\b(abstract|continue|for|new|do|if|private|this|break|double|implements|protected|else|public|return|extends|int|try|char|final|interface|static|void|class|long|const|float|super|while|spork|fun|second|samp|ms|day|week|hour|minute|pi|e|dac|adc|blackhole|complex|polar|bar|measure)\b/g,
+        'number': /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\b\d*\.?\d+\b/gi,
+        'operator': {
+            pattern: /(^|[^\.])(?:\+=|\+\+?|-=|--?|!=?|<{1,2}=?|>{1,3}=?|==?|&=|&&?|\|=|\|\|?|\?|\*=?|\/=?|%=?|\^=?|:|~|::|=>)/gm,
+            lookbehind: true
+        }
+    });
+    document.querySelectorAll('#lang_body pre').forEach(function (codeBlock) {
+        var code = codeBlock.querySelector('code');
+        if (!code) {
+            return;
+        }
 
-<!-- chuck-footer -->
-
-<tr><td>
-<div id ="chuck_footer">
-<center>
-<hr width="15%" / >
-<a href="../../">chuck</a> |
-<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
-<a href="http://www.cs.princeton.edu/">cs</a> |
-<a href="http://www.music.princeton.edu/">music</a> |
-<a href="http://ccrma.stanford.edu/">ccrma</a>
-
-</center>
-</div>
-</td></tr>
-</table>
-
-</center>
+        codeBlock.classList.add('language-chuck');
+        code.classList.add('language-chuck');
+        code.querySelectorAll('br').forEach(function (lineBreak) {
+            lineBreak.replaceWith('\n');
+        });
+    });
+    Prism.highlightAll();
+</script>
 </body>
 </html>

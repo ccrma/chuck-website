@@ -1,67 +1,39 @@
-<!DOCTYPE html PUBLIC 
-"-//W3C//DTD XHTML 1.0 Strict//EN" 
-"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<title>ChucK - [Language Specification : Import System]</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChucK - [Language Specification : Import System]</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/prism.css" />
 
 </head>
-<body bgcolor="#ffffff" text="#000000">
-<center>
 
-<!-- all in a big fat table-->
+<body class="type-page">
+    <header id="chuck_header">
+        <h2>ChucK : Language Specification &gt; Import System</h2>
+        <div class="outlineDiv" style="background-color: white; margin-top: 1rem">
+            version: 1.5.x.x (numchucks)
+        </div>
 
-<table id="page_layout" border="0" width="640">
+        <hr width="20%" />
 
-<!-- heading row-->
+        <!-- navigation bar -->
+        <nav class="chuck_nav" aria-label="Language specification">
+            <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="class.html">Classes &amp; Objects</a> | (up): <a href="./">Language Specification</a> | (next): <a href="ugen.html">Unit Generators</a> &gt; </div>
+        </nav>
+    </header>
 
-<tr><td>
-<div id="chuck_header">
-<center>
-<h1>
-<strong>ChucK</strong> : Language Specification &gt; Import System
-</h1>
+    <!-- lang specification section -->
+    <main class="leftText" id="lang_body">
+        <div id="lang_topic_body">
 
-<table border="0">
-<tr><td>
-  	<div id="chuck_revision">
-	version: 1.5.x.x (numchucks)
-  	</div>
-  	
-</td></tr>
-</table>
-
-<hr width="20%" />
-</center>
-</div>
-</td></tr>
-
-<!-- navigation bar -->
-<tr><td>
-<center>
-<div class="chuck_nav">
-
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="class.html">classes &amp; objects</a> | (up): <a href="./">language specification</a> | (next): <a href="ugen.html">unit generators</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
-
-</div>
-</center>
-</td></tr>
-<!-- lang specification section -->
-<tr><td>
-<div id="chuck_body">
-<div id="lang_topic_body">
-
-<a name="intro"> </a> <h1><strong>Import System</strong></h1> <p> The <b>@import</b> system 
-imports classes and operator overloads from other ChucK (.ck) and chugin (.chug) files; it is 
-designed to facilitate creating, using, and distributing multi-file programs and libraries. 
-<br><br> This feature was introduced in chuck-1.5.4.0 and thus requires that version or 
+<a name="intro"> </a> <h1><strong>Import System</strong></h1> <p> The <b>@import</b> system
+imports classes and operator overloads from other ChucK (.ck) and chugin (.chug) files; it is
+designed to facilitate creating, using, and distributing multi-file programs and libraries.
+<br><br> This feature was introduced in chuck-1.5.4.0 and thus requires that version or
 higher. </p>
 
 <!-- index of code exmaples -->
@@ -78,27 +50,25 @@ higher. </p>
 
 <p><b>@import</b> statements can appear anywhere in .ck file, so long as they are on the top-most scope. Some example usage of <b>@import</b>:</p>
 
-<pre>
-    // import a ChucK file (.ck)
-    @import "Foo.ck"
+<pre><code>// import a ChucK file (.ck)
+@import "Foo.ck"
 
-    // import a chugin (.chug or .chug.wasm)
-    @import "Bar.chug"
+// import a chugin (.chug or .chug.wasm)
+@import "Bar.chug"
 
-    // multiple imports can be grouped together
-    @import { "AAA.ck", "BBB.chug", "CCC" }
+// multiple imports can be grouped together
+@import { "AAA.ck", "BBB.chug", "CCC" }
 
-    // can use implicit filename (with no extension)
-    // if the file 'Blarg' exists, it will be imported as a .ck file
-    // if not, @import will automatically match for .ck and .chug files
-    @import "Blarg"
+// can use implicit filename (with no extension)
+// if the file 'Blarg' exists, it will be imported as a .ck file
+// if not, @import will automatically match for .ck and .chug files
+@import "Blarg"
 
-    // import a file using absolute path
-    @import "/Users/ge/chuck/examples/import/foo-user.ck"
+// import a file using absolute path
+@import "/Users/ge/chuck/examples/import/foo-user.ck"
 
-    // paths are relative to the location of the container .ck file
-    @import "../dir/Blarg.ck"
-</pre>
+// paths are relative to the location of the container .ck file
+@import "../dir/Blarg.ck"</code></pre>
 </div>
 
 <!-- additional sub topic sections go here... -->
@@ -110,8 +80,7 @@ higher. </p>
 <p>The <b>@import</b> system imports <i>all</i> <b>public</b>&mdash;and <i>only</i> <b>public</b>&mdash;class definitions and operator overloads from imported ChucK files. For example:</p>
 
 in <b>Foo.ck</b>
-<pre>
-// define a public Foo class (picked up by @import)
+<pre><code>// define a public Foo class (picked up by @import)
 public class Foo
 {
     // member variable
@@ -136,23 +105,20 @@ public Foo @operator +( Foo lhs, Foo rhs )
 
 // non-public binary operator overload for '=>' (ignored by @import)
 fun void @operator =^( Foo lhs, Foo rhs )
-{ 
+{
     // for sake of example, just print contents
     <<< lhs.num, "=^", rhs.num >>>;
-}
-</pre>
+}</code></pre>
 
 in <b>test.ck</b>
-<pre>
-// import Foo.ck
+<pre><code>// import Foo.ck
 @import "Foo.ck"
 
 // instantiate class defined in imported file
 Foo a(1), b(2);
 
 // use operator overload defined in imported file
-<<< (a + b).num >>>;
-</pre>
+<<< (a + b).num >>>;</code></pre>
 
 Imports works recursively; it is possible to @import files that @import other files, etc. There is built-in cycle-detection; if an @import cycle is detected, a compiler error will be issued.
 <br><br>
@@ -167,9 +133,7 @@ If the imported file is a chugin (.chug) file, <b>@import</b> will resolve the f
 <a name="resolution"> </a>
 <h2><strong>filename resolution</strong></h2>
 It is possible to import a filename without an extension. As an example, if a host .ck file contains this statement:
-<pre>
-    @import "Blarg"
-</pre>
+<pre><code>@import "Blarg"</code></pre>
 In this case, the @import system will attempt to automatically locate and resolve "Blarg"&mdash;to either a .ck file or a .chug file, while taking import paths into account. More specifically, the import system will attempt to locate on disk (starting from the directory where the host .ck file resides) and match for different extensions&mdash;e.g., "Blarg", "Blarg.ck", "Blarg.chug", and "Blarg.chug.wasm" (for WebChucK)&mdash;resolving "Blarg" to the first matching file. If no match is found, the import system will expand the search to platform-specific search paths.
 
 </div>
@@ -182,8 +146,7 @@ As of ChucK 1.5.4.0, the restriction of one-public-class-per-file is lifted, mak
 While non-public classes are not imported, they can used from public classes in the same file. For example:
 <br><br>
 in <b>Bar.ck</b>
-<pre>
-// non-public class used by Bar
+<pre><code>// non-public class used by Bar
 class Blarg
 {
     // member
@@ -197,17 +160,15 @@ public class Bar
 {
     // member
     Blarg blarg(5);
-}
-</pre>
+}</code></pre>
 
-As a somewhat more practical example, <a target="_blank" href="../examples/deep/ks-chord.ck">ks-chord.ck</a> (a four-voice Karplus Strong chord filter) defines a public <b>KSChord</b> class, which in turns makes use of a non-public <b>KS</b> class. A host file that <b>@import "ks-chord.ck"</b> would be able to instantiate <b>KSChord</b> objects&mdash;but <i>not</i> <b>KS</b> objects.
+As a somewhat more practical example, <a target="_blank" href="../examples/deep/ks-chord.html">ks-chord.ck</a> (a four-voice Karplus Strong chord filter) defines a public <b>KSChord</b> class, which in turns makes use of a non-public <b>KS</b> class. A host file that <b>@import "ks-chord.ck"</b> would be able to instantiate <b>KSChord</b> objects&mdash;but <i>not</i> <b>KS</b> objects.
 <br><br>
 <b>CAVEATS</b>: public classes cannot access local variables (i.e., file-scope variables defined outside of class definitions). In general, non-public classes can access local variable&mdash;as long as the containing file is not being imported. This restriction is necessary because imported files have no file-level environment of their own. For example:
 <br><br>
 
 in <b>Bar-Error.ck</b>
-<pre>
-// a local variable (to the file, defined outside of classes)
+<pre><code>// a local variable (to the file, defined outside of classes)
 int theVar;
 
 // non-public class used by Bar
@@ -223,8 +184,7 @@ public class Bar
 {
     // member
     Blarg blarg;
-}
-</pre>
+}</code></pre>
 
 </div>
 
@@ -236,8 +196,7 @@ public class Bar
 This makes it possible to write unit-test code for public classes in the same file in which it is defined; any code outside of public class/operator definition will NOT be type-checked or run (this code will only scanned for syntax):
 <br><br>
 <b>Bar.ck</b>
-<pre>
-// a class definition (public; will be picked by @import)
+<pre><code>// a class definition (public; will be picked by @import)
 public class Bar extends Chugraph
 {
     // ...
@@ -245,8 +204,7 @@ public class Bar extends Chugraph
 
 // unit-test or provide example for KS (will be ignored by @import)
 Bar bar => dac;
-// ...
-</pre>
+// ...</code></pre>
 
 </div>
 
@@ -254,44 +212,47 @@ Bar bar => dac;
 <!-- end subtopics ? -->
 
 </div>
-</div>
-</td></tr>
+    </main>
 
-<!-- navigation bar -->
+    <!-- navigation bar -->
+    <nav class="chuck_nav" aria-label="Language specification">
+        <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="class.html">Classes &amp; Objects</a> | (up): <a href="./">Language Specification</a> | (next): <a href="ugen.html">Unit Generators</a> &gt; </div>
+    </nav>
 
-<tr><td>
-<center>
-<div class="chuck_nav">
+    <hr width="20%" />
 
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="time.html">manipulating time</a> | (up): <a href="./">language specification</a> | (next): <a href="spork.html">concurrency</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
+    <!-- chuck-footer -->
+    <footer>
+        <a href="../../">ChucK</a> |
+        <a href="http://soundlab.cs.princeton.edu/">Soundlab</a> |
+        <a href="http://www.cs.princeton.edu/">CS</a> |
+        <a href="http://www.music.princeton.edu/">Music</a> |
+        <a href="http://ccrma.stanford.edu/">CCRMA</a>
+    </footer>
 
-</div>
-</center>
-</td></tr>
+<script src="../../js/prism.js"></script>
+<script>
+    Prism.languages.chuck = Prism.languages.extend('clike', {
+        'keyword': /\b(abstract|continue|for|new|do|if|private|this|break|double|implements|protected|else|public|return|extends|int|try|char|final|interface|static|void|class|long|const|float|super|while|spork|fun|second|samp|ms|day|week|hour|minute|pi|e|dac|adc|blackhole|complex|polar|bar|measure)\b/g,
+        'number': /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\b\d*\.?\d+\b/gi,
+        'operator': {
+            pattern: /(^|[^\.])(?:\+=|\+\+?|-=|--?|!=?|<{1,2}=?|>{1,3}=?|==?|&=|&&?|\|=|\|\|?|\?|\*=?|\/=?|%=?|\^=?|:|~|::|=>)/gm,
+            lookbehind: true
+        }
+    });
+    document.querySelectorAll('#lang_body pre').forEach(function (codeBlock) {
+        var code = codeBlock.querySelector('code');
+        if (!code) {
+            return;
+        }
 
-<!-- chuck-footer -->
-
-<tr><td>
-<div id ="chuck_footer">
-<center>
-<hr width="15%" / >
-<a href="../../">chuck</a> |
-<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
-<a href="http://www.cs.princeton.edu/">cs</a> |
-<a href="http://www.music.princeton.edu/">music</a> |
-<a href="http://ccrma.stanford.edu/">ccrma</a>
-
-</center>
-</div>
-</td></tr>
-</table>
-
-</center>
+        codeBlock.classList.add('language-chuck');
+        code.classList.add('language-chuck');
+        code.querySelectorAll('br').forEach(function (lineBreak) {
+            lineBreak.replaceWith('\n');
+        });
+    });
+    Prism.highlightAll();
+</script>
 </body>
 </html>

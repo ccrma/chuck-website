@@ -1,69 +1,38 @@
-<!DOCTYPE html PUBLIC 
-"-//W3C//DTD XHTML 1.0 Strict//EN" 
-"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<title>ChucK - [Language Specification : Events]</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChucK - [Language Specification : Events]</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/prism.css" />
 
 </head>
-<body bgcolor="#ffffff" text="#000000">
-<center>
 
-<!-- all in a big fat table-->
-<table id="page_layout" border="0" width="640">
+<body class="type-page">
+    <header id="chuck_header">
+        <h2>ChucK : Language Specification &gt; Events</h2>
+        <div class="outlineDiv" style="background-color: white; margin-top: 1rem">
+            version: 1.5.x.x (numchucks)
+        </div>
 
-<!-- heading row-->
+        <hr width="20%" />
 
-<tr><td>
-<div id="chuck_header">
-<center>
-<h1>
-<strong>ChucK</strong> : Language Specification &gt; Events
-</h1>
+        <!-- navigation bar -->
+        <nav class="chuck_nav" aria-label="Language specification">
+            <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="uana.html">Unit Analyzers</a> | (up): <a href="./">Language Specification</a> </div>
+        </nav>
+    </header>
 
-<table border="0">
-<tr><td>
-  	<div id="chuck_revision">
-	version: 1.5.x.x (numchucks)
-  	</div>
-  	
-</td></tr>
-</table>
-
-<hr width="20%" />
-</center>
-</div>
-</td></tr>
-
-
-<!-- navigation bar -->
-
-<tr><td>
-<center>
-<div class="chuck_nav">
-
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="uana.html">unit analyzers</a> | (up): <a href="./">language specification</a>
-	</div>
-	</center>  
-	</td></tr></table>
-
-</div>
-</center>
-</td></tr>
-
-<!-- lang specification section -->
-<tr><td>
-<div id="chuck_body">
-
-<div id="lang_topic_body">
+    <!-- lang specification section -->
+    <main class="leftText" id="lang_body">
+        <div id="lang_topic_body">
 
 <h1><strong>Events</strong></h1>
 <p>
-In addition to the built-in timing mechanisms for internal control, ChucK has an <strong>event</strong> class to allow exact synchronization across an arbitrary number of shreds.  
+In addition to the built-in timing mechanisms for internal control, ChucK has an <strong>event</strong> class to allow exact synchronization across an arbitrary number of shreds.
 </p>
 
 <!-- index of code exmaples -->
@@ -78,15 +47,14 @@ In addition to the built-in timing mechanisms for internal control, ChucK has an
 <h2><strong>what they are</strong></h2>
 <p>ChucK events are a native class within the ChucK language.  We can
 create an event objects, and then chuck (=&gt;) that event to
-<strong>now</strong>.  The event places the current shred on the event's waiting list, 
+<strong>now</strong>.  The event places the current shred on the event's waiting list,
 suspends the current shred (letting time advance from that shred's point of view). When
 the the event is triggered, one or more of the shreds on its waiting list is shreduled
 to run immediately.  This trigger may originate from another ChucK shred, or
 from activities taking place outside the Virtual
 Machine ( MIDI, OSC, or IPC ). </p>
 
-<pre>
-// declare event
+<pre><code>// declare event
 Event e;
 
 // function for shred
@@ -110,23 +78,22 @@ spork ~ eventshred ( e, "fum" );
 
 // infinite time loop
 while ( true )
-{
+    {
     // either signal or broadcast
     if( maybe )
-    { 
+    {
         &lt;&lt;&lt;"signaling..."&gt;&gt;&gt;;
         e.signal();
     }
     else
-    { 
+    {
         &lt;&lt;&lt;"broadcasting..."&gt;&gt;&gt;;
         e.broadcast();
     }
 
     // advance time
     0.5::second =&gt; now;
-}
-</pre>
+}</code></pre>
 
 </div>
 
@@ -135,52 +102,44 @@ while ( true )
 <div class="lang_subtopic_body">
 <a name="use"> </a>
 <h2><strong>use</strong></h2>
-<p>Chucking an event to now suspends the current shred, letting time 
+<p>Chucking an event to now suspends the current shred, letting time
 advance:</p>
 
-<pre>
-    // declare Event
-    Event e;
+<pre><code>// declare Event
+Event e;
 
-    // ...
+// ...
 
-    // wait on the event
-    e => now;
+// wait on the event
+e => now;
 
-    // after the event is trigger
-    <<< "I just woke up" >>>;
-</pre>
+// after the event is trigger
+<<< "I just woke up" >>>;</code></pre>
 
-<p>as shown above, events can be triggered in two ways, depending on the 
+<p>as shown above, events can be triggered in two ways, depending on the
 desired behavior.</p>
 
-<pre>
-    // signal one shred waiting on the event e
-    e.signal();
-</pre>
+<pre><code>// signal one shred waiting on the event e
+e.signal();</code></pre>
 
-<p><font face="courier"><strong>signal()</strong></font> releases the 
-<em>first</em> shred in that event's queue, and shredule it to run at the 
-current time, respecting the order in which shreds were added to the 
+<p><strong>signal()</strong> releases the
+<em>first</em> shred in that event's queue, and shredule it to run at the
+current time, respecting the order in which shreds were added to the
 queue.</p>
 
-<pre>
-    // wake up all shreds waiting on the event e
-    e.broadcast();
-</pre>
+<pre><code>// wake up all shreds waiting on the event e
+e.broadcast();</code></pre>
 
-<p><font face="courier"><strong>broadcast()</strong></font> releases 
-<em>all</em> shreds queued by 
-that event, in the order they were added, and at the same instant in time. 
+<p><strong>broadcast()</strong> releases
+<em>all</em> shreds queued by
+that event, in the order they were added, and at the same instant in time.
 </p>
 
-<p>The released shreds are shreduled to run immediately.  But of course 
-they will respect other shreds also shreduled to run at the same time.  
-Furthermore, the shred that called <font 
-face="courier"><strong>signal()</strong></font> or <font 
-face="courier"><strong>broadcast()</strong></font> will continue to run 
-until it advances time itself, or yield the virtual machine without 
-advancing time. (see <font face="courier">me.yield()</font> under
+<p>The released shreds are shreduled to run immediately.  But of course
+they will respect other shreds also shreduled to run at the same time.
+Furthermore, the shred that called <strong>signal()</strong> or <strong>broadcast()</strong> will continue to run
+until it advances time itself, or yield the virtual machine without
+advancing time. (see me.yield() under
 <a href="spork.html#me">concurrency</a>)
 
 </div>
@@ -190,15 +149,14 @@ advancing time. (see <font face="courier">me.yield()</font> under
 <a name="midi"> </a>
 <h2><strong>MIDI events</strong></h2>
 <p>ChucK contains built-in MIDI classes to allow for interaction with MIDI based software or devices.</p>
-<pre>
-MidiIn min;
+<pre><code>MidiIn min;
 MidiMsg msg;
 
 // open midi receiver, exit on fail
-if ( !min.open(0) ) me.exit(); 
+if ( !min.open(0) ) me.exit();
 
 while( true )
-{
+    {
     // wait on midi event
     min => now;
 
@@ -206,15 +164,13 @@ while( true )
     while( min.recv( msg ) )
     {
         // print content
-    	&lt;&lt;&lt; msg.data1, msg.data2, msg.data3 &gt;&gt;&gt;;
+        &lt;&lt;&lt; msg.data1, msg.data2, msg.data3 &gt;&gt;&gt;;
     }
 }
 
-...
-
-</pre>
-<p><strong>MidiIn</strong> is a subclass of <strong>Event</strong>, and as such can be ChucKed to <strong>now</strong>.  MidiIn then takes a MidiMsg object to its 
-<strong>.recv()</strong> method to access the MIDI data.</p>  As a default, MidiIn events trigger the <strong>broadcast()</strong> event behavior. 
+...</code></pre>
+<p><strong>MidiIn</strong> is a subclass of <strong>Event</strong>, and as such can be ChucKed to <strong>now</strong>.  MidiIn then takes a MidiMsg object to its
+<strong>.recv()</strong> method to access the MIDI data.</p>  As a default, MidiIn events trigger the <strong>broadcast()</strong> event behavior.
 </div>
 
 
@@ -222,8 +178,7 @@ while( true )
 <a name="osc"> </a>
 <h2><strong>OSC events</strong></h2>
 <p>In addition to MIDI, ChucK has OSC communication classes as well:</p>
-<pre>
-...
+<pre><code>...
 
 // create our OSC receiver
 OscRecv orec;
@@ -233,33 +188,32 @@ OscRecv orec;
 orec.listen();
 
 function void rate_control_shred()
-{ 
-    // create an address in the receiver 
+{
+    // create an address in the receiver
     // and store it in a new variable.
-    orec.event("/sndbuf/buf/rate,f") @=> OscEvent rate_event; 
+    orec.event("/sndbuf/buf/rate,f") @=> OscEvent rate_event;
 
     while ( true )
-    { 
+    {
         rate_event =&gt; now; // wait for events to arrive.
 
-        // grab the next message from the queue. 
+        // grab the next message from the queue.
         while( rate_event.nextMsg() != 0 )
-        { 
+        {
             // getFloat fetches the expected float
             // as indicated in the type string ",f"
             buf.play( rate_event.getFloat() );
             0 =&gt; buf.pos;
         }
-    }       
+    }
 }
 
-...
-</pre>
-<p>The <strong>OscRecv</strong> class listens for incoming OSC packets on 
-the specified port.  Each instance of OscRecv can create 
-<strong>OscEvent</strong> objects using its </strong>event()</strong> 
+...</code></pre>
+<p>The <strong>OscRecv</strong> class listens for incoming OSC packets on
+the specified port.  Each instance of OscRecv can create
+<strong>OscEvent</strong> objects using its </strong>event()</strong>
 method to listen for packets at any valid OSC Address pattern.</p>
-<p>An OscEvent object can then be ChucKed to now to wait for messages to 
+<p>An OscEvent object can then be ChucKed to now to wait for messages to
 arrive, after which the <strong>nextMsg()</strong> and <strong>get{Float|String|Int}()</strong> methods can be used to fetch message data.</p>
 
 </div>
@@ -268,10 +222,9 @@ arrive, after which the <strong>nextMsg()</strong> and <strong>get{Float|String|
 <div class="lang_subtopic_body">
 <a name="extend"> </a>
 <h2><strong>creating custom events</strong></h2>
-<p>Events, like any other class, can be subclassed to add functionality 
+<p>Events, like any other class, can be subclassed to add functionality
 and transmit data:</p>
-<pre>
-// extended event
+<pre><code>// extended event
 class TheEvent extends Event
 {
     int value;
@@ -300,7 +253,7 @@ spork ~ hi( e );
 
 // infinite time loop
 while( true )
-{
+    {
     // advance time
     1::second =&gt; now;
 
@@ -309,51 +262,53 @@ while( true )
 
     // signal one waiting shred
     e.signal();
-}
-</pre>
+}</code></pre>
 </div>
 
 <!-- end subtopics ? -->
 
 </div>
-</div>
-</td></tr>
+    </main>
 
-<!-- navigation bar -->
+    <!-- navigation bar -->
+    <nav class="chuck_nav" aria-label="Language specification">
+        <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="uana.html">Unit Analyzers</a> | (up): <a href="./">Language Specification</a> </div>
+    </nav>
 
-<tr><td>
-<center>
-<div class="chuck_nav">
+    <hr width="20%" />
 
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="uana.html">unit analyzers</a> | (up): <a href="./">language specification</a>
-	</div>
-	</center>  
-	</td></tr></table>
+    <!-- chuck-footer -->
+    <footer>
+        <a href="../../">ChucK</a> |
+        <a href="http://soundlab.cs.princeton.edu/">Soundlab</a> |
+        <a href="http://www.cs.princeton.edu/">CS</a> |
+        <a href="http://www.music.princeton.edu/">Music</a> |
+        <a href="http://ccrma.stanford.edu/">CCRMA</a>
+    </footer>
 
-</div>
-</center>
-</td></tr>
+<script src="../../js/prism.js"></script>
+<script>
+    Prism.languages.chuck = Prism.languages.extend('clike', {
+        'keyword': /\b(abstract|continue|for|new|do|if|private|this|break|double|implements|protected|else|public|return|extends|int|try|char|final|interface|static|void|class|long|const|float|super|while|spork|fun|second|samp|ms|day|week|hour|minute|pi|e|dac|adc|blackhole|complex|polar|bar|measure)\b/g,
+        'number': /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\b\d*\.?\d+\b/gi,
+        'operator': {
+            pattern: /(^|[^\.])(?:\+=|\+\+?|-=|--?|!=?|<{1,2}=?|>{1,3}=?|==?|&=|&&?|\|=|\|\|?|\?|\*=?|\/=?|%=?|\^=?|:|~|::|=>)/gm,
+            lookbehind: true
+        }
+    });
+    document.querySelectorAll('#lang_body pre').forEach(function (codeBlock) {
+        var code = codeBlock.querySelector('code');
+        if (!code) {
+            return;
+        }
 
-<!-- chuck-footer -->
-
-<tr><td>
-<div id ="chuck_footer">
-<center>
-<hr width="15%" / >
-<a href="../../">chuck</a> |
-<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
-<a href="http://www.cs.princeton.edu/">cs</a> |
-<a href="http://www.music.princeton.edu/">music</a> |
-<a href="http://ccrma.stanford.edu/">ccrma</a>
-
-</center>
-</div>
-</td></tr>
-</table>
-
-</center>
+        codeBlock.classList.add('language-chuck');
+        code.classList.add('language-chuck');
+        code.querySelectorAll('br').forEach(function (lineBreak) {
+            lineBreak.replaceWith('\n');
+        });
+    });
+    Prism.highlightAll();
+</script>
 </body>
 </html>

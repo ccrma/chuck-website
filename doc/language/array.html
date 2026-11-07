@@ -1,488 +1,434 @@
-<!DOCTYPE html PUBLIC 
-"-//W3C//DTD XHTML 1.0 Strict//EN" 
-"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<title>ChucK - [Language Specification : Arrays]</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css" />
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChucK - [Language Specification : Arrays]</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/prism.css" />
 </head>
-<body bgcolor="#ffffff" text="#000000">
-<center>
-
-<!-- all in a big fat table-->
-
-<table id="page_layout" border="0" width="640">
-
-<!-- heading row-->
-
-<tr><td>
-<div id="chuck_header">
-<center>
-<h1>
-<strong>ChucK</strong> : Language Specification &gt; Arrays
-</h1>
-
-<table border="0">
-<tr><td>
-  	<div id="chuck_revision">
-	version: 1.5.x.x (numchucks)
-  	</div>
-  	
-</td></tr>
-</table>
-
-<hr width="20%" />
-</center>
-</div>
-</td></tr>
-
-<!-- navigation bar -->
-
-<tr><td>
-<center>
-<div class="chuck_nav">
-
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="type.html">type</a> | (up): <a href="./">language specification</a> | (next): <a href="oper.html">operators</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
-
-</div>
-</center>
-</td></tr>
-
-
-<!-- lang specification section -->
-<tr><td>
-<div id="chuck_body">
 
-<div id="lang_topic_body">
+<body class="type-page">
+    <header id="chuck_header">
+        <h2>ChucK : Language Specification &gt; Arrays</h2>
+        <div class="outlineDiv" style="background-color: white; margin-top: 1rem">
+            version: 1.5.x.x (numchucks)
+        </div>
 
-<h1><strong>Arrays</strong></h1>
-<p>
-Arrays are used represent N-dimensional ordered sets of data (of the same type).  This sections
-specifies how arrays are declared and used in ChucK.  Some quick notes:
-<ul>
-<li> arrays can be indexed by integer (0-indexed).
-<li> any array can also be used as an associative map, indexed by strings.
-<li> it is important to note that the integer-indexed portion and the associative portion of an array are stored in
-<em>separate</em> namespaces
-<li> arrays are objects (see <a href="class.html">objects and classes</a>), and will behave similarly
-under reference assignment and other operations common to objects.
-</ul>
-</p>
+        <hr width="20%" />
 
-<!-- index of code exmaples -->
-<div class="lang_code_ref">
-<a href="../examples/index.html#array">View sample code</a> for arrays</a>
-</div>
+        <!-- navigation bar -->
+        <nav class="chuck_nav" aria-label="Language specification">
+            <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="type.html">Types</a> |
+                (up): <a href="./">Language
+                    Specification</a> | (next): <a href="oper.html">Operators</a> &gt; </div>
+        </nav>
+    </header>
 
-<!-- body of each sub topic -->
+    <!-- lang specification section -->
+    <main class="leftText" id="lang_body">
 
-<a name="decl"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>declaration</strong></h2>
+        <h1>Arrays</h1>
 
-<p>Arrays can be declared in the following way: </p>
+        <p>
+            Arrays are used represent N-dimensional ordered sets of data (of the same type). This sections
+            specifies how arrays are declared and used in ChucK. Some quick notes:
+        <ul>
+            <li> arrays can be indexed by integer (0-indexed).
+            <li> any array can also be used as an associative map, indexed by strings.
+            <li> it is important to note that the integer-indexed portion and the associative portion of an array
+                are stored in
+                <em>separate</em> namespaces
+            <li> arrays are objects (see <a href="class.html">objects and classes</a>), and will behave similarly
+                under reference assignment and other operations common to objects.
+        </ul>
+        </p>
 
-<pre>
-    // declare 10 element array of int, called foo
-    int foo[10];
+        <!-- index of code exmaples -->
+        <div class="lang_code_ref">
+            <a href="../examples/index.html#array">View sample code</a> for arrays</a>
+        </div>
 
-    // since array of int (primitive type), the contents
-    // are automatically initialized to 0
-</pre>
+        <!-- body of each sub topic -->
+        <div class="lang_subtopic_body">
+            <h2><strong>declaration</strong></h2>
 
-<p>Arrays can also be initialized: </p>
+            <p>Arrays can be declared in the following way: </p>
 
-<pre>
-    // chuck intializer to array reference
-    [ 1, 1, 2, 3, 5, 8 ] @=> int foo[];
-</pre>
+            <pre><code>// declare 10 element array of int, called foo
+int foo[10];
 
-In the above code, there are several things to note.
-<ul>
-<li> initializers must contain the same or similar types.  the compiler will attempt to find the highest common base type of all the elements.  if no such common element
-is found, an error is reported.
-<li> the type of the initializer <font face="courier">[ 1, 1, 2, 3, 5, 8 ]</font> is <font face="courier">int[]</font>.  the intializer is an array that can be used directly 
-when arrays are expected.
-<li> the <em>at-chuck</em> operator (<font face="courier">@=></font>) means assignment, and is discussed at length in <a href="oper.html">operators and operations</a>.
-<li> <font face="courier">int foo[]</font> is declaring an empty reference to an array.  the statement assigns 
-the initializer array to foo.
-<li> arrays are objects.
-</ul>
+// since array of int (primitive type), the contents
+// are automatically initialized to 0</code></pre>
 
-<p>When declaring an array of objects, the objects inside the array are automatically instantiated.</p>
+            <p>Arrays can also be initialized: </p>
 
-<pre>
-    // objects in arrays are automatically instantiated
-    Object group[10];
-</pre>
+            <pre><code>// chuck intializer to array reference
+[ 1, 1, 2, 3, 5, 8 ] @=> int foo[];</code></pre>
 
-<p>If you only want an array of object references:</p>
+            In the above code, there are several things to note.
+            <ul>
+                <li> initializers must contain the same or similar types. the compiler will attempt to find the
+                    highest common base type of all the elements. if no such common element
+                    is found, an error is reported.
+                <li> the type of the initializer <font face="courier">[ 1, 1, 2, 3, 5, 8 ]</font> is <font
+                        face="courier">int[]</font>. the intializer is an array that can be used directly
+                    when arrays are expected.
+                <li> the <em>at-chuck</em> operator (<font face="courier">@=></font>) means assignment, and is
+                    discussed at length in <a href="oper.html">operators and operations</a>.
+                <li>
+                    <font face="courier">int foo[]</font> is declaring an empty reference to an array. the statement
+                    assigns
+                    the initializer array to foo.
+                <li> arrays are objects.
+            </ul>
 
-<pre>
-    // array of null object references
-    Object @ group[10];
-</pre>
+            <p>When declaring an array of objects, the objects inside the array are automatically instantiated.</p>
 
-<a href="class.html">Check here</a> more information on object declaration and instantation in Chuck.
+            <pre><code>// objects in arrays are automatically instantiated
+Object group[10];</code></pre>
 
-<p>The above examples are 1-dimensional arrays (or vectors).  Coming up next are multi-dimensional arrays!</p>
+            <p>If you only want an array of object references:</p>
 
-</div>
+            <pre><code>// array of null object references
+Object @ group[10];</code></pre>
 
-<!-- additional sub topic sections go here... -->
+            <a href="class.html">Check here</a> more information on object declaration and instantation in Chuck.
 
-<a name="multi"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>multi-dimensional arrays</strong></h2>
+            <p>The above examples are 1-dimensional arrays (or vectors). Coming up next are multi-dimensional
+                arrays!</p>
 
-<p>It is possible to declare multi-dimensional arrays:</p>
+        </div>
 
-<pre>
-    // declare 4 by 6 by 8 array of float
-    float foo3D[4][6][8];
-</pre>
+        <!-- additional sub topic sections go here... -->
 
-<p>Initializers for multi-dimensional arrays work in a similar way:</p>
+        <a name="multi"> </a>
+        <div class="lang_subtopic_body">
+            <h2><strong>multi-dimensional arrays</strong></h2>
 
-<pre>
-    // declare 2 by 2 array of int
-    [ [1,3], [2,4] ] @=> int bar[][];
-</pre>
+            <p>It is possible to declare multi-dimensional arrays:</p>
 
-In the above code, note the two <font face="courier">[][]</font> since we make a matrix.
-</div>
+            <pre><code>// declare 4 by 6 by 8 array of float
+float foo3D[4][6][8];</code></pre>
 
+            <p>Initializers for multi-dimensional arrays work in a similar way:</p>
 
-<a name="use"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>lookup and looping</strong></h2>
+            <pre><code>// declare 2 by 2 array of int
+[ [1,3], [2,4] ] @=> int bar[][];</code></pre>
 
-<p>Elements in an array can be accessed using <font face="courier">[]</font> (in the appropriate quantities).</p>
+            In the above code, note the two <font face="courier">[][]</font> since we make a matrix.
+        </div>
 
-<pre>
-    // declare an array of floats
-    [ 3.2, 5.0, 7 ] @=> float foo[];
 
-    // access the 0th element (debug print)
-    <<< foo[0] >>>; // hopefully 3.2
-
-    // set the 2nd element
-    8.5 => foo[2];
-</pre>
+        <a name="use"> </a>
+        <div class="lang_subtopic_body">
+            <h2><strong>lookup and looping</strong></h2>
 
-<p>Looping over the elements of an array:</p>
+            <p>Elements in an array can be accessed using <font face="courier">[]</font> (in the appropriate
+                quantities).</p>
 
-<pre>
-    // array of floats again
-    [ 1, 2, 3, 4, 5, 6 ] @=> float foo[];
+            <pre><code>// declare an array of floats
+[ 3.2, 5.0, 7 ] @=> float foo[];
 
-    // loop over the entire array
-    for( 0 => int i; i < foo.size(); i++ )
-    {
-        // do something (debug print)
-        <<< foo[i] >>>;
-    }
-</pre>
+// access the 0th element (debug print)
+<<< foo[0] >>>; // hopefully 3.2
 
-<p>As of chuck-1.5.0.8, it is possible to use a 'for-each' control structure</p>
+// set the 2nd element
+8.5 => foo[2];</code></pre>
 
-<pre>
-    // array of floats again
-    [ 1, 2, 3, 4, 5, 6 ] @=> float foo[];
+            <p>Looping over the elements of an array:</p>
 
-    // for each element 'e' in array 'foo'
-    for( int e : foo )
-    {
-        // do something (debug print)
-        <<< e >>>;
-    }
-</pre>
+            <pre><code>// array of floats again
+[ 1, 2, 3, 4, 5, 6 ] @=> float foo[];
 
-<p>It is also possible to iterate over array initializer list to use the 'auto' type (requires chuck-1.5.0.8 or higher):</p>
+// loop over the entire array
+for( 0 => int i; i < foo.size(); i++ )
+{
+    // do something (debug print)
+    <<< foo[i] >>>;
+}</code></pre>
 
-<pre>
-    // for each element 'x' in array 'foo'
-    // FYI by context, x will be inferred here to have type 'int'
-    for( auto x : [1,2,3] )
-    {
-        // do something (debug print)
-        <<< x >>>;
-    }
-</pre>
+            <p>As of chuck-1.5.0.8, it is possible to use a 'for-each' control structure</p>
 
+            <pre><code>// array of floats again
+[ 1, 2, 3, 4, 5, 6 ] @=> float foo[];
 
-<p>Accessing multi-dimensional array:</p>
+// for each element 'e' in array 'foo'
+for( int e : foo )
+{
+    // do something (debug print)
+    <<< e >>>;
+}</code></pre>
 
-<pre>
-    // 2D array
-    int foo[4][4];
+            <p>It is also possible to iterate over array initializer list to use the 'auto' type (requires
+                chuck-1.5.0.8 or higher):</p>
 
-    // set an element
-    10 => foo[2][2];
-</pre>
+            <pre><code>// for each element 'x' in array 'foo'
+// FYI by context, x will be inferred here to have type 'int'
+for( auto x : [1,2,3] )
+{
+    // do something (debug print)
+    <<< x >>>;
+}</code></pre>
 
-<p>If the index exceeds the bounds of the array in any dimension, an exception is issued and the current
-shred is halted.</p>
 
-<pre>
-    // array capacity is 5
-    int foo[5];
+            <p>Accessing multi-dimensional array:</p>
 
-    // this should cause ArrayOutOfBoundsException
-    // access element 6 (index 5)
-    <<< foo[5] >>>;
-</pre>    
+            <pre><code>// 2D array
+int foo[4][4];
 
-<p>a longer program: otf_06.ck from <a 
-href="../examples/">examples</a>:</p>
+// set an element
+10 => foo[2][2];</code></pre>
 
-<pre>
-    // the period
-    .5::second => dur T;
-    // synchronize to period (for on-the-fly synchronization)
-    T - (now % T) => now;
+            <p>If the index exceeds the bounds of the array in any dimension, an exception is issued and the current
+                shred is halted.</p>
 
-    // our patch
-    SinOsc s => JCRev r => dac;
-    // initialize
-    .05 => s.gain;
-    .25 => r.mix;
+            <pre><code>// array capacity is 5
+int foo[5];
 
-    // scale (pentatonic; in semitones)
-    [ 0, 2, 4, 7, 9 ] @=> int scale[];
+// this should cause ArrayOutOfBoundsException
+// access element 6 (index 5)
+<<< foo[5] >>>;</code></pre>
 
-    // infinite time loop
-    while( true )
-    {
-        // pick something from the scale
-        scale[ Math.rand2(0,4) ] => float freq;
-        // get the final freq
-        Std.mtof( 69 + (Std.rand2(0,3)*12 + freq) ) => s.freq;
-        // reset phase for extra bandwidth
-        0 => s.phase;
+            <p>a longer program: otf_06.ck from <a href="../examples/">examples</a>:</p>
 
-        // advance time
-        if( Std.randf() > -.5 ) .25::T => now;
-        else .5::T => now;
-    }
-</pre>
+            <pre><code>// the period
+.5::second => dur T;
+// synchronize to period (for on-the-fly synchronization)
+T - (now % T) => now;
 
-</div>
+// our patch
+SinOsc s => JCRev r => dac;
+// initialize
+.05 => s.gain;
+.25 => r.mix;
 
+// scale (pentatonic; in semitones)
+[ 0, 2, 4, 7, 9 ] @=> int scale[];
 
-<a name="assoc"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>associative arrays</strong></h2>
+// infinite time loop
+while( true )
+{
+    // pick something from the scale
+    scale[ Math.rand2(0,4) ] => float freq;
+    // get the final freq
+    Std.mtof( 69 + (Std.rand2(0,3)*12 + freq) ) => s.freq;
+    // reset phase for extra bandwidth
+    0 => s.phase;
 
-<p>Any array can be used also as an associative array, indexed on strings.  Once the regular array is
-instantiated, no further work has to be done to make it associative as well - just start using it as
-such.</p>
+    // advance time
+    if( Std.randf() > -.5 ) .25::T => now;
+    else .5::T => now;
+}</code></pre>
 
-<pre>
-    // declare regular array (capacity doesn't matter so much)
-    float foo[4];
+        </div>
 
-    // use as int-based array
-    2.5 => foo[0];
 
-    // use as associative array
-    4.0 => foo["yoyo"];
+        <a name="assoc"> </a>
+        <div class="lang_subtopic_body">
+            <h2><strong>associative arrays</strong></h2>
 
-    // access as associative (print)
-    <<< foo["yoyo"] >>>;
+            <p>Any array can be used also as an associative array, indexed on strings. Once the regular array is
+                instantiated, no further work has to be done to make it associative as well - just start using it as
+                such.</p>
 
-    // access empty element
-    <<< foo["gaga"] >>>;  // -> should print 0.0
-</pre>
+            <pre><code>// declare regular array (capacity doesn't matter so much)
+float foo[4];
 
-<p>It is important to note (again), that the address space of the integer portion and the associative
-portion of the array are <em>completely separate</em>.  For example:</p>
+// use as int-based array
+2.5 => foo[0];
 
-<pre>
-    // declare array
-    int foo[2];
+// use as associative array
+4.0 => foo["yoyo"];
 
-    // put something in element 0
-    10 => foo[0];
+// access as associative (print)
+<<< foo["yoyo"] >>>;
 
-    // put something in element "0"
-    20 => foo["0"];
+// access empty element
+<<< foo["gaga"] >>>;  // -> should print 0.0</code></pre>
 
-    // this should print out 10 20
-    <<< foo[0], foo["0"] >>>;
-</pre>
+            <p>It is important to note (again), that the address space of the integer portion and the associative
+                portion of the array are <em>completely separate</em>. For example:</p>
 
-<p>The capacity of an array relates only to the integer portion of it. An array with an integer portion of 
-capacity 0, for example, can still have any number of associative indexes.</p>
+            <pre><code>// declare array
+int foo[2];
 
-<pre>
-    // declare array of 0 capacity
-    int foo[0];
+// put something in element 0
+10 => foo[0];
 
-    // put something in element "here"
-    20 => foo["here"];
+// put something in element "0"
+20 => foo["0"];
 
-    // this should print out 20
-    <<< foo["here"] >>>
+// this should print out 10 20
+<<< foo[0], foo["0"] >>>;</code></pre>
 
-    // this should cause an exception
-    <<< foo[0] >>>
-</pre>
+            <p>The capacity of an array relates only to the integer portion of it. An array with an integer portion
+                of
+                capacity 0, for example, can still have any number of associative indexes.</p>
 
-<p><strong>Note</strong>: The associative capacity of an array is not 
-defined, so <a href="class.html">objects</a> used in the associative 
-namespace must be explicitly instantiated, in contrast to those in the 
-integer namespace</p>
+            <pre><code>// declare array of 0 capacity
+int foo[0];
 
-<p> Accessing an uninstantiated element of the associate array will 
-return a <em>null</em> reference.  Please check the <a 
-href="class.html">class documentation page</a> for an explanation of 
-ChucK objects and references.</p>
+// put something in element "here"
+20 => foo["here"];
 
-<pre>
-    class Item { 
-       float weight; 
-    }
+// this should print out 20
+<<< foo["here"] >>>
+
+// this should cause an exception
+<<< foo[0] >>></code></pre>
+
+            <p><strong>Note</strong>: The associative capacity of an array is not
+                defined, so <a href="class.html">objects</a> used in the associative
+                namespace must be explicitly instantiated, in contrast to those in the
+                integer namespace</p>
+
+            <p> Accessing an uninstantiated element of the associate array will
+                return a <em>null</em> reference. Please check the <a href="class.html">class documentation page</a>
+                for an explanation of
+                ChucK objects and references.</p>
+
+            <pre><code>class Item { 
+    float weight; 
+}
     
-    Item box[10]; 
+Item box[10]; 
 
-    // integer indices ( up to capacity ) are pre-instantiated.
-    1.2 => box[1].weight; 
+// integer indices ( up to capacity ) are pre-instantiated.
+1.2 => box[1].weight; 
 
-    // instantiate element "lamp";
-    new Item @=> box["lamp"]; 
+// instantiate element "lamp";
+new Item @=> box["lamp"]; 
 
-    // access allowed to "lamp"
-    2.0 => box["lamp"].weight; 
+// access allowed to "lamp"
+2.0 => box["lamp"].weight; 
 
-    // access causes a <font color="red">NullPointerException</font>    
-    2.0 => box["sweater"].weight; 
-</pre>
+// access causes a <font color="red">NullPointerException</font>    
+2.0 => box["sweater"].weight; </code></pre>
 
 
-</div>
-
+        </div>
 
 
 
-<a name="assign"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>array assignment</strong></h2>
 
-<p>Arrays are objects.  So when we declare an array, we are actually (1) declaring a reference to array (reference variable) and (2) instantiating a new array and 
-reference assigned to the variable.  A (null) reference is a reference variable that points to no object or 
-null.  A null reference to an array can be created in this fashion:</p>
+        <a name="assign"> </a>
+        <div class="lang_subtopic_body">
+            <h2><strong>array assignment</strong></h2>
 
-<pre>
-    // declare array reference (by not specifying a capacity)
-    int foo[];
+            <p>Arrays are objects. So when we declare an array, we are actually (1) declaring a reference to array
+                (reference variable) and (2) instantiating a new array and
+                reference assigned to the variable. A (null) reference is a reference variable that points to no
+                object or
+                null. A null reference to an array can be created in this fashion:</p>
 
-    // we can now assign any int[] to foo
-    [ 1, 2, 3 ] @=> foo;
+            <pre><code>// declare array reference (by not specifying a capacity)
+int foo[];
 
-    // print out 0th element
-    <<< foo[0] >>>;
-</pre>
+// we can now assign any int[] to foo
+[ 1, 2, 3 ] @=> foo;
 
-<p>This is also useful in declaring functions that have arrays as arguments or return type.</p>
+// print out 0th element
+<<< foo[0] >>>;</code></pre>
 
-<pre>
-    // our function
-    fun void print( int bar[] )
-    {
-        // print it
-        for( 0 => int i; i < bar.size(); i++ )
-            <<< bar[0] >>>;
-    }
+            <p>This is also useful in declaring functions that have arrays as arguments or return type.</p>
 
-    // we can call the function with a literal
-    print( [ 1, 2, 3, 4, 5 ] );
+            <pre><code>// our function
+fun void print( int bar[] )
+{
+    // print it
+    for( 0 => int i; i < bar.size(); i++ )
+        <<< bar[0] >>>;
+}
 
-    // or can we can pass a reference variable
-    int foo[10];
-    print( foo );
-</pre>
+// we can call the function with a literal
+print( [ 1, 2, 3, 4, 5 ] );
 
-<p>Like other objects, it is possible make multiple references to a single array.  Like other objects, all assignments are <em>reference assignments</em>, meaning 
-the contents are <em>NOT</em> copied, only a reference to array is duplicated.</p>
+// or can we can pass a reference variable
+int foo[10];
+print( foo );</code></pre>
 
-<pre>
-    // our single array
-    int the_array[10];
+            <p>Like other objects, it is possible make multiple references to a single array. Like other objects,
+                all assignments are <em>reference assignments</em>, meaning
+                the contents are <em>NOT</em> copied, only a reference to array is duplicated.</p>
 
-    // assign reference to foo and bar
-    the_array => int foo[] => int bar[];
+            <pre><code>// our single array
+int the_array[10];
 
-    // (the_array, foo, and bar now all reference the same array)
+// assign reference to foo and bar
+the_array => int foo[] => int bar[];
 
-    // we change the_array and print foo...
-    // they reference the same array, changing one is like changing the other
-    5 => the_array[0];
-    <<< foo[0] >>>; // should be 5
-</pre>
+// (the_array, foo, and bar now all reference the same array)
 
-<p>It is possible to reference sub-sections of multi-dimensional arrays.</p>
+// we change the_array and print foo...
+// they reference the same array, changing one is like changing the other
+5 => the_array[0];
+<<< foo[0] >>>; // should be 5</code></pre>
 
-<pre>
-    // a 3D array
-    int foo3D[4][4][4];
+            <p>It is possible to reference sub-sections of multi-dimensional arrays.</p>
 
-    // we can make a reference to a sub-section
-    foo3D[2] => int bar[][];
+            <pre><code>// a 3D array
+int foo3D[4][4][4];
 
-    // (note that the dimensions must add up!)
-</pre>
+// we can make a reference to a sub-section
+foo3D[2] => int bar[][];
 
-</div>
+// (note that the dimensions must add up!)</code></pre>
 
-<!-- end subtopics ? -->
+        </div>
 
-</div>
-</div>
-</td></tr>
+        <!-- end subtopics ? -->
 
-<!-- navigation bar -->
+        </div>
+    </main>
 
-<tr><td>
-<center>
-<div class="chuck_nav">
+    <!-- don't format below here -->
 
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="type.html">type</a> | (up): <a href="./">language specification</a> | (next): <a href="oper.html">operators</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
+    <!-- navigation bar -->
+    <nav class="chuck_nav" aria-label="Language specification">
+        <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="type.html">Types</a> |
+            (up): <a href="./">Language
+                Specification</a> | (next): <a href="oper.html">Operators</a> &gt; </div>
+    </nav>
 
-</div>
-</center>
-</td></tr>
+    <hr width="20%" />
 
-<!-- chuck-footer -->
+    <!-- chuck-footer -->
+    <footer>
+        <a href="../../">ChucK</a> |
+        <a href="http://soundlab.cs.princeton.edu/">Soundlab</a> |
+        <a href="http://www.cs.princeton.edu/">CS</a> |
+        <a href="http://www.music.princeton.edu/">Music</a> |
+        <a href="http://ccrma.stanford.edu/">CCRMA</a>
+    </footer>
 
-<tr><td>
-<div id ="chuck_footer">
-<center>
-<hr width="15%" / >
-<a href="../../">chuck</a> |
-<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
-<a href="http://www.cs.princeton.edu/">cs</a> |
-<a href="http://www.music.princeton.edu/">music</a> |
-<a href="http://ccrma.stanford.edu/">ccrma</a>
+    <script src="../../js/prism.js"></script>
+    <script>
+        Prism.languages.chuck = Prism.languages.extend('clike', {
+            'keyword': /\b(abstract|continue|for|new|do|if|private|this|break|double|implements|protected|else|public|return|extends|int|try|char|final|interface|static|void|class|long|const|float|super|while|spork|fun|second|samp|ms|day|week|hour|minute|pi|e|dac|adc|blackhole|complex|polar|bar|measure)\b/g,
+            'number': /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\b\d*\.?\d+\b/gi,
+            'operator': {
+                pattern: /(^|[^\.])(?:\+=|\+\+?|-=|--?|!=?|<{1,2}=?|>{1,3}=?|==?|&=|&&?|\|=|\|\|?|\?|\*=?|\/=?|%=?|\^=?|:|~|::|=>)/gm,
+                lookbehind: true
+            }
 
-</center>
-</div>
-</td></tr>
-</table>
+        });
+        document.querySelectorAll('#lang_body pre').forEach(function (codeBlock) {
+            var code = codeBlock.querySelector('code');
+            if (!code) {
+                return;
+            }
 
-</center>
+            codeBlock.classList.add('language-chuck');
+            code.classList.add('language-chuck');
+            code.querySelectorAll('br').forEach(function (lineBreak) {
+                lineBreak.replaceWith('\n');
+            });
+        });
+        Prism.highlightAll();
+    </script>
 </body>
+
 </html>

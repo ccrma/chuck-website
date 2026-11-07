@@ -1,421 +1,353 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <title>ChucK - [Type]</title>
-
-
-  <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChucK - [Type]</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/prism.css" />
 
 </head>
 
 
-<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">
+<body class="type-page">
+
+    <header id="chuck_header">
+        <h2><b>ChucK</b> : Language Specification &gt; Types, Values, &amp; Variables</h2>
+        <div class="outlineDiv" style="background-color: white; margin-top: 1rem">
+            version: 1.5.x.x (numchucks)
+        </div>
+
+        <hr width="20%"/>
+
+        <!-- navigation bar -->
+        <nav class="chuck_nav" aria-label="Language specification">
+            <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="overview.html">Overview</a> | (up): <a href="./">Language
+                    Specification</a> | (next): <a href="array.html">Arrays</a> &gt; </div>
+        </nav>
+    </header>
+
+
+    <!-- lang specification section -->
+    <main class="leftText" id="lang_body">
+        
+        <h1><strong>Types, Values, and Variables</strong></h1>
+
+        <p>
+            ChucK is a strongly-typed language, meaning that types are resolved at
+            compile-time.
+            However, it is not quite statically-typed, because the compiler/type
+            system is a part
+            of the ChucK virtual machine, and is a <i>runtime</i>
+            component. This type system
+            helps to impose precision and clarity in the code, and naturally lends
+            to organization of complex programs. At the same time, it is also <i>dynamic</i>
+            in that changes to the type
+            system can take place (in a well-defined manner) at runtime. This
+            dynamic aspect
+            forms the basis for <a href="http://on-the-fly.cs.princeton.edu/">on-the-fly
+                programming</a>.
+        </p>
+
+        <p>
+            This section deals with types, values, and the declaration and usage of
+            variables.
+            As in other strongly-typed programming languages, we can think of a
+            type as associated
+            behaviors of data. (For example, an 'int' is a type that means integer,
+            and adding two integer is defined to produce a third integer
+            representing the sum.) Classes and objects
+            allow us to extend the type system with our own custom types, but we
+            won't cover them
+            in this section. We will focus mainly on primitive types here, and
+            leave the discussion of more complex types for <a href="class.html">classes
+                and objects</a>.
+        </p>
+
+        <div class="lang_code_ref">
+            <a href="../examples/index.html#type">View sample
+                code</a> for types, values, and variables
+        </div>
 
-<center>
-<!-- all in a big fat table-->
-<table id="page_layout" border="0" width="640">
+        <!-- body of each sub topic -->
+        <a name="prim"> </a>
+        <div class="lang_subtopic_body">
+            <h2><strong>primitive types</strong></h2>
+
+            <p>
+                The primitive, or intrinsic types are those which are simple datatypes
+                (they have no
+                additional data attributes). Objects are not primitive types. Primitive
+                types are
+                passed by value. Primitive types cannot be extended. The primitive
+                types in ChucK are:</p>
+
+            <ul>
+
+                <li><code><b>int</b></code> : integer (signed)
+                </li>
 
-<!-- heading row-->
-  <tbody>
+                <li><b><code>float</code></b> : floating point number (in ChucK, a float is by
+                    default double-precision)
+                </li>
 
-    <tr>
+                <li><b><code>time</code></b> : ChucKian time
+                </li>
 
-      <td>
-      <div id="chuck_header">
-      <center>
-      <h1><b>ChucK</b> : Language Specification
-&gt; Type
-      </h1>
+                <li><b><code>dur</code></b> : ChucKian duration
+                </li>
 
-      <table border="0">
+                <li><b><code>void</code></b> : (no type)</li>
 
-        <tbody>
 
-          <tr>
+                <li><b><code>vec3</code></b> : 3D vector (x, y, z) of floats (see <a target="_blank"
+                        href="../examples/vector/vec3.html">vec3.ck</a> example); can also be used
+                    as a slew interpolator (see <a target="_blank"
+                        href="../examples/vector/interpolate.html">interpolate.ck</a>)
+                </li>
 
-            <td>
-            <div id="chuck_revision"> version: 1.5.x.x (numchucks)</div>
+                <li><b><code>vec4</code></b> : 4D vector (x, y, z, w) of floats (see <a target="_blank"
+                        href="../examples/vector/vec4.html">vec4.ck</a> example)
+                </li>
 
-            </td>
 
-          </tr>
+                <li><code><strong>complex</strong></code> : complex number in rectangular
+                    form&nbsp;<em>a + bi</em> (see <a href="#complex">below</a>)</li>
 
-        </tbody>
-      </table>
+                <li><code><strong>polar</strong></code> : complex number in polar form (see <a
+                        href="#complex">below</a>)<span> <br />
 
-      <hr width="20%" />
-      </center>
+                    </span></li>
 
-      </div>
+            </ul>
 
-      </td>
+            <p>
+                For a summary of operations on these types, go to <a href="oper.html">operations and
+                    operators</a>.</p>
 
-    </tr>
+            <p>
+                All other types are derived from 'object', either as part of the ChucK
+                standard
+                library, or as a new class that you create. For specification, go to <a href="class.html">classes
+                    and objects</a>.
+            </p>
 
-<!-- navigation bar -->
-    <tr>
+        </div>
 
-      <td>
-      <center>
-      <div class="chuck_nav">
-      <table border="0">
+        <!-- additional sub topic sections go here... -->
+        <a name="value"> </a>
+        <div class="lang_subtopic_body">
+            <h2><strong>values (literals)</strong></h2>
 
-        <tbody>
+            <p>Literal values are specified explicitly in code and are
+                assigned a type by the compiler. The following are some examples of
+                literal values:</p>
 
-          <tr>
+            <p>int:</p>
 
-            <td>
-            <center>
-            <div class="chuck_nav_bar"> &lt; (prev) <a href="overview.html">overview</a> | (up): <a href="./">language specification</a> | (next): <a href="array.html">arrays</a> &gt; </div>
+            <pre><code>42</code></pre>
 
-            </center>
+            <p>int (hexidecimal):</p>
 
-            </td>
+            <pre><code>0xaf30</code></pre>
 
-          </tr>
+            <p>float:</p>
 
-        </tbody>
-      </table>
+            <pre><code>1.323</code></pre>
 
-      </div>
+            <p>dur:</p>
 
-      </center>
+            <pre><code>5.5::second</code></pre>
 
-      </td>
+            In the above code, <code>second</code>
+            is an existing duration variable. For more on durations, see the <a href="time.html">
+                manipulating time</a> section.
+        </div>
 
-    </tr>
+        <a name="var"> </a>
+        <div class="lang_subtopic_body">
+            <h2><strong>variables</strong></h2>
 
-<!-- lang specification section -->
-    <tr>
+            <p>Variables are locations in memory that hold data.
+                Variables have to be declared in ChucK before
+                they are used. For example, to declare a variable of type <code>int</code> called
+                <code>foo</code>:
+            </p>
 
-      <td>
-      <div id="chuck_body">
-      <div id="lang_topic_body">
-      <h1><strong>Types, Values, and Variables</strong></h1>
+            <pre><code>// declare an 'int' called 'foo'<br />int foo;<br /></code></pre>
 
-      <p>
-ChucK is a strongly-typed language, meaning that types are resolved at
-compile-time.
-However, it is not quite statically-typed, because the compiler/type
-system is a part
-of the ChucK virtual machine, and is a <i>runtime</i>
-component. This type system
-helps to impose precision and clarity in the code, and naturally lends
-to organization of complex programs. At the same time, it is also <i>dynamic</i>
-in that changes to the type
-system can take place (in a well-defined manner) at runtime. This
-dynamic aspect
-forms the basis for <a href="http://on-the-fly.cs.princeton.edu/">on-the-fly
-programming</a>.
-      </p>
+            <p>We can assign a value to an existing variable by using
+                the ChucK operator (<code>=&gt;</code>).
+                This is one
+                of the most commonly used operators in ChucK, it's the way to do work
+                and take action! We will discuss this family of operators
+                in <a href="oper.html">operators and operations</a>.
+            </p>
 
-      <p>
-This section deals with types, values, and the declaration and usage of
-variables.
-As in other strongly-typed programming languages, we can think of a
-type as associated
-behaviors of data. (For example, an 'int' is a type that means integer,
-and adding two integer is defined to produce a third integer
-representing the sum.) Classes and objects
-allow us to extend the type system with our own custom types, but we
-won't cover them
-in this section. We will focus mainly on primitive types here, and
-leave the discussion of more complex types for <a href="class.html">classes
-and objects</a>.
-      </p>
+            <pre><code>// assign value of 2 to 'foo'<br />2 =&gt; foo;<br /></code></pre>
 
-      <div class="lang_code_ref">
-      <a href="../examples/index.html#type">View sample
-code</a> for types, values, and variables
-      </div>
+            <p>It is possible to combine the two statements into one:</p>
 
-<!-- body of each sub topic -->
-      <a name="prim"> </a>
-      <div class="lang_subtopic_body">
-      <h2><strong>primitive types</strong></h2>
+            <pre><code>// assign 2 to a new variable 'foo' of type 'int'<br />2 =&gt; int foo;<br /></code></pre>
 
-      <p>
-The primitive, or intrinsic types are those which are simple datatypes
-(they have no
-additional data attributes). Objects are not primitive types. Primitive
-types are
-passed by value. Primitive types cannot be extended. The primitive
-types in ChucK are:</p>
+            <p>To use a variable, just refer to it by name:</p>
 
-      <ul>
+            <pre><code>// debug-print the value of foo<br />&lt;&lt;&lt; foo &gt;&gt;&gt;;<br /></code></pre>
 
-        <li><b><font face="courier">int</font></b> : integer (signed)
-        </li>
+            <p>To update the value of foo, for example:</p>
 
-        <li><b><font face="courier">float</font></b> : floating point number (in ChucK, a float is by default double-precision)
-        </li>
+            <pre><code>// multiply 'foo' by 10, assign back to 'foo'<br />foo * 10 =&gt; foo;<br /></code></pre>
 
-        <li><b><font face="courier">time</font></b> : ChucKian time
-        </li>
+            <p>You can also do the above using a *=&gt;(mult-chuck):</p>
 
-        <li><b><font face="courier">dur</font></b> : ChucKian duration
-        </li>
+            <pre><code>// multiply 'foo' by 10, and then assign to 'foo'<br />10 *=&gt; foo;<br /></code></pre>
 
-        <li><b><font face="courier">void</font></b> : (no type)</li>
+            <p>Here is an example of a duration:</p>
 
+            <pre><code>// assign value of '5 seconds' to new variable bar<br />5::second =&gt; dur bar;<br /></code></pre>
 
-        <li><b><font face="courier">vec3</font></b> : 3D vector (x, y, z) of floats (see <a target="_blank" href="../examples/vector/vec3.ck">vec3.ck</a> example); can also be used as a slew interpolator (see <a target="_blank" href="../examples/vector/interpolate.ck">interpolate.ck</a>)
-        </li>
+            <p>Once you have bar, you can inductively use it to
+                construct new durations:</p>
 
-        <li><b><font face="courier">vec4</font></b> : 4D vector (x, y, z, w) of floats (see <a target="_blank" href="../examples/vector/vec4.ck">vec4.ck</a> example)
-        </li>
+            <pre><code>// 4 bar, a measure?<br />4::bar =&gt; dur measure;<br /></code></pre>
 
+            Since time is central to programming ChucK, it is important to understand time, dur, the
+            relationship
+            and operations between them. There is more information in the <a href="time.html">manipulating time</a>
+            section.
+        </div>
 
-        <li><span style="font-family: courier;"><span style="font-weight: bold;">complex</span></span> : complex number in rectangular form&nbsp;<span style="font-style: italic;">a + bi</span> (see <a href="#complex">below</a>)</li>
+        <a name="ref"> </a>
+        <div class="lang_subtopic_body">
+            <h2><strong>reference types</strong></h2>
 
-        <li><span style="font-family: courier;"><span style="font-weight: bold;">polar</span></span> : complex number in polar form (see <a href="#complex">below</a>)<span style="font-style: italic;"> <br />
+            <p>Reference types are types which inherit from the <code>object</code> class. Some
+                default
+                reference types include:
+            </p>
 
-          </span></li>
+            <ul>
 
-      </ul>
+                <li><b><code>Object</code></b>
+                    : base type that all classes inherit from (directly or indirectly)
+                </li>
 
-      <p>
-For a summary of operations on these types, go to <a href="oper.html">operations and operators</a>.</p>
+                <li><b><code>array</code></b>
+                    : N-dimensional ordered set of data (of the same type)
+                </li>
 
-      <p>
-All other types are derived from 'object', either as part of the ChucK
-standard
-library, or as a new class that you create. For specification, go to <a href="class.html">classes and objects</a>.
-      </p>
+                <li><b><code>Event</code></b>
+                    : fundamental, extendable, synchronization mechanism
+                </li>
 
-      </div>
+                <li><b><code>UGen</code></b>
+                    : extendable unit generator base class
+                </li>
 
-<!-- additional sub topic sections go here... -->
-      <a name="value"> </a>
-      <div class="lang_subtopic_body">
-      <h2><strong>values (literals)</strong></h2>
+                <li><b><code>string</code></b>
+                    : string (of characters)
+                </li>
 
-      <p>Literal values are specified explicitly in code and are
-assigned a type by the compiler. The following are some examples of
-literal values:</p>
+            </ul>
 
-      <p>int:</p>
+            New classes can be created. All classes are reference types. We will
+            leave the full discussion to the <a href="class.html">objects
+                and classes</a> section.<br />
 
-      <pre>42</pre>
+        </div>
 
-      <p>int (hexidecimal):</p>
+        <a name="complex"> </a>
+        <div class="lang_subtopic_body">
+            <h2><strong><strong>complex types</strong></strong></h2>
 
-      <pre>0xaf30</pre>
+            Two special primitive types are available to&nbsp;to represent
+            complex data, such as the output of an FFT:&nbsp;<code><b>complex
+    </b></code>and&nbsp;<code><b>polar</b></code>.
+            A complex number of the form <em>a
+                + bi</em> can be declared as<br />
 
-      <p>float:</p>
+            <pre><code>#(2,3) =&gt; complex cmp; //cmp is now 2 + 3i </code></pre>
 
-      <pre>1.323</pre>
+            where the <code>#(...)</code>
+            syntax explicitly denotes a complex number in
+            rectangular form. Similarly, explicit complex numbers can be
+            manipulated directly:<br />
 
-      <p>dur:</p>
+            <pre><code>#(5, -1.5) =&gt; complex cmp; // cmp is 5 - 1.5i<br />#(2,3) + #(5,6) + cmp =&gt; complex sum; // sum is now 12 + 7.5i<br /></code></pre>
 
-      <pre>5.5::second</pre>
+            The (floating point) real and imaginary parts of a complex number can
+            be accessed with the&nbsp;<code><b>.re</b></code>
+            and&nbsp;<code><b>.im</b></code>
+            components of a <code><b>complex</b></code>
+            number:<br />
 
-In the above code, <font face="courier">second</font>
-is an existing duration variable. For more on durations, see the <a href="time.html">
-manipulating time</a> section.
-      </div>
+            <pre><code>#(2.0,3.5) =&gt; complex cmp;<br />cmp.re =&gt; float x; // x is 2.0<br />cmp.im =&gt; float y; //y is 3.5<br /></code></pre>
 
-      <a name="var"> </a>
-      <div class="lang_subtopic_body">
-      <h2><strong>variables</strong></h2>
+            The&nbsp;<code><b>polar</b></code>
+            type offers an equivalent, alternative representation of
+            complex numbers in terms of a magnitude and phase value. A polar
+            representation of a complex number can be declared as<br />
 
-      <p>Variables are locations in memory that hold data.
-Variables have to be declared in ChucK before
-they are used. For example, to declare a variable of type <font face="courier">int</font> called <font face="courier">foo</font>:
-      </p>
+            <pre><code>%(2, .5*pi) =&gt; polar pol; // pol is 2&ang;.5&pi;</code></pre>
 
-      <pre> // declare an 'int' called 'foo'<br /> int foo;<br /></pre>
+            The magnitude and phase values can be accessed via <code><b>.mag</b></code> and
+            <code><b>.phase</b></code>:<br />
 
-      <p>We can assign a value to an existing variable by using
-the ChucK operator (<font face="courier">=&gt;</font>).
-This is one
-of the most commonly used operators in ChucK, it's the way to do work
-and take action! We will discuss this family of operators
-in <a href="oper.html">operators and operations</a>.
-      </p>
+            <pre><code>%(2, .5*pi) =&gt; polar pol;<br />pol.mag =&gt; float m; // m is 2<br />pol.phase =&gt; float p; //p is .5&pi;</code></pre>
 
-      <pre> // assign value of 2 to 'foo'<br /> 2 =&gt; foo;<br /></pre>
+            <code><b>polar</b></code>&nbsp;and&nbsp;<code><b>complex</b></code>
+            representations can be cast to each other and
+            multiplied/added/assigned/etc.:<br />
 
-      <p>It is possible to combine the two statements into one:</p>
+            <pre><code>%(2, .5*pi) =&gt; polar pol;<br />#(3, 4) =&gt; complex cmp;<br />pol $ complex + #(10, 3) + cmp =&gt; complex cmp2;<br />cmp $ polar + %(10, .25*pi) - pol =&gt; polar pol2;</code></pre>
 
-      <pre> // assign 2 to a new variable 'foo' of type 'int'<br /> 2 =&gt; int foo;<br /></pre>
+        </div>
+    </main>
 
-      <p>To use a variable, just refer to it by name:</p>
+    <!-- navigation bar -->
+    <nav class="chuck_nav" aria-label="Language specification">
+        <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="overview.html">Overview</a> | (up): <a href="./">Language
+                Specification</a> | (next): <a href="array.html">Arrays</a> &gt; </div>
+    </nav>
 
-      <pre> // debug-print the value of foo<br /> &lt;&lt;&lt; foo &gt;&gt;&gt;;<br /></pre>
+    <hr width="20%" />
 
-      <p>To update the value of foo, for example:</p>
+    <!-- chuck-footer -->
+    <footer>
+        <a href="../../">ChucK</a> |
+        <a href="http://soundlab.cs.princeton.edu/">Soundlab</a> |
+        <a href="http://www.cs.princeton.edu/">CS</a> |
+        <a href="http://www.music.princeton.edu/">Music</a> |
+        <a href="http://ccrma.stanford.edu/">CCRMA</a>
+    </footer>
 
-      <pre> // multiply 'foo' by 10, assign back to 'foo'<br /> foo * 10 =&gt; foo;<br /></pre>
+    <script src="../../js/prism.js"></script>
+    <script>
+        Prism.languages.chuck = Prism.languages.extend('clike', {
+            'keyword': /\b(abstract|continue|for|new|do|if|private|this|break|double|implements|protected|else|public|return|extends|int|try|char|final|interface|static|void|class|long|const|float|super|while|spork|fun|second|samp|ms|day|week|hour|minute|pi|e|dac|adc|blackhole|complex|polar|bar|measure)\b/g,
+            'number': /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\b\d*\.?\d+\b/gi,
+            'operator': {
+                pattern: /(^|[^\.])(?:\+=|\+\+?|-=|--?|!=?|<{1,2}=?|>{1,3}=?|==?|&=|&&?|\|=|\|\|?|\?|\*=?|\/=?|%=?|\^=?|:|~|::|=>)/gm,
+                lookbehind: true
+            }
 
-      <p>You can also do the above using a *=&gt;(mult-chuck):</p>
+        });
+        document.querySelectorAll('#lang_body pre').forEach(function (codeBlock) {
+            var code = codeBlock.querySelector('code');
+            if (!code) {
+                return;
+            }
 
-      <pre> // multiply 'foo' by 10, and then assign to 'foo'<br /> 10 *=&gt; foo;<br /></pre>
+            codeBlock.classList.add('language-chuck');
+            code.classList.add('language-chuck');
+            code.querySelectorAll('br').forEach(function (lineBreak) {
+                lineBreak.replaceWith('\n');
+            });
+        });
 
-      <p>Here is an example of a duration:</p>
-
-      <pre> // assign value of '5 seconds' to new variable bar<br /> 5::second =&gt; dur bar;<br /></pre>
-
-      <p>Once you have bar, you can inductively use it to
-construct new durations:</p>
-
-      <pre> // 4 bar, a measure?<br /> 4::bar =&gt; dur measure;<br /></pre>
-
-Since time is central to programming ChucK, it is important to understand time, dur, the relationship
-and operations between them. There is more information in the <a href="time.html">manipulating time</a> section.
-      </div>
-
-      <a name="ref"> </a>
-      <div class="lang_subtopic_body">
-      <h2><strong>reference types</strong></h2>
-
-      <p>Reference types are types which inherit from the <font face="courier">object</font> class. Some default
-reference types include:
-      </p>
-
-      <ul>
-
-        <li><b><font face="courier">Object</font></b>
-: base type that all classes inherit from (directly or indirectly)
-        </li>
-
-        <li><b><font face="courier">array</font></b>
-: N-dimensional ordered set of data (of the same type)
-        </li>
-
-        <li><b><font face="courier">Event</font></b>
-: fundamental, extendable, synchronization mechanism
-        </li>
-
-        <li><b><font face="courier">UGen</font></b>
-: extendable unit generator base class
-        </li>
-
-        <li><b><font face="courier">string</font></b>
-: string (of characters)
-        </li>
-
-      </ul>
-
-New classes can be created. All classes are reference types. We will
-leave the full discussion to the <a href="class.html">objects
-and classes</a> section.<br />
-
-      </div>
-
-      <a name="complex"> </a>
-      <div class="lang_subtopic_body">
-      <h2><strong><strong>complex types</strong></strong></h2>
-
-Two special primitive types are available to&nbsp;to represent
-complex data, such as the output of an FFT:&nbsp;<font face="courier"><b>complex
-      </b></font>and&nbsp;<font face="courier"><b>polar</b></font>.
-A complex number of the form <span style="font-style: italic;">a
-+ bi</span> can be declared as<br />
-
-      <pre> #(2,3) =&gt; complex cmp; //cmp is now 2 + 3i </pre>
-
-where the <span style="font-family: Courier New,Courier,monospace;">#(...)</span>
-syntax explicitly denotes a complex number in
-rectangular form. Similarly, explicit complex numbers can be
-manipulated directly:<br />
-
-      <pre> #(5, -1.5) =&gt; complex cmp; // cmp is 5 - 1.5i<br /> #(2,3) + #(5,6) + cmp =&gt; complex sum; // sum is now 12 + 7.5i<br /></pre>
-
-The (floating point) real and imaginary parts of a complex number can
-be accessed with the&nbsp;<font face="courier"><b>.re</b></font>
-and&nbsp;<font face="courier"><b>.im</b></font>
-components of a <font face="courier"><b>complex</b></font>
-number:<br />
-
-      <pre> #(2.0,3.5) =&gt; complex cmp;<br /> cmp.re =&gt; float x; // x is 2.0<br /> cmp.im =&gt; float y; //y is 3.5<br /></pre>
-
-The&nbsp;<font face="courier"><b>polar</b></font>
-type offers an equivalent, alternative representation of
-complex numbers in terms of a magnitude and phase value. A polar
-representation of a complex number can be declared as<br />
-
-      <pre> %(2, .5*pi) =&gt; polar pol; // pol is 2&ang;.5&pi;</pre>
-
-The magnitude and phase values can be accessed via <font face="courier"><b>.mag</b></font> and <font face="courier"><b>.phase</b></font>:<br />
-
-      <pre> %(2, .5*pi) =&gt; polar pol;<br /> pol.mag =&gt; float m; // m is 2<br /> pol.phase =&gt; float p; //p is .5&pi;</pre>
-
-      <font face="courier"><b>polar</b></font>&nbsp;and&nbsp;<font face="courier"><b>complex</b></font>
-representations can be cast to each other and
-multiplied/added/assigned/etc.:<br />
-
-      <pre> %(2, .5*pi) =&gt; polar pol;<br /> #(3, 4) =&gt; complex cmp;<br /> pol $ complex + #(10, 3) + cmp =&gt; complex cmp2;<br /> cmp $ polar + %(10, .25*pi) - pol =&gt; polar pol2;</pre>
-
-      </div>
-
-<!-- -->
-      </div>
-
-      </div>
-
-      </td>
-
-    </tr>
-
-<!-- navigation bar -->
-    <tr>
-
-      <td>
-      <center>
-      <div class="chuck_nav">
-      <table border="0">
-
-        <tbody>
-
-          <tr>
-
-            <td>
-            <center>
-            <div class="chuck_nav_bar"> &lt; (prev) <a href="overview.html">overview</a> | (up): <a href="./">language specification</a> | (next): <a href="array.html">arrays</a> &gt; </div>
-
-            </center>
-
-            </td>
-
-          </tr>
-
-        </tbody>
-      </table>
-
-      </div>
-
-      </center>
-
-      </td>
-
-    </tr>
-
-<!-- chuck-footer -->
-    <tr>
-
-      <td>
-      <div id="chuck_footer">
-      <center>
-      <hr width="30%" /><a href="../../">chuck</a> |
-      <a href="http://soundlab.cs.princeton.edu/">soundlab</a>
-|
-      <a href="http://www.cs.princeton.edu/">cs</a>
-|
-      <a href="http://www.music.princeton.edu/">music</a> |
-      <a href="http://ccrma.stanford.edu/">ccrma</a>
-      </center>
-
-      </div>
-
-      </td>
-
-    </tr>
-
-  </tbody>
-</table>
-
-</center>
-
+        Prism.highlightAll();
+    </script>
 </body>
 </html>

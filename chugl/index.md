@@ -47,7 +47,7 @@ Philip Davidson.
 • [**Paper (NIME 2024)**](https://mcd.stanford.edu/publish/files/2024-nime-chugl.pdf)
 <br>
 **Videos** [SoundBulb Audiovisualizer](https://www.youtube.com/watch?v=wnSmS_y9-Cs) (code: 
-[soundbulb.ck](examples/deep/soundbulb.ck) | [sndpeek.ck](examples/deep/sndpeek.ck))
+[soundbulb.ck](examples/deep/soundbulb.html) | [sndpeek.ck](examples/deep/sndpeek.html))
 | [Selected Student Projects](https://www.youtube.com/watch?v=ut1YISb2FCE)
 <br>
 **2026 Summer Workshop** [Audio-Centric Game Design in ChucK+ChuGL](workshop/)

@@ -1,125 +1,91 @@
-<!DOCTYPE html PUBLIC 
-"-//W3C//DTD XHTML 1.0 Strict//EN" 
-"http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<title>ChucK - [Language Specification : Control Structures]</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChucK - [Language Specification : Control Structures]</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/prism.css" />
 
 </head>
-<body bgcolor="#ffffff" text="#000000">
-<center>
 
-<!-- all in a big fat table-->
+<body class="type-page">
+    <header id="chuck_header">
+        <h2>ChucK : Language Specification &gt; Control Structures</h2>
+        <div class="outlineDiv" style="background-color: white; margin-top: 1rem">
+            version: 1.5.x.x (numchucks)
+        </div>
 
-<table id="page_layout" border="0" width="640">
+        <hr width="20%" />
 
-<!-- heading row-->
+        <!-- navigation bar -->
+        <nav class="chuck_nav" aria-label="Language specification">
+            <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a
+                    href="oper.html">Operators</a> | (up): <a href="./">Language Specification</a> | (next): <a
+                    href="time.html">Manipulating Time</a> &gt; </div>
+        </nav>
+    </header>
 
-<tr><td>
-<div id="chuck_header">
-<center>
-<h1>
-<strong>ChucK</strong> : Language Specification &gt; Control Structures
-</h1>
+    <!-- lang specification section -->
+    <main class="leftText" id="lang_body">
+        <div id="lang_topic_body">
 
-<table border="0">
-<tr><td>
-  	<div id="chuck_revision">
-	version: 1.5.x.x (numchucks)
-  	</div>
-  	
-</td></tr>
-</table>
+            <h1><strong>Control Structures</strong></h1>
+            <p>
+                ChucK includes standard control structures similar to those in most programming languages.
+                A condition (of type 'int') is evaluated and then a proceeding block is potentially executed.
+                Blocks are separated either by semicolons or by curly brackets {}.
+            </p>
 
-<hr width="20%" />
-</center>
-</div>
-</td></tr>
+            <!-- index of code exmaples -->
+            <div class="lang_code_ref">
+                <a href="../examples/index.html#ctrl">View sample code</a> for control structures
+            </div>
 
-<!-- navigation bar -->
+            <!-- body of each sub topic -->
 
-<tr><td>
-<center>
-<div class="chuck_nav">
+            <a name="if"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>if / else</strong></h2>
 
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="oper.html">operators</a> | (up): <a href="./">language specification</a> | (next): <a href="time.html">manipulating time</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
-
-</div>
-</center>
-</td></tr>
-
-
-<!-- lang specification section -->
-<tr><td>
-<div id="chuck_body">
-
-<div id="lang_topic_body">
-
-<h1><strong>Control Structures</strong></h1>
-<p>
-ChucK includes standard control structures similar to those in most programming languages. 
-A condition (of type 'int') is evaluated and then a proceeding block is potentially executed.
-Blocks are separated either by semicolons or by curly brackets {}. 
-</p>
-
-<!-- index of code exmaples -->
-<div class="lang_code_ref">
-<a href="../examples/index.html#ctrl">View sample code</a> for control structures
-</div>
-
-<!-- body of each sub topic -->
-
-<a name="if"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>if / else</strong></h2>
-
-<p>The if statement executes a block if the condition is evaluated as non-zero.</p>
-<pre>
-if( condition )
+                <p>The if statement executes a block if the condition is evaluated as non-zero.</p>
+                <pre><code>if( condition )
 {
     // insert code here
-}
-</pre>
+}</code></pre>
 
-In the above code, <font face="courier">condition</font> is any expression that evaluates to an
-<font face="couirer">int</font>.
+                In the above code, condition is any expression that evaluates to an
+                int.
 
-<p>The else statement can be put after the if block to handle the case where the condition evaluates to 0.</p>
+                <p>The else statement can be put after the if block to handle the case where the condition evaluates to
+                    0.</p>
 
-<pre>
-if( condition )
+                <pre><code>if( condition )
 {
     // your code here
 }
 else
 {
     // your other code here
-}
-</pre>
+}</code></pre>
 
-<p>If statements can be nested.</p>
+                <p>If statements can be nested.</p>
 
-</div>
+            </div>
 
-<!-- additional sub topic sections go here... -->
+            <!-- additional sub topic sections go here... -->
 
 
-<a name="while"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>while</strong></h2>
+            <a name="while"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>while</strong></h2>
 
-<p>The while statement is a loop that repeatedly executes the body as 
-long as the condition evaluates as non-zero.</p>
+                <p>The while statement is a loop that repeatedly executes the body as
+                    long as the condition evaluates as non-zero.</p>
 
-<pre>
-// here is an infinite loop
+                <pre><code>// here is an infinite loop
 while( true )
 {
     // your code loops forever!
@@ -127,83 +93,79 @@ while( true )
     // (sometimes this is desirable because we can create
     // infinite time loops this way, and because we have
     // concurrency)
-} 
-</pre>
+}</code></pre>
 
-<p>The while loop will first check the condition, and executes the body 
-as long as the condition evaluates as non-zero. To execute the body of the 
-loop before checking the condition, you can use a <strong>do/while</strong>
-loop.  This guarantees that the body gets executed as least once.</p>
+                <p>The while loop will first check the condition, and executes the body
+                    as long as the condition evaluates as non-zero. To execute the body of the
+                    loop before checking the condition, you can use a <strong>do/while</strong>
+                    loop. This guarantees that the body gets executed as least once.</p>
 
-<pre>
-do {
+                <pre><code>do {
     // your code executes here at least once
-} while( condition );
-</pre>
+} while( condition );</code></pre>
 
-A few more points:
-<ul>
-<li> while statements can be nested.
-<li> see <a href="#break">break/continue</a> for additional control over your loops
-</ul>
+                A few more points:
+                <ul>
+                    <li> while statements can be nested.
+                    <li> see <a href="#break">break/continue</a> for additional control over your loops
+                </ul>
 
-</div>
+            </div>
 
-<a name="until"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>until</strong></h2>
+            <a name="until"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>until</strong></h2>
 
-<p>The until statement is the opposite of while, semantically. A until loop repeatedly executes the body <strong>until</strong> the condition evaluates as non-zero.</p>
+                <p>The until statement is the opposite of while, semantically. A until loop repeatedly executes the body
+                    <strong>until</strong> the condition evaluates as non-zero.</p>
 
-<pre>
-// an infinite loop
+                <pre><code>// an infinite loop
 until( false )
 {
     // your great code loops forever!
-}
-</pre>
+}</code></pre>
 
-<p>The while loop will first check the condition, and executes the body as long as the condition evaluates as zero.
-To execute the body of the loop before checking the condition, you can use a <strong>do/until</strong> loop.  This guarantees that
-the body gets executed as least once.</p>
+                <p>The while loop will first check the condition, and executes the body as long as the condition
+                    evaluates as zero.
+                    To execute the body of the loop before checking the condition, you can use a
+                    <strong>do/until</strong> loop. This guarantees that
+                    the body gets executed as least once.</p>
 
-<pre>
-do {
+                <pre><code>do {
     // your code executes here at least once
-} until( condition );
-</pre>
+} until( condition );</code></pre>
 
-A few more points:
-<ul>
-<li> until statements can be nested.
-<li> see <a href="#break">break/continue</a> for additional control over your loops
-</ul>
+                A few more points:
+                <ul>
+                    <li> until statements can be nested.
+                    <li> see <a href="#break">break/continue</a> for additional control over your loops
+                </ul>
 
-</div>
+            </div>
 
 
-<a name="for"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>for</strong></h2>
+            <a name="for"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>for</strong></h2>
 
-<p>A loop that iterates a given number of times. A temporary variable is declared that keeps track of the current index and is evaluated and incremented at each iteration.</p>
-<pre>
-// for loop
+                <p>A loop that iterates a given number of times. A temporary variable is declared that keeps track of
+                    the current index and is evaluated and incremented at each iteration.</p>
+                <pre><code>// for loop
 for( 0 => int foo; foo < 4 ; foo++ )
 {
     // debug-print value of 'foo'
     &lt;&lt;&lt; foo &gt;&gt;&gt;;
-}
-</pre>
-</div>
+}</code></pre>
+            </div>
 
-<a name="foreach"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>for-each</strong></h2>
+            <a name="foreach"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>for-each</strong></h2>
 
-<p>For-each is used to iterate over the contents of an array, using a temporary variable that will take on the respective value of each array element in each iteration of the loop. (Requires chuck-1.5.0.8 or higher.)</p>
-<pre>
-// an array
+                <p>For-each is used to iterate over the contents of an array, using a temporary variable that will take
+                    on the respective value of each array element in each iteration of the loop. (Requires chuck-1.5.0.8
+                    or higher.)</p>
+                <pre><code>// an array
 [1,2,3] @=> int array[];
 // for each element 'a' in array 'array'
 for( int a : array )
@@ -224,32 +186,27 @@ for( auto a : array )
 {
     // 'a' is automatically inferred from context to be of type 'int'
     &lt;&lt;&lt; a &gt;&gt;&gt;;
-}
+}</code></pre>
+            </div>
 
-</pre>
-</div>
+            <a name="repeat"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>repeat</strong></h2>
 
-<a name="repeat"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>repeat</strong></h2>
-
-<p>A loop that iterates a fixed number of times.</p>
-<pre>
-// repeat loop
+                <p>A loop that iterates a fixed number of times.</p>
+                <pre><code>// repeat loop
 repeat( 4 )
 {
     // print now in seconds
     &lt;&lt;&lt; now / second &gt;&gt;&gt;;
     // advance time
     500::ms => now;
-}
-</pre>
+}</code></pre>
 
 
-<p>The repeat loop condition is evaluated immediately (when first encountered) and only once.</p>
+                <p>The repeat loop condition is evaluated immediately (when first encountered) and only once.</p>
 
-<pre>
-// variable
+                <pre><code>// variable
 5 => int x
 
 // in the repeat condition, 'x' is evaluated once and only once, at
@@ -261,30 +218,27 @@ repeat( x )
     &lt;&lt;&lt; now / second &gt;&gt;&gt;;
     // advance time
     500::ms => now;
-}
-</pre>
+}</code></pre>
 
 
-</div>
+            </div>
 
-<!-- body of each sub topic -->
+            <!-- body of each sub topic -->
 
-<a name="break"> </a>
-<div class="lang_subtopic_body">
-<h2><strong>break / continue</strong></h2>
+            <a name="break"> </a>
+            <div class="lang_subtopic_body">
+                <h2><strong>break / continue</strong></h2>
 
-<p>Break allows the program flow to jump out of a loop.</p>
-<pre>
-// infinite loop
+                <p>Break allows the program flow to jump out of a loop.</p>
+                <pre><code>// infinite loop
 while( 1 )
 {
-    if( condition ) 
+    if( condition )
         break;
-}
-</pre>
-<p> Continue allows a loop to continue looping but not to execute the rest of the block for the iteration where continue was executed. </p>
-<pre>
-// another infinite loop
+}</code></pre>
+                <p> Continue allows a loop to continue looping but not to execute the rest of the block for the
+                    iteration where continue was executed. </p>
+                <pre><code>// another infinite loop
 while( 1 )
 {
     // check condition
@@ -292,53 +246,58 @@ while( 1 )
         continue;
 
     // some great code that may get skipped (if continue is taken)
-}
-</pre>
+}</code></pre>
 
-</div>
+            </div>
 
 
-<!-- end subtopics ? -->
+            <!-- end subtopics ? -->
 
-</div>
-</div>
-</td></tr>
+        </div>
+    </main>
 
-<!-- navigation bar -->
+    <!-- navigation bar -->
+    <nav class="chuck_nav" aria-label="Language specification">
+        <div class="chuck_nav_bar outlineDiv" style="max-width: none;"> &lt; (prev) <a href="oper.html">Operators</a> |
+            (up): <a href="./">Language Specification</a> | (next): <a href="time.html">Manipulating Time</a> &gt;
+        </div>
+    </nav>
 
-<tr><td>
-<center>
-<div class="chuck_nav">
+    <hr width="20%" />
 
-	<table border="0"><tr><td>
-	<center>
-	<div class="chuck_nav_bar">	
-  &lt; (prev): <a href="oper.html">operators</a> | (up): <a href="./">language specification</a> | (next): <a href="time.html">manipulating time</a> &gt; 
-	</div>
-	</center>  
-	</td></tr></table>
+    <!-- chuck-footer -->
+    <footer>
+        <a href="../../">ChucK</a> |
+        <a href="http://soundlab.cs.princeton.edu/">Soundlab</a> |
+        <a href="http://www.cs.princeton.edu/">CS</a> |
+        <a href="http://www.music.princeton.edu/">Music</a> |
+        <a href="http://ccrma.stanford.edu/">CCRMA</a>
+    </footer>
 
-</div>
-</center>
-</td></tr>
+    <script src="../../js/prism.js"></script>
+    <script>
+        Prism.languages.chuck = Prism.languages.extend('clike', {
+            'keyword': /\b(abstract|continue|for|new|do|if|private|this|break|double|implements|protected|else|public|return|extends|int|try|char|final|interface|static|void|class|long|const|float|super|while|spork|fun|second|samp|ms|day|week|hour|minute|pi|e|dac|adc|blackhole|complex|polar|bar|measure)\b/g,
+            'number': /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\b\d*\.?\d+\b/gi,
+            'operator': {
+                pattern: /(^|[^\.])(?:\+=|\+\+?|-=|--?|!=?|<{1,2}=?|>{1,3}=?|==?|&=|&&?|\|=|\|\|?|\?|\*=?|\/=?|%=?|\^=?|:|~|::|=>)/gm,
+                lookbehind: true
+            }
+        });
+        document.querySelectorAll('#lang_body pre').forEach(function (codeBlock) {
+            var code = codeBlock.querySelector('code');
+            if (!code) {
+                return;
+            }
 
-<!-- chuck-footer -->
-
-<tr><td>
-<div id ="chuck_footer">
-<center>
-<hr width="15%" / >
-<a href="../../">chuck</a> |
-<a href="http://soundlab.cs.princeton.edu/">soundlab</a> |
-<a href="http://www.cs.princeton.edu/">cs</a> |
-<a href="http://www.music.princeton.edu/">music</a> |
-<a href="http://ccrma.stanford.edu/">ccrma</a>
-
-</center>
-</div>
-</td></tr>
-</table>
-
-</center>
+            codeBlock.classList.add('language-chuck');
+            code.classList.add('language-chuck');
+            code.querySelectorAll('br').forEach(function (lineBreak) {
+                lineBreak.replaceWith('\n');
+            });
+        });
+        Prism.highlightAll();
+    </script>
 </body>
+
 </html>
