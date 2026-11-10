@@ -505,6 +505,7 @@ For in-game UI (UI that the end user, not developer, interacts with) ChuGL does 
   - Set the camera mode to orthographic, and place UI widgets at a special depth (e.g. z = 5) so that they are drawn on top of everything else
 - for 3D games:
   - Same as 2D, except draw your UI in separate `RenderPass` with an orthographic camera because the main camera for your main scene probably has to be in perspective mode.
+  - See [hud.ck](../examples/rendergraph/hud.ck)
 
 Helpful `GCamera` methods for in-game UI:
 
